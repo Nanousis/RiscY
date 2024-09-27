@@ -1,0 +1,109 @@
+{
+ "Device" : "GW1NR-9C",
+ "Files" : [
+  {
+   "Path" : "E:/gowin/RISCV/src/ALUCPU.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/gowin/RISCV/src/RegFile.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/gowin/RISCV/src/SignExtendSelector.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/gowin/RISCV/src/bus.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/gowin/RISCV/src/buttonModule.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/gowin/RISCV/src/config.vh",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/gowin/RISCV/src/constants.vh",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/gowin/RISCV/src/control_alu.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/gowin/RISCV/src/control_branch.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/gowin/RISCV/src/control_bypass_ex.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/gowin/RISCV/src/control_main.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/gowin/RISCV/src/control_stall_id.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/gowin/RISCV/src/cpu.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/gowin/RISCV/src/gowin_rpll/gowin_rpll.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/gowin/RISCV/src/i2c.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/gowin/RISCV/src/i2capi.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/gowin/RISCV/src/mem_read_selector.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/gowin/RISCV/src/mem_write_selector.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/gowin/RISCV/src/memory.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/gowin/RISCV/src/screen.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/gowin/RISCV/src/seven_segment.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/gowin/RISCV/src/signExtend.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/gowin/RISCV/src/soc.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/gowin/RISCV/src/textEngine.v",
+   "Type" : "verilog"
+  }
+ ],
+ "IncludePath" : [
+
+ ],
+ "LoopLimit" : 2000,
+ "ResultFile" : "E:/gowin/RISCV/impl/temp/rtl_parser.result",
+ "Top" : "",
+ "VerilogStd" : "verilog_2001",
+ "VhdlStd" : "vhdl_93"
+}

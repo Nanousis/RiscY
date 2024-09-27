@@ -1,0 +1,194 @@
+[
+ {
+  "InstFile" : "E:/gowin/RISCV/src/gowin_rpll/gowin_rpll.v",
+  "InstLine" : 10,
+  "InstName" : "Gowin_rPLL",
+  "ModuleFile" : "E:/gowin/RISCV/src/gowin_rpll/gowin_rpll.v",
+  "ModuleLine" : 10,
+  "ModuleName" : "Gowin_rPLL"
+ },
+ {
+  "InstFile" : "E:/gowin/RISCV/src/soc.v",
+  "InstLine" : 3,
+  "InstName" : "top",
+  "ModuleFile" : "E:/gowin/RISCV/src/soc.v",
+  "ModuleLine" : 3,
+  "ModuleName" : "top",
+  "SubInsts" : [
+   {
+    "InstFile" : "E:/gowin/RISCV/src/soc.v",
+    "InstLine" : 55,
+    "InstName" : "cpu_1",
+    "ModuleFile" : "E:/gowin/RISCV/src/cpu.v",
+    "ModuleLine" : 9,
+    "ModuleName" : "cpu",
+    "SubInsts" : [
+     {
+      "InstFile" : "E:/gowin/RISCV/src/cpu.v",
+      "InstLine" : 186,
+      "InstName" : "signExtendUnit",
+      "ModuleFile" : "E:/gowin/RISCV/src/signExtend.v",
+      "ModuleLine" : 4,
+      "ModuleName" : "signExtend"
+     },
+     {
+      "InstFile" : "E:/gowin/RISCV/src/cpu.v",
+      "InstLine" : 196,
+      "InstName" : "cpu_regs",
+      "ModuleFile" : "E:/gowin/RISCV/src/RegFile.v",
+      "ModuleLine" : 7,
+      "ModuleName" : "RegFile"
+     },
+     {
+      "InstFile" : "E:/gowin/RISCV/src/cpu.v",
+      "InstLine" : 209,
+      "InstName" : "SignExtendSelector",
+      "ModuleFile" : "E:/gowin/RISCV/src/SignExtendSelector.v",
+      "ModuleLine" : 4,
+      "ModuleName" : "SignExtendSelector"
+     },
+     {
+      "InstFile" : "E:/gowin/RISCV/src/cpu.v",
+      "InstLine" : 295,
+      "InstName" : "control_main",
+      "ModuleFile" : "E:/gowin/RISCV/src/control_main.v",
+      "ModuleLine" : 5,
+      "ModuleName" : "control_main"
+     },
+     {
+      "InstFile" : "E:/gowin/RISCV/src/cpu.v",
+      "InstLine" : 311,
+      "InstName" : "control_stall_id",
+      "ModuleFile" : "E:/gowin/RISCV/src/control_stall_id.v",
+      "ModuleLine" : 6,
+      "ModuleName" : "control_stall_id"
+     },
+     {
+      "InstFile" : "E:/gowin/RISCV/src/cpu.v",
+      "InstLine" : 348,
+      "InstName" : "cpu_alu",
+      "ModuleFile" : "E:/gowin/RISCV/src/ALUCPU.v",
+      "ModuleLine" : 4,
+      "ModuleName" : "ALUCPU"
+     },
+     {
+      "InstFile" : "E:/gowin/RISCV/src/cpu.v",
+      "InstLine" : 408,
+      "InstName" : "control_alu",
+      "ModuleFile" : "E:/gowin/RISCV/src/control_alu.v",
+      "ModuleLine" : 5,
+      "ModuleName" : "control_alu"
+     },
+     {
+      "InstFile" : "E:/gowin/RISCV/src/cpu.v",
+      "InstLine" : 416,
+      "InstName" : "control_bypass_ex",
+      "ModuleFile" : "E:/gowin/RISCV/src/control_bypass_ex.v",
+      "ModuleLine" : 5,
+      "ModuleName" : "control_bypass_ex"
+     },
+     {
+      "InstFile" : "E:/gowin/RISCV/src/cpu.v",
+      "InstLine" : 429,
+      "InstName" : "mem_write_selector",
+      "ModuleFile" : "E:/gowin/RISCV/src/mem_write_selector.v",
+      "ModuleLine" : 4,
+      "ModuleName" : "mem_write_selector"
+     },
+     {
+      "InstFile" : "E:/gowin/RISCV/src/cpu.v",
+      "InstLine" : 471,
+      "InstName" : "control_branch",
+      "ModuleFile" : "E:/gowin/RISCV/src/control_branch.v",
+      "ModuleLine" : 4,
+      "ModuleName" : "control_branch"
+     },
+     {
+      "InstFile" : "E:/gowin/RISCV/src/cpu.v",
+      "InstLine" : 482,
+      "InstName" : "mem_read_selector",
+      "ModuleFile" : "E:/gowin/RISCV/src/mem_read_selector.v",
+      "ModuleLine" : 4,
+      "ModuleName" : "mem_read_selector"
+     }
+    ]
+   },
+   {
+    "InstFile" : "E:/gowin/RISCV/src/soc.v",
+    "InstLine" : 74,
+    "InstName" : "bu",
+    "ModuleFile" : "E:/gowin/RISCV/src/bus.v",
+    "ModuleLine" : 3,
+    "ModuleName" : "bus"
+   },
+   {
+    "InstFile" : "E:/gowin/RISCV/src/soc.v",
+    "InstLine" : 89,
+    "InstName" : "mem",
+    "ModuleFile" : "E:/gowin/RISCV/src/memory.v",
+    "ModuleLine" : 3,
+    "ModuleName" : "memory"
+   },
+   {
+    "InstFile" : "E:/gowin/RISCV/src/soc.v",
+    "InstLine" : 103,
+    "InstName" : "bm",
+    "ModuleFile" : "E:/gowin/RISCV/src/buttonModule.v",
+    "ModuleLine" : 1,
+    "ModuleName" : "buttonModule"
+   },
+   {
+    "InstFile" : "E:/gowin/RISCV/src/soc.v",
+    "InstLine" : 114,
+    "InstName" : "text",
+    "ModuleFile" : "E:/gowin/RISCV/src/textEngine.v",
+    "ModuleLine" : 1,
+    "ModuleName" : "textEngine"
+   },
+   {
+    "InstFile" : "E:/gowin/RISCV/src/soc.v",
+    "InstLine" : 126,
+    "InstName" : "scr",
+    "ModuleFile" : "E:/gowin/RISCV/src/screen.v",
+    "ModuleLine" : 2,
+    "ModuleName" : "screen",
+    "SubInsts" : [
+     {
+      "InstFile" : "E:/gowin/RISCV/src/screen.v",
+      "InstLine" : 43,
+      "InstName" : "i2c_inst",
+      "ModuleFile" : "E:/gowin/RISCV/src/i2c.v",
+      "ModuleLine" : 2,
+      "ModuleName" : "i2c"
+     },
+     {
+      "InstFile" : "E:/gowin/RISCV/src/screen.v",
+      "InstLine" : 64,
+      "InstName" : "i2c_api_inst",
+      "ModuleFile" : "E:/gowin/RISCV/src/i2capi.v",
+      "ModuleLine" : 1,
+      "ModuleName" : "i2c_api"
+     }
+    ]
+   },
+   {
+    "InstFile" : "E:/gowin/RISCV/src/soc.v",
+    "InstLine" : 133,
+    "InstName" : "ssd",
+    "ModuleFile" : "E:/gowin/RISCV/src/seven_segment.v",
+    "ModuleLine" : 57,
+    "ModuleName" : "SSD",
+    "SubInsts" : [
+     {
+      "InstFile" : "E:/gowin/RISCV/src/seven_segment.v",
+      "InstLine" : 76,
+      "InstName" : "LEDdecoder_inst",
+      "ModuleFile" : "E:/gowin/RISCV/src/seven_segment.v",
+      "ModuleLine" : 3,
+      "ModuleName" : "LEDdecoder"
+     }
+    ]
+   }
+  ]
+ }
+]

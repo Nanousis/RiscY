@@ -1,0 +1,14 @@
+-d E:\Projects\tango9K\lcd_ledCORRECT\impl\gwsynthesis\Tang_nano_9K_LCD.vg
+-p GW1NR-9C-QFN88P-6
+-pn GW1NR-LV9QN88PC6/I5
+-cst E:\Projects\tango9K\lcd_ledCORRECT\src\Tang_nano_9K_LCD.cst
+-cfg E:\Projects\tango9K\lcd_ledCORRECT\impl\pnr\device.cfg
+-sdc E:\Projects\tango9K\lcd_ledCORRECT\src\Tang_nano_9K_LCD.sdc
+-bit
+-tr
+-ph
+-timing
+-convert_sdp32_36_to_sdp16_18
+-correct_hold 1
+-route_maxfan 23
+-global_freq 50.000

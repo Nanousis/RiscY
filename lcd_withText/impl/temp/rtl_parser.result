@@ -1,0 +1,52 @@
+[
+ {
+  "InstFile" : "E:/Projects/tango9K/lcd_ledCORRECT/src/TOP.v",
+  "InstLine" : 1,
+  "InstName" : "TOP",
+  "ModuleFile" : "E:/Projects/tango9K/lcd_ledCORRECT/src/TOP.v",
+  "ModuleLine" : 1,
+  "ModuleName" : "TOP",
+  "SubInsts" : [
+   {
+    "InstFile" : "E:/Projects/tango9K/lcd_ledCORRECT/src/TOP.v",
+    "InstLine" : 39,
+    "InstName" : "chip_pll",
+    "ModuleFile" : "E:/Projects/tango9K/lcd_ledCORRECT/src/gowin_rpll/gowin_rpll.v",
+    "ModuleLine" : 8,
+    "ModuleName" : "Gowin_rPLL"
+   },
+   {
+    "InstFile" : "E:/Projects/tango9K/lcd_ledCORRECT/src/TOP.v",
+    "InstLine" : 50,
+    "InstName" : "D1",
+    "ModuleFile" : "E:/Projects/tango9K/lcd_ledCORRECT/src/VGAMod.v",
+    "ModuleLine" : 1,
+    "ModuleName" : "VGAMod"
+   },
+   {
+    "InstFile" : "E:/Projects/tango9K/lcd_ledCORRECT/src/TOP.v",
+    "InstLine" : 73,
+    "InstName" : "btn_debouncer_inst",
+    "ModuleFile" : "E:/Projects/tango9K/lcd_ledCORRECT/src/btn_debouncer.v",
+    "ModuleLine" : 1,
+    "ModuleName" : "btn_debouncer"
+   }
+  ]
+ },
+ {
+  "InstFile" : "E:/Projects/tango9K/lcd_ledCORRECT/src/VGAMod.v",
+  "InstLine" : 186,
+  "InstName" : "BlockRAM",
+  "ModuleFile" : "E:/Projects/tango9K/lcd_ledCORRECT/src/VGAMod.v",
+  "ModuleLine" : 186,
+  "ModuleName" : "BlockRAM"
+ },
+ {
+  "InstFile" : "E:/Projects/tango9K/lcd_ledCORRECT/src/gowin_osc/gowin_osc.v",
+  "InstLine" : 8,
+  "InstName" : "Gowin_OSC",
+  "ModuleFile" : "E:/Projects/tango9K/lcd_ledCORRECT/src/gowin_osc/gowin_osc.v",
+  "ModuleLine" : 8,
+  "ModuleName" : "Gowin_OSC"
+ }
+]

@@ -1,0 +1,218 @@
+[
+ {
+  "InstFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/gowin_rpll/gowin_rpll.v",
+  "InstLine" : 9,
+  "InstName" : "Gowin_rPLL",
+  "ModuleFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/gowin_rpll/gowin_rpll.v",
+  "ModuleLine" : 9,
+  "ModuleName" : "Gowin_rPLL"
+ },
+ {
+  "InstFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/hdmi/svo_openldi.v",
+  "InstLine" : 23,
+  "InstName" : "svo_openldi",
+  "ModuleFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/hdmi/svo_openldi.v",
+  "ModuleLine" : 23,
+  "ModuleName" : "svo_openldi"
+ },
+ {
+  "InstFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/hdmi/svo_utils.v",
+  "InstLine" : 178,
+  "InstName" : "svo_dim",
+  "ModuleFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/hdmi/svo_utils.v",
+  "ModuleLine" : 178,
+  "ModuleName" : "svo_dim",
+  "SubInsts" : [
+   {
+    "InstFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/hdmi/svo_utils.v",
+    "InstLine" : 219,
+    "InstName" : "svo_axis_pipe",
+    "ModuleFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/hdmi/svo_utils.v",
+    "ModuleLine" : 31,
+    "ModuleName" : "svo_axis_pipe"
+   }
+  ]
+ },
+ {
+  "InstFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/hdmi/svo_utils.v",
+  "InstLine" : 359,
+  "InstName" : "svo_rect",
+  "ModuleFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/hdmi/svo_utils.v",
+  "ModuleLine" : 359,
+  "ModuleName" : "svo_rect"
+ },
+ {
+  "InstFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/hdmi/svo_vdma.v",
+  "InstLine" : 23,
+  "InstName" : "svo_vdma",
+  "ModuleFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/hdmi/svo_vdma.v",
+  "ModuleLine" : 23,
+  "ModuleName" : "svo_vdma",
+  "SubInsts" : [
+   {
+    "InstFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/hdmi/svo_vdma.v",
+    "InstLine" : 255,
+    "InstName" : "fifo",
+    "ModuleFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/hdmi/svo_vdma.v",
+    "ModuleLine" : 344,
+    "ModuleName" : "svo_vdma_crossclock_fifo"
+   }
+  ]
+ },
+ {
+  "InstFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/top.v",
+  "InstLine" : 1,
+  "InstName" : "top",
+  "ModuleFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/top.v",
+  "ModuleLine" : 1,
+  "ModuleName" : "top",
+  "SubInsts" : [
+   {
+    "InstFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/top.v",
+    "InstLine" : 10,
+    "InstName" : "your_instance_name",
+    "ModuleFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/gowin_rplltest/gowin_rplltest.v",
+    "ModuleLine" : 10,
+    "ModuleName" : "Gowin_rPLLtest"
+   },
+   {
+    "InstFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/top.v",
+    "InstLine" : 21,
+    "InstName" : "u_div_5",
+    "ModuleFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/gowin_clkdiv/gowin_clkdiv.v",
+    "ModuleLine" : 9,
+    "ModuleName" : "Gowin_CLKDIV"
+   },
+   {
+    "InstFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/top.v",
+    "InstLine" : 27,
+    "InstName" : "u_Reset_Sync",
+    "ModuleFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/top.v",
+    "ModuleLine" : 51,
+    "ModuleName" : "Reset_Sync"
+   },
+   {
+    "InstFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/top.v",
+    "InstLine" : 33,
+    "InstName" : "svo_hdmi_inst",
+    "ModuleFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/svo_hdmi.v",
+    "ModuleLine" : 23,
+    "ModuleName" : "svo_hdmi",
+    "SubInsts" : [
+     {
+      "InstFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/svo_hdmi.v",
+      "InstLine" : 85,
+      "InstName" : "svo_tcard",
+      "ModuleFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/hdmi/svo_tcard.v",
+      "ModuleLine" : 23,
+      "ModuleName" : "svo_tcard"
+     },
+     {
+      "InstFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/svo_hdmi.v",
+      "InstLine" : 95,
+      "InstName" : "svo_term",
+      "ModuleFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/hdmi/svo_term.v",
+      "ModuleLine" : 23,
+      "ModuleName" : "svo_term"
+     },
+     {
+      "InstFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/svo_hdmi.v",
+      "InstLine" : 106,
+      "InstName" : "svo_overlay",
+      "ModuleFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/hdmi/svo_utils.v",
+      "ModuleLine" : 250,
+      "ModuleName" : "svo_overlay",
+      "SubInsts" : [
+       {
+        "InstFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/hdmi/svo_utils.v",
+        "InstLine" : 307,
+        "InstName" : "svo_buf_in",
+        "ModuleFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/hdmi/svo_utils.v",
+        "ModuleLine" : 101,
+        "ModuleName" : "svo_buf",
+        "SubInsts" : [
+         {
+          "InstFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/hdmi/svo_utils.v",
+          "InstLine" : 145,
+          "InstName" : "svo_axis_pipe",
+          "ModuleFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/hdmi/svo_utils.v",
+          "ModuleLine" : 31,
+          "ModuleName" : "svo_axis_pipe"
+         }
+        ]
+       },
+       {
+        "InstFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/hdmi/svo_utils.v",
+        "InstLine" : 321,
+        "InstName" : "svo_buf_over",
+        "ModuleFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/hdmi/svo_utils.v",
+        "ModuleLine" : 101,
+        "ModuleName" : "svo_buf",
+        "SubInsts" : [
+         {
+          "InstFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/hdmi/svo_utils.v",
+          "InstLine" : 145,
+          "InstName" : "svo_axis_pipe",
+          "ModuleFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/hdmi/svo_utils.v",
+          "ModuleLine" : 31,
+          "ModuleName" : "svo_axis_pipe"
+         }
+        ]
+       },
+       {
+        "InstFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/hdmi/svo_utils.v",
+        "InstLine" : 335,
+        "InstName" : "svo_buf_out",
+        "ModuleFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/hdmi/svo_utils.v",
+        "ModuleLine" : 101,
+        "ModuleName" : "svo_buf",
+        "SubInsts" : [
+         {
+          "InstFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/hdmi/svo_utils.v",
+          "InstLine" : 145,
+          "InstName" : "svo_axis_pipe",
+          "ModuleFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/hdmi/svo_utils.v",
+          "ModuleLine" : 31,
+          "ModuleName" : "svo_axis_pipe"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "InstFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/svo_hdmi.v",
+      "InstLine" : 127,
+      "InstName" : "svo_enc",
+      "ModuleFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/hdmi/svo_enc.v",
+      "ModuleLine" : 23,
+      "ModuleName" : "svo_enc"
+     },
+     {
+      "InstFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/svo_hdmi.v",
+      "InstLine" : 144,
+      "InstName" : "svo_tmds_0",
+      "ModuleFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/hdmi/svo_tmds.v",
+      "ModuleLine" : 23,
+      "ModuleName" : "svo_tmds"
+     },
+     {
+      "InstFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/svo_hdmi.v",
+      "InstLine" : 154,
+      "InstName" : "svo_tmds_1",
+      "ModuleFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/hdmi/svo_tmds.v",
+      "ModuleLine" : 23,
+      "ModuleName" : "svo_tmds"
+     },
+     {
+      "InstFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/svo_hdmi.v",
+      "InstLine" : 164,
+      "InstName" : "svo_tmds_2",
+      "ModuleFile" : "E:/Projects/TangNano-9K-example-main/hdmi/src/hdmi/svo_tmds.v",
+      "ModuleLine" : 23,
+      "ModuleName" : "svo_tmds"
+     }
+    ]
+   }
+  ]
+ }
+]

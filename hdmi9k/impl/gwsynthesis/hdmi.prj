@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE gowin-synthesis-project>
+<Project>
+    <Version>beta</Version>
+    <Device id="GW1NR-9C" package="QFN88P" speed="6" partNumber="GW1NR-LV9QN88PC6/I5"/>
+    <FileList>
+        <File path="E:\Projects\TangNano-9K-example-main\hdmi\src\gowin_clkdiv\gowin_clkdiv.v" type="verilog"/>
+        <File path="E:\Projects\TangNano-9K-example-main\hdmi\src\gowin_rpll\gowin_rpll.v" type="verilog"/>
+        <File path="E:\Projects\TangNano-9K-example-main\hdmi\src\hdmi\svo_defines.vh" type="verilog"/>
+        <File path="E:\Projects\TangNano-9K-example-main\hdmi\src\hdmi\svo_enc.v" type="verilog"/>
+        <File path="E:\Projects\TangNano-9K-example-main\hdmi\src\hdmi\svo_openldi.v" type="verilog"/>
+        <File path="E:\Projects\TangNano-9K-example-main\hdmi\src\hdmi\svo_tcard.v" type="verilog"/>
+        <File path="E:\Projects\TangNano-9K-example-main\hdmi\src\hdmi\svo_term.v" type="verilog"/>
+        <File path="E:\Projects\TangNano-9K-example-main\hdmi\src\hdmi\svo_tmds.v" type="verilog"/>
+        <File path="E:\Projects\TangNano-9K-example-main\hdmi\src\hdmi\svo_utils.v" type="verilog"/>
+        <File path="E:\Projects\TangNano-9K-example-main\hdmi\src\hdmi\svo_vdma.v" type="verilog"/>
+        <File path="E:\Projects\TangNano-9K-example-main\hdmi\src\svo_hdmi.v" type="verilog"/>
+        <File path="E:\Projects\TangNano-9K-example-main\hdmi\src\top.v" type="verilog"/>
+        <File path="E:\Projects\TangNano-9K-example-main\hdmi\src\gowin_rplltest\gowin_rplltest.v" type="verilog"/>
+    </FileList>
+    <OptionList>
+        <Option type="disable_insert_pad" value="0"/>
+        <Option type="global_freq" value="50.000"/>
+        <Option type="looplimit" value="2000"/>
+        <Option type="output_file" value="E:\Projects\TangNano-9K-example-main\hdmi\impl\gwsynthesis\hdmi.vg"/>
+        <Option type="print_all_synthesis_warning" value="0"/>
+        <Option type="ram_rw_check" value="1"/>
+        <Option type="top_module" value="top"/>
+        <Option type="vcc" value="1.2"/>
+        <Option type="vccx" value="3.3"/>
+        <Option type="verilog_language" value="verilog-2001"/>
+        <Option type="vhdl_language" value="vhdl-1993"/>
+    </OptionList>
+</Project>
