@@ -1,0 +1,3 @@
+With 01 
+I think there is a problem with trying to retrieve items from bss. Either that or the stack doesnt work.
+Anyhow it causes the values from the arguments to not be taken.
