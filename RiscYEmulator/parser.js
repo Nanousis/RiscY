@@ -33,10 +33,8 @@ function signExtend(value, bits) {
           case FUNCT3_ADD_SUB:
             if (funct7 === FUNCT7_ADD) {
               mnemonic = 'add';
-            } else if (funct7 === FUNCT7_SUB) {
+            } else{
               mnemonic = 'sub';
-            } else {
-              return 'Unknown instruction';
             }
             break;
           case FUNCT3_SLL:
@@ -54,10 +52,8 @@ function signExtend(value, bits) {
           case FUNCT3_SRL:
             if (funct7 === FUNCT7_SRL) {
               mnemonic = 'srl';
-            } else if (funct7 === FUNCT7_SRA) {
+            } else{
               mnemonic = 'sra';
-            } else {
-              return 'Unknown instruction';
             }
             break;
           case FUNCT3_OR:
@@ -99,10 +95,8 @@ function signExtend(value, bits) {
           case FUNCT3_SRLI:
             if (funct7 === FUNCT7_SRL) {
               mnemonic = 'srli';
-            } else if (funct7 === FUNCT7_SRA) {
+            } else{
               mnemonic = 'srai';
-            } else {
-              return 'Unknown instruction';
             }
             imm = (instruction >>> 20) & 0x1F;
             break;

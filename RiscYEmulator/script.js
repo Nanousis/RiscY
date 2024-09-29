@@ -494,7 +494,9 @@ function CPU(){
           }
           console.log("TEST");
           console.log("Writing to address: ",address);
-      if(address>=1024&&address<1024+64){
+          console.log("Writing data: ",data.toString(16)," on ",address);
+
+      if(address>=SCREEN_ADDRESS&&address<SCREEN_ADDRESS+64){
         console.log("Writing to screen character: ",write_data.toString(16));
         console.log("Writing to screen address: ",address);
         WriteToScreen(address,write_data);
@@ -543,37 +545,40 @@ function CPU(){
 
 		break;
 		case U_FORMAT_LUI:
-            //console.log("Load from Immidiate");
-            var mem_select=func3;
-            aluOUT = registerFile[instr_rs1] + signExtend;
+
+      // console.log("Load from Immidiate UNSIGNED");
+      WriteRegister(instr_rd,signExtend>>>0); 
+            // var mem_select=func3;
+            // aluOUT = registerFile[instr_rs1] + signExtend;
             
-            var byte_index = getBits(aluOUT,1,0);
-            var word_index = aluOUT;
-            var loadedWord=ReadMemory(word_index,false);
-            var byte_sel =  (byte_index==0)?getBits(loadedWord,7,0):
-                            (byte_index==1)?getBits(loadedWord,15,8):
-                            (byte_index==2)?getBits(loadedWord,23,16):
-                            (byte_index==3)?getBits(loadedWord,31,24):0;
-            var half_sel = (byte_index==0)?getBits(loadedWord,15,0):getBits(loadedWord,31,16);
-            var tempOut;
-            switch(mem_select){
-              case FUNCT3_LB:
-                tempOut = (byte_sel<<24)>>24;
-                break;
-              case FUNCT3_LH:
-                tempOut = (half_sel<<16)>>16;
-                break;
-              case FUNCT3_LBU:
-                tempOut = byte_sel;
-                break;
-              case FUNCT3_LHU:
-                tempOut = half_sel;
-                break;
-              default:
-                tempOut = loadedWord;
-                break;
-            }
-            WriteRegister(instr_rd,tempOut);
+            // var byte_index = getBits(aluOUT,1,0);
+            // var word_index = aluOUT;
+            // var loadedWord=ReadMemory(word_index,false);
+            // var byte_sel =  (byte_index==0)?getBits(loadedWord,7,0):
+            //                 (byte_index==1)?getBits(loadedWord,15,8):
+            //                 (byte_index==2)?getBits(loadedWord,23,16):
+            //                 (byte_index==3)?getBits(loadedWord,31,24):0;
+            // var half_sel = (byte_index==0)?getBits(loadedWord,15,0):getBits(loadedWord,31,16);
+            // var tempOut;
+            // switch(mem_select){
+            //   case FUNCT3_LB:
+            //     tempOut = (byte_sel<<24)>>24;
+            //     break;
+            //   case FUNCT3_LH:
+            //     tempOut = (half_sel<<16)>>16;
+            //     break;
+            //   case FUNCT3_LBU:
+            //     tempOut = byte_sel;
+            //     break;
+            //   case FUNCT3_LHU:
+            //     tempOut = half_sel;
+            //     break;
+            //   default:
+            //     tempOut = loadedWord;
+            //     break;
+            // }
+            // console.log("Loaded: ",tempOut);
+            // WriteRegister(instr_rd,tempOut);
       //console.log("U_FORMAT_LUI");
 		break;
 		case U_FORMAT_AUIPC:
@@ -689,7 +694,6 @@ function WriteMemory(address,data,byte_select_vector){
 
 
   //console.log("byte_select_vector: ",byte_select_vector.toString(2));
-  //console.log("Writing data: ",data.toString(16)," on ",address);
   tempData=dataMemory[address>>>2];
   //console.log("tempData: ",tempData.toString(16));
   if(getBits(byte_select_vector,3,3)==1){

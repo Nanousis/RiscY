@@ -1,0 +1,37 @@
+<?xml version="1" encoding="UTF-8"?>
+<!DOCTYPE gowin-fpga-project>
+<Project>
+    <Template>FPGA</Template>
+    <Version>5</Version>
+    <Device name="GW5A-25A" pn="GW5A-LV25MG121NES">gw5a25a-000</Device>
+    <FileList>
+        <File path="src/bus.v" type="file.verilog" enable="1"/>
+        <File path="src/buttonModule.v" type="file.verilog" enable="1"/>
+        <File path="src/config.vh" type="file.verilog" enable="1"/>
+        <File path="src/constants.vh" type="file.verilog" enable="1"/>
+        <File path="src/cpu/ALUCPU.v" type="file.verilog" enable="1"/>
+        <File path="src/cpu/RegFile.v" type="file.verilog" enable="1"/>
+        <File path="src/cpu/SignExtendSelector.v" type="file.verilog" enable="1"/>
+        <File path="src/cpu/control_alu.v" type="file.verilog" enable="1"/>
+        <File path="src/cpu/control_branch.v" type="file.verilog" enable="1"/>
+        <File path="src/cpu/control_bypass_ex.v" type="file.verilog" enable="1"/>
+        <File path="src/cpu/control_main.v" type="file.verilog" enable="1"/>
+        <File path="src/cpu/control_stall_id.v" type="file.verilog" enable="1"/>
+        <File path="src/cpu/cpu.v" type="file.verilog" enable="1"/>
+        <File path="src/cpu/mem_read_selector.v" type="file.verilog" enable="1"/>
+        <File path="src/cpu/mem_write_selector.v" type="file.verilog" enable="1"/>
+        <File path="src/cpu/signExtend.v" type="file.verilog" enable="1"/>
+        <File path="src/i2c.v" type="file.verilog" enable="1"/>
+        <File path="src/i2capi.v" type="file.verilog" enable="1"/>
+        <File path="src/memory.v" type="file.verilog" enable="1"/>
+        <File path="src/screen.v" type="file.verilog" enable="1"/>
+        <File path="src/seven_segment.v" type="file.verilog" enable="1"/>
+        <File path="src/soc.v" type="file.verilog" enable="1"/>
+        <File path="src/soctb.v" type="file.verilog" enable="1"/>
+        <File path="src/textEngine.v" type="file.verilog" enable="1"/>
+        <File path="src/tang25k.cst" type="file.cst" enable="1"/>
+        <File path="src/timing25k.sdc" type="file.sdc" enable="1"/>
+        <File path="src/data.hex" type="file.other" enable="1"/>
+        <File path="src/text.hex" type="file.other" enable="1"/>
+    </FileList>
+</Project>
