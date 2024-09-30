@@ -15,6 +15,8 @@ module  control_stall_id(
 	input [4:0] ifid_rs,
 	input [4:0] ifid_rt,
 	input [4:0] idex_rd,
+	input memRead,
+	input idex_memWrite,
 	input idex_memread,
 	input memReady,
 	input Jump,
@@ -48,6 +50,11 @@ begin
 			write_ifid		= 1'b0;
 			write_pc		= 1'b0;
 		end
+	end
+	else if(memRead==1'b1 && idex_memWrite == 1'b1)begin
+		bubble_idex	= 1'b1;
+		write_ifid	= 1'b0;
+		write_pc	= 1'b0;
 	end
 	else if ((idex_memread == 1'b1) && ((idex_rd==ifid_rs) || (idex_rd==ifid_rt))) begin // Load stall
 		bubble_idex	= 1'b1;

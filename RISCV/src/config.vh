@@ -22,6 +22,11 @@
 `define TEXT_WIDTH      2**`TEXT_BITS
 `define TEXT_END        `TEXT_BEGIN + `TEXT_WIDTH - 1
 
+`define SCREEN_ADDRESS 32'h8800_0000
+`define BUTTON_ADDRESS 32'h8900_0000
+`define SCREEN_RANGE   32'd64
+// `define SCREEN_RANGE   32'd1216
+
 // Data memory
 `define DATA_BEGIN      32'h8000_0000
 `define DATA_BITS       20

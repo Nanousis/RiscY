@@ -320,6 +320,8 @@ control_stall_id control_stall_id (
 	.ifid_rs		(instr_rs1),
 	.ifid_rt		(instr_rs2),
 	.idex_rd		(IDEX_instr_rd),
+	.memRead		(MemRead),
+	.idex_memWrite	(IDEX_MemWrite),
 	.idex_memread	(IDEX_MemRead),
 	.Jump			(Jump),
 	.memReady		(memReady),

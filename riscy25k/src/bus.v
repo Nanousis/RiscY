@@ -17,8 +17,8 @@ module bus(input clk,
 
 always@(*)
 begin
-
-    if(data_addr>=`SCREEN_ADDRESS && data_addr <(`SCREEN_ADDRESS+64))
+    // memory mapped screen
+    if(data_addr>=`SCREEN_ADDRESS && data_addr <(`SCREEN_ADDRESS+`SCREEN_RANGE))
         begin
             mem_ren <=0;
             mem_wen <=0;
@@ -27,6 +27,7 @@ begin
             screen_wen <=wen;
             data_out <=memory_out;
         end
+    // memory mapped button
     else if(data_addr>=`BUTTON_ADDRESS && data_addr <(`BUTTON_ADDRESS+4))
         begin
             mem_ren <=0;
