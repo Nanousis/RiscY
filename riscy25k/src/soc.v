@@ -140,7 +140,7 @@ module top
                 reset <= 0;
                 // `ifndef SYNTHESIS
 //                    state <= STATE_DEBOUNCE;
-                    state <= STATE_START;
+                    state <= STATE_DEBOUNCE;
                 // `else
 //                if(btnLeft==0)
 //                begin

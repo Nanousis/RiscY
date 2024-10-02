@@ -1,0 +1,291 @@
+GowinSynthesis start
+Running parser ...
+Analyzing Verilog file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\ALUCPU.v'
+Analyzing included file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\constants.vh'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\ALUCPU.v":1)
+Back to file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\ALUCPU.v'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\ALUCPU.v":1)
+Analyzing included file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\config.vh'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\ALUCPU.v":2)
+Back to file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\ALUCPU.v'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\ALUCPU.v":2)
+Analyzing Verilog file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\RegFile.v'
+Analyzing included file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\constants.vh'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\RegFile.v":1)
+Back to file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\RegFile.v'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\RegFile.v":1)
+Analyzing included file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\config.vh'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\RegFile.v":2)
+Back to file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\RegFile.v'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\RegFile.v":2)
+Analyzing Verilog file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\SignExtendSelector.v'
+Analyzing included file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\constants.vh'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\SignExtendSelector.v":1)
+Back to file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\SignExtendSelector.v'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\SignExtendSelector.v":1)
+Analyzing included file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\config.vh'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\SignExtendSelector.v":2)
+Back to file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\SignExtendSelector.v'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\SignExtendSelector.v":2)
+Analyzing Verilog file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\bus.v'
+Analyzing included file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\config.vh'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\bus.v":1)
+Back to file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\bus.v'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\bus.v":1)
+Analyzing Verilog file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\buttonModule.v'
+WARN  (EX3792) : Literal value 'hFFFFFF truncated to fit in 22 bits("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\buttonModule.v":50)
+Analyzing Verilog file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\config.vh'
+Analyzing Verilog file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\constants.vh'
+Analyzing Verilog file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\control_alu.v'
+Analyzing included file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\constants.vh'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\control_alu.v":1)
+Back to file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\control_alu.v'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\control_alu.v":1)
+Analyzing included file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\config.vh'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\control_alu.v":2)
+Back to file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\control_alu.v'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\control_alu.v":2)
+Analyzing Verilog file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\control_branch.v'
+Analyzing included file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\constants.vh'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\control_branch.v":1)
+Back to file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\control_branch.v'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\control_branch.v":1)
+Analyzing included file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\config.vh'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\control_branch.v":2)
+Back to file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\control_branch.v'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\control_branch.v":2)
+Analyzing Verilog file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\control_bypass_ex.v'
+Analyzing included file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\constants.vh'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\control_bypass_ex.v":1)
+Back to file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\control_bypass_ex.v'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\control_bypass_ex.v":1)
+Analyzing included file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\config.vh'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\control_bypass_ex.v":2)
+Back to file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\control_bypass_ex.v'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\control_bypass_ex.v":2)
+Analyzing Verilog file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\control_main.v'
+Analyzing included file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\constants.vh'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\control_main.v":1)
+Back to file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\control_main.v'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\control_main.v":1)
+Analyzing included file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\config.vh'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\control_main.v":2)
+Back to file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\control_main.v'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\control_main.v":2)
+Analyzing Verilog file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\control_stall_id.v'
+Analyzing included file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\constants.vh'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\control_stall_id.v":1)
+Back to file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\control_stall_id.v'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\control_stall_id.v":1)
+Analyzing included file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\config.vh'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\control_stall_id.v":2)
+Back to file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\control_stall_id.v'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\control_stall_id.v":2)
+Analyzing Verilog file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v'
+Analyzing included file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\constants.vh'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":1)
+Back to file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":1)
+Analyzing included file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\config.vh'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":2)
+Back to file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":2)
+Analyzing Verilog file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\gowin_rpll\gowin_rpll.v'
+Analyzing Verilog file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\i2c.v'
+Analyzing Verilog file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\i2capi.v'
+Analyzing Verilog file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\mem_read_selector.v'
+Analyzing included file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\constants.vh'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\mem_read_selector.v":1)
+Back to file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\mem_read_selector.v'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\mem_read_selector.v":1)
+Analyzing included file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\config.vh'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\mem_read_selector.v":2)
+Back to file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\mem_read_selector.v'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\mem_read_selector.v":2)
+Analyzing Verilog file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\mem_write_selector.v'
+Analyzing included file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\constants.vh'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\mem_write_selector.v":1)
+Back to file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\mem_write_selector.v'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\mem_write_selector.v":1)
+Analyzing included file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\config.vh'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\mem_write_selector.v":2)
+Back to file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\mem_write_selector.v'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\mem_write_selector.v":2)
+Analyzing Verilog file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\memory.v'
+Analyzing included file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\config.vh'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\memory.v":1)
+Back to file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\memory.v'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\memory.v":1)
+Analyzing Verilog file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\screen.v'
+Analyzing Verilog file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\screenVGA\VGAMod.v'
+Undeclared symbol 'douta', assumed default net type 'wire'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\screenVGA\VGAMod.v":87)
+Undeclared symbol 'dinb', assumed default net type 'wire'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\screenVGA\VGAMod.v":104)
+Analyzing Verilog file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\screenVGA\gowin_dpb\gowin_dpb.v'
+Analyzing Verilog file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\screenVGA\gowin_osc\gowin_osc.v'
+Analyzing Verilog file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\screenVGA\gowin_sp\gowin_sp.v'
+Analyzing Verilog file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\seven_segment.v'
+Analyzing Verilog file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\signExtend.v'
+Analyzing included file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\constants.vh'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\signExtend.v":1)
+Back to file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\signExtend.v'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\signExtend.v":1)
+Analyzing included file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\config.vh'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\signExtend.v":2)
+Back to file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\signExtend.v'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\signExtend.v":2)
+Analyzing Verilog file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\soc.v'
+Analyzing included file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\config.vh'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\soc.v":1)
+Back to file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\soc.v'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\soc.v":1)
+Undeclared symbol 'memReady', assumed default net type 'wire'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\soc.v":56)
+Undeclared symbol 'btn_out', assumed default net type 'wire'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\soc.v":69)
+Undeclared symbol 'btn_ren', assumed default net type 'wire'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\soc.v":75)
+WARN  (EX3638) : 'memReady' is already implicitly declared on line 56("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\soc.v":78)
+WARN  (EX3638) : 'btn_ren' is already implicitly declared on line 75("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\soc.v":91)
+WARN  (EX3638) : 'btn_out' is already implicitly declared on line 69("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\soc.v":92)
+Analyzing Verilog file 'C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\textEngine.v'
+Undeclared symbol 'charOutput', assumed default net type 'wire'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\textEngine.v":55)
+WARN  (EX3638) : 'charOutput' is already implicitly declared on line 55("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\textEngine.v":61)
+Compiling module 'top'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\soc.v":3)
+WARN  (EX3780) : Using initial value of 'clk_btn' since it is never assigned("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\soc.v":32)
+Compiling module 'cpu'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":9)
+Compiling module 'signExtend'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\signExtend.v":4)
+Compiling module 'RegFile'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\RegFile.v":7)
+Compiling module 'SignExtendSelector'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\SignExtendSelector.v":4)
+Compiling module 'control_main'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\control_main.v":5)
+Compiling module 'control_stall_id'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\control_stall_id.v":6)
+Compiling module 'ALUCPU'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\ALUCPU.v":4)
+Compiling module 'control_alu'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\control_alu.v":5)
+Compiling module 'control_bypass_ex'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\control_bypass_ex.v":5)
+Compiling module 'mem_write_selector'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\mem_write_selector.v":4)
+Compiling module 'control_branch'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\control_branch.v":4)
+Compiling module 'mem_read_selector'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\mem_read_selector.v":4)
+Compiling module 'bus'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\bus.v":3)
+Compiling module 'memory'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\memory.v":3)
+Extracting RAM for identifier 'instr_mem'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\memory.v":17)
+Extracting RAM for identifier 'data_mem'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\memory.v":18)
+WARN  (EX3791) : Expression size 6 truncated to fit in target size 5("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\memory.v":85)
+Compiling module 'buttonModule'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\buttonModule.v":1)
+WARN  (EX3791) : Expression size 23 truncated to fit in target size 22("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\buttonModule.v":44)
+Compiling module 'Gowin_rPLL'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\gowin_rpll\gowin_rpll.v":10)
+Compiling module 'VGAMod'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\screenVGA\VGAMod.v":1)
+WARN  (EX3780) : Using initial value of 'fontMem' since it is never assigned("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\screenVGA\VGAMod.v":54)
+WARN  (EX3791) : Expression size 11 truncated to fit in target size 10("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\screenVGA\VGAMod.v":65)
+WARN  (EX3791) : Expression size 12 truncated to fit in target size 11("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\screenVGA\VGAMod.v":72)
+Compiling module 'Gowin_DPB'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\screenVGA\gowin_dpb\gowin_dpb.v":10)
+WARN  (EX3670) : Actual bit length 1 differs from formal bit length 9 for port 'douta'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\screenVGA\VGAMod.v":87)
+WARN  (EX3670) : Actual bit length 8 differs from formal bit length 9 for port 'dina'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\screenVGA\VGAMod.v":94)
+WARN  (EX3670) : Actual bit length 8 differs from formal bit length 9 for port 'doutb'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\screenVGA\VGAMod.v":97)
+WARN  (EX3670) : Actual bit length 15 differs from formal bit length 11 for port 'adb'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\screenVGA\VGAMod.v":103)
+WARN  (EX3670) : Actual bit length 1 differs from formal bit length 9 for port 'dinb'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\screenVGA\VGAMod.v":104)
+WARN  (EX3670) : Actual bit length 1 differs from formal bit length 9 for port 'douta'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\screenVGA\VGAMod.v":109)
+WARN  (EX3670) : Actual bit length 8 differs from formal bit length 9 for port 'dina'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\screenVGA\VGAMod.v":116)
+WARN  (EX3670) : Actual bit length 8 differs from formal bit length 9 for port 'doutb'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\screenVGA\VGAMod.v":119)
+WARN  (EX3670) : Actual bit length 15 differs from formal bit length 11 for port 'adb'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\screenVGA\VGAMod.v":125)
+WARN  (EX3670) : Actual bit length 1 differs from formal bit length 9 for port 'dinb'("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\screenVGA\VGAMod.v":126)
+WARN  (EX1998) : Net 'dinb' does not have a driver("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\screenVGA\VGAMod.v":104)
+WARN  (EX3791) : Expression size 25 truncated to fit in target size 24("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\soc.v":194)
+WARN  (EX3791) : Expression size 24 truncated to fit in target size 23("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\soc.v":226)
+WARN  (EX1998) : Net 'debug' does not have a driver("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\soc.v":63)
+NOTE  (EX0101) : Current top module is "top"
+WARN  (EX0211) : The output port "io_scl" of module "top" has no driver, assigning undriven bits to Z, simulation mismatch possible("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\soc.v":8)
+[5%] Running netlist conversion ...
+WARN  (CV0017) : Inout io_sda is unused("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\soc.v":7)
+Running device independent optimization ...
+[10%] Optimizing Phase 0 completed
+[15%] Optimizing Phase 1 completed
+[25%] Optimizing Phase 2 completed
+Running inference ...
+[30%] Inferring Phase 0 completed
+[40%] Inferring Phase 1 completed
+[50%] Inferring Phase 2 completed
+[55%] Inferring Phase 3 completed
+Running technical mapping ...
+[60%] Tech-Mapping Phase 0 completed
+[65%] Tech-Mapping Phase 1 completed
+[75%] Tech-Mapping Phase 2 completed
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[31]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[31]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[31]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[30]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[30]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[30]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[29]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[29]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[29]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[28]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[28]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[28]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[27]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[27]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[27]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[26]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[26]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[26]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[25]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[25]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[25]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[24]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[24]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[24]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[23]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[23]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[23]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[22]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[22]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[22]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[21]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[21]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[21]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[20]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[20]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[20]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[19]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[19]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[19]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[18]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[18]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[18]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[17]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[17]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[17]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[16]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[16]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[16]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[15]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[15]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[15]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[14]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[14]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[14]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[13]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[13]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[13]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[12]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[12]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[12]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[11]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[11]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[11]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[10]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[10]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[10]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[9]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[9]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[9]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[8]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[8]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[8]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[7]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[7]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[7]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[6]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[6]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[6]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[5]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[5]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[5]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[4]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[4]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[4]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[3]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[3]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[3]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[2]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[2]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[2]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[1]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[1]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[1]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[0]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[0]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[0]"("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+[80%] Tech-Mapping Phase 3 completed
+[90%] Tech-Mapping Phase 4 completed
+WARN  (NL0002) : The module "control_alu" instantiated to "control_alu" is swept in optimizing("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":417)
+WARN  (NL0002) : The module "control_branch" instantiated to "control_branch" is swept in optimizing("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":481)
+WARN  (NL0002) : The module "control_main" instantiated to "control_main" is swept in optimizing("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":310)
+WARN  (NL0002) : The module "mem_read_selector" instantiated to "mem_read_selector" is swept in optimizing("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":491)
+WARN  (NL0002) : The module "signExtend" instantiated to "signExtendUnit" is swept in optimizing("C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\cpu.v":195)
+[95%] Generate netlist file "C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\impl\gwsynthesis\RISCV.vg" completed
+[100%] Generate report file "C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\impl\gwsynthesis\RISCV_syn.rpt.html" completed
+GowinSynthesis finish

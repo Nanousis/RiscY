@@ -23,11 +23,11 @@ module top
 );
     reg cpuclk=1;
     wire clkout;
-assign clkout=clk;
-//    Gowin_rPLL pll(
-//        .clkout(clkout), //output clkout
-//        .clkin(clk) //input clkin
-//    );
+//assign clkout=clk;
+    Gowin_rPLL pll(
+        .clkout(clkout), //output clkout
+        .clkin(clk) //input clkin
+    );
 
 
     reg     [0:16*8-1] fontMem [0:127];
@@ -43,7 +43,7 @@ assign clkout=clk;
     wire cpu_clk;
     assign cpu_clk=(clk_btn==1'b1)?cpuclk:clkout;
     wire overflow;
-    reg reset;
+    reg reset, cpu_reset;
     wire [31:0] PC;
     wire [31:0] instr;
     wire [31:0] data_addr;
@@ -51,9 +51,16 @@ assign clkout=clk;
     wire wen;
     wire [31:0] data_to_write;
     wire [31:0] data_read;
-    wire [3:0] byte_select; 
-    cpu cpu_1(	.clock(cpu_clk),
-                .reset(reset),
+    wire [3:0] byte_select;
+    wire memReady; 
+    wire mem_ren;
+    wire mem_wen;
+    wire screen_ren;
+    wire screen_wen;
+    wire [31:0]memory_out;
+    wire debug;
+    cpu cpu_1(	.clock(clk),
+                .reset(cpu_reset),
                 .overflow(overflow),
                 .PC_out(PC),
                 .instr_in(instr),
@@ -65,13 +72,8 @@ assign clkout=clk;
                 .byte_select(byte_select),
                 .memReady(memReady)
     );
-    wire mem_ren;
-    wire mem_wen;
-    wire screen_ren;
-    wire screen_wen;
-    wire [31:0]memory_out;
-    wire debug;
-    bus bu( .clk(cpu_clk),
+
+    bus bu( .clk(clk),
             .PC(PC),
             .data_addr(data_addr),
             .ren(ren),
@@ -85,8 +87,7 @@ assign clkout=clk;
             .btn_ren(btn_ren),
             .data_out(data_read)
     );
-    wire memReady;
-    memory mem( .clk(cpu_clk),
+    memory mem( .clk(clk),
             .reset(reset),
             .PC(PC[`TEXT_BITS-1:2]),
             .instr(instr),
@@ -101,7 +102,7 @@ assign clkout=clk;
     wire btn_ren;
     wire btn_out;
     buttonModule bm(
-        .clk(cpu_clk),
+        .clk(clk),
         .btn1(btn1),
         .btn2(btn2),
         .ren(btn_ren),
@@ -130,22 +131,6 @@ assign clkout=clk;
         .io_sda(io_sda),  // I2C data line (bi-directional)
         .io_scl(io_scl)  // I2C clock line
     );
-    SSD ssd(
-        .clk(clk),
-        .data(PC[17:2]),
-        .D1(D1), 
-        .D2(D2), 
-        .D3(D3), 
-        .D4(D4),
-        .Dp(Dp), 
-        .A(A), 
-        .B(B), 
-        .C(C), 
-        .D(D), 
-        .E(E), 
-        .F(F), 
-        .G(G)
-    );
 
     reg [2:0] state=0;
     localparam STATE_INIT = 0;
@@ -163,9 +148,10 @@ assign clkout=clk;
         case ( state)
             STATE_INIT: begin
                 reset <= 0;
+                cpu_reset <=0;
                 // `ifndef SYNTHESIS
 //                    state <= STATE_DEBOUNCE;
-                    state <= STATE_START;
+                    state <= STATE_DEBOUNCE;
                 // `else
 //                if(btn1==0)
 //                begin
@@ -192,8 +178,9 @@ assign clkout=clk;
                 cpuclk=0;
 
                 txCounter <= txCounter + 1;
-                if(txCounter ==22'hFF)
+                if(txCounter ==22'hFFFF)
                 begin
+                    reset<=1;
                 // btn1reg<=1;
                 // btn2reg<=1;
                 end
@@ -209,6 +196,7 @@ assign clkout=clk;
                 // btn1reg<=1;
                 // btn2reg<=1;
                 reset <= 1;
+
                 if (btn1 == 0) begin
                     // btn1reg<=0;
                     state <= STATE_DEBOUNCE;

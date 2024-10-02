@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Module name="top" Register="26" Lut="77" T_Register="2251(26)" T_Alu="212(0)" T_Lut="3937(77)" T_Bsram="6(0)">
-    <SubModule name="cpu_1" Register="540" Alu="64" Lut="1657" T_Register="1532(540)" T_Alu="188(64)" T_Lut="2952(1657)">
-        <SubModule name="cpu_regs" Register="992" Alu="10" Lut="1060" T_Register="992(992)" T_Alu="10(10)" T_Lut="1060(1060)"/>
-        <SubModule name="SignExtendSelector" Lut="44" T_Lut="44(44)"/>
+<Module name="top" Register="26" Lut="78" T_Register="2252(26)" T_Alu="212(0)" T_Lut="3932(78)" T_Bsram="6(0)">
+    <SubModule name="cpu_1" Register="542" Alu="64" Lut="1659" T_Register="1534(542)" T_Alu="188(64)" T_Lut="2957(1659)">
+        <SubModule name="cpu_regs" Register="992" Alu="10" Lut="1062" T_Register="992(992)" T_Alu="10(10)" T_Lut="1062(1062)"/>
+        <SubModule name="SignExtendSelector" Lut="43" T_Lut="43(43)"/>
         <SubModule name="control_stall_id" Alu="10" Lut="1" T_Alu="10(10)" T_Lut="1(1)"/>
         <SubModule name="cpu_alu" Alu="84" Lut="120" T_Alu="84(84)" T_Lut="120(120)"/>
         <SubModule name="control_bypass_ex" Alu="20" T_Alu="20(20)"/>
-        <SubModule name="mem_write_selector" Lut="70" T_Lut="70(70)"/>
+        <SubModule name="mem_write_selector" Lut="72" T_Lut="72(72)"/>
     </SubModule>
-    <SubModule name="bu" Lut="65" T_Lut="65(65)"/>
-    <SubModule name="mem" Register="76" Lut="178" Bsram="5" T_Register="76(76)" T_Lut="178(178)" T_Bsram="5(5)"/>
-    <SubModule name="bm" Register="1" Lut="15" T_Register="1(1)" T_Lut="15(15)"/>
-    <SubModule name="text" Register="512" Lut="472" Bsram="1" T_Register="512(512)" T_Lut="472(472)" T_Bsram="1(1)"/>
-    <SubModule name="scr" Register="67" Alu="24" Lut="100" T_Register="104(67)" T_Alu="24(24)" T_Lut="178(100)">
-        <SubModule name="i2c_inst" Register="18" Lut="49" T_Register="18(18)" T_Lut="49(49)"/>
-        <SubModule name="i2c_api_inst" Register="19" Lut="29" T_Register="19(19)" T_Lut="29(29)"/>
+    <SubModule name="bu" Lut="59" T_Lut="59(59)"/>
+    <SubModule name="mem" Register="75" Lut="175" Bsram="5" T_Register="75(75)" T_Lut="175(175)" T_Bsram="5(5)"/>
+    <SubModule name="bm" Register="1" Lut="3" T_Register="1(1)" T_Lut="3(3)"/>
+    <SubModule name="text" Register="512" Lut="477" Bsram="1" T_Register="512(512)" T_Lut="477(477)" T_Bsram="1(1)"/>
+    <SubModule name="scr" Register="67" Alu="24" Lut="103" T_Register="104(67)" T_Alu="24(24)" T_Lut="183(103)">
+        <SubModule name="i2c_inst" Register="18" Lut="48" T_Register="18(18)" T_Lut="48(48)"/>
+        <SubModule name="i2c_api_inst" Register="19" Lut="32" T_Register="19(19)" T_Lut="32(32)"/>
     </SubModule>
 </Module>

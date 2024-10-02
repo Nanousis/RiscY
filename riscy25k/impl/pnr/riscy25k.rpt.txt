@@ -5,34 +5,34 @@
 1. PnR Messages
 
   <Report Title>: PnR Report
-  <Design File>: E:\Projects\tangprimer25k\riscy25k\impl\gwsynthesis\riscy25k.vg
-  <Physical Constraints File>: E:\Projects\tangprimer25k\riscy25k\src\tang25k.cst
-  <Timing Constraints File>: E:\Projects\tangprimer25k\riscy25k\src\timing25k.sdc
+  <Design File>: C:\Users\Panagiotis\Documents\GitHub\RiscY\riscy25k\impl\gwsynthesis\riscy25k.vg
+  <Physical Constraints File>: C:\Users\Panagiotis\Documents\GitHub\RiscY\riscy25k\src\tang25k.cst
+  <Timing Constraints File>: C:\Users\Panagiotis\Documents\GitHub\RiscY\riscy25k\src\timing25k.sdc
   <Tool Version>: V1.9.10.02
   <Part Number>: GW5A-LV25MG121NES
   <Device>: GW5A-25
   <Device Version>: A
-  <Created Time>:Sun Sep 29 02:47:37 2024
+  <Created Time>:Tue Oct  1 22:52:47 2024
 
 
 2. PnR Details
 
   Running placement:
-    Placement Phase 0: CPU time = 0h 0m 0.208s, Elapsed time = 0h 0m 0.207s
-    Placement Phase 1: CPU time = 0h 0m 0.235s, Elapsed time = 0h 0m 0.235s
+    Placement Phase 0: CPU time = 0h 0m 0.186s, Elapsed time = 0h 0m 0.187s
+    Placement Phase 1: CPU time = 0h 0m 0.2s, Elapsed time = 0h 0m 0.2s
     Placement Phase 2: CPU time = 0h 0m 2s, Elapsed time = 0h 0m 2s
-    Placement Phase 3: CPU time = 0h 0m 22s, Elapsed time = 0h 0m 22s
-    Total Placement: CPU time = 0h 0m 25s, Elapsed time = 0h 0m 25s
+    Placement Phase 3: CPU time = 0h 0m 13s, Elapsed time = 0h 0m 13s
+    Total Placement: CPU time = 0h 0m 15s, Elapsed time = 0h 0m 15s
  Running routing:
     Routing Phase 0: CPU time = 0h 0m 0.003s, Elapsed time = 0h 0m 0.003s
-    Routing Phase 1: CPU time = 0h 0m 52s, Elapsed time = 0h 0m 52s
-    Routing Phase 2: CPU time = 0h 0m 0.092s, Elapsed time = 0h 0m 0.091s
+    Routing Phase 1: CPU time = 0h 0m 37s, Elapsed time = 0h 0m 37s
+    Routing Phase 2: CPU time = 0h 0m 0.073s, Elapsed time = 0h 0m 0.073s
     Routing Phase 3: CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0s
-    Total Routing: CPU time = 0h 0m 52s, Elapsed time = 0h 0m 52s
+    Total Routing: CPU time = 0h 0m 37s, Elapsed time = 0h 0m 37s
  Generate output files:
     CPU time = 0h 0m 1s, Elapsed time = 0h 0m 1s
 
- Total Time and Memory Usage: CPU time = 0h 1m 18s, Elapsed time = 0h 1m 18s, Peak memory usage = 582MB
+ Total Time and Memory Usage: CPU time = 0h 0m 54s, Elapsed time = 0h 0m 54s, Peak memory usage = 652MB
 
 
 3. Resource Usage Summary
@@ -40,15 +40,15 @@
   ----------------------------------------------------------
   Resources                   | Usage
   ----------------------------------------------------------
-  Logic                       | 4157/23040  19%
-    --LUT,ALU,ROM16           | 4157(3936 LUT, 221 ALU, 0 ROM16)
+  Logic                       | 4152/23040  19%
+    --LUT,ALU,ROM16           | 4152(3931 LUT, 221 ALU, 0 ROM16)
     --SSRAM(RAM16)            | 0
-  Register                    | 2251/23280  10%
+  Register                    | 2252/23280  10%
     --Logic Register as Latch | 0/23040  0%
-    --Logic Register as FF    | 2251/23040  10%
+    --Logic Register as FF    | 2252/23040  10%
     --I/O Register as Latch   | 0/240  0%
     --I/O Register as FF      | 0/240  0%
-  CLS                         | 2953/11520  26%
+  CLS                         | 3045/11520  27%
   I/O Port                    | 7
   I/O Buf                     | 7
     --Input Buf               | 5
@@ -112,7 +112,7 @@
   clk_d          | PRIMARY        |  TR TL BR BL
   reset          | LW             |  -
   memReady       | LW             |  -
-  cpu_1/EXMEM_ALUOut_31_11| LW             |  -
+  cpu_1/EXMEM_ALUOut_31_9| LW             |  -
   cpu_1/write_pc_Z| LW             |  -
   ===========================================
 

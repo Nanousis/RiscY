@@ -17,11 +17,11 @@ always@(posedge clk)
 begin
     if(ren == 1'b1)
     begin
-        case (address)
-            32'h800: data_out = btn1reg;
-            32'h801: data_out = btn2reg;
-            32'h802: data_out = btn1;
-            32'h803: data_out = btn2;
+        case (address[2:0])
+            3'h0: data_out = btn1;
+            3'h1: data_out = btn2;
+            3'h2: data_out = 1;
+            3'h3: data_out = 1;
             default: data_out = 32'b1;
         endcase
     end

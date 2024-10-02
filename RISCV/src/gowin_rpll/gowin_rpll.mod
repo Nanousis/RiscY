@@ -7,17 +7,17 @@
 
 -mod_name Gowin_rPLL
 -file_name gowin_rpll
--path E:/gowin/RISCV/src/gowin_rpll/
+-path C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCV/src/gowin_rpll/
 -type PLL
 -rPll true
 -file_type vlg
 -dev_type GW1NR-9C
 -dyn_idiv_sel false
--idiv_sel 3
+-idiv_sel 2
 -dyn_fbdiv_sel false
 -fbdiv_sel 1
 -dyn_odiv_sel false
--odiv_sel 48
+-odiv_sel 32
 -dyn_da_en true
 -rst_sig false
 -rst_sig_p false

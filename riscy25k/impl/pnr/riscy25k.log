@@ -1,7 +1,7 @@
-Reading netlist file: "E:\Projects\tangprimer25k\riscy25k\impl\gwsynthesis\riscy25k.vg"
-Parsing netlist file "E:\Projects\tangprimer25k\riscy25k\impl\gwsynthesis\riscy25k.vg" completed
+Reading netlist file: "C:\Users\Panagiotis\Documents\GitHub\RiscY\riscy25k\impl\gwsynthesis\riscy25k.vg"
+Parsing netlist file "C:\Users\Panagiotis\Documents\GitHub\RiscY\riscy25k\impl\gwsynthesis\riscy25k.vg" completed
 Processing netlist completed
-Reading constraint file: "E:\Projects\tangprimer25k\riscy25k\src\tang25k.cst"
+Reading constraint file: "C:\Users\Panagiotis\Documents\GitHub\RiscY\riscy25k\src\tang25k.cst"
 Physical Constraint parsed completed
 Running placement......
 [10%] Placement Phase 0 completed
@@ -20,10 +20,10 @@ Bitstream generation in progress......
 Bitstream generation completed
 Running power analysis......
 [100%] Power analysis completed
-Generate file "E:\Projects\tangprimer25k\riscy25k\impl\pnr\riscy25k.power.html" completed
-Generate file "E:\Projects\tangprimer25k\riscy25k\impl\pnr\riscy25k.pin.html" completed
-Generate file "E:\Projects\tangprimer25k\riscy25k\impl\pnr\riscy25k.rpt.html" completed
-Generate file "E:\Projects\tangprimer25k\riscy25k\impl\pnr\riscy25k.rpt.txt" completed
-Generate file "E:\Projects\tangprimer25k\riscy25k\impl\pnr\riscy25k.tr.html" completed
-Sun Sep 29 02:47:37 2024
+Generate file "C:\Users\Panagiotis\Documents\GitHub\RiscY\riscy25k\impl\pnr\riscy25k.power.html" completed
+Generate file "C:\Users\Panagiotis\Documents\GitHub\RiscY\riscy25k\impl\pnr\riscy25k.pin.html" completed
+Generate file "C:\Users\Panagiotis\Documents\GitHub\RiscY\riscy25k\impl\pnr\riscy25k.rpt.html" completed
+Generate file "C:\Users\Panagiotis\Documents\GitHub\RiscY\riscy25k\impl\pnr\riscy25k.rpt.txt" completed
+Generate file "C:\Users\Panagiotis\Documents\GitHub\RiscY\riscy25k\impl\pnr\riscy25k.tr.html" completed
+Tue Oct  1 22:52:47 2024
 

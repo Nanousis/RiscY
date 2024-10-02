@@ -215,6 +215,13 @@ SignExtendSelector SignExtendSelector (
 	.imm_j(imm_j),
 	.opcode(opcode)
 );
+// ALU control
+control_alu control_alu(
+	.ALUOp(ALUOp), 
+	.ALUcntrl(IDEX_ALUcntrl), 
+	.funct3(IDEX_funct3), 
+	.funct7(IDEX_funct7)
+);
 
 
 // IDEX pipeline register
@@ -406,15 +413,9 @@ begin
 	end
 end
 
-// ALU control
-control_alu control_alu(
-	.ALUOp(ALUOp), 
-	.ALUcntrl(IDEX_ALUcntrl), 
-	.funct3(IDEX_funct3), 
-	.funct7(IDEX_funct7)
-);
 
 // Bypass control
+(* dont_touch = "true" *)
 control_bypass_ex control_bypass_ex(
 	.bypassA(bypassA), 
 	.bypassB(bypassB),
@@ -470,6 +471,7 @@ begin
 end
 
 // Branch control unit
+(* dont_touch = "true" *)
 control_branch control_branch (
 	.branch_taken(branch_taken),
 	.funct3(EXMEM_funct3),

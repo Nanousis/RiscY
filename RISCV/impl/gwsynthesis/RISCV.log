@@ -1,146 +1,159 @@
 GowinSynthesis start
 Running parser ...
-Analyzing Verilog file 'E:\gowin\RISCV\src\ALUCPU.v'
-Analyzing included file 'E:\gowin\RISCV\src\constants.vh'("E:\gowin\RISCV\src\ALUCPU.v":1)
-Back to file 'E:\gowin\RISCV\src\ALUCPU.v'("E:\gowin\RISCV\src\ALUCPU.v":1)
-Analyzing included file 'E:\gowin\RISCV\src\config.vh'("E:\gowin\RISCV\src\ALUCPU.v":2)
-Back to file 'E:\gowin\RISCV\src\ALUCPU.v'("E:\gowin\RISCV\src\ALUCPU.v":2)
-Analyzing Verilog file 'E:\gowin\RISCV\src\RegFile.v'
-Analyzing included file 'E:\gowin\RISCV\src\constants.vh'("E:\gowin\RISCV\src\RegFile.v":1)
-Back to file 'E:\gowin\RISCV\src\RegFile.v'("E:\gowin\RISCV\src\RegFile.v":1)
-Analyzing included file 'E:\gowin\RISCV\src\config.vh'("E:\gowin\RISCV\src\RegFile.v":2)
-Back to file 'E:\gowin\RISCV\src\RegFile.v'("E:\gowin\RISCV\src\RegFile.v":2)
-Analyzing Verilog file 'E:\gowin\RISCV\src\SignExtendSelector.v'
-Analyzing included file 'E:\gowin\RISCV\src\constants.vh'("E:\gowin\RISCV\src\SignExtendSelector.v":1)
-Back to file 'E:\gowin\RISCV\src\SignExtendSelector.v'("E:\gowin\RISCV\src\SignExtendSelector.v":1)
-Analyzing included file 'E:\gowin\RISCV\src\config.vh'("E:\gowin\RISCV\src\SignExtendSelector.v":2)
-Back to file 'E:\gowin\RISCV\src\SignExtendSelector.v'("E:\gowin\RISCV\src\SignExtendSelector.v":2)
-Analyzing Verilog file 'E:\gowin\RISCV\src\bus.v'
-Analyzing included file 'E:\gowin\RISCV\src\config.vh'("E:\gowin\RISCV\src\bus.v":1)
-Back to file 'E:\gowin\RISCV\src\bus.v'("E:\gowin\RISCV\src\bus.v":1)
-WARN  (EX3012) : Empty statement in sequential block("E:\gowin\RISCV\src\bus.v":55)
-Analyzing Verilog file 'E:\gowin\RISCV\src\buttonModule.v'
-WARN  (EX3792) : Literal value 'hFFFFFF truncated to fit in 22 bits("E:\gowin\RISCV\src\buttonModule.v":50)
-Analyzing Verilog file 'E:\gowin\RISCV\src\config.vh'
-Analyzing Verilog file 'E:\gowin\RISCV\src\constants.vh'
-Analyzing Verilog file 'E:\gowin\RISCV\src\control_alu.v'
-Analyzing included file 'E:\gowin\RISCV\src\constants.vh'("E:\gowin\RISCV\src\control_alu.v":1)
-Back to file 'E:\gowin\RISCV\src\control_alu.v'("E:\gowin\RISCV\src\control_alu.v":1)
-Analyzing included file 'E:\gowin\RISCV\src\config.vh'("E:\gowin\RISCV\src\control_alu.v":2)
-Back to file 'E:\gowin\RISCV\src\control_alu.v'("E:\gowin\RISCV\src\control_alu.v":2)
-Analyzing Verilog file 'E:\gowin\RISCV\src\control_branch.v'
-Analyzing included file 'E:\gowin\RISCV\src\constants.vh'("E:\gowin\RISCV\src\control_branch.v":1)
-Back to file 'E:\gowin\RISCV\src\control_branch.v'("E:\gowin\RISCV\src\control_branch.v":1)
-Analyzing included file 'E:\gowin\RISCV\src\config.vh'("E:\gowin\RISCV\src\control_branch.v":2)
-Back to file 'E:\gowin\RISCV\src\control_branch.v'("E:\gowin\RISCV\src\control_branch.v":2)
-Analyzing Verilog file 'E:\gowin\RISCV\src\control_bypass_ex.v'
-Analyzing included file 'E:\gowin\RISCV\src\constants.vh'("E:\gowin\RISCV\src\control_bypass_ex.v":1)
-Back to file 'E:\gowin\RISCV\src\control_bypass_ex.v'("E:\gowin\RISCV\src\control_bypass_ex.v":1)
-Analyzing included file 'E:\gowin\RISCV\src\config.vh'("E:\gowin\RISCV\src\control_bypass_ex.v":2)
-Back to file 'E:\gowin\RISCV\src\control_bypass_ex.v'("E:\gowin\RISCV\src\control_bypass_ex.v":2)
-Analyzing Verilog file 'E:\gowin\RISCV\src\control_main.v'
-Analyzing included file 'E:\gowin\RISCV\src\constants.vh'("E:\gowin\RISCV\src\control_main.v":1)
-Back to file 'E:\gowin\RISCV\src\control_main.v'("E:\gowin\RISCV\src\control_main.v":1)
-Analyzing included file 'E:\gowin\RISCV\src\config.vh'("E:\gowin\RISCV\src\control_main.v":2)
-Back to file 'E:\gowin\RISCV\src\control_main.v'("E:\gowin\RISCV\src\control_main.v":2)
-Analyzing Verilog file 'E:\gowin\RISCV\src\control_stall_id.v'
-Analyzing included file 'E:\gowin\RISCV\src\constants.vh'("E:\gowin\RISCV\src\control_stall_id.v":1)
-Back to file 'E:\gowin\RISCV\src\control_stall_id.v'("E:\gowin\RISCV\src\control_stall_id.v":1)
-Analyzing included file 'E:\gowin\RISCV\src\config.vh'("E:\gowin\RISCV\src\control_stall_id.v":2)
-Back to file 'E:\gowin\RISCV\src\control_stall_id.v'("E:\gowin\RISCV\src\control_stall_id.v":2)
-Analyzing Verilog file 'E:\gowin\RISCV\src\cpu.v'
-Analyzing included file 'E:\gowin\RISCV\src\constants.vh'("E:\gowin\RISCV\src\cpu.v":1)
-Back to file 'E:\gowin\RISCV\src\cpu.v'("E:\gowin\RISCV\src\cpu.v":1)
-Analyzing included file 'E:\gowin\RISCV\src\config.vh'("E:\gowin\RISCV\src\cpu.v":2)
-Back to file 'E:\gowin\RISCV\src\cpu.v'("E:\gowin\RISCV\src\cpu.v":2)
-Undeclared symbol 'instr', assumed default net type 'wire'("E:\gowin\RISCV\src\cpu.v":23)
-Undeclared symbol 'DMemOut', assumed default net type 'wire'("E:\gowin\RISCV\src\cpu.v":28)
-WARN  (EX3638) : 'instr' is already implicitly declared on line 23("E:\gowin\RISCV\src\cpu.v":45)
-WARN  (EX3638) : 'DMemOut' is already implicitly declared on line 28("E:\gowin\RISCV\src\cpu.v":73)
-Analyzing Verilog file 'E:\gowin\RISCV\src\gowin_rpll\gowin_rpll.v'
-Analyzing Verilog file 'E:\gowin\RISCV\src\i2c.v'
-Analyzing Verilog file 'E:\gowin\RISCV\src\i2capi.v'
-Analyzing Verilog file 'E:\gowin\RISCV\src\mem_read_selector.v'
-Analyzing included file 'E:\gowin\RISCV\src\constants.vh'("E:\gowin\RISCV\src\mem_read_selector.v":1)
-Back to file 'E:\gowin\RISCV\src\mem_read_selector.v'("E:\gowin\RISCV\src\mem_read_selector.v":1)
-Analyzing included file 'E:\gowin\RISCV\src\config.vh'("E:\gowin\RISCV\src\mem_read_selector.v":2)
-Back to file 'E:\gowin\RISCV\src\mem_read_selector.v'("E:\gowin\RISCV\src\mem_read_selector.v":2)
-Analyzing Verilog file 'E:\gowin\RISCV\src\mem_write_selector.v'
-Analyzing included file 'E:\gowin\RISCV\src\constants.vh'("E:\gowin\RISCV\src\mem_write_selector.v":1)
-Back to file 'E:\gowin\RISCV\src\mem_write_selector.v'("E:\gowin\RISCV\src\mem_write_selector.v":1)
-Analyzing included file 'E:\gowin\RISCV\src\config.vh'("E:\gowin\RISCV\src\mem_write_selector.v":2)
-Back to file 'E:\gowin\RISCV\src\mem_write_selector.v'("E:\gowin\RISCV\src\mem_write_selector.v":2)
-Analyzing Verilog file 'E:\gowin\RISCV\src\memory.v'
-Analyzing included file 'E:\gowin\RISCV\src\config.vh'("E:\gowin\RISCV\src\memory.v":1)
-Back to file 'E:\gowin\RISCV\src\memory.v'("E:\gowin\RISCV\src\memory.v":1)
-Analyzing Verilog file 'E:\gowin\RISCV\src\screen.v'
-Analyzing Verilog file 'E:\gowin\RISCV\src\seven_segment.v'
-Analyzing Verilog file 'E:\gowin\RISCV\src\signExtend.v'
-Analyzing included file 'E:\gowin\RISCV\src\constants.vh'("E:\gowin\RISCV\src\signExtend.v":1)
-Back to file 'E:\gowin\RISCV\src\signExtend.v'("E:\gowin\RISCV\src\signExtend.v":1)
-Analyzing included file 'E:\gowin\RISCV\src\config.vh'("E:\gowin\RISCV\src\signExtend.v":2)
-Back to file 'E:\gowin\RISCV\src\signExtend.v'("E:\gowin\RISCV\src\signExtend.v":2)
-Analyzing Verilog file 'E:\gowin\RISCV\src\soc.v'
-Analyzing included file 'E:\gowin\RISCV\src\config.vh'("E:\gowin\RISCV\src\soc.v":1)
-Back to file 'E:\gowin\RISCV\src\soc.v'("E:\gowin\RISCV\src\soc.v":1)
-Undeclared symbol 'memReady', assumed default net type 'wire'("E:\gowin\RISCV\src\soc.v":66)
-Undeclared symbol 'btn_out', assumed default net type 'wire'("E:\gowin\RISCV\src\soc.v":79)
-Undeclared symbol 'btn_ren', assumed default net type 'wire'("E:\gowin\RISCV\src\soc.v":85)
-WARN  (EX3638) : 'memReady' is already implicitly declared on line 66("E:\gowin\RISCV\src\soc.v":88)
-WARN  (EX3638) : 'btn_ren' is already implicitly declared on line 85("E:\gowin\RISCV\src\soc.v":101)
-WARN  (EX3638) : 'btn_out' is already implicitly declared on line 79("E:\gowin\RISCV\src\soc.v":102)
-WARN  (EX3792) : Literal value 'hFFFFFF truncated to fit in 22 bits("E:\gowin\RISCV\src\soc.v":200)
-Analyzing Verilog file 'E:\gowin\RISCV\src\textEngine.v'
-Undeclared symbol 'charOutput', assumed default net type 'wire'("E:\gowin\RISCV\src\textEngine.v":55)
-WARN  (EX3638) : 'charOutput' is already implicitly declared on line 55("E:\gowin\RISCV\src\textEngine.v":61)
-Compiling module 'top'("E:\gowin\RISCV\src\soc.v":3)
-Extracting RAM for identifier 'fontMem'("E:\gowin\RISCV\src\soc.v":33)
-WARN  (EX3780) : Using initial value of 'selectedChar' since it is never assigned("E:\gowin\RISCV\src\soc.v":34)
-WARN  (EX3780) : Using initial value of 'clk_btn' since it is never assigned("E:\gowin\RISCV\src\soc.v":42)
-Compiling module 'cpu'("E:\gowin\RISCV\src\cpu.v":9)
-Compiling module 'signExtend'("E:\gowin\RISCV\src\signExtend.v":4)
-Compiling module 'RegFile'("E:\gowin\RISCV\src\RegFile.v":7)
-Compiling module 'SignExtendSelector'("E:\gowin\RISCV\src\SignExtendSelector.v":4)
-Compiling module 'control_main'("E:\gowin\RISCV\src\control_main.v":5)
-Compiling module 'control_stall_id'("E:\gowin\RISCV\src\control_stall_id.v":6)
-Compiling module 'ALUCPU'("E:\gowin\RISCV\src\ALUCPU.v":4)
-Compiling module 'control_alu'("E:\gowin\RISCV\src\control_alu.v":5)
-Compiling module 'control_bypass_ex'("E:\gowin\RISCV\src\control_bypass_ex.v":5)
-Compiling module 'mem_write_selector'("E:\gowin\RISCV\src\mem_write_selector.v":4)
-Compiling module 'control_branch'("E:\gowin\RISCV\src\control_branch.v":4)
-Compiling module 'mem_read_selector'("E:\gowin\RISCV\src\mem_read_selector.v":4)
-Compiling module 'bus'("E:\gowin\RISCV\src\bus.v":3)
-Compiling module 'memory'("E:\gowin\RISCV\src\memory.v":3)
-Extracting RAM for identifier 'instr_mem'("E:\gowin\RISCV\src\memory.v":17)
-Extracting RAM for identifier 'data_mem'("E:\gowin\RISCV\src\memory.v":18)
-WARN  (EX3791) : Expression size 6 truncated to fit in target size 5("E:\gowin\RISCV\src\memory.v":85)
-Compiling module 'buttonModule'("E:\gowin\RISCV\src\buttonModule.v":1)
-WARN  (EX3791) : Expression size 23 truncated to fit in target size 22("E:\gowin\RISCV\src\buttonModule.v":44)
-Compiling module 'textEngine'("E:\gowin\RISCV\src\textEngine.v":1)
-Extracting RAM for identifier 'fontBuffer'("E:\gowin\RISCV\src\textEngine.v":57)
-WARN  (EX3791) : Expression size 25 truncated to fit in target size 24("E:\gowin\RISCV\src\textEngine.v":126)
-WARN  (EX3791) : Expression size 9 truncated to fit in target size 8("E:\gowin\RISCV\src\textEngine.v":130)
-Compiling module 'screen'("E:\gowin\RISCV\src\screen.v":2)
-WARN  (EX3791) : Expression size 11 truncated to fit in target size 10("E:\gowin\RISCV\src\screen.v":23)
-Compiling module 'i2c'("E:\gowin\RISCV\src\i2c.v":2)
-WARN  (EX3791) : Expression size 8 truncated to fit in target size 7("E:\gowin\RISCV\src\i2c.v":42)
-WARN  (EX3791) : Expression size 8 truncated to fit in target size 7("E:\gowin\RISCV\src\i2c.v":56)
-WARN  (EX3791) : Expression size 8 truncated to fit in target size 7("E:\gowin\RISCV\src\i2c.v":70)
-WARN  (EX3791) : Expression size 4 truncated to fit in target size 3("E:\gowin\RISCV\src\i2c.v":78)
-WARN  (EX3791) : Expression size 8 truncated to fit in target size 7("E:\gowin\RISCV\src\i2c.v":89)
-WARN  (EX3791) : Expression size 8 truncated to fit in target size 7("E:\gowin\RISCV\src\i2c.v":100)
-WARN  (EX3791) : Expression size 4 truncated to fit in target size 3("E:\gowin\RISCV\src\i2c.v":107)
-WARN  (EX3791) : Expression size 8 truncated to fit in target size 7("E:\gowin\RISCV\src\i2c.v":117)
-Compiling module 'i2c_api'("E:\gowin\RISCV\src\i2capi.v":1)
-WARN  (EX3791) : Expression size 12 truncated to fit in target size 11("E:\gowin\RISCV\src\screen.v":229)
-WARN  (EX3791) : Expression size 26 truncated to fit in target size 25("E:\gowin\RISCV\src\screen.v":248)
-Compiling module 'SSD'("E:\gowin\RISCV\src\seven_segment.v":57)
-Compiling module 'LEDdecoder'("E:\gowin\RISCV\src\seven_segment.v":3)
-WARN  (EX3791) : Expression size 9 truncated to fit in target size 8("E:\gowin\RISCV\src\seven_segment.v":80)
-WARN  (EX3791) : Expression size 25 truncated to fit in target size 24("E:\gowin\RISCV\src\soc.v":162)
-WARN  (EX3791) : Expression size 24 truncated to fit in target size 23("E:\gowin\RISCV\src\soc.v":194)
-WARN  (EX1998) : Net 'debug' does not have a driver("E:\gowin\RISCV\src\soc.v":73)
+Analyzing Verilog file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\ALUCPU.v'
+Analyzing included file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\constants.vh'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\ALUCPU.v":1)
+Back to file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\ALUCPU.v'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\ALUCPU.v":1)
+Analyzing included file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\config.vh'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\ALUCPU.v":2)
+Back to file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\ALUCPU.v'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\ALUCPU.v":2)
+Analyzing Verilog file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\RegFile.v'
+Analyzing included file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\constants.vh'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\RegFile.v":1)
+Back to file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\RegFile.v'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\RegFile.v":1)
+Analyzing included file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\config.vh'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\RegFile.v":2)
+Back to file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\RegFile.v'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\RegFile.v":2)
+Analyzing Verilog file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\SignExtendSelector.v'
+Analyzing included file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\constants.vh'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\SignExtendSelector.v":1)
+Back to file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\SignExtendSelector.v'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\SignExtendSelector.v":1)
+Analyzing included file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\config.vh'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\SignExtendSelector.v":2)
+Back to file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\SignExtendSelector.v'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\SignExtendSelector.v":2)
+Analyzing Verilog file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\bus.v'
+Analyzing included file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\config.vh'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\bus.v":1)
+Back to file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\bus.v'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\bus.v":1)
+Analyzing Verilog file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\buttonModule.v'
+WARN  (EX3792) : Literal value 'hFFFFFF truncated to fit in 22 bits("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\buttonModule.v":50)
+Analyzing Verilog file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\config.vh'
+Analyzing Verilog file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\constants.vh'
+Analyzing Verilog file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\control_alu.v'
+Analyzing included file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\constants.vh'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\control_alu.v":1)
+Back to file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\control_alu.v'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\control_alu.v":1)
+Analyzing included file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\config.vh'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\control_alu.v":2)
+Back to file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\control_alu.v'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\control_alu.v":2)
+Analyzing Verilog file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\control_branch.v'
+Analyzing included file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\constants.vh'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\control_branch.v":1)
+Back to file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\control_branch.v'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\control_branch.v":1)
+Analyzing included file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\config.vh'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\control_branch.v":2)
+Back to file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\control_branch.v'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\control_branch.v":2)
+Analyzing Verilog file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\control_bypass_ex.v'
+Analyzing included file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\constants.vh'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\control_bypass_ex.v":1)
+Back to file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\control_bypass_ex.v'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\control_bypass_ex.v":1)
+Analyzing included file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\config.vh'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\control_bypass_ex.v":2)
+Back to file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\control_bypass_ex.v'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\control_bypass_ex.v":2)
+Analyzing Verilog file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\control_main.v'
+Analyzing included file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\constants.vh'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\control_main.v":1)
+Back to file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\control_main.v'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\control_main.v":1)
+Analyzing included file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\config.vh'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\control_main.v":2)
+Back to file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\control_main.v'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\control_main.v":2)
+Analyzing Verilog file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\control_stall_id.v'
+Analyzing included file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\constants.vh'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\control_stall_id.v":1)
+Back to file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\control_stall_id.v'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\control_stall_id.v":1)
+Analyzing included file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\config.vh'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\control_stall_id.v":2)
+Back to file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\control_stall_id.v'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\control_stall_id.v":2)
+Analyzing Verilog file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\cpu.v'
+Analyzing included file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\constants.vh'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\cpu.v":1)
+Back to file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\cpu.v'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\cpu.v":1)
+Analyzing included file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\config.vh'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\cpu.v":2)
+Back to file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\cpu.v'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\cpu.v":2)
+Undeclared symbol 'instr', assumed default net type 'wire'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\cpu.v":23)
+Undeclared symbol 'DMemOut', assumed default net type 'wire'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\cpu.v":28)
+WARN  (EX3638) : 'instr' is already implicitly declared on line 23("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\cpu.v":45)
+WARN  (EX3638) : 'DMemOut' is already implicitly declared on line 28("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\cpu.v":73)
+Analyzing Verilog file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\gowin_rpll\gowin_rpll.v'
+Analyzing Verilog file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\i2c.v'
+WARN  (EX2478) : Non-net output port 'sdaOutReg' cannot be initialized at declaration in SystemVerilog mode("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\i2c.v":5)
+WARN  (EX2478) : Non-net output port 'isSending' cannot be initialized at declaration in SystemVerilog mode("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\i2c.v":6)
+WARN  (EX2478) : Non-net output port 'scl' cannot be initialized at declaration in SystemVerilog mode("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\i2c.v":7)
+WARN  (EX2478) : Non-net output port 'byteReceived' cannot be initialized at declaration in SystemVerilog mode("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\i2c.v":11)
+Analyzing Verilog file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\i2capi.v'
+WARN  (EX2478) : Non-net output port 'error' cannot be initialized at declaration in SystemVerilog mode("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\i2capi.v":14)
+Analyzing Verilog file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\mem_read_selector.v'
+Analyzing included file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\constants.vh'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\mem_read_selector.v":1)
+Back to file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\mem_read_selector.v'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\mem_read_selector.v":1)
+Analyzing included file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\config.vh'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\mem_read_selector.v":2)
+Back to file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\mem_read_selector.v'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\mem_read_selector.v":2)
+Analyzing Verilog file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\mem_write_selector.v'
+Analyzing included file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\constants.vh'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\mem_write_selector.v":1)
+Back to file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\mem_write_selector.v'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\mem_write_selector.v":1)
+Analyzing included file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\config.vh'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\mem_write_selector.v":2)
+Back to file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\mem_write_selector.v'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\mem_write_selector.v":2)
+Analyzing Verilog file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\memory.v'
+Analyzing included file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\config.vh'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\memory.v":1)
+Back to file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\memory.v'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\memory.v":1)
+Analyzing Verilog file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\screen.v'
+Analyzing Verilog file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\seven_segment.v'
+WARN  (EX2478) : Non-net output port 'Dp' cannot be initialized at declaration in SystemVerilog mode("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\seven_segment.v":63)
+Analyzing Verilog file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\signExtend.v'
+Analyzing included file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\constants.vh'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\signExtend.v":1)
+Back to file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\signExtend.v'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\signExtend.v":1)
+Analyzing included file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\config.vh'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\signExtend.v":2)
+Back to file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\signExtend.v'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\signExtend.v":2)
+Analyzing Verilog file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\soc.v'
+Analyzing included file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\config.vh'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\soc.v":1)
+Back to file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\soc.v'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\soc.v":1)
+Undeclared symbol 'btn_out', assumed default net type 'wire'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\soc.v":81)
+Undeclared symbol 'btn_ren', assumed default net type 'wire'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\soc.v":87)
+WARN  (EX3638) : 'btn_ren' is already implicitly declared on line 87("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\soc.v":102)
+WARN  (EX3638) : 'btn_out' is already implicitly declared on line 81("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\soc.v":103)
+WARN  (EX3792) : Literal value 'hFFFFFF truncated to fit in 22 bits("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\soc.v":187)
+Analyzing Verilog file 'C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\textEngine.v'
+Undeclared symbol 'charOutput', assumed default net type 'wire'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\textEngine.v":55)
+WARN  (EX3638) : 'charOutput' is already implicitly declared on line 55("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\textEngine.v":61)
+Compiling module 'top'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\soc.v":3)
+Extracting RAM for identifier 'fontMem'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\soc.v":33)
+WARN  (EX3780) : Using initial value of 'selectedChar' since it is never assigned("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\soc.v":34)
+WARN  (EX3780) : Using initial value of 'clk_btn' since it is never assigned("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\soc.v":42)
+Compiling module 'Gowin_rPLL'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\gowin_rpll\gowin_rpll.v":10)
+Compiling module 'cpu'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\cpu.v":9)
+Compiling module 'signExtend'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\signExtend.v":4)
+Compiling module 'RegFile'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\RegFile.v":7)
+Compiling module 'SignExtendSelector'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\SignExtendSelector.v":4)
+Compiling module 'control_main'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\control_main.v":5)
+Compiling module 'control_stall_id'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\control_stall_id.v":6)
+Compiling module 'ALUCPU'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\ALUCPU.v":4)
+Compiling module 'control_alu'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\control_alu.v":5)
+Compiling module 'control_bypass_ex'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\control_bypass_ex.v":5)
+Compiling module 'mem_write_selector'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\mem_write_selector.v":4)
+Compiling module 'control_branch'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\control_branch.v":4)
+Compiling module 'mem_read_selector'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\mem_read_selector.v":4)
+Compiling module 'bus'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\bus.v":3)
+Compiling module 'memory'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\memory.v":3)
+Extracting RAM for identifier 'instr_mem'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\memory.v":17)
+Extracting RAM for identifier 'data_mem'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\memory.v":18)
+WARN  (EX3791) : Expression size 6 truncated to fit in target size 5("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\memory.v":85)
+Compiling module 'buttonModule'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\buttonModule.v":1)
+WARN  (EX3791) : Expression size 23 truncated to fit in target size 22("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\buttonModule.v":44)
+Compiling module 'textEngine'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\textEngine.v":1)
+Extracting RAM for identifier 'fontBuffer'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\textEngine.v":57)
+WARN  (EX3791) : Expression size 25 truncated to fit in target size 24("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\textEngine.v":126)
+WARN  (EX3791) : Expression size 9 truncated to fit in target size 8("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\textEngine.v":130)
+Compiling module 'screen'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\screen.v":2)
+WARN  (EX3791) : Expression size 11 truncated to fit in target size 10("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\screen.v":23)
+Compiling module 'i2c'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\i2c.v":2)
+WARN  (EX3791) : Expression size 8 truncated to fit in target size 7("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\i2c.v":42)
+WARN  (EX3791) : Expression size 8 truncated to fit in target size 7("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\i2c.v":56)
+WARN  (EX3791) : Expression size 8 truncated to fit in target size 7("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\i2c.v":70)
+WARN  (EX3791) : Expression size 4 truncated to fit in target size 3("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\i2c.v":78)
+WARN  (EX3791) : Expression size 8 truncated to fit in target size 7("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\i2c.v":89)
+WARN  (EX3791) : Expression size 8 truncated to fit in target size 7("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\i2c.v":100)
+WARN  (EX3791) : Expression size 4 truncated to fit in target size 3("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\i2c.v":107)
+WARN  (EX3791) : Expression size 8 truncated to fit in target size 7("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\i2c.v":117)
+Compiling module 'i2c_api'("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\i2capi.v":1)
+WARN  (EX3791) : Expression size 12 truncated to fit in target size 11("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\screen.v":229)
+WARN  (EX3791) : Expression size 26 truncated to fit in target size 25("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\screen.v":248)
+WARN  (EX3791) : Expression size 25 truncated to fit in target size 24("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\soc.v":147)
+WARN  (EX3791) : Expression size 24 truncated to fit in target size 23("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\soc.v":180)
+WARN  (EX1998) : Net 'debug' does not have a driver("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\soc.v":61)
 NOTE  (EX0101) : Current top module is "top"
+WARN  (EX0211) : The output port "D1" of module "top" has no driver, assigning undriven bits to Z, simulation mismatch possible("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\soc.v":9)
+WARN  (EX0211) : The output port "D2" of module "top" has no driver, assigning undriven bits to Z, simulation mismatch possible("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\soc.v":10)
+WARN  (EX0211) : The output port "D3" of module "top" has no driver, assigning undriven bits to Z, simulation mismatch possible("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\soc.v":11)
+WARN  (EX0211) : The output port "D4" of module "top" has no driver, assigning undriven bits to Z, simulation mismatch possible("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\soc.v":12)
+WARN  (EX0211) : The output port "Dp" of module "top" has no driver, assigning undriven bits to Z, simulation mismatch possible("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\soc.v":13)
+WARN  (EX0211) : The output port "A" of module "top" has no driver, assigning undriven bits to Z, simulation mismatch possible("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\soc.v":14)
+WARN  (EX0211) : The output port "B" of module "top" has no driver, assigning undriven bits to Z, simulation mismatch possible("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\soc.v":15)
+WARN  (EX0211) : The output port "C" of module "top" has no driver, assigning undriven bits to Z, simulation mismatch possible("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\soc.v":16)
+WARN  (EX0211) : The output port "D" of module "top" has no driver, assigning undriven bits to Z, simulation mismatch possible("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\soc.v":17)
+WARN  (EX0211) : The output port "E" of module "top" has no driver, assigning undriven bits to Z, simulation mismatch possible("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\soc.v":18)
+WARN  (EX0211) : The output port "F" of module "top" has no driver, assigning undriven bits to Z, simulation mismatch possible("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\soc.v":19)
+WARN  (EX0211) : The output port "G" of module "top" has no driver, assigning undriven bits to Z, simulation mismatch possible("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\soc.v":20)
 [5%] Running netlist conversion ...
 Running device independent optimization ...
 [10%] Optimizing Phase 0 completed
@@ -155,141 +168,23 @@ Running technical mapping ...
 [60%] Tech-Mapping Phase 0 completed
 [65%] Tech-Mapping Phase 1 completed
 [75%] Tech-Mapping Phase 2 completed
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[31]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[31]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[31]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0101) : The netlist is not one directed acyclic graph
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[30]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[30]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[30]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0101) : The netlist is not one directed acyclic graph
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[29]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[29]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[29]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0101) : The netlist is not one directed acyclic graph
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[28]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[28]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[28]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0101) : The netlist is not one directed acyclic graph
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[27]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[27]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[27]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0101) : The netlist is not one directed acyclic graph
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[26]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[26]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[26]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0101) : The netlist is not one directed acyclic graph
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[25]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[25]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[25]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0101) : The netlist is not one directed acyclic graph
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[24]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[24]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[24]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0101) : The netlist is not one directed acyclic graph
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[23]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[23]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[23]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0101) : The netlist is not one directed acyclic graph
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[22]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[22]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[22]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0101) : The netlist is not one directed acyclic graph
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[21]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[21]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[21]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0101) : The netlist is not one directed acyclic graph
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[20]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[20]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[20]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0101) : The netlist is not one directed acyclic graph
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[19]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[19]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[19]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0101) : The netlist is not one directed acyclic graph
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[18]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[18]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[18]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0101) : The netlist is not one directed acyclic graph
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[17]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[17]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[17]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0101) : The netlist is not one directed acyclic graph
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[16]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[16]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[16]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0101) : The netlist is not one directed acyclic graph
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[15]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[15]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[15]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0101) : The netlist is not one directed acyclic graph
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[14]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[14]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[14]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0101) : The netlist is not one directed acyclic graph
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[13]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[13]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[13]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0101) : The netlist is not one directed acyclic graph
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[12]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[12]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[12]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0101) : The netlist is not one directed acyclic graph
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[11]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[11]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[11]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0101) : The netlist is not one directed acyclic graph
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[10]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[10]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[10]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0101) : The netlist is not one directed acyclic graph
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[9]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[9]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[9]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0101) : The netlist is not one directed acyclic graph
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[8]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[8]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[8]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0101) : The netlist is not one directed acyclic graph
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[7]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[7]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[7]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0101) : The netlist is not one directed acyclic graph
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[6]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[6]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[6]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0101) : The netlist is not one directed acyclic graph
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[5]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[5]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[5]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0101) : The netlist is not one directed acyclic graph
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[4]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[4]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[4]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0101) : The netlist is not one directed acyclic graph
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[3]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[3]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[3]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0101) : The netlist is not one directed acyclic graph
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[2]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[2]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[2]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0101) : The netlist is not one directed acyclic graph
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[1]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[1]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[1]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0101) : The netlist is not one directed acyclic graph
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[0]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[0]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0100) : Find logical loop signal : "PC_OLD[0]"("E:\gowin\RISCV\src\cpu.v":112)
-WARN  (AG0101) : The netlist is not one directed acyclic graph
 [80%] Tech-Mapping Phase 3 completed
 [90%] Tech-Mapping Phase 4 completed
-WARN  (NL0002) : The module "control_alu" instantiated to "control_alu" is swept in optimizing("E:\gowin\RISCV\src\cpu.v":413)
-WARN  (NL0002) : The module "control_branch" instantiated to "control_branch" is swept in optimizing("E:\gowin\RISCV\src\cpu.v":477)
-WARN  (NL0002) : The module "control_main" instantiated to "control_main" is swept in optimizing("E:\gowin\RISCV\src\cpu.v":308)
-WARN  (NL0002) : The module "mem_read_selector" instantiated to "mem_read_selector" is swept in optimizing("E:\gowin\RISCV\src\cpu.v":487)
-WARN  (NL0002) : The module "signExtend" instantiated to "signExtendUnit" is swept in optimizing("E:\gowin\RISCV\src\cpu.v":193)
-[95%] Generate netlist file "E:\gowin\RISCV\impl\gwsynthesis\RISCV.vg" completed
-[100%] Generate report file "E:\gowin\RISCV\impl\gwsynthesis\RISCV_syn.rpt.html" completed
+WARN  (NL0002) : The module "buttonModule" instantiated to "bm" is swept in optimizing("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\soc.v":111)
+WARN  (NL0002) : The module "bus" instantiated to "bu" is swept in optimizing("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\soc.v":89)
+WARN  (NL0002) : The module "cpu" instantiated to "cpu_1" is swept in optimizing("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\soc.v":74)
+WARN  (NL0002) : The module "SignExtendSelector" instantiated to "SignExtendSelector" is swept in optimizing("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\cpu.v":217)
+WARN  (NL0002) : The module "control_alu" instantiated to "control_alu" is swept in optimizing("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\cpu.v":415)
+WARN  (NL0002) : The module "control_branch" instantiated to "control_branch" is swept in optimizing("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\cpu.v":479)
+WARN  (NL0002) : The module "control_bypass_ex" instantiated to "control_bypass_ex" is swept in optimizing("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\cpu.v":427)
+WARN  (NL0002) : The module "control_main" instantiated to "control_main" is swept in optimizing("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\cpu.v":308)
+WARN  (NL0002) : The module "control_stall_id" instantiated to "control_stall_id" is swept in optimizing("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\cpu.v":328)
+WARN  (NL0002) : The module "ALUCPU" instantiated to "cpu_alu" is swept in optimizing("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\cpu.v":355)
+WARN  (NL0002) : The module "RegFile" instantiated to "cpu_regs" is swept in optimizing("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\cpu.v":206)
+WARN  (NL0002) : The module "mem_read_selector" instantiated to "mem_read_selector" is swept in optimizing("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\cpu.v":489)
+WARN  (NL0002) : The module "mem_write_selector" instantiated to "mem_write_selector" is swept in optimizing("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\cpu.v":437)
+WARN  (NL0002) : The module "signExtend" instantiated to "signExtendUnit" is swept in optimizing("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\cpu.v":193)
+WARN  (NL0002) : The module "memory" instantiated to "mem" is swept in optimizing("C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\src\soc.v":101)
+[95%] Generate netlist file "C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\impl\gwsynthesis\RISCV.vg" completed
+[100%] Generate report file "C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCV\impl\gwsynthesis\RISCV_syn.rpt.html" completed
 GowinSynthesis finish

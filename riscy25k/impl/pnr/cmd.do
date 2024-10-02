@@ -1,9 +1,9 @@
--d E:\Projects\tangprimer25k\riscy25k\impl\gwsynthesis\riscy25k.vg
+-d C:\Users\Panagiotis\Documents\GitHub\RiscY\riscy25k\impl\gwsynthesis\riscy25k.vg
 -p GW5A-25A-MBGA121N-1
 -pn GW5A-LV25MG121NES
--cst E:\Projects\tangprimer25k\riscy25k\src\tang25k.cst
--cfg E:\Projects\tangprimer25k\riscy25k\impl\pnr\device.cfg
--sdc E:\Projects\tangprimer25k\riscy25k\src\timing25k.sdc
+-cst C:\Users\Panagiotis\Documents\GitHub\RiscY\riscy25k\src\tang25k.cst
+-cfg C:\Users\Panagiotis\Documents\GitHub\RiscY\riscy25k\impl\pnr\device.cfg
+-sdc C:\Users\Panagiotis\Documents\GitHub\RiscY\riscy25k\src\timing25k.sdc
 -bit
 -tr
 -ph
