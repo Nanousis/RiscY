@@ -21,7 +21,7 @@ LDFLAGS = -T linker.ld
 OBJS = startup.o main.o
 
 # Targets
-all: main.hex text.bin data.bin rodata.bin bss.bin main.s
+all: main.hex text.bin data.bin data.hex rodata.bin bss.hex bss.bin main.s 
 
 startup.o: startup.s
 	$(CC) -c $(CFLAGS) startup.s -o startup.o
@@ -44,14 +44,22 @@ text.bin: main.elf
 data.bin: main.elf
 	$(OBJCOPY) -O binary --only-section=.data main.elf data.bin
 
+data.hex: data.bin
+	$(HEXDUMP) -v -e '1/4 "%08x\n"' data.bin > data.hex
+
 rodata.bin: main.elf
 	$(OBJCOPY) -O binary --only-section=.rodata main.elf rodata.bin
 
 bss.bin: main.elf
 	$(SIZE) -A main.elf | awk '/\.bss/ {print $$2}' | xargs -I {} $(DD) if=/dev/zero of=bss.bin bs=1 count={}
+bss.hex: bss.bin
+	$(HEXDUMP) -v -e '1/4 "%08x\n"' bss.bin > bss.hex
 
 main.s: main.c
 	$(CC) -S $(CFLAGS) main.c -o main.s
 
+disassemble: main.elf
+	riscv-none-elf-objdump -D main.elf > main.dis
+
 clean:
-	rm -f main.o startup.o main.elf main.bin main.hex text.bin data.bin rodata.bin bss.bin main.s
+	rm -f main.o startup.o main.elf main.bin main.hex text.bin data.bin data.hex rodata.bin bss.bin bss.hex main.s

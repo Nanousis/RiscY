@@ -20,7 +20,7 @@ module top
     wire clkout;
 
     wire		CLK_PIX;
-    assign clkout=CLK_PIX;
+    assign clkout=clk;
 //    Gowin_rPLL pll(
 //        .clkout(clkout), //output clkout
 //        .clkin(clk) //input clkin

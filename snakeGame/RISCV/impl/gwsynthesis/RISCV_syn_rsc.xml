@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Module name="top" Register="31" Lut="78" T_Register="1671(31)" T_Alu="188(0)" T_Lut="4388(78)" T_Bsram="7(0)">
-    <SubModule name="cpu_1" Register="542" Alu="64" Lut="1572" T_Register="1534(542)" T_Alu="188(64)" T_Lut="2869(1572)">
+<Module name="top" Register="31" Lut="77" T_Register="1675(31)" T_Alu="187(0)" T_Lut="4367(77)" T_Bsram="8(0)">
+    <SubModule name="cpu_1" Register="542" Alu="64" Lut="1542" T_Register="1534(542)" T_Alu="187(64)" T_Lut="2848(1542)">
         <SubModule name="cpu_regs" Register="992" Alu="10" Lut="1062" T_Register="992(992)" T_Alu="10(10)" T_Lut="1062(1062)"/>
-        <SubModule name="SignExtendSelector" Lut="44" T_Lut="44(44)"/>
+        <SubModule name="SignExtendSelector" Lut="43" T_Lut="43(43)"/>
         <SubModule name="control_stall_id" Alu="10" Lut="1" T_Alu="10(10)" T_Lut="1(1)"/>
-        <SubModule name="cpu_alu" Alu="84" Lut="120" T_Alu="84(84)" T_Lut="120(120)"/>
+        <SubModule name="cpu_alu" Alu="83" Lut="120" T_Alu="83(83)" T_Lut="120(120)"/>
         <SubModule name="control_bypass_ex" Alu="20" T_Alu="20(20)"/>
-        <SubModule name="mem_write_selector" Lut="70" T_Lut="70(70)"/>
+        <SubModule name="mem_write_selector" Lut="80" T_Lut="80(80)"/>
     </SubModule>
     <SubModule name="bu" Lut="57" T_Lut="57(57)"/>
-    <SubModule name="mem" Register="75" Lut="168" Bsram="5" T_Register="75(75)" T_Lut="168(168)" T_Bsram="5(5)"/>
-    <SubModule name="bm" Register="1" Lut="72" T_Register="1(1)" T_Lut="72(72)"/>
+    <SubModule name="mem" Register="79" Lut="207" Bsram="6" T_Register="79(79)" T_Lut="207(207)" T_Bsram="6(6)"/>
+    <SubModule name="bm" Register="1" Lut="65" T_Register="1(1)" T_Lut="65(65)"/>
     <SubModule name="slower_clock"/>
-    <SubModule name="D1" Register="30" Lut="1144" T_Register="30(30)" T_Lut="1144(1144)" T_Bsram="2(0)">
+    <SubModule name="D1" Register="30" Lut="1113" T_Register="30(30)" T_Lut="1113(1113)" T_Bsram="2(0)">
         <SubModule name="text_Buffer" Bsram="1" T_Bsram="1(1)"/>
         <SubModule name="attributes_Buffer" Bsram="1" T_Bsram="1(1)"/>
     </SubModule>

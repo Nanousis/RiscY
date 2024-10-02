@@ -11,8 +11,8 @@ module memory(input clk,
             input [3:0] byte_select_vector,
             output reg ready
 );
-localparam text_size=512;
-localparam data_size=512;
+localparam text_size=600;
+localparam data_size=700;
 
 reg [31:0] instr_mem[text_size-1:0];
 reg [31:0] data_mem[data_size-1:0];

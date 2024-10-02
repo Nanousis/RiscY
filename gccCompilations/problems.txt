@@ -1,3 +1,14 @@
-With 01 
-I think there is a problem with trying to retrieve items from bss. Either that or the stack doesnt work.
-Anyhow it causes the values from the arguments to not be taken.
+1. with O1 the functions in this loop do not get called?
+
+int loopcnt = 100;
+int i=0;
+while(1){
+
+    function1();
+    loopcnt--;
+
+    for(i = loopcnt; i>0; i--);
+}
+
+2. Uninitialized variables DO NOT WORK!
+probably has something to do with the .bss section but no idea.
