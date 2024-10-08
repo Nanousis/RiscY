@@ -1,0 +1,16 @@
+-d E:\Projects\tangprimer25k\RiscY25kHDMI\neshdmi\impl\gwsynthesis\nes.vg
+-p GW5A-25A-MBGA121N-1
+-pn GW5A-LV25MG121NES
+-cst E:\Projects\tangprimer25k\RiscY25kHDMI\neshdmi\src\nestang.cst
+-cfg E:\Projects\tangprimer25k\RiscY25kHDMI\neshdmi\impl\pnr\device.cfg
+-sdc E:\Projects\tangprimer25k\RiscY25kHDMI\neshdmi\src\nes.sdc
+-bit
+-tr
+-ph
+-timing
+-cst_error
+-convert_sdp32_36_to_sdp16_18
+-correct_hold 1
+-route_maxfan 23
+-global_freq 100.000
+-enable_dsrm 0

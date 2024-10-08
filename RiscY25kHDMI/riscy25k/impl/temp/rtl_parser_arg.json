@@ -1,0 +1,173 @@
+{
+ "Device" : "GW5A-25A",
+ "Files" : [
+  {
+   "Path" : "E:/Projects/tangprimer25k/RiscY25kHDMI/riscy25k/src/bus.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/Projects/tangprimer25k/RiscY25kHDMI/riscy25k/src/buttonModule.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/Projects/tangprimer25k/RiscY25kHDMI/riscy25k/src/config.vh",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/Projects/tangprimer25k/RiscY25kHDMI/riscy25k/src/constants.vh",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/Projects/tangprimer25k/RiscY25kHDMI/riscy25k/src/cpu/ALUCPU.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/Projects/tangprimer25k/RiscY25kHDMI/riscy25k/src/cpu/RegFile.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/Projects/tangprimer25k/RiscY25kHDMI/riscy25k/src/cpu/SignExtendSelector.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/Projects/tangprimer25k/RiscY25kHDMI/riscy25k/src/cpu/control_alu.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/Projects/tangprimer25k/RiscY25kHDMI/riscy25k/src/cpu/control_branch.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/Projects/tangprimer25k/RiscY25kHDMI/riscy25k/src/cpu/control_bypass_ex.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/Projects/tangprimer25k/RiscY25kHDMI/riscy25k/src/cpu/control_main.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/Projects/tangprimer25k/RiscY25kHDMI/riscy25k/src/cpu/control_stall_id.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/Projects/tangprimer25k/RiscY25kHDMI/riscy25k/src/cpu/cpu.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/Projects/tangprimer25k/RiscY25kHDMI/riscy25k/src/cpu/mem_read_selector.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/Projects/tangprimer25k/RiscY25kHDMI/riscy25k/src/cpu/mem_write_selector.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/Projects/tangprimer25k/RiscY25kHDMI/riscy25k/src/cpu/signExtend.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/Projects/tangprimer25k/RiscY25kHDMI/riscy25k/src/i2c.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/Projects/tangprimer25k/RiscY25kHDMI/riscy25k/src/i2capi.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/Projects/tangprimer25k/RiscY25kHDMI/riscy25k/src/memory.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/Projects/tangprimer25k/RiscY25kHDMI/riscy25k/src/screen.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/Projects/tangprimer25k/RiscY25kHDMI/riscy25k/src/seven_segment.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/Projects/tangprimer25k/RiscY25kHDMI/riscy25k/src/soc.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/Projects/tangprimer25k/RiscY25kHDMI/riscy25k/src/soctb.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/Projects/tangprimer25k/RiscY25kHDMI/riscy25k/src/textEngine.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/Projects/tangprimer25k/RiscY25kHDMI/riscy25k/src/hdmi/config.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/Projects/tangprimer25k/RiscY25kHDMI/riscy25k/src/hdmi/nes_tang25k.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/Projects/tangprimer25k/RiscY25kHDMI/riscy25k/src/hdmi/nes_tang25k.vh",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/Projects/tangprimer25k/RiscY25kHDMI/riscy25k/src/hdmi/nes2hdmi.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/Projects/tangprimer25k/RiscY25kHDMI/riscy25k/src/hdmi/hdmi2/audio_clock_regeneration_packet.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/Projects/tangprimer25k/RiscY25kHDMI/riscy25k/src/hdmi/hdmi2/audio_info_frame.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/Projects/tangprimer25k/RiscY25kHDMI/riscy25k/src/hdmi/hdmi2/audio_sample_packet.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/Projects/tangprimer25k/RiscY25kHDMI/riscy25k/src/hdmi/hdmi2/auxiliary_video_information_info_frame.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/Projects/tangprimer25k/RiscY25kHDMI/riscy25k/src/hdmi/hdmi2/hdmi.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/Projects/tangprimer25k/RiscY25kHDMI/riscy25k/src/hdmi/hdmi2/packet_assembler.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/Projects/tangprimer25k/RiscY25kHDMI/riscy25k/src/hdmi/hdmi2/packet_picker.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/Projects/tangprimer25k/RiscY25kHDMI/riscy25k/src/hdmi/hdmi2/serializer.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/Projects/tangprimer25k/RiscY25kHDMI/riscy25k/src/hdmi/hdmi2/source_product_description_info_frame.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/Projects/tangprimer25k/RiscY25kHDMI/riscy25k/src/hdmi/hdmi2/tmds_channel.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/Projects/tangprimer25k/RiscY25kHDMI/riscy25k/src/hdmi/gowin_pll480/gowin_pll480.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/Projects/tangprimer25k/RiscY25kHDMI/riscy25k/src/hdmi/gowin_clkdiv/gowin_clkdiv.v",
+   "Type" : "verilog"
+  }
+ ],
+ "IncludePath" : [
+
+ ],
+ "LoopLimit" : 2000,
+ "ResultFile" : "E:/Projects/tangprimer25k/RiscY25kHDMI/riscy25k/impl/temp/rtl_parser.result",
+ "Top" : "top",
+ "VerilogStd" : "sysv",
+ "VhdlStd" : "vhdl_93"
+}

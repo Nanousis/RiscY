@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module name="top" Register="26" Lut="71" T_Register="2376(26)" T_Alu="249(0)" T_Lut="5075(71)" T_MULT12X12="1(0)" T_Bsram="5(0)">
+    <SubModule name="cpu_1" Register="542" Alu="64" Lut="1651" T_Register="1534(542)" T_Alu="188(64)" T_Lut="2956(1651)">
+        <SubModule name="cpu_regs" Register="992" Alu="10" Lut="1062" T_Register="992(992)" T_Alu="10(10)" T_Lut="1062(1062)"/>
+        <SubModule name="SignExtendSelector" Lut="44" T_Lut="44(44)"/>
+        <SubModule name="control_stall_id" Alu="10" Lut="1" T_Alu="10(10)" T_Lut="1(1)"/>
+        <SubModule name="cpu_alu" Alu="84" Lut="120" T_Alu="84(84)" T_Lut="120(120)"/>
+        <SubModule name="control_bypass_ex" Alu="20" T_Alu="20(20)"/>
+        <SubModule name="mem_write_selector" Lut="78" T_Lut="78(78)"/>
+    </SubModule>
+    <SubModule name="bu" Lut="53" T_Lut="53(53)"/>
+    <SubModule name="mem" Register="75" Lut="179" Bsram="5" T_Register="75(75)" T_Lut="179(179)" T_Bsram="5(5)"/>
+    <SubModule name="bm" Register="1" Lut="9" T_Register="1(1)" T_Lut="9(9)"/>
+    <SubModule name="nes" Register="9" Lut="14" T_Register="740(9)" T_Alu="61(0)" T_Lut="1807(14)" T_MULT12X12="1(0)">
+        <SubModule name="clock480p"/>
+        <SubModule name="clk_div"/>
+        <SubModule name="u_hdmi" Register="574" Alu="20" Lut="1374" MULT12X12="1" T_Register="731(574)" T_Alu="61(20)" T_Lut="1793(1374)" T_MULT12X12="1(1)">
+            <SubModule name="hdmi" Register="57" Alu="9" Lut="48" T_Register="157(57)" T_Alu="41(9)" T_Lut="419(48)">
+                <SubModule name="true_hdmi_output.packet_picker" Register="13" Lut="21" T_Register="13(13)" T_Lut="21(21)"/>
+                <SubModule name="true_hdmi_output.packet_assembler" Register="45" Alu="4" Lut="130" T_Register="45(45)" T_Alu="4(4)" T_Lut="130(130)"/>
+                <SubModule name="tmds_gen[0].tmds_channel" Register="14" Alu="12" Lut="98" T_Register="14(14)" T_Alu="12(12)" T_Lut="98(98)"/>
+                <SubModule name="tmds_gen[1].tmds_channel" Register="14" Alu="4" Lut="29" T_Register="14(14)" T_Alu="4(4)" T_Lut="29(29)"/>
+                <SubModule name="tmds_gen[2].tmds_channel" Register="14" Alu="12" Lut="93" T_Register="14(14)" T_Alu="12(12)" T_Lut="93(93)"/>
+                <SubModule name="serializer"/>
+            </SubModule>
+        </SubModule>
+    </SubModule>
+</Module>
