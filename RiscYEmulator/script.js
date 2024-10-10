@@ -29,13 +29,31 @@ function StartCPU(){
   }
 
   // Start the CPU execution with the specified interval
-  cpuIntervalID = setInterval(CPU, intervalTiming);
+  cpuIntervalID = setInterval(batchedCPU, intervalTiming);
 }
 function StopCPU(){
   if (cpuIntervalID) {
     clearInterval(cpuIntervalID);
     cpuIntervalID = null; // Reset the interval ID
   }
+}
+
+function batchedCPU(){
+  var batchedInput = document.getElementById('batchedInput');
+  var batched = parseInt(batchedInput.value);
+  for(let i=0;i<batched;i++){
+    CPU();
+  }
+  RenderALL();
+}
+
+function singleCPU(){
+  CPU();
+  RenderALL();
+}
+function RenderALL(){
+  renderFrame();
+  updateRegisterTable();
 }
 
 
@@ -63,8 +81,7 @@ function renderFrame() {
   const gridWidth = 8;  // Each character is 8 pixels wide
   const gridHeight = 16; // Each character is 16 pixels tall
 
-  let cursorX = 0; // X position where the next character will be drawn
-  let cursorY = 0; // Y position where the next line starts
+  let charsPerRow = width / gridWidth; // Number of characters per row
 
   for (let i = 0; i < charMemory.length; i++) {
     let asciiCode = charMemory[i];
@@ -77,22 +94,15 @@ function renderFrame() {
     }
     let textData = BigInt('0x' + textDataStr); // Convert to BigInt for bitwise operations
 
-    // Check if we need to move to the next line
-    if (cursorX + gridWidth > width) {
-      cursorX = 0;
-      cursorY += gridHeight;
-      // Check if we've run out of vertical space
-      if (cursorY + gridHeight > height) {
-        break; // Stop rendering if there's no more space
-      }
-    }
+    let cursorX = (i % charsPerRow) * gridWidth; // X position where the character starts
+    let cursorY = Math.floor(i / charsPerRow) * gridHeight; // Y position where the character starts
 
     // Render the character bitmap onto the canvas
-    for (let y = 0; y < height; y++) {
+    for (let y = 0; y < gridHeight; y++) {
       // Extract 8 bits (1 byte) for each row
       let rowBits = Number((textData >> BigInt((gridHeight - 1 - y) * gridWidth)) & BigInt(0xFF));
 
-      for (let x = 0; x < width; x++) {
+      for (let x = 0; x < gridWidth; x++) {
         let bit = (rowBits >> (gridWidth - 1 - x)) & 1; // Get the current bit
 
         let pixelX = cursorX + x;
@@ -115,16 +125,11 @@ function renderFrame() {
         }
       }
     }
-
-    cursorX += gridWidth; // Move the cursor to the right for the next character
   }
-
-  // Ensure the canvas size remains constant
-  canvas.width = width;
-  canvas.height = height;
 
   ctx.putImageData(imageData, 0, 0); // Render the imageData on the canvas
 }
+
 
 function loadPresetButtons() {
   var presetButtonsDiv = document.getElementById('presetButtons');
@@ -492,13 +497,13 @@ function CPU(){
             dataOut = write_data;
             break;
           }
-          console.log("TEST");
-          console.log("Writing to address: ",address);
-          console.log("Writing data: ",data.toString(16)," on ",address);
+          // console.log("TEST");
+          // console.log("Writing to address: ",address);
+          // console.log("Writing data: ",data.toString(16)," on ",address);
 
       if(address>=SCREEN_ADDRESS&&address<SCREEN_ADDRESS+64){
-        console.log("Writing to screen character: ",write_data.toString(16));
-        console.log("Writing to screen address: ",address);
+        // console.log("Writing to screen character: ",write_data.toString(16));
+        // console.log("Writing to screen address: ",address);
         WriteToScreen(address,write_data);
       }
       else{
@@ -589,14 +594,15 @@ function CPU(){
       console.log("Default");
 		break;
     }
-    updateRegisterTable();
+    // updateRegisterTable();
     //console.log(registerFile);
 }
 
 
 function WriteToScreen(address,data){
-  charMemory[getBits(address,6,0)]=getBits(data,6,0);
-  renderFrame();
+  // charMemory[getBits(address,7,1)]=getBits(data,15,0);
+  charMemory[getBits(address,7,1)]=getBits(data,6,0);
+  // renderFrame();
 }
 function showInstruction(prev,cur,next){
   // console.log("prev: ",prev,"cur: ",cur,"next: ",next);
@@ -683,7 +689,7 @@ function WriteRegister(addr,data){
 }
 function ReadMemory(address,signed){
   
-  var tempData = dataMemory[address>>>2];
+  var tempData = instructionMemory[address>>>2];
   if(!signed)
     tempData = tempData>>>0;
 
@@ -694,7 +700,7 @@ function WriteMemory(address,data,byte_select_vector){
 
 
   //console.log("byte_select_vector: ",byte_select_vector.toString(2));
-  tempData=dataMemory[address>>>2];
+  tempData=instructionMemory[address>>>2];
   //console.log("tempData: ",tempData.toString(16));
   if(getBits(byte_select_vector,3,3)==1){
     //console.log("writting bit 3");
@@ -720,8 +726,8 @@ function WriteMemory(address,data,byte_select_vector){
     //console.log("data: ",((data&0x000000FF)>>>0).toString(16));
     tempData = (((tempData&0xFFFFFF00))>>>0|(data&0x000000FF)>>>0)>>>0;
   }
-  dataMemory[address>>>2]=tempData;
-  for(let i=0;i<4&&i<dataMemory.length;i++){
+  instructionMemory[address>>>2]=tempData;
+  for(let i=0;i<4&&i<instructionMemory.length;i++){
     //console.log("Data memory[",i,"]= ",dataMemory[i].toString(16));
   }
 }

@@ -42,7 +42,7 @@
 
                 <!-- Button group under the canvas -->
                 <div class="my-4">
-                    <button type="button" class="btn btn-primary me-2" onclick="CPU()">Next Instruction</button>
+                    <button type="button" class="btn btn-primary me-2" onclick="batchedCPU()">Next Instruction</button>
                     <button type="button" class="btn btn-success" onclick="StartCPU()">Run</button>
                     <button type="button" class="btn btn-danger" onclick="StopCPU()">Stop</button>
                     <button type="button" class="btn btn-danger" onclick="ResetCPU()">Reset</button>
@@ -50,7 +50,11 @@
                 <!-- Add the interval timing input field -->
                 <div class="my-4">
                     <label for="intervalInput">Interval Timing (ms): </label>
-                    <input type="number" id="intervalInput" value="1" min="1" step="1" style="width: 80px;">
+                    <input type="number" id="intervalInput" value="4" min="4" step="1" style="width: 80px;">
+                </div>
+                <div class="my-4">
+                    <label for="batchedInput">Batched Instructions, stable at around 1Mhz: </label>
+                    <input type="number" id="batchedInput" value="1" min="1" step="1" style="width: 80px;">
                 </div>
                 <div class="my-4">
                     <label for="instructionsInput">Instructions (Hex, one per line):</label>
