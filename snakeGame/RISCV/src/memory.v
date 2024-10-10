@@ -11,24 +11,24 @@ module memory(input clk,
             input [3:0] byte_select_vector,
             output reg ready
 );
-localparam text_size=600;
-localparam data_size=700;
+//localparam text_size=1024;
+localparam data_size=1024;
 
-reg [31:0] instr_mem[text_size-1:0];
+//reg [31:0] instr_mem[text_size-1:0];
 reg [31:0] data_mem[data_size-1:0];
 integer i;
 initial begin
-     for(i=0; i<text_size; i=i+1)
-     begin
-         instr_mem[i] = 32'h13;
-     end
+//     for(i=0; i<text_size; i=i+1)
+//     begin
+//         instr_mem[i] = 32'h13;
+//     end
      for(i=0; i<data_size; i=i+1)
      begin
          data_mem[i] = 32'h0;
      end
     
-    $readmemh(`TEXT_HEX, instr_mem);
-    $readmemh(`DATA_HEX, data_mem);
+    $readmemh(`TEXT_HEX, data_mem);
+//    $readmemh(`DATA_HEX, data_mem);
 end
 
 localparam STATE_IDLE = 2'b00;
@@ -41,9 +41,9 @@ reg [`DATA_BITS-1:0] saved_data_addr = 0;
 always@(posedge clk)
 begin 
 
-    if(PC < text_size)
+    if(PC < data_size)
     begin
-        instr <= instr_mem[PC];
+        instr <= data_mem[PC];
     end
     ready <= 1;
     case(state)
