@@ -1,15 +1,15 @@
 [*]
 [*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
-[*] Thu Oct 10 18:04:51 2024
+[*] Thu Oct 10 18:12:53 2024
 [*]
 [dumpfile] "C:\Users\Panagiotis\Documents\GitHub\RiscY\RiscYTestbench\RISCV\src\ZSOC.vcd"
-[dumpfile_mtime] "Thu Oct 10 18:04:21 2024"
+[dumpfile_mtime] "Thu Oct 10 18:05:01 2024"
 [dumpfile_size] 5693584
 [savefile] "C:\Users\Panagiotis\Documents\GitHub\RiscY\RiscYTestbench\RISCV\src\gtkw.gtkw"
 [timestart] 0
 [size] 3440 1369
 [pos] -1 -1
-*-13.273869 31640 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-13.273869 38180 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] test.
 [treeopen] test.TOP.
 [treeopen] test.TOP.cpu_1.
@@ -29,7 +29,7 @@ test.TOP.mem.instr[31:0]
 test.TOP.mem.data_out[31:0]
 @1000200
 -Memory
-@800200
+@c00200
 -Instruction Fetch
 @200
 -Fetch
@@ -43,9 +43,9 @@ test.TOP.cpu_1.delayed_instr[31:0]
 @28
 [color] 1
 test.TOP.cpu_1.write_pc
-@1000200
+@1401200
 -Instruction Fetch
-@800200
+@c00200
 -Decode
 @200
 -Decode
@@ -63,7 +63,7 @@ test.TOP.cpu_1.bubble_ifid
 test.TOP.cpu_1.IFID_instrColdStart
 [color] 1
 test.TOP.cpu_1.write_ifid
-@1000200
+@1401200
 -Decode
 @c00200
 -Execute
@@ -182,15 +182,15 @@ test.TOP.cpu_1.MEMWB_funct3[2:0]
 test.TOP.cpu_1.write_memwb
 @1401200
 -WriteBack
-@800200
+@800202
 -Temp Registers
-@200
+@202
 -Temp registers
-@821
+@22
 test.TOP.cpu_1.cpu_regs.\data[5][31:0]
-@c00821
+@c00022
 test.TOP.cpu_1.cpu_regs.\data[6][31:0]
-@29
+@28
 (0)test.TOP.cpu_1.cpu_regs.\data[6][31:0]
 (1)test.TOP.cpu_1.cpu_regs.\data[6][31:0]
 (2)test.TOP.cpu_1.cpu_regs.\data[6][31:0]
@@ -223,15 +223,15 @@ test.TOP.cpu_1.cpu_regs.\data[6][31:0]
 (29)test.TOP.cpu_1.cpu_regs.\data[6][31:0]
 (30)test.TOP.cpu_1.cpu_regs.\data[6][31:0]
 (31)test.TOP.cpu_1.cpu_regs.\data[6][31:0]
-@1401a01
+@1401202
 -group_end
-@821
+@22
 test.TOP.cpu_1.cpu_regs.\data[7][31:0]
 test.TOP.cpu_1.cpu_regs.\data[28][31:0]
 test.TOP.cpu_1.cpu_regs.\data[29][31:0]
-@c00821
+@c00022
 test.TOP.cpu_1.cpu_regs.\data[30][31:0]
-@29
+@28
 (0)test.TOP.cpu_1.cpu_regs.\data[30][31:0]
 (1)test.TOP.cpu_1.cpu_regs.\data[30][31:0]
 (2)test.TOP.cpu_1.cpu_regs.\data[30][31:0]
@@ -264,11 +264,11 @@ test.TOP.cpu_1.cpu_regs.\data[30][31:0]
 (29)test.TOP.cpu_1.cpu_regs.\data[30][31:0]
 (30)test.TOP.cpu_1.cpu_regs.\data[30][31:0]
 (31)test.TOP.cpu_1.cpu_regs.\data[30][31:0]
-@1401a01
+@1401202
 -group_end
-@821
+@22
 test.TOP.cpu_1.cpu_regs.\data[31][31:0]
-@1000200
+@1000202
 -Temp Registers
 @22
 test.TOP.data_addr[31:0]
@@ -295,7 +295,7 @@ test.TOP.mem.\data_mem[6][31:0]
 @820
 test.TOP.text.\charMemory[0][7:0]
 test.TOP.text.\charMemory[1][7:0]
-@22
+@23
 test.TOP.mem.data_addr[17:0]
 @28
 test.TOP.mem.ready
