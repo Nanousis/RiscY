@@ -4,7 +4,7 @@ var instructions = "40000413_04040493_00000293_00040313_00128293_00530023_001303
 var instructionMemory;
 var instructionsHex;
 var dataMemory = new Array(dataSize).fill(0);
-var data = "deadbeaf_ffffffff_aaaaaaaa";
+var data = "aaaaaaaa_ffffffff_aaaaaaaa";
 var cpuIntervalID; // Global variable to store the interval ID
 
 
@@ -47,10 +47,6 @@ function batchedCPU(){
   RenderALL();
 }
 
-function singleCPU(){
-  CPU();
-  RenderALL();
-}
 function RenderALL(){
   renderFrame();
   updateRegisterTable();
@@ -501,7 +497,7 @@ function CPU(){
           // console.log("Writing to address: ",address);
           // console.log("Writing data: ",data.toString(16)," on ",address);
 
-      if(address>=SCREEN_ADDRESS&&address<SCREEN_ADDRESS+64){
+      if(address>=SCREEN_ADDRESS&&address<SCREEN_ADDRESS+SCREEN_SIZE){
         // console.log("Writing to screen character: ",write_data.toString(16));
         // console.log("Writing to screen address: ",address);
         WriteToScreen(address,write_data);

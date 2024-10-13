@@ -12,8 +12,6 @@ module test();
     wire D1,D2,D3,D4,Dp,A,B,C,D,E,F,G;
  top TOP(
         .clk(clk),
-        .io_sda(io_sda),
-        .io_scl(io_scl),
         .btnLeft(btn1),
         .btnRight(btn1),
         .btnUp(btn1),
@@ -25,7 +23,7 @@ module test();
 
     initial begin
         $display("Starting TESTBENCH");
-        #10 reset = 1;
+        #10 reset = 0;
         #10 btn1 =0;
         #100 
         $display("REG 1 is %d",test.TOP.cpu_1.cpu_regs.data[1]);
@@ -34,7 +32,7 @@ module test();
         $display("REG 4 is %d",test.TOP.cpu_1.cpu_regs.data[4]);
         $display("REG 5 is %d",test.TOP.cpu_1.cpu_regs.data[5]);
 
-        #1000 $finish;
+        #20000 $finish;
     end
     integer i;
     initial begin

@@ -5,14 +5,14 @@
 1. PnR Messages
 
   <Report Title>: PnR Report
-  <Design File>: C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\impl\gwsynthesis\RISCV.vg
-  <Physical Constraints File>: C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\tangnano9k.cst
-  <Timing Constraints File>: C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\Tang_nano_9K_LCD.sdc
+  <Design File>: C:\Users\Panagiotis\Documents\GitHub\RiscY\snakeGame\RISCV\impl\gwsynthesis\RISCV.vg
+  <Physical Constraints File>: C:\Users\Panagiotis\Documents\GitHub\RiscY\snakeGame\RISCV\src\tangnano9k.cst
+  <Timing Constraints File>: C:\Users\Panagiotis\Documents\GitHub\RiscY\snakeGame\RISCV\src\Tang_nano_9K_LCD.sdc
   <Tool Version>: V1.9.10.02
   <Part Number>: GW1NR-LV9QN88PC6/I5
   <Device>: GW1NR-9
   <Device Version>: C
-  <Created Time>:Thu Oct  3 00:27:24 2024
+  <Created Time>:Sat Oct 12 20:34:54 2024
 
 
 2. PnR Details
@@ -24,15 +24,15 @@
     Placement Phase 3: CPU time = 0h 0m 11s, Elapsed time = 0h 0m 11s
     Total Placement: CPU time = 0h 0m 14s, Elapsed time = 0h 0m 14s
  Running routing:
-    Routing Phase 0: CPU time = 0h 0m 0.002s, Elapsed time = 0h 0m 0.003s
+    Routing Phase 0: CPU time = 0h 0m 0.004s, Elapsed time = 0h 0m 0.003s
     Routing Phase 1: CPU time = 0h 0m 1s, Elapsed time = 0h 0m 1s
-    Routing Phase 2: CPU time = 0h 0m 11s, Elapsed time = 0h 0m 11s
+    Routing Phase 2: CPU time = 0h 0m 7s, Elapsed time = 0h 0m 7s
     Routing Phase 3: CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0s
-    Total Routing: CPU time = 0h 0m 12s, Elapsed time = 0h 0m 12s
+    Total Routing: CPU time = 0h 0m 9s, Elapsed time = 0h 0m 9s
  Generate output files:
-    CPU time = 0h 0m 0.629s, Elapsed time = 0h 0m 0.629s
+    CPU time = 0h 0m 0.62s, Elapsed time = 0h 0m 0.62s
 
- Total Time and Memory Usage: CPU time = 0h 0m 27s, Elapsed time = 0h 0m 27s, Peak memory usage = 381MB
+ Total Time and Memory Usage: CPU time = 0h 0m 23s, Elapsed time = 0h 0m 23s, Peak memory usage = 428MB
 
 
 3. Resource Usage Summary
@@ -40,25 +40,24 @@
   ----------------------------------------------------------
   Resources                   | Usage
   ----------------------------------------------------------
-  Logic                       | 4576/8640  53%
-    --LUT,ALU,ROM16           | 4576(4366 LUT, 210 ALU, 0 ROM16)
+  Logic                       | 4665/8640  54%
+    --LUT,ALU,ROM16           | 4665(4455 LUT, 210 ALU, 0 ROM16)
     --SSRAM(RAM16)            | 0
   Register                    | 1675/6693  26%
     --Logic Register as Latch | 0/6480  0%
     --Logic Register as FF    | 1670/6480  26%
     --I/O Register as Latch   | 0/213  0%
     --I/O Register as FF      | 5/213  3%
-  CLS                         | 3216/4320  75%
+  CLS                         | 3238/4320  75%
   I/O Port                    | 31
   I/O Buf                     | 30
     --Input Buf               | 3
     --Output Buf              | 27
     --Inout Buf               | 0
   IOLOGIC                     | 0%
-  BSRAM                       | 31%
-    --SDPB                    | 4
+  BSRAM                       | 39%
+    --SDPB                    | 8
     --DPX9B                   | 2
-    --pROM                    | 2
   DSP                         | 0%
   PLL                         | 1/2  50%
   DCS                         | 0/8  0%
@@ -104,7 +103,7 @@
   Signal         | Global Clock   | Location
   -------------------------------------------
   clk_d          | PRIMARY        |  TR TL BR BL
-  LCD_CLK_d      | PRIMARY        |  BR
+  LCD_CLK_d      | PRIMARY        |  TR BR
   reset          | LW             |  -
   memReady       | LW             |  -
   cpu_1/EXMEM_ALUOut_31_11| LW             |  -

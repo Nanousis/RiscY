@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module name="NES_Tang25k" Register="55" Alu="41" Lut="31" T_Register="786(55)" T_Alu="102(41)" T_Lut="2074(31)" T_MULT12X12="1(0)">
+    <SubModule name="clock480p"/>
+    <SubModule name="clk_div"/>
+    <SubModule name="u_hdmi" Register="574" Alu="20" Lut="1559" MULT12X12="1" T_Register="731(574)" T_Alu="61(20)" T_Lut="2043(1559)" T_MULT12X12="1(1)">
+        <SubModule name="hdmi" Register="57" Alu="9" Lut="51" T_Register="157(57)" T_Alu="41(9)" T_Lut="484(51)">
+            <SubModule name="true_hdmi_output.packet_picker" Register="13" Lut="23" T_Register="13(13)" T_Lut="23(23)"/>
+            <SubModule name="true_hdmi_output.packet_assembler" Register="45" Alu="4" Lut="139" T_Register="45(45)" T_Alu="4(4)" T_Lut="139(139)"/>
+            <SubModule name="tmds_gen[0].tmds_channel" Register="14" Alu="12" Lut="124" T_Register="14(14)" T_Alu="12(12)" T_Lut="124(124)"/>
+            <SubModule name="tmds_gen[1].tmds_channel" Register="14" Alu="4" Lut="37" T_Register="14(14)" T_Alu="4(4)" T_Lut="37(37)"/>
+            <SubModule name="tmds_gen[2].tmds_channel" Register="14" Alu="12" Lut="110" T_Register="14(14)" T_Alu="12(12)" T_Lut="110(110)"/>
+            <SubModule name="serializer"/>
+        </SubModule>
+    </SubModule>
+</Module>

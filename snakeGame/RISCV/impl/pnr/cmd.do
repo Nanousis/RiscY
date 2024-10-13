@@ -1,9 +1,9 @@
--d C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\impl\gwsynthesis\RISCV.vg
+-d C:\Users\Panagiotis\Documents\GitHub\RiscY\snakeGame\RISCV\impl\gwsynthesis\RISCV.vg
 -p GW1NR-9C-QFN88P-6
 -pn GW1NR-LV9QN88PC6/I5
--cst C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\tangnano9k.cst
--cfg C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\impl\pnr\device.cfg
--sdc C:\Users\Panagiotis\Downloads\iordanaScreen\RISCV\src\Tang_nano_9K_LCD.sdc
+-cst C:\Users\Panagiotis\Documents\GitHub\RiscY\snakeGame\RISCV\src\tangnano9k.cst
+-cfg C:\Users\Panagiotis\Documents\GitHub\RiscY\snakeGame\RISCV\impl\pnr\device.cfg
+-sdc C:\Users\Panagiotis\Documents\GitHub\RiscY\snakeGame\RISCV\src\Tang_nano_9K_LCD.sdc
 -bit
 -tr
 -ph
