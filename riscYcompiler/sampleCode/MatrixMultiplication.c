@@ -15,41 +15,28 @@ int multiply(int a, int b) {
     }
     return result;
 }
-#define M1 3
-#define N1 3
-#define M2 3
-#define N2 3
 
 int main() {
-    
-
-    int tableA [M1][N1] = {
+    int tableA [3][3] = {
         {1, 2, 3},
         {4, 5, 6},
         {7, 8, 9},
     };
-    int tableB [M2][N2] = {
+    int tableB [3][3] = {
         {1,2,3},
         {4,5,6},
         {7,8,9},
     };
-    int result [M1][N2] = {0};
+    int result[2][2] = {0};
 
-    for(int i = 0; i < M1; i++) {
-        for(int j = 0; j < N2; j++) {
-            for(int k = 0; k < N1; k++) {
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 2; j++) {
+            for (int k = 0; k < 3; k++) {
                 result[i][j] += multiply(tableA[i][k], tableB[k][j]);
             }
         }
     }
-    
-    printf("Result \n");
-    for(int i = 0; i < M1; i++) {
-        for(int j = 0; j < N2; j++) {
-            printf("%d ", result[i][j]);
-        }
-        printf("\n");
-    }
-    
-    while(1);   
+
+    printf(0, 15, "Result: %d %d %d %d %d %d %d %d %d", result[0][0], result[0][1], result[0][2], result[1][0], result[1][1], result[1][2], result[2][0], result[2][1], result[2][2]);
+    while(1);
 }

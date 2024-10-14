@@ -20,7 +20,9 @@ char getButtonRight();
 unsigned int printString(int location, char *string,char color);
 unsigned char printHex(int location, int value, char color);
 unsigned char printDec(int location, unsigned int num, char color);
-int printf(int location, char color,const char* str, ...);
+int printf(const char* str, ...);
+int printfSCR(int location, char color,const char* str, ...);
+void clearScreen();
 
 
 #endif

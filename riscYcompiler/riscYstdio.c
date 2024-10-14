@@ -1,12 +1,27 @@
-#define SCREEN_LOACTION 0x88000000
-#define SCREEN_SIZE 1216
-#define BUTTONS 0x89000000
-#define WaitTime 10000
-#define SCREEN_WIDTH 64
-#define SCREEN_HEIGHT 19
+// This file contains the implementation of the standard input/output functions
+// for the RiscY cpu.
+
+// included for the printf function
 #include <stdarg.h> 
 
-// Copies 'n' bytes from 'src' to 'dest'
+// Screen memory location
+#define SCREEN_LOACTION 0x88000000
+#define SCREEN_SIZE 1216
+// Button memory location
+#define BUTTONS 0x89000000
+
+// Small screen attributes
+// #define SCREEN_WIDTH 16
+// #define SCREEN_HEIGHT 4
+
+// large screen attributes
+#define SCREEN_WIDTH 64
+#define SCREEN_HEIGHT 19
+// General purpose wait time for frame rendering
+#define WaitTime 10000
+
+// *****************************************************************************
+// Copies 'n' bytes from 'src' to 'dest'. Used by the compiler sometimes.
 void *memcpy(void *dest, const void *src, int n) {
     // Cast src and dest to char pointers to iterate over each byte
     char *d = (char *)dest;
@@ -21,6 +36,8 @@ void *memcpy(void *dest, const void *src, int n) {
     return dest;
 }
 
+// *****************************************************************************
+// returns 1 if the button is pressed, 0 otherwise
 char getButtonDown(){
     char *buttons = (char *)BUTTONS;
     return buttons[1];
@@ -37,6 +54,10 @@ char getButtonRight(){
     char *buttons = (char *)BUTTONS;
     return buttons[3];
 }
+
+// *****************************************************************************
+// Puts a character at the specified location with the specified color.
+// The colors are as the Text Mode format in https://en.wikipedia.org/wiki/VGA_text_mode
 unsigned char putch(int location, char c, char color) {
     if(location>SCREEN_SIZE||location<0){
         return 0;
@@ -46,6 +67,8 @@ unsigned char putch(int location, char c, char color) {
     screen[location] = buffer;
     return 1;
 }
+
+// *****************************************************************************
 // Prints the string. If color is 0, it will print in rainbow colors
 // If this returns 0, there was an error
 unsigned int printString(int location, char *string, char color){
@@ -69,6 +92,9 @@ unsigned int printString(int location, char *string, char color){
     }
     return i;
 }
+
+// *****************************************************************************
+// Prints the hex value at the specified location. If color is 0, it will print in rainbow colors
 unsigned char printHex(int location, int value, char color) {
     char hexChars[] = "0123456789ABCDEF";
     char buffer[9] ="        "; // Enough to hold 8 hex digits + null terminator
@@ -78,8 +104,11 @@ unsigned char printHex(int location, int value, char color) {
         buffer[i] = hexChars[value & 0xF]; // Get the lowest 4 bits (a hex digit)
         value >>= 4; // Shift right by 4 bits to get the next hex digit
     }
-    return printString(location, buffer, color); // Print the hex string at the specified location
+    return printString(location, buffer, color);
 }
+
+// *****************************************************************************
+// Prints the decimal value at the specified location. If color is 0, it will print in rainbow colors
 unsigned char printDec(int location, unsigned int num, char color) {
     char digits[6]; // Max 5 digits + null terminator
     int index = 0;
@@ -121,7 +150,67 @@ unsigned char printDec(int location, unsigned int num, char color) {
     return printString(location, digits,color);
 }
 
-int printf(int location, char color,const char* str, ...) 
+// *********************** printf **********************************************
+// General purpose printf function. It supports %x for hex, %d for decimal, and %c for character
+// It also supports \n for newline
+// It returns the location of the next character to be printed
+
+// General purpose variable to track where to print on the screen
+short screenPos;
+
+int printf(const char* str, ...) 
+{ 
+    char color=15;
+    // initializing list pointer 
+    va_list ptr; 
+    va_start(ptr, str);  
+    int i=0;
+    for (i = 0; str[i] != '\0'; i++) {
+        // Gandles newline 
+        if(str[i]=='\n'){
+            screenPos = (screenPos& ~(SCREEN_WIDTH-1))+SCREEN_WIDTH;
+            continue;    
+        }
+        // Handles variables
+        // needs to be improved to handle attributes like %6d
+        if(str[i]=='%'){
+            if(str[i+1]=='x'){
+                i++;
+                int value=va_arg(ptr, int);
+                screenPos+=printHex(screenPos,value,color);
+            }
+            else if(str[i+1]=='d'){
+                i++;
+                unsigned int value=va_arg(ptr, unsigned int);
+                screenPos+=printDec(screenPos,value,color);
+            }
+            else if(str[i+1]=='c'){
+                i++;
+                char value=va_arg(ptr, int);
+                putch(screenPos,value,color);
+                screenPos++;
+            }
+            else{
+                putch(screenPos,str[i],color);
+                screenPos++;
+            }
+        }
+        else{
+            putch(screenPos,str[i],color);
+            screenPos++;
+        }
+    } 
+  
+    // ending traversal 
+    va_end(ptr); 
+    return screenPos; 
+}
+// *****************************************************************************
+
+// *****************************************************************************
+// Same as printf but you can set the color and the location on the screen
+// It returns the size of the string printed
+int printfSCR(int location, char color,const char* str, ...) 
 { 
     // initializing list pointer 
     va_list ptr; 
@@ -164,3 +253,12 @@ int printf(int location, char color,const char* str, ...)
     va_end(ptr); 
     return strPos; 
 } 
+
+// *****************************************************************************
+// Clears the screen and resets the screenPos
+void clearScreen(){
+    for(int i=0;i<SCREEN_HEIGHT*SCREEN_WIDTH;i++){
+        putch(i,' ',15);
+    }
+    screenPos=0;
+}
