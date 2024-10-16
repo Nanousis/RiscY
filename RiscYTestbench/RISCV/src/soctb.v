@@ -33,7 +33,7 @@ module test();
         $display("REG 4 is %d",test.TOP.cpu_1.cpu_regs.data[4]);
         $display("REG 5 is %d",test.TOP.cpu_1.cpu_regs.data[5]);
 
-        #10000 $finish;
+        #100000 $finish;
     end
     integer i;
     initial begin

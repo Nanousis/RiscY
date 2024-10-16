@@ -32,6 +32,7 @@
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscY\snakeGame\RISCV\src\signExtend.v" type="verilog"/>
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscY\snakeGame\RISCV\src\soc.v" type="verilog"/>
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscY\snakeGame\RISCV\src\textEngine.v" type="verilog"/>
+        <File path="C:\Users\Panagiotis\Documents\GitHub\RiscY\snakeGame\RISCV\src\cpuTimer.v" type="verilog"/>
     </FileList>
     <OptionList>
         <Option type="disable_insert_pad" value="0"/>

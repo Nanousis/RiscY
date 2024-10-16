@@ -112,6 +112,10 @@
   {
    "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/snakeGame/RISCV/src/textEngine.v",
    "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/snakeGame/RISCV/src/cpuTimer.v",
+   "Type" : "verilog"
   }
  ],
  "IncludePath" : [

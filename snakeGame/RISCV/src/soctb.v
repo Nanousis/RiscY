@@ -13,20 +13,8 @@ module test();
  top TOP(
         .clk(clk),
         .led(led),
-        .io_sda(io_sda),
-        .io_scl(io_scl),
-        .D1(D1), 
-        .D2(D2), 
-        .D3(D3), 
-        .D4(D4),
-        .Dp(Dp), 
-        .A(A), 
-        .B(B), 
-        .C(C), 
-        .D(D), 
-        .E(E), 
-        .F(F), 
-        .G(G),
+        // .io_sda(io_sda),
+        // .io_scl(io_scl),
         .btn1(btn1),
         .btn2(btn2)
     );
@@ -54,9 +42,9 @@ module test();
         for (i = 0; i < 32; i = i + 1) begin
             $dumpvars(1, test.TOP.cpu_1.cpu_regs.data[i]);
         end
-        for (i = 0; i < 64; i = i + 1) begin
-            $dumpvars(1, test.TOP.text.charMemory[i]);
-        end
+        // for (i = 0; i < 64; i = i + 1) begin
+        //     $dumpvars(1, test.TOP.text.charMemory[i]);
+        // end
         for (i = 0; i < 16; i = i + 1) begin
             $dumpvars(1, test.TOP.mem.data_mem[i]);
         end

@@ -68,6 +68,9 @@ module top
             .wen(wen),
             .btn_out(btn_out),
             .memory_out(memory_out),
+            .counter27M(counter27M),
+            .counter1M(counter1M),
+            
             .mem_ren(mem_ren),
             .mem_wen(mem_wen),
             .screen_ren(screen_ren),
@@ -105,9 +108,6 @@ module top
     //**********************************************************************************************//
     //                                         VGA SCREEN                                           //
     //**********************************************************************************************//
-    
-
-
     Gowin_rPLL slower_clock(
         .clkout(CLK_PIX), //13.5Mhz
         .clkin(clk)       //27Mhz
@@ -136,12 +136,26 @@ module top
 		.RGB_R (LCD_R)  
 	);
 
-    //**********************************************************************************************//
-    //                                                                                              //
-    //**********************************************************************************************//
+//    **********************************************************************************************//
+                                                                                                 
+//    **********************************************************************************************//
 
 	assign		LCD_CLK		=	CLK_PIX;
     
+    wire [31:0] counter1M;
+    cpuTimer #(.DIVISION(27)) counter1mhz
+    (
+        .clk(cpu_clk),
+        .reset(reset),
+        .counter(counter1M)
+    );
+    wire [31:0] counter27M;
+    cpuTimer #(.DIVISION(1)) counter27mhz
+    (
+        .clk(cpu_clk),
+        .reset(reset),
+        .counter(counter27M)
+    );
     
 //    textEngine text(
 //                    .clk(clk),
@@ -196,8 +210,8 @@ module top
             STATE_INIT: begin
                 reset <= 0;
                 // `ifndef SYNTHESIS
-                    state <= STATE_DEBOUNCE;
-//                    state <= STATE_START;
+                    // state <= STATE_DEBOUNCE;
+                   state <= STATE_START;
                 // `else
 //                if(btn1==0)
 //                begin

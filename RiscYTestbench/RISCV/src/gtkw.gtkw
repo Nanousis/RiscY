@@ -1,15 +1,15 @@
 [*]
 [*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
-[*] Thu Oct 10 18:12:53 2024
+[*] Mon Oct 14 21:10:22 2024
 [*]
 [dumpfile] "C:\Users\Panagiotis\Documents\GitHub\RiscY\RiscYTestbench\RISCV\src\ZSOC.vcd"
-[dumpfile_mtime] "Thu Oct 10 18:05:01 2024"
-[dumpfile_size] 5693584
+[dumpfile_mtime] "Mon Oct 14 21:07:16 2024"
+[dumpfile_size] 43089865
 [savefile] "C:\Users\Panagiotis\Documents\GitHub\RiscY\RiscYTestbench\RISCV\src\gtkw.gtkw"
-[timestart] 0
+[timestart] 8184300
 [size] 3440 1369
 [pos] -1 -1
-*-13.273869 38180 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-16.273869 22722100 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] test.
 [treeopen] test.TOP.
 [treeopen] test.TOP.cpu_1.
@@ -182,9 +182,9 @@ test.TOP.cpu_1.MEMWB_funct3[2:0]
 test.TOP.cpu_1.write_memwb
 @1401200
 -WriteBack
-@800202
+@800200
 -Temp Registers
-@202
+@200
 -Temp registers
 @22
 test.TOP.cpu_1.cpu_regs.\data[5][31:0]
@@ -223,7 +223,7 @@ test.TOP.cpu_1.cpu_regs.\data[6][31:0]
 (29)test.TOP.cpu_1.cpu_regs.\data[6][31:0]
 (30)test.TOP.cpu_1.cpu_regs.\data[6][31:0]
 (31)test.TOP.cpu_1.cpu_regs.\data[6][31:0]
-@1401202
+@1401200
 -group_end
 @22
 test.TOP.cpu_1.cpu_regs.\data[7][31:0]
@@ -264,11 +264,11 @@ test.TOP.cpu_1.cpu_regs.\data[30][31:0]
 (29)test.TOP.cpu_1.cpu_regs.\data[30][31:0]
 (30)test.TOP.cpu_1.cpu_regs.\data[30][31:0]
 (31)test.TOP.cpu_1.cpu_regs.\data[30][31:0]
-@1401202
+@1401200
 -group_end
 @22
 test.TOP.cpu_1.cpu_regs.\data[31][31:0]
-@1000202
+@1000200
 -Temp Registers
 @22
 test.TOP.data_addr[31:0]
@@ -292,14 +292,65 @@ test.TOP.mem.\data_mem[6][31:0]
 -test.TOP.charMem
 @1401200
 -group_end
-@820
-test.TOP.text.\charMemory[0][7:0]
-test.TOP.text.\charMemory[1][7:0]
-@23
+@22
 test.TOP.mem.data_addr[17:0]
 @28
 test.TOP.mem.ready
 @22
 test.TOP.mem.cnt[4:0]
+@821
+test.TOP.text.\charMemory[0][7:0]
+test.TOP.text.\charMemory[1][7:0]
+test.TOP.text.\charMemory[2][7:0]
+test.TOP.text.\charMemory[3][7:0]
+test.TOP.text.\charMemory[4][7:0]
+test.TOP.text.\charMemory[5][7:0]
+test.TOP.text.\charMemory[6][7:0]
+test.TOP.text.\charMemory[7][7:0]
+test.TOP.text.\charMemory[8][7:0]
+test.TOP.text.\charMemory[9][7:0]
+test.TOP.text.\charMemory[10][7:0]
+test.TOP.text.\charMemory[11][7:0]
+test.TOP.text.\charMemory[12][7:0]
+test.TOP.text.\charMemory[13][7:0]
+test.TOP.text.\charMemory[14][7:0]
+test.TOP.text.\charMemory[15][7:0]
+test.TOP.text.\charMemory[16][7:0]
+test.TOP.text.\charMemory[17][7:0]
+test.TOP.text.\charMemory[18][7:0]
+test.TOP.text.\charMemory[19][7:0]
+test.TOP.text.\charMemory[20][7:0]
+test.TOP.text.\charMemory[21][7:0]
+test.TOP.text.\charMemory[22][7:0]
+test.TOP.text.\charMemory[23][7:0]
+test.TOP.text.\charMemory[24][7:0]
+test.TOP.text.\charMemory[25][7:0]
+test.TOP.text.\charMemory[26][7:0]
+test.TOP.text.\charMemory[27][7:0]
+test.TOP.text.\charMemory[28][7:0]
+test.TOP.text.\charMemory[29][7:0]
+test.TOP.text.\charMemory[30][7:0]
+test.TOP.text.\charMemory[31][7:0]
+test.TOP.text.\charMemory[32][7:0]
+test.TOP.text.\charMemory[33][7:0]
+test.TOP.text.\charMemory[34][7:0]
+test.TOP.text.\charMemory[35][7:0]
+test.TOP.text.\charMemory[36][7:0]
+test.TOP.text.\charMemory[37][7:0]
+test.TOP.text.\charMemory[38][7:0]
+test.TOP.text.\charMemory[39][7:0]
+test.TOP.text.\charMemory[40][7:0]
+test.TOP.text.\charMemory[41][7:0]
+test.TOP.text.\charMemory[42][7:0]
+test.TOP.text.\charMemory[43][7:0]
+test.TOP.text.\charMemory[44][7:0]
+test.TOP.text.\charMemory[45][7:0]
+test.TOP.text.\charMemory[46][7:0]
+test.TOP.text.\charMemory[47][7:0]
+test.TOP.text.\charMemory[48][7:0]
+test.TOP.text.\charMemory[49][7:0]
+test.TOP.text.\charMemory[50][7:0]
+test.TOP.text.\charMemory[51][7:0]
+test.TOP.text.\charMemory[52][7:0]
 [pattern_trace] 1
 [pattern_trace] 0

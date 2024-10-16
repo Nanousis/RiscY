@@ -7,6 +7,8 @@ module bus(input clk,
             input wen,
             input btn_out,
             input [31:0]memory_out,
+            input [31:0] counter27M,
+            input [31:0] counter1M,
             output reg mem_ren,
             output reg mem_wen,
             output reg screen_ren,
@@ -36,6 +38,24 @@ begin
             screen_wen <=0;
             btn_ren <=ren;
             data_out <=(btn_out==1'b1)?32'b0:32'h1010101;
+        end
+    else if(data_addr == `COUNTER1M_ADDRESS)
+        begin
+            mem_ren <=0;
+            mem_wen <=0;
+            screen_ren <=0;
+            screen_wen <=0;
+            btn_ren <=0;
+            data_out <=counter1M;
+        end
+    else if(data_addr == `COUNTER27M_ADDRESS)
+        begin
+            mem_ren <=0;
+            mem_wen <=0;
+            screen_ren <=0;
+            screen_wen <=0;
+            btn_ren <=0;
+            data_out <=counter27M;
         end
     else
         begin

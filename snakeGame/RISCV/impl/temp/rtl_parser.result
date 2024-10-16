@@ -175,7 +175,7 @@
    },
    {
     "InstFile" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/snakeGame/RISCV/src/soc.v",
-    "InstLine" : 79,
+    "InstLine" : 82,
     "InstName" : "mem",
     "ModuleFile" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/snakeGame/RISCV/src/memory.v",
     "ModuleLine" : 3,
@@ -183,7 +183,7 @@
    },
    {
     "InstFile" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/snakeGame/RISCV/src/soc.v",
-    "InstLine" : 93,
+    "InstLine" : 96,
     "InstName" : "bm",
     "ModuleFile" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/snakeGame/RISCV/src/buttonModule.v",
     "ModuleLine" : 1,
@@ -222,6 +222,22 @@
       "ModuleName" : "Gowin_DPB"
      }
     ]
+   },
+   {
+    "InstFile" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/snakeGame/RISCV/src/soc.v",
+    "InstLine" : 146,
+    "InstName" : "counter1mhz",
+    "ModuleFile" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/snakeGame/RISCV/src/cpuTimer.v",
+    "ModuleLine" : 1,
+    "ModuleName" : "cpuTimer"
+   },
+   {
+    "InstFile" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/snakeGame/RISCV/src/soc.v",
+    "InstLine" : 153,
+    "InstName" : "counter27mhz",
+    "ModuleFile" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/snakeGame/RISCV/src/cpuTimer.v",
+    "ModuleLine" : 1,
+    "ModuleName" : "cpuTimer"
    }
   ]
  },
