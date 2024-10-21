@@ -1,0 +1,312 @@
+[
+ {
+  "InstFile" : "/home/iordana/Documents/RISCY/src/GPIO/seven_segment.v",
+  "InstLine" : 57,
+  "InstName" : "SSD",
+  "ModuleFile" : "/home/iordana/Documents/RISCY/src/GPIO/seven_segment.v",
+  "ModuleLine" : 57,
+  "ModuleName" : "SSD",
+  "SubInsts" : [
+   {
+    "InstFile" : "/home/iordana/Documents/RISCY/src/GPIO/seven_segment.v",
+    "InstLine" : 76,
+    "InstName" : "LEDdecoder_inst",
+    "ModuleFile" : "/home/iordana/Documents/RISCY/src/GPIO/seven_segment.v",
+    "ModuleLine" : 3,
+    "ModuleName" : "LEDdecoder"
+   }
+  ]
+ },
+ {
+  "InstFile" : "/home/iordana/Documents/RISCY/src/screenI2C/screen.v",
+  "InstLine" : 2,
+  "InstName" : "screen",
+  "ModuleFile" : "/home/iordana/Documents/RISCY/src/screenI2C/screen.v",
+  "ModuleLine" : 2,
+  "ModuleName" : "screen",
+  "SubInsts" : [
+   {
+    "InstFile" : "/home/iordana/Documents/RISCY/src/screenI2C/screen.v",
+    "InstLine" : 43,
+    "InstName" : "i2c_inst",
+    "ModuleFile" : "/home/iordana/Documents/RISCY/src/screenI2C/i2c.v",
+    "ModuleLine" : 2,
+    "ModuleName" : "i2c"
+   },
+   {
+    "InstFile" : "/home/iordana/Documents/RISCY/src/screenI2C/screen.v",
+    "InstLine" : 64,
+    "InstName" : "i2c_api_inst",
+    "ModuleFile" : "/home/iordana/Documents/RISCY/src/screenI2C/i2capi.v",
+    "ModuleLine" : 1,
+    "ModuleName" : "i2c_api"
+   }
+  ]
+ },
+ {
+  "InstFile" : "/home/iordana/Documents/RISCY/src/screenI2C/textEngine.v",
+  "InstLine" : 1,
+  "InstName" : "textEngine",
+  "ModuleFile" : "/home/iordana/Documents/RISCY/src/screenI2C/textEngine.v",
+  "ModuleLine" : 1,
+  "ModuleName" : "textEngine"
+ },
+ {
+  "InstFile" : "/home/iordana/Documents/RISCY/src/screenVGA/gowin_osc/gowin_osc.v",
+  "InstLine" : 8,
+  "InstName" : "Gowin_OSC",
+  "ModuleFile" : "/home/iordana/Documents/RISCY/src/screenVGA/gowin_osc/gowin_osc.v",
+  "ModuleLine" : 8,
+  "ModuleName" : "Gowin_OSC"
+ },
+ {
+  "InstFile" : "/home/iordana/Documents/RISCY/src/screenVGA/gowin_sp/gowin_sp.v",
+  "InstLine" : 10,
+  "InstName" : "Gowin_SP",
+  "ModuleFile" : "/home/iordana/Documents/RISCY/src/screenVGA/gowin_sp/gowin_sp.v",
+  "ModuleLine" : 10,
+  "ModuleName" : "Gowin_SP"
+ },
+ {
+  "InstFile" : "/home/iordana/Documents/RISCY/src/soc.v",
+  "InstLine" : 3,
+  "InstName" : "top",
+  "ModuleFile" : "/home/iordana/Documents/RISCY/src/soc.v",
+  "ModuleLine" : 3,
+  "ModuleName" : "top",
+  "SubInsts" : [
+   {
+    "InstFile" : "/home/iordana/Documents/RISCY/src/soc.v",
+    "InstLine" : 52,
+    "InstName" : "cpu_1",
+    "ModuleFile" : "/home/iordana/Documents/RISCY/src/CPU/cpu.v",
+    "ModuleLine" : 9,
+    "ModuleName" : "cpu",
+    "SubInsts" : [
+     {
+      "InstFile" : "/home/iordana/Documents/RISCY/src/CPU/cpu.v",
+      "InstLine" : 188,
+      "InstName" : "signExtendUnit",
+      "ModuleFile" : "/home/iordana/Documents/RISCY/src/CPU/signExtend.v",
+      "ModuleLine" : 4,
+      "ModuleName" : "signExtend"
+     },
+     {
+      "InstFile" : "/home/iordana/Documents/RISCY/src/CPU/cpu.v",
+      "InstLine" : 198,
+      "InstName" : "cpu_regs",
+      "ModuleFile" : "/home/iordana/Documents/RISCY/src/CPU/RegFile.v",
+      "ModuleLine" : 7,
+      "ModuleName" : "RegFile"
+     },
+     {
+      "InstFile" : "/home/iordana/Documents/RISCY/src/CPU/cpu.v",
+      "InstLine" : 211,
+      "InstName" : "SignExtendSelector",
+      "ModuleFile" : "/home/iordana/Documents/RISCY/src/CPU/SignExtendSelector.v",
+      "ModuleLine" : 4,
+      "ModuleName" : "SignExtendSelector"
+     },
+     {
+      "InstFile" : "/home/iordana/Documents/RISCY/src/CPU/cpu.v",
+      "InstLine" : 297,
+      "InstName" : "control_main",
+      "ModuleFile" : "/home/iordana/Documents/RISCY/src/CPU/control_main.v",
+      "ModuleLine" : 5,
+      "ModuleName" : "control_main"
+     },
+     {
+      "InstFile" : "/home/iordana/Documents/RISCY/src/CPU/cpu.v",
+      "InstLine" : 313,
+      "InstName" : "control_stall_id",
+      "ModuleFile" : "/home/iordana/Documents/RISCY/src/CPU/control_stall_id.v",
+      "ModuleLine" : 6,
+      "ModuleName" : "control_stall_id"
+     },
+     {
+      "InstFile" : "/home/iordana/Documents/RISCY/src/CPU/cpu.v",
+      "InstLine" : 352,
+      "InstName" : "cpu_alu",
+      "ModuleFile" : "/home/iordana/Documents/RISCY/src/CPU/ALUCPU.v",
+      "ModuleLine" : 4,
+      "ModuleName" : "ALUCPU"
+     },
+     {
+      "InstFile" : "/home/iordana/Documents/RISCY/src/CPU/cpu.v",
+      "InstLine" : 412,
+      "InstName" : "control_alu",
+      "ModuleFile" : "/home/iordana/Documents/RISCY/src/CPU/control_alu.v",
+      "ModuleLine" : 5,
+      "ModuleName" : "control_alu"
+     },
+     {
+      "InstFile" : "/home/iordana/Documents/RISCY/src/CPU/cpu.v",
+      "InstLine" : 420,
+      "InstName" : "control_bypass_ex",
+      "ModuleFile" : "/home/iordana/Documents/RISCY/src/CPU/control_bypass_ex.v",
+      "ModuleLine" : 5,
+      "ModuleName" : "control_bypass_ex"
+     },
+     {
+      "InstFile" : "/home/iordana/Documents/RISCY/src/CPU/cpu.v",
+      "InstLine" : 433,
+      "InstName" : "mem_write_selector",
+      "ModuleFile" : "/home/iordana/Documents/RISCY/src/CPU/mem_write_selector.v",
+      "ModuleLine" : 4,
+      "ModuleName" : "mem_write_selector"
+     },
+     {
+      "InstFile" : "/home/iordana/Documents/RISCY/src/CPU/cpu.v",
+      "InstLine" : 475,
+      "InstName" : "control_branch",
+      "ModuleFile" : "/home/iordana/Documents/RISCY/src/CPU/control_branch.v",
+      "ModuleLine" : 4,
+      "ModuleName" : "control_branch"
+     },
+     {
+      "InstFile" : "/home/iordana/Documents/RISCY/src/CPU/cpu.v",
+      "InstLine" : 486,
+      "InstName" : "mem_read_selector",
+      "ModuleFile" : "/home/iordana/Documents/RISCY/src/CPU/mem_read_selector.v",
+      "ModuleLine" : 4,
+      "ModuleName" : "mem_read_selector"
+     }
+    ]
+   },
+   {
+    "InstFile" : "/home/iordana/Documents/RISCY/src/soc.v",
+    "InstLine" : 85,
+    "InstName" : "bu",
+    "ModuleFile" : "/home/iordana/Documents/RISCY/src/Buses/bus.v",
+    "ModuleLine" : 3,
+    "ModuleName" : "bus"
+   },
+   {
+    "InstFile" : "/home/iordana/Documents/RISCY/src/soc.v",
+    "InstLine" : 114,
+    "InstName" : "mem",
+    "ModuleFile" : "/home/iordana/Documents/RISCY/src/Memories/memory.v",
+    "ModuleLine" : 3,
+    "ModuleName" : "memory"
+   },
+   {
+    "InstFile" : "/home/iordana/Documents/RISCY/src/soc.v",
+    "InstLine" : 128,
+    "InstName" : "bm",
+    "ModuleFile" : "/home/iordana/Documents/RISCY/src/GPIO/buttonModule.v",
+    "ModuleLine" : 1,
+    "ModuleName" : "buttonModule"
+   },
+   {
+    "InstFile" : "/home/iordana/Documents/RISCY/src/soc.v",
+    "InstLine" : 139,
+    "InstName" : "flashController",
+    "ModuleFile" : "/home/iordana/Documents/RISCY/src/Memories/flashController.v",
+    "ModuleLine" : 1,
+    "ModuleName" : "flashController",
+    "SubInsts" : [
+     {
+      "InstFile" : "/home/iordana/Documents/RISCY/src/Memories/flashController.v",
+      "InstLine" : 123,
+      "InstName" : "navigator",
+      "ModuleFile" : "/home/iordana/Documents/RISCY/src/Memories/flash.v",
+      "ModuleLine" : 2,
+      "ModuleName" : "flashNavigator"
+     }
+    ]
+   },
+   {
+    "InstFile" : "/home/iordana/Documents/RISCY/src/soc.v",
+    "InstLine" : 161,
+    "InstName" : "programMemory_inst",
+    "ModuleFile" : "/home/iordana/Documents/RISCY/src/Memories/programMemory.v",
+    "ModuleLine" : 1,
+    "ModuleName" : "programMemory",
+    "SubInsts" : [
+     {
+      "InstFile" : "/home/iordana/Documents/RISCY/src/Memories/programMemory.v",
+      "InstLine" : 49,
+      "InstName" : "BRAM_0",
+      "ModuleFile" : "/home/iordana/Documents/RISCY/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+      "ModuleLine" : 10,
+      "ModuleName" : "Gowin_DPB_program"
+     },
+     {
+      "InstFile" : "/home/iordana/Documents/RISCY/src/Memories/programMemory.v",
+      "InstLine" : 70,
+      "InstName" : "BRAM_1",
+      "ModuleFile" : "/home/iordana/Documents/RISCY/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+      "ModuleLine" : 10,
+      "ModuleName" : "Gowin_DPB_program"
+     },
+     {
+      "InstFile" : "/home/iordana/Documents/RISCY/src/Memories/programMemory.v",
+      "InstLine" : 91,
+      "InstName" : "BRAM_2",
+      "ModuleFile" : "/home/iordana/Documents/RISCY/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+      "ModuleLine" : 10,
+      "ModuleName" : "Gowin_DPB_program"
+     },
+     {
+      "InstFile" : "/home/iordana/Documents/RISCY/src/Memories/programMemory.v",
+      "InstLine" : 112,
+      "InstName" : "BRAM_3",
+      "ModuleFile" : "/home/iordana/Documents/RISCY/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+      "ModuleLine" : 10,
+      "ModuleName" : "Gowin_DPB_program"
+     }
+    ]
+   },
+   {
+    "InstFile" : "/home/iordana/Documents/RISCY/src/soc.v",
+    "InstLine" : 178,
+    "InstName" : "slower_clock",
+    "ModuleFile" : "/home/iordana/Documents/RISCY/src/screenVGA/gowin_rpll/gowin_rpll.v",
+    "ModuleLine" : 10,
+    "ModuleName" : "Gowin_rPLL"
+   },
+   {
+    "InstFile" : "/home/iordana/Documents/RISCY/src/soc.v",
+    "InstLine" : 186,
+    "InstName" : "D1",
+    "ModuleFile" : "/home/iordana/Documents/RISCY/src/screenVGA/VGAMod.v",
+    "ModuleLine" : 1,
+    "ModuleName" : "VGAMod",
+    "SubInsts" : [
+     {
+      "InstFile" : "/home/iordana/Documents/RISCY/src/screenVGA/VGAMod.v",
+      "InstLine" : 85,
+      "InstName" : "text_Buffer",
+      "ModuleFile" : "/home/iordana/Documents/RISCY/src/screenVGA/gowin_dpb/gowin_dpb.v",
+      "ModuleLine" : 10,
+      "ModuleName" : "Gowin_DPB"
+     },
+     {
+      "InstFile" : "/home/iordana/Documents/RISCY/src/screenVGA/VGAMod.v",
+      "InstLine" : 107,
+      "InstName" : "attributes_Buffer",
+      "ModuleFile" : "/home/iordana/Documents/RISCY/src/screenVGA/gowin_dpb/gowin_dpb.v",
+      "ModuleLine" : 10,
+      "ModuleName" : "Gowin_DPB"
+     }
+    ]
+   },
+   {
+    "InstFile" : "/home/iordana/Documents/RISCY/src/soc.v",
+    "InstLine" : 231,
+    "InstName" : "counter1mhz",
+    "ModuleFile" : "/home/iordana/Documents/RISCY/src/GPIO/cpuTimer.v",
+    "ModuleLine" : 1,
+    "ModuleName" : "cpuTimer"
+   },
+   {
+    "InstFile" : "/home/iordana/Documents/RISCY/src/soc.v",
+    "InstLine" : 238,
+    "InstName" : "counter27mhz",
+    "ModuleFile" : "/home/iordana/Documents/RISCY/src/GPIO/cpuTimer.v",
+    "ModuleLine" : 1,
+    "ModuleName" : "cpuTimer"
+   }
+  ]
+ }
+]

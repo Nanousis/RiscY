@@ -1,0 +1,323 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Sat Oct 19 17:18:00 2024
+[*]
+[dumpfile] "E:\FileManager\files\riscyProjects\RISCV\src\ZSOC.vcd"
+[dumpfile_mtime] "Sat Oct 19 17:17:42 2024"
+[dumpfile_size] 6273285
+[savefile] "E:\FileManager\files\riscyProjects\RISCV\src\gtkw.gtkw"
+[timestart] 0
+[size] 2564 1245
+[pos] -1 -1
+*-13.926747 28460 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] test.
+[treeopen] test.TOP.
+[treeopen] test.TOP.cpu_1.
+[sst_width] 197
+[signals_width] 364
+[sst_expanded] 1
+[sst_vpaned_height] 603
+@28
+test.TOP.cpu_1.reset
+test.TOP.cpu_1.clock
+@c00200
+-Memory
+@22
+test.TOP.mem.PC[17:0]
+test.TOP.mem.instr[31:0]
+test.TOP.mem.data_out[31:0]
+@1401200
+-Memory
+@c00200
+-Instruction Fetch
+@200
+-Fetch
+@22
+[color] 7
+test.TOP.PC[31:0]
+[color] 7
+test.TOP.instr[31:0]
+[color] 7
+test.TOP.cpu_1.delayed_instr[31:0]
+@28
+[color] 1
+test.TOP.cpu_1.write_pc
+@1401200
+-Instruction Fetch
+@c00200
+-Decode
+@200
+-Decode
+@22
+[color] 6
+test.TOP.cpu_1.IFID_instr[31:0]
+[color] 6
+test.TOP.cpu_1.IFID_PC[31:0]
+[color] 6
+test.TOP.cpu_1.IFID_instr[31:0]
+@28
+[color] 6
+test.TOP.cpu_1.bubble_ifid
+[color] 2
+test.TOP.cpu_1.IFID_instrColdStart
+[color] 1
+test.TOP.cpu_1.write_ifid
+@1401200
+-Decode
+@c00200
+-Execute
+@28
+[color] 5
+test.TOP.cpu_1.IDEX_ALUSrc
+[color] 5
+test.TOP.cpu_1.IDEX_ALUcntrl[2:0]
+[color] 5
+test.TOP.cpu_1.IDEX_Branch
+[color] 5
+test.TOP.cpu_1.IDEX_Jump
+[color] 5
+test.TOP.cpu_1.IDEX_JumpJALR
+[color] 5
+test.TOP.cpu_1.IDEX_MemRead
+[color] 5
+test.TOP.cpu_1.IDEX_MemToReg
+[color] 5
+test.TOP.cpu_1.IDEX_MemWrite
+@22
+[color] 5
+test.TOP.cpu_1.IDEX_PC[31:0]
+@28
+[color] 5
+test.TOP.cpu_1.IDEX_RegDst
+[color] 5
+test.TOP.cpu_1.IDEX_RegWrite
+[color] 5
+test.TOP.cpu_1.IDEX_funct3[2:0]
+@22
+[color] 5
+test.TOP.cpu_1.IDEX_funct7[6:0]
+@28
+[color] 5
+test.TOP.cpu_1.IDEX_inA_is_PC
+@22
+[color] 5
+test.TOP.cpu_1.IDEX_instr_rd[4:0]
+[color] 5
+test.TOP.cpu_1.IDEX_instr_rs1[4:0]
+[color] 5
+test.TOP.cpu_1.IDEX_instr_rs2[4:0]
+[color] 5
+test.TOP.cpu_1.IDEX_rdA[31:0]
+[color] 5
+test.TOP.cpu_1.IDEX_rdB[31:0]
+[color] 5
+test.TOP.cpu_1.IDEX_signExtend[31:0]
+@28
+[color] 5
+test.TOP.cpu_1.bubble_idex
+[color] 1
+test.TOP.cpu_1.write_idex
+@1401200
+-Execute
+@c00200
+-Memory
+@22
+[color] 3
+test.TOP.cpu_1.EXMEM_ALUOut[31:0]
+@28
+[color] 3
+test.TOP.cpu_1.EXMEM_Branch
+@22
+[color] 3
+test.TOP.cpu_1.EXMEM_BranchALUOut[31:0]
+@28
+[color] 3
+test.TOP.cpu_1.EXMEM_JumpJALR
+[color] 3
+test.TOP.cpu_1.EXMEM_MemRead
+[color] 3
+test.TOP.cpu_1.EXMEM_MemToReg
+[color] 3
+test.TOP.cpu_1.EXMEM_MemWrite
+@22
+[color] 3
+test.TOP.cpu_1.EXMEM_MemWriteData[31:0]
+@28
+[color] 3
+test.TOP.cpu_1.EXMEM_RegWrite
+@22
+[color] 3
+test.TOP.cpu_1.EXMEM_RegWriteAddr[4:0]
+@28
+[color] 3
+test.TOP.cpu_1.EXMEM_Zero
+[color] 3
+test.TOP.cpu_1.EXMEM_funct3[2:0]
+[color] 3
+test.TOP.cpu_1.bubble_exmem
+[color] 1
+test.TOP.cpu_1.write_exmem
+@1401200
+-Memory
+@c00200
+-WriteBack
+@22
+[color] 2
+test.TOP.cpu_1.MEMWB_ALUOut[31:0]
+[color] 2
+test.TOP.cpu_1.MEMWB_DMemOut[31:0]
+@28
+[color] 2
+test.TOP.cpu_1.MEMWB_MemToReg
+[color] 2
+test.TOP.cpu_1.MEMWB_RegWrite
+@22
+[color] 2
+test.TOP.cpu_1.MEMWB_RegWriteAddr[4:0]
+@28
+[color] 2
+test.TOP.cpu_1.MEMWB_funct3[2:0]
+[color] 2
+test.TOP.cpu_1.write_memwb
+@1401200
+-WriteBack
+@c00200
+-Temp Registers
+@200
+-Temp registers
+@22
+test.TOP.cpu_1.cpu_regs.\data[5][31:0]
+@c00022
+test.TOP.cpu_1.cpu_regs.\data[6][31:0]
+@28
+(0)test.TOP.cpu_1.cpu_regs.\data[6][31:0]
+(1)test.TOP.cpu_1.cpu_regs.\data[6][31:0]
+(2)test.TOP.cpu_1.cpu_regs.\data[6][31:0]
+(3)test.TOP.cpu_1.cpu_regs.\data[6][31:0]
+(4)test.TOP.cpu_1.cpu_regs.\data[6][31:0]
+(5)test.TOP.cpu_1.cpu_regs.\data[6][31:0]
+(6)test.TOP.cpu_1.cpu_regs.\data[6][31:0]
+(7)test.TOP.cpu_1.cpu_regs.\data[6][31:0]
+(8)test.TOP.cpu_1.cpu_regs.\data[6][31:0]
+(9)test.TOP.cpu_1.cpu_regs.\data[6][31:0]
+(10)test.TOP.cpu_1.cpu_regs.\data[6][31:0]
+(11)test.TOP.cpu_1.cpu_regs.\data[6][31:0]
+(12)test.TOP.cpu_1.cpu_regs.\data[6][31:0]
+(13)test.TOP.cpu_1.cpu_regs.\data[6][31:0]
+(14)test.TOP.cpu_1.cpu_regs.\data[6][31:0]
+(15)test.TOP.cpu_1.cpu_regs.\data[6][31:0]
+(16)test.TOP.cpu_1.cpu_regs.\data[6][31:0]
+(17)test.TOP.cpu_1.cpu_regs.\data[6][31:0]
+(18)test.TOP.cpu_1.cpu_regs.\data[6][31:0]
+(19)test.TOP.cpu_1.cpu_regs.\data[6][31:0]
+(20)test.TOP.cpu_1.cpu_regs.\data[6][31:0]
+(21)test.TOP.cpu_1.cpu_regs.\data[6][31:0]
+(22)test.TOP.cpu_1.cpu_regs.\data[6][31:0]
+(23)test.TOP.cpu_1.cpu_regs.\data[6][31:0]
+(24)test.TOP.cpu_1.cpu_regs.\data[6][31:0]
+(25)test.TOP.cpu_1.cpu_regs.\data[6][31:0]
+(26)test.TOP.cpu_1.cpu_regs.\data[6][31:0]
+(27)test.TOP.cpu_1.cpu_regs.\data[6][31:0]
+(28)test.TOP.cpu_1.cpu_regs.\data[6][31:0]
+(29)test.TOP.cpu_1.cpu_regs.\data[6][31:0]
+(30)test.TOP.cpu_1.cpu_regs.\data[6][31:0]
+(31)test.TOP.cpu_1.cpu_regs.\data[6][31:0]
+@1401200
+-group_end
+@22
+test.TOP.cpu_1.cpu_regs.\data[7][31:0]
+test.TOP.cpu_1.cpu_regs.\data[28][31:0]
+test.TOP.cpu_1.cpu_regs.\data[29][31:0]
+@c00022
+test.TOP.cpu_1.cpu_regs.\data[30][31:0]
+@28
+(0)test.TOP.cpu_1.cpu_regs.\data[30][31:0]
+(1)test.TOP.cpu_1.cpu_regs.\data[30][31:0]
+(2)test.TOP.cpu_1.cpu_regs.\data[30][31:0]
+(3)test.TOP.cpu_1.cpu_regs.\data[30][31:0]
+(4)test.TOP.cpu_1.cpu_regs.\data[30][31:0]
+(5)test.TOP.cpu_1.cpu_regs.\data[30][31:0]
+(6)test.TOP.cpu_1.cpu_regs.\data[30][31:0]
+(7)test.TOP.cpu_1.cpu_regs.\data[30][31:0]
+(8)test.TOP.cpu_1.cpu_regs.\data[30][31:0]
+(9)test.TOP.cpu_1.cpu_regs.\data[30][31:0]
+(10)test.TOP.cpu_1.cpu_regs.\data[30][31:0]
+(11)test.TOP.cpu_1.cpu_regs.\data[30][31:0]
+(12)test.TOP.cpu_1.cpu_regs.\data[30][31:0]
+(13)test.TOP.cpu_1.cpu_regs.\data[30][31:0]
+(14)test.TOP.cpu_1.cpu_regs.\data[30][31:0]
+(15)test.TOP.cpu_1.cpu_regs.\data[30][31:0]
+(16)test.TOP.cpu_1.cpu_regs.\data[30][31:0]
+(17)test.TOP.cpu_1.cpu_regs.\data[30][31:0]
+(18)test.TOP.cpu_1.cpu_regs.\data[30][31:0]
+(19)test.TOP.cpu_1.cpu_regs.\data[30][31:0]
+(20)test.TOP.cpu_1.cpu_regs.\data[30][31:0]
+(21)test.TOP.cpu_1.cpu_regs.\data[30][31:0]
+(22)test.TOP.cpu_1.cpu_regs.\data[30][31:0]
+(23)test.TOP.cpu_1.cpu_regs.\data[30][31:0]
+(24)test.TOP.cpu_1.cpu_regs.\data[30][31:0]
+(25)test.TOP.cpu_1.cpu_regs.\data[30][31:0]
+(26)test.TOP.cpu_1.cpu_regs.\data[30][31:0]
+(27)test.TOP.cpu_1.cpu_regs.\data[30][31:0]
+(28)test.TOP.cpu_1.cpu_regs.\data[30][31:0]
+(29)test.TOP.cpu_1.cpu_regs.\data[30][31:0]
+(30)test.TOP.cpu_1.cpu_regs.\data[30][31:0]
+(31)test.TOP.cpu_1.cpu_regs.\data[30][31:0]
+@1401200
+-group_end
+@22
+test.TOP.cpu_1.cpu_regs.\data[31][31:0]
+@1401200
+-Temp Registers
+@22
+test.TOP.data_addr[31:0]
+test.TOP.data_read[31:0]
+@28
+test.TOP.bu.mem_ren
+test.TOP.bu.mem_wen
+@c00200
+-DataMemory
+@22
+test.TOP.mem.\data_mem[0][31:0]
+test.TOP.mem.\data_mem[1][31:0]
+test.TOP.mem.\data_mem[2][31:0]
+test.TOP.mem.\data_mem[3][31:0]
+test.TOP.mem.\data_mem[4][31:0]
+test.TOP.mem.\data_mem[5][31:0]
+test.TOP.mem.\data_mem[6][31:0]
+@1401200
+-DataMemory
+@800200
+-test.TOP.charMem
+@1000200
+-group_end
+@22
+test.TOP.mem.data_addr[17:0]
+@28
+test.TOP.mem.ready
+@22
+test.TOP.mem.cnt[4:0]
+@800200
+-FlashController
+@28
+test.TOP.flashController.ren
+test.TOP.flashController.wen
+@22
+test.TOP.flashController.data_in[31:0]
+test.TOP.flashController.address[7:0]
+test.TOP.flashController.data_out[31:0]
+@28
+test.TOP.flashController.flash_enable
+test.TOP.flashController.flash_ready
+test.TOP.flashController.flash_ren
+test.TOP.flashController.flash_wen
+@22
+test.TOP.flashController.flash_data_in[31:0]
+test.TOP.flashController.flash_data_out[31:0]
+test.TOP.flashController.flash_address[23:0]
+@23
+test.TOP.flashController.stateDebug[4:0]
+@1000200
+-FlashController
+[pattern_trace] 1
+[pattern_trace] 0
