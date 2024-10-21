@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Module name="top" Register="27" Lut="60" T_Register="165(27)" T_Alu="54(0)" T_Lut="329(60)" T_Bsram="1(0)">
-    <SubModule name="pll"/>
-    <SubModule name="text" Register="34" Alu="30" Lut="94" Bsram="1" T_Register="34(34)" T_Alu="30(30)" T_Lut="94(94)" T_Bsram="1(1)"/>
-    <SubModule name="scr" Register="67" Alu="24" Lut="99" T_Register="104(67)" T_Alu="24(24)" T_Lut="175(99)">
-        <SubModule name="i2c_inst" Register="18" Lut="47" T_Register="18(18)" T_Lut="47(47)"/>
-        <SubModule name="i2c_api_inst" Register="19" Lut="29" T_Register="19(19)" T_Lut="29(29)"/>
-    </SubModule>
-</Module>
