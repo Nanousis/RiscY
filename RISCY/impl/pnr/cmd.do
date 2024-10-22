@@ -1,9 +1,9 @@
--d /home/iordana/Documents/RISCY/impl/gwsynthesis/RISCY.vg
+-d C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY\impl\gwsynthesis\RISCY.vg
 -p GW1NR-9C-QFN88P-6
 -pn GW1NR-LV9QN88PC6/I5
--cst /home/iordana/Documents/RISCY/src/tangnano9k.cst
--cfg /home/iordana/Documents/RISCY/impl/pnr/device.cfg
--sdc /home/iordana/Documents/RISCY/src/Tang_nano_9K_LCD.sdc
+-cst C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY\src\tangnano9k.cst
+-cfg C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY\impl\pnr\device.cfg
+-sdc C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY\src\Tang_nano_9K_LCD.sdc
 -bit
 -tr
 -ph

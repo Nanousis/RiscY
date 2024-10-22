@@ -20,7 +20,8 @@ module top
     output flashCs,
     
     input btn1,
-    input btn2
+    input btn2,
+    input btnExternal
 );
     reg cpuclk=1;
     wire clkout;
