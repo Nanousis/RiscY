@@ -4,24 +4,25 @@
 #include "riscYstdio.h"
 
 typedef struct Programheader{
-    char name[13];
-    unsigned int startAdress;
+    char name[25];
+    unsigned int startAddress;
+    unsigned int endAddress;
 } Programheader;
 
 #define PROGRAM_MEMORY 0x00400000
 #define FLASH_READY 0x8B000000
 #define FLASH_REN 0x8B000001
 #define FLASH_WEN 0x8B000002
-#define FLASH_ADRESS 0x8B000004
+#define FLASH_ADDRESS 0x8B000004
 #define FLASH_DATA_IN 0x8B0000008
 #define FLASH_DATA_OUT 0x8B000000C
-unsigned int readFlash(unsigned int adress){
+unsigned int readFlash(unsigned int address){
     char *flashReady = (char *)FLASH_READY;
     char *flashRen = (char *)FLASH_REN;
-    unsigned int *flashAdress = (unsigned int *)FLASH_ADRESS;
+    unsigned int *flashAddress = (unsigned int *)FLASH_ADDRESS;
     unsigned int *flashData = (unsigned int *)FLASH_DATA_OUT;
     unsigned int data = 0;
-    *flashAdress = adress;
+    *flashAddress = address;
     *flashRen = 1;
     // while(*flashReady == 0);
     for(volatile int j=0; j<200; j++);
@@ -49,7 +50,7 @@ int main() {
         programNum = readFlash(tempAddress);
         tempAddress += 4;
         for(int i=0; i<programNum; i++){
-            for(int j=0; j<3; j++){
+            for(int j=0; j<6; j++){
                 readData = readFlash(tempAddress);
                 tempAddress += 4;
                 headers[i].name[j << 2]   = readData & 0xFF;
@@ -57,8 +58,10 @@ int main() {
                 headers[i].name[(j << 2) +2] = (readData >> 16) & 0xFF;
                 headers[i].name[(j << 2) +3] = (readData >> 24) & 0xFF;
             }
-            headers[i].name[12] = '\0';
-            headers[i].startAdress = readFlash(tempAddress);
+            headers[i].name[24] = '\0';
+            headers[i].startAddress = readFlash(tempAddress);
+            tempAddress += 4;
+            headers[i].endAddress = readFlash(tempAddress);
             tempAddress += 4;
             // printf("Program %d: %s\n",i,headers[i].name);
         }
@@ -78,10 +81,10 @@ int main() {
                     }
                 }
                 if(i==selectNum){
-                    printfSCR(64*5+1+i*64,((6)<<4),"Program %d: %s address: %x",i,headers[i].name,headers[i].startAdress);
+                    printfSCR(64*5+1+i*64,((6)<<4),"Program %d: %s address: %x",i,headers[i].name,headers[i].startAddress);
                 }
                 else{
-                    printfSCR(64*5+1+i*64,15,"Program %d: %s address: %x",i,headers[i].name,headers[i].startAdress);
+                    printfSCR(64*5+1+i*64,15,"Program %d: %s address: %x",i,headers[i].name,headers[i].startAddress);
                 }
                 // printf("Program %d: %s\n",i,headers[i].name);
             }
@@ -95,7 +98,7 @@ int main() {
         }
             // printf("Reading from flash\n");
             for(int j = 0; j < 2048; j++) {
-                readData = readFlash((j << 2) + headers[selectNum].startAdress);
+                readData = readFlash((j << 2) + headers[selectNum].startAddress);
                 programMemory[j] = readData;
             }
             clearScreen();
