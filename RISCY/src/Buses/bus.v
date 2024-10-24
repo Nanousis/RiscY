@@ -60,7 +60,7 @@ always@(*) begin
         data_out = memory_out;
     end
     // memory mapped button
-    else if(data_addr >= `BUTTON_ADDRESS && data_addr < (`BUTTON_ADDRESS+4)) begin
+    else if(data_addr >= `BUTTON_ADDRESS && data_addr < (`BUTTON_ADDRESS+16)) begin
         btn_ren = ren;
         data_out = (btn_out==1'b1)?32'b0:32'h1010101;
     end

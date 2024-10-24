@@ -4,8 +4,8 @@ module top
 (   
     input clk,
     output reg [5:0] led,
-    inout io_sda,
-    output io_scl,
+//    inout io_sda,
+//    output io_scl,
     output			LCD_CLK,
 	output			LCD_HYNC,
 	output			LCD_SYNC,
@@ -21,7 +21,15 @@ module top
     
     input btn1,
     input btn2,
-    input btnExternal
+    input btnDownL,
+    input btnUpL,
+    input btnLeftL,
+    input btnRightL,
+
+    input btnDownR,
+    input btnUpR,
+    input btnLeftR,
+    input btnRightR
 );
     reg cpuclk=1;
     wire clkout;
@@ -128,8 +136,10 @@ module top
     wire btn_out;
     buttonModule bm(
         .clk(cpu_clk),
-        .btn1(btn1),
-        .btn2(btn2),
+        .btnDown(btnDownL&btnDownR),
+        .btnUp(btnUpL&btnUpR),
+        .btnLeft(btnLeftL&btnLeftR),
+        .btnRight(btnRightL&btnRightR),
         .ren(btn_ren),
         .address(data_addr[7:0]),
         .data_out(btn_out)
