@@ -30,7 +30,7 @@ def main():
     current_address = header_size
     for size in file_sizes:
         starting_addresses.append(current_address)
-        ending_addresses.append(current_address + size)
+        ending_addresses.append(current_address + size - 1)
         current_address += size
 
     # Open the output file in binary write mode
