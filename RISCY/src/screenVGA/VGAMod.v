@@ -228,39 +228,39 @@ module VGAMod(
                     B_tmp <= 5'b00000;   // Black
                 end
                 else if (dataOutAttr[6:4] == 3'b001) begin
-                    R_tmp <= 5'b11111;   // White
-                    G_tmp <= 6'b111111;  // White
-                    B_tmp <= 5'b11111;   // White
+                    B_tmp <= 5'b00000;   // Red
+                    G_tmp <= 6'b000000;  // Red
+                    R_tmp <= 5'b11111;   // Red
                 end
                 else if (dataOutAttr[6:4] == 3'b010) begin
-                    R_tmp <= 5'b11111;   // Red
-                    G_tmp <= 6'b000000;  // Red
-                    B_tmp <= 5'b00000;   // Red
+                    B_tmp <= 5'b00000;   // Green
+                    G_tmp <= 6'b111111;  // Green
+                    R_tmp <= 5'b00000;   // Green
                 end
                 else if (dataOutAttr[6:4] == 3'b011) begin
-                    R_tmp <= 5'b00000;   // Green
-                    G_tmp <= 6'b111111;  // Green
-                    B_tmp <= 5'b00000;   // Green
+                    B_tmp <= 5'b00000;    // Yellow
+                    G_tmp <= 6'b111111;   // Yellow
+                    R_tmp <= 5'b111111;   // Yellow
                 end
                 else if (dataOutAttr[6:4] == 3'b100) begin
-                    R_tmp <= 5'b00000;   // Blue
-                    G_tmp <= 6'b000000;  // Blue
                     B_tmp <= 5'b11111;   // Blue
+                    G_tmp <= 6'b000000;  // Blue
+                    R_tmp <= 5'b00000;   // Blue
                 end
                 else if (dataOutAttr[6:4] == 3'b101) begin
-                    R_tmp <= 5'b11111;   // Cyan
-                    G_tmp <= 6'b111111;  // Cyan
-                    B_tmp <= 5'b00000;   // Cyan
+                    B_tmp <= 5'b11111;   // Magenta
+                    G_tmp <= 6'b000000;  // Magenta
+                    R_tmp <= 5'b11111;   // Magenta
                 end
                 else if (dataOutAttr[6:4] == 3'b110) begin
-                    R_tmp <= 5'b11111;   // Magenta
-                    G_tmp <= 6'b000000;  // Magenta
-                    B_tmp <= 5'b11111;   // Magenta
+                    B_tmp <= 5'b11111;   // Cyan
+                    G_tmp <= 6'b111111;  // Cyan
+                    R_tmp <= 5'b00000;   // Cyan
                 end
                 else if (dataOutAttr[6:4] == 3'b111) begin
-                    R_tmp <= 5'b11111;   // Yellow
-                    G_tmp <= 6'b111111;  // Yellow
-                    B_tmp <= 5'b00000;   // Yellow
+                    B_tmp <= 5'b11111;   // White
+                    G_tmp <= 6'b111111;  // White
+                    R_tmp <= 5'b11111;   // White
                 end
             end
         end

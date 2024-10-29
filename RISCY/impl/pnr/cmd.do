@@ -9,6 +9,7 @@
 -ph
 -timing
 -cst_error
+-convert_sdp32_36_to_sdp16_18
 -place_option 2
 -route_option 1
 -correct_hold 1

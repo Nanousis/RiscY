@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>RiscY Wiki</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+        
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="styles.css">
+    </head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section d-flex align-items-center justify-content-center">
+        <!-- Scrolling Content -->
+        <h1 class="display-1">
+            <span class="letter">R</span>
+            <span class="letter">I</span>
+            <span class="letter-s">S</span>
+            <span class="letter">C</span>
+        </h1>
+    </section>
+
+    <!-- Fixed "Y" -->
+    <div class="fixed-y">
+        <span class="letter-y">Y</span>
+    </div>
+    <div class="info">
+        <br>
+        <section class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2 class="">What is RiscY?</h2>
+                    <p>RiscY is a simple, 32-bit RISC-V System that is designed to be easy to understand and implement. It has been created by students in the University of Thessaly.</p>
+                    <p>RiscY is written in Verilog and aims to be a complete system. It includes Basic input and output like screen, buttons and external memory.</p>
+                    <h2 class="">Why RiscY?</h2>
+                    <p>RiscY is a great way to learn about computer architecture and digital design because it is simple and easy to understand. It is a good starting point for anyone who is interested in learning about how computers work at a low level.</p>
+                    <p>It is also a good way to learn about the RISCV architecture, which is a popular RISC architecture that is used in many embedded systems and educational environments.</p>
+                    <h2 class="">RiscY Showcase</h2>
+                    <p>Here is a showcase of RiscY running on an FPGA board. The board is connected to a screen and some buttons that allow you to interact with the system.</p>
+                </div>
+                <div class="col-lg-6">
+                    <img src="riscY.png" class="img-fluid" alt="RiscY Showcase">
+                </div>
+            </div>
+        </section>
+        <section class="container">
+            <!-- Riscy Image with title of Showcase -->
+            <div class="row">
+                <div class="col-lg-6">
+                </div>
+                <div class="col-lg-6">
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <script>
+        window.addEventListener('scroll', () => {
+            const fixedY = document.querySelector('.fixed-y');
+            const scrollThreshold = 700; // Adjust this value to where you want the "Y" to stop being fixed.
+            if (window.scrollY >= scrollThreshold) {
+                fixedY.style.position = 'absolute';
+                fixedY.style.top = '50%';
+                fixedY.style.left = '43.35%';
+                fixedY.style.transform = 'none';
+            } else {
+                fixedY.style.position = 'fixed';
+                fixedY.style.top = '50%';
+                fixedY.style.left = '50%';
+                fixedY.style.transform = 'translate(-40%, -50%)';
+            }
+        });
+    </script> -->
+    
+</body>
+</html>

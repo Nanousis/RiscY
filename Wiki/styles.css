@@ -1,0 +1,75 @@
+/* Existing styles */
+body {
+    background-color: #000000; /* Black background */
+    color: #FFFFFF; /* Default text color */
+    font-family: "Red Hat Text", sans-serif;
+}
+
+.hero-section {
+    height: 100vh; /* Full viewport height */
+    background-color: #000000;
+}
+.info{
+    background-color: #000000;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    box-shadow: 0px 0px 100px rgba(0, 0, 0,1); /* Add shadow effect */
+}
+.p{
+    z-index: 2;
+}
+
+.hero-section h1 {
+    z-index: 2;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    font-size: 52rem; /* Huge text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Needed for correct positioning */
+    flex-direction: row; /* Default is horizontal */
+
+}
+
+.hero-section h1 .letter,
+.hero-section h1 .letter-s {
+    color: #e4e4e4; /* Original text color */
+}
+.p{
+    position: relative;
+    z-index: 2;
+}
+.fixed-y {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-40%, -50%);
+    z-index: 1;
+}
+
+.letter-y {
+    color: #000000;
+    text-shadow: 0 0 30px #8c00ff;
+    font-size: 52rem;
+}
+
+
+@media (max-width: 768px) {
+    .hero-section h1 {
+        flex-direction: column; /* Change to vertical stack on mobile */
+        font-size: 25rem; /* Adjust font size for better display on mobile */
+    }
+
+    .hero-section h1 .letter,
+    .hero-section h1 .letter-s,
+    .letter-y {
+        font-size: 25rem; /* Adjust letter size for mobile */
+        line-height: 0.75; /* Adjust line-height for spacing */
+    }
+    .fixed-y{
+        transform: translate(-50%, -0%);
+    }
+}

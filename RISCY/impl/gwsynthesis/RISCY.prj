@@ -37,6 +37,8 @@
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY\src\screenVGA\gowin_rpll\gowin_rpll.v" type="verilog"/>
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY\src\screenVGA\gowin_sp\gowin_sp.v" type="verilog"/>
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY\src\soc.v" type="verilog"/>
+        <File path="C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY\src\GPIO\uart.v" type="verilog"/>
+        <File path="C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY\src\GPIO\uartController.v" type="verilog"/>
     </FileList>
     <OptionList>
         <Option type="disable_insert_pad" value="0"/>
@@ -46,6 +48,8 @@
         <Option type="print_all_synthesis_warning" value="0"/>
         <Option type="ram_rw_check" value="0"/>
         <Option type="top_module" value="top"/>
+        <Option type="vcc" value="1.2"/>
+        <Option type="vccx" value="3.3"/>
         <Option type="verilog_language" value="verilog-2001"/>
         <Option type="vhdl_language" value="vhdl-1993"/>
     </OptionList>

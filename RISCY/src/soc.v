@@ -18,7 +18,10 @@ module top
     output flashClk,
     output flashMosi,
     output flashCs,
-    
+
+    input uart_rx,
+    output uart_tx,
+
     input btn1,
     input btn2,
     input btnDownL,
@@ -90,6 +93,8 @@ module top
     wire [31:0] program_mem_out;
     wire program_mem_ren;
     wire program_mem_wen;
+    wire uart_ren;
+    wire [31:0] uart_data_out;
 
     bus bu( .clk(cpu_clk),
             .PC(PC),
@@ -98,6 +103,7 @@ module top
             .wen(wen),
             .btn_out(btn_out),
             .flash_out(flash_data_out),
+            .uart_out(uart_data_out),
             .memory_out(boot_data_out),
             .boot_instr(boot_instr),
             .counter27M(counter27M),
@@ -113,6 +119,7 @@ module top
             .screen_wen(screen_wen) ,
             .flash_ren(flash_ren),
             .flash_wen(flash_wen),
+            .uart_ren(uart_ren),
             .btn_ren(btn_ren),
             .data_out(data_read),
             .instr_out(instr)
@@ -214,7 +221,7 @@ module top
 	);
 
 //    **********************************************************************************************//
-                                                                                                 
+//                                         I2C Screen                                               //
 //    **********************************************************************************************//
 
 	assign		LCD_CLK		=	CLK_PIX;
@@ -238,6 +245,24 @@ module top
        .io_scl(io_scl)  // I2C clock line
    );
     `endif
+
+uartController uart_controller (
+    .clk(cpu_clk),
+    .reset(reset),
+    .ren(uart_ren),
+    .wen(1'b0),
+    .uart_rx(uart_rx),
+    .uart_tx(uart_tx),
+    .address(data_addr[1:0]),
+    .data_out(uart_data_out)
+);
+
+
+
+//   **********************************************************************************************//
+//                                         CPU TIMER                                               //
+//   **********************************************************************************************//
+
     wire [31:0] counter1M;
     cpuTimer #(.DIVISION(27)) counter1mhz
     (

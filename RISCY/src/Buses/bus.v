@@ -8,6 +8,7 @@ module bus( input clk,
             input btn_out,
             input [31:0] memory_out,
             input [31:0] flash_out,
+            input [31:0] uart_out,
             input [31:0] counter27M,
             input [31:0] counter1M,
             input [31:0] program_mem_out, // ADD
@@ -23,6 +24,7 @@ module bus( input clk,
             output reg screen_wen,
             output reg flash_ren,
             output reg flash_wen,
+            output reg uart_ren,
             output reg btn_ren,
             output reg [31:0] data_out,
             output reg [31:0] instr_out
@@ -79,6 +81,10 @@ always@(*) begin
         program_mem_ren = ren;
         program_mem_wen = wen;
         data_out = program_mem_out;
+    end
+    else if(data_addr >= `UART_ADDRESS && data_addr < (`UART_END)) begin
+        uart_ren = ren;
+        data_out = uart_out;
     end
     else begin
         mem_ren = ren;
