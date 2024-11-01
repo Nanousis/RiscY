@@ -1,0 +1,16 @@
+-d I:\RISCY_primer25k\impl\gwsynthesis\RISCY.vg
+-p GW5A-25A-MBGA121N-1
+-pn GW5A-LV25MG121NES
+-cst I:\RISCY_primer25k\src\tangnano9k.cst
+-cfg I:\RISCY_primer25k\impl\pnr\device.cfg
+-sdc I:\RISCY_primer25k\src\Tang_nano_9K_LCD.sdc
+-bit
+-tr
+-ph
+-timing
+-cst_error
+-convert_sdp32_36_to_sdp16_18
+-correct_hold 1
+-route_maxfan 23
+-global_freq 100.000
+-enable_dsrm 0

@@ -1,0 +1,457 @@
+GowinSynthesis start
+Running parser ...
+Analyzing Verilog file 'I:\RISCY_primer25k\src\BRAMS\gowin_dpb_program\gowin_dpb_program.v'
+Analyzing Verilog file 'I:\RISCY_primer25k\src\Buses\bus.v'
+Analyzing included file 'I:\RISCY_primer25k\src\config.vh'("I:\RISCY_primer25k\src\Buses\bus.v":1)
+Back to file 'I:\RISCY_primer25k\src\Buses\bus.v'("I:\RISCY_primer25k\src\Buses\bus.v":1)
+WARN  (EX3792) : Literal value 'h8B00_00016 truncated to fit in 32 bits("I:\RISCY_primer25k\src\Buses\bus.v":76)
+Analyzing Verilog file 'I:\RISCY_primer25k\src\CPU\ALUCPU.v'
+Analyzing included file 'I:\RISCY_primer25k\src\CPU\constants.vh'("I:\RISCY_primer25k\src\CPU\ALUCPU.v":1)
+Back to file 'I:\RISCY_primer25k\src\CPU\ALUCPU.v'("I:\RISCY_primer25k\src\CPU\ALUCPU.v":1)
+Analyzing included file 'I:\RISCY_primer25k\src\config.vh'("I:\RISCY_primer25k\src\CPU\ALUCPU.v":2)
+Back to file 'I:\RISCY_primer25k\src\CPU\ALUCPU.v'("I:\RISCY_primer25k\src\CPU\ALUCPU.v":2)
+Analyzing Verilog file 'I:\RISCY_primer25k\src\CPU\RegFile.v'
+Analyzing included file 'I:\RISCY_primer25k\src\CPU\constants.vh'("I:\RISCY_primer25k\src\CPU\RegFile.v":1)
+Back to file 'I:\RISCY_primer25k\src\CPU\RegFile.v'("I:\RISCY_primer25k\src\CPU\RegFile.v":1)
+Analyzing included file 'I:\RISCY_primer25k\src\config.vh'("I:\RISCY_primer25k\src\CPU\RegFile.v":2)
+Back to file 'I:\RISCY_primer25k\src\CPU\RegFile.v'("I:\RISCY_primer25k\src\CPU\RegFile.v":2)
+Analyzing Verilog file 'I:\RISCY_primer25k\src\CPU\SignExtendSelector.v'
+Analyzing included file 'I:\RISCY_primer25k\src\CPU\constants.vh'("I:\RISCY_primer25k\src\CPU\SignExtendSelector.v":1)
+Back to file 'I:\RISCY_primer25k\src\CPU\SignExtendSelector.v'("I:\RISCY_primer25k\src\CPU\SignExtendSelector.v":1)
+Analyzing included file 'I:\RISCY_primer25k\src\config.vh'("I:\RISCY_primer25k\src\CPU\SignExtendSelector.v":2)
+Back to file 'I:\RISCY_primer25k\src\CPU\SignExtendSelector.v'("I:\RISCY_primer25k\src\CPU\SignExtendSelector.v":2)
+Analyzing Verilog file 'I:\RISCY_primer25k\src\CPU\constants.vh'
+Analyzing Verilog file 'I:\RISCY_primer25k\src\CPU\control_alu.v'
+Analyzing included file 'I:\RISCY_primer25k\src\CPU\constants.vh'("I:\RISCY_primer25k\src\CPU\control_alu.v":1)
+Back to file 'I:\RISCY_primer25k\src\CPU\control_alu.v'("I:\RISCY_primer25k\src\CPU\control_alu.v":1)
+Analyzing included file 'I:\RISCY_primer25k\src\config.vh'("I:\RISCY_primer25k\src\CPU\control_alu.v":2)
+Back to file 'I:\RISCY_primer25k\src\CPU\control_alu.v'("I:\RISCY_primer25k\src\CPU\control_alu.v":2)
+Analyzing Verilog file 'I:\RISCY_primer25k\src\CPU\control_branch.v'
+Analyzing included file 'I:\RISCY_primer25k\src\CPU\constants.vh'("I:\RISCY_primer25k\src\CPU\control_branch.v":1)
+Back to file 'I:\RISCY_primer25k\src\CPU\control_branch.v'("I:\RISCY_primer25k\src\CPU\control_branch.v":1)
+Analyzing included file 'I:\RISCY_primer25k\src\config.vh'("I:\RISCY_primer25k\src\CPU\control_branch.v":2)
+Back to file 'I:\RISCY_primer25k\src\CPU\control_branch.v'("I:\RISCY_primer25k\src\CPU\control_branch.v":2)
+Analyzing Verilog file 'I:\RISCY_primer25k\src\CPU\control_bypass_ex.v'
+Analyzing included file 'I:\RISCY_primer25k\src\CPU\constants.vh'("I:\RISCY_primer25k\src\CPU\control_bypass_ex.v":1)
+Back to file 'I:\RISCY_primer25k\src\CPU\control_bypass_ex.v'("I:\RISCY_primer25k\src\CPU\control_bypass_ex.v":1)
+Analyzing included file 'I:\RISCY_primer25k\src\config.vh'("I:\RISCY_primer25k\src\CPU\control_bypass_ex.v":2)
+Back to file 'I:\RISCY_primer25k\src\CPU\control_bypass_ex.v'("I:\RISCY_primer25k\src\CPU\control_bypass_ex.v":2)
+Analyzing Verilog file 'I:\RISCY_primer25k\src\CPU\control_main.v'
+Analyzing included file 'I:\RISCY_primer25k\src\CPU\constants.vh'("I:\RISCY_primer25k\src\CPU\control_main.v":1)
+Back to file 'I:\RISCY_primer25k\src\CPU\control_main.v'("I:\RISCY_primer25k\src\CPU\control_main.v":1)
+Analyzing included file 'I:\RISCY_primer25k\src\config.vh'("I:\RISCY_primer25k\src\CPU\control_main.v":2)
+Back to file 'I:\RISCY_primer25k\src\CPU\control_main.v'("I:\RISCY_primer25k\src\CPU\control_main.v":2)
+Analyzing Verilog file 'I:\RISCY_primer25k\src\CPU\control_stall_id.v'
+Analyzing included file 'I:\RISCY_primer25k\src\CPU\constants.vh'("I:\RISCY_primer25k\src\CPU\control_stall_id.v":1)
+Back to file 'I:\RISCY_primer25k\src\CPU\control_stall_id.v'("I:\RISCY_primer25k\src\CPU\control_stall_id.v":1)
+Analyzing included file 'I:\RISCY_primer25k\src\config.vh'("I:\RISCY_primer25k\src\CPU\control_stall_id.v":2)
+Back to file 'I:\RISCY_primer25k\src\CPU\control_stall_id.v'("I:\RISCY_primer25k\src\CPU\control_stall_id.v":2)
+Analyzing Verilog file 'I:\RISCY_primer25k\src\CPU\cpu.v'
+Analyzing included file 'I:\RISCY_primer25k\src\CPU\constants.vh'("I:\RISCY_primer25k\src\CPU\cpu.v":1)
+Back to file 'I:\RISCY_primer25k\src\CPU\cpu.v'("I:\RISCY_primer25k\src\CPU\cpu.v":1)
+Analyzing included file 'I:\RISCY_primer25k\src\config.vh'("I:\RISCY_primer25k\src\CPU\cpu.v":2)
+Back to file 'I:\RISCY_primer25k\src\CPU\cpu.v'("I:\RISCY_primer25k\src\CPU\cpu.v":2)
+Analyzing Verilog file 'I:\RISCY_primer25k\src\CPU\mem_read_selector.v'
+Analyzing included file 'I:\RISCY_primer25k\src\CPU\constants.vh'("I:\RISCY_primer25k\src\CPU\mem_read_selector.v":1)
+Back to file 'I:\RISCY_primer25k\src\CPU\mem_read_selector.v'("I:\RISCY_primer25k\src\CPU\mem_read_selector.v":1)
+Analyzing included file 'I:\RISCY_primer25k\src\config.vh'("I:\RISCY_primer25k\src\CPU\mem_read_selector.v":2)
+Back to file 'I:\RISCY_primer25k\src\CPU\mem_read_selector.v'("I:\RISCY_primer25k\src\CPU\mem_read_selector.v":2)
+Analyzing Verilog file 'I:\RISCY_primer25k\src\CPU\mem_write_selector.v'
+Analyzing included file 'I:\RISCY_primer25k\src\CPU\constants.vh'("I:\RISCY_primer25k\src\CPU\mem_write_selector.v":1)
+Back to file 'I:\RISCY_primer25k\src\CPU\mem_write_selector.v'("I:\RISCY_primer25k\src\CPU\mem_write_selector.v":1)
+Analyzing included file 'I:\RISCY_primer25k\src\config.vh'("I:\RISCY_primer25k\src\CPU\mem_write_selector.v":2)
+Back to file 'I:\RISCY_primer25k\src\CPU\mem_write_selector.v'("I:\RISCY_primer25k\src\CPU\mem_write_selector.v":2)
+Analyzing Verilog file 'I:\RISCY_primer25k\src\CPU\signExtend.v'
+Analyzing included file 'I:\RISCY_primer25k\src\CPU\constants.vh'("I:\RISCY_primer25k\src\CPU\signExtend.v":1)
+Back to file 'I:\RISCY_primer25k\src\CPU\signExtend.v'("I:\RISCY_primer25k\src\CPU\signExtend.v":1)
+Analyzing included file 'I:\RISCY_primer25k\src\config.vh'("I:\RISCY_primer25k\src\CPU\signExtend.v":2)
+Back to file 'I:\RISCY_primer25k\src\CPU\signExtend.v'("I:\RISCY_primer25k\src\CPU\signExtend.v":2)
+Analyzing Verilog file 'I:\RISCY_primer25k\src\GPIO\buttonModule.v'
+Analyzing Verilog file 'I:\RISCY_primer25k\src\GPIO\cpuTimer.v'
+Analyzing Verilog file 'I:\RISCY_primer25k\src\GPIO\seven_segment.v'
+Analyzing Verilog file 'I:\RISCY_primer25k\src\GPIO\uart.v'
+Analyzing Verilog file 'I:\RISCY_primer25k\src\GPIO\uartController.v'
+Analyzing Verilog file 'I:\RISCY_primer25k\src\Memories\flash.v'
+Analyzing Verilog file 'I:\RISCY_primer25k\src\Memories\flashController.v'
+Analyzing Verilog file 'I:\RISCY_primer25k\src\Memories\memory.v'
+Analyzing included file 'I:\RISCY_primer25k\src\config.vh'("I:\RISCY_primer25k\src\Memories\memory.v":1)
+Back to file 'I:\RISCY_primer25k\src\Memories\memory.v'("I:\RISCY_primer25k\src\Memories\memory.v":1)
+Analyzing Verilog file 'I:\RISCY_primer25k\src\Memories\programMemory.v'
+Undeclared symbol 'dina', assumed default net type 'wire'("I:\RISCY_primer25k\src\Memories\programMemory.v":57)
+Analyzing Verilog file 'I:\RISCY_primer25k\src\config.vh'
+Analyzing Verilog file 'I:\RISCY_primer25k\src\hdmi\gowin_clkdiv\gowin_clkdiv.v'
+Analyzing Verilog file 'I:\RISCY_primer25k\src\hdmi\gowin_dpb\gowin_dpb.v'
+Analyzing Verilog file 'I:\RISCY_primer25k\src\hdmi\gowin_pll_720p\gowin_pll_720p.v'
+Analyzing Verilog file 'I:\RISCY_primer25k\src\hdmi\svo_defines.vh'
+Analyzing Verilog file 'I:\RISCY_primer25k\src\hdmi\svo_enc.v'
+Analyzing included file 'I:\RISCY_primer25k\src\hdmi\svo_defines.vh'("I:\RISCY_primer25k\src\hdmi\svo_enc.v":21)
+Back to file 'I:\RISCY_primer25k\src\hdmi\svo_enc.v'("I:\RISCY_primer25k\src\hdmi\svo_enc.v":21)
+Analyzing Verilog file 'I:\RISCY_primer25k\src\hdmi\svo_hdmi.v'
+Analyzing included file 'I:\RISCY_primer25k\src\hdmi\svo_defines.vh'("I:\RISCY_primer25k\src\hdmi\svo_hdmi.v":21)
+Back to file 'I:\RISCY_primer25k\src\hdmi\svo_hdmi.v'("I:\RISCY_primer25k\src\hdmi\svo_hdmi.v":21)
+Analyzing Verilog file 'I:\RISCY_primer25k\src\hdmi\svo_openldi.v'
+Analyzing included file 'I:\RISCY_primer25k\src\hdmi\svo_defines.vh'("I:\RISCY_primer25k\src\hdmi\svo_openldi.v":21)
+Back to file 'I:\RISCY_primer25k\src\hdmi\svo_openldi.v'("I:\RISCY_primer25k\src\hdmi\svo_openldi.v":21)
+Analyzing Verilog file 'I:\RISCY_primer25k\src\hdmi\svo_pong.v'
+Analyzing included file 'I:\RISCY_primer25k\src\hdmi\svo_defines.vh'("I:\RISCY_primer25k\src\hdmi\svo_pong.v":21)
+Back to file 'I:\RISCY_primer25k\src\hdmi\svo_pong.v'("I:\RISCY_primer25k\src\hdmi\svo_pong.v":21)
+Analyzing Verilog file 'I:\RISCY_primer25k\src\hdmi\svo_tcard.v'
+Analyzing included file 'I:\RISCY_primer25k\src\hdmi\svo_defines.vh'("I:\RISCY_primer25k\src\hdmi\svo_tcard.v":21)
+Back to file 'I:\RISCY_primer25k\src\hdmi\svo_tcard.v'("I:\RISCY_primer25k\src\hdmi\svo_tcard.v":21)
+Undeclared symbol 'douta', assumed default net type 'wire'("I:\RISCY_primer25k\src\hdmi\svo_tcard.v":133)
+Undeclared symbol 'dinb', assumed default net type 'wire'("I:\RISCY_primer25k\src\hdmi\svo_tcard.v":150)
+Analyzing Verilog file 'I:\RISCY_primer25k\src\hdmi\svo_term.v'
+Analyzing included file 'I:\RISCY_primer25k\src\hdmi\svo_defines.vh'("I:\RISCY_primer25k\src\hdmi\svo_term.v":21)
+Back to file 'I:\RISCY_primer25k\src\hdmi\svo_term.v'("I:\RISCY_primer25k\src\hdmi\svo_term.v":21)
+Analyzing Verilog file 'I:\RISCY_primer25k\src\hdmi\svo_tmds.v'
+Analyzing included file 'I:\RISCY_primer25k\src\hdmi\svo_defines.vh'("I:\RISCY_primer25k\src\hdmi\svo_tmds.v":21)
+Back to file 'I:\RISCY_primer25k\src\hdmi\svo_tmds.v'("I:\RISCY_primer25k\src\hdmi\svo_tmds.v":21)
+Analyzing Verilog file 'I:\RISCY_primer25k\src\hdmi\svo_utils.v'
+Analyzing included file 'I:\RISCY_primer25k\src\hdmi\svo_defines.vh'("I:\RISCY_primer25k\src\hdmi\svo_utils.v":21)
+Back to file 'I:\RISCY_primer25k\src\hdmi\svo_utils.v'("I:\RISCY_primer25k\src\hdmi\svo_utils.v":21)
+Analyzing Verilog file 'I:\RISCY_primer25k\src\hdmi\svo_vdma.v'
+Analyzing included file 'I:\RISCY_primer25k\src\hdmi\svo_defines.vh'("I:\RISCY_primer25k\src\hdmi\svo_vdma.v":21)
+Back to file 'I:\RISCY_primer25k\src\hdmi\svo_vdma.v'("I:\RISCY_primer25k\src\hdmi\svo_vdma.v":21)
+Analyzing Verilog file 'I:\RISCY_primer25k\src\screenI2C\i2c.v'
+Analyzing Verilog file 'I:\RISCY_primer25k\src\screenI2C\i2capi.v'
+Analyzing Verilog file 'I:\RISCY_primer25k\src\screenI2C\screen.v'
+Analyzing Verilog file 'I:\RISCY_primer25k\src\screenI2C\textEngine.v'
+Undeclared symbol 'charOutput', assumed default net type 'wire'("I:\RISCY_primer25k\src\screenI2C\textEngine.v":55)
+WARN  (EX3638) : 'charOutput' is already implicitly declared on line 55("I:\RISCY_primer25k\src\screenI2C\textEngine.v":61)
+Analyzing Verilog file 'I:\RISCY_primer25k\src\soc.v'
+Analyzing included file 'I:\RISCY_primer25k\src\config.vh'("I:\RISCY_primer25k\src\soc.v":1)
+Back to file 'I:\RISCY_primer25k\src\soc.v'("I:\RISCY_primer25k\src\soc.v":1)
+Undeclared symbol 'memReady', assumed default net type 'wire'("I:\RISCY_primer25k\src\soc.v":73)
+WARN  (EX3638) : 'memReady' is already implicitly declared on line 73("I:\RISCY_primer25k\src\soc.v":86)
+Undeclared symbol 'btn_out', assumed default net type 'wire'("I:\RISCY_primer25k\src\soc.v":102)
+Undeclared symbol 'flash_data_out', assumed default net type 'wire'("I:\RISCY_primer25k\src\soc.v":103)
+Undeclared symbol 'counter27M', assumed default net type 'wire'("I:\RISCY_primer25k\src\soc.v":107)
+Undeclared symbol 'counter1M', assumed default net type 'wire'("I:\RISCY_primer25k\src\soc.v":108)
+Undeclared symbol 'flash_ren', assumed default net type 'wire'("I:\RISCY_primer25k\src\soc.v":118)
+Undeclared symbol 'flash_wen', assumed default net type 'wire'("I:\RISCY_primer25k\src\soc.v":119)
+Undeclared symbol 'btn_ren', assumed default net type 'wire'("I:\RISCY_primer25k\src\soc.v":121)
+WARN  (EX3638) : 'btn_ren' is already implicitly declared on line 121("I:\RISCY_primer25k\src\soc.v":138)
+WARN  (EX3638) : 'btn_out' is already implicitly declared on line 102("I:\RISCY_primer25k\src\soc.v":139)
+WARN  (EX3638) : 'flash_ren' is already implicitly declared on line 118("I:\RISCY_primer25k\src\soc.v":150)
+WARN  (EX3638) : 'flash_wen' is already implicitly declared on line 119("I:\RISCY_primer25k\src\soc.v":151)
+WARN  (EX3638) : 'flash_data_out' is already implicitly declared on line 103("I:\RISCY_primer25k\src\soc.v":152)
+Undeclared symbol 'pll_lock', assumed default net type 'wire'("I:\RISCY_primer25k\src\soc.v":197)
+Undeclared symbol 'clk_p5', assumed default net type 'wire'("I:\RISCY_primer25k\src\soc.v":198)
+Undeclared symbol 'clk_p', assumed default net type 'wire'("I:\RISCY_primer25k\src\soc.v":203)
+Undeclared symbol 'sys_resetn', assumed default net type 'wire'("I:\RISCY_primer25k\src\soc.v":213)
+Undeclared symbol 'clk_cpu', assumed default net type 'wire'("I:\RISCY_primer25k\src\soc.v":219)
+Undeclared symbol 'LCD_CLK', assumed default net type 'wire'("I:\RISCY_primer25k\src\soc.v":245)
+WARN  (EX3638) : 'counter1M' is already implicitly declared on line 108("I:\RISCY_primer25k\src\soc.v":284)
+WARN  (EX3638) : 'counter27M' is already implicitly declared on line 107("I:\RISCY_primer25k\src\soc.v":291)
+Compiling module 'top'("I:\RISCY_primer25k\src\soc.v":3)
+WARN  (EX3780) : Using initial value of 'clk_btn' since it is never assigned("I:\RISCY_primer25k\src\soc.v":44)
+Compiling module 'cpu'("I:\RISCY_primer25k\src\CPU\cpu.v":9)
+Compiling module 'signExtend'("I:\RISCY_primer25k\src\CPU\signExtend.v":4)
+Compiling module 'RegFile'("I:\RISCY_primer25k\src\CPU\RegFile.v":7)
+Compiling module 'SignExtendSelector'("I:\RISCY_primer25k\src\CPU\SignExtendSelector.v":4)
+Compiling module 'control_main'("I:\RISCY_primer25k\src\CPU\control_main.v":5)
+Compiling module 'control_stall_id'("I:\RISCY_primer25k\src\CPU\control_stall_id.v":6)
+Compiling module 'ALUCPU'("I:\RISCY_primer25k\src\CPU\ALUCPU.v":4)
+Compiling module 'control_alu'("I:\RISCY_primer25k\src\CPU\control_alu.v":5)
+Compiling module 'control_bypass_ex'("I:\RISCY_primer25k\src\CPU\control_bypass_ex.v":5)
+Compiling module 'mem_write_selector'("I:\RISCY_primer25k\src\CPU\mem_write_selector.v":4)
+Compiling module 'control_branch'("I:\RISCY_primer25k\src\CPU\control_branch.v":4)
+Compiling module 'mem_read_selector'("I:\RISCY_primer25k\src\CPU\mem_read_selector.v":4)
+Compiling module 'bus'("I:\RISCY_primer25k\src\Buses\bus.v":3)
+Compiling module 'memory'("I:\RISCY_primer25k\src\Memories\memory.v":3)
+Extracting RAM for identifier 'data_mem'("I:\RISCY_primer25k\src\Memories\memory.v":17)
+WARN  (EX3791) : Expression size 6 truncated to fit in target size 5("I:\RISCY_primer25k\src\Memories\memory.v":78)
+Compiling module 'buttonModule'("I:\RISCY_primer25k\src\GPIO\buttonModule.v":1)
+WARN  (EX3670) : Actual bit length 8 differs from formal bit length 32 for port 'address'("I:\RISCY_primer25k\src\soc.v":147)
+Compiling module 'flashController'("I:\RISCY_primer25k\src\Memories\flashController.v":1)
+Compiling module 'flashNavigator'("I:\RISCY_primer25k\src\Memories\flash.v":2)
+WARN  (EX3780) : Using initial value of 'command' since it is never assigned("I:\RISCY_primer25k\src\Memories\flash.v":20)
+Extracting RAM for identifier 'stored_characters'("I:\RISCY_primer25k\src\Memories\flash.v":49)
+WARN  (EX3791) : Expression size 32 truncated to fit in target size 9("I:\RISCY_primer25k\src\Memories\flash.v":93)
+WARN  (EX3791) : Expression size 9 truncated to fit in target size 8("I:\RISCY_primer25k\src\Memories\flash.v":116)
+WARN  (EX3670) : Actual bit length 32 differs from formal bit length 24 for port 'dataToWrite'("I:\RISCY_primer25k\src\Memories\flashController.v":129)
+WARN  (EX3670) : Actual bit length 32 differs from formal bit length 8 for port 'address'("I:\RISCY_primer25k\src\soc.v":163)
+Compiling module 'programMemory'("I:\RISCY_primer25k\src\Memories\programMemory.v":1)
+Compiling module 'Gowin_DPB_program'("I:\RISCY_primer25k\src\BRAMS\gowin_dpb_program\gowin_dpb_program.v":10)
+WARN  (EX3670) : Actual bit length 30 differs from formal bit length 11 for port 'ada'("I:\RISCY_primer25k\src\Memories\programMemory.v":56)
+WARN  (EX3670) : Actual bit length 1 differs from formal bit length 8 for port 'dina'("I:\RISCY_primer25k\src\Memories\programMemory.v":57)
+WARN  (EX3670) : Actual bit length 30 differs from formal bit length 11 for port 'adb'("I:\RISCY_primer25k\src\Memories\programMemory.v":65)
+WARN  (EX3670) : Actual bit length 30 differs from formal bit length 11 for port 'ada'("I:\RISCY_primer25k\src\Memories\programMemory.v":77)
+WARN  (EX3670) : Actual bit length 1 differs from formal bit length 8 for port 'dina'("I:\RISCY_primer25k\src\Memories\programMemory.v":78)
+WARN  (EX3670) : Actual bit length 30 differs from formal bit length 11 for port 'adb'("I:\RISCY_primer25k\src\Memories\programMemory.v":86)
+WARN  (EX3670) : Actual bit length 30 differs from formal bit length 11 for port 'ada'("I:\RISCY_primer25k\src\Memories\programMemory.v":98)
+WARN  (EX3670) : Actual bit length 1 differs from formal bit length 8 for port 'dina'("I:\RISCY_primer25k\src\Memories\programMemory.v":99)
+WARN  (EX3670) : Actual bit length 30 differs from formal bit length 11 for port 'adb'("I:\RISCY_primer25k\src\Memories\programMemory.v":107)
+WARN  (EX3670) : Actual bit length 30 differs from formal bit length 11 for port 'ada'("I:\RISCY_primer25k\src\Memories\programMemory.v":119)
+WARN  (EX3670) : Actual bit length 1 differs from formal bit length 8 for port 'dina'("I:\RISCY_primer25k\src\Memories\programMemory.v":120)
+WARN  (EX3670) : Actual bit length 30 differs from formal bit length 11 for port 'adb'("I:\RISCY_primer25k\src\Memories\programMemory.v":128)
+WARN  (EX1998) : Net 'dina' does not have a driver("I:\RISCY_primer25k\src\Memories\programMemory.v":57)
+Compiling module 'Gowin_PLL_720p'("I:\RISCY_primer25k\src\hdmi\gowin_pll_720p\gowin_pll_720p.v":10)
+Compiling module 'Gowin_CLKDIV'("I:\RISCY_primer25k\src\hdmi\gowin_clkdiv\gowin_clkdiv.v":10)
+Compiling module 'Reset_Sync'("I:\RISCY_primer25k\src\soc.v":377)
+Compiling module 'svo_hdmi'("I:\RISCY_primer25k\src\hdmi\svo_hdmi.v":23)
+WARN  (EX3791) : Expression size 5 truncated to fit in target size 4("I:\RISCY_primer25k\src\hdmi\svo_hdmi.v":97)
+WARN  (EX3791) : Expression size 5 truncated to fit in target size 4("I:\RISCY_primer25k\src\hdmi\svo_hdmi.v":100)
+Compiling module 'svo_tcard(SVO_MODE="1280x720")'("I:\RISCY_primer25k\src\hdmi\svo_tcard.v":23)
+WARN  (EX3780) : Using initial value of 'fontMem' since it is never assigned("I:\RISCY_primer25k\src\hdmi\svo_tcard.v":121)
+WARN  (EX3045) : Case equality operator always evaluates to false due to comparison with 'x' or 'z'("I:\RISCY_primer25k\src\hdmi\svo_tcard.v":38)
+WARN  (EX3791) : Expression size 15 truncated to fit in target size 14("I:\RISCY_primer25k\src\hdmi\svo_tcard.v":124)
+Compiling module 'Gowin_DPB'("I:\RISCY_primer25k\src\hdmi\gowin_dpb\gowin_dpb.v":10)
+WARN  (EX3670) : Actual bit length 1 differs from formal bit length 9 for port 'douta'("I:\RISCY_primer25k\src\hdmi\svo_tcard.v":133)
+WARN  (EX3670) : Actual bit length 8 differs from formal bit length 9 for port 'dina'("I:\RISCY_primer25k\src\hdmi\svo_tcard.v":140)
+WARN  (EX3670) : Actual bit length 8 differs from formal bit length 9 for port 'doutb'("I:\RISCY_primer25k\src\hdmi\svo_tcard.v":143)
+WARN  (EX3670) : Actual bit length 15 differs from formal bit length 11 for port 'adb'("I:\RISCY_primer25k\src\hdmi\svo_tcard.v":149)
+WARN  (EX3670) : Actual bit length 1 differs from formal bit length 9 for port 'dinb'("I:\RISCY_primer25k\src\hdmi\svo_tcard.v":150)
+WARN  (EX3670) : Actual bit length 1 differs from formal bit length 9 for port 'douta'("I:\RISCY_primer25k\src\hdmi\svo_tcard.v":155)
+WARN  (EX3670) : Actual bit length 8 differs from formal bit length 9 for port 'dina'("I:\RISCY_primer25k\src\hdmi\svo_tcard.v":162)
+WARN  (EX3670) : Actual bit length 8 differs from formal bit length 9 for port 'doutb'("I:\RISCY_primer25k\src\hdmi\svo_tcard.v":165)
+WARN  (EX3670) : Actual bit length 15 differs from formal bit length 11 for port 'adb'("I:\RISCY_primer25k\src\hdmi\svo_tcard.v":171)
+WARN  (EX3670) : Actual bit length 1 differs from formal bit length 9 for port 'dinb'("I:\RISCY_primer25k\src\hdmi\svo_tcard.v":172)
+WARN  (EX3791) : Expression size 15 truncated to fit in target size 14("I:\RISCY_primer25k\src\hdmi\svo_tcard.v":331)
+WARN  (EX3791) : Expression size 10 truncated to fit in target size 9("I:\RISCY_primer25k\src\hdmi\svo_tcard.v":333)
+WARN  (EX3791) : Expression size 6 truncated to fit in target size 5("I:\RISCY_primer25k\src\hdmi\svo_tcard.v":334)
+WARN  (EX3791) : Expression size 15 truncated to fit in target size 14("I:\RISCY_primer25k\src\hdmi\svo_tcard.v":337)
+WARN  (EX3791) : Expression size 10 truncated to fit in target size 9("I:\RISCY_primer25k\src\hdmi\svo_tcard.v":339)
+WARN  (EX3791) : Expression size 6 truncated to fit in target size 5("I:\RISCY_primer25k\src\hdmi\svo_tcard.v":340)
+WARN  (EX1998) : Net 'dinb' does not have a driver("I:\RISCY_primer25k\src\hdmi\svo_tcard.v":150)
+Compiling module 'svo_enc(SVO_MODE="1280x720")'("I:\RISCY_primer25k\src\hdmi\svo_enc.v":23)
+Extracting RAM for identifier 'ctrl_fifo'("I:\RISCY_primer25k\src\hdmi\svo_enc.v":48)
+Extracting RAM for identifier 'pixel_fifo'("I:\RISCY_primer25k\src\hdmi\svo_enc.v":51)
+Extracting RAM for identifier 'out_fifo'("I:\RISCY_primer25k\src\hdmi\svo_enc.v":54)
+WARN  (EX3045) : Case equality operator always evaluates to false due to comparison with 'x' or 'z'("I:\RISCY_primer25k\src\hdmi\svo_enc.v":43)
+WARN  (EX3791) : Expression size 3 truncated to fit in target size 2("I:\RISCY_primer25k\src\hdmi\svo_enc.v":92)
+WARN  (EX3791) : Expression size 15 truncated to fit in target size 14("I:\RISCY_primer25k\src\hdmi\svo_enc.v":96)
+WARN  (EX3791) : Expression size 15 truncated to fit in target size 14("I:\RISCY_primer25k\src\hdmi\svo_enc.v":98)
+WARN  (EX3791) : Expression size 4 truncated to fit in target size 3("I:\RISCY_primer25k\src\hdmi\svo_enc.v":110)
+WARN  (EX3791) : Expression size 4 truncated to fit in target size 3("I:\RISCY_primer25k\src\hdmi\svo_enc.v":125)
+WARN  (EX3791) : Expression size 3 truncated to fit in target size 2("I:\RISCY_primer25k\src\hdmi\svo_enc.v":129)
+WARN  (EX3791) : Expression size 3 truncated to fit in target size 2("I:\RISCY_primer25k\src\hdmi\svo_enc.v":130)
+WARN  (EX3791) : Expression size 3 truncated to fit in target size 2("I:\RISCY_primer25k\src\hdmi\svo_enc.v":133)
+WARN  (EX3791) : Expression size 3 truncated to fit in target size 2("I:\RISCY_primer25k\src\hdmi\svo_enc.v":134)
+WARN  (EX3791) : Expression size 4 truncated to fit in target size 3("I:\RISCY_primer25k\src\hdmi\svo_enc.v":135)
+WARN  (EX3791) : Expression size 3 truncated to fit in target size 2("I:\RISCY_primer25k\src\hdmi\svo_enc.v":155)
+WARN  (EX3791) : Expression size 3 truncated to fit in target size 2("I:\RISCY_primer25k\src\hdmi\svo_enc.v":159)
+Compiling module 'svo_tmds'("I:\RISCY_primer25k\src\hdmi\svo_tmds.v":23)
+Compiling module 'uartController'("I:\RISCY_primer25k\src\GPIO\uartController.v":1)
+Compiling module 'uart'("I:\RISCY_primer25k\src\GPIO\uart.v":1)
+Extracting RAM for identifier 'testMemory'("I:\RISCY_primer25k\src\GPIO\uart.v":86)
+WARN  (EX3791) : Expression size 14 truncated to fit in target size 13("I:\RISCY_primer25k\src\GPIO\uart.v":42)
+WARN  (EX3791) : Expression size 14 truncated to fit in target size 13("I:\RISCY_primer25k\src\GPIO\uart.v":45)
+WARN  (EX3791) : Expression size 4 truncated to fit in target size 3("I:\RISCY_primer25k\src\GPIO\uart.v":53)
+WARN  (EX3791) : Expression size 14 truncated to fit in target size 13("I:\RISCY_primer25k\src\GPIO\uart.v":60)
+WARN  (EX3791) : Expression size 26 truncated to fit in target size 25("I:\RISCY_primer25k\src\GPIO\uart.v":129)
+WARN  (EX3791) : Expression size 4 truncated to fit in target size 3("I:\RISCY_primer25k\src\GPIO\uart.v":138)
+WARN  (EX3791) : Expression size 26 truncated to fit in target size 25("I:\RISCY_primer25k\src\GPIO\uart.v":142)
+WARN  (EX3791) : Expression size 5 truncated to fit in target size 4("I:\RISCY_primer25k\src\GPIO\uart.v":150)
+WARN  (EX3791) : Expression size 26 truncated to fit in target size 25("I:\RISCY_primer25k\src\GPIO\uart.v":155)
+WARN  (EX3791) : Expression size 26 truncated to fit in target size 25("I:\RISCY_primer25k\src\GPIO\uart.v":162)
+WARN  (EX3670) : Actual bit length 32 differs from formal bit length 8 for port 'data_out'("I:\RISCY_primer25k\src\GPIO\uartController.v":70)
+Compiling module 'cpuTimer'("I:\RISCY_primer25k\src\GPIO\cpuTimer.v":1)
+WARN  (EX3791) : Expression size 12 truncated to fit in target size 11("I:\RISCY_primer25k\src\GPIO\cpuTimer.v":17)
+Compiling module 'cpuTimer(DIVISION=1)'("I:\RISCY_primer25k\src\GPIO\cpuTimer.v":1)
+WARN  (EX3791) : Expression size 12 truncated to fit in target size 11("I:\RISCY_primer25k\src\GPIO\cpuTimer.v":17)
+WARN  (EX3791) : Expression size 25 truncated to fit in target size 24("I:\RISCY_primer25k\src\soc.v":308)
+WARN  (EX3791) : Expression size 24 truncated to fit in target size 23("I:\RISCY_primer25k\src\soc.v":341)
+WARN  (EX1998) : Net 'CLK_PIX' does not have a driver("I:\RISCY_primer25k\src\soc.v":41)
+WARN  (EX1998) : Net 'clk_cpu' does not have a driver("I:\RISCY_primer25k\src\soc.v":219)
+NOTE  (EX0101) : Current top module is "top"
+[5%] Running netlist conversion ...
+WARN  (CV0016) : Input s2 is unused("I:\RISCY_primer25k\src\soc.v":25)
+Running device independent optimization ...
+WARN  (DI0002) : Asynchronous register "data_out[31]" initial values do not match with the Gowin library, simulation mismatch possible("I:\RISCY_primer25k\src\GPIO\uartController.v":62)
+WARN  (DI0002) : Asynchronous register "data_out[0]" initial values do not match with the Gowin library, simulation mismatch possible("I:\RISCY_primer25k\src\GPIO\uartController.v":62)
+WARN  (DI0002) : Asynchronous register "data_out[1]" initial values do not match with the Gowin library, simulation mismatch possible("I:\RISCY_primer25k\src\GPIO\uartController.v":62)
+WARN  (DI0002) : Asynchronous register "data_out[2]" initial values do not match with the Gowin library, simulation mismatch possible("I:\RISCY_primer25k\src\GPIO\uartController.v":62)
+WARN  (DI0002) : Asynchronous register "data_out[3]" initial values do not match with the Gowin library, simulation mismatch possible("I:\RISCY_primer25k\src\GPIO\uartController.v":62)
+WARN  (DI0002) : Asynchronous register "data_out[5]" initial values do not match with the Gowin library, simulation mismatch possible("I:\RISCY_primer25k\src\GPIO\uartController.v":62)
+WARN  (DI0002) : Asynchronous register "data_out[7]" initial values do not match with the Gowin library, simulation mismatch possible("I:\RISCY_primer25k\src\GPIO\uartController.v":62)
+WARN  (DI0002) : Asynchronous register "data_out[9]" initial values do not match with the Gowin library, simulation mismatch possible("I:\RISCY_primer25k\src\GPIO\uartController.v":62)
+WARN  (DI0002) : Asynchronous register "data_out[10]" initial values do not match with the Gowin library, simulation mismatch possible("I:\RISCY_primer25k\src\GPIO\uartController.v":62)
+WARN  (DI0002) : Asynchronous register "data_out[11]" initial values do not match with the Gowin library, simulation mismatch possible("I:\RISCY_primer25k\src\GPIO\uartController.v":62)
+WARN  (DI0002) : Asynchronous register "data_out[12]" initial values do not match with the Gowin library, simulation mismatch possible("I:\RISCY_primer25k\src\GPIO\uartController.v":62)
+WARN  (DI0002) : Asynchronous register "data_out[13]" initial values do not match with the Gowin library, simulation mismatch possible("I:\RISCY_primer25k\src\GPIO\uartController.v":62)
+WARN  (DI0002) : Asynchronous register "data_out[15]" initial values do not match with the Gowin library, simulation mismatch possible("I:\RISCY_primer25k\src\GPIO\uartController.v":62)
+WARN  (DI0002) : Asynchronous register "data_out[16]" initial values do not match with the Gowin library, simulation mismatch possible("I:\RISCY_primer25k\src\GPIO\uartController.v":62)
+WARN  (DI0002) : Asynchronous register "data_out[18]" initial values do not match with the Gowin library, simulation mismatch possible("I:\RISCY_primer25k\src\GPIO\uartController.v":62)
+WARN  (DI0002) : Asynchronous register "data_out[19]" initial values do not match with the Gowin library, simulation mismatch possible("I:\RISCY_primer25k\src\GPIO\uartController.v":62)
+WARN  (DI0002) : Asynchronous register "data_out[21]" initial values do not match with the Gowin library, simulation mismatch possible("I:\RISCY_primer25k\src\GPIO\uartController.v":62)
+WARN  (DI0002) : Asynchronous register "data_out[23]" initial values do not match with the Gowin library, simulation mismatch possible("I:\RISCY_primer25k\src\GPIO\uartController.v":62)
+WARN  (DI0002) : Asynchronous register "data_out[25]" initial values do not match with the Gowin library, simulation mismatch possible("I:\RISCY_primer25k\src\GPIO\uartController.v":62)
+WARN  (DI0002) : Asynchronous register "data_out[26]" initial values do not match with the Gowin library, simulation mismatch possible("I:\RISCY_primer25k\src\GPIO\uartController.v":62)
+WARN  (DI0002) : Asynchronous register "data_out[27]" initial values do not match with the Gowin library, simulation mismatch possible("I:\RISCY_primer25k\src\GPIO\uartController.v":62)
+WARN  (DI0002) : Asynchronous register "data_out[28]" initial values do not match with the Gowin library, simulation mismatch possible("I:\RISCY_primer25k\src\GPIO\uartController.v":62)
+WARN  (DI0002) : Asynchronous register "data_out[30]" initial values do not match with the Gowin library, simulation mismatch possible("I:\RISCY_primer25k\src\GPIO\uartController.v":62)
+WARN  (DI0002) : Asynchronous register "flash_enable" initial values do not match with the Gowin library, simulation mismatch possible("I:\RISCY_primer25k\src\Memories\flashController.v":119)
+WARN  (DI0002) : Asynchronous register "data_out[0]" initial values do not match with the Gowin library, simulation mismatch possible("I:\RISCY_primer25k\src\Memories\flashController.v":119)
+WARN  (DI0002) : Asynchronous register "data_out[1]" initial values do not match with the Gowin library, simulation mismatch possible("I:\RISCY_primer25k\src\Memories\flashController.v":119)
+WARN  (DI0002) : Asynchronous register "data_out[2]" initial values do not match with the Gowin library, simulation mismatch possible("I:\RISCY_primer25k\src\Memories\flashController.v":119)
+WARN  (DI0002) : Asynchronous register "data_out[3]" initial values do not match with the Gowin library, simulation mismatch possible("I:\RISCY_primer25k\src\Memories\flashController.v":119)
+WARN  (DI0002) : Asynchronous register "data_out[5]" initial values do not match with the Gowin library, simulation mismatch possible("I:\RISCY_primer25k\src\Memories\flashController.v":119)
+WARN  (DI0002) : Asynchronous register "data_out[7]" initial values do not match with the Gowin library, simulation mismatch possible("I:\RISCY_primer25k\src\Memories\flashController.v":119)
+WARN  (DI0002) : Asynchronous register "data_out[9]" initial values do not match with the Gowin library, simulation mismatch possible("I:\RISCY_primer25k\src\Memories\flashController.v":119)
+WARN  (DI0002) : Asynchronous register "data_out[10]" initial values do not match with the Gowin library, simulation mismatch possible("I:\RISCY_primer25k\src\Memories\flashController.v":119)
+WARN  (DI0002) : Asynchronous register "data_out[11]" initial values do not match with the Gowin library, simulation mismatch possible("I:\RISCY_primer25k\src\Memories\flashController.v":119)
+WARN  (DI0002) : Asynchronous register "data_out[12]" initial values do not match with the Gowin library, simulation mismatch possible("I:\RISCY_primer25k\src\Memories\flashController.v":119)
+WARN  (DI0002) : Asynchronous register "data_out[13]" initial values do not match with the Gowin library, simulation mismatch possible("I:\RISCY_primer25k\src\Memories\flashController.v":119)
+WARN  (DI0002) : Asynchronous register "data_out[15]" initial values do not match with the Gowin library, simulation mismatch possible("I:\RISCY_primer25k\src\Memories\flashController.v":119)
+WARN  (DI0002) : Asynchronous register "data_out[16]" initial values do not match with the Gowin library, simulation mismatch possible("I:\RISCY_primer25k\src\Memories\flashController.v":119)
+WARN  (DI0002) : Asynchronous register "data_out[18]" initial values do not match with the Gowin library, simulation mismatch possible("I:\RISCY_primer25k\src\Memories\flashController.v":119)
+WARN  (DI0002) : Asynchronous register "data_out[19]" initial values do not match with the Gowin library, simulation mismatch possible("I:\RISCY_primer25k\src\Memories\flashController.v":119)
+WARN  (DI0002) : Asynchronous register "data_out[21]" initial values do not match with the Gowin library, simulation mismatch possible("I:\RISCY_primer25k\src\Memories\flashController.v":119)
+WARN  (DI0002) : Asynchronous register "data_out[23]" initial values do not match with the Gowin library, simulation mismatch possible("I:\RISCY_primer25k\src\Memories\flashController.v":119)
+WARN  (DI0002) : Asynchronous register "data_out[25]" initial values do not match with the Gowin library, simulation mismatch possible("I:\RISCY_primer25k\src\Memories\flashController.v":119)
+WARN  (DI0002) : Asynchronous register "data_out[26]" initial values do not match with the Gowin library, simulation mismatch possible("I:\RISCY_primer25k\src\Memories\flashController.v":119)
+WARN  (DI0002) : Asynchronous register "data_out[27]" initial values do not match with the Gowin library, simulation mismatch possible("I:\RISCY_primer25k\src\Memories\flashController.v":119)
+WARN  (DI0002) : Asynchronous register "data_out[28]" initial values do not match with the Gowin library, simulation mismatch possible("I:\RISCY_primer25k\src\Memories\flashController.v":119)
+WARN  (DI0002) : Asynchronous register "data_out[30]" initial values do not match with the Gowin library, simulation mismatch possible("I:\RISCY_primer25k\src\Memories\flashController.v":119)
+WARN  (DI0002) : Asynchronous register "data_out[31]" initial values do not match with the Gowin library, simulation mismatch possible("I:\RISCY_primer25k\src\Memories\flashController.v":119)
+[10%] Optimizing Phase 0 completed
+[15%] Optimizing Phase 1 completed
+[25%] Optimizing Phase 2 completed
+Running inference ...
+[30%] Inferring Phase 0 completed
+[40%] Inferring Phase 1 completed
+[50%] Inferring Phase 2 completed
+[55%] Inferring Phase 3 completed
+Running technical mapping ...
+[60%] Tech-Mapping Phase 0 completed
+[65%] Tech-Mapping Phase 1 completed
+[75%] Tech-Mapping Phase 2 completed
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[31]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[31]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[31]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[30]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[30]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[30]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[29]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[29]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[29]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[28]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[28]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[28]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[27]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[27]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[27]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[26]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[26]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[26]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[25]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[25]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[25]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[24]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[24]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[24]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[23]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[23]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[23]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[22]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[22]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[22]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[21]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[21]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[21]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[20]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[20]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[20]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[19]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[19]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[19]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[18]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[18]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[18]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[17]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[17]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[17]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[16]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[16]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[16]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[15]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[15]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[15]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[14]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[14]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[14]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[13]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[13]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[13]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[12]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[12]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[12]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[11]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[11]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[11]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[10]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[10]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[10]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[9]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[9]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[9]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[8]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[8]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[8]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[7]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[7]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[7]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[6]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[6]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[6]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[5]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[5]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[5]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[4]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[4]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[4]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[3]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[3]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[3]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[2]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[2]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[2]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[1]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[1]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[1]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[0]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[0]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0100) : Find logical loop signal : "PC_OLD[0]"("I:\RISCY_primer25k\src\CPU\cpu.v":114)
+WARN  (AG0101) : The netlist is not one directed acyclic graph
+[80%] Tech-Mapping Phase 3 completed
+[90%] Tech-Mapping Phase 4 completed
+WARN  (NL0002) : The module "control_alu" instantiated to "control_alu" is swept in optimizing("I:\RISCY_primer25k\src\CPU\cpu.v":417)
+WARN  (NL0002) : The module "control_branch" instantiated to "control_branch" is swept in optimizing("I:\RISCY_primer25k\src\CPU\cpu.v":481)
+WARN  (NL0002) : The module "control_main" instantiated to "control_main" is swept in optimizing("I:\RISCY_primer25k\src\CPU\cpu.v":310)
+WARN  (NL0002) : The module "mem_read_selector" instantiated to "mem_read_selector" is swept in optimizing("I:\RISCY_primer25k\src\CPU\cpu.v":491)
+WARN  (NL0002) : The module "signExtend" instantiated to "signExtendUnit" is swept in optimizing("I:\RISCY_primer25k\src\CPU\cpu.v":195)
+[95%] Generate netlist file "I:\RISCY_primer25k\impl\gwsynthesis\RISCY.vg" completed
+[100%] Generate report file "I:\RISCY_primer25k\impl\gwsynthesis\RISCY_syn.rpt.html" completed
+GowinSynthesis finish

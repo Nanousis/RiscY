@@ -74,6 +74,14 @@
    "Type" : "verilog"
   },
   {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY/src/GPIO/uart.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY/src/GPIO/uartController.v",
+   "Type" : "verilog"
+  },
+  {
    "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY/src/Memories/flash.v",
    "Type" : "verilog"
   },
@@ -131,14 +139,6 @@
   },
   {
    "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY/src/soc.v",
-   "Type" : "verilog"
-  },
-  {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY/src/GPIO/uart.v",
-   "Type" : "verilog"
-  },
-  {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY/src/GPIO/uartController.v",
    "Type" : "verilog"
   }
  ],

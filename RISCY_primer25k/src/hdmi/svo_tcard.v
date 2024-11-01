@@ -1,0 +1,344 @@
+/*
+ *  SVO - Simple Video Out FPGA Core
+ *
+ *  Copyright (C) 2014  Clifford Wolf <clifford@clifford.at>
+ *  
+ *  Permission to use, copy, modify, and/or distribute this software for any
+ *  purpose with or without fee is hereby granted, provided that the above
+ *  copyright notice and this permission notice appear in all copies.
+ *  
+ *  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ *  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ *  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ *  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ *  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ *  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ *  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ *
+ */
+
+`timescale 1ns / 1ps
+`include "svo_defines.vh"
+
+module svo_tcard #( `SVO_DEFAULT_PARAMS ) (
+	input clk, resetn,
+	input 					clk_cpu,
+	input                   wen,
+    input           [7:0]   wdataText, // 256 symbols -> 128 ASCII , 128 sprites
+    input           [7:0]   wdataAttr, // Vga TextMode extra attributes
+    input           [10:0]  waddr,     // resolution 512x300 -> 64x19 -> 1216 addresses
+
+	// output stream
+	//   tuser[0] ... start of frame
+	output reg out_axis_tvalid,
+	input out_axis_tready,
+	output reg [SVO_BITS_PER_PIXEL-1:0] out_axis_tdata,
+	output reg [0:0] out_axis_tuser
+);
+	`SVO_DECLS
+
+	localparam HOFFSET = ((32 - (SVO_HOR_PIXELS % 32)) % 32) / 2;
+	localparam VOFFSET = ((32 - (SVO_VER_PIXELS % 32)) % 32) / 2;
+
+	localparam HOR_CELLS = (SVO_HOR_PIXELS + 31) / 32;
+	localparam VER_CELLS = (SVO_VER_PIXELS + 31) / 32;
+
+	localparam BAR_W = (HOR_CELLS - 8 - HOR_CELLS%2) / 2;
+
+	localparam X1 =  2;
+	localparam X2 = 2 + BAR_W;
+	localparam X3 = HOR_CELLS - 4 - BAR_W;
+	localparam X4 = HOR_CELLS - 4;
+
+	function integer best_y_params;
+		input integer n, which;
+		integer best_y_blk;
+		integer best_y_off;
+		integer best_y_gap;
+		begin
+			best_y_blk = 0;
+			best_y_gap = 0;
+			best_y_off = 0;
+
+			if (SVO_VER_PIXELS == 480) begin
+				best_y_blk = 3;
+				best_y_gap = 1;
+				best_y_off = 1;
+			end
+
+			if (SVO_VER_PIXELS == 600) begin
+				best_y_blk = 3;
+				best_y_gap = 2;
+				best_y_off = 2;
+			end
+
+			if (SVO_VER_PIXELS == 768) begin
+				best_y_blk = 4;
+				best_y_gap = 3;
+				best_y_off = 2;
+			end
+
+			if (SVO_VER_PIXELS == 1080) begin
+				best_y_blk = 6;
+				best_y_gap = 2;
+				best_y_off = 5;
+			end
+
+			if (which == 1) best_y_params = best_y_blk;
+			if (which == 2) best_y_params = best_y_gap;
+			if (which == 3) best_y_params = best_y_off;
+		end
+	endfunction
+
+	localparam Y_BLK = best_y_params(VER_CELLS, 1);
+	localparam Y_GAP = best_y_params(VER_CELLS, 2);
+	localparam Y_OFF = best_y_params(VER_CELLS, 3);
+
+	localparam Y1 = 0*Y_BLK + 0*Y_GAP + Y_OFF;
+	localparam Y2 = 1*Y_BLK + 0*Y_GAP + Y_OFF;
+	localparam Y3 = 1*Y_BLK + 1*Y_GAP + Y_OFF;
+	localparam Y4 = 2*Y_BLK + 1*Y_GAP + Y_OFF;
+	localparam Y5 = 2*Y_BLK + 2*Y_GAP + Y_OFF;
+	localparam Y6 = 3*Y_BLK + 2*Y_GAP + Y_OFF;
+
+	reg [`SVO_XYBITS-1:0] hcursor;
+	wire [`SVO_XYBITS-1:0] hcursor_next, vcursor_next;
+	reg [`SVO_XYBITS-1:0] vcursor;
+
+	reg [`SVO_XYBITS-6:0] x;
+	reg [`SVO_XYBITS-6:0] y;
+
+	reg [4:0] xoff, yoff;
+
+	reg [31:0] rng;
+	reg [SVO_BITS_PER_RED-1:0] r;
+	reg [SVO_BITS_PER_GREEN-1:0] g;
+	reg [SVO_BITS_PER_BLUE-1:0] b;
+
+	wire [7:0] dataOutTxt;      // BRAM read text data
+    wire [7:0] dataOutAttr;     // BRAM read attributes data
+
+    reg     [0:256*128-1] fontMem=32768'h00000000000000000000000000000000_00007E81A58181BD9981817E00000000_00007EFFDBFFFFC3E7FFFF7E00000000_000000006CFEFEFEFE7C381000000000_0000000010387CFE7C38100000000000_000000183C3CE7E7E718183C00000000_000000183C7EFFFF7E18183C00000000_000000000000183C3C18000000000000_FFFFFFFFFFFFE7C3C3E7FFFFFFFFFFFF_0000000000003C664242663C00000000_FFFFFFFFFFC399BDBD99C3FFFFFFFFFF_00001E0E1A3278CCCCCCCC7800000000_00003C666666663C187E181800000000_00003F333F3030303070F0E000000000_00007F637F6363636367E7E6C0000000_0000001818DB3CE73CDB181800000000_0080C0E0F0F8FEF8F0E0C08000000000_0002060E1E3EFE3E1E0E060200000000_0000183C7E1818187E3C180000000000_00006666666666666600666600000000_00007FDBDBDB7B1B1B1B1B1B00000000_007CC660386CC6C66C380CC67C000000_0000000000000000FEFEFEFE00000000_0000183C7E1818187E3C187E30000000_0000183C7E1818181818181800000000_0000181818181818187E3C1800000000_0000000000180CFE0C18000000000000_00000000003060FE6030000000000000_000000000000C0C0C0FE000000000000_00000000002466FF6624000000000000_000000001038387C7CFEFE0000000000_00000000FEFE7C7C3838100000000000_00000000000000000000000000000000_0000183C3C3C18181800181800000000_00666666240000000000000000000000_0000006C6CFE6C6C6CFE6C6C00000000_18187CC6C2C07C060686C67C18180000_00000000C2C60C183060C68600000000_0000386C6C3876DCCCCCCC7600000000_00303030600000000000000000000000_00000C18303030303030180C00000000_000030180C0C0C0C0C0C183000000000_0000000000663CFF3C66000000000000_000000000018187E1818000000000000_00000000000000000018181830000000_000000000000007E0000000000000000_00000000000000000000181800000000_0000000002060C183060C08000000000_00007CC6C6CEDEF6E6C6C67C00000000_00001838781818181818187E00000000_00007CC6060C183060C0C6FE00000000_00007CC606063C060606C67C00000000_00000C1C3C6CCCFE0C0C0C1E00000000_0000FEC0C0C0FC060606C67C00000000_00003860C0C0FCC6C6C6C67C00000000_0000FEC606060C183030303000000000_00007CC6C6C67CC6C6C6C67C00000000_00007CC6C6C67E0606060C7800000000_00000000181800000018180000000000_00000000181800000018183000000000_000000060C18306030180C0600000000_00000000007E00007E00000000000000_0000006030180C060C18306000000000_00007CC6C60C18181800181800000000_00007CC6C6C6DEDEDEDCC07C00000000_000010386CC6C6FEC6C6C6C600000000_0000FC6666667C66666666FC00000000_00003C66C2C0C0C0C0C2663C00000000_0000F86C6666666666666CF800000000_0000FE6662687868606266FE00000000_0000FE6662687868606060F000000000_00003C66C2C0C0DEC6C6663A00000000_0000C6C6C6C6FEC6C6C6C6C600000000_00003C18181818181818183C00000000_00001E0C0C0C0C0CCCCCCC7800000000_0000E666666C78786C6666E600000000_0000F06060606060606266FE00000000_0000C3E7FFFFDBC3C3C3C3C300000000_0000C6E6F6FEDECEC6C6C6C600000000_00007CC6C6C6C6C6C6C6C67C00000000_0000FC6666667C60606060F000000000_00007CC6C6C6C6C6C6D6DE7C0C0E0000_0000FC6666667C6C666666E600000000_00007CC6C660380C06C6C67C00000000_0000FFDB991818181818183C00000000_0000C6C6C6C6C6C6C6C6C67C00000000_0000C3C3C3C3C3C3C3663C1800000000_0000C3C3C3C3C3DBDBFF666600000000_0000C3C3663C18183C66C3C300000000_0000C3C3C3663C181818183C00000000_0000FFC3860C183060C1C3FF00000000_00003C30303030303030303C00000000_00000080C0E070381C0E060200000000_00003C0C0C0C0C0C0C0C0C3C00000000_10386CC6000000000000000000000000_00000000000000000000000000FF0000_30301800000000000000000000000000_0000000000780C7CCCCCCC7600000000_0000E06060786C666666667C00000000_00000000007CC6C0C0C0C67C00000000_00001C0C0C3C6CCCCCCCCC7600000000_00000000007CC6FEC0C0C67C00000000_0000386C6460F060606060F000000000_000000000076CCCCCCCCCC7C0CCC7800_0000E060606C7666666666E600000000_00001818003818181818183C00000000_00000606000E06060606060666663C00_0000E06060666C78786C66E600000000_00003818181818181818183C00000000_0000000000E6FFDBDBDBDBDB00000000_0000000000DC66666666666600000000_00000000007CC6C6C6C6C67C00000000_0000000000DC66666666667C6060F000_000000000076CCCCCCCCCC7C0C0C1E00_0000000000DC7666606060F000000000_00000000007CC660380CC67C00000000_0000103030FC30303030361C00000000_0000000000CCCCCCCCCCCC7600000000_0000000000C3C3C3C3663C1800000000_0000000000C3C3C3DBDBFF6600000000_0000000000C3663C183C66C300000000_0000000000C6C6C6C6C6C67E060CF800_0000000000FECC183060C6FE00000000_00000E18181870181818180E00000000_00001818181800181818181800000000_0000701818180E181818187000000000_000076DC000000000000000000000000_0000000010386CC6C6C6FE0000000000_FF81818181818181818181818181FF00_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000__00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000_00000000000000000000000000000000;
+   	wire [14:0] currentCharacter;
+	// used in order to synchronize the first line of the frame
+	assign hcursor_next = hcursor+1;
+	assign vcursor_next = vcursor;
+	assign currentCharacter = {vcursor_next[9:5],hcursor_next[9:4]};
+
+    wire [0:16*8-1] charMem;    // TextMode: 8x16 symbols
+    assign charMem = fontMem[dataOutTxt*128+:128]; // read symbol from BRAM 
+	
+	Gowin_DPB text_Buffer(
+        //port A -> write port
+        .douta(douta), 
+        .clka(clk_cpu),     
+        .ocea(1'b1), 
+        .cea(1'b1), 
+        .reseta(!resetn),     
+        .wrea(wen),         
+        .ada(waddr),        
+        .dina(wdataText),
+        
+        //port B -> read port
+        .doutb(dataOutTxt), 
+        .clkb(clk),     
+        .oceb(1'b1),       
+        .ceb(1'b1), 
+        .resetb(!resetn),      
+        .wreb(1'b0),        
+        .adb(currentCharacter), 
+        .dinb(dinb)         
+    );
+
+    Gowin_DPB attributes_Buffer(
+        //port A -> write port
+        .douta(douta), 
+        .clka(clk_cpu), 
+        .ocea(1'b1), 
+        .cea(1'b1), 
+        .reseta(!resetn), 
+        .wrea(wen), 
+        .ada(waddr), 
+        .dina(wdataAttr), 
+        
+        //port B -> read port
+        .doutb(dataOutAttr),
+        .clkb(clk), 
+        .oceb(1'b1), 
+        .ceb(1'b1), 
+        .resetb(!resetn), 
+        .wreb(1'b0), 
+        .adb(currentCharacter), 
+        .dinb(dinb) 
+    );
+    
+
+
+	always @(posedge clk) begin
+		if (!resetn) begin
+			hcursor <= 0;
+			vcursor <= 0;
+			x <= 0;
+			y <= 0;
+			xoff <= HOFFSET;
+			yoff <= VOFFSET;
+			out_axis_tvalid <= 0;
+			out_axis_tdata <= 0;
+			out_axis_tuser <= 0;
+		end 
+		else if (!out_axis_tvalid || out_axis_tready) begin
+ 			if (charMem[{vcursor[4:1],hcursor[3:1]}] == 1'b1) begin
+                if (dataOutAttr[3:0] == 4'b0000) begin
+                    r <= 0;   // Black
+                    g <= 0;  // Black
+                    b <= 0;   // Black
+                end
+                else if (dataOutAttr[3:0] == 4'b0001) begin
+                    r <= 127;   // Red
+                    g <= 0;  // Red
+                    b <= 0;   // Red
+                end
+                else if (dataOutAttr[3:0] == 4'b0010) begin
+                    r <= 0;   // Green
+                    g <= 127;  // Green
+                    b <= 0;   // Green
+                end
+                else if (dataOutAttr[3:0] == 4'b0011) begin
+                    r <= 127;   // Mustard
+                    g <= 127;  // Mustard
+                    b <= 0;   // Mustard
+                end
+                else if (dataOutAttr[3:0] == 4'b0100) begin
+                    r <= 0;   // Blue
+                    g <= 0;  // Blue
+                    b <= 127;   // Blue
+                end
+                else if (dataOutAttr[3:0] == 4'b0101) begin
+                    r <= 127;   // Violet
+                    g <= 0;  // Violet
+                    b <= 127;   // Violet
+                end
+                else if (dataOutAttr[3:0] == 4'b0110) begin
+                    r <= 0;   // Cyan
+                    g <= 127;  // Cyan
+                    b <= 127;   // Cyan
+                end
+                else if (dataOutAttr[3:0] == 4'b0111) begin
+                    r <= 64;   // Dark Gray
+                    g <= 64;  // Dark Gray
+                    b <= 64;   // Dark Gray
+                end
+                else if (dataOutAttr[3:0] == 4'b1000) begin
+                    r <= 127;   // Light Gray
+                    g <= 127;  // Light Gray
+                    b <= 127;   // Light Gray
+                end
+                else if (dataOutAttr[3:0] == 4'b1001) begin
+                    r <= 255;   // Intense Red
+                    g <= 0;  // Intense Red
+                    b <= 0;   // Intense Red
+                end
+                else if (dataOutAttr[3:0] == 4'b1010) begin
+                    r <= 0;   // Intense Green
+                    g <= 255;  // Intense Green
+                    b <= 0;   // Intense Green
+                end
+                else if (dataOutAttr[3:0] == 4'b1011) begin
+                    r <= 255;   // Intense Yellow
+                    g <= 255;  // Intense Yellow
+                    b <= 0;   // Intense Yellow
+                end
+                else if (dataOutAttr[3:0] == 4'b1100) begin
+                    r <= 0;   // Intense Blue
+                    g <= 0;  // Intense Blue
+                    b <= 255;   // Intense Blue
+                end
+                else if (dataOutAttr[3:0] == 4'b1101) begin
+                    r <= 255;   // Intense Magenta
+                    g <= 0;  // Intense Magenta
+                    b <= 255;   // Intense Magenta
+                end
+                else if (dataOutAttr[3:0] == 4'b1110) begin
+                    r <= 0;   // Intense Cyan
+                    g <= 255;  // Intense Cyan
+                    b <= 255;   // Intense Cyan
+                end
+                else if (dataOutAttr[3:0] == 4'b1111) begin
+                    r <= 255;   // White
+                    g <= 255;  // White
+                    b <= 255;   // White
+                end
+            end
+            //BACKROUND COLOR
+            else begin
+                if (dataOutAttr[6:4] == 3'b000) begin
+                    r <= 0;   // Black
+                    g <= 0;  // Black
+                    b <= 0;   // Black
+                end
+                else if (dataOutAttr[6:4] == 3'b001) begin
+                    b <= 0;   // Red
+                    g <= 0;  // Red
+                    r <= 255;   // Red
+                end
+                else if (dataOutAttr[6:4] == 3'b010) begin
+                    b <= 0;   // Green
+                    g <= 255;  // Green
+                    r <= 0;   // Green
+                end
+                else if (dataOutAttr[6:4] == 3'b011) begin
+                    b <= 0;    // Yellow
+                    g <= 255;   // Yellow
+                    r <= 255;   // Yellow
+                end
+                else if (dataOutAttr[6:4] == 3'b100) begin
+                    b <= 255;   // Blue
+                    g <= 0;  // Blue
+                    r <= 0;   // Blue
+                end
+                else if (dataOutAttr[6:4] == 3'b101) begin
+                    b <= 255;   // Magenta
+                    g <= 0;  // Magenta
+                    r <= 255;   // Magenta
+                end
+                else if (dataOutAttr[6:4] == 3'b110) begin
+                    b <= 255;   // Cyan
+                    g <= 255;  // Cyan
+                    r <= 0;   // Cyan
+                end
+                else if (dataOutAttr[6:4] == 3'b111) begin
+                    b <= 255;   // White
+                    g <= 255;  // White
+                    r <= 255;   // White
+                end
+            end
+			out_axis_tvalid <= 1;
+			if ((x == 1 || x == HOR_CELLS-2) && (y == 1 || y == VER_CELLS-2))
+				out_axis_tdata <=  {8'd255, 8'd0, 8'd255};
+			else
+				out_axis_tdata <= {b, g, r};
+			out_axis_tuser[0] <= !hcursor && !vcursor;
+
+			if (hcursor == SVO_HOR_PIXELS-1) begin
+				hcursor <= 0;
+				x <= 0;
+				xoff <= HOFFSET;
+				if (vcursor == SVO_VER_PIXELS-1) begin
+					vcursor <= 0;
+					y <= 0;
+					yoff <= VOFFSET;
+				end else begin
+					vcursor <= vcursor + 1;
+					if (&yoff)
+						y <= y + 1;
+					yoff <= yoff + 1;
+				end
+			end else begin
+				hcursor <= hcursor + 1;
+				if (&xoff)
+					x <= x + 1;
+				xoff <= xoff + 1;
+			end
+		end
+	end
+endmodule

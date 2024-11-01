@@ -1,0 +1,56 @@
+<?xml version="1" encoding="UTF-8"?>
+<!DOCTYPE gowin-fpga-project>
+<Project>
+    <Template>FPGA</Template>
+    <Version>5</Version>
+    <Device name="GW5A-25A" pn="GW5A-LV25MG121NES">gw5a25a-000</Device>
+    <FileList>
+        <File path="src/BRAMS/gowin_dpb_program/gowin_dpb_program.v" type="file.verilog" enable="1"/>
+        <File path="src/Buses/bus.v" type="file.verilog" enable="1"/>
+        <File path="src/CPU/ALUCPU.v" type="file.verilog" enable="1"/>
+        <File path="src/CPU/RegFile.v" type="file.verilog" enable="1"/>
+        <File path="src/CPU/SignExtendSelector.v" type="file.verilog" enable="1"/>
+        <File path="src/CPU/constants.vh" type="file.verilog" enable="1"/>
+        <File path="src/CPU/control_alu.v" type="file.verilog" enable="1"/>
+        <File path="src/CPU/control_branch.v" type="file.verilog" enable="1"/>
+        <File path="src/CPU/control_bypass_ex.v" type="file.verilog" enable="1"/>
+        <File path="src/CPU/control_main.v" type="file.verilog" enable="1"/>
+        <File path="src/CPU/control_stall_id.v" type="file.verilog" enable="1"/>
+        <File path="src/CPU/cpu.v" type="file.verilog" enable="1"/>
+        <File path="src/CPU/mem_read_selector.v" type="file.verilog" enable="1"/>
+        <File path="src/CPU/mem_write_selector.v" type="file.verilog" enable="1"/>
+        <File path="src/CPU/signExtend.v" type="file.verilog" enable="1"/>
+        <File path="src/GPIO/buttonModule.v" type="file.verilog" enable="1"/>
+        <File path="src/GPIO/cpuTimer.v" type="file.verilog" enable="1"/>
+        <File path="src/GPIO/seven_segment.v" type="file.verilog" enable="1"/>
+        <File path="src/GPIO/uart.v" type="file.verilog" enable="1"/>
+        <File path="src/GPIO/uartController.v" type="file.verilog" enable="1"/>
+        <File path="src/Memories/flash.v" type="file.verilog" enable="1"/>
+        <File path="src/Memories/flashController.v" type="file.verilog" enable="1"/>
+        <File path="src/Memories/memory.v" type="file.verilog" enable="1"/>
+        <File path="src/Memories/programMemory.v" type="file.verilog" enable="1"/>
+        <File path="src/config.vh" type="file.verilog" enable="1"/>
+        <File path="src/hdmi/gowin_clkdiv/gowin_clkdiv.v" type="file.verilog" enable="1"/>
+        <File path="src/hdmi/gowin_dpb/gowin_dpb.v" type="file.verilog" enable="1"/>
+        <File path="src/hdmi/gowin_pll_720p/gowin_pll_720p.v" type="file.verilog" enable="1"/>
+        <File path="src/hdmi/svo_defines.vh" type="file.verilog" enable="1"/>
+        <File path="src/hdmi/svo_enc.v" type="file.verilog" enable="1"/>
+        <File path="src/hdmi/svo_hdmi.v" type="file.verilog" enable="1"/>
+        <File path="src/hdmi/svo_openldi.v" type="file.verilog" enable="1"/>
+        <File path="src/hdmi/svo_pong.v" type="file.verilog" enable="1"/>
+        <File path="src/hdmi/svo_tcard.v" type="file.verilog" enable="1"/>
+        <File path="src/hdmi/svo_term.v" type="file.verilog" enable="1"/>
+        <File path="src/hdmi/svo_tmds.v" type="file.verilog" enable="1"/>
+        <File path="src/hdmi/svo_utils.v" type="file.verilog" enable="1"/>
+        <File path="src/hdmi/svo_vdma.v" type="file.verilog" enable="1"/>
+        <File path="src/screenI2C/i2c.v" type="file.verilog" enable="1"/>
+        <File path="src/screenI2C/i2capi.v" type="file.verilog" enable="1"/>
+        <File path="src/screenI2C/screen.v" type="file.verilog" enable="1"/>
+        <File path="src/screenI2C/textEngine.v" type="file.verilog" enable="1"/>
+        <File path="src/soc.v" type="file.verilog" enable="1"/>
+        <File path="src/tangnano9k.cst" type="file.cst" enable="1"/>
+        <File path="src/Tang_nano_9K_LCD.sdc" type="file.sdc" enable="1"/>
+        <File path="src/Memories/text.hex" type="file.other" enable="1"/>
+        <File path="src/screenI2C/font.hex" type="file.other" enable="1"/>
+    </FileList>
+</Project>
