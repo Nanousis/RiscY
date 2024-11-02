@@ -12,7 +12,9 @@ def main():
 
     num_programs = len(program_files)
     per_header_size = 12 + 4  # Name (12 bytes) + starting address (4 bytes)
-    header_size = 4 + num_programs * per_header_size  # Number of programs (4 bytes) + per-program headers
+    
+    # Initial header size: "RISCY.FS" (8 bytes) + Number of programs (4 bytes)
+    header_size = 8 + 4 + num_programs * per_header_size
 
     # Get sizes of all program files
     file_sizes = []
@@ -33,7 +35,10 @@ def main():
 
     # Open the output file in binary write mode
     with open('merged_programs.bin', 'wb') as outfile:
-        # Write the number of programs (4 bytes, big-endian)
+        # Write the "RISCY.FS" identifier (8 bytes)
+        outfile.write(b'RISCY.FS')
+        
+        # Write the number of programs (4 bytes, little-endian)
         outfile.write(struct.pack('<I', num_programs))
 
         # Write headers for each program
@@ -47,7 +52,7 @@ def main():
             name_bytes = name_bytes.ljust(12, b'\x00')  # Pad with null bytes if necessary
             outfile.write(name_bytes)
 
-            # Write the starting address (4 bytes, big-endian)
+            # Write the starting address (4 bytes, little-endian)
             outfile.write(struct.pack('<I', starting_addresses[i]))
 
         # Write the content of all program files

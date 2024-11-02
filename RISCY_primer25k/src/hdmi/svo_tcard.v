@@ -187,7 +187,13 @@ module svo_tcard #( `SVO_DEFAULT_PARAMS ) (
 			out_axis_tuser <= 0;
 		end 
 		else if (!out_axis_tvalid || out_axis_tready) begin
- 			if (charMem[{vcursor[4:1],hcursor[3:1]}] == 1'b1) begin
+            if(vcursor>=608||hcursor>=1024)
+            begin
+                r <= x<<1;
+                g <= 0;
+                b <= y<<1;
+            end
+ 			else if (charMem[{vcursor[4:1],hcursor[3:1]}] == 1'b1) begin
                 if (dataOutAttr[3:0] == 4'b0000) begin
                     r <= 0;   // Black
                     g <= 0;  // Black
@@ -313,9 +319,9 @@ module svo_tcard #( `SVO_DEFAULT_PARAMS ) (
                 end
             end
 			out_axis_tvalid <= 1;
-			if ((x == 1 || x == HOR_CELLS-2) && (y == 1 || y == VER_CELLS-2))
-				out_axis_tdata <=  {8'd255, 8'd0, 8'd255};
-			else
+//			if ((x == 1 || x == HOR_CELLS-2) && (y == 1 || y == VER_CELLS-2))
+//				out_axis_tdata <=  {8'd255, 8'd0, 8'd255};
+//			else
 				out_axis_tdata <= {b, g, r};
 			out_axis_tuser[0] <= !hcursor && !vcursor;
 

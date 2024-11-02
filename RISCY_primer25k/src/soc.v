@@ -43,6 +43,8 @@ module top
 
     reg clk_btn=0;
     wire cpu_clk;
+    
+
     assign cpu_clk=(clk_btn==1'b1)?cpuclk:clkout;
     wire overflow;
     reg reset;
@@ -355,11 +357,12 @@ module top
                 // btn1reg<=1;
                 // btn2reg<=1;
                 reset <= 1;
-                // if (btn1 == 0) begin
+                 if (resetn == 1) begin
                 //     // btn1reg<=0;
-                //     state <= STATE_DEBOUNCE;
-                //     txCounter <= 0;
-                // end
+                     state <= STATE_DEBOUNCE;
+                     txCounter <= 0;
+                     reset <=0;
+                 end
                 // if (btn2 == 0) begin
                 //     // btn2reg<=0;
                 //     state <= STATE_DEBOUNCE;

@@ -49,13 +49,17 @@ void *memset(void *s, int c, size_t n) {
 }
 // *****************************************************************************
 // returns 1 if the button is pressed, 0 otherwise
+char getButton(char btn){
+    char *buttons = (char *)BUTTONS;
+    return buttons[btn];
+}
 char getButtonDown(){
     char *buttons = (char *)BUTTONS;
-    return buttons[1];
+    return buttons[0];
 }
 char getButtonUp(){
     char *buttons = (char *)BUTTONS;
-    return buttons[0];
+    return buttons[1];
 }
 char getButtonLeft(){
     char *buttons = (char *)BUTTONS;

@@ -24,7 +24,7 @@ unsigned int readFlash(unsigned int adress){
     *flashAdress = adress;
     *flashRen = 1;
     // while(*flashReady == 0);
-    for(volatile int j=0; j<200; j++);
+    for(volatile int j=0; j<500; j++);
     data = *flashData;
     *flashRen = 0;
     return data;
@@ -34,78 +34,120 @@ unsigned int readFlash(unsigned int adress){
 int main() {
     Programheader headers[5];
 
-    unsigned int readData;
+    unsigned int readData=0;
     unsigned int *programMemory = (unsigned int *)PROGRAM_MEMORY;
     unsigned int tempAddress=0;
 
-    unsigned int programNum = readFlash(tempAddress);
-    tempAddress += 4;
-    for(int i=0; i<programNum; i++){
-        for(int j=0; j<3; j++){
-            readData = readFlash(tempAddress);
-            tempAddress += 4;
-            headers[i].name[j << 2]   = readData & 0xFF;
-            headers[i].name[(j << 2) +1] = (readData >> 8) & 0xFF;
-            headers[i].name[(j << 2) +2] = (readData >> 16) & 0xFF;
-            headers[i].name[(j << 2) +3] = (readData >> 24) & 0xFF;
-        }
-        headers[i].name[12] = '\0';
-        headers[i].startAdress = readFlash(tempAddress);
-        tempAddress += 4;
-        // printf("Program %d: %s\n",i,headers[i].name);
-    }
+    unsigned int programNum=0;
     // printf("\n\nList of programs\n");
     int selectNum=0;
-    char btnPressed=0;
-
+    short btnPressed=0;
+    char btnStart=0;
+    int btnDebounce=0;
+    clearScreen();
     while(1){
-        btnPressed=0;
-        selectNum=0;
-        printf("Bootloader\n");
-        printf("Number of programs: %d\n",programNum);
+        char magicNum[]="RISCY.FS";
+        char magicNumRead[9]={0};
+        magicNumRead[8]='\0';
+        // this should be changed to take the offset value and not the absolute address to jump to
+        printf("Bootloader RiscY\n");
         printf("--------------\n");
+        programNum = 0;
+        tempAddress = 0;
+        readData = readFlash(tempAddress);
+        magicNumRead[0] = readData & 0xFF;
+        magicNumRead[1] = (readData >> 8) & 0xFF;
+        magicNumRead[2] = (readData >> 16) & 0xFF;
+        magicNumRead[3] = (readData >> 24) & 0xFF;
+        tempAddress += 4;
+        readData = readFlash(tempAddress);
+        magicNumRead[4] = readData & 0xFF;
+        magicNumRead[5] = (readData >> 8) & 0xFF;
+        magicNumRead[6] = (readData >> 16) & 0xFF;
+        magicNumRead[7] = (readData >> 24) & 0xFF;
+        tempAddress += 4;
+        // for(int i=0; i<8; i++){
+        //     if(magicNum[i]!=magicNumRead[i]){
+        //         return 0;
+        //     }
+        // }
+        programNum = readFlash(tempAddress);
+        tempAddress += 4;
+        printf("Number of Files: %d\n",programNum);
+        for(int i=0; i<programNum; i++){
+            for(int j=0; j<3; j++){
+                readData = readFlash(tempAddress);
+                tempAddress += 4;
+                headers[i].name[j << 2]   = readData & 0xFF;
+                headers[i].name[(j << 2) +1] = (readData >> 8) & 0xFF;
+                headers[i].name[(j << 2) +2] = (readData >> 16) & 0xFF;
+                headers[i].name[(j << 2) +3] = (readData >> 24) & 0xFF;
+            }
+            headers[i].name[12] = '\0';
+            headers[i].startAdress = readFlash(tempAddress);
+            tempAddress += 4;
+            // printf("Program %d: %s\n",i,headers[i].name);
+        }
+        btnPressed=0;
+        btnStart=0;
+        selectNum=0;
         printf("\nSelect program: \n");
-        while(!getButtonDown()){
+
+        while(!getButtonRight()&&!getButtonLeft()){
             for(int i=0; i<programNum; i++){
-                if(btnPressed==1){
+                if(btnPressed!=0){
+                    selectNum+=btnPressed;
                     btnPressed=0;
-                    selectNum++;
-                    if(selectNum>=programNum){
+                    if(selectNum<0){
+                        selectNum=programNum-1;
+                    }
+                    else if(selectNum>=programNum){
                         selectNum=0;
                     }
                 }
                 if(i==selectNum){
-                    printfSCR(64*5+1+i*64,((6)<<4),"Program %d: %s\n",i,headers[i].name);
+                    printfSCR(64*5+1+i*64,BG_MAGENTA,"Program %d: %s address: 0x%x",i,headers[i].name,headers[i].startAdress);
                 }
                 else{
-                    printfSCR(64*5+1+i*64,15,"Program %d: %s\n",i,headers[i].name);
+                    printfSCR(64*5+1+i*64,15,"Program %d: %s address: 0x%x",i,headers[i].name,headers[i].startAdress);
                 }
                 // printf("Program %d: %s\n",i,headers[i].name);
             }
-            for(volatile int j=0; j<WaitTime*20; j++){
-            }
-            for(volatile int j=0; j<WaitTime*10; j++){
-                if(getButtonUp()){
-                    btnPressed=1;
+            for(volatile int j=0; j<WaitTime*2; j++){
+                if(btnDebounce==0){
+                    if(getButtonDown()){
+                        btnDebounce=14;
+                        btnPressed=1;
+                    }
+                    else if(getButtonUp()){
+                        btnDebounce=14;
+                        btnPressed=-1;
+                    }
+                    else if(getButtonLeft()||getButtonRight()){
+                        btnStart=1;
+                    }
                 }
             }
+            if(btnStart){
+                break;
+            }
+            if(btnDebounce>0)
+                btnDebounce--;
         }
             // printf("Reading from flash\n");
-            for(int j = 0; j < 1024; j++) {
+            for(int j = 0; j < 2048; j++) {
                 readData = readFlash((j << 2) + headers[selectNum].startAdress);
                 programMemory[j] = readData;
             }
-
+            clearScreen();
             // printf("Jumping to program\n");
             // Define a function pointer to jump to the loaded program
             void (*jump_to_program)() = (void (*)())(PROGRAM_MEMORY);
 
             // Call the function pointer to jump to the loaded program
             jump_to_program();
-            resetScreenVector();
-            printf("Clearing screen!\n");
-            for(volatile int j=0; j<WaitTime*20; j++);
             clearScreen();
+            for(volatile int j=0; j<WaitTime*20; j++);
     }
 }
 

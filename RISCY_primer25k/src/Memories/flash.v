@@ -101,7 +101,7 @@ module flashNavigator
         end
       end
       STATE_LOAD_ADDRESS_TO_SEND: begin
-        dataToSend <= readAddress; 
+        dataToSend <= readAddress+'h500000;   
         bitsToSend <= 24;
         state <= STATE_SEND;
         returnState <= STATE_READ_DATA;
