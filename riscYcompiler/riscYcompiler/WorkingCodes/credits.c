@@ -25,9 +25,10 @@ int main() {
     printfSCR(64*14,15,"  - Dimitris Voitsidis");
 
 
-    for(int i=0;i<64;i++){
-        printfSCR(64*16+i,6<<4,"#");
-        for(volatile int j=0;j<WaitTime*12;j++);
+    for(int i=0;i<32;i++){
+        printfSCR(64*16+i,BG_MAGENTA,"#");
+        printfSCR(64*17-i-1,BG_MAGENTA,"#");
+        for(volatile int j=0;j<WaitTime*20;j++);
     }
     printfSCR(64*17,15,"Press any button to exit");
     while(!getButtonDown()&&!getButtonUp());   

@@ -1,213 +1,141 @@
-#define BUTTONS 0x89000000
-#define MAX_SNAKE_LENGTH 100
+
+
+#include <stdarg.h> 
 #include "riscYstdio.h"
+#define USB 0x10000000
 
+char getUSBModifier(){
+    volatile char *usb = (volatile char *) USB;
+    return usb[2];
+}
 
-void printSnake(unsigned int snakeLength);
-void printApple(int appleID);
-int checkForCollision(unsigned short snakeLength);
-void printScore(int score);
+char getUSBType() {
+    volatile char *usb = (volatile char *) USB;
+    return usb[1];
+}
 
-volatile char current_x=4;
-volatile char current_y=4;
-short positions[MAX_SNAKE_LENGTH];
+unsigned int getUSBint() {
+    volatile unsigned int *usb = (volatile unsigned int *) USB;
+    return usb[0];
+}
+
+char USBParser(char usbout) {
+    if (usbout >= 0x04 && usbout <= 0x1D) {
+        // Lowercase letters 'a' to 'z'
+        return usbout - 4 + 'a';
+    }
+    else if (usbout >= 0x1E && usbout <= 0x27) {
+        // Digits '0' to '9'
+        return usbout - 0x1E + '1';
+    }
+    else if (usbout == 0x28) {
+        return '\n'; // Enter key
+    }
+    else if (usbout == 0x29) {
+        return '\x1B'; // Escape key
+    }
+    else if (usbout == 0x2A) {
+        return '\b'; // Backspace key
+    }
+    else if (usbout == 0x2B) {
+        return '\t'; // Tab key
+    }
+    else if (usbout == 0x2C) {
+        return ' '; // Space key
+    }
+    else if (usbout == 0x2D) {
+        return '-'; // Minus key
+    }
+    else if (usbout == 0x2E) {
+        return '='; // Equals key
+    }
+    else if (usbout == 0x2F) {
+        return '['; // Left bracket key
+    }
+    else if (usbout == 0x30) {
+        return ']'; // Right bracket key
+    }
+    else if (usbout == 0x31) {
+        return '\\'; // Backslash key
+    }
+    else if (usbout == 0x33) {
+        return ';'; // Semicolon key
+    }
+    else if (usbout == 0x34) {
+        return '\''; // Apostrophe key
+    }
+    else if (usbout == 0x35) {
+        return '`'; // Grave accent key
+    }
+    else if (usbout == 0x36) {
+        return ','; // Comma key
+    }
+    else if (usbout == 0x37) {
+        return '.'; // Period key
+    }
+    else if (usbout == 0x38) {
+        return '/'; // Forward slash key
+    }
+    else if (usbout >= 0x3A && usbout <= 0x45) {
+        // Function keys F1 to F12
+        return 'F'; // Placeholder for function key handling
+    }
+
+    // Return 0 if the input doesn't match any known key
+    return 0;
+}
+
 
 int main() {
-    startAgain:
-    volatile int i=0;
-    for(i=0;i<WaitTime;i++);
-    clearScreen();
-
-    char tempChar=0;
-    printString(23+64*2, "Amazing Snake Game V2",0);
-    printString(22+64*9, "Press any key to play",0);
-    current_x=1;
-    current_y=0;
-    char state=0;
-    unsigned char currentColor=1;
+    unsigned int usbout=0;
+    char type_old = 0;
+    char type_new=0;
+    char keys_new[4]={0,0,0,0};
+    char keys_old[4]={0,0,0,0}; 
+    short characterLocation = 0;
+    printf("USB test\n");
     while(1){
-        if(getButtonUp()||getButtonDown()){
-            goto startGame;
+        for(volatile int i=0;i<WaitTime*10;i++);
+        type_new = getUSBType();
+        if(type_new != type_old){
+            clearScreen();
+            printf("Type: %d\n", type_new);
+            characterLocation = SCREEN_WIDTH;
+            type_old = type_new;
         }
-        tempChar++;
-        if(state==0){
-            current_x++;
-            if(current_x==63){
-                state=1;
-            }
+        if(type_old == 0){
+            continue;
         }
-        if(state==1){
-            current_y++;
-            if(current_y==18){
-                state=2;
-            }
-        }
-        if(state==2){
-            current_x--;
-            if(current_x==0){
-                state=3;
-            }
-        }
-        if(state==3){
-            current_y--;
-            if(current_y==0){
-                state=0;
-                currentColor++;
-                current_x=1;
-                if(currentColor>15){
-                    currentColor=1;
+        keys_new[3] = USBParser(usbout & 0xFF);
+        keys_new[2] = USBParser((usbout >> 8) & 0xFF);
+        keys_new[1] = USBParser((usbout >> 16) & 0xFF);
+        keys_new[0] = USBParser((usbout >> 24) & 0xFF);
+        if(type_new ==1){
+            usbout = getUSBint();
+            
+            for(int i=0; i<1; i++){
+                if(keys_new[i] != 0 && keys_new[i] != keys_old[i]){
+                    if(keys_new[i] == '\b'){
+                        
+                        putch(characterLocation+1,' ',15);
+                        putch(characterLocation,'_',15);
+                        characterLocation-=putch(characterLocation-1,' ',0);
+                    }
+                    else if(keys_new[i] == '\n'){
+                        
+                        characterLocation-=putch(characterLocation,' ',0);
+                        characterLocation = (characterLocation& ~(SCREEN_WIDTH-1))+SCREEN_WIDTH;
+                    }
+                    else{
+                        characterLocation+=putch(characterLocation,keys_new[i],15);
+                        putch(characterLocation,'_',15);
+                    }
                 }
+                keys_old[i] = keys_new[i];
             }
         }
-        putch(current_x+current_y*64, ' ',currentColor<<4);
-        for(i=0;i<WaitTime*3;i++);
-    }
-    startGame:
-    clearScreen();
-    short direction=0;
-    unsigned short location=5+64*5;
-    int snakeLength=4;
-    current_x=4;
-    current_y=4;
-    char btnUpClicked=0;
-    char btnDownClicked=0;
-    char btnDebounce=1;
-    unsigned short appleLocation=356;
-    unsigned int seed=123456789;
-    unsigned int counter=0;
-    for(i=0;i<MAX_SNAKE_LENGTH;i++){
-        positions[i]=-1;
-    }
-    while(1){
-        counter++;
-        for(i=0;i<WaitTime*30;i++){
-        }
-        if(btnDebounce==0){
-            if(getButtonDown()){
-                btnUpClicked=1;
-                btnDebounce=1;
-            }
-            else if(getButtonUp()){
-                btnDownClicked=1;
-                btnDebounce=1;
-            }
-        }
-        else{
-            btnUpClicked=0;
-            btnDownClicked=0;
-            if(getButtonUp()==0&&getButtonDown()==0){
-                btnDebounce=0;
-            }
-
-        }
-        
-        if(btnUpClicked){
-            direction++;
-            if(direction>3){
-                direction=0;
-            }
-        }
-        if(btnDownClicked){
-            direction--;
-            if(direction<0){
-                direction=3;
-            }
-        }
-        if(direction == 0){
-            if(current_x==62){
-                current_x=0;
-            }
-            else{
-                current_x++;
-                current_x++;
-            }
-        }
-        else if(direction == 1){
-            if(current_y==0){
-                current_y=18;
-            }
-            else{
-                current_y-=1;
-            }
-        }
-        else if(direction == 2){
-            if(current_x==0){
-                current_x=62;
-            }
-            else{
-                current_x--;
-                current_x--;
-            }
-        }
-        else if(direction == 3){
-            if(current_y==18){
-                current_y=0;
-            }
-            else{
-                current_y+=1;
-            }
-        }
-        location = current_x+current_y*64;
-        if(location==appleLocation){
-            do{
-                appleLocation=((counter^seed)&511)<<1;
-                counter++;
-            }while(appleLocation<=25&&appleLocation<1216);
-                snakeLength++;
-        }
-        putch(appleLocation+1,16,1);
-        if(checkForCollision(snakeLength)){
-            goto youLoose;
-        }
-        // if(current_x>63||current_x<0||current_y>18||current_y<0){
-        //     goto youLoose;
-        // }
-        btnDownClicked=0;
-        btnUpClicked=0;
-        printScore(snakeLength);
-        printSnake(snakeLength);
-        putch(appleLocation,17,10);
-    }
-    youLoose:
-    putch(positions[snakeLength-1],'x',1);
-    putch(positions[snakeLength-1]+1,'x',1);
-    for(i=0;i<WaitTime*60;i++);
-    clearScreen();
-    printString(25, "You lost!",15);
-    printString(25+64*5, "Play again?",15);
-    printScore(snakeLength);
-    while(1){
-        if(getButtonUp()||getButtonDown()||getButtonLeft()||getButtonRight()){
-            goto startAgain;
-        }
-        for(i=0;i<WaitTime*5;i++);
-    }
-}
-void printScore(int score){
-    printfSCR(0,15,"Score: %d",score-4);
-}
-void printSnake(unsigned int snakeLength){
-        int i=0;
-        putch(positions[0],' ',0);
-        putch(positions[0]+1,' ',0);
-        for( i=0;i<MAX_SNAKE_LENGTH-1;i++){
-            positions[i]=positions[i+1];
-        }
-        unsigned short location = current_x+current_y*64;
-        positions[snakeLength-1]=location;
-        // clearScreen();
-        for(i=0;i<snakeLength;i++){
-            putch(positions[i],' ',17);
-            putch(positions[i]+1,' ',17);
-        }
-        
-}
-int checkForCollision(unsigned short snakeLength){
-    int i=0;
-    for(i=0;i<snakeLength;i++){
-        if(positions[i]==current_x+current_y*64){
-            return 1;
+        else if(type_old==2){
+            printf("clk : %x  mouse  X:%x   mouseY: %x\n",keys_new[1],keys_new[2],keys_new[3]);
         }
     }
-    return 0;
 }

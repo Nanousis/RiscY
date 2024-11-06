@@ -47,6 +47,10 @@
         <File path="I:\RISCY_primer25k\src\screenI2C\screen.v" type="verilog"/>
         <File path="I:\RISCY_primer25k\src\screenI2C\textEngine.v" type="verilog"/>
         <File path="I:\RISCY_primer25k\src\soc.v" type="verilog"/>
+        <File path="I:\RISCY_primer25k\src\usb\pll\gowin_pll_usb.v" type="verilog"/>
+        <File path="I:\RISCY_primer25k\src\usb\usb_controller.v" type="verilog"/>
+        <File path="I:\RISCY_primer25k\src\usb\usb_hid_host.v" type="verilog"/>
+        <File path="I:\RISCY_primer25k\src\usb\usb_hid_host_rom.v" type="verilog"/>
     </FileList>
     <OptionList>
         <Option type="disable_insert_pad" value="0"/>
@@ -59,7 +63,7 @@
         <Option type="top_module" value="top"/>
         <Option type="vcc" value="0.9"/>
         <Option type="vccx" value="3.3"/>
-        <Option type="verilog_language" value="verilog-2001"/>
+        <Option type="verilog_language" value="sysv-2017"/>
         <Option type="vhdl_language" value="vhdl-1993"/>
     </OptionList>
 </Project>

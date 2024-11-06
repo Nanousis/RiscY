@@ -48,9 +48,14 @@
         <File path="src/screenI2C/screen.v" type="file.verilog" enable="1"/>
         <File path="src/screenI2C/textEngine.v" type="file.verilog" enable="1"/>
         <File path="src/soc.v" type="file.verilog" enable="1"/>
+        <File path="src/usb/pll/gowin_pll_usb.v" type="file.verilog" enable="1"/>
+        <File path="src/usb/usb_controller.v" type="file.verilog" enable="1"/>
+        <File path="src/usb/usb_hid_host.v" type="file.verilog" enable="1"/>
+        <File path="src/usb/usb_hid_host_rom.v" type="file.verilog" enable="1"/>
         <File path="src/tangnano9k.cst" type="file.cst" enable="1"/>
         <File path="src/Tang_nano_9K_LCD.sdc" type="file.sdc" enable="1"/>
         <File path="src/Memories/text.hex" type="file.other" enable="1"/>
         <File path="src/screenI2C/font.hex" type="file.other" enable="1"/>
+        <File path="src/usb/usb_hid_host_rom.hex" type="file.other" enable="1"/>
     </FileList>
 </Project>

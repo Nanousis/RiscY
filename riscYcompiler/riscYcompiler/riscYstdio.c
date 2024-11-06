@@ -25,6 +25,10 @@
 // General purpose wait time for frame rendering
 #define WaitTime 10000
 
+
+
+
+
 // *****************************************************************************
 // Copies 'n' bytes from 'src' to 'dest'. Used by the compiler sometimes.
 void *memcpy(void *dest, const void *src, int n) {
@@ -51,11 +55,11 @@ void *memset(void *s, int c, size_t n) {
 // returns 1 if the button is pressed, 0 otherwise
 char getButtonDown(){
     char *buttons = (char *)BUTTONS;
-    return buttons[1];
+    return buttons[0];
 }
 char getButtonUp(){
     char *buttons = (char *)BUTTONS;
-    return buttons[0];
+    return buttons[1];
 }
 char getButtonLeft(){
     char *buttons = (char *)BUTTONS;

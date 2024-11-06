@@ -22,6 +22,8 @@
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY\src\GPIO\buttonModule.v" type="verilog"/>
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY\src\GPIO\cpuTimer.v" type="verilog"/>
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY\src\GPIO\seven_segment.v" type="verilog"/>
+        <File path="C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY\src\GPIO\uart.v" type="verilog"/>
+        <File path="C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY\src\GPIO\uartController.v" type="verilog"/>
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY\src\Memories\flash.v" type="verilog"/>
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY\src\Memories\flashController.v" type="verilog"/>
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY\src\Memories\memory.v" type="verilog"/>
@@ -37,8 +39,6 @@
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY\src\screenVGA\gowin_rpll\gowin_rpll.v" type="verilog"/>
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY\src\screenVGA\gowin_sp\gowin_sp.v" type="verilog"/>
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY\src\soc.v" type="verilog"/>
-        <File path="C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY\src\GPIO\uart.v" type="verilog"/>
-        <File path="C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY\src\GPIO\uartController.v" type="verilog"/>
     </FileList>
     <OptionList>
         <Option type="disable_insert_pad" value="0"/>

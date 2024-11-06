@@ -172,6 +172,22 @@
   {
    "Path" : "I:/RISCY_primer25k/src/soc.v",
    "Type" : "verilog"
+  },
+  {
+   "Path" : "I:/RISCY_primer25k/src/usb/pll/gowin_pll_usb.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "I:/RISCY_primer25k/src/usb/usb_controller.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "I:/RISCY_primer25k/src/usb/usb_hid_host.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "I:/RISCY_primer25k/src/usb/usb_hid_host_rom.v",
+   "Type" : "verilog"
   }
  ],
  "IncludePath" : [
@@ -180,6 +196,6 @@
  "LoopLimit" : 2000,
  "ResultFile" : "I:/RISCY_primer25k/impl/temp/rtl_parser.result",
  "Top" : "top",
- "VerilogStd" : "verilog_2001",
+ "VerilogStd" : "sysv",
  "VhdlStd" : "vhdl_93"
 }

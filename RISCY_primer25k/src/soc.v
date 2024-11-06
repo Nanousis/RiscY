@@ -17,6 +17,7 @@ module top
     output flashWp,
     output flashHold,
 
+    inout  usb_dm, usb_dp,          // USB D- and D+
 
     input uart_rx,
     output uart_tx,
@@ -95,6 +96,8 @@ module top
     wire program_mem_wen;
     wire uart_ren;
     wire [31:0] uart_data_out;
+    wire usb_ren;
+    wire [31:0] usb_data_out;
 
     bus bu( .clk(cpu_clk),
             .PC(PC),
@@ -109,6 +112,8 @@ module top
             .counter27M(counter27M),
             .counter1M(counter1M),
             .program_mem_out(program_mem_out), // ADD
+            .usb_out(usb_data_out),
+
             .program_instr(program_instr),
             
             .mem_ren(mem_ren),
@@ -121,6 +126,8 @@ module top
             .flash_wen(flash_wen),
             .uart_ren(uart_ren),
             .btn_ren(btn_ren),
+            .usb_ren(usb_ren),
+
             .data_out(data_read),
             .instr_out(instr)
     );
@@ -186,6 +193,28 @@ module top
         .instr(program_instr),
         .data_out(program_mem_out)
     );
+
+    //************************************************************************************************//
+    //                                         USB CONTROLLER                                        //
+    //***********************************************************************************************//
+    wire clk_usb;
+    // USB clock 12Mhz
+    gowin_pll_usb pll_usb (
+        .clkin(clk),
+        .clkout(clk_usb)       // 12Mhz usb clock
+    );
+    usbController usb(
+        .clk(cpu_clk),
+        .usb_clk(clk_usb),
+        .reset(reset),
+        .ren(usb_ren),
+        .wen(1'b0),
+        .usb_dm(usb_dm), 
+        .usb_dp(usb_dp),
+        .address(data_addr[1:0]),
+        .data_out(usb_data_out)
+    );
+
 
     //**********************************************************************************************//
     //                                         HDMI SCREEN                                           //
