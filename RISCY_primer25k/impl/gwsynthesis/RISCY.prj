@@ -19,6 +19,7 @@
         <File path="I:\RISCY_primer25k\src\CPU\mem_read_selector.v" type="verilog"/>
         <File path="I:\RISCY_primer25k\src\CPU\mem_write_selector.v" type="verilog"/>
         <File path="I:\RISCY_primer25k\src\CPU\signExtend.v" type="verilog"/>
+        <File path="I:\RISCY_primer25k\src\GPIO\PPU.v" type="verilog"/>
         <File path="I:\RISCY_primer25k\src\GPIO\buttonModule.v" type="verilog"/>
         <File path="I:\RISCY_primer25k\src\GPIO\cpuTimer.v" type="verilog"/>
         <File path="I:\RISCY_primer25k\src\GPIO\seven_segment.v" type="verilog"/>

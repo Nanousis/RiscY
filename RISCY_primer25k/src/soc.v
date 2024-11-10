@@ -239,6 +239,23 @@ module top
     wire [15:0] data_selected;
     assign data_selected = (byte_select[1:0] == 2'b11) ? data_to_write[15:0] : data_to_write[31:16]; 
 
+    wire [23:0] color_out;
+    wire [13:0] xcursor, ycursor;
+
+
+    PPU ppu_inst (
+        .clk(clk_p),
+        .clk_cpu(cpu_clk),
+        .reset(reset),
+        .ren(screen_ren),
+        .wen(screen_wen),
+        .address(data_addr[15:0]),
+        .data_in(data_selected),
+        .xcursor(xcursor),
+        .ycursor(ycursor),
+        .data_out(),
+        .color_out(color_out)
+    );
 
     Reset_Sync u_Reset_Sync (
     .resetn(sys_resetn),
@@ -255,12 +272,10 @@ module top
         .clk_5x_pixel(clk_p5),
         .locked(pll_lock),
 
-        // text mode signals 
-        .clk_cpu(clk),
-        .wen(screen_wen),
-        .wdataText(data_selected[7:0]),
-        .wdataAttr(data_selected[15:8]),
-        .waddr(data_addr[11:1]),
+        // ppu signals
+        .ppu_color(color_out),
+        .xcursor(xcursor),
+        .ycursor(ycursor),
 
         // output signals
         .tmds_clk_n(tmds_clk_n_1),

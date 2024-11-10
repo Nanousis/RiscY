@@ -29,11 +29,10 @@ module svo_hdmi(
 	input clk_5x_pixel,
 	input locked,
 
-	input 					clk_cpu,
-	input                   wen,
-    input           [7:0]   wdataText, // 256 symbols -> 128 ASCII , 128 sprites
-    input           [7:0]   wdataAttr, // Vga TextMode extra attributes
-    input           [10:0]  waddr,     // resolution 512x300 -> 64x19 -> 1216 addresses
+	// ppu signals
+	input [23:0] ppu_color,
+	output [13:0] xcursor,
+	output [13:0] ycursor,
 
 	// output signals
 	output       tmds_clk_n,
@@ -106,12 +105,10 @@ module svo_hdmi(
 		.clk(clk_pixel),
 		.resetn(resetn),
 
-		// text mode signals 
-		.clk_cpu(clk_cpu),
-		.wen(wen),
-		.wdataText(wdataText),
-		.wdataAttr(wdataAttr),
-		.waddr(waddr),
+		// ppu signals
+		.ppu_color(ppu_color),
+		.xcursor(xcursor),
+		.ycursor(ycursor),
 
 		.out_axis_tvalid(vdma_tvalid),
 		.out_axis_tready(vdma_tready),

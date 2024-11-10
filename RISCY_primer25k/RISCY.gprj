@@ -20,6 +20,7 @@
         <File path="src/CPU/mem_read_selector.v" type="file.verilog" enable="1"/>
         <File path="src/CPU/mem_write_selector.v" type="file.verilog" enable="1"/>
         <File path="src/CPU/signExtend.v" type="file.verilog" enable="1"/>
+        <File path="src/GPIO/PPU.v" type="file.verilog" enable="1"/>
         <File path="src/GPIO/buttonModule.v" type="file.verilog" enable="1"/>
         <File path="src/GPIO/cpuTimer.v" type="file.verilog" enable="1"/>
         <File path="src/GPIO/seven_segment.v" type="file.verilog" enable="1"/>

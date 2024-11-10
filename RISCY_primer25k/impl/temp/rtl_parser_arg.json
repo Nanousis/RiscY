@@ -62,6 +62,10 @@
    "Type" : "verilog"
   },
   {
+   "Path" : "I:/RISCY_primer25k/src/GPIO/PPU.v",
+   "Type" : "verilog"
+  },
+  {
    "Path" : "I:/RISCY_primer25k/src/GPIO/buttonModule.v",
    "Type" : "verilog"
   },
