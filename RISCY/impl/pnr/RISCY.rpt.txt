@@ -12,27 +12,27 @@
   <Part Number>: GW1NR-LV9QN88PC6/I5
   <Device>: GW1NR-9
   <Device Version>: C
-  <Created Time>:Tue Oct 29 11:59:43 2024
+  <Created Time>:Mon Nov 11 12:10:11 2024
 
 
 2. PnR Details
 
   Running placement:
     Placement Phase 0: CPU time = 0h 0m 2s, Elapsed time = 0h 0m 2s
-    Placement Phase 1: CPU time = 0h 0m 0.133s, Elapsed time = 0h 0m 0.132s
+    Placement Phase 1: CPU time = 0h 0m 0.115s, Elapsed time = 0h 0m 0.116s
     Placement Phase 2: CPU time = 0h 0m 1s, Elapsed time = 0h 0m 1s
-    Placement Phase 3: CPU time = 0h 0m 15s, Elapsed time = 0h 0m 15s
-    Total Placement: CPU time = 0h 0m 18s, Elapsed time = 0h 0m 18s
+    Placement Phase 3: CPU time = 0h 0m 13s, Elapsed time = 0h 0m 13s
+    Total Placement: CPU time = 0h 0m 16s, Elapsed time = 0h 0m 16s
  Running routing:
     Routing Phase 0: CPU time = 0h 0m 0.003s, Elapsed time = 0h 0m 0.003s
     Routing Phase 1: CPU time = 0h 0m 2s, Elapsed time = 0h 0m 2s
-    Routing Phase 2: CPU time = 0h 0m 8s, Elapsed time = 0h 0m 8s
+    Routing Phase 2: CPU time = 0h 0m 23s, Elapsed time = 0h 0m 23s
     Routing Phase 3: CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0s
-    Total Routing: CPU time = 0h 0m 9s, Elapsed time = 0h 0m 9s
+    Total Routing: CPU time = 0h 0m 25s, Elapsed time = 0h 0m 25s
  Generate output files:
-    CPU time = 0h 0m 0.662s, Elapsed time = 0h 0m 0.662s
+    CPU time = 0h 0m 0.703s, Elapsed time = 0h 0m 0.704s
 
- Total Time and Memory Usage: CPU time = 0h 0m 28s, Elapsed time = 0h 0m 28s, Peak memory usage = 409MB
+ Total Time and Memory Usage: CPU time = 0h 0m 41s, Elapsed time = 0h 0m 41s, Peak memory usage = 353MB
 
 
 3. Resource Usage Summary
@@ -40,15 +40,15 @@
   ----------------------------------------------------------
   Resources                   | Usage
   ----------------------------------------------------------
-  Logic                       | 5729/8640  67%
-    --LUT,ALU,ROM16           | 5729(5455 LUT, 274 ALU, 0 ROM16)
+  Logic                       | 5692/8640  66%
+    --LUT,ALU,ROM16           | 5692(5419 LUT, 273 ALU, 0 ROM16)
     --SSRAM(RAM16)            | 0
-  Register                    | 2069/6693  31%
-    --Logic Register as Latch | 1/6480  <1%
+  Register                    | 2068/6693  31%
+    --Logic Register as Latch | 0/6480  0%
     --Logic Register as FF    | 2058/6480  32%
     --I/O Register as Latch   | 0/213  0%
     --I/O Register as FF      | 10/213  5%
-  CLS                         | 3691/4320  86%
+  CLS                         | 3705/4320  86%
   I/O Port                    | 43
   I/O Buf                     | 43
     --Input Buf               | 13
@@ -89,7 +89,7 @@
   -------------------------------
   Global Clock  | Usage       
   -------------------------------
-  PRIMARY       | 3/8(38%)
+  PRIMARY       | 2/8(25%)
   LW            | 4/8(50%)
   GCLK_PIN      | 3/3(100%)
   PLL           | 1/2(50%)
@@ -105,7 +105,6 @@
   -------------------------------------------
   clk_d          | PRIMARY        |  TR TL BR BL
   LCD_CLK_d      | PRIMARY        |  TR BR
-  bu/n74_3       | PRIMARY        |  TL BR BL
   reset          | LW             |  -
   memReady       | LW             |  -
   cpu_1/EXMEM_ALUOut_31_11| LW             |  -

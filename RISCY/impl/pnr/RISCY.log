@@ -7,7 +7,6 @@ Running placement......
 [10%] Placement Phase 0 completed
 [20%] Placement Phase 1 completed
 [30%] Placement Phase 2 completed
-WARN  (TA1132) :  'bu/n74_3' was determined to be a clock but was not created.
 [50%] Placement Phase 3 completed
 Running routing......
 [60%] Routing Phase 0 completed
@@ -26,5 +25,5 @@ Generate file "C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY\impl\pnr\RISCY.p
 Generate file "C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY\impl\pnr\RISCY.rpt.html" completed
 Generate file "C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY\impl\pnr\RISCY.rpt.txt" completed
 Generate file "C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY\impl\pnr\RISCY.tr.html" completed
-Tue Oct 29 11:59:43 2024
+Mon Nov 11 12:10:11 2024
 
