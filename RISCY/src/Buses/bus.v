@@ -39,7 +39,7 @@ always@(*) begin
     end
     else if( PC >= `PROGRAM_MEMORY_START && PC < `PROGRAM_MEMORY_END)begin
         instr_out = program_instr;
-    end
+    end 
     else
         instr_out = 32'b0;
 
@@ -55,7 +55,7 @@ always@(*) begin
     flash_wen = 0;
     btn_ren = 0;
     data_out = 0;
-    uart_out = 0;
+    uart_ren = 0;
 
     // memory mapped screen, the range is times 2 due to the use of halfword
     if(data_addr>=`SCREEN_ADDRESS && data_addr <(`SCREEN_ADDRESS+`SCREEN_RANGE*2)) begin
