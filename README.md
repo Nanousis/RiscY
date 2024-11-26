@@ -40,6 +40,10 @@
   - **Display Output**: Connect via HDMI or the 40-pin LVDS display.
   - **Input Devices**: Use a USB keyboard through the softcore microcontroller interface.
 
+## Documentation
+
+You can also see the documentation of our project [(https://nanousis.com/riscY/documentation/)](https://nanousis.com/riscY/documentation/)
+
 ## Dependencies
 
 - **Gowin IDE** (version 1.9.10 or higher): [Download Here](https://www.gowinsemi.com/en/download/)
@@ -47,8 +51,8 @@
 
 ## Showcase 
 <center>
-    <img src="images/riscy_pong.jpg" alt="RISC-Y Pong Demo" title="RISC-Y Pong Demo" height="400">
-    <img src="images/riscy_bootloader.jpg" alt="RISC-Y Start Screen" title="RISC-Y Start Screen" height="400">
+    <img src="images/riscy_pong.jpg" alt="RISC-Y Pong Demo" title="RISC-Y Pong Demo" width="600">
+    <img src="images/riscy_bootloader.jpg" alt="RISC-Y Start Screen" title="RISC-Y Start Screen" width="600">
 </center>
 
 ## Acknowledgments
