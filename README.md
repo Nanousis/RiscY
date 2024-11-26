@@ -12,6 +12,7 @@
 - **Ziscr extension** (under development)
 - **HDMI and 40-pin LVDS display interfaces**
 - **USB keyboard interface** with a softcore microcontroller
+- **GCC Compiler and Scripts** utilized for writing code and compiling it for our system
 - **Simple startup and program selector** that loads programs from flash memory
 
 ## Installation Instructions
@@ -46,7 +47,7 @@
 
 ## Showcase 
 <center>
-    <img src="images/riscy-pong.jpg" alt="RISC-Y Pong Demo" title="RISC-Y Pong Demo" height="400">
+    <img src="images/riscy_pong.jpg" alt="RISC-Y Pong Demo" title="RISC-Y Pong Demo" height="400">
     <img src="images/riscy_bootloader.jpg" alt="RISC-Y Start Screen" title="RISC-Y Start Screen" height="400">
 </center>
 
