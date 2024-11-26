@@ -39,7 +39,7 @@ module top
     reg cpuclk=1;
     wire clkout;
 
-    wire		CLK_PIX;
+    wire CLK_PIX;
     assign clkout=clk;
 
     reg clk_btn=0;
@@ -222,9 +222,10 @@ module top
     `ifndef TESTBENCH
 
     // for 640x480 you need ~127Mhz pll
+    // for 1024x600 you need ~250Mhz pll, exactly as our clock, nice
     // for 1280x720 you need ~380Mhz pll
     // for 1920x1080 ~742Mhz but the closest with the 50mhz clock that is stable is 737.5Mhz
-    Gowin_PLL_720p Gowin_PLL_inst(
+    Gowin_PLL_600p Gowin_PLL_inst(
         .lock(pll_lock), //output lock
         .clkout0(clk_p5), //output clkout0
         .clkin(clk) //input clkin
@@ -236,12 +237,12 @@ module top
         .resetn(pll_lock) //input resetn
     );
 
-    wire [15:0] data_selected;
-    assign data_selected = (byte_select[1:0] == 2'b11) ? data_to_write[15:0] : data_to_write[31:16]; 
+    // wire [15:0] data_selected;
+    // assign data_selected = (byte_select[1:0] == 2'b11) ? data_to_write[15:0] : data_to_write[31:16]; 
 
     wire [23:0] color_out;
     wire [13:0] xcursor, ycursor;
-
+    wire is_blank;
 
     PPU ppu_inst (
         .clk(clk_p),
@@ -250,9 +251,11 @@ module top
         .ren(screen_ren),
         .wen(screen_wen),
         .address(data_addr[15:0]),
-        .data_in(data_selected),
+        .data_in(data_to_write),
+        .byte_select(byte_select),
         .xcursor(xcursor),
         .ycursor(ycursor),
+        .is_blank(is_blank),
         .data_out(),
         .color_out(color_out)
     );
@@ -263,7 +266,7 @@ module top
     .clk(clk_p)
     );
 
-    svo_hdmi svo_hdmi_inst_1 (
+    svo_hdmi #(.SVO_MODE("1024x600")) svo_hdmi_inst_1 (
         .clk(clk_cpu),
         .resetn(sys_resetn),
 
@@ -276,6 +279,7 @@ module top
         .ppu_color(color_out),
         .xcursor(xcursor),
         .ycursor(ycursor),
+        .is_blank(is_blank),
 
         // output signals
         .tmds_clk_n(tmds_clk_n_1),
@@ -416,7 +420,6 @@ module top
         endcase
         
     end
-
 
 
 endmodule

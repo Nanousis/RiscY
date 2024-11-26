@@ -31,8 +31,11 @@
         <File path="src/Memories/memory.v" type="file.verilog" enable="1"/>
         <File path="src/Memories/programMemory.v" type="file.verilog" enable="1"/>
         <File path="src/config.vh" type="file.verilog" enable="1"/>
+        <File path="src/fifo_sc_video/fifo_sc_video.v" type="file.verilog" enable="1"/>
+        <File path="src/fifo_sc_video/fifo_sc_videoAddress.v" type="file.verilog" enable="1"/>
         <File path="src/hdmi/gowin_clkdiv/gowin_clkdiv.v" type="file.verilog" enable="1"/>
         <File path="src/hdmi/gowin_dpb/gowin_dpb.v" type="file.verilog" enable="1"/>
+        <File path="src/hdmi/gowin_pll_600p/gowin_pll_600p.v" type="file.verilog" enable="1"/>
         <File path="src/hdmi/gowin_pll_720p/gowin_pll_720p.v" type="file.verilog" enable="1"/>
         <File path="src/hdmi/svo_defines.vh" type="file.verilog" enable="1"/>
         <File path="src/hdmi/svo_enc.v" type="file.verilog" enable="1"/>

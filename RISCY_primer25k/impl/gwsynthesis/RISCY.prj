@@ -30,8 +30,11 @@
         <File path="I:\RISCY_primer25k\src\Memories\memory.v" type="verilog"/>
         <File path="I:\RISCY_primer25k\src\Memories\programMemory.v" type="verilog"/>
         <File path="I:\RISCY_primer25k\src\config.vh" type="verilog"/>
+        <File path="I:\RISCY_primer25k\src\fifo_sc_video\fifo_sc_video.v" type="verilog"/>
+        <File path="I:\RISCY_primer25k\src\fifo_sc_video\fifo_sc_videoAddress.v" type="verilog"/>
         <File path="I:\RISCY_primer25k\src\hdmi\gowin_clkdiv\gowin_clkdiv.v" type="verilog"/>
         <File path="I:\RISCY_primer25k\src\hdmi\gowin_dpb\gowin_dpb.v" type="verilog"/>
+        <File path="I:\RISCY_primer25k\src\hdmi\gowin_pll_600p\gowin_pll_600p.v" type="verilog"/>
         <File path="I:\RISCY_primer25k\src\hdmi\gowin_pll_720p\gowin_pll_720p.v" type="verilog"/>
         <File path="I:\RISCY_primer25k\src\hdmi\svo_defines.vh" type="verilog"/>
         <File path="I:\RISCY_primer25k\src\hdmi\svo_enc.v" type="verilog"/>

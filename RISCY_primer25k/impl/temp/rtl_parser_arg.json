@@ -106,11 +106,23 @@
    "Type" : "verilog"
   },
   {
+   "Path" : "I:/RISCY_primer25k/src/fifo_sc_video/fifo_sc_video.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "I:/RISCY_primer25k/src/fifo_sc_video/fifo_sc_videoAddress.v",
+   "Type" : "verilog"
+  },
+  {
    "Path" : "I:/RISCY_primer25k/src/hdmi/gowin_clkdiv/gowin_clkdiv.v",
    "Type" : "verilog"
   },
   {
    "Path" : "I:/RISCY_primer25k/src/hdmi/gowin_dpb/gowin_dpb.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "I:/RISCY_primer25k/src/hdmi/gowin_pll_600p/gowin_pll_600p.v",
    "Type" : "verilog"
   },
   {

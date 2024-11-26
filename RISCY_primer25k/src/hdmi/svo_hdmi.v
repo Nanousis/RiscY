@@ -33,6 +33,7 @@ module svo_hdmi(
 	input [23:0] ppu_color,
 	output [13:0] xcursor,
 	output [13:0] ycursor,
+	output is_blank,
 
 	// output signals
 	output       tmds_clk_n,
@@ -45,7 +46,7 @@ module svo_hdmi(
     // for 640x480 you need ~127Mhz pll
     // for 1280x720 you need ~380Mhz pll
     // for 1920x1080 ~742Mhz but the closest with the 50mhz clock that is stable is 737.5Mhz
-	parameter SVO_MODE             =   "1280x720";
+	parameter SVO_MODE             =   "1024x600";
 	parameter SVO_FRAMERATE        =   60;
 	parameter SVO_BITS_PER_PIXEL   =   24;
 	parameter SVO_BITS_PER_RED     =    8;
@@ -125,6 +126,7 @@ module svo_hdmi(
 		.in_axis_tdata(vdma_tdata),
 		.in_axis_tuser(vdma_tuser),
 
+		.is_hsync(is_blank),
 		.out_axis_tvalid(video_enc_tvalid),
 		.out_axis_tready(video_enc_tready),
 		.out_axis_tdata(video_enc_tdata),

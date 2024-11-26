@@ -35,6 +35,7 @@ module svo_enc #( `SVO_DEFAULT_PARAMS ) (
 	//   tuser[1] ... hsync
 	//   tuser[2] ... vsync
 	//   tuser[3] ... blank
+	output reg is_hsync,
 	output reg out_axis_tvalid,
 	input out_axis_tready,
 	output reg [SVO_BITS_PER_PIXEL-1:0] out_axis_tdata,
