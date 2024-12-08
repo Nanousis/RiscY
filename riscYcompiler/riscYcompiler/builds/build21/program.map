@@ -1,0 +1,104 @@
+
+There are no discarded input sections
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+RAM              0x00400000         0x00002000         xw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD builds/build21/startup.o
+LOAD builds/build21/main.o
+LOAD builds/build21/riscYstdio.o
+                0x00000600                        _stack_size = 0x600
+                0x00400000                        . = ORIGIN (RAM)
+
+.text           0x00400000      0x734
+ *(.text)
+ .text          0x00400000       0x1c builds/build21/startup.o
+                0x00400000                _start
+ .text          0x0040001c       0x80 builds/build21/main.o
+                0x0040001c                writeRam
+                0x0040005c                readRam
+ .text          0x0040009c      0x684 builds/build21/riscYstdio.o
+                0x0040009c                memcpy
+                0x004000c0                memset
+                0x004000dc                getButtonDown
+                0x004000e8                getButtonUp
+                0x004000f4                getButtonLeft
+                0x00400100                getButtonRight
+                0x0040010c                putch
+                0x0040013c                printString
+                0x004001fc                printHex
+                0x0040029c                printDec
+                0x00400394                printf
+                0x00400530                printfSCR
+                0x004006c8                clearScreen
+                0x00400714                resetScreenVector
+ *(.rodata)
+ .rodata        0x00400720       0x14 builds/build21/riscYstdio.o
+                0x00400734                        _etext = .
+
+.text.startup   0x00400734       0x88
+ .text.startup  0x00400734       0x88 builds/build21/main.o
+                0x00400734                main
+
+.rodata.str1.4  0x004007bc       0x42
+ .rodata.str1.4
+                0x004007bc       0x42 builds/build21/main.o
+                                 0x25 (size before relaxing)
+ .rodata.str1.4
+                0x004007fe       0x1a builds/build21/riscYstdio.o
+
+.rela.dyn       0x00400800        0x0
+ .rela.text     0x00400800        0x0 builds/build21/startup.o
+                0x00400800                        . = ALIGN (0x4)
+
+.data           0x004007fe        0x0 load address 0x00400734
+                0x004007fe                        _sdata = .
+ *(.data)
+ .data          0x004007fe        0x0 builds/build21/startup.o
+ .data          0x004007fe        0x0 builds/build21/main.o
+ .data          0x004007fe        0x0 builds/build21/riscYstdio.o
+                0x004007fe                        _edata = .
+                0x00400800                        . = ALIGN (0x4)
+
+.bss            0x004007fe        0x0
+                0x004007fe                        _sbss = .
+ *(.bss COMMON)
+ .bss           0x004007fe        0x0 builds/build21/startup.o
+ .bss           0x004007fe        0x0 builds/build21/main.o
+ .bss           0x004007fe        0x0 builds/build21/riscYstdio.o
+                0x004007fe                        _ebss = .
+                0x00400800                        . = ALIGN (0x4)
+                0x00402000                        _stack_end = (ORIGIN (RAM) + LENGTH (RAM))
+                0x00401a00                        _stack_top = (_stack_end - _stack_size)
+                0x00401400                        _stack_bottom = (_stack_top - _stack_size)
+OUTPUT(builds/build21/program.elf elf32-littleriscv)
+
+.sbss           0x004007fe        0x2
+ .sbss          0x004007fe        0x2 builds/build21/riscYstdio.o
+                0x004007fe                screenPos
+
+.riscv.attributes
+                0x00000000       0x1c
+ .riscv.attributes
+                0x00000000       0x1a builds/build21/startup.o
+ .riscv.attributes
+                0x0000001a       0x1c builds/build21/main.o
+ .riscv.attributes
+                0x00000036       0x1c builds/build21/riscYstdio.o
+
+.comment        0x00000000       0x1b
+ .comment       0x00000000       0x1b builds/build21/main.o
+                                 0x1c (size before relaxing)
+ .comment       0x0000001b       0x1c builds/build21/riscYstdio.o
+
+.note.GNU-stack
+                0x00000000        0x0
+ .note.GNU-stack
+                0x00000000        0x0 builds/build21/main.o
+ .note.GNU-stack
+                0x00000000        0x0 builds/build21/riscYstdio.o

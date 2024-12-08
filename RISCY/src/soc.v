@@ -32,8 +32,18 @@ module top
     input btnDownR,
     input btnUpR,
     input btnLeftR,
-    input btnRightR
+    input btnRightR,
+
+    output [CS_WIDTH-1:0] O_psram_ck,    
+    output [CS_WIDTH-1:0] O_psram_ck_n,
+    inout [CS_WIDTH-1:0] IO_psram_rwds,
+    inout [DQ_WIDTH-1:0] IO_psram_dq,
+    output [CS_WIDTH-1:0] O_psram_reset_n,
+    output [CS_WIDTH-1:0] O_psram_cs_n 
 );
+    parameter  DQ_WIDTH = 8*2;
+    parameter  CS_WIDTH = 1*2;
+
     reg cpuclk=1;
     wire clkout;
 
@@ -72,7 +82,7 @@ module top
                 .data_out(data_to_write),
                 .data_in(data_read),
                 .byte_select(byte_select),
-                .memReady(memReady)
+                .memReady(mem_ready)
     );
     
     //**********************************************************************************************//
@@ -85,7 +95,7 @@ module top
     wire screen_wen;
     wire [31:0]boot_data_out;
     wire [31:0] boot_instr;
-    wire memReady;
+    wire mem_ready;
     wire debug;
 
     // program_memory
@@ -95,6 +105,8 @@ module top
     wire program_mem_wen;
     wire uart_ren;
     wire [31:0] uart_data_out;
+
+
 
     bus bu( .clk(cpu_clk),
             .PC(PC),
@@ -109,10 +121,13 @@ module top
             .counter27M(counter27M),
             .counter1M(counter1M),
             .program_mem_out(program_mem_out), // ADD
+            .ram_out(ram_data_out),
             .program_instr(program_instr),
             
             .mem_ren(mem_ren),
             .mem_wen(mem_wen),
+            .ram_ren(ram_ren),
+            .ram_wen(ram_wen),
             .program_mem_ren(program_mem_ren),  // ADD
             .program_mem_wen(program_mem_wen),  // ADD
             .screen_ren(screen_ren),
@@ -137,7 +152,7 @@ module top
             .data_in(data_to_write),
             .data_out(boot_data_out),
             .byte_select_vector(byte_select),
-            .ready(memReady)
+            .ready(mem_ready)
     );
     wire btn_ren;
     wire btn_out;
@@ -188,6 +203,39 @@ module top
         .instr(program_instr),
         .data_out(program_mem_out)
     );
+    
+    //**********************************************************************************************//
+    //                                         RAM MEMORY                                           //
+    //**********************************************************************************************//
+
+    wire ram_ren;
+    wire ram_wen;
+    wire [31:0] ram_data_out;
+    wire ram_ready;
+
+
+    ramData ramData_inst( 
+    .clk(cpu_clk),
+    .reset(reset),
+    .PC(PC[31:2]),
+    .address(data_addr[31:2]),
+    .ren(ram_ren),
+    .wen(ram_wen),
+    .data_in(data_to_write),
+    .byte_select_vector(byte_select),
+    .instr(),
+    .data_out(ram_data_out),
+    .cpu_stall(ram_ready),
+    .O_psram_ck(O_psram_ck), 
+    .O_psram_ck_n(O_psram_ck_n),
+    .IO_psram_rwds(IO_psram_rwds),
+    .IO_psram_dq(IO_psram_dq),
+    .O_psram_reset_n(O_psram_reset_n),
+    .O_psram_cs_n(O_psram_cs_n)
+    );
+ 
+    wire ready;
+    assign ready = ram_ready && mem_ready;
 
     //**********************************************************************************************//
     //                                         VGA SCREEN                                           //

@@ -12,12 +12,15 @@ module bus( input clk,
             input [31:0] counter27M,
             input [31:0] counter1M,
             input [31:0] program_mem_out, // ADD
+            input [31:0] ram_out,
 
             input [31:0] boot_instr,
             input [31:0] program_instr,
 
             output reg mem_ren,
             output reg mem_wen,
+            output reg ram_ren,
+            output reg ram_wen,
             output reg program_mem_ren,  // ADD
             output reg program_mem_wen,  // ADD
             output reg screen_ren,
@@ -56,6 +59,8 @@ always@(*) begin
     btn_ren = 0;
     data_out = 0;
     uart_ren = 0;
+    ram_ren = 0;
+    ram_wen = 0;
 
     // memory mapped screen, the range is times 2 due to the use of halfword
     if(data_addr>=`SCREEN_ADDRESS && data_addr <(`SCREEN_ADDRESS+`SCREEN_RANGE*2)) begin
@@ -86,6 +91,11 @@ always@(*) begin
     else if(data_addr >= `UART_ADDRESS && data_addr < (`UART_END)) begin
         uart_ren = ren;
         data_out = uart_out;
+    end
+    else if(data_addr >= `RAM_START && data_addr < (`RAM_END)) begin
+        ram_ren = ren;
+        ram_wen = wen;
+        data_out = ram_out;
     end
     else begin
         mem_ren = ren;
