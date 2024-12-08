@@ -1,0 +1,102 @@
+
+There are no discarded input sections
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+RAM              0x00400000         0x00004000         xw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD builds/build1/startup.o
+LOAD builds/build1/main.o
+LOAD builds/build1/riscYstdio.o
+                0x00000800                        _stack_size = 0x800
+                0x00400000                        . = ORIGIN (RAM)
+
+.text           0x00400000      0xc90
+ *(.text)
+ .text          0x00400000       0x1c builds/build1/startup.o
+                0x00400000                _start
+ .text          0x0040001c      0x20c builds/build1/main.o
+                0x0040001c                getUSBint
+                0x00400028                WriteSprite
+                0x00400058                USBParser
+                0x0040014c                SetAttributes
+                0x0040018c                ClearScreenRightToLeft
+                0x0040021c                getClock1M
+ .text          0x00400228      0x68c builds/build1/riscYstdio.o
+                0x00400228                memcpy
+                0x0040024c                memset
+                0x00400268                getButtonDown
+                0x00400274                getButtonUp
+                0x00400280                getButtonLeft
+                0x0040028c                getButtonRight
+                0x00400298                putch
+                0x004002c8                printString
+                0x00400388                printHex
+                0x00400428                printDec
+                0x00400520                printf
+                0x004006c4                printfSCR
+                0x0040085c                clearScreen
+                0x004008a8                resetScreenVector
+ *(.rodata)
+ .rodata        0x004008b4      0x3c8 builds/build1/main.o
+ .rodata        0x00400c7c       0x14 builds/build1/riscYstdio.o
+                0x00400c90                        _etext = .
+
+.text.startup   0x00400c90      0xb54
+ .text.startup  0x00400c90      0xb54 builds/build1/main.o
+                0x00400c90                main
+
+.rodata.str1.4  0x004017e4      0x4be
+ .rodata.str1.4
+                0x004017e4      0x4be builds/build1/main.o
+                                0x49d (size before relaxing)
+ .rodata.str1.4
+                0x00401ca2       0x1a builds/build1/riscYstdio.o
+
+.rela.dyn       0x00401ca4        0x0
+ .rela.text     0x00401ca4        0x0 builds/build1/startup.o
+                0x00401ca4                        . = ALIGN (0x4)
+
+.data           0x00401ca2        0x0 load address 0x00400c90
+                0x00401ca2                        _sdata = .
+ *(.data)
+ .data          0x00401ca2        0x0 builds/build1/startup.o
+ .data          0x00401ca2        0x0 builds/build1/main.o
+ .data          0x00401ca2        0x0 builds/build1/riscYstdio.o
+                0x00401ca2                        _edata = .
+                0x00401ca4                        . = ALIGN (0x4)
+
+.bss            0x00401ca2        0x0
+                0x00401ca2                        _sbss = .
+ *(.bss COMMON)
+ .bss           0x00401ca2        0x0 builds/build1/startup.o
+ .bss           0x00401ca2        0x0 builds/build1/main.o
+ .bss           0x00401ca2        0x0 builds/build1/riscYstdio.o
+                0x00401ca2                        _ebss = .
+                0x00401ca4                        . = ALIGN (0x4)
+                0x00404000                        _stack_end = (ORIGIN (RAM) + LENGTH (RAM))
+                0x00403800                        _stack_top = (_stack_end - _stack_size)
+                0x00403000                        _stack_bottom = (_stack_top - _stack_size)
+OUTPUT(builds/build1/program.elf elf32-littleriscv)
+
+.sbss           0x00401ca2        0x2
+ .sbss          0x00401ca2        0x2 builds/build1/riscYstdio.o
+                0x00401ca2                screenPos
+
+.riscv.attributes
+                0x00000000       0x1c
+ .riscv.attributes
+                0x00000000       0x1a builds/build1/startup.o
+ .riscv.attributes
+                0x0000001a       0x1c builds/build1/main.o
+ .riscv.attributes
+                0x00000036       0x1c builds/build1/riscYstdio.o
+
+.comment        0x00000000       0x1b
+ .comment       0x00000000       0x1b builds/build1/main.o
+                                 0x1c (size before relaxing)
+ .comment       0x0000001b       0x1c builds/build1/riscYstdio.o

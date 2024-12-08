@@ -516,9 +516,9 @@ for (int i = 0; i < MAX_OBJ; i = i + 1) begin
         objectAttributes[i][24:16] <= xPos && xPos < objectAttributes[i][24:16] + 8) begin
         case (lineBuffer[i][(xPos - objectAttributes[i][18:16]) << 1 +: 2])
             2'b1: begin
-                r = 64;
-                g = 64;
-                b = 64;
+                r = 0;
+                g = 0;
+                b = 0;
             end
             2'b10: begin
                 r = 150;
@@ -533,8 +533,6 @@ for (int i = 0; i < MAX_OBJ; i = i + 1) begin
         endcase
     end
 end
-
-
         if(hblank)
         begin
             r = 0;

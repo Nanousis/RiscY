@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "stdarg.h": "c",
+        "riscystdio.h": "c",
+        "stdint.h": "c"
+    }
+}

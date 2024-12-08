@@ -1,4 +1,5 @@
 import sys
+import os
 from PIL import Image
 
 def image_to_2bit_hex_lsb(image, start_x, start_y):
@@ -6,7 +7,6 @@ def image_to_2bit_hex_lsb(image, start_x, start_y):
 
     # Process each 8x16 block starting at (start_x, start_y)
     for y in range(start_y, start_y + 16):
-        byte = 0
         for chunk_start in range(start_x, start_x + 8, 4):  # Process in 4-pixel chunks
             byte = 0
             for x in range(chunk_start, chunk_start + 4):
@@ -26,14 +26,19 @@ def image_to_2bit_hex_lsb(image, start_x, start_y):
                 byte |= (bit_value << (2 * (x - chunk_start)))  # Shift within the 4-pixel chunk
 
             # Append the byte as a 2-character hex string
-            hex_values.append(f"{byte:02X}")
+            hex_values.append(f"0x{byte:02X}")
 
     return hex_values
 
-def process_image(image_path, output_filename):
+def process_image(image_path):
     # Open the image and convert to grayscale
     img = Image.open(image_path).convert('L')
     width, height = img.size
+
+    # Generate the output filename in the same folder as the input file
+    input_folder = os.path.dirname(image_path)
+    file_basename = os.path.basename(image_path).split('.')[0]
+    output_filename = os.path.join(input_folder, f"{file_basename}_output.txt")
 
     with open(output_filename, 'w') as file:
         # Iterate over 8x16 blocks within the image
@@ -42,20 +47,18 @@ def process_image(image_path, output_filename):
                 # Get the hex values for the current 8x16 block
                 hex_codes = image_to_2bit_hex_lsb(img, start_x, start_y)
 
-                # Write the hex codes for the current block to the file
+                # Write the C array for the current block
+                file.write(f"char {file_basename}_{start_y//16}{start_x//8}[] = {{\n")
                 for i in range(0, len(hex_codes), 2):
-                    file.write(" ".join(hex_codes[i:i+2]) + "\n")
-                
-                # Add a blank line between blocks for readability
-                file.write("\n")
+                    file.write("    " + ", ".join(hex_codes[i:i+2]) + ",\n")
+                file.write("};\n\n")
 
-    print(f"Hex codes for {width // 8}x{height // 16} blocks written to {output_filename}")
+    print(f"C arrays for {width // 8}x{height // 16} blocks written to {output_filename}")
 
 # Check for command-line arguments
-if len(sys.argv) < 3:
-    print("Usage: python script.py <image_filename> <output_filename>")
+if len(sys.argv) < 2:
+    print("Usage: python script.py <image_filename>")
     sys.exit(1)
 
 image_path = sys.argv[1]
-output_filename = sys.argv[2]
-process_image(image_path, output_filename)
+process_image(image_path)
