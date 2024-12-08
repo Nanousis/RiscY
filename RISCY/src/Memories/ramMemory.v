@@ -109,12 +109,12 @@ module ramData(
     always @(posedge clk)begin
         if(wen)begin
             wr_data1 <= data_in;
-            addr1 = 0;
-            wen_fsm = wen;
+            addr1 <= address;
+            wen_fsm <= wen;
         end
         else if(ren) begin
-            addr1 = 0;
-            ren_fsm = ren;
+            addr1 <= address;
+            ren_fsm <= ren;
         end
         else begin
             wen_fsm <= 0;
@@ -130,21 +130,24 @@ module ramData(
             state <= IDLE;
             wr_cycle <= 8'b0;
             rd_cycle <= 8'b0;
-            data_rd <= 32'b0;
+            data_rd <= 32'hdeadbeef;
             cmd_en1 <= 0;
+            cpu_stall <=1;
         end
         else begin
             case (state)
-                
                 //*****IDLE STATE*****//
                 IDLE: begin
+                cpu_stall<=1;
                     if(wen_fsm)begin
                         wr_cycle <= 8'b0;
                         state <= WRITE;
+//                        cpu_stall<=0;
                     end
                     else if(ren_fsm)begin
                         rd_cycle <= 8'b0;
                         state <= READ;
+//                        cpu_stall<=0;
                     end
                     else begin
                        state <= IDLE;
@@ -153,6 +156,8 @@ module ramData(
                 end
                 //*****READ STATE*****//
                 READ: begin
+                cpu_stall<=0;
+
                 rd_cycle <= rd_cycle + 8'b1;
                 
                 
@@ -164,15 +169,18 @@ module ramData(
                     cmd_en1 <= 1'b0;
                     if (rd_data_valid1) begin
                         data_rd <= rd_data1;
+//                        cpu_stall<=1;
                         state <= IDLE;
                     end
                 end
                 end
                 //*****WRITE STATE : 14*****//
                 WRITE: begin
+                   cpu_stall<=0;
                    wr_cycle <= wr_cycle + 8'b1;
                    
                     if(wr_cycle == 14)begin
+//                        cpu_stall<=1;
                         state <= IDLE;
                     end
                     

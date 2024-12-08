@@ -82,7 +82,7 @@ module top
                 .data_out(data_to_write),
                 .data_in(data_read),
                 .byte_select(byte_select),
-                .memReady(mem_ready)
+                .memReady(ready)
     );
     
     //**********************************************************************************************//
@@ -123,6 +123,7 @@ module top
             .program_mem_out(program_mem_out), // ADD
             .ram_out(ram_data_out),
             .program_instr(program_instr),
+            .stall(ready),
             
             .mem_ren(mem_ren),
             .mem_wen(mem_wen),
@@ -235,7 +236,7 @@ module top
     );
  
     wire ready;
-    assign ready = ram_ready && mem_ready;
+    assign ready = ram_ready & mem_ready;
 
     //**********************************************************************************************//
     //                                         VGA SCREEN                                           //

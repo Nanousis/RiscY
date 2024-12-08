@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Module name="top" Register="31" Lut="77" T_Register="2821(31)" T_Alu="312(0)" T_Lut="6631(77)" T_Bsram="16(0)">
- <SubModule name="cpu_1" Register="542" Alu="64" Lut="1665" T_Register="1534(542)" T_Alu="188(64)" T_Lut="2978(1665)">
+<Module name="top" Register="31" Lut="79" T_Register="2843(31)" T_Alu="312(0)" T_Lut="6532(79)" T_Bsram="16(0)">
+ <SubModule name="cpu_1" Register="542" Alu="64" Lut="1637" T_Register="1534(542)" T_Alu="188(64)" T_Lut="2958(1637)">
   <SubModule name="cpu_regs" Register="992" Alu="10" Lut="1061" T_Register="992(992)" T_Alu="10(10)" T_Lut="1061(1061)"/>
   <SubModule name="SignExtendSelector" Lut="46" T_Lut="46(46)"/>
   <SubModule name="control_stall_id" Alu="10" Lut="1" T_Alu="10(10)" T_Lut="1(1)"/>
   <SubModule name="cpu_alu" Alu="84" Lut="119" T_Alu="84(84)" T_Lut="119(119)"/>
   <SubModule name="control_bypass_ex" Alu="20" T_Alu="20(20)"/>
-  <SubModule name="mem_write_selector" Lut="86" T_Lut="86(86)"/>
+  <SubModule name="mem_write_selector" Lut="94" T_Lut="94(94)"/>
  </SubModule>
- <SubModule name="bu" Lut="430" T_Lut="430(430)"/>
- <SubModule name="mem" Register="79" Lut="144" Bsram="8" T_Register="79(79)" T_Lut="144(144)" T_Bsram="8(8)"/>
- <SubModule name="bm" Register="1" Lut="6" T_Register="1(1)" T_Lut="6(6)"/>
- <SubModule name="flashController" Register="91" Lut="351" T_Register="218(91)" T_Lut="557(351)">
-  <SubModule name="navigator" Register="127" Lut="206" T_Register="127(127)" T_Lut="206(206)"/>
+ <SubModule name="bu" Lut="360" T_Lut="360(360)"/>
+ <SubModule name="mem" Register="79" Lut="136" Bsram="8" T_Register="79(79)" T_Lut="136(136)" T_Bsram="8(8)"/>
+ <SubModule name="bm" Register="1" Lut="66" T_Register="1(1)" T_Lut="66(66)"/>
+ <SubModule name="flashController" Register="91" Lut="291" T_Register="218(91)" T_Lut="498(291)">
+  <SubModule name="navigator" Register="127" Lut="207" T_Register="127(127)" T_Lut="207(207)"/>
  </SubModule>
- <SubModule name="programMemory_inst" Lut="13" T_Lut="13(13)" T_Bsram="4(0)">
+ <SubModule name="programMemory_inst" Lut="9" T_Lut="9(9)" T_Bsram="4(0)">
   <SubModule name="BRAM_0" Bsram="1" T_Bsram="1(1)"/>
   <SubModule name="BRAM_1" Bsram="1" T_Bsram="1(1)"/>
   <SubModule name="BRAM_2" Bsram="1" T_Bsram="1(1)"/>
   <SubModule name="BRAM_3" Bsram="1" T_Bsram="1(1)"/>
  </SubModule>
- <SubModule name="ramData_inst" Register="87" Lut="46" T_Register="753(87)" T_Alu="62(0)" T_Lut="1074(46)" T_Bsram="2(0)">
+ <SubModule name="ramData_inst" Register="109" Lut="48" T_Register="775(109)" T_Alu="62(0)" T_Lut="1076(48)" T_Bsram="2(0)">
   <SubModule name="generate_memory_clk"/>
   <SubModule name="psrams_Interface" Register="666" Alu="62" Lut="1028" Bsram="2" T_Register="666(666)" T_Alu="62(62)" T_Lut="1028(1028)" T_Bsram="2(2)"/>
  </SubModule>
  <SubModule name="slower_clock"/>
- <SubModule name="D1" Register="30" Lut="1104" T_Register="30(30)" T_Lut="1104(1104)" T_Bsram="2(0)">
+ <SubModule name="D1" Register="30" Lut="1146" T_Register="30(30)" T_Lut="1146(1146)" T_Bsram="2(0)">
   <SubModule name="text_Buffer" Bsram="1" T_Bsram="1(1)"/>
   <SubModule name="attributes_Buffer" Bsram="1" T_Bsram="1(1)"/>
  </SubModule>
- <SubModule name="uart_controller" Register="10" Lut="71" T_Register="89(10)" T_Lut="209(71)">
-  <SubModule name="uart_inst" Register="79" Lut="138" T_Register="79(79)" T_Lut="138(138)"/>
+ <SubModule name="uart_controller" Register="10" Lut="25" T_Register="89(10)" T_Lut="166(25)">
+  <SubModule name="uart_inst" Register="79" Lut="141" T_Register="79(79)" T_Lut="141(141)"/>
  </SubModule>
- <SubModule name="counter1mhz" Register="43" Alu="31" Lut="20" T_Register="43(43)" T_Alu="31(31)" T_Lut="20(20)"/>
+ <SubModule name="counter1mhz" Register="43" Alu="31" Lut="19" T_Register="43(43)" T_Alu="31(31)" T_Lut="19(19)"/>
  <SubModule name="counter27mhz" Register="43" Alu="31" Lut="19" T_Register="43(43)" T_Alu="31(31)" T_Lut="19(19)"/>
 </Module>
