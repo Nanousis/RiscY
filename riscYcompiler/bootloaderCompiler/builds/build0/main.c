@@ -8,6 +8,10 @@ typedef struct Programheader{
     unsigned int startAdress;
 } Programheader;
 
+// int getUSBint() {
+//     volatile int *usb = (volatile int *)USB;
+//     return usb[0];
+// }
 #define PROGRAM_MEMORY 0x00400000
 #define FLASH_READY 0x8B000000
 #define FLASH_REN 0x8B000001
@@ -74,6 +78,8 @@ int main() {
         programNum = readFlash(tempAddress);
         tempAddress += 4;
         printf("Number of Files: %d\n",programNum);
+        int usbOut=0;
+        char usbChar;
         for(int i=0; i<programNum; i++){
             for(int j=0; j<3; j++){
                 readData = readFlash(tempAddress);
@@ -92,7 +98,6 @@ int main() {
         btnStart=0;
         selectNum=0;
         printf("\nSelect program: \n");
-
         while(!getButtonRight()&&!getButtonLeft()){
             for(int i=0; i<programNum; i++){
                 if(btnPressed!=0){
@@ -135,7 +140,7 @@ int main() {
                 btnDebounce--;
         }
             // printf("Reading from flash\n");
-            for(int j = 0; j < 2048; j++) {
+            for(int j = 0; j < 4096; j++) {
                 readData = readFlash((j << 2) + headers[selectNum].startAdress);
                 programMemory[j] = readData;
             }

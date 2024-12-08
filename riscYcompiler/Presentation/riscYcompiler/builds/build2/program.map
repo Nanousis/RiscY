@@ -15,7 +15,7 @@ LOAD builds/build2/riscYstdio.o
                 0x00000800                        _stack_size = 0x800
                 0x00400000                        . = ORIGIN (RAM)
 
-.text           0x00400000      0xc90
+.text           0x00400000      0xe04
  *(.text)
  .text          0x00400000       0x1c builds/build2/startup.o
                 0x00400000                _start
@@ -26,7 +26,7 @@ LOAD builds/build2/riscYstdio.o
                 0x0040014c                SetAttributes
                 0x0040018c                ClearScreenRightToLeft
                 0x0040021c                getClock1M
- .text          0x00400228      0x68c builds/build2/riscYstdio.o
+ .text          0x00400228      0x684 builds/build2/riscYstdio.o
                 0x00400228                memcpy
                 0x0040024c                memset
                 0x00400268                getButtonDown
@@ -38,54 +38,54 @@ LOAD builds/build2/riscYstdio.o
                 0x00400388                printHex
                 0x00400428                printDec
                 0x00400520                printf
-                0x004006c4                printfSCR
-                0x0040085c                clearScreen
-                0x004008a8                resetScreenVector
+                0x004006bc                printfSCR
+                0x00400854                clearScreen
+                0x004008a0                resetScreenVector
  *(.rodata)
- .rodata        0x004008b4      0x3c8 builds/build2/main.o
- .rodata        0x00400c7c       0x14 builds/build2/riscYstdio.o
-                0x00400c90                        _etext = .
+ .rodata        0x004008ac      0x544 builds/build2/main.o
+ .rodata        0x00400df0       0x14 builds/build2/riscYstdio.o
+                0x00400e04                        _etext = .
 
-.text.startup   0x00400c90      0xb68
- .text.startup  0x00400c90      0xb68 builds/build2/main.o
-                0x00400c90                main
+.text.startup   0x00400e04      0xfac
+ .text.startup  0x00400e04      0xfac builds/build2/main.o
+                0x00400e04                main
 
-.rodata.str1.4  0x004017f8      0x4c6
+.rodata.str1.4  0x00401db0      0x64e
  .rodata.str1.4
-                0x004017f8      0x4c6 builds/build2/main.o
-                                0x4a5 (size before relaxing)
+                0x00401db0      0x64e builds/build2/main.o
+                                0x631 (size before relaxing)
  .rodata.str1.4
-                0x00401cbe       0x1a builds/build2/riscYstdio.o
+                0x004023fe       0x1a builds/build2/riscYstdio.o
 
-.rela.dyn       0x00401cc0        0x0
- .rela.text     0x00401cc0        0x0 builds/build2/startup.o
-                0x00401cc0                        . = ALIGN (0x4)
+.rela.dyn       0x00402400        0x0
+ .rela.text     0x00402400        0x0 builds/build2/startup.o
+                0x00402400                        . = ALIGN (0x4)
 
-.data           0x00401cbe        0x0 load address 0x00400c90
-                0x00401cbe                        _sdata = .
+.data           0x004023fe        0x0 load address 0x00400e04
+                0x004023fe                        _sdata = .
  *(.data)
- .data          0x00401cbe        0x0 builds/build2/startup.o
- .data          0x00401cbe        0x0 builds/build2/main.o
- .data          0x00401cbe        0x0 builds/build2/riscYstdio.o
-                0x00401cbe                        _edata = .
-                0x00401cc0                        . = ALIGN (0x4)
+ .data          0x004023fe        0x0 builds/build2/startup.o
+ .data          0x004023fe        0x0 builds/build2/main.o
+ .data          0x004023fe        0x0 builds/build2/riscYstdio.o
+                0x004023fe                        _edata = .
+                0x00402400                        . = ALIGN (0x4)
 
-.bss            0x00401cbe        0x0
-                0x00401cbe                        _sbss = .
+.bss            0x004023fe        0x0
+                0x004023fe                        _sbss = .
  *(.bss COMMON)
- .bss           0x00401cbe        0x0 builds/build2/startup.o
- .bss           0x00401cbe        0x0 builds/build2/main.o
- .bss           0x00401cbe        0x0 builds/build2/riscYstdio.o
-                0x00401cbe                        _ebss = .
-                0x00401cc0                        . = ALIGN (0x4)
+ .bss           0x004023fe        0x0 builds/build2/startup.o
+ .bss           0x004023fe        0x0 builds/build2/main.o
+ .bss           0x004023fe        0x0 builds/build2/riscYstdio.o
+                0x004023fe                        _ebss = .
+                0x00402400                        . = ALIGN (0x4)
                 0x00404000                        _stack_end = (ORIGIN (RAM) + LENGTH (RAM))
                 0x00403800                        _stack_top = (_stack_end - _stack_size)
                 0x00403000                        _stack_bottom = (_stack_top - _stack_size)
 OUTPUT(builds/build2/program.elf elf32-littleriscv)
 
-.sbss           0x00401cbe        0x2
- .sbss          0x00401cbe        0x2 builds/build2/riscYstdio.o
-                0x00401cbe                screenPos
+.sbss           0x004023fe        0x2
+ .sbss          0x004023fe        0x2 builds/build2/riscYstdio.o
+                0x004023fe                screenPos
 
 .riscv.attributes
                 0x00000000       0x1c
@@ -100,3 +100,10 @@ OUTPUT(builds/build2/program.elf elf32-littleriscv)
  .comment       0x00000000       0x1b builds/build2/main.o
                                  0x1c (size before relaxing)
  .comment       0x0000001b       0x1c builds/build2/riscYstdio.o
+
+.note.GNU-stack
+                0x00000000        0x0
+ .note.GNU-stack
+                0x00000000        0x0 builds/build2/main.o
+ .note.GNU-stack
+                0x00000000        0x0 builds/build2/riscYstdio.o

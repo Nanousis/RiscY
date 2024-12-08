@@ -93,8 +93,8 @@ void ClearScreenRightToLeft(){
 
 typedef struct object {
     char id;
-    int x;
-    int y;    
+    short x;
+    short y;    
     char sprite;
     char enable;
 } object;
@@ -807,6 +807,237 @@ char characterup3_01[] = {
 };
 
 
+
+char house_00[] = {
+    0x0F, 0x00,
+    0x53, 0x55,
+    0x73, 0x55,
+    0x73, 0x55,
+    0x73, 0x55,
+    0x73, 0x55,
+    0x73, 0x55,
+    0x73, 0x55,
+    0x73, 0x55,
+    0x73, 0x55,
+    0x73, 0x55,
+    0x73, 0x55,
+    0x73, 0x55,
+    0x73, 0x55,
+    0x73, 0x55,
+    0xA3, 0xAA,
+};
+
+char house_01[] = {
+    0x00, 0x00,
+    0x55, 0x55,
+    0x55, 0x55,
+    0x55, 0x55,
+    0x55, 0x55,
+    0x55, 0x55,
+    0x55, 0x55,
+    0x55, 0x55,
+    0x55, 0x55,
+    0x55, 0x55,
+    0x55, 0x55,
+    0x55, 0x55,
+    0x55, 0x55,
+    0x55, 0xA5,
+    0xAA, 0x2A,
+    0x02, 0x00,
+};
+
+char house_02[] = {
+    0x00, 0x00,
+    0x55, 0x55,
+    0x55, 0x55,
+    0x55, 0x55,
+    0x55, 0x55,
+    0x55, 0x55,
+    0x55, 0x55,
+    0x55, 0x55,
+    0x55, 0x55,
+    0x55, 0x55,
+    0x55, 0x55,
+    0x55, 0x55,
+    0x55, 0x55,
+    0xAA, 0xAA,
+    0x00, 0x00,
+    0xFF, 0xFF,
+};
+
+char house_03[] = {
+    0x00, 0x00,
+    0x55, 0x55,
+    0x55, 0x55,
+    0x55, 0x55,
+    0x55, 0x55,
+    0x55, 0x55,
+    0x55, 0x55,
+    0x55, 0x55,
+    0x55, 0x55,
+    0x55, 0x55,
+    0x55, 0x55,
+    0x55, 0x55,
+    0x55, 0x55,
+    0xAA, 0xAA,
+    0x00, 0x00,
+    0xFF, 0xFF,
+};
+
+char house_04[] = {
+    0x00, 0x00,
+    0x55, 0x55,
+    0x55, 0x55,
+    0x55, 0x55,
+    0x55, 0x55,
+    0x55, 0x55,
+    0x55, 0x55,
+    0x55, 0x55,
+    0x55, 0x55,
+    0x55, 0x55,
+    0x55, 0x55,
+    0x55, 0x55,
+    0x55, 0x55,
+    0x5A, 0x55,
+    0xA8, 0xAA,
+    0x00, 0x80,
+};
+
+char house_05[] = {
+    0x00, 0xF0,
+    0x55, 0xC5,
+    0x55, 0xCD,
+    0x55, 0xCD,
+    0x55, 0xCD,
+    0x55, 0xCD,
+    0x55, 0xCD,
+    0x55, 0xCD,
+    0x55, 0xCD,
+    0x55, 0xCD,
+    0x55, 0xCD,
+    0x55, 0xCD,
+    0x55, 0xCD,
+    0x55, 0xCD,
+    0x55, 0xCD,
+    0xAA, 0xCA,
+};
+
+char house_10[] = {
+    0x03, 0x00,
+    0xD3, 0xFF,
+    0xD3, 0x3F,
+    0xD3, 0x3F,
+    0xD3, 0x3F,
+    0xD3, 0x3F,
+    0xD3, 0x3F,
+    0xD3, 0x3F,
+    0xF3, 0xFF,
+    0xF3, 0xFF,
+    0xF3, 0xFF,
+    0xF3, 0xFF,
+    0xF3, 0xFF,
+    0x53, 0x55,
+    0x03, 0x40,
+    0x03, 0x00,
+};
+
+char house_11[] = {
+    0xFC, 0xFF,
+    0xFF, 0xFF,
+    0x00, 0xFC,
+    0xFF, 0xFC,
+    0xEB, 0xFC,
+    0xAA, 0xFC,
+    0x55, 0xFC,
+    0x00, 0xFC,
+    0xFF, 0xFF,
+    0xFF, 0xFF,
+    0xFF, 0xFF,
+    0xFF, 0xFF,
+    0xFF, 0xFF,
+    0xFF, 0x57,
+    0x55, 0x05,
+    0x00, 0x00,
+};
+
+char house_12[] = {
+    0x00, 0x00,
+    0x54, 0x54,
+    0x54, 0x54,
+    0x54, 0x54,
+    0x54, 0x54,
+    0x54, 0x54,
+    0x54, 0x58,
+    0x64, 0x94,
+    0x94, 0x58,
+    0x64, 0x94,
+    0x94, 0x54,
+    0x54, 0x54,
+    0x54, 0x54,
+    0x54, 0x54,
+    0x54, 0x54,
+    0x00, 0x00,
+};
+
+char house_13[] = {
+    0x00, 0x00,
+    0x15, 0x15,
+    0x15, 0x15,
+    0x15, 0x15,
+    0x15, 0x15,
+    0x15, 0x17,
+    0x17, 0x1D,
+    0x35, 0x17,
+    0x17, 0x1D,
+    0x35, 0x15,
+    0x15, 0x15,
+    0x15, 0x15,
+    0x15, 0x15,
+    0x15, 0x15,
+    0x15, 0x15,
+    0x00, 0x00,
+};
+
+char house_14[] = {
+    0xFF, 0x3F,
+    0xFF, 0xFF,
+    0x3F, 0x00,
+    0x3F, 0xFF,
+    0x3F, 0xEB,
+    0x3F, 0xAA,
+    0x3F, 0x55,
+    0x3F, 0x00,
+    0xFF, 0xFF,
+    0xFF, 0xFF,
+    0xFF, 0xFF,
+    0xFF, 0xFF,
+    0xFF, 0xFF,
+    0xD5, 0xFF,
+    0x50, 0x55,
+    0x00, 0x00,
+};
+
+char house_15[] = {
+    0x00, 0xC0,
+    0xFF, 0xC7,
+    0xFC, 0xC7,
+    0xFC, 0xC7,
+    0xFC, 0xC7,
+    0xFC, 0xC7,
+    0xFC, 0xC7,
+    0xFC, 0xC7,
+    0xFF, 0xCF,
+    0xFF, 0xCF,
+    0xFF, 0xCF,
+    0xFF, 0xCF,
+    0xFF, 0xCF,
+    0x55, 0xC5,
+    0x01, 0xC0,
+    0x00, 0xC0,
+};
+
+
+
     animation charDown00;
     charDown00.frames[0] = characterdown2_00;
     charDown00.frames[1] = characterdown1_00;
@@ -975,7 +1206,7 @@ char characterup3_01[] = {
 
     while(1){
         clock2 = getClock1M();
-        putch(63,testNum,BG_WHITE);
+        // putch(63,testNum,BG_WHITE);
 
         usbout = getUSBint();
         keys[0] = USBParser((usbout >> 24) & 0xFF);
@@ -985,17 +1216,40 @@ char characterup3_01[] = {
             switch (slide)
             {
             case 0:
-                printfSCR(SCREEN_WIDTH*5+15, BG_WHITE,"     ____  _         __  __");
-                printfSCR(SCREEN_WIDTH*6+15, BG_WHITE,"    / __ \\(_)________\\ \\/ /");
-                printfSCR(SCREEN_WIDTH*7+15, BG_WHITE,"   / /_/ / / ___/ ___/\\  /");
-                printfSCR(SCREEN_WIDTH*8+15, BG_WHITE,"  / _, _/ (__  ) /__  / /  ");
-                printfSCR(SCREEN_WIDTH*9+15, BG_WHITE," /_/ |_/_/____/\\___/ /_/   ");
-                printfSCR(SCREEN_WIDTH*10+15, BG_WHITE,"                           ");
-                printfSCR(SCREEN_WIDTH*11+15, BG_WHITE,"  What can we do with this? ");
-
+                printfSCR(SCREEN_WIDTH*5+15, BG_WHITE,  "  _____  _____  _____  _____   __     __");
+                printfSCR(SCREEN_WIDTH*6+15, BG_WHITE,  " |  __ \\|_   _|/ ____|/ ____|  \\ \\   / /");    
+                printfSCR(SCREEN_WIDTH*7+15, BG_WHITE,  " | |__) | | | | (___ | |   _____\\ \\_/ / ");
+                printfSCR(SCREEN_WIDTH*8+15, BG_WHITE,  " |  _  /  | |  \\___ \\| |  |______\\   /  ");
+                printfSCR(SCREEN_WIDTH*9+15, BG_WHITE,  " | | \\ \\ _| |_ ____) | |____      | |   ");
+                printfSCR(SCREEN_WIDTH*10+15, BG_WHITE, " |_|  \\_\\_____|_____/ \\_____|     |_|   ");
+                // printfSCR(SCREEN_WIDTH*11+15, BG_WHITE, "  
             break;
             case 1:
-                printfSCR(0,BG_WHITE," We can display text, duh...\n");
+                printfSCR(SCREEN_WIDTH*7+24,BG_WHITE,  "What did we make?");
+            break;
+            case 2:
+                printfSCR(SCREEN_WIDTH*7+20,BG_WHITE,  "A Processor with verilog");
+            break;
+            case 3:
+                printfSCR(SCREEN_WIDTH*7+22,BG_WHITE,  "Displaying on screen");
+            break;
+            case 4:
+                printfSCR(SCREEN_WIDTH*7+20,BG_WHITE,  "Memories... RAM, BRAM, PRAM");
+            break;
+
+            case 5:
+                printfSCR(SCREEN_WIDTH*7+20,BG_WHITE,  "What can we do though?");
+            break;
+
+            case 6:
+                for(i=0;i<SCREEN_WIDTH;i++){
+                    putch(i,' ',BG_MAGENTA);
+                }
+                putch(SCREEN_WIDTH-1,'X',BG_RED);
+                putch(SCREEN_WIDTH-2,'O',BG_WHITE);
+                putch(SCREEN_WIDTH-3,'-',BG_WHITE);
+                
+                printfSCR(0,BG_MAGENTA," We can display text, duh...\n");
                 for(i=0;i<SCREEN_WIDTH;i++){
                     putch(SCREEN_WIDTH+i,128+2,BG_WHITE);
                 }
@@ -1008,8 +1262,15 @@ char characterup3_01[] = {
                 // printfSCR(SCREEN_WIDTH*9,BG_WHITE,  "            -It is the most complex part of a computer\n");
                 // printfSCR(SCREEN_WIDTH*10,BG_WHITE, "            -It is the most expensive part of a computer\n");
                 break;
-            case 2:
-                printfSCR(0,BG_WHITE," What about math?\n");
+            case 7:
+                for(i=0;i<SCREEN_WIDTH;i++){
+                    putch(i,' ',BG_MAGENTA);
+                }
+                putch(SCREEN_WIDTH-1,'X',BG_RED);
+                putch(SCREEN_WIDTH-2,'O',BG_WHITE);
+                putch(SCREEN_WIDTH-3,'-',BG_WHITE);
+                
+                printfSCR(0,BG_MAGENTA," What about math?\n");
                 for(i=0;i<SCREEN_WIDTH;i++){
                     putch(SCREEN_WIDTH+i,128+2,BG_WHITE);
                 }
@@ -1022,8 +1283,15 @@ char characterup3_01[] = {
                 // printfSCR(SCREEN_WIDTH*10,BG_WHITE, "            -It is the most expensive part of a computer\n");
                 break;
             
-            case 3:
-                printfSCR(0,BG_WHITE," What about Images?\n");
+            case 8:
+                for(i=0;i<SCREEN_WIDTH;i++){
+                    putch(i,' ',BG_MAGENTA);
+                }
+                putch(SCREEN_WIDTH-1,'X',BG_RED);
+                putch(SCREEN_WIDTH-2,'O',BG_WHITE);
+                putch(SCREEN_WIDTH-3,'-',BG_WHITE);
+                
+                printfSCR(0,BG_MAGENTA," What about Images?\n");
                 for(i=0;i<SCREEN_WIDTH;i++){
                     putch(SCREEN_WIDTH+i,128+2,BG_WHITE);
                 }
@@ -1069,8 +1337,18 @@ char characterup3_01[] = {
                 // printfSCR(SCREEN_WIDTH*9,BG_WHITE,  "            -It is the most complex part of a computer\n");
                 // printfSCR(SCREEN_WIDTH*10,BG_WHITE, "            -It is the most expensive part of a computer\n");
                 break;
-                case 4:
-                    printfSCR(0,BG_WHITE," What about Animations?\n");
+                case 9:
+                    for(i=0;i<SCREEN_WIDTH;i++){
+                    putch(i,' ',BG_MAGENTA);
+                }
+                    putch(SCREEN_WIDTH-1,'X',BG_RED);
+                    putch(SCREEN_WIDTH-2,'O',BG_WHITE);
+                    putch(SCREEN_WIDTH-3,'-',BG_WHITE);
+                    
+
+
+
+                    printfSCR(0,BG_MAGENTA," What about Animations?\n");
                     for(i=0;i<SCREEN_WIDTH;i++){
                         putch(SCREEN_WIDTH+i,128+2,BG_WHITE);
                     }
@@ -1084,9 +1362,58 @@ char characterup3_01[] = {
                     character00.y = 148;
                     character01.x = 208;
                     character01.y = 148;
+
+
+                    WriteSprite(3+0,    house_00);
+                    WriteSprite(3+1,    house_01);
+                    WriteSprite(3+2,    house_02);
+                    WriteSprite(3+3,    house_03);
+                    WriteSprite(3+4,    house_04);
+                    WriteSprite(3+5,    house_05);
+                    WriteSprite(3+6,    house_10);
+                    WriteSprite(3+7,    house_11);
+                    WriteSprite(3+8,    house_12);
+                    WriteSprite(3+9,    house_13);
+                    WriteSprite(3+10,   house_14);
+                    WriteSprite(3+11,   house_15);
+
+
+
+
+                    putch(SCREEN_WIDTH*9+0  +50,128+0+3,BG_WHITE);
+                    putch(SCREEN_WIDTH*9+1  +50,128+1+3,BG_WHITE);
+                    putch(SCREEN_WIDTH*9+2  +50,128+2+3,BG_WHITE);
+                    putch(SCREEN_WIDTH*9+3  +50,128+3+3,BG_WHITE);
+                    putch(SCREEN_WIDTH*9+4  +50,128+4+3,BG_WHITE);
+                    putch(SCREEN_WIDTH*9+4  +50,128+5+3,BG_WHITE);
+
+                    putch(SCREEN_WIDTH*10+0  +50,128+0+3,BG_WHITE);
+                    putch(SCREEN_WIDTH*10+1  +50,128+1+3,BG_WHITE);
+                    putch(SCREEN_WIDTH*10+2  +50,128+2+3,BG_WHITE);
+                    putch(SCREEN_WIDTH*10+3  +50,128+3+3,BG_WHITE);
+                    putch(SCREEN_WIDTH*10+4  +50,128+4+3,BG_WHITE);
+                    putch(SCREEN_WIDTH*10+4  +50,128+5+3,BG_WHITE);
+
+
                     // printfSCR(SCREEN_WIDTH*(8+3),BG_WHITE,  "            -\n");
                     // printfSCR(SCREEN_WIDTH*9,BG_WHITE,  "            -It is the most complex part of a computer\n");
                     // printfSCR(SCREEN_WIDTH*10,BG_WHITE, "            -It is the most expensive part of a computer\n");
+                break;
+
+                case 11:
+                    for(i=0;i<SCREEN_HEIGHT*SCREEN_WIDTH;i++){
+                        putch(i,' ',BG_BLUE);
+                    }
+                    printfSCR(SCREEN_WIDTH*3+28,BG_WHITE,  "RISC-Y");
+                    printfSCR(SCREEN_WIDTH*7+5,BG_BLUE|15,  "An error has occured. To continue:");
+                    
+                    
+                    printfSCR(SCREEN_WIDTH*9+5,BG_BLUE|15,  "Press CTR+ALT+DEL to restart the Computer If you do this,");
+                    printfSCR(SCREEN_WIDTH*10+5,BG_BLUE|15,  "you will loose all unsaved work in other applications");
+                    
+                    printfSCR(SCREEN_WIDTH*12+5,BG_BLUE|15,  "Error: 69 : 0123 : DEADBEEF");
+
+                    printfSCR(SCREEN_WIDTH*16+18,BG_BLUE|15,  "Press any key to continue_");
                 break;
             default:
                 break;
@@ -1108,16 +1435,28 @@ char characterup3_01[] = {
             else if(keys[0] == 'd'){
                 direction = 3;
             }
-            else if(keys[0] == ' '){
+            else if(keys[0] == 'R'){
+
+                    character00.enable=0;
+                    character01.enable=0;
                 ClearScreenRightToLeft();
                 slide++;
+                renderedFrame=0;
+            }
+            else if(keys[0] == 'L'){
+
+                    character00.enable=0;
+                    character01.enable=0;
+                ClearScreenRightToLeft();
+                if(slide>0)
+                    slide--;
                 renderedFrame=0;
             }
             else if(keys[0] == 'q'){
                 break;
             }
         }
-        putch(62,keys[0],BG_WHITE);
+        // putch(62,keys[0],BG_WHITE);
         if(((clock2-clock)>>1)>100000){
             testNum++;
             if(testNum>'9'){
@@ -1170,8 +1509,8 @@ char characterup3_01[] = {
                 character00.x-=4;
                 character01.x-=4;
                 if(character00.x<0){
-                    character00.x = 300;
-                    character01.x = 300;
+                    character00.x = 500;
+                    character01.x = 508;
                 }
                 WriteSprite(character00.id, charLeft00.frames[charLeft00.currentFrame]);
                 WriteSprite(character01.id, charLeft01.frames[charLeft01.currentFrame]);
@@ -1186,9 +1525,9 @@ char characterup3_01[] = {
                 }
                 character00.x+=4;
                 character01.x+=4;
-                if(character00.x>300){
+                if(character00.x>508){
                     character00.x = 0;
-                    character01.x = 0;
+                    character01.x = 8;
                 }
                 WriteSprite(character00.id, charRight00.frames[charRight00.currentFrame]);
                 WriteSprite(character01.id, charRight01.frames[charRight01.currentFrame]);
