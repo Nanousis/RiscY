@@ -1,5 +1,8 @@
+`ifndef TESTBENCH
 `include "config.vh"
-
+`else
+`include "../includes/config.vh"
+`endif
 module bus( input clk,
             input [31:0] PC,
             input [31:0] data_addr,

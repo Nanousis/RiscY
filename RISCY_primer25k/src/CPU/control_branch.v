@@ -1,5 +1,11 @@
+`ifndef TESTBENCH
 `include "constants.vh"
 `include "config.vh"
+`else
+`include "../includes/constants.vh"
+`include "../includes/config.vh"
+`endif
+
 
 module control_branch(	output reg branch_taken,
 						input [2:0] funct3,

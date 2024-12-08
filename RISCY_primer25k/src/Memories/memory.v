@@ -1,4 +1,11 @@
+`ifndef TESTBENCH
+`include "constants.vh"
 `include "config.vh"
+`else
+`include "../includes/constants.vh"
+`include "../includes/config.vh"
+`endif
+
 
 module memory(input clk,
             input [`TEXT_BITS-3:0] PC,
@@ -20,8 +27,11 @@ initial begin
      for(i=0; i<data_size; i=i+1) begin
          data_mem[i] = 32'h0;
      end
-    
+    `ifndef TESTBENCH
     $readmemh(`TEXT_HEX, data_mem);
+    `else
+    $readmemh("../includes/testbenchtext.hex", data_mem);
+    `endif
 end
 
 localparam STATE_IDLE = 2'b00;

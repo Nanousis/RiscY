@@ -1,5 +1,10 @@
+`ifndef TESTBENCH
 `include "constants.vh"
 `include "config.vh"
+`else
+`include "../includes/constants.vh"
+`include "../includes/config.vh"
+`endif
 
 module ALUCPU #(parameter N = 32) (output [N-1:0] out,
 								output zero,

@@ -1,5 +1,10 @@
+`ifndef TESTBENCH
 `include "constants.vh"
 `include "config.vh"
+`else
+`include "../includes/constants.vh"
+`include "../includes/config.vh"
+`endif
 
 /**************** control for Stall Detection in ID pipe stage  **********/
 /****************** Create bubbles for loads and branches ****************/

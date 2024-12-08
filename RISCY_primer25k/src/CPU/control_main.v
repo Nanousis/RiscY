@@ -1,5 +1,11 @@
+`ifndef TESTBENCH
 `include "constants.vh"
 `include "config.vh"
+`else
+`include "../includes/constants.vh"
+`include "../includes/config.vh"
+`endif
+
 
 /************** Main control in ID pipe stage  *************/
 module control_main(output reg RegDst,
@@ -12,11 +18,13 @@ module control_main(output reg RegDst,
 					output reg Jump,
 					output reg JumpJALR,
 					output reg inA_is_PC,
+					output reg [1:0] reg_type,
 					output reg [2:0] ALUcntrl,
 					input [6:0] opcode);
 
 always @(*)
 begin
+	reg_type = 0; // sets registers to x registers
 	case (opcode)
 		`R_FORMAT: begin 
 			RegDst		= 1'b1;
@@ -46,10 +54,10 @@ begin
 		end
 		`I_LOAD_FORMAT: begin 
 			RegDst		= 1'b1;
-			MemRead		= 1'b1;
+			MemRead		= 1'b0;
 			MemWrite	= 1'b0;
-			MemToReg	= 1'b1;
-			ALUSrc		= 1'b1;
+			MemToReg	= 1'b0;
+			ALUSrc		= 1'b0;
 			RegWrite	= 1'b1;
 			Branch		= 1'b0;
 			Jump		= 0;
@@ -57,6 +65,21 @@ begin
 			inA_is_PC	= 1'b0;
 			ALUcntrl	= `ALU_LOAD_STORE;
 		end
+		`I_ENV_FORMAT: 	begin
+			reg_type 	= 2'b01; // sets registers to CSR registers
+			RegDst		= 1'b1;
+			MemRead		= 1'b0;
+			MemWrite	= 1'b0;
+			MemToReg	= 1'b0;
+			ALUSrc		= 1'b0;
+			RegWrite	= 1'b1;
+			Branch		= 1'b0;
+			Jump		= 0;
+			JumpJALR	= 0;
+			inA_is_PC	= 1'b0;
+			ALUcntrl	= `ALU_CSR;
+		end
+
 		`I_JALR_FORMAT: begin
 			RegDst		= 1'b1;
 			MemRead		= 1'b0;

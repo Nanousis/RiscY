@@ -1,8 +1,14 @@
+`ifndef TESTBENCH
 `include "constants.vh"
 `include "config.vh"
+`else
+`include "../includes/constants.vh"
+`include "../includes/config.vh"
+`endif
 
 /************** control for ALU control in EX pipe stage  *************/
 module control_alu(	output reg [3:0] ALUOp,
+					output reg csr_immidiate,
 					input [2:0] ALUcntrl,
 					input [2:0] funct3,
 					input [6:0] funct7);
@@ -54,6 +60,45 @@ begin
 		end
 		`ALU_J: begin
 			ALUOp = `ADD;
+		end
+		`ALU_CSR:begin
+			case (funct3)
+				`FUNCT3_CSRRW:
+				begin
+					csr_immidiate = 0;
+					ALUOp = `ADD;
+				end
+				`FUNCT3_CSRRS:
+				begin
+					csr_immidiate = 0;
+					ALUOp = `OR;
+				end
+				`FUNCT3_CSRRC:
+				begin
+					csr_immidiate = 0;
+					ALUOp = `AND;
+				end
+				`FUNCT3_CSRRWI:
+				begin
+					csr_immidiate = 1;
+					ALUOp = `ADD;
+				end
+				`FUNCT3_CSRRSI:
+				begin
+					csr_immidiate = 1;
+					ALUOp = `OR;
+				end
+				`FUNCT3_CSRRCI:
+				begin
+					csr_immidiate = 1;
+					ALUOp = `AND;
+				end
+				default:
+				begin
+					csr_immidiate = 0;
+					ALUOp = `ADD;
+				end
+			endcase
 		end
 		default: begin
 			ALUOp = `ADD;

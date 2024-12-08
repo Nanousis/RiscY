@@ -1,5 +1,11 @@
+`ifndef TESTBENCH
 `include "constants.vh"
 `include "config.vh"
+`else
+`include "../includes/constants.vh"
+`include "../includes/config.vh"
+`endif
+
 
 /*****************************************************************************************/
 /* Implementation of the 5-stage MIPS pipeline that supports the following instructions: */
@@ -42,11 +48,13 @@ wire	[31:0]	BranchInA;
 reg		[31:0]	IDEX_signExtend;
 wire	[31:0]	signExtend;
 wire	[31:0]	rdA, rdB;
+wire 	[31:0] 	csr_data;
 reg		[31:0]	IDEX_rdA, IDEX_rdB;
 reg		[2:0]	IDEX_funct3;
 reg		[6:0]	IDEX_funct7;
 reg		[4:0]	IDEX_instr_rs2, IDEX_instr_rs1, IDEX_instr_rd;
 reg				IDEX_RegDst, IDEX_ALUSrc, IDEX_inA_is_PC, IDEX_Jump, IDEX_JumpJALR;
+reg 	[1:0] 	IDEX_reg_type;
 reg		[2:0]	IDEX_ALUcntrl;
 reg				IDEX_MemRead, IDEX_MemWrite;
 reg				IDEX_MemToReg, IDEX_RegWrite;
@@ -64,18 +72,20 @@ reg		[4:0]	MEMWB_RegWriteAddr;
 reg		[31:0]	MEMWB_ALUOut;
 reg				MEMWB_MemToReg, MEMWB_RegWrite;
 wire	[31:0]	ALUInA, ALUInB, ALUOut, BranchALUOut, bypassOutA, bypassOutB, DMemOut, MemOut, wRegData;
-wire			Zero, RegDst, MemRead, MemWrite, MemToReg, ALUSrc, PCSrc, RegWrite, Jump, JumpJALR;
+wire			Zero, RegDst, MemRead, MemWrite, MemToReg, ALUSrc, csr_immidiate, PCSrc, RegWrite, Jump, JumpJALR;
+wire 	[1:0] 	reg_type; // used to determin if we are using the x0-x31 registers, csr registers or f1-f32 registers. 0->x register 1->csr register 2->f register 
 wire			Branch;
 reg				IDEX_Branch, EXMEM_Branch;
 wire			bubble_ifid, bubble_idex, bubble_exmem;   // create a NOP in respective stages
 wire			write_ifid, write_idex, write_exmem, write_memwb, write_pc;  // enable/disable pipeline registers
 wire	[6:0]	opcode;
 wire	[2:0]	funct3, ALUcntrl; 
+wire 	[11:0]	csr_addr;
 wire	[6:0]	funct7;
 wire	[4:0]	instr_rs1, instr_rs2, instr_rd, RegWriteAddr;
 wire	[3:0]	ALUOp;
 wire	[1:0]	bypassA, bypassB;
-wire	[31:0]	imm_i, imm_s, imm_b, imm_u, imm_j;
+wire	[31:0]	imm_i, imm_s, imm_b, imm_u, imm_j, imm_z;
 reg keepDelayInstr=0;
 
 
@@ -168,19 +178,12 @@ begin
 	end
 end
 
-// Instruction memory
-// Imem cpu_IMem(
-// 	.reset(reset),
-// 	.ren(write_ifid),
-// 	.addr(PC[`TEXT_BITS-1:2]),
-// 	.dout(instr)
-// );
-
 /***************************** Instruction Decode Unit (ID)  *******************/
 assign opcode		= IFID_instr[6:0];
 assign funct3		= IFID_instr[14:12];
 assign funct7		= IFID_instr[31:25];
 assign instr_rs1	= IFID_instr[19:15];
+assign csr_addr		= IFID_instr[31:20];
 assign instr_rs2	= IFID_instr[24:20];
 assign instr_rd		= IFID_instr[11:7];
 
@@ -191,7 +194,8 @@ signExtend signExtendUnit (
 	.imm_s(imm_s),
 	.imm_b(imm_b),
 	.imm_u(imm_u),
-	.imm_j(imm_j)
+	.imm_j(imm_j),
+	.imm_z(imm_z)
 );
 
 // Register file
@@ -207,6 +211,17 @@ RegFile cpu_regs (
 	.rdB(rdB)
 );
 
+
+//CSRFile csrFile(
+//	.clock(clock),
+//	.reset(reset),
+//	.wen(0),
+//	.ren(reg_type==2'b01),
+//	.csrAddr(csr_addr),
+//	.wd(wRegData),
+//	.rd(csr_data)
+//);
+
 // Sign Extended Signal Selection
 SignExtendSelector SignExtendSelector (
 	.out(signExtend),
@@ -215,6 +230,7 @@ SignExtendSelector SignExtendSelector (
 	.imm_b(imm_b),
 	.imm_u(imm_u),
 	.imm_j(imm_j),
+	.imm_z(imm_z),
 	.opcode(opcode)
 );
 
@@ -243,6 +259,7 @@ begin
 		IDEX_PC			<= 32'b0;
 		IDEX_rdA		<= 32'b0;
 		IDEX_rdB		<= 32'b0;
+		IDEX_reg_type	<= 3'b0;
 	end
 	else
 	begin
@@ -267,6 +284,7 @@ begin
 			IDEX_PC			<= 32'b0;
 			IDEX_rdA		<= 32'b0;
 			IDEX_rdB		<= 32'b0;
+			IDEX_reg_type	<= 3'b0;
 		end
 		else if (write_idex == 1'b1) begin
 			IDEX_inA_is_PC	<= inA_is_PC;
@@ -289,6 +307,7 @@ begin
 			IDEX_PC			<= IFID_PC;
 			IDEX_rdA		<= rdA;
 			IDEX_rdB		<= rdB;
+			IDEX_reg_type	<= reg_type;
 		end
 	end
 end
@@ -296,6 +315,7 @@ end
 // Main Control Unit
 control_main control_main (
 	.RegDst(RegDst),
+	.reg_type(reg_type),
 	.Branch(Branch),
 	.MemRead(MemRead),
 	.MemWrite(MemWrite),
@@ -330,11 +350,11 @@ control_stall_id control_stall_id (
 	.PCSrc			(PCSrc));
 
 /************************ Execution Unit (EX)  ***********************************/
-assign bypassOutA = (bypassA==2'b00) ? IDEX_rdA :
+assign bypassOutA = (bypassA==2'b00) ? 
+									((IDEX_reg_type==2'b01)?((csr_immidiate)? IDEX_signExtend:IDEX_rdA):IDEX_rdA):
 					(bypassA==2'b01) ? wRegData :
 										EXMEM_ALUOut;
-
-assign bypassOutB = (bypassB==2'b00) ?	IDEX_rdB :
+assign bypassOutB = (bypassB==2'b00) ?	(IDEX_reg_type==2'b01)? csr_data : IDEX_rdB :
 					(bypassB==2'b01) ?	wRegData :
 										EXMEM_ALUOut;
 
@@ -411,6 +431,7 @@ end
 // ALU control
 control_alu control_alu(
 	.ALUOp(ALUOp), 
+	.csr_immidiate(csr_immidiate),
 	.ALUcntrl(IDEX_ALUcntrl), 
 	.funct3(IDEX_funct3), 
 	.funct7(IDEX_funct7)

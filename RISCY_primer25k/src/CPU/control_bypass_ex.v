@@ -1,5 +1,11 @@
+`ifndef TESTBENCH
 `include "constants.vh"
 `include "config.vh"
+`else
+`include "../includes/constants.vh"
+`include "../includes/config.vh"
+`endif
+
 
 /**************** control for Bypass Detection in EX pipe stage  *********/
 module  control_bypass_ex(	output reg [1:0] bypassA,

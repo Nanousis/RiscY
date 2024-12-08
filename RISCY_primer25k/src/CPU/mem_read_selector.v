@@ -1,5 +1,11 @@
+`ifndef TESTBENCH
 `include "constants.vh"
 `include "config.vh"
+`else
+`include "../includes/constants.vh"
+`include "../includes/config.vh"
+`endif
+
 
 module mem_read_selector(	input [2:0] mem_select,
 							input [31:0] DMemOut,

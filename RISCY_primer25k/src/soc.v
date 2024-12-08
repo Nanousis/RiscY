@@ -1,4 +1,11 @@
+
+`ifndef TESTBENCH
 `include "config.vh"
+`else
+`include "../includes/config.vh"
+`endif
+
+
 `timescale 1ns/1ns
 module top
 (   
@@ -177,7 +184,6 @@ module top
     wire [7:0] pixelData;
     wire error;
 
-
     //**********************************************************************************************//
     //                                       PROGRAM MEMORY                                         //
     //**********************************************************************************************//
@@ -193,10 +199,11 @@ module top
         .instr(program_instr),
         .data_out(program_mem_out)
     );
-
     //************************************************************************************************//
     //                                         USB CONTROLLER                                        //
     //***********************************************************************************************//
+`ifndef TESTBENCH
+
     wire clk_usb;
     // USB clock 12Mhz
     gowin_pll_usb pll_usb (
@@ -215,7 +222,7 @@ module top
         .data_out(usb_data_out)
     );
 
-
+`endif
     //**********************************************************************************************//
     //                                         HDMI SCREEN                                           //
     //**********************************************************************************************//
@@ -331,20 +338,23 @@ module top
 //                                         CPU TIMER                                               //
 //   **********************************************************************************************//
 
+
     wire [31:0] counter1M;
+    wire [31:0] counter27M;
+    `ifndef TESTBENCH
     cpuTimer #(.DIVISION(27)) counter1mhz
     (
         .clk(cpu_clk),
         .reset(reset),
         .counter(counter1M)
     );
-    wire [31:0] counter27M;
     cpuTimer #(.DIVISION(1)) counter27mhz
     (
         .clk(cpu_clk),
         .reset(reset),
         .counter(counter27M)
     );
+    `endif
     reg [2:0] state=0;
     localparam STATE_INIT = 0;
     localparam STATE_WAITING_BUTTON = 1;
