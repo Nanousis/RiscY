@@ -21,7 +21,7 @@ NEXT_VERSION := $(shell echo $$(($(VERSION)+1)))
 BUILD_DIR = $(BUILD_BASE_DIR)/build$(VERSION)
 
 # Desired memory size in bytes
-MEMORY_SIZE = 8192
+MEMORY_SIZE = 16384
 
 # Default target
 all: $(VERSION_FILE) $(BUILD_DIR)/program.hex $(BUILD_DIR)/program.bin disassemble copy_main_c update_version

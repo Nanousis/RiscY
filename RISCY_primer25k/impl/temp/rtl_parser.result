@@ -1,137 +1,145 @@
 [
  {
-  "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/GPIO/seven_segment.v",
+  "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/GPIO/seven_segment.v",
   "InstLine" : 57,
   "InstName" : "SSD",
-  "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/GPIO/seven_segment.v",
+  "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/GPIO/seven_segment.v",
   "ModuleLine" : 57,
   "ModuleName" : "SSD",
   "SubInsts" : [
    {
-    "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/GPIO/seven_segment.v",
+    "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/GPIO/seven_segment.v",
     "InstLine" : 76,
     "InstName" : "LEDdecoder_inst",
-    "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/GPIO/seven_segment.v",
+    "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/GPIO/seven_segment.v",
     "ModuleLine" : 3,
     "ModuleName" : "LEDdecoder"
    }
   ]
  },
  {
-  "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_openldi.v",
+  "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/gowin_pll_720p/gowin_pll_720p.v",
+  "InstLine" : 10,
+  "InstName" : "Gowin_PLL_720p",
+  "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/gowin_pll_720p/gowin_pll_720p.v",
+  "ModuleLine" : 10,
+  "ModuleName" : "Gowin_PLL_720p"
+ },
+ {
+  "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_openldi.v",
   "InstLine" : 23,
   "InstName" : "svo_openldi",
-  "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_openldi.v",
+  "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_openldi.v",
   "ModuleLine" : 23,
   "ModuleName" : "svo_openldi"
  },
  {
-  "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_pong.v",
+  "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_pong.v",
   "InstLine" : 33,
   "InstName" : "svo_pong",
-  "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_pong.v",
+  "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_pong.v",
   "ModuleLine" : 33,
   "ModuleName" : "svo_pong",
   "SubInsts" : [
    {
-    "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_pong.v",
+    "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_pong.v",
     "InstLine" : 60,
     "InstName" : "svo_pong_control",
-    "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_pong.v",
+    "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_pong.v",
     "ModuleLine" : 109,
     "ModuleName" : "svo_pong_control"
    },
    {
-    "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_pong.v",
+    "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_pong.v",
     "InstLine" : 77,
     "InstName" : "svo_pong_video",
-    "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_pong.v",
+    "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_pong.v",
     "ModuleLine" : 350,
     "ModuleName" : "svo_pong_video",
     "SubInsts" : [
      {
-      "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_pong.v",
+      "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_pong.v",
       "InstLine" : 415,
       "InstName" : "compose_1",
-      "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+      "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
       "ModuleLine" : 178,
       "ModuleName" : "svo_dim",
       "SubInsts" : [
        {
-        "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+        "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
         "InstLine" : 219,
         "InstName" : "svo_axis_pipe",
-        "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+        "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
         "ModuleLine" : 31,
         "ModuleName" : "svo_axis_pipe"
        }
       ]
      },
      {
-      "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_pong.v",
+      "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_pong.v",
       "InstLine" : 421,
       "InstName" : "compose_2",
-      "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+      "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
       "ModuleLine" : 359,
       "ModuleName" : "svo_rect"
      },
      {
-      "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_pong.v",
+      "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_pong.v",
       "InstLine" : 428,
       "InstName" : "compose_3",
-      "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+      "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
       "ModuleLine" : 250,
       "ModuleName" : "svo_overlay",
       "SubInsts" : [
        {
-        "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+        "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
         "InstLine" : 307,
         "InstName" : "svo_buf_in",
-        "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+        "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
         "ModuleLine" : 101,
         "ModuleName" : "svo_buf",
         "SubInsts" : [
          {
-          "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+          "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
           "InstLine" : 145,
           "InstName" : "svo_axis_pipe",
-          "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+          "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
           "ModuleLine" : 31,
           "ModuleName" : "svo_axis_pipe"
          }
         ]
        },
        {
-        "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+        "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
         "InstLine" : 321,
         "InstName" : "svo_buf_over",
-        "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+        "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
         "ModuleLine" : 101,
         "ModuleName" : "svo_buf",
         "SubInsts" : [
          {
-          "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+          "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
           "InstLine" : 145,
           "InstName" : "svo_axis_pipe",
-          "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+          "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
           "ModuleLine" : 31,
           "ModuleName" : "svo_axis_pipe"
          }
         ]
        },
        {
-        "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+        "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
         "InstLine" : 335,
         "InstName" : "svo_buf_out",
-        "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+        "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
         "ModuleLine" : 101,
         "ModuleName" : "svo_buf",
         "SubInsts" : [
          {
-          "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+          "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
           "InstLine" : 145,
           "InstName" : "svo_axis_pipe",
-          "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+          "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
           "ModuleLine" : 31,
           "ModuleName" : "svo_axis_pipe"
          }
@@ -140,70 +148,70 @@
       ]
      },
      {
-      "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_pong.v",
+      "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_pong.v",
       "InstLine" : 433,
       "InstName" : "compose_4",
-      "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+      "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
       "ModuleLine" : 359,
       "ModuleName" : "svo_rect"
      },
      {
-      "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_pong.v",
+      "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_pong.v",
       "InstLine" : 440,
       "InstName" : "compose_5",
-      "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+      "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
       "ModuleLine" : 250,
       "ModuleName" : "svo_overlay",
       "SubInsts" : [
        {
-        "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+        "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
         "InstLine" : 307,
         "InstName" : "svo_buf_in",
-        "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+        "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
         "ModuleLine" : 101,
         "ModuleName" : "svo_buf",
         "SubInsts" : [
          {
-          "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+          "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
           "InstLine" : 145,
           "InstName" : "svo_axis_pipe",
-          "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+          "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
           "ModuleLine" : 31,
           "ModuleName" : "svo_axis_pipe"
          }
         ]
        },
        {
-        "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+        "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
         "InstLine" : 321,
         "InstName" : "svo_buf_over",
-        "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+        "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
         "ModuleLine" : 101,
         "ModuleName" : "svo_buf",
         "SubInsts" : [
          {
-          "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+          "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
           "InstLine" : 145,
           "InstName" : "svo_axis_pipe",
-          "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+          "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
           "ModuleLine" : 31,
           "ModuleName" : "svo_axis_pipe"
          }
         ]
        },
        {
-        "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+        "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
         "InstLine" : 335,
         "InstName" : "svo_buf_out",
-        "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+        "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
         "ModuleLine" : 101,
         "ModuleName" : "svo_buf",
         "SubInsts" : [
          {
-          "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+          "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
           "InstLine" : 145,
           "InstName" : "svo_axis_pipe",
-          "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+          "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
           "ModuleLine" : 31,
           "ModuleName" : "svo_axis_pipe"
          }
@@ -212,70 +220,70 @@
       ]
      },
      {
-      "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_pong.v",
+      "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_pong.v",
       "InstLine" : 445,
       "InstName" : "compose_6",
-      "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_pong.v",
+      "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_pong.v",
       "ModuleLine" : 486,
       "ModuleName" : "svo_pong_scores"
      },
      {
-      "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_pong.v",
+      "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_pong.v",
       "InstLine" : 452,
       "InstName" : "compose_7",
-      "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+      "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
       "ModuleLine" : 250,
       "ModuleName" : "svo_overlay",
       "SubInsts" : [
        {
-        "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+        "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
         "InstLine" : 307,
         "InstName" : "svo_buf_in",
-        "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+        "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
         "ModuleLine" : 101,
         "ModuleName" : "svo_buf",
         "SubInsts" : [
          {
-          "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+          "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
           "InstLine" : 145,
           "InstName" : "svo_axis_pipe",
-          "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+          "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
           "ModuleLine" : 31,
           "ModuleName" : "svo_axis_pipe"
          }
         ]
        },
        {
-        "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+        "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
         "InstLine" : 321,
         "InstName" : "svo_buf_over",
-        "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+        "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
         "ModuleLine" : 101,
         "ModuleName" : "svo_buf",
         "SubInsts" : [
          {
-          "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+          "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
           "InstLine" : 145,
           "InstName" : "svo_axis_pipe",
-          "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+          "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
           "ModuleLine" : 31,
           "ModuleName" : "svo_axis_pipe"
          }
         ]
        },
        {
-        "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+        "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
         "InstLine" : 335,
         "InstName" : "svo_buf_out",
-        "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+        "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
         "ModuleLine" : 101,
         "ModuleName" : "svo_buf",
         "SubInsts" : [
          {
-          "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+          "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
           "InstLine" : 145,
           "InstName" : "svo_axis_pipe",
-          "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+          "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
           "ModuleLine" : 31,
           "ModuleName" : "svo_axis_pipe"
          }
@@ -284,70 +292,70 @@
       ]
      },
      {
-      "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_pong.v",
+      "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_pong.v",
       "InstLine" : 457,
       "InstName" : "compose_8",
-      "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+      "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
       "ModuleLine" : 359,
       "ModuleName" : "svo_rect"
      },
      {
-      "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_pong.v",
+      "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_pong.v",
       "InstLine" : 464,
       "InstName" : "compose_9",
-      "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+      "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
       "ModuleLine" : 250,
       "ModuleName" : "svo_overlay",
       "SubInsts" : [
        {
-        "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+        "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
         "InstLine" : 307,
         "InstName" : "svo_buf_in",
-        "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+        "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
         "ModuleLine" : 101,
         "ModuleName" : "svo_buf",
         "SubInsts" : [
          {
-          "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+          "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
           "InstLine" : 145,
           "InstName" : "svo_axis_pipe",
-          "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+          "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
           "ModuleLine" : 31,
           "ModuleName" : "svo_axis_pipe"
          }
         ]
        },
        {
-        "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+        "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
         "InstLine" : 321,
         "InstName" : "svo_buf_over",
-        "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+        "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
         "ModuleLine" : 101,
         "ModuleName" : "svo_buf",
         "SubInsts" : [
          {
-          "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+          "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
           "InstLine" : 145,
           "InstName" : "svo_axis_pipe",
-          "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+          "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
           "ModuleLine" : 31,
           "ModuleName" : "svo_axis_pipe"
          }
         ]
        },
        {
-        "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+        "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
         "InstLine" : 335,
         "InstName" : "svo_buf_out",
-        "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+        "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
         "ModuleLine" : 101,
         "ModuleName" : "svo_buf",
         "SubInsts" : [
          {
-          "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+          "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
           "InstLine" : 145,
           "InstName" : "svo_axis_pipe",
-          "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_utils.v",
+          "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
           "ModuleLine" : 31,
           "ModuleName" : "svo_axis_pipe"
          }
@@ -360,378 +368,516 @@
   ]
  },
  {
-  "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_term.v",
+  "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_term.v",
   "InstLine" : 23,
   "InstName" : "svo_term",
-  "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_term.v",
+  "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_term.v",
   "ModuleLine" : 23,
   "ModuleName" : "svo_term"
  },
  {
-  "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_vdma.v",
+  "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_vdma.v",
   "InstLine" : 23,
   "InstName" : "svo_vdma",
-  "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_vdma.v",
+  "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_vdma.v",
   "ModuleLine" : 23,
   "ModuleName" : "svo_vdma",
   "SubInsts" : [
    {
-    "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_vdma.v",
+    "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_vdma.v",
     "InstLine" : 255,
     "InstName" : "fifo",
-    "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_vdma.v",
+    "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_vdma.v",
     "ModuleLine" : 344,
     "ModuleName" : "svo_vdma_crossclock_fifo"
    }
   ]
  },
  {
-  "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/screenI2C/screen.v",
+  "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/screenI2C/screen.v",
   "InstLine" : 2,
   "InstName" : "screen",
-  "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/screenI2C/screen.v",
+  "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/screenI2C/screen.v",
   "ModuleLine" : 2,
   "ModuleName" : "screen",
   "SubInsts" : [
    {
-    "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/screenI2C/screen.v",
+    "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/screenI2C/screen.v",
     "InstLine" : 43,
     "InstName" : "i2c_inst",
-    "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/screenI2C/i2c.v",
+    "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/screenI2C/i2c.v",
     "ModuleLine" : 2,
     "ModuleName" : "i2c"
    },
    {
-    "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/screenI2C/screen.v",
+    "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/screenI2C/screen.v",
     "InstLine" : 64,
     "InstName" : "i2c_api_inst",
-    "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/screenI2C/i2capi.v",
+    "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/screenI2C/i2capi.v",
     "ModuleLine" : 1,
     "ModuleName" : "i2c_api"
    }
   ]
  },
  {
-  "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/screenI2C/textEngine.v",
+  "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/screenI2C/textEngine.v",
   "InstLine" : 1,
   "InstName" : "textEngine",
-  "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/screenI2C/textEngine.v",
+  "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/screenI2C/textEngine.v",
   "ModuleLine" : 1,
   "ModuleName" : "textEngine"
  },
  {
-  "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/soc.v",
+  "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/soc.v",
   "InstLine" : 3,
   "InstName" : "top",
-  "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/soc.v",
+  "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/soc.v",
   "ModuleLine" : 3,
   "ModuleName" : "top",
   "SubInsts" : [
    {
-    "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/soc.v",
-    "InstLine" : 62,
+    "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/soc.v",
+    "InstLine" : 65,
     "InstName" : "cpu_1",
-    "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/CPU/cpu.v",
+    "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/cpu.v",
     "ModuleLine" : 9,
     "ModuleName" : "cpu",
     "SubInsts" : [
      {
-      "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/CPU/cpu.v",
+      "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/cpu.v",
       "InstLine" : 188,
       "InstName" : "signExtendUnit",
-      "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/CPU/signExtend.v",
+      "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/signExtend.v",
       "ModuleLine" : 4,
       "ModuleName" : "signExtend"
      },
      {
-      "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/CPU/cpu.v",
+      "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/cpu.v",
       "InstLine" : 198,
       "InstName" : "cpu_regs",
-      "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/CPU/RegFile.v",
+      "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/RegFile.v",
       "ModuleLine" : 7,
       "ModuleName" : "RegFile"
      },
      {
-      "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/CPU/cpu.v",
+      "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/cpu.v",
       "InstLine" : 211,
       "InstName" : "SignExtendSelector",
-      "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/CPU/SignExtendSelector.v",
+      "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/SignExtendSelector.v",
       "ModuleLine" : 4,
       "ModuleName" : "SignExtendSelector"
      },
      {
-      "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/CPU/cpu.v",
+      "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/cpu.v",
       "InstLine" : 297,
       "InstName" : "control_main",
-      "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/CPU/control_main.v",
+      "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/control_main.v",
       "ModuleLine" : 5,
       "ModuleName" : "control_main"
      },
      {
-      "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/CPU/cpu.v",
+      "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/cpu.v",
       "InstLine" : 313,
       "InstName" : "control_stall_id",
-      "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/CPU/control_stall_id.v",
+      "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/control_stall_id.v",
       "ModuleLine" : 6,
       "ModuleName" : "control_stall_id"
      },
      {
-      "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/CPU/cpu.v",
+      "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/cpu.v",
       "InstLine" : 352,
       "InstName" : "cpu_alu",
-      "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/CPU/ALUCPU.v",
+      "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/ALUCPU.v",
       "ModuleLine" : 4,
       "ModuleName" : "ALUCPU"
      },
      {
-      "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/CPU/cpu.v",
+      "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/cpu.v",
       "InstLine" : 412,
       "InstName" : "control_alu",
-      "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/CPU/control_alu.v",
+      "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/control_alu.v",
       "ModuleLine" : 5,
       "ModuleName" : "control_alu"
      },
      {
-      "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/CPU/cpu.v",
+      "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/cpu.v",
       "InstLine" : 420,
       "InstName" : "control_bypass_ex",
-      "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/CPU/control_bypass_ex.v",
+      "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/control_bypass_ex.v",
       "ModuleLine" : 5,
       "ModuleName" : "control_bypass_ex"
      },
      {
-      "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/CPU/cpu.v",
+      "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/cpu.v",
       "InstLine" : 433,
       "InstName" : "mem_write_selector",
-      "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/CPU/mem_write_selector.v",
+      "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/mem_write_selector.v",
       "ModuleLine" : 4,
       "ModuleName" : "mem_write_selector"
      },
      {
-      "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/CPU/cpu.v",
+      "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/cpu.v",
       "InstLine" : 475,
       "InstName" : "control_branch",
-      "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/CPU/control_branch.v",
+      "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/control_branch.v",
       "ModuleLine" : 4,
       "ModuleName" : "control_branch"
      },
      {
-      "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/CPU/cpu.v",
+      "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/cpu.v",
       "InstLine" : 486,
       "InstName" : "mem_read_selector",
-      "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/CPU/mem_read_selector.v",
+      "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/mem_read_selector.v",
       "ModuleLine" : 4,
       "ModuleName" : "mem_read_selector"
      }
     ]
    },
    {
-    "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/soc.v",
-    "InstLine" : 97,
+    "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/soc.v",
+    "InstLine" : 102,
     "InstName" : "bu",
-    "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/Buses/bus.v",
+    "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/Buses/bus.v",
     "ModuleLine" : 3,
     "ModuleName" : "bus"
    },
    {
-    "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/soc.v",
-    "InstLine" : 126,
+    "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/soc.v",
+    "InstLine" : 135,
     "InstName" : "mem",
-    "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/Memories/memory.v",
+    "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/Memories/memory.v",
     "ModuleLine" : 3,
     "ModuleName" : "memory"
    },
    {
-    "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/soc.v",
-    "InstLine" : 140,
+    "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/soc.v",
+    "InstLine" : 149,
     "InstName" : "bm",
-    "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/GPIO/buttonModule.v",
+    "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/GPIO/buttonModule.v",
     "ModuleLine" : 1,
     "ModuleName" : "buttonModule"
    },
    {
-    "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/soc.v",
-    "InstLine" : 153,
+    "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/soc.v",
+    "InstLine" : 162,
     "InstName" : "flashController",
-    "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/Memories/flashController.v",
+    "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/Memories/flashController.v",
     "ModuleLine" : 1,
     "ModuleName" : "flashController",
     "SubInsts" : [
      {
-      "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/Memories/flashController.v",
+      "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/Memories/flashController.v",
       "InstLine" : 123,
       "InstName" : "navigator",
-      "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/Memories/flash.v",
+      "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/Memories/flash.v",
       "ModuleLine" : 2,
       "ModuleName" : "flashNavigator"
      }
     ]
    },
    {
-    "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/soc.v",
-    "InstLine" : 175,
+    "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/soc.v",
+    "InstLine" : 184,
     "InstName" : "programMemory_inst",
-    "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/Memories/programMemory.v",
+    "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/Memories/programMemory.v",
     "ModuleLine" : 1,
     "ModuleName" : "programMemory",
     "SubInsts" : [
      {
-      "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/Memories/programMemory.v",
-      "InstLine" : 49,
+      "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/Memories/programMemory.v",
+      "InstLine" : 51,
       "InstName" : "BRAM_0",
-      "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+      "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
       "ModuleLine" : 10,
       "ModuleName" : "Gowin_DPB_program"
      },
      {
-      "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/Memories/programMemory.v",
-      "InstLine" : 70,
+      "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/Memories/programMemory.v",
+      "InstLine" : 72,
       "InstName" : "BRAM_1",
-      "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+      "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
       "ModuleLine" : 10,
       "ModuleName" : "Gowin_DPB_program"
      },
      {
-      "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/Memories/programMemory.v",
-      "InstLine" : 91,
+      "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/Memories/programMemory.v",
+      "InstLine" : 93,
       "InstName" : "BRAM_2",
-      "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+      "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
       "ModuleLine" : 10,
       "ModuleName" : "Gowin_DPB_program"
      },
      {
-      "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/Memories/programMemory.v",
-      "InstLine" : 112,
+      "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/Memories/programMemory.v",
+      "InstLine" : 114,
       "InstName" : "BRAM_3",
-      "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+      "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+      "ModuleLine" : 10,
+      "ModuleName" : "Gowin_DPB_program"
+     },
+     {
+      "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/Memories/programMemory.v",
+      "InstLine" : 135,
+      "InstName" : "BRAM2_0",
+      "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+      "ModuleLine" : 10,
+      "ModuleName" : "Gowin_DPB_program"
+     },
+     {
+      "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/Memories/programMemory.v",
+      "InstLine" : 156,
+      "InstName" : "BRAM2_1",
+      "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+      "ModuleLine" : 10,
+      "ModuleName" : "Gowin_DPB_program"
+     },
+     {
+      "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/Memories/programMemory.v",
+      "InstLine" : 177,
+      "InstName" : "BRAM2_2",
+      "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+      "ModuleLine" : 10,
+      "ModuleName" : "Gowin_DPB_program"
+     },
+     {
+      "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/Memories/programMemory.v",
+      "InstLine" : 198,
+      "InstName" : "BRAM2_3",
+      "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
       "ModuleLine" : 10,
       "ModuleName" : "Gowin_DPB_program"
      }
     ]
    },
    {
-    "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/soc.v",
-    "InstLine" : 196,
-    "InstName" : "Gowin_PLL_inst",
-    "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/gowin_pll_720p/gowin_pll_720p.v",
+    "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/soc.v",
+    "InstLine" : 202,
+    "InstName" : "pll_usb",
+    "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/usb/pll/gowin_pll_usb.v",
     "ModuleLine" : 10,
-    "ModuleName" : "Gowin_PLL_720p"
+    "ModuleName" : "gowin_pll_usb"
    },
    {
-    "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/soc.v",
-    "InstLine" : 202,
+    "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/soc.v",
+    "InstLine" : 206,
+    "InstName" : "usb",
+    "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/usb/usb_controller.v",
+    "ModuleLine" : 1,
+    "ModuleName" : "usbController",
+    "SubInsts" : [
+     {
+      "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/usb/usb_controller.v",
+      "InstLine" : 47,
+      "InstName" : "rom",
+      "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/usb/usb_hid_host_rom.v",
+      "ModuleLine" : 1,
+      "ModuleName" : "usb_hid_host_rom"
+     },
+     {
+      "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/usb/usb_controller.v",
+      "InstLine" : 109,
+      "InstName" : "usb_host",
+      "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/usb/usb_hid_host.v",
+      "ModuleLine" : 12,
+      "ModuleName" : "usb_hid_host",
+      "SubInsts" : [
+       {
+        "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/usb/usb_hid_host.v",
+        "InstLine" : 48,
+        "InstName" : "ukp",
+        "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/usb/usb_hid_host.v",
+        "ModuleLine" : 170,
+        "ModuleName" : "ukp",
+        "SubInsts" : [
+         {
+          "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/usb/usb_hid_host.v",
+          "InstLine" : 231,
+          "InstName" : "ukprom",
+          "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/usb/usb_hid_host_rom.v",
+          "ModuleLine" : 1,
+          "ModuleName" : "usb_hid_host_rom"
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/soc.v",
+    "InstLine" : 228,
+    "InstName" : "Gowin_PLL_inst",
+    "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/gowin_pll_600p/gowin_pll_600p.v",
+    "ModuleLine" : 10,
+    "ModuleName" : "Gowin_PLL_600p"
+   },
+   {
+    "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/soc.v",
+    "InstLine" : 234,
     "InstName" : "Gowin_CLKDIV_inst",
-    "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/gowin_clkdiv/gowin_clkdiv.v",
+    "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/gowin_clkdiv/gowin_clkdiv.v",
     "ModuleLine" : 10,
     "ModuleName" : "Gowin_CLKDIV"
    },
    {
-    "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/soc.v",
-    "InstLine" : 212,
-    "InstName" : "u_Reset_Sync",
-    "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/soc.v",
-    "ModuleLine" : 377,
-    "ModuleName" : "Reset_Sync"
-   },
-   {
-    "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/soc.v",
-    "InstLine" : 218,
-    "InstName" : "svo_hdmi_inst_1",
-    "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_hdmi.v",
-    "ModuleLine" : 23,
-    "ModuleName" : "svo_hdmi",
+    "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/soc.v",
+    "InstLine" : 247,
+    "InstName" : "ppu_inst",
+    "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/GPIO/PPU.v",
+    "ModuleLine" : 1,
+    "ModuleName" : "PPU",
     "SubInsts" : [
      {
-      "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_hdmi.v",
-      "InstLine" : 105,
-      "InstName" : "svo_tcard",
-      "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_tcard.v",
-      "ModuleLine" : 23,
-      "ModuleName" : "svo_tcard",
+      "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/GPIO/PPU.v",
+      "InstLine" : 74,
+      "InstName" : "fifo_data",
+      "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/fifo_sc_video/fifo_sc_video.v",
+      "ModuleLine" : 86,
+      "ModuleName" : "fifo_sc_video",
       "SubInsts" : [
        {
-        "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_tcard.v",
-        "InstLine" : 131,
-        "InstName" : "text_Buffer",
-        "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/gowin_dpb/gowin_dpb.v",
-        "ModuleLine" : 10,
-        "ModuleName" : "Gowin_DPB"
-       },
-       {
-        "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_tcard.v",
-        "InstLine" : 153,
-        "InstName" : "attributes_Buffer",
-        "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/gowin_dpb/gowin_dpb.v",
-        "ModuleLine" : 10,
-        "ModuleName" : "Gowin_DPB"
+        "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/fifo_sc_video/fifo_sc_video.v",
+        "InstLine" : 107,
+        "InstName" : "fifo_sc_inst",
+        "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/fifo_sc_video/fifo_sc_video.v",
+        "ModuleLine" : 13,
+        "ModuleName" : "~fifo_sc.fifo_sc_video"
        }
       ]
      },
      {
-      "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_hdmi.v",
-      "InstLine" : 122,
+      "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/GPIO/PPU.v",
+      "InstLine" : 84,
+      "InstName" : "fifo_address",
+      "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/fifo_sc_video/fifo_sc_videoAddress.v",
+      "ModuleLine" : 88,
+      "ModuleName" : "fifo_sc_videoAddress",
+      "SubInsts" : [
+       {
+        "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/fifo_sc_video/fifo_sc_videoAddress.v",
+        "InstLine" : 109,
+        "InstName" : "fifo_sc_inst",
+        "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/fifo_sc_video/fifo_sc_videoAddress.v",
+        "ModuleLine" : 13,
+        "ModuleName" : "~fifo_sc.fifo_sc_videoAddress"
+       }
+      ]
+     },
+     {
+      "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/GPIO/PPU.v",
+      "InstLine" : 96,
+      "InstName" : "text_Buffer",
+      "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/gowin_dpb/gowin_dpb.v",
+      "ModuleLine" : 10,
+      "ModuleName" : "Gowin_DPB"
+     },
+     {
+      "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/GPIO/PPU.v",
+      "InstLine" : 118,
+      "InstName" : "attributes_Buffer",
+      "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/gowin_dpb/gowin_dpb.v",
+      "ModuleLine" : 10,
+      "ModuleName" : "Gowin_DPB"
+     },
+     {
+      "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/GPIO/PPU.v",
+      "InstLine" : 142,
+      "InstName" : "sprite_buffer",
+      "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+      "ModuleLine" : 10,
+      "ModuleName" : "Gowin_DPB_program"
+     }
+    ]
+   },
+   {
+    "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/soc.v",
+    "InstLine" : 263,
+    "InstName" : "u_Reset_Sync",
+    "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/soc.v",
+    "ModuleLine" : 427,
+    "ModuleName" : "Reset_Sync"
+   },
+   {
+    "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/soc.v",
+    "InstLine" : 269,
+    "InstName" : "svo_hdmi_inst_1",
+    "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_hdmi.v",
+    "ModuleLine" : 23,
+    "ModuleName" : "svo_hdmi",
+    "SubInsts" : [
+     {
+      "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_hdmi.v",
+      "InstLine" : 105,
+      "InstName" : "svo_tcard",
+      "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_tcard.v",
+      "ModuleLine" : 23,
+      "ModuleName" : "svo_tcard"
+     },
+     {
+      "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_hdmi.v",
+      "InstLine" : 120,
       "InstName" : "svo_enc",
-      "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_enc.v",
+      "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_enc.v",
       "ModuleLine" : 23,
       "ModuleName" : "svo_enc"
      },
      {
-      "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_hdmi.v",
-      "InstLine" : 139,
+      "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_hdmi.v",
+      "InstLine" : 138,
       "InstName" : "svo_tmds_0",
-      "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_tmds.v",
+      "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_tmds.v",
       "ModuleLine" : 23,
       "ModuleName" : "svo_tmds"
      },
      {
-      "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_hdmi.v",
-      "InstLine" : 149,
+      "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_hdmi.v",
+      "InstLine" : 148,
       "InstName" : "svo_tmds_1",
-      "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_tmds.v",
+      "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_tmds.v",
       "ModuleLine" : 23,
       "ModuleName" : "svo_tmds"
      },
      {
-      "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_hdmi.v",
-      "InstLine" : 159,
+      "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_hdmi.v",
+      "InstLine" : 158,
       "InstName" : "svo_tmds_2",
-      "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/hdmi/svo_tmds.v",
+      "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_tmds.v",
       "ModuleLine" : 23,
       "ModuleName" : "svo_tmds"
      }
     ]
    },
    {
-    "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/soc.v",
-    "InstLine" : 267,
+    "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/soc.v",
+    "InstLine" : 317,
     "InstName" : "uart_controller",
-    "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/GPIO/uartController.v",
+    "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/GPIO/uartController.v",
     "ModuleLine" : 1,
     "ModuleName" : "uartController",
     "SubInsts" : [
      {
-      "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/GPIO/uartController.v",
+      "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/GPIO/uartController.v",
       "InstLine" : 66,
       "InstName" : "uart_inst",
-      "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/GPIO/uart.v",
+      "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/GPIO/uart.v",
       "ModuleLine" : 1,
       "ModuleName" : "uart"
      }
     ]
    },
    {
-    "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/soc.v",
-    "InstLine" : 285,
+    "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/soc.v",
+    "InstLine" : 335,
     "InstName" : "counter1mhz",
-    "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/GPIO/cpuTimer.v",
+    "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/GPIO/cpuTimer.v",
     "ModuleLine" : 1,
     "ModuleName" : "cpuTimer"
    },
    {
-    "InstFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/soc.v",
-    "InstLine" : 292,
+    "InstFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/soc.v",
+    "InstLine" : 342,
     "InstName" : "counter27mhz",
-    "ModuleFile" : "/home/panos/Documents/RiscY-main/RiscY-main/RISCY_primer25k/src/GPIO/cpuTimer.v",
+    "ModuleFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY_primer25k/src/GPIO/cpuTimer.v",
     "ModuleLine" : 1,
     "ModuleName" : "cpuTimer"
    }
