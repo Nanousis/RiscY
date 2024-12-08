@@ -1534,7 +1534,7 @@ char house_15[] = {
             }
 
             if(slide==9){
-                if(character00.x>=408&&character00.x<=432&&character00.y>=144&&character00.y<=160){
+                if(character00.x>=424&&character00.x<=440&&character00.y>=144&&character00.y<=160){
                     ClearScreenRightToLeft();
                     slide++;
                     renderedFrame=0;
