@@ -4,50 +4,50 @@
     <Version>beta</Version>
     <Device id="GW1NR-9C" package="QFN88P" speed="6" partNumber="GW1NR-LV9QN88PC6/I5"/>
     <FileList>
-        <File path="/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v" type="verilog"/>
-        <File path="/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/Buses/bus.v" type="verilog"/>
-        <File path="/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/CPU/ALUCPU.v" type="verilog"/>
-        <File path="/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/CPU/RegFile.v" type="verilog"/>
-        <File path="/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/CPU/SignExtendSelector.v" type="verilog"/>
-        <File path="/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/CPU/constants.vh" type="verilog"/>
-        <File path="/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/CPU/control_alu.v" type="verilog"/>
-        <File path="/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/CPU/control_branch.v" type="verilog"/>
-        <File path="/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/CPU/control_bypass_ex.v" type="verilog"/>
-        <File path="/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/CPU/control_main.v" type="verilog"/>
-        <File path="/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/CPU/control_stall_id.v" type="verilog"/>
-        <File path="/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/CPU/cpu.v" type="verilog"/>
-        <File path="/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/CPU/mem_read_selector.v" type="verilog"/>
-        <File path="/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/CPU/mem_write_selector.v" type="verilog"/>
-        <File path="/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/CPU/signExtend.v" type="verilog"/>
-        <File path="/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/GPIO/buttonModule.v" type="verilog"/>
-        <File path="/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/GPIO/cpuTimer.v" type="verilog"/>
-        <File path="/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/GPIO/seven_segment.v" type="verilog"/>
-        <File path="/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/GPIO/uart.v" type="verilog"/>
-        <File path="/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/GPIO/uartController.v" type="verilog"/>
-        <File path="/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/Memories/flash.v" type="verilog"/>
-        <File path="/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/Memories/flashController.v" type="verilog"/>
-        <File path="/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/Memories/memory.v" type="verilog"/>
-        <File path="/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/Memories/programMemory.v" type="verilog"/>
-        <File path="/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/Memories/ramMemory.v" type="verilog"/>
-        <File path="/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/config.vh" type="verilog"/>
-        <File path="/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/gowin_rpll/gowin_rpll_ram.v" type="verilog"/>
-        <File path="/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/psram_memory_interface_hs_2ch/psram_memory_interface_hs_2ch.v" type="verilog"/>
-        <File path="/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/screenI2C/i2c.v" type="verilog"/>
-        <File path="/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/screenI2C/i2capi.v" type="verilog"/>
-        <File path="/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/screenI2C/screen.v" type="verilog"/>
-        <File path="/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/screenI2C/textEngine.v" type="verilog"/>
-        <File path="/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/screenVGA/VGAMod.v" type="verilog"/>
-        <File path="/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/screenVGA/gowin_dpb/gowin_dpb.v" type="verilog"/>
-        <File path="/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/screenVGA/gowin_osc/gowin_osc.v" type="verilog"/>
-        <File path="/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/screenVGA/gowin_rpll/gowin_rpll.v" type="verilog"/>
-        <File path="/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/screenVGA/gowin_sp/gowin_sp.v" type="verilog"/>
-        <File path="/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/soc.v" type="verilog"/>
+        <File path="/home/iordana/Documents/GitHub/RiscY/RISCY/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v" type="verilog"/>
+        <File path="/home/iordana/Documents/GitHub/RiscY/RISCY/src/Buses/bus.v" type="verilog"/>
+        <File path="/home/iordana/Documents/GitHub/RiscY/RISCY/src/CPU/ALUCPU.v" type="verilog"/>
+        <File path="/home/iordana/Documents/GitHub/RiscY/RISCY/src/CPU/RegFile.v" type="verilog"/>
+        <File path="/home/iordana/Documents/GitHub/RiscY/RISCY/src/CPU/SignExtendSelector.v" type="verilog"/>
+        <File path="/home/iordana/Documents/GitHub/RiscY/RISCY/src/CPU/constants.vh" type="verilog"/>
+        <File path="/home/iordana/Documents/GitHub/RiscY/RISCY/src/CPU/control_alu.v" type="verilog"/>
+        <File path="/home/iordana/Documents/GitHub/RiscY/RISCY/src/CPU/control_branch.v" type="verilog"/>
+        <File path="/home/iordana/Documents/GitHub/RiscY/RISCY/src/CPU/control_bypass_ex.v" type="verilog"/>
+        <File path="/home/iordana/Documents/GitHub/RiscY/RISCY/src/CPU/control_main.v" type="verilog"/>
+        <File path="/home/iordana/Documents/GitHub/RiscY/RISCY/src/CPU/control_stall_id.v" type="verilog"/>
+        <File path="/home/iordana/Documents/GitHub/RiscY/RISCY/src/CPU/cpu.v" type="verilog"/>
+        <File path="/home/iordana/Documents/GitHub/RiscY/RISCY/src/CPU/mem_read_selector.v" type="verilog"/>
+        <File path="/home/iordana/Documents/GitHub/RiscY/RISCY/src/CPU/mem_write_selector.v" type="verilog"/>
+        <File path="/home/iordana/Documents/GitHub/RiscY/RISCY/src/CPU/signExtend.v" type="verilog"/>
+        <File path="/home/iordana/Documents/GitHub/RiscY/RISCY/src/GPIO/buttonModule.v" type="verilog"/>
+        <File path="/home/iordana/Documents/GitHub/RiscY/RISCY/src/GPIO/cpuTimer.v" type="verilog"/>
+        <File path="/home/iordana/Documents/GitHub/RiscY/RISCY/src/GPIO/seven_segment.v" type="verilog"/>
+        <File path="/home/iordana/Documents/GitHub/RiscY/RISCY/src/GPIO/uart.v" type="verilog"/>
+        <File path="/home/iordana/Documents/GitHub/RiscY/RISCY/src/GPIO/uartController.v" type="verilog"/>
+        <File path="/home/iordana/Documents/GitHub/RiscY/RISCY/src/Memories/flash.v" type="verilog"/>
+        <File path="/home/iordana/Documents/GitHub/RiscY/RISCY/src/Memories/flashController.v" type="verilog"/>
+        <File path="/home/iordana/Documents/GitHub/RiscY/RISCY/src/Memories/memory.v" type="verilog"/>
+        <File path="/home/iordana/Documents/GitHub/RiscY/RISCY/src/Memories/programMemory.v" type="verilog"/>
+        <File path="/home/iordana/Documents/GitHub/RiscY/RISCY/src/Memories/ramMemory.v" type="verilog"/>
+        <File path="/home/iordana/Documents/GitHub/RiscY/RISCY/src/config.vh" type="verilog"/>
+        <File path="/home/iordana/Documents/GitHub/RiscY/RISCY/src/gowin_rpll/gowin_rpll_ram.v" type="verilog"/>
+        <File path="/home/iordana/Documents/GitHub/RiscY/RISCY/src/psram_memory_interface_hs_2ch/psram_memory_interface_hs_2ch.v" type="verilog"/>
+        <File path="/home/iordana/Documents/GitHub/RiscY/RISCY/src/screenI2C/i2c.v" type="verilog"/>
+        <File path="/home/iordana/Documents/GitHub/RiscY/RISCY/src/screenI2C/i2capi.v" type="verilog"/>
+        <File path="/home/iordana/Documents/GitHub/RiscY/RISCY/src/screenI2C/screen.v" type="verilog"/>
+        <File path="/home/iordana/Documents/GitHub/RiscY/RISCY/src/screenI2C/textEngine.v" type="verilog"/>
+        <File path="/home/iordana/Documents/GitHub/RiscY/RISCY/src/screenVGA/VGAMod.v" type="verilog"/>
+        <File path="/home/iordana/Documents/GitHub/RiscY/RISCY/src/screenVGA/gowin_dpb/gowin_dpb.v" type="verilog"/>
+        <File path="/home/iordana/Documents/GitHub/RiscY/RISCY/src/screenVGA/gowin_osc/gowin_osc.v" type="verilog"/>
+        <File path="/home/iordana/Documents/GitHub/RiscY/RISCY/src/screenVGA/gowin_rpll/gowin_rpll.v" type="verilog"/>
+        <File path="/home/iordana/Documents/GitHub/RiscY/RISCY/src/screenVGA/gowin_sp/gowin_sp.v" type="verilog"/>
+        <File path="/home/iordana/Documents/GitHub/RiscY/RISCY/src/soc.v" type="verilog"/>
     </FileList>
     <OptionList>
         <Option type="disable_insert_pad" value="0"/>
         <Option type="global_freq" value="50.000"/>
         <Option type="looplimit" value="2000"/>
-        <Option type="output_file" value="/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/impl/gwsynthesis/RISCY.vg"/>
+        <Option type="output_file" value="/home/iordana/Documents/GitHub/RiscY/RISCY/impl/gwsynthesis/RISCY.vg"/>
         <Option type="print_all_synthesis_warning" value="0"/>
         <Option type="ram_rw_check" value="0"/>
         <Option type="top_module" value="top"/>

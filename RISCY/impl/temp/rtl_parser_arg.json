@@ -2,155 +2,155 @@
  "Device" : "GW1NR-9C",
  "Files" : [
   {
-   "Path" : "/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+   "Path" : "/home/iordana/Documents/GitHub/RiscY/RISCY/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/Buses/bus.v",
+   "Path" : "/home/iordana/Documents/GitHub/RiscY/RISCY/src/Buses/bus.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/CPU/ALUCPU.v",
+   "Path" : "/home/iordana/Documents/GitHub/RiscY/RISCY/src/CPU/ALUCPU.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/CPU/RegFile.v",
+   "Path" : "/home/iordana/Documents/GitHub/RiscY/RISCY/src/CPU/RegFile.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/CPU/SignExtendSelector.v",
+   "Path" : "/home/iordana/Documents/GitHub/RiscY/RISCY/src/CPU/SignExtendSelector.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/CPU/constants.vh",
+   "Path" : "/home/iordana/Documents/GitHub/RiscY/RISCY/src/CPU/constants.vh",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/CPU/control_alu.v",
+   "Path" : "/home/iordana/Documents/GitHub/RiscY/RISCY/src/CPU/control_alu.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/CPU/control_branch.v",
+   "Path" : "/home/iordana/Documents/GitHub/RiscY/RISCY/src/CPU/control_branch.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/CPU/control_bypass_ex.v",
+   "Path" : "/home/iordana/Documents/GitHub/RiscY/RISCY/src/CPU/control_bypass_ex.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/CPU/control_main.v",
+   "Path" : "/home/iordana/Documents/GitHub/RiscY/RISCY/src/CPU/control_main.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/CPU/control_stall_id.v",
+   "Path" : "/home/iordana/Documents/GitHub/RiscY/RISCY/src/CPU/control_stall_id.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/CPU/cpu.v",
+   "Path" : "/home/iordana/Documents/GitHub/RiscY/RISCY/src/CPU/cpu.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/CPU/mem_read_selector.v",
+   "Path" : "/home/iordana/Documents/GitHub/RiscY/RISCY/src/CPU/mem_read_selector.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/CPU/mem_write_selector.v",
+   "Path" : "/home/iordana/Documents/GitHub/RiscY/RISCY/src/CPU/mem_write_selector.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/CPU/signExtend.v",
+   "Path" : "/home/iordana/Documents/GitHub/RiscY/RISCY/src/CPU/signExtend.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/GPIO/buttonModule.v",
+   "Path" : "/home/iordana/Documents/GitHub/RiscY/RISCY/src/GPIO/buttonModule.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/GPIO/cpuTimer.v",
+   "Path" : "/home/iordana/Documents/GitHub/RiscY/RISCY/src/GPIO/cpuTimer.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/GPIO/seven_segment.v",
+   "Path" : "/home/iordana/Documents/GitHub/RiscY/RISCY/src/GPIO/seven_segment.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/GPIO/uart.v",
+   "Path" : "/home/iordana/Documents/GitHub/RiscY/RISCY/src/GPIO/uart.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/GPIO/uartController.v",
+   "Path" : "/home/iordana/Documents/GitHub/RiscY/RISCY/src/GPIO/uartController.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/Memories/flash.v",
+   "Path" : "/home/iordana/Documents/GitHub/RiscY/RISCY/src/Memories/flash.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/Memories/flashController.v",
+   "Path" : "/home/iordana/Documents/GitHub/RiscY/RISCY/src/Memories/flashController.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/Memories/memory.v",
+   "Path" : "/home/iordana/Documents/GitHub/RiscY/RISCY/src/Memories/memory.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/Memories/programMemory.v",
+   "Path" : "/home/iordana/Documents/GitHub/RiscY/RISCY/src/Memories/programMemory.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/Memories/ramMemory.v",
+   "Path" : "/home/iordana/Documents/GitHub/RiscY/RISCY/src/Memories/ramMemory.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/config.vh",
+   "Path" : "/home/iordana/Documents/GitHub/RiscY/RISCY/src/config.vh",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/gowin_rpll/gowin_rpll_ram.v",
+   "Path" : "/home/iordana/Documents/GitHub/RiscY/RISCY/src/gowin_rpll/gowin_rpll_ram.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/psram_memory_interface_hs_2ch/psram_memory_interface_hs_2ch.v",
+   "Path" : "/home/iordana/Documents/GitHub/RiscY/RISCY/src/psram_memory_interface_hs_2ch/psram_memory_interface_hs_2ch.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/screenI2C/i2c.v",
+   "Path" : "/home/iordana/Documents/GitHub/RiscY/RISCY/src/screenI2C/i2c.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/screenI2C/i2capi.v",
+   "Path" : "/home/iordana/Documents/GitHub/RiscY/RISCY/src/screenI2C/i2capi.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/screenI2C/screen.v",
+   "Path" : "/home/iordana/Documents/GitHub/RiscY/RISCY/src/screenI2C/screen.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/screenI2C/textEngine.v",
+   "Path" : "/home/iordana/Documents/GitHub/RiscY/RISCY/src/screenI2C/textEngine.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/screenVGA/VGAMod.v",
+   "Path" : "/home/iordana/Documents/GitHub/RiscY/RISCY/src/screenVGA/VGAMod.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/screenVGA/gowin_dpb/gowin_dpb.v",
+   "Path" : "/home/iordana/Documents/GitHub/RiscY/RISCY/src/screenVGA/gowin_dpb/gowin_dpb.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/screenVGA/gowin_osc/gowin_osc.v",
+   "Path" : "/home/iordana/Documents/GitHub/RiscY/RISCY/src/screenVGA/gowin_osc/gowin_osc.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/screenVGA/gowin_rpll/gowin_rpll.v",
+   "Path" : "/home/iordana/Documents/GitHub/RiscY/RISCY/src/screenVGA/gowin_rpll/gowin_rpll.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/screenVGA/gowin_sp/gowin_sp.v",
+   "Path" : "/home/iordana/Documents/GitHub/RiscY/RISCY/src/screenVGA/gowin_sp/gowin_sp.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/soc.v",
+   "Path" : "/home/iordana/Documents/GitHub/RiscY/RISCY/src/soc.v",
    "Type" : "verilog"
   }
  ],
@@ -158,7 +158,7 @@
 
  ],
  "LoopLimit" : 2000,
- "ResultFile" : "/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/impl/temp/rtl_parser.result",
+ "ResultFile" : "/home/iordana/Documents/GitHub/RiscY/RISCY/impl/temp/rtl_parser.result",
  "Top" : "top",
  "VerilogStd" : "verilog_2001",
  "VhdlStd" : "vhdl_93"

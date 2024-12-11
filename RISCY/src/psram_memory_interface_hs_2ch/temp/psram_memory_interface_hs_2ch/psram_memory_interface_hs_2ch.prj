@@ -10,7 +10,7 @@
     <OptionList>
         <Option type="disable_insert_pad" value="1"/>
         <Option type="include_path" value="/home/iordana/Downloads/Gowin_V1.9.10.02_linux/IDE/ipcore/PSRAM_HS_2CH/data"/>
-        <Option type="include_path" value="/home/iordana/Downloads/some-tang-nano-9k-examples-main/02.psram/src/psram_memory_interface_hs_2ch/temp/psram_memory_interface_hs_2ch"/>
+        <Option type="include_path" value="/home/iordana/Documents/GitHub/RiscY/RISCY/src/psram_memory_interface_hs_2ch/temp/psram_memory_interface_hs_2ch"/>
         <Option type="output_file" value="psram_memory_interface_hs_2ch.vg"/>
         <Option type="output_template" value="psram_memory_interface_hs_2ch_tmp.v"/>
         <Option type="ram_balance" value="1"/>

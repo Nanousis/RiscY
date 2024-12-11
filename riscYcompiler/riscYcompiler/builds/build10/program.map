@@ -1,0 +1,104 @@
+
+There are no discarded input sections
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+RAM              0x00400000         0x00002000         xw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD builds/build10/startup.o
+LOAD builds/build10/main.o
+LOAD builds/build10/riscYstdio.o
+                0x00000600                        _stack_size = 0x600
+                0x00400000                        . = ORIGIN (RAM)
+
+.text           0x00400000      0x6dc
+ *(.text)
+ .text          0x00400000       0x1c builds/build10/startup.o
+                0x00400000                _start
+ .text          0x0040001c       0x28 builds/build10/main.o
+                0x0040001c                writeRam
+                0x00400030                readRam
+ .text          0x00400044      0x684 builds/build10/riscYstdio.o
+                0x00400044                memcpy
+                0x00400068                memset
+                0x00400084                getButtonDown
+                0x00400090                getButtonUp
+                0x0040009c                getButtonLeft
+                0x004000a8                getButtonRight
+                0x004000b4                putch
+                0x004000e4                printString
+                0x004001a4                printHex
+                0x00400244                printDec
+                0x0040033c                printf
+                0x004004d8                printfSCR
+                0x00400670                clearScreen
+                0x004006bc                resetScreenVector
+ *(.rodata)
+ .rodata        0x004006c8       0x14 builds/build10/riscYstdio.o
+                0x004006dc                        _etext = .
+
+.text.startup   0x004006dc      0x164
+ .text.startup  0x004006dc      0x164 builds/build10/main.o
+                0x004006dc                main
+
+.rodata.str1.4  0x00400840       0x42
+ .rodata.str1.4
+                0x00400840       0x42 builds/build10/main.o
+                                 0x25 (size before relaxing)
+ .rodata.str1.4
+                0x00400882       0x1a builds/build10/riscYstdio.o
+
+.rela.dyn       0x00400884        0x0
+ .rela.text     0x00400884        0x0 builds/build10/startup.o
+                0x00400884                        . = ALIGN (0x4)
+
+.data           0x00400882        0x0 load address 0x004006dc
+                0x00400882                        _sdata = .
+ *(.data)
+ .data          0x00400882        0x0 builds/build10/startup.o
+ .data          0x00400882        0x0 builds/build10/main.o
+ .data          0x00400882        0x0 builds/build10/riscYstdio.o
+                0x00400882                        _edata = .
+                0x00400884                        . = ALIGN (0x4)
+
+.bss            0x00400882        0x0
+                0x00400882                        _sbss = .
+ *(.bss COMMON)
+ .bss           0x00400882        0x0 builds/build10/startup.o
+ .bss           0x00400882        0x0 builds/build10/main.o
+ .bss           0x00400882        0x0 builds/build10/riscYstdio.o
+                0x00400882                        _ebss = .
+                0x00400884                        . = ALIGN (0x4)
+                0x00402000                        _stack_end = (ORIGIN (RAM) + LENGTH (RAM))
+                0x00401a00                        _stack_top = (_stack_end - _stack_size)
+                0x00401400                        _stack_bottom = (_stack_top - _stack_size)
+OUTPUT(builds/build10/program.elf elf32-littleriscv)
+
+.sbss           0x00400882        0x2
+ .sbss          0x00400882        0x2 builds/build10/riscYstdio.o
+                0x00400882                screenPos
+
+.riscv.attributes
+                0x00000000       0x1c
+ .riscv.attributes
+                0x00000000       0x1a builds/build10/startup.o
+ .riscv.attributes
+                0x0000001a       0x1c builds/build10/main.o
+ .riscv.attributes
+                0x00000036       0x1c builds/build10/riscYstdio.o
+
+.comment        0x00000000       0x1b
+ .comment       0x00000000       0x1b builds/build10/main.o
+                                 0x1c (size before relaxing)
+ .comment       0x0000001b       0x1c builds/build10/riscYstdio.o
+
+.note.GNU-stack
+                0x00000000        0x0
+ .note.GNU-stack
+                0x00000000        0x0 builds/build10/main.o
+ .note.GNU-stack
+                0x00000000        0x0 builds/build10/riscYstdio.o

@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/iordana/Documents/GitHub/RiscY/riscYcompiler/riscYcompiler/builds/build6",
-      "program": "/home/iordana/Documents/GitHub/RiscY/riscYcompiler/riscYcompiler/builds/build6/build/Debug/outDebug",
+      "cwd": "/home/iordana/Documents/GitHub/RiscY/riscYcompiler/riscYcompiler/builds/build0",
+      "program": "/home/iordana/Documents/GitHub/RiscY/riscYcompiler/riscYcompiler/builds/build0/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

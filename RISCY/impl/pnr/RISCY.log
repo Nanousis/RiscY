@@ -1,7 +1,7 @@
-Reading netlist file: "/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/impl/gwsynthesis/RISCY.vg"
-Parsing netlist file "/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/impl/gwsynthesis/RISCY.vg" completed
+Reading netlist file: "/home/iordana/Documents/GitHub/RiscY/RISCY/impl/gwsynthesis/RISCY.vg"
+Parsing netlist file "/home/iordana/Documents/GitHub/RiscY/RISCY/impl/gwsynthesis/RISCY.vg" completed
 Processing netlist completed
-Reading constraint file: "/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/src/tangnano9k.cst"
+Reading constraint file: "/home/iordana/Documents/GitHub/RiscY/RISCY/src/tangnano9k.cst"
 Physical Constraint parsed completed
 Running placement......
 [10%] Placement Phase 0 completed
@@ -21,10 +21,10 @@ Bitstream generation in progress......
 Bitstream generation completed
 Running power analysis......
 [100%] Power analysis completed
-Generate file "/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/impl/pnr/RISCY.power.html" completed
-Generate file "/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/impl/pnr/RISCY.pin.html" completed
-Generate file "/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/impl/pnr/RISCY.rpt.html" completed
-Generate file "/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/impl/pnr/RISCY.rpt.txt" completed
-Generate file "/Users/panagiotisnanousis/Downloads/RiscY-ram/RISCY/impl/pnr/RISCY.tr.html" completed
-Sun Dec  8 16:12:25 2024
+Generate file "/home/iordana/Documents/GitHub/RiscY/RISCY/impl/pnr/RISCY.power.html" completed
+Generate file "/home/iordana/Documents/GitHub/RiscY/RISCY/impl/pnr/RISCY.pin.html" completed
+Generate file "/home/iordana/Documents/GitHub/RiscY/RISCY/impl/pnr/RISCY.rpt.html" completed
+Generate file "/home/iordana/Documents/GitHub/RiscY/RISCY/impl/pnr/RISCY.rpt.txt" completed
+Generate file "/home/iordana/Documents/GitHub/RiscY/RISCY/impl/pnr/RISCY.tr.html" completed
+Wed Dec 11 19:56:48 2024
 

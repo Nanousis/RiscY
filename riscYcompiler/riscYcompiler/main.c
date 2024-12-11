@@ -9,14 +9,13 @@ void writeRam(int location, int value) {
     volatile int *ram = (int *)RAM;
     ram[location] = value;
     ram[location] = value;
-    for(volatile int i=0; i<500;i++);
 }
 
 int readRam(int location) {
     volatile int *ram = (int *)RAM;
     int value = ram[location];
     value = ram[location];
-    for(volatile int i=0; i<500;i++);
+    value = ram[location];
     return value;
 }
 
@@ -24,8 +23,8 @@ int main() {
     volatile int *ram = (int *)RAM;
     // test ram
 
-    writeRam(0, 0x87654321);
-    writeRam(1, 0x12345678);
+    writeRam(0, 0xdeadbaaf);
+    writeRam(1, 0xdeadbeef);
     //writeRam(2, 0x11111111);
     //writeRam(3, 0x22222222);
     //writeRam(4, 0x33333333);
