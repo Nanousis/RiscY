@@ -108,7 +108,7 @@ module ramData(
         end else begin
             case (state_stall)
                 IDLE_STALL: begin
-                    if(PC >= 32'h00400000 && PC<=32'h00410000)begin
+                    if(wen || ren || (PC >= 32'h00400000 && PC<=32'h00410000))begin
                         ctr <= 0;
                         state_stall <= WD_STALL;
                         cpu_stall <= 0; // Ensure that cpu_stall is cleared when transitioning to WD_STALL
