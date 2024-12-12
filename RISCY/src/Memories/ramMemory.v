@@ -2,7 +2,7 @@ module ramData(
     input clk,
     input reset,
     input [31:2] PC,
-    input [31:2] address,
+    input [31:0] address,
     input ren,
     input wen,
     input [31:0] data_in,
@@ -51,6 +51,9 @@ module ramData(
     reg cmd_en1, cmd_en0;
     reg [3:0] data_mask1, data_mask0;
 
+    reg wen_buffer,ren_buffer;
+    reg [3:0] byte_select_vector_buffer;
+
     PSRAM_Memory_Interface_HS_2CH_Top psrams_Interface(
           //***** CLK | RESET *****//
  	 	.clk(clk), //input clk : 27Mhz
@@ -68,25 +71,25 @@ module ramData(
  	 	.O_psram_cs_n(O_psram_cs_n), //output [1:0] O_psram_cs_n
 
           //**** PSRAM CHANNEL 0 : INSTRUCTION READ ONLY ****//
- 	 	.init_calib0(calib0), //output init_calib0
- 	 	.cmd0(cmd0), //input cmd0
- 	 	.cmd_en0(cmd_en0), //input cmd_en0
- 	 	.addr0(addr0), //input [20:0] addr0
-        .wr_data0(wd0), //input [31:0] wr_data1
-        .rd_data0(rd0), //output [31:0] rd_data0
-        .rd_data_valid0(rd_valid0), //output rd_data_valid0
-        .data_mask0(mask0), //input [3:0] data_mask0
+ 	 	.init_calib0(calib1), //output init_calib0
+ 	 	.cmd0(cmd1), //input cmd0
+ 	 	.cmd_en0(cmd_en1), //input cmd_en0
+ 	 	.addr0(addr1), //input [20:0] addr0
+        .wr_data0(wr_data1), //input [31:0] wr_data1
+        .rd_data0(rd_data1), //output [31:0] rd_data0
+        .rd_data_valid0(rd_data_valid1), //output rd_data_valid0
+        .data_mask0(data_mask1), //input [3:0] data_mask0
 		
 
           //**** PSRAM CHANNEL 1 : DATA WRITE AND READ ****//
-        .init_calib1(calib1), //output init_calib1
-        .cmd1(cmd1), //input cmd1
-        .cmd_en1(cmd_en1), //input cmd_en1
-        .addr1(addr1), //input [20:0] addr1
- 	 	.wr_data1(wr_data1), //input [31:0] wr_data0
- 	 	.rd_data1(rd_data1), //output [31:0] rd_data1
- 	 	.rd_data_valid1(rd_data_valid1), //output rd_data_valid1
- 	 	.data_mask1(data_mask1) //input [3:0] data_mask1
+        .init_calib1(calib0), //output init_calib1
+        .cmd1(cmd0), //input cmd1
+        .cmd_en1(cmd_en0), //input cmd_en1
+        .addr1(addr0), //input [20:0] addr1
+ 	 	.wr_data1(wr_data0), //input [31:0] wr_data0
+ 	 	.rd_data1(rd_data0), //output [31:0] rd_data1
+ 	 	.rd_data_valid1(rd_data_valid0), //output rd_data_valid1
+ 	 	.data_mask1(data_mask0) //input [3:0] data_mask1
  	);
 
     /*************************************************/
@@ -100,6 +103,8 @@ module ramData(
 
     reg [3:0] ctr;
     
+    reg test=0;
+
     always @(posedge clk or negedge reset) begin
         if (!reset) begin
             state_stall <= IDLE_STALL;
@@ -112,6 +117,13 @@ module ramData(
                         ctr <= 0;
                         state_stall <= WD_STALL;
                         cpu_stall <= 0; // Ensure that cpu_stall is cleared when transitioning to WD_STALL
+                        wr_data1 <= data_in;
+                        addr1 <= address;
+                        byte_select_vector_buffer <= ~byte_select_vector;
+                        wen_buffer <= wen;
+                        test<=1;
+                        ren_buffer <= ren;
+
                     end
                     else begin
                         state_stall <= IDLE_STALL;
@@ -121,7 +133,8 @@ module ramData(
 
                 WD_STALL: begin
                     ctr <= ctr + 1;
-                    if (ctr == 10) begin
+                    test<=0;  
+                    if (ctr == 6) begin
                         cpu_stall <= 1;  // Set cpu_stall when we reach the stall limit
                         state_stall <= IDLE_STALL;
                     end else begin
@@ -208,13 +221,13 @@ module ramData(
             case (state)
                 //*****IDLE STATE*****//
                 IDLE: begin
-                    if(wen && !ren && cpu_stall)begin
-                        addr1 <= address<<2;
+                    if(wen_buffer && !ren_buffer && test)begin
+//                        addr1 <= address;
                         wr_cycle <= 8'b0;
                         state <= WRITE;
                     end
-                    else if(ren && !wen && cpu_stall)begin
-                        addr1 <= address<<2;
+                    else if(ren_buffer && !wen_buffer && test)begin
+//                        addr1 <= address;
                         rd_cycle <= 8'b0;
                         state <= READ;
                     end
@@ -231,7 +244,7 @@ module ramData(
                 if (rd_cycle == 0) begin
                     cmd1 <= 1'b0;
                     cmd_en1 <= 1'b1;
-                    data_mask1 <= ~4'hf;
+                    data_mask1 <= byte_select_vector_buffer;
                 end else begin
                     cmd_en1 <= 1'b0;
                     if (rd_data_valid1) begin
@@ -249,8 +262,8 @@ module ramData(
                     end 
                     
                     if (wr_cycle == 0) begin
-                        wr_data1 <= data_in;
-                        data_mask1 <= ~4'hf;
+//                        wr_data1 <= data_in;
+                        data_mask1 <= byte_select_vector_buffer;
                         cmd1 <= 1'b1;
                         cmd_en1 <= 1'b1;
                     end else begin

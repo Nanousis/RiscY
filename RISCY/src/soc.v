@@ -219,7 +219,7 @@ module top
     .clk(cpu_clk),
     .reset(reset),
     .PC(PC[31:2]),
-    .address(data_addr[31:2]),
+    .address(data_addr[31:0]),
     .ren(ram_ren),
     .wen(ram_wen),
     .data_in(data_to_write),
