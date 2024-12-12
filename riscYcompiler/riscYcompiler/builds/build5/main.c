@@ -8,15 +8,11 @@
 void writeRam(int location, int value) {
     volatile int *ram = (int *)RAM;
     ram[location] = value;
-    ram[location] = value;
-    ram[location] = value;
 }
 
 int readRam(int location) {
     volatile int *ram = (int *)RAM;
-    int value = ram[location];
-    value = ram[location];
-    value = ram[location];
+    int value;
     value = ram[location];
     return value;
 }
@@ -25,17 +21,17 @@ int main() {
     volatile int *ram = (int *)RAM;
     // test ram
 
-    writeRam(0, 0x87654321);
-    writeRam(1, 0x12345678);
-    writeRam(2, 0x11111111);
-    writeRam(3, 0x22222222);
-    writeRam(4, 0x33333333);
-    writeRam(5, 0x44444444);
-    writeRam(6, 0x55555555);
-    writeRam(7, 0x66666666);
-    writeRam(8, 0x77777777);
-    writeRam(9, 0x88888888);
-    writeRam(10, 0x99999999);
+    writeRam(0, 0xaaaaaaaa);
+    writeRam(1, 0xbbbbbbbb);
+    writeRam(2, 0xcccccccc);
+    writeRam(3, 0xdddddddd);
+    writeRam(4, 0xffffffff);
+    writeRam(5, 0xeeeeeeee);
+    writeRam(6, 0x00100000);
+    writeRam(7, 0x20222222);
+    writeRam(8, 0x33333333);
+    writeRam(9, 0x44444444);
+    writeRam(10, 0x55555555);
 
     // test memcpy
     printf("Testing memcpy\n");
@@ -49,6 +45,7 @@ int main() {
     printf("%x ", readRam(7));
     printf("%x ", readRam(8));
     printf("%x ", readRam(9));
+    printf("%x ", readRam(10));
     printf("Testing memcpy2\n");
     while(1);
 }

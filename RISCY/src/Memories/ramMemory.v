@@ -98,7 +98,7 @@ module ramData(
 
     reg state_stall;
 
-    reg [2:0] ctr;
+    reg [3:0] ctr;
     
     always @(posedge clk or negedge reset) begin
         if (!reset) begin
@@ -108,16 +108,20 @@ module ramData(
         end else begin
             case (state_stall)
                 IDLE_STALL: begin
-                    if(wen || ren || (PC >= 32'h00400000 && PC<=32'h00410000))begin
+                    if(wen || ren)begin
                         ctr <= 0;
                         state_stall <= WD_STALL;
                         cpu_stall <= 0; // Ensure that cpu_stall is cleared when transitioning to WD_STALL
+                    end
+                    else begin
+                        state_stall <= IDLE_STALL;
+                        cpu_stall <= 1;
                     end
                 end
 
                 WD_STALL: begin
                     ctr <= ctr + 1;
-                    if (ctr == 6) begin
+                    if (ctr == 10) begin
                         cpu_stall <= 1;  // Set cpu_stall when we reach the stall limit
                         state_stall <= IDLE_STALL;
                     end else begin
@@ -137,50 +141,50 @@ module ramData(
     localparam READ = 2'b01;
     localparam WRITE = 2'b10;
 
-    reg [1:0] state_instr;
+    // reg [1:0] state_instr;
 
-    reg [7:0] rd_cycle_instr;
-    reg [7:0] wr_cycle_instr;
-    reg [31:0] instr_rd;
+    // reg [7:0] rd_cycle_instr;
+    // reg [7:0] wr_cycle_instr;
+    // reg [31:0] instr_rd;
     
-    always @(posedge user_clk or negedge reset)begin
-        if(!reset)begin
-            state_instr <= IDLE;
-            wr_cycle_instr <= 8'b0;
-            rd_cycle_instr <= 8'b0;
-            instr_rd <= 32'b0;
-            cmd_en0 <= 0;
-        end
-        else begin
-            case (state_instr)
-                IDLE:
-                    if(cpu_stall)begin
-                        addr0 <= PC<<2;
-                        state_instr <= READ;
-                    end
-                    else begin
-                        state_instr <= IDLE;
-                    end
-                READ: begin
-                    rd_cycle_instr <= rd_cycle_instr + 8'b1;
+    // always @(posedge user_clk or negedge reset)begin
+    //     if(!reset)begin
+    //         state_instr <= IDLE;
+    //         wr_cycle_instr <= 8'b0;
+    //         rd_cycle_instr <= 8'b0;
+    //         instr_rd <= 32'b0;
+    //         cmd_en0 <= 0;
+    //     end
+    //     else begin
+    //         case (state_instr)
+    //             IDLE:
+    //                 if(cpu_stall)begin
+    //                     addr0 <= PC<<2;
+    //                     state_instr <= READ;
+    //                 end
+    //                 else begin
+    //                     state_instr <= IDLE;
+    //                 end
+    //             READ: begin
+    //                 rd_cycle_instr <= rd_cycle_instr + 8'b1;
                 
-                    if (rd_cycle_instr == 0) begin
-                        cmd0 <= 1'b0;
-                        cmd_en0 <= 1'b1;
-                        data_mask0 <= 4'h0;
-                    end else begin
-                        cmd_en0 <= 1'b0;
-                        if (rd_data_valid0) begin
-                            instr_rd <= rd_data0;
-                            state_instr <= IDLE;
-                        end
-                    end
-                end
-            endcase
-        end
-    end
+    //                 if (rd_cycle_instr == 0) begin
+    //                     cmd0 <= 1'b0;
+    //                     cmd_en0 <= 1'b1;
+    //                     data_mask0 <= 4'h0;
+    //                 end else begin
+    //                     cmd_en0 <= 1'b0;
+    //                     if (rd_data_valid0) begin
+    //                         instr_rd <= rd_data0;
+    //                         state_instr <= IDLE;
+    //                     end
+    //                 end
+    //             end
+    //         endcase
+    //     end
+    // end
 
-    assign instr = instr_rd;
+    // assign instr = instr_rd;
 
     /*************************************************/
     //                   DATA CONTROLLER             //
@@ -227,7 +231,7 @@ module ramData(
                 if (rd_cycle == 0) begin
                     cmd1 <= 1'b0;
                     cmd_en1 <= 1'b1;
-                    data_mask1 <= 4'h0;
+                    data_mask1 <= ~4'hf;
                 end else begin
                     cmd_en1 <= 1'b0;
                     if (rd_data_valid1) begin
@@ -246,7 +250,7 @@ module ramData(
                     
                     if (wr_cycle == 0) begin
                         wr_data1 <= data_in;
-                        data_mask1 <= ~byte_select_vector;
+                        data_mask1 <= ~4'hf;
                         cmd1 <= 1'b1;
                         cmd_en1 <= 1'b1;
                     end else begin

@@ -15,72 +15,72 @@ LOAD builds/build5/riscYstdio.o
                 0x00000600                        _stack_size = 0x600
                 0x00400000                        . = ORIGIN (RAM)
 
-.text           0x00400000      0x6f0
+.text           0x00400000      0x6dc
  *(.text)
  .text          0x00400000       0x1c builds/build5/startup.o
                 0x00400000                _start
- .text          0x0040001c       0x3c builds/build5/main.o
+ .text          0x0040001c       0x28 builds/build5/main.o
                 0x0040001c                writeRam
-                0x00400038                readRam
- .text          0x00400058      0x684 builds/build5/riscYstdio.o
-                0x00400058                memcpy
-                0x0040007c                memset
-                0x00400098                getButtonDown
-                0x004000a4                getButtonUp
-                0x004000b0                getButtonLeft
-                0x004000bc                getButtonRight
-                0x004000c8                putch
-                0x004000f8                printString
-                0x004001b8                printHex
-                0x00400258                printDec
-                0x00400350                printf
-                0x004004ec                printfSCR
-                0x00400684                clearScreen
-                0x004006d0                resetScreenVector
+                0x00400030                readRam
+ .text          0x00400044      0x684 builds/build5/riscYstdio.o
+                0x00400044                memcpy
+                0x00400068                memset
+                0x00400084                getButtonDown
+                0x00400090                getButtonUp
+                0x0040009c                getButtonLeft
+                0x004000a8                getButtonRight
+                0x004000b4                putch
+                0x004000e4                printString
+                0x004001a4                printHex
+                0x00400244                printDec
+                0x0040033c                printf
+                0x004004d8                printfSCR
+                0x00400670                clearScreen
+                0x004006bc                resetScreenVector
  *(.rodata)
- .rodata        0x004006dc       0x14 builds/build5/riscYstdio.o
-                0x004006f0                        _etext = .
+ .rodata        0x004006c8       0x14 builds/build5/riscYstdio.o
+                0x004006dc                        _etext = .
 
-.text.startup   0x004006f0      0x1fc
- .text.startup  0x004006f0      0x1fc builds/build5/main.o
-                0x004006f0                main
+.text.startup   0x004006dc      0x15c
+ .text.startup  0x004006dc      0x15c builds/build5/main.o
+                0x004006dc                main
 
-.rodata.str1.4  0x004008ec       0x42
+.rodata.str1.4  0x00400838       0x42
  .rodata.str1.4
-                0x004008ec       0x42 builds/build5/main.o
+                0x00400838       0x42 builds/build5/main.o
                                  0x25 (size before relaxing)
  .rodata.str1.4
-                0x0040092e       0x1a builds/build5/riscYstdio.o
+                0x0040087a       0x1a builds/build5/riscYstdio.o
 
-.rela.dyn       0x00400930        0x0
- .rela.text     0x00400930        0x0 builds/build5/startup.o
-                0x00400930                        . = ALIGN (0x4)
+.rela.dyn       0x0040087c        0x0
+ .rela.text     0x0040087c        0x0 builds/build5/startup.o
+                0x0040087c                        . = ALIGN (0x4)
 
-.data           0x0040092e        0x0 load address 0x004006f0
-                0x0040092e                        _sdata = .
+.data           0x0040087a        0x0 load address 0x004006dc
+                0x0040087a                        _sdata = .
  *(.data)
- .data          0x0040092e        0x0 builds/build5/startup.o
- .data          0x0040092e        0x0 builds/build5/main.o
- .data          0x0040092e        0x0 builds/build5/riscYstdio.o
-                0x0040092e                        _edata = .
-                0x00400930                        . = ALIGN (0x4)
+ .data          0x0040087a        0x0 builds/build5/startup.o
+ .data          0x0040087a        0x0 builds/build5/main.o
+ .data          0x0040087a        0x0 builds/build5/riscYstdio.o
+                0x0040087a                        _edata = .
+                0x0040087c                        . = ALIGN (0x4)
 
-.bss            0x0040092e        0x0
-                0x0040092e                        _sbss = .
+.bss            0x0040087a        0x0
+                0x0040087a                        _sbss = .
  *(.bss COMMON)
- .bss           0x0040092e        0x0 builds/build5/startup.o
- .bss           0x0040092e        0x0 builds/build5/main.o
- .bss           0x0040092e        0x0 builds/build5/riscYstdio.o
-                0x0040092e                        _ebss = .
-                0x00400930                        . = ALIGN (0x4)
+ .bss           0x0040087a        0x0 builds/build5/startup.o
+ .bss           0x0040087a        0x0 builds/build5/main.o
+ .bss           0x0040087a        0x0 builds/build5/riscYstdio.o
+                0x0040087a                        _ebss = .
+                0x0040087c                        . = ALIGN (0x4)
                 0x00402000                        _stack_end = (ORIGIN (RAM) + LENGTH (RAM))
                 0x00401a00                        _stack_top = (_stack_end - _stack_size)
                 0x00401400                        _stack_bottom = (_stack_top - _stack_size)
 OUTPUT(builds/build5/program.elf elf32-littleriscv)
 
-.sbss           0x0040092e        0x2
- .sbss          0x0040092e        0x2 builds/build5/riscYstdio.o
-                0x0040092e                screenPos
+.sbss           0x0040087a        0x2
+ .sbss          0x0040087a        0x2 builds/build5/riscYstdio.o
+                0x0040087a                screenPos
 
 .riscv.attributes
                 0x00000000       0x1c

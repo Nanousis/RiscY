@@ -12,7 +12,7 @@ void writeRam(int location, int value) {
 
 int readRam(int location) {
     volatile int *ram = (int *)RAM;
-    int value = ram[location];
+    int value;
     value = ram[location];
     return value;
 }
@@ -20,18 +20,22 @@ int readRam(int location) {
 int main() {
     volatile int *ram = (int *)RAM;
     // test ram
+	int i=0;
+	char error=0;
+	for(int i =0; i<10000; i++){
+		ram[i<<4] = i;	
+	}
 
-    writeRam(1, 0x87654321);
-    writeRam(4, 0x12345678);
-    writeRam(8, 0x11111111);
-    writeRam(12, 0x22222222);
+	for(int i =0; i<10000; i++){
+		if(ram[i<<4]!=i){
+			printf("Error at %d\n", i);
+			error = 1;
+			break;
+		}	
+	}
+	if(!error){
+		printf("No errors\n");
+	}
 
-    // test memcpy
-    printf("Testing memcpy\n");
-    printf("%x ", readRam(1));
-    printf("%x ", readRam(4));
-    printf("%x ", readRam(8));
-    printf("%x ", readRam(12));
-    printf("Testing memcpy2\n");
     while(1);
 }
