@@ -1,22 +1,22 @@
 [*]
 [*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
-[*] Thu Dec 05 16:11:13 2024
+[*] Wed Dec 11 22:02:08 2024
 [*]
 [dumpfile] "C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY_primer25k\src\Testbench\ZSOC.vcd"
-[dumpfile_mtime] "Thu Dec 05 15:22:28 2024"
-[dumpfile_size] 547671
+[dumpfile_mtime] "Wed Dec 11 21:24:55 2024"
+[dumpfile_size] 694521
 [savefile] "C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY_primer25k\src\Testbench\gtkw.gtkw"
 [timestart] 0
 [size] 2892 1360
-[pos] -138 -131
-*-15.390830 110000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[pos] -1 -1
+*-15.390830 133400 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] test.
 [treeopen] test.TOP.
 [treeopen] test.TOP.cpu_1.
 [sst_width] 253
 [signals_width] 364
 [sst_expanded] 1
-[sst_vpaned_height] 765
+[sst_vpaned_height] 766
 @28
 test.TOP.cpu_1.reset
 test.TOP.cpu_1.clock
@@ -29,6 +29,7 @@ test.TOP.cpu_1.clock
 @200
 -Fetch
 @22
+test.TOP.cpu_1.PC_OLD[31:0]
 [color] 7
 test.TOP.PC[31:0]
 [color] 7
@@ -51,13 +52,12 @@ test.TOP.cpu_1.reg_type[1:0]
 test.TOP.cpu_1.IFID_instr[31:0]
 [color] 6
 test.TOP.cpu_1.IFID_PC[31:0]
-@23
 [color] 6
 test.TOP.cpu_1.opcode[6:0]
-@29
+@28
 [color] 6
 test.TOP.cpu_1.funct3[2:0]
-@23
+@22
 [color] 6
 test.TOP.cpu_1.funct7[6:0]
 [color] 6
@@ -66,9 +66,11 @@ test.TOP.cpu_1.instr_rs1[4:0]
 test.TOP.cpu_1.instr_rs2[4:0]
 [color] 6
 test.TOP.cpu_1.instr_rd[4:0]
-@29
+@28
 [color] 6
 test.TOP.cpu_1.bubble_ifid
+@22
+test.TOP.cpu_1.csr_addr[11:0]
 @28
 [color] 2
 test.TOP.cpu_1.IFID_instrColdStart
@@ -78,6 +80,9 @@ test.TOP.cpu_1.write_ifid
 -Decode
 @c00200
 -Execute
+@22
+[color] 5
+test.TOP.cpu_1.IDEX_PC[31:0]
 @28
 [color] 5
 test.TOP.cpu_1.IDEX_ALUSrc
@@ -95,10 +100,6 @@ test.TOP.cpu_1.IDEX_MemRead
 test.TOP.cpu_1.IDEX_MemToReg
 [color] 5
 test.TOP.cpu_1.IDEX_MemWrite
-@22
-[color] 5
-test.TOP.cpu_1.IDEX_PC[31:0]
-@28
 [color] 5
 test.TOP.cpu_1.IDEX_RegDst
 [color] 5
@@ -125,6 +126,20 @@ test.TOP.cpu_1.IDEX_rdB[31:0]
 [color] 5
 test.TOP.cpu_1.IDEX_signExtend[31:0]
 @28
+[color] 3
+test.TOP.cpu_1.bypassA[1:0]
+[color] 3
+test.TOP.cpu_1.bypassB[1:0]
+@22
+test.TOP.cpu_1.ALUInA[31:0]
+test.TOP.cpu_1.ALUInB[31:0]
+test.TOP.cpu_1.bypassOutA[31:0]
+test.TOP.cpu_1.bypassOutB[31:0]
+[color] 6
+test.TOP.cpu_1.csr_data[31:0]
+@28
+[color] 6
+test.TOP.cpu_1.IDEX_reg_type[1:0]
 [color] 5
 test.TOP.cpu_1.bubble_idex
 [color] 1
@@ -167,11 +182,15 @@ test.TOP.cpu_1.EXMEM_Zero
 test.TOP.cpu_1.EXMEM_funct3[2:0]
 [color] 3
 test.TOP.cpu_1.bubble_exmem
+@22
+test.TOP.cpu_1.EXMEM_csr_data[31:0]
+@28
+test.TOP.cpu_1.EXMEM_reg_type[1:0]
 [color] 1
 test.TOP.cpu_1.write_exmem
 @1401200
 -Memory
-@c00200
+@800200
 -WriteBack
 @22
 [color] 2
@@ -191,9 +210,14 @@ test.TOP.cpu_1.MEMWB_RegWriteAddr[4:0]
 test.TOP.cpu_1.MEMWB_funct3[2:0]
 [color] 2
 test.TOP.cpu_1.write_memwb
-@1401200
+@22
+test.TOP.cpu_1.MEMWB_csr_data[31:0]
+test.TOP.cpu_1.wRegData[31:0]
+@28
+test.TOP.cpu_1.MEMWB_reg_type[1:0]
+@1000200
 -WriteBack
-@c00200
+@800200
 -Temp Registers
 @200
 -Temp registers
@@ -279,8 +303,21 @@ test.TOP.cpu_1.cpu_regs.\data[30][31:0]
 -group_end
 @22
 test.TOP.cpu_1.cpu_regs.\data[31][31:0]
-@1401200
+@1000200
 -Temp Registers
+@800200
+-CSR
+@22
+test.TOP.cpu_1.csrFile.misa[31:0]
+test.TOP.cpu_1.csrFile.mcause[31:0]
+test.TOP.cpu_1.csrFile.rd[31:0]
+test.TOP.cpu_1.csrFile.wd[31:0]
+test.TOP.cpu_1.csrFile.csrAddr[11:0]
+@28
+test.TOP.cpu_1.csrFile.ren
+test.TOP.cpu_1.csrFile.wen
+@1000200
+-CSR
 @22
 test.TOP.data_addr[31:0]
 test.TOP.data_read[31:0]

@@ -14,7 +14,7 @@ module CSRFile (input clock,
                 input ren,
                 input wen,
                 input [31:0] wd,
-                output [31:0] rd
+                output reg [31:0] rd
                 );
 /****** SIGNALS ******/
 integer i;

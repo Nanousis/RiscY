@@ -54,10 +54,10 @@ begin
 		end
 		`I_LOAD_FORMAT: begin 
 			RegDst		= 1'b1;
-			MemRead		= 1'b0;
+			MemRead		= 1'b1;
 			MemWrite	= 1'b0;
-			MemToReg	= 1'b0;
-			ALUSrc		= 1'b0;
+			MemToReg	= 1'b1;
+			ALUSrc		= 1'b1;
 			RegWrite	= 1'b1;
 			Branch		= 1'b0;
 			Jump		= 0;

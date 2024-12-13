@@ -510,7 +510,7 @@ module PPU(
                 end
             end
         end
-for (int i = 0; i < MAX_OBJ; i = i + 1) begin
+for (i = 0; i < MAX_OBJ; i = i + 1) begin
     if (objectAttributes[i][31] && 
         objectAttributes[i][8:0] <= yPos && yPos < objectAttributes[i][8:0] + 16 && 
         objectAttributes[i][24:16] <= xPos && xPos < objectAttributes[i][24:16] + 8) begin

@@ -49,6 +49,7 @@ reg		[31:0]	IDEX_signExtend;
 wire	[31:0]	signExtend;
 wire	[31:0]	rdA, rdB;
 wire 	[31:0] 	csr_data;
+reg 	[31:0] 	IDEX_csr_data;
 reg		[31:0]	IDEX_rdA, IDEX_rdB;
 reg		[2:0]	IDEX_funct3;
 reg		[6:0]	IDEX_funct7;
@@ -62,6 +63,8 @@ reg 	[2:0]	EXMEM_funct3, MEMWB_funct3;
 reg 	[4:0]	EXMEM_RegWriteAddr;
 reg 	[31:0]	EXMEM_ALUOut;
 reg 	[31:0]	EXMEM_BranchALUOut;
+reg 	[31:0] 	EXMEM_csr_data;
+reg 	[1:0] 	EXMEM_reg_type;
 reg				EXMEM_Zero, EXMEM_JumpJALR;
 wire		[3:0]	byte_select_vector;
 reg		[31:0]	EXMEM_MemWriteData;
@@ -71,6 +74,8 @@ reg		[31:0]	MEMWB_DMemOut;
 reg		[4:0]	MEMWB_RegWriteAddr;
 reg		[31:0]	MEMWB_ALUOut;
 reg				MEMWB_MemToReg, MEMWB_RegWrite;
+reg 	[31:0] 	MEMWB_csr_data;
+reg 	[1:0] 	MEMWB_reg_type;
 wire	[31:0]	ALUInA, ALUInB, ALUOut, BranchALUOut, bypassOutA, bypassOutB, DMemOut, MemOut, wRegData;
 wire			Zero, RegDst, MemRead, MemWrite, MemToReg, ALUSrc, csr_immidiate, PCSrc, RegWrite, Jump, JumpJALR;
 wire 	[1:0] 	reg_type; // used to determin if we are using the x0-x31 registers, csr registers or f1-f32 registers. 0->x register 1->csr register 2->f register 
@@ -81,6 +86,7 @@ wire			write_ifid, write_idex, write_exmem, write_memwb, write_pc;  // enable/di
 wire	[6:0]	opcode;
 wire	[2:0]	funct3, ALUcntrl; 
 wire 	[11:0]	csr_addr;
+reg 	[11:0]	IDEX_csr_addr;
 wire	[6:0]	funct7;
 wire	[4:0]	instr_rs1, instr_rs2, instr_rd, RegWriteAddr;
 wire	[3:0]	ALUOp;
@@ -212,15 +218,7 @@ RegFile cpu_regs (
 );
 
 
-//CSRFile csrFile(
-//	.clock(clock),
-//	.reset(reset),
-//	.wen(0),
-//	.ren(reg_type==2'b01),
-//	.csrAddr(csr_addr),
-//	.wd(wRegData),
-//	.rd(csr_data)
-//);
+
 
 // Sign Extended Signal Selection
 SignExtendSelector SignExtendSelector (
@@ -260,6 +258,7 @@ begin
 		IDEX_rdA		<= 32'b0;
 		IDEX_rdB		<= 32'b0;
 		IDEX_reg_type	<= 3'b0;
+		IDEX_csr_addr	<= 12'b0;
 	end
 	else
 	begin
@@ -285,6 +284,7 @@ begin
 			IDEX_rdA		<= 32'b0;
 			IDEX_rdB		<= 32'b0;
 			IDEX_reg_type	<= 3'b0;
+			IDEX_csr_addr	<= 12'b0;
 		end
 		else if (write_idex == 1'b1) begin
 			IDEX_inA_is_PC	<= inA_is_PC;
@@ -308,10 +308,19 @@ begin
 			IDEX_rdA		<= rdA;
 			IDEX_rdB		<= rdB;
 			IDEX_reg_type	<= reg_type;
+			IDEX_csr_addr	<= csr_addr;
 		end
 	end
 end
-
+CSRFile csrFile(
+	.clock(clock),
+	.reset(reset),
+	.wen(0),
+	.ren(IDEX_reg_type==2'b01),
+	.csrAddr(IDEX_csr_addr),
+	.wd(wRegData),
+	.rd(csr_data)
+);
 // Main Control Unit
 control_main control_main (
 	.RegDst(RegDst),
@@ -350,11 +359,11 @@ control_stall_id control_stall_id (
 	.PCSrc			(PCSrc));
 
 /************************ Execution Unit (EX)  ***********************************/
-assign bypassOutA = (bypassA==2'b00) ? 
-									((IDEX_reg_type==2'b01)?((csr_immidiate)? IDEX_signExtend:IDEX_rdA):IDEX_rdA):
+assign bypassOutA = (bypassA==2'b00) ? IDEX_rdA :
 					(bypassA==2'b01) ? wRegData :
 										EXMEM_ALUOut;
-assign bypassOutB = (bypassB==2'b00) ?	(IDEX_reg_type==2'b01)? csr_data : IDEX_rdB :
+
+assign bypassOutB = (bypassB==2'b00) ?	IDEX_rdB :
 					(bypassB==2'b01) ?	wRegData :
 										EXMEM_ALUOut;
 
@@ -394,6 +403,8 @@ begin
 		EXMEM_MemToReg		<= 1'b0;
 		EXMEM_RegWrite		<= 1'b0;
 		EXMEM_funct3		<= 3'b111;
+		EXMEM_csr_data		<= 32'b0;
+		EXMEM_reg_type		<= 2'b00;
 	end 
 	else
 	begin
@@ -410,9 +421,11 @@ begin
 			EXMEM_MemToReg		<= 1'b0;
 			EXMEM_RegWrite		<= 1'b0;
 			EXMEM_funct3		<= 3'b111;
+			EXMEM_csr_data		<= 32'b0;
+			EXMEM_reg_type		<= 2'b00;
 		end 
 		else if (write_exmem == 1'b1) begin
-			EXMEM_ALUOut		<= ALUOut;
+			EXMEM_ALUOut		<= (IDEX_reg_type==2'b1)?csr_data:ALUOut;
 			EXMEM_JumpJALR		<= IDEX_JumpJALR;
 			EXMEM_BranchALUOut	<= BranchALUOut;
 			EXMEM_RegWriteAddr	<= RegWriteAddr;
@@ -424,14 +437,14 @@ begin
 			EXMEM_MemToReg		<= IDEX_MemToReg;
 			EXMEM_RegWrite		<= IDEX_RegWrite;
 			EXMEM_funct3		<= IDEX_funct3;
+			EXMEM_csr_data		<= csr_data;
+			EXMEM_reg_type		<= IDEX_reg_type;
 		end
 	end
 end
 
-// ALU control
 control_alu control_alu(
 	.ALUOp(ALUOp), 
-	.csr_immidiate(csr_immidiate),
 	.ALUcntrl(IDEX_ALUcntrl), 
 	.funct3(IDEX_funct3), 
 	.funct7(IDEX_funct7)
@@ -458,15 +471,6 @@ mem_write_selector mem_write_selector(
 	.byte_select_vector(byte_select_vector),
 	.out(MemWriteData)
 );
-
-// // Data memory 1KB
-// Dmem cpu_DMem(
-// 	.clock(clock), 
-// 	.reset(reset),
-// 	.ren(EXMEM_MemRead), 
-// 	.wen(EXMEM_MemWrite), 
-// 	.byte_select_vector(byte_select_vector), 
-// 	.addr(EXMEM_ALUOut[`DATA_BITS-1:2]), 
 // 	.din(MemWriteData), 
 // 	.dout(DMemOut)
 // );
@@ -481,6 +485,8 @@ begin
 		MEMWB_MemToReg		<= 1'b0;
 		MEMWB_RegWrite		<= 1'b0;
 		MEMWB_funct3		<= 3'b111;
+		MEMWB_csr_data		<= 32'b0;
+		MEMWB_reg_type		<= 2'b00;
 	end 
 	else if (write_memwb == 1'b1) begin
 		MEMWB_DMemOut		<= DMemOut;
@@ -489,6 +495,8 @@ begin
 		MEMWB_MemToReg		<= EXMEM_MemToReg;
 		MEMWB_RegWrite		<= EXMEM_RegWrite;
 		MEMWB_funct3		<= EXMEM_funct3;
+		MEMWB_csr_data		<= EXMEM_csr_data;
+		MEMWB_reg_type		<= EXMEM_reg_type;
 	end
 end
 
@@ -511,6 +519,6 @@ mem_read_selector mem_read_selector(
 	.out(MemOut)
 );
 
-assign wRegData = (MEMWB_MemToReg == 1'b0) ? MEMWB_ALUOut : MemOut;
+assign wRegData = (MEMWB_reg_type==0)?((MEMWB_MemToReg == 1'b0) ? MEMWB_ALUOut : MemOut):MEMWB_csr_data;
 
 endmodule
