@@ -74,7 +74,7 @@ always@(*) begin
     ram_wen = 0;
 
     // memory mapped screen, the range is times 2 due to the use of halfword
-    if(data_addr>=`SCREEN_ADDRESS && data_addr <(`SCREEN_ADDRESS+`SCREEN_RANGE*2)) begin
+    if(data_addr>=`SCREEN_ADDRESS && data_addr <(`SCREEN_END)) begin
         screen_wen = wen;
         data_out_new = memory_out;
     end

@@ -247,22 +247,50 @@ module top
         .clkin(clk)       //27Mhz
     );
 
-    wire [15:0] data_selected;
-    assign data_selected = (byte_select[1:0] == 2'b11) ? data_to_write[15:0] : data_to_write[31:16]; 
+
+    wire [4:0]R_tmp;
+    wire [5:0]G_tmp;
+    wire [4:0]B_tmp;
+
+    wire [13:0] xcursor, ycursor;
+    wire is_blank;
+
+    PPU ppu_inst (
+        .clk(clk),
+        .clk_cpu(clk),
+        .reset(reset),
+        // .ren(screen_ren),
+        .wen(screen_wen),
+        .address(data_addr[15:0]),
+        .data_in(data_to_write),
+        .byte_select(byte_select),
+        .xcursor(xcursor),
+        .ycursor(ycursor),
+        .is_blank(is_blank),
+        .data_out(),
+        .RGB_R(R_tmp),
+        .RGB_G(G_tmp),
+        .RGB_B(B_tmp)
+
+    );
 
 	VGAMod	D1 (
 		.rst      (reset),
         .clkFpga  (clk),
 		.clkPixel (CLK_PIX),
         
-        .wen        (screen_wen),
-        .wdataText  (data_selected[7:0]),
-        .wdataAttr  (data_selected[15:8]),
-        .waddr      (data_addr[11:1]),
 
 		.RGB_Activate (LCD_DEN),
 		.H_Sync       (LCD_HYNC),
     	.V_Sync       (LCD_SYNC),
+
+        .R_tmp(R_tmp),
+        .G_tmp(G_tmp),
+        .B_tmp(B_tmp),
+        .is_blank(is_blank),
+
+        .PixelCtr(xcursor),
+        .LineCtr(ycursor),
 
 		.RGB_B (LCD_B),
 		.RGB_G (LCD_G),
@@ -311,6 +339,7 @@ uartController uart_controller (
 //   **********************************************************************************************//
 //                                         CPU TIMER                                               //
 //   **********************************************************************************************//
+
 
     wire [31:0] counter1M;
     cpuTimer #(.DIVISION(27)) counter1mhz
