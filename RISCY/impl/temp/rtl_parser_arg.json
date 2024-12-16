@@ -62,6 +62,10 @@
    "Type" : "verilog"
   },
   {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY/src/GPIO/PPU.v",
+   "Type" : "verilog"
+  },
+  {
    "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY/src/GPIO/buttonModule.v",
    "Type" : "verilog"
   },
@@ -110,6 +114,10 @@
    "Type" : "verilog"
   },
   {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY/src/gowin_rpll_ppu/gowin_rpll_ppu.v",
+   "Type" : "verilog"
+  },
+  {
    "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY/src/psram_memory_interface_hs_2ch/psram_memory_interface_hs_2ch.v",
    "Type" : "verilog"
   },
@@ -154,11 +162,7 @@
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY/src/GPIO/PPU.v",
-   "Type" : "verilog"
-  },
-  {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY/src/gowin_rpll_ppu/gowin_rpll_ppu.v",
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY/src/Memories/DPBRAM.v",
    "Type" : "verilog"
   }
  ],

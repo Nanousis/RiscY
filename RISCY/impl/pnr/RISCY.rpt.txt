@@ -12,27 +12,27 @@
   <Part Number>: GW1NR-LV9QN88PC6/I5
   <Device>: GW1NR-9
   <Device Version>: C
-  <Created Time>:Sat Dec 14 23:23:38 2024
+  <Created Time>:Mon Dec 16 13:34:36 2024
 
 
 2. PnR Details
 
   Running placement:
     Placement Phase 0: CPU time = 0h 0m 3s, Elapsed time = 0h 0m 3s
-    Placement Phase 1: CPU time = 0h 0m 0.202s, Elapsed time = 0h 0m 0.202s
+    Placement Phase 1: CPU time = 0h 0m 0.144s, Elapsed time = 0h 0m 0.144s
     Placement Phase 2: CPU time = 0h 0m 2s, Elapsed time = 0h 0m 2s
-    Placement Phase 3: CPU time = 0h 0m 25s, Elapsed time = 0h 0m 25s
-    Total Placement: CPU time = 0h 0m 31s, Elapsed time = 0h 0m 31s
+    Placement Phase 3: CPU time = 0h 0m 18s, Elapsed time = 0h 0m 18s
+    Total Placement: CPU time = 0h 0m 23s, Elapsed time = 0h 0m 23s
  Running routing:
-    Routing Phase 0: CPU time = 0h 0m 0.003s, Elapsed time = 0h 0m 0.003s
+    Routing Phase 0: CPU time = 0h 0m 0.004s, Elapsed time = 0h 0m 0.004s
     Routing Phase 1: CPU time = 0h 0m 4s, Elapsed time = 0h 0m 4s
-    Routing Phase 2: CPU time = 0h 4m 16s, Elapsed time = 0h 4m 16s
+    Routing Phase 2: CPU time = 0h 3m 39s, Elapsed time = 0h 3m 39s
     Routing Phase 3: CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0s
-    Total Routing: CPU time = 0h 4m 21s, Elapsed time = 0h 4m 21s
+    Total Routing: CPU time = 0h 3m 43s, Elapsed time = 0h 3m 43s
  Generate output files:
-    CPU time = 0h 0m 0.809s, Elapsed time = 0h 0m 0.809s
+    CPU time = 0h 0m 0.758s, Elapsed time = 0h 0m 0.757s
 
- Total Time and Memory Usage: CPU time = 0h 4m 52s, Elapsed time = 0h 4m 52s, Peak memory usage = 483MB
+ Total Time and Memory Usage: CPU time = 0h 4m 7s, Elapsed time = 0h 4m 7s, Peak memory usage = 512MB
 
 
 3. Resource Usage Summary
@@ -40,29 +40,28 @@
   ----------------------------------------------------------
   Resources                   | Usage
   ----------------------------------------------------------
-  Logic                       | 8454/8640  98%
-    --LUT,ALU,ROM16           | 8454(7514 LUT, 940 ALU, 0 ROM16)
+  Logic                       | 8355/8640  97%
+    --LUT,ALU,ROM16           | 8355(7500 LUT, 855 ALU, 0 ROM16)
     --SSRAM(RAM16)            | 0
-  Register                    | 3505/6771  52%
+  Register                    | 3339/6771  50%
     --Logic Register as Latch | 0/6480  0%
-    --Logic Register as FF    | 3495/6480  54%
+    --Logic Register as FF    | 3331/6480  52%
     --I/O Register as Latch   | 0/291  0%
-    --I/O Register as FF      | 10/291  4%
-  CLS                         | 4310/4320  100%
+    --I/O Register as FF      | 8/291  3%
+  CLS                         | 4315/4320  100%
   I/O Port                    | 43
-  I/O Buf                     | 43
-    --Input Buf               | 13
+  I/O Buf                     | 42
+    --Input Buf               | 12
     --Output Buf              | 30
     --Inout Buf               | 0
   IOLOGIC                     | 41%
     --IDES4                   | 16
     --OSER4                   | 23
     --IODELAY                 | 19
-  BSRAM                       | 81%
-    --SDPB                    | 8
+  BSRAM                       | 85%
+    --SDPB                    | 12
     --SDPX9B                  | 2
-    --DPB                     | 9
-    --DPX9B                   | 2
+    --DPB                     | 8
   DSP                         | 0%
   PLL                         | 2/2  100%
   DCS                         | 0/8  0%
@@ -108,10 +107,10 @@
   Signal         | Global Clock   | Location
   -------------------------------------------
   clk_d          | PRIMARY        |  TR TL BR BL
-  LCD_CLK_d      | PRIMARY        |  BR BL
-  ramData_inst/user_clk| PRIMARY        |  TR TL BR BL
-  reset          | LW             |  -
-  cpu_1/EXMEM_ALUOut_31_11| LW             |  -
+  LCD_CLK_d      | PRIMARY        |  BR
+  ramData_inst/user_clk| PRIMARY        |  TL BR BL
+  reset_soc      | LW             |  -
+  cpu_1/EXMEM_ALUOut_31_9| LW             |  -
   cpu_1/write_pc_Z| LW             |  -
   ramData_inst/psrams_Interface/ddr_rsti| LW             |  -
   ramData_inst/memory_clk| HCLK           | LEFT[0]

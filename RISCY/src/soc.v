@@ -57,7 +57,10 @@ module top
     wire cpu_clk;
     assign cpu_clk=(clk_btn==1'b1)?cpuclk:clkout;
     wire overflow;
-    reg reset;
+    reg reset_soc;
+    wire reset;
+//    assign reset = btn_reset;
+     assign reset = reset_soc;
     wire [31:0] PC;
     wire [31:0] instr;
     wire [31:0] data_addr;
@@ -157,6 +160,7 @@ module top
     );
     wire btn_ren;
     wire btn_out;
+    wire btn_reset;
     buttonModule bm(
         .clk(cpu_clk),
         .btnDown(btnDownL&btnDownR),
@@ -165,6 +169,7 @@ module top
         .btnRight(btnRightL&btnRightR),
         .ren(btn_ren),
         .address(data_addr[7:0]),
+        // .reset(btn_reset),
         .data_out(btn_out)
     );
     wire flash_ren;
@@ -323,16 +328,16 @@ module top
    );
     `endif
 
-uartController uart_controller (
-    .clk(cpu_clk),
-    .reset(reset),
-    .ren(uart_ren),
-    .wen(1'b0),
-    .uart_rx(uart_rx),
-    .uart_tx(uart_tx),
-    .address(data_addr[1:0]),
-    .data_out(uart_data_out)
-);
+// uartController uart_controller (
+//     .clk(cpu_clk),
+//     .reset(reset),
+//     .ren(uart_ren),
+//     .wen(1'b0),
+//     .uart_rx(uart_rx),
+//     .uart_tx(uart_tx),
+//     .address(data_addr[1:0]),
+//     .data_out(uart_data_out)
+// );
 
 
 
@@ -387,7 +392,7 @@ uartController uart_controller (
         counter <= counter + 1;
         case ( state)
             STATE_INIT: begin
-                reset <= 0;
+                reset_soc <= 0;
                 // `ifndef SYNTHESIS
                     // state <= STATE_DEBOUNCE;
                    state <= STATE_START;
@@ -395,20 +400,20 @@ uartController uart_controller (
 //                if(btn1==0)
 //                begin
 //                    state <=STATE_DEBOUNCE;
-//                    reset<=1;
+//                    reset_soc<=1;
 //                    clk_btn<=0;
 //                end
 //                if(btn2==0)
 //                begin
 //                    state <=STATE_DEBOUNCE;
-//                    reset<=1;
+//                    reset_soc<=1;
 //                    clk_btn<=1;
 //                end
                 // `endif
             end
             STATE_WAITING_BUTTON: begin
                 if (btn1 == 0) begin
-                    reset <= 1;
+                    reset_soc <= 1;
                     state <= STATE_DEBOUNCE;
                     txCounter <= 0;
                 end
@@ -433,7 +438,7 @@ uartController uart_controller (
                 cpuclk<=1;
                 // btn1reg<=1;
                 // btn2reg<=1;
-                reset <= 1;
+                reset_soc <= 1;
                 if (btn1 == 0) begin
                     // btn1reg<=0;
                     state <= STATE_DEBOUNCE;

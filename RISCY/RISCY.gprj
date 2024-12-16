@@ -26,6 +26,7 @@
         <File path="src/GPIO/seven_segment.v" type="file.verilog" enable="1"/>
         <File path="src/GPIO/uart.v" type="file.verilog" enable="1"/>
         <File path="src/GPIO/uartController.v" type="file.verilog" enable="1"/>
+        <File path="src/Memories/DPBRAM.v" type="file.verilog" enable="1"/>
         <File path="src/Memories/flash.v" type="file.verilog" enable="1"/>
         <File path="src/Memories/flashController.v" type="file.verilog" enable="1"/>
         <File path="src/Memories/memory.v" type="file.verilog" enable="1"/>
