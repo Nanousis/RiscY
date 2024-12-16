@@ -141,7 +141,17 @@ class DragDropMergeGUI(QWidget):
             item_widget = self.file_list_widget.itemWidget(self.file_list_widget.item(i))
             program_files.append(item_widget.file_path)
             program_names.append(item_widget.get_program_name())
-            image_files.append(item_widget.get_image_path())
+            # Use the image provided or fall back to default.png
+            image_path = item_widget.get_image_path()
+            if not image_path:
+                image_path = "default.png"
+                if not os.path.exists(image_path):
+                    QMessageBox.critical(
+                        self, "Error", f"No image selected for program '{program_names[i]}' and 'default.png' is missing."
+                    )
+                    return
+            image_files.append(image_path)
+            
 
         if not program_files:
             QMessageBox.warning(self, "Error", "No program files selected.")
