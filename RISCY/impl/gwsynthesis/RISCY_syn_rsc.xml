@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Module name="top" Register="31" Lut="61" T_Register="3339(31)" T_Alu="698(0)" T_Lut="7503(61)" T_Bsram="22(0)">
-    <SubModule name="cpu_1" Register="542" Alu="64" Lut="1736" T_Register="1534(542)" T_Alu="188(64)" T_Lut="3046(1736)">
-        <SubModule name="cpu_regs" Register="992" Alu="10" Lut="1061" T_Register="992(992)" T_Alu="10(10)" T_Lut="1061(1061)"/>
+<Module name="top" Register="31" Lut="60" T_Register="3339(31)" T_Alu="708(0)" T_Lut="7368(60)" T_Bsram="22(0)">
+    <SubModule name="cpu_1" Register="542" Alu="64" Lut="1751" T_Register="1534(542)" T_Alu="188(64)" T_Lut="3060(1751)">
+        <SubModule name="cpu_regs" Register="992" Alu="10" Lut="1060" T_Register="992(992)" T_Alu="10(10)" T_Lut="1060(1060)"/>
         <SubModule name="SignExtendSelector" Lut="44" T_Lut="44(44)"/>
         <SubModule name="control_stall_id" Alu="10" Lut="1" T_Alu="10(10)" T_Lut="1(1)"/>
-        <SubModule name="cpu_alu" Alu="84" Lut="118" T_Alu="84(84)" T_Lut="118(118)"/>
+        <SubModule name="cpu_alu" Alu="84" Lut="119" T_Alu="84(84)" T_Lut="119(119)"/>
         <SubModule name="control_bypass_ex" Alu="20" T_Alu="20(20)"/>
-        <SubModule name="mem_write_selector" Lut="86" T_Lut="86(86)"/>
+        <SubModule name="mem_write_selector" Lut="85" T_Lut="85(85)"/>
     </SubModule>
-    <SubModule name="bu" Lut="319" T_Lut="319(319)"/>
-    <SubModule name="mem" Register="79" Lut="146" Bsram="8" T_Register="79(79)" T_Lut="146(146)" T_Bsram="8(8)"/>
+    <SubModule name="bu" Lut="360" T_Lut="360(360)"/>
+    <SubModule name="mem" Register="79" Lut="134" Bsram="8" T_Register="79(79)" T_Lut="134(134)" T_Bsram="8(8)"/>
     <SubModule name="bm" Register="1" Lut="6" T_Register="1(1)" T_Lut="6(6)"/>
-    <SubModule name="flashController" Register="91" Lut="294" T_Register="218(91)" T_Lut="495(294)">
-        <SubModule name="navigator" Register="127" Lut="201" T_Register="127(127)" T_Lut="201(201)"/>
+    <SubModule name="flashController" Register="91" Lut="374" T_Register="218(91)" T_Lut="581(374)">
+        <SubModule name="navigator" Register="127" Lut="207" T_Register="127(127)" T_Lut="207(207)"/>
     </SubModule>
-    <SubModule name="programMemory_inst" Lut="15" T_Lut="15(15)" T_Bsram="8(0)">
+    <SubModule name="programMemory_inst" Lut="14" T_Lut="14(14)" T_Bsram="8(0)">
         <SubModule name="BRAM_0" Bsram="1" T_Bsram="1(1)"/>
         <SubModule name="BRAM_1" Bsram="1" T_Bsram="1(1)"/>
         <SubModule name="BRAM_2" Bsram="1" T_Bsram="1(1)"/>
@@ -24,16 +24,16 @@
         <SubModule name="BRAM2_2" Bsram="1" T_Bsram="1(1)"/>
         <SubModule name="BRAM2_3" Bsram="1" T_Bsram="1(1)"/>
     </SubModule>
-    <SubModule name="ramData_inst" Register="122" Lut="89" T_Register="788(122)" T_Alu="62(0)" T_Lut="1114(89)" T_Bsram="2(0)">
+    <SubModule name="ramData_inst" Register="122" Lut="75" T_Register="788(122)" T_Alu="62(0)" T_Lut="1100(75)" T_Bsram="2(0)">
         <SubModule name="generate_memory_clk"/>
         <SubModule name="psrams_Interface" Register="666" Alu="62" Lut="1025" Bsram="2" T_Register="666(666)" T_Alu="62(62)" T_Lut="1025(1025)" T_Bsram="2(2)"/>
     </SubModule>
     <SubModule name="slower_clock"/>
-    <SubModule name="ppu_inst" Register="574" Alu="386" Lut="273" T_Register="574(574)" T_Alu="386(386)" T_Lut="273(273)" T_Bsram="4(0)">
+    <SubModule name="ppu_inst" Register="574" Alu="396" Lut="253" T_Register="574(574)" T_Alu="396(396)" T_Lut="253(253)" T_Bsram="4(0)">
         <SubModule name="text_Buffer" Bsram="2" T_Bsram="2(2)"/>
         <SubModule name="sprite_BRAM" Bsram="2" T_Bsram="2(2)"/>
     </SubModule>
-    <SubModule name="D1" Register="28" Lut="1990" T_Register="28(28)" T_Lut="1990(1990)"/>
-    <SubModule name="counter1mhz" Register="43" Alu="31" Lut="19" T_Register="43(43)" T_Alu="31(31)" T_Lut="19(19)"/>
+    <SubModule name="D1" Register="28" Lut="1761" T_Register="28(28)" T_Lut="1761(1761)"/>
+    <SubModule name="counter1mhz" Register="43" Alu="31" Lut="20" T_Register="43(43)" T_Alu="31(31)" T_Lut="20(20)"/>
     <SubModule name="counter27mhz" Register="43" Alu="31" Lut="19" T_Register="43(43)" T_Alu="31(31)" T_Lut="19(19)"/>
 </Module>

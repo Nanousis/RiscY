@@ -31,7 +31,7 @@ module PPU(
     wire [7:0] dataOutSprite;   // BRAM read sprite data
 
     wire [13:0] xcursor_next,ycursor_next,spriteCursor_x;
-    wire [13:0] xcursor_prev=xcursor-14'b1;
+    // wire [13:0] xcursor_prev=xcursor-14'b1;
     wire [12:0] xPos,yPos;
     assign xPos = xcursor[13:1];
     assign yPos = ycursor[13:1];
@@ -41,7 +41,7 @@ module PPU(
 	// used in order to synchronize the first line of the frame
 	// this is wrong though. the first column would be wrong
     assign xcursor_next = xcursor+14'b1;
-    assign spriteCursor_x = xcursor_next[2:1]<<14'b1;
+    assign spriteCursor_x = xcursor[2:1]<<14'b1;
 	assign ycursor_next = ycursor-14'b1;
 	assign currentCharacter = {ycursor[9:5],xcursor_next[9:4]};
 
