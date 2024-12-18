@@ -5,6 +5,7 @@
 #define SCREEN_LOACTION 0x88000000
 #define SCREEN_SIZE 1216
 #define BUTTONS 0x89000000
+#define USB 0x10000000
 #define WaitTime 10000
 #define SCREEN_WIDTH 64
 #define SCREEN_HEIGHT 19
@@ -17,8 +18,7 @@
 #define BG_BLUE 4<<4
 #define BG_MAGENTA 5<<4
 #define BG_CYAN 6<<4
-#define BG_wHITE 7<<4
-
+#define BG_WHITE 7<<4
 
 #include <stddef.h>
 

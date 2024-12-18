@@ -1,11 +1,11 @@
 /* Define the memory regions */
 MEMORY
 {
-    RAM (wx) : ORIGIN = 0x00400000, LENGTH = 8K
+    RAM (wx) : ORIGIN = 0x00400000, LENGTH = 16K
 }
 
 /* Define stack size */
-_stack_size = 0x600; /* 1.5KB stack size */
+_stack_size = 0x800; /* 0.5KB stack size */
 
 /* Place sections into memory */
 SECTIONS

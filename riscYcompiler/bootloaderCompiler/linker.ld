@@ -5,7 +5,7 @@ MEMORY
 }
 
 /* Define stack size */
-_stack_size = 0x400; /* 1KB stack size */
+_stack_size = 0x200; /* 1KB stack size */
 
 /* Place sections into memory */
 SECTIONS
