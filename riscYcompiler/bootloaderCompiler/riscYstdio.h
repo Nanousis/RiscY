@@ -17,8 +17,7 @@
 #define BG_BLUE 4<<4
 #define BG_MAGENTA 5<<4
 #define BG_CYAN 6<<4
-#define BG_WHITE 7<<4
-#define USB 0x10000000
+#define BG_wHITE 7<<4
 
 
 

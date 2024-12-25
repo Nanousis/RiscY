@@ -32,8 +32,18 @@ module top
     input btnDownR,
     input btnUpR,
     input btnLeftR,
-    input btnRightR
+    input btnRightR,
+
+    output [CS_WIDTH-1:0] O_psram_ck,    
+    output [CS_WIDTH-1:0] O_psram_ck_n,
+    inout [CS_WIDTH-1:0] IO_psram_rwds,
+    inout [DQ_WIDTH-1:0] IO_psram_dq,
+    output [CS_WIDTH-1:0] O_psram_reset_n,
+    output [CS_WIDTH-1:0] O_psram_cs_n 
 );
+    parameter  DQ_WIDTH = 8*2;
+    parameter  CS_WIDTH = 1*2;
+
     reg cpuclk=1;
     wire clkout;
 
@@ -47,7 +57,10 @@ module top
     wire cpu_clk;
     assign cpu_clk=(clk_btn==1'b1)?cpuclk:clkout;
     wire overflow;
-    reg reset;
+    reg reset_soc;
+    wire reset;
+//    assign reset = btn_reset;
+     assign reset = reset_soc;
     wire [31:0] PC;
     wire [31:0] instr;
     wire [31:0] data_addr;
@@ -72,7 +85,7 @@ module top
                 .data_out(data_to_write),
                 .data_in(data_read),
                 .byte_select(byte_select),
-                .memReady(memReady)
+                .memReady(ready)
     );
     
     //**********************************************************************************************//
@@ -85,7 +98,7 @@ module top
     wire screen_wen;
     wire [31:0]boot_data_out;
     wire [31:0] boot_instr;
-    wire memReady;
+    wire mem_ready;
     wire debug;
 
     // program_memory
@@ -95,6 +108,8 @@ module top
     wire program_mem_wen;
     wire uart_ren;
     wire [31:0] uart_data_out;
+
+
 
     bus bu( .clk(cpu_clk),
             .PC(PC),
@@ -109,10 +124,14 @@ module top
             .counter27M(counter27M),
             .counter1M(counter1M),
             .program_mem_out(program_mem_out), // ADD
+            .ram_out(ram_data_out),
             .program_instr(program_instr),
+            .stall(ready),
             
             .mem_ren(mem_ren),
             .mem_wen(mem_wen),
+            .ram_ren(ram_ren),
+            .ram_wen(ram_wen),
             .program_mem_ren(program_mem_ren),  // ADD
             .program_mem_wen(program_mem_wen),  // ADD
             .screen_ren(screen_ren),
@@ -137,10 +156,11 @@ module top
             .data_in(data_to_write),
             .data_out(boot_data_out),
             .byte_select_vector(byte_select),
-            .ready(memReady)
+            .ready(mem_ready)
     );
     wire btn_ren;
     wire btn_out;
+    wire btn_reset;
     buttonModule bm(
         .clk(cpu_clk),
         .btnDown(btnDownL&btnDownR),
@@ -149,6 +169,7 @@ module top
         .btnRight(btnRightL&btnRightR),
         .ren(btn_ren),
         .address(data_addr[7:0]),
+        // .reset(btn_reset),
         .data_out(btn_out)
     );
     wire flash_ren;
@@ -188,6 +209,39 @@ module top
         .instr(program_instr),
         .data_out(program_mem_out)
     );
+    
+    //**********************************************************************************************//
+    //                                         RAM MEMORY                                           //
+    //**********************************************************************************************//
+
+    wire ram_ren;
+    wire ram_wen;
+    wire [31:0] ram_data_out;
+    wire ram_ready;
+
+
+    ramData ramData_inst( 
+    .clk(cpu_clk),
+    .reset(reset),
+    .PC(PC[31:2]),
+    .address(data_addr[31:0]),
+    .ren(ram_ren),
+    .wen(ram_wen),
+    .data_in(data_to_write),
+    .byte_select_vector(byte_select),
+    .instr(),
+    .data_out(ram_data_out),
+    .cpu_stall(ram_ready),
+    .O_psram_ck(O_psram_ck), 
+    .O_psram_ck_n(O_psram_ck_n),
+    .IO_psram_rwds(IO_psram_rwds),
+    .IO_psram_dq(IO_psram_dq),
+    .O_psram_reset_n(O_psram_reset_n),
+    .O_psram_cs_n(O_psram_cs_n)
+    );
+ 
+    wire ready;
+    assign ready = ram_ready & mem_ready;
 
     //**********************************************************************************************//
     //                                         VGA SCREEN                                           //
@@ -198,22 +252,50 @@ module top
         .clkin(clk)       //27Mhz
     );
 
-    wire [15:0] data_selected;
-    assign data_selected = (byte_select[1:0] == 2'b11) ? data_to_write[15:0] : data_to_write[31:16]; 
+
+    wire [4:0]R_tmp;
+    wire [5:0]G_tmp;
+    wire [4:0]B_tmp;
+
+    wire [13:0] xcursor, ycursor;
+    wire is_blank;
+
+    PPU ppu_inst (
+        .clk(clk),
+        .clk_cpu(clk),
+        .reset(reset),
+        // .ren(screen_ren),
+        .wen(screen_wen),
+        .address(data_addr[15:0]),
+        .data_in(data_to_write),
+        .byte_select(byte_select),
+        .xcursor(xcursor),
+        .ycursor(ycursor),
+        .is_blank(is_blank),
+        .data_out(),
+        .RGB_R(R_tmp),
+        .RGB_G(G_tmp),
+        .RGB_B(B_tmp)
+
+    );
 
 	VGAMod	D1 (
 		.rst      (reset),
         .clkFpga  (clk),
 		.clkPixel (CLK_PIX),
         
-        .wen        (screen_wen),
-        .wdataText  (data_selected[7:0]),
-        .wdataAttr  (data_selected[15:8]),
-        .waddr      (data_addr[11:1]),
 
 		.RGB_Activate (LCD_DEN),
 		.H_Sync       (LCD_HYNC),
     	.V_Sync       (LCD_SYNC),
+
+        .R_tmp(R_tmp),
+        .G_tmp(G_tmp),
+        .B_tmp(B_tmp),
+        .is_blank(is_blank),
+
+        .PixelCtr(xcursor),
+        .LineCtr(ycursor),
 
 		.RGB_B (LCD_B),
 		.RGB_G (LCD_G),
@@ -246,22 +328,23 @@ module top
    );
     `endif
 
-uartController uart_controller (
-    .clk(cpu_clk),
-    .reset(reset),
-    .ren(uart_ren),
-    .wen(1'b0),
-    .uart_rx(uart_rx),
-    .uart_tx(uart_tx),
-    .address(data_addr[1:0]),
-    .data_out(uart_data_out)
-);
+// uartController uart_controller (
+//     .clk(cpu_clk),
+//     .reset(reset),
+//     .ren(uart_ren),
+//     .wen(1'b0),
+//     .uart_rx(uart_rx),
+//     .uart_tx(uart_tx),
+//     .address(data_addr[1:0]),
+//     .data_out(uart_data_out)
+// );
 
 
 
 //   **********************************************************************************************//
 //                                         CPU TIMER                                               //
 //   **********************************************************************************************//
+
 
     wire [31:0] counter1M;
     cpuTimer #(.DIVISION(27)) counter1mhz
@@ -309,7 +392,7 @@ uartController uart_controller (
         counter <= counter + 1;
         case ( state)
             STATE_INIT: begin
-                reset <= 0;
+                reset_soc <= 0;
                 // `ifndef SYNTHESIS
                     // state <= STATE_DEBOUNCE;
                    state <= STATE_START;
@@ -317,20 +400,20 @@ uartController uart_controller (
 //                if(btn1==0)
 //                begin
 //                    state <=STATE_DEBOUNCE;
-//                    reset<=1;
+//                    reset_soc<=1;
 //                    clk_btn<=0;
 //                end
 //                if(btn2==0)
 //                begin
 //                    state <=STATE_DEBOUNCE;
-//                    reset<=1;
+//                    reset_soc<=1;
 //                    clk_btn<=1;
 //                end
                 // `endif
             end
             STATE_WAITING_BUTTON: begin
                 if (btn1 == 0) begin
-                    reset <= 1;
+                    reset_soc <= 1;
                     state <= STATE_DEBOUNCE;
                     txCounter <= 0;
                 end
@@ -355,7 +438,7 @@ uartController uart_controller (
                 cpuclk<=1;
                 // btn1reg<=1;
                 // btn2reg<=1;
-                reset <= 1;
+                reset_soc <= 1;
                 if (btn1 == 0) begin
                     // btn1reg<=0;
                     state <= STATE_DEBOUNCE;

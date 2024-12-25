@@ -6,6 +6,7 @@ module buttonModule(
     input btnRight,
     input ren,
     input [31:0] address,
+    // output reg reset=1'b1,
     output reg data_out
 );
 localparam STATE_IDLE = 2'b00;
@@ -27,6 +28,10 @@ begin
             default: data_out = 32'b1;
         endcase
     end
+    // if(btnDown == 1'b0 && btnUp == 1'b0 && btnLeft == 1'b0 && btnRight == 1'b0)
+    //     reset=1'b0;
+    // else
+    //     reset=1'b1;
 end
 
 endmodule

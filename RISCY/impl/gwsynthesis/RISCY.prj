@@ -19,6 +19,7 @@
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY\src\CPU\mem_read_selector.v" type="verilog"/>
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY\src\CPU\mem_write_selector.v" type="verilog"/>
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY\src\CPU\signExtend.v" type="verilog"/>
+        <File path="C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY\src\GPIO\PPU.v" type="verilog"/>
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY\src\GPIO\buttonModule.v" type="verilog"/>
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY\src\GPIO\cpuTimer.v" type="verilog"/>
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY\src\GPIO\seven_segment.v" type="verilog"/>
@@ -28,7 +29,11 @@
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY\src\Memories\flashController.v" type="verilog"/>
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY\src\Memories\memory.v" type="verilog"/>
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY\src\Memories\programMemory.v" type="verilog"/>
+        <File path="C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY\src\Memories\ramMemory.v" type="verilog"/>
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY\src\config.vh" type="verilog"/>
+        <File path="C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY\src\gowin_rpll\gowin_rpll_ram.v" type="verilog"/>
+        <File path="C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY\src\gowin_rpll_ppu\gowin_rpll_ppu.v" type="verilog"/>
+        <File path="C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY\src\psram_memory_interface_hs_2ch\psram_memory_interface_hs_2ch.v" type="verilog"/>
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY\src\screenI2C\i2c.v" type="verilog"/>
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY\src\screenI2C\i2capi.v" type="verilog"/>
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY\src\screenI2C\screen.v" type="verilog"/>
@@ -39,6 +44,7 @@
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY\src\screenVGA\gowin_rpll\gowin_rpll.v" type="verilog"/>
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY\src\screenVGA\gowin_sp\gowin_sp.v" type="verilog"/>
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY\src\soc.v" type="verilog"/>
+        <File path="C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY\src\Memories\DPBRAM.v" type="verilog"/>
     </FileList>
     <OptionList>
         <Option type="disable_insert_pad" value="0"/>

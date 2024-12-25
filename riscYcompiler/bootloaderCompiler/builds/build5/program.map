@@ -1,0 +1,99 @@
+
+There are no discarded input sections
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+RAM              0x00000000         0x00001000         xw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD builds/build5/startup.o
+LOAD builds/build5/main.o
+LOAD builds/build5/riscYstdio.o
+                0x00000200                        _stack_size = 0x200
+                0x00000000                        . = ORIGIN (RAM)
+
+.text           0x00000000      0x798
+ *(.text)
+ .text          0x00000000       0x60 builds/build5/startup.o
+                0x00000000                _start
+ .text          0x00000060       0x8c builds/build5/main.o
+                0x00000060                readFlash
+                0x000000b0                getUSBint
+                0x000000bc                WriteSprite
+ .text          0x000000ec      0x698 builds/build5/riscYstdio.o
+                0x000000ec                memcpy
+                0x00000110                memset
+                0x0000012c                getButton
+                0x0000013c                getButtonDown
+                0x00000148                getButtonUp
+                0x00000154                getButtonLeft
+                0x00000160                getButtonRight
+                0x0000016c                putch
+                0x0000019c                printString
+                0x0000025c                printHex
+                0x000002fc                printDec
+                0x000003f0                printf
+                0x00000594                printfSCR
+                0x0000072c                clearScreen
+                0x00000778                resetScreenVector
+ *(.rodata)
+ .rodata        0x00000784       0x14 builds/build5/riscYstdio.o
+                0x00000798                        _etext = .
+
+.text.startup   0x00000798      0x41c
+ .text.startup  0x00000798      0x41c builds/build5/main.o
+                0x00000798                main
+
+.rodata.str1.4  0x00000bb4       0x8e
+ .rodata.str1.4
+                0x00000bb4       0x8e builds/build5/main.o
+                                 0x72 (size before relaxing)
+ .rodata.str1.4
+                0x00000c42       0x1a builds/build5/riscYstdio.o
+
+.rela.dyn       0x00000c44        0x0
+ .rela.text     0x00000c44        0x0 builds/build5/startup.o
+                0x00000c44                        . = ALIGN (0x4)
+
+.data           0x00000c42        0x0 load address 0x00000798
+                0x00000c42                        _sdata = .
+ *(.data)
+ .data          0x00000c42        0x0 builds/build5/startup.o
+ .data          0x00000c42        0x0 builds/build5/main.o
+ .data          0x00000c42        0x0 builds/build5/riscYstdio.o
+                0x00000c42                        _edata = .
+                0x00000c44                        . = ALIGN (0x4)
+
+.bss            0x00000c42        0x0
+                0x00000c42                        _sbss = .
+ *(.bss COMMON)
+ .bss           0x00000c42        0x0 builds/build5/startup.o
+ .bss           0x00000c42        0x0 builds/build5/main.o
+ .bss           0x00000c42        0x0 builds/build5/riscYstdio.o
+                0x00000c42                        _ebss = .
+                0x00000c44                        . = ALIGN (0x4)
+                0x00001000                        _stack_end = (ORIGIN (RAM) + LENGTH (RAM))
+                0x00000e00                        _stack_top = (_stack_end - _stack_size)
+                0x00000c00                        _stack_bottom = (_stack_top - _stack_size)
+OUTPUT(builds/build5/program.elf elf32-littleriscv)
+
+.sbss           0x00000c42        0x2
+ .sbss          0x00000c42        0x2 builds/build5/riscYstdio.o
+                0x00000c42                screenPos
+
+.riscv.attributes
+                0x00000000       0x1c
+ .riscv.attributes
+                0x00000000       0x1a builds/build5/startup.o
+ .riscv.attributes
+                0x0000001a       0x1c builds/build5/main.o
+ .riscv.attributes
+                0x00000036       0x1c builds/build5/riscYstdio.o
+
+.comment        0x00000000       0x1b
+ .comment       0x00000000       0x1b builds/build5/main.o
+                                 0x1c (size before relaxing)
+ .comment       0x0000001b       0x1c builds/build5/riscYstdio.o
