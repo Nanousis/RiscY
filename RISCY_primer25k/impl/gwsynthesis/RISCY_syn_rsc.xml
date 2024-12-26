@@ -1,57 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Module name="top" Register="26" Lut="47" T_Register="3697(26)" T_Alu="1000(0)" T_Lut="7873(47)" T_Bsram="22(0)">
-    <SubModule name="cpu_1" Register="543" Alu="64" Lut="1722" T_Register="1535(543)" T_Alu="188(64)" T_Lut="3045(1722)">
-        <SubModule name="cpu_regs" Register="992" Alu="10" Lut="1060" T_Register="992(992)" T_Alu="10(10)" T_Lut="1060(1060)"/>
-        <SubModule name="SignExtendSelector" Lut="48" T_Lut="48(48)"/>
-        <SubModule name="control_stall_id" Alu="10" Lut="1" T_Alu="10(10)" T_Lut="1(1)"/>
-        <SubModule name="cpu_alu" Alu="84" Lut="120" T_Alu="84(84)" T_Lut="120(120)"/>
-        <SubModule name="control_bypass_ex" Alu="20" T_Alu="20(20)"/>
-        <SubModule name="mem_write_selector" Lut="94" T_Lut="94(94)"/>
-    </SubModule>
-    <SubModule name="bu" Lut="389" T_Lut="389(389)"/>
-    <SubModule name="mem" Register="79" Lut="176" Bsram="8" T_Register="79(79)" T_Lut="176(176)" T_Bsram="8(8)"/>
-    <SubModule name="bm" Register="1" Lut="4" T_Register="1(1)" T_Lut="4(4)"/>
-    <SubModule name="flashController" Register="91" Lut="326" T_Register="218(91)" T_Lut="550(326)">
-        <SubModule name="navigator" Register="127" Lut="224" T_Register="127(127)" T_Lut="224(224)"/>
-    </SubModule>
-    <SubModule name="programMemory_inst" Lut="33" T_Lut="33(33)" T_Bsram="8(0)">
-        <SubModule name="BRAM_0" Bsram="1" T_Bsram="1(1)"/>
-        <SubModule name="BRAM_1" Bsram="1" T_Bsram="1(1)"/>
-        <SubModule name="BRAM_2" Bsram="1" T_Bsram="1(1)"/>
-        <SubModule name="BRAM_3" Bsram="1" T_Bsram="1(1)"/>
-        <SubModule name="BRAM2_0" Bsram="1" T_Bsram="1(1)"/>
-        <SubModule name="BRAM2_1" Bsram="1" T_Bsram="1(1)"/>
-        <SubModule name="BRAM2_2" Bsram="1" T_Bsram="1(1)"/>
-        <SubModule name="BRAM2_3" Bsram="1" T_Bsram="1(1)"/>
-    </SubModule>
-    <SubModule name="pll_usb"/>
-    <SubModule name="usb" Register="64" Lut="84" T_Register="376(64)" T_Alu="43(0)" T_Lut="402(84)" T_Bsram="1(0)">
-        <SubModule name="usb_host" Register="163" Lut="108" T_Register="312(163)" T_Alu="43(0)" T_Lut="318(108)" T_Bsram="1(0)">
-            <SubModule name="ukp" Register="149" Alu="43" Lut="210" T_Register="149(149)" T_Alu="43(43)" T_Lut="210(210)" T_Bsram="1(0)">
-                <SubModule name="ukprom" Bsram="1" T_Bsram="1(1)"/>
-            </SubModule>
-        </SubModule>
-    </SubModule>
-    <SubModule name="Gowin_PLL_inst"/>
-    <SubModule name="Gowin_CLKDIV_inst"/>
-    <SubModule name="ppu_inst" Register="835" Alu="592" Lut="2522" T_Register="847(835)" T_Alu="592(592)" T_Lut="2538(2522)" T_Bsram="5(0)">
-        <SubModule name="fifo_data" Register="6" Lut="8" Bsram="1" T_Register="6(6)" T_Lut="8(8)" T_Bsram="1(1)"/>
-        <SubModule name="fifo_address" Register="6" Lut="8" Bsram="1" T_Register="6(6)" T_Lut="8(8)" T_Bsram="1(1)"/>
-        <SubModule name="text_Buffer" Bsram="1" T_Bsram="1(1)"/>
-        <SubModule name="attributes_Buffer" Bsram="1" T_Bsram="1(1)"/>
-        <SubModule name="sprite_buffer" Bsram="1" T_Bsram="1(1)"/>
-    </SubModule>
-    <SubModule name="u_Reset_Sync" Register="4" Alu="4" Lut="2" T_Register="4(4)" T_Alu="4(4)" T_Lut="2(2)"/>
-    <SubModule name="svo_hdmi_inst_1" Register="4" Lut="1" T_Register="482(4)" T_Alu="111(0)" T_Lut="561(1)">
-        <SubModule name="svo_tcard" Register="48" Lut="58" T_Register="48(48)" T_Lut="58(58)"/>
-        <SubModule name="svo_enc" Register="316" Alu="6" Lut="260" T_Register="316(316)" T_Alu="6(6)" T_Lut="260(260)"/>
-        <SubModule name="svo_tmds_0" Register="38" Alu="35" Lut="84" T_Register="38(38)" T_Alu="35(35)" T_Lut="84(84)"/>
-        <SubModule name="svo_tmds_1" Register="38" Alu="35" Lut="79" T_Register="38(38)" T_Alu="35(35)" T_Lut="79(79)"/>
-        <SubModule name="svo_tmds_2" Register="38" Alu="35" Lut="79" T_Register="38(38)" T_Alu="35(35)" T_Lut="79(79)"/>
-    </SubModule>
-    <SubModule name="uart_controller" T_Register="43(0)" T_Lut="86(0)">
-        <SubModule name="uart_inst" Register="43" Lut="86" T_Register="43(43)" T_Lut="86(86)"/>
-    </SubModule>
-    <SubModule name="counter1mhz" Register="43" Alu="31" Lut="21" T_Register="43(43)" T_Alu="31(31)" T_Lut="21(21)"/>
-    <SubModule name="counter27mhz" Register="43" Alu="31" Lut="19" T_Register="43(43)" T_Alu="31(31)" T_Lut="19(19)"/>
+<Module name="top" Register="26" Lut="47" T_Register="3713(26)" T_Alu="999(0)" T_Lut="7977(47)" T_Bsram="23(0)">
+ <SubModule name="cpu_1" Register="547" Alu="64" Lut="1830" T_Register="1539(547)" T_Alu="188(64)" T_Lut="3145(1830)">
+  <SubModule name="cpu_regs" Register="992" Alu="10" Lut="1062" T_Register="992(992)" T_Alu="10(10)" T_Lut="1062(1062)"/>
+  <SubModule name="SignExtendSelector" Lut="48" T_Lut="48(48)"/>
+  <SubModule name="control_stall_id" Alu="10" Lut="1" T_Alu="10(10)" T_Lut="1(1)"/>
+  <SubModule name="cpu_alu" Alu="84" Lut="120" T_Alu="84(84)" T_Lut="120(120)"/>
+  <SubModule name="control_bypass_ex" Alu="20" T_Alu="20(20)"/>
+  <SubModule name="mem_write_selector" Lut="84" T_Lut="84(84)"/>
+ </SubModule>
+ <SubModule name="bu" Lut="407" T_Lut="407(407)"/>
+ <SubModule name="mem" Register="79" Lut="144" Bsram="8" T_Register="79(79)" T_Lut="144(144)" T_Bsram="8(8)"/>
+ <SubModule name="bm" Register="1" Lut="4" T_Register="1(1)" T_Lut="4(4)"/>
+ <SubModule name="flashController" Register="91" Lut="318" T_Register="218(91)" T_Lut="540(318)">
+  <SubModule name="navigator" Register="127" Lut="222" T_Register="127(127)" T_Lut="222(222)"/>
+ </SubModule>
+ <SubModule name="programMemory_inst" Lut="20" T_Lut="20(20)" T_Bsram="8(0)">
+  <SubModule name="BRAM_0" Bsram="1" T_Bsram="1(1)"/>
+  <SubModule name="BRAM_1" Bsram="1" T_Bsram="1(1)"/>
+  <SubModule name="BRAM_2" Bsram="1" T_Bsram="1(1)"/>
+  <SubModule name="BRAM_3" Bsram="1" T_Bsram="1(1)"/>
+  <SubModule name="BRAM2_0" Bsram="1" T_Bsram="1(1)"/>
+  <SubModule name="BRAM2_1" Bsram="1" T_Bsram="1(1)"/>
+  <SubModule name="BRAM2_2" Bsram="1" T_Bsram="1(1)"/>
+  <SubModule name="BRAM2_3" Bsram="1" T_Bsram="1(1)"/>
+ </SubModule>
+ <SubModule name="pll_usb"/>
+ <SubModule name="usb" Register="64" Lut="80" T_Register="376(64)" T_Alu="43(0)" T_Lut="401(80)" T_Bsram="1(0)">
+  <SubModule name="usb_host" Register="163" Lut="109" T_Register="312(163)" T_Alu="43(0)" T_Lut="321(109)" T_Bsram="1(0)">
+   <SubModule name="ukp" Register="149" Alu="43" Lut="212" T_Register="149(149)" T_Alu="43(43)" T_Lut="212(212)" T_Bsram="1(0)">
+    <SubModule name="ukprom" Bsram="1" T_Bsram="1(1)"/>
+   </SubModule>
+  </SubModule>
+ </SubModule>
+ <SubModule name="Gowin_PLL_inst"/>
+ <SubModule name="Gowin_CLKDIV_inst"/>
+ <SubModule name="ppu_inst" Register="847" Alu="591" Lut="2572" T_Register="859(847)" T_Alu="591(591)" T_Lut="2588(2572)" T_Bsram="6(0)">
+  <SubModule name="fifo_data" Register="6" Lut="8" Bsram="1" T_Register="6(6)" T_Lut="8(8)" T_Bsram="1(1)"/>
+  <SubModule name="fifo_address" Register="6" Lut="8" Bsram="1" T_Register="6(6)" T_Lut="8(8)" T_Bsram="1(1)"/>
+  <SubModule name="text_Buffer" Bsram="2" T_Bsram="2(2)"/>
+  <SubModule name="sprite_BRAM" Bsram="2" T_Bsram="2(2)"/>
+ </SubModule>
+ <SubModule name="u_Reset_Sync" Register="4" Alu="4" Lut="2" T_Register="4(4)" T_Alu="4(4)" T_Lut="2(2)"/>
+ <SubModule name="svo_hdmi_inst_1" Register="4" Lut="1" T_Register="482(4)" T_Alu="111(0)" T_Lut="553(1)">
+  <SubModule name="svo_tcard" Register="48" Lut="56" T_Register="48(48)" T_Lut="56(56)"/>
+  <SubModule name="svo_enc" Register="316" Alu="6" Lut="256" T_Register="316(316)" T_Alu="6(6)" T_Lut="256(256)"/>
+  <SubModule name="svo_tmds_0" Register="38" Alu="35" Lut="83" T_Register="38(38)" T_Alu="35(35)" T_Lut="83(83)"/>
+  <SubModule name="svo_tmds_1" Register="38" Alu="35" Lut="79" T_Register="38(38)" T_Alu="35(35)" T_Lut="79(79)"/>
+  <SubModule name="svo_tmds_2" Register="38" Alu="35" Lut="78" T_Register="38(38)" T_Alu="35(35)" T_Lut="78(78)"/>
+ </SubModule>
+ <SubModule name="uart_controller" T_Register="43(0)" T_Lut="87(0)">
+  <SubModule name="uart_inst" Register="43" Lut="87" T_Register="43(43)" T_Lut="87(87)"/>
+ </SubModule>
+ <SubModule name="counter1mhz" Register="43" Alu="31" Lut="20" T_Register="43(43)" T_Alu="31(31)" T_Lut="20(20)"/>
+ <SubModule name="counter27mhz" Register="43" Alu="31" Lut="19" T_Register="43(43)" T_Alu="31(31)" T_Lut="19(19)"/>
 </Module>

@@ -2,207 +2,215 @@
  "Device" : "GW5A-25A",
  "Files" : [
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/Buses/bus.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/Buses/bus.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/ALUCPU.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/ALUCPU.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/RegFile.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/RegFile.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/SignExtendSelector.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/SignExtendSelector.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/constants.vh",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/constants.vh",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/control_alu.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/control_alu.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/control_branch.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/control_branch.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/control_bypass_ex.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/control_bypass_ex.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/control_main.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/control_main.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/control_stall_id.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/control_stall_id.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/cpu.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/cpu.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/mem_read_selector.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/mem_read_selector.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/mem_write_selector.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/mem_write_selector.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/signExtend.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/signExtend.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/GPIO/PPU.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/GPIO/PPU.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/GPIO/buttonModule.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/GPIO/buttonModule.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/GPIO/cpuTimer.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/GPIO/cpuTimer.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/GPIO/seven_segment.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/GPIO/seven_segment.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/GPIO/uart.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/GPIO/uart.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/GPIO/uartController.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/GPIO/uartController.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/Memories/flash.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/Memories/flash.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/Memories/flashController.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/Memories/flashController.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/Memories/memory.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/Memories/memory.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/Memories/programMemory.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/Memories/programMemory.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/config.vh",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/config.vh",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/fifo_sc_video/fifo_sc_video.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/fifo_sc_video/fifo_sc_video.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/fifo_sc_video/fifo_sc_videoAddress.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/fifo_sc_video/fifo_sc_videoAddress.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/gowin_clkdiv/gowin_clkdiv.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/gowin_clkdiv/gowin_clkdiv.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/gowin_dpb/gowin_dpb.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/gowin_dpb/gowin_dpb.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/gowin_pll_600p/gowin_pll_600p.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/gowin_pll_600p/gowin_pll_600p.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/gowin_pll_720p/gowin_pll_720p.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/gowin_pll_720p/gowin_pll_720p.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_defines.vh",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_defines.vh",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_enc.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_enc.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_hdmi.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_hdmi.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_openldi.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_openldi.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_pong.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_pong.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_tcard.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_tcard.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_term.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_term.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_tmds.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_tmds.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_utils.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_vdma.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/svo_vdma.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/screenI2C/i2c.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/screenI2C/i2c.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/screenI2C/i2capi.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/screenI2C/i2capi.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/screenI2C/screen.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/screenI2C/screen.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/screenI2C/textEngine.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/screenI2C/textEngine.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/soc.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/soc.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/usb/pll/gowin_pll_usb.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/usb/pll/gowin_pll_usb.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/usb/usb_controller.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/usb/usb_controller.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/usb/usb_hid_host.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/usb/usb_hid_host.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/src/usb/usb_hid_host_rom.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/usb/usb_hid_host_rom.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/CSRFile.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/Memories/DPBRAM.v",
    "Type" : "verilog"
   }
  ],
@@ -210,7 +218,7 @@
 
  ],
  "LoopLimit" : 2000,
- "ResultFile" : "C:/Users/Panagiotis/Documents/GitHub/RiscY/RISCY_primer25k/impl/temp/rtl_parser.result",
+ "ResultFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/impl/temp/rtl_parser.result",
  "Top" : "top",
  "VerilogStd" : "sysv",
  "VhdlStd" : "vhdl_93"

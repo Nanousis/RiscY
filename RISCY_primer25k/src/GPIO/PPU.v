@@ -93,78 +93,84 @@ module PPU(
 	);
 
     
-	Gowin_DPB text_Buffer(
-        //port A -> write port
-        .douta(douta), 
-        .clka(clk_cpu),     
-        .ocea(1'b1), 
-        .cea(1'b1), 
-        .reseta(!reset),     
-        .wrea(wen&&textEn),         
-        .ada(address[15:1]),        
-        .dina(writeText),
-        
-        //port B -> read port
-        .doutb(dataOutTxt), 
-        .clkb(clk),     
-        .oceb(1'b1),       
-        .ceb(1'b1), 
-        .resetb(!reset),      
-        .wreb(1'b0),        
-        .adb(currentCharacter), 
-        .dinb(dinb)         
+    DPBRAM #(
+    .DATA_WIDTH(8),  // 1 byte per address
+    .ADDR_WIDTH(11)  // 2048 addresses
+    )text_Buffer(
+        .clkA(clk_cpu), 
+        .we_a(textEn), //write enable
+        .addr_a(text_address[15:1]), //write address
+        .dout_a(), //not needed 
+        .din_a(writeText), //write text from one port 
+
+        .clkB(clk),
+        .we_b(1'b0), 
+        .addr_b(currentCharacter), // read address
+        .din_b(),   //not needed
+        .dout_b(dataOutTxt) //read text from the other port
     );
 
-    Gowin_DPB attributes_Buffer(
-        //port A -> write port
-        .douta(douta), 
-        .clka(clk_cpu), 
-        .ocea(1'b1), 
-        .cea(1'b1), 
-        .reseta(!reset), 
-        .wrea(wen&&textEn), 
-        .ada(address[15:1]), 
-        .dina(writeAttr), 
-        
-        //port B -> read port
-        .doutb(dataOutAttr),
-        .clkb(clk), 
-        .oceb(1'b1), 
-        .ceb(1'b1), 
-        .resetb(!reset), 
-        .wreb(1'b0), 
-        .adb(currentCharacter), 
-        .dinb(dinb) 
+    DPBRAM #(
+    .DATA_WIDTH(8),  // 1 byte per address
+    .ADDR_WIDTH(11)  // 2048 addresses
+    )attributes_Buffer(
+        .clkA(clk_cpu), 
+        .we_a(textEn), //write enable
+        .addr_a(text_address[15:1]), //write address
+        .dout_a(), //not needed 
+        .din_a(writeAttr), //write attributes from one port 
+
+        .clkB(clk),
+        .we_b(1'b0), 
+        .addr_b(currentCharacter), // read address
+        .din_b(),   //not needed
+        .dout_b(dataOutAttr) //read attributes from the other port
+    );
+   
+    DPBRAM #(
+    .DATA_WIDTH(8),  // 1 byte per address
+    .ADDR_WIDTH(12)  // 4096 addresses
+    )sprite_BRAM(
+        .clkA(clk_cpu), 
+        .we_a(spritesEn), //write enable
+        .addr_a(text_address[15:1]-16'd2048), //write address
+        .dout_a(), //not needed 
+        .din_a(writeSprite), //write sprites from one port 
+
+        .clkB(clk),
+        .we_b(1'b0), 
+        .addr_b((~hblank)?spritePointer:objectPointer), // read address
+        .din_b(),   //not needed
+        .dout_b(dataOutSprite) //read sprites from the other port
     );
 
-                                                                               
-                                                                               
-    Gowin_DPB_program sprite_buffer(
-        //port A -> write port
-        .douta(douta), 
-        .clka(clk_cpu), 
-        .ocea(1'b1), 
-        .cea(1'b1), 
-        .reseta(!reset), 
-        .wrea(wen&&spritesEn), 
-        .ada(address[15:1]-16'd2048), 
-        .dina(writeSprite), 
+    // Gowin_DPB_program sprite_buffer(
+    //     //port A -> write port
+    //     .douta(douta), 
+    //     .clka(clk_cpu), 
+    //     .ocea(1'b1), 
+    //     .cea(1'b1), 
+    //     .reseta(!reset), 
+    //     .wrea(wen&&spritesEn), 
+    //     .ada(address[15:1]-16'd2048), 
+    //     .dina(writeSprite), 
         
-        //port B -> read port
-        .doutb(dataOutSprite),
-        .clkb(clk), 
-        .oceb(1'b1), 
-        .ceb(1'b1), 
-        .resetb(!reset), 
-        .wreb(1'b0), 
-        .adb((~hblank)?spritePointer:objectPointer), 
-        // .adb(spritePointer),
-        .dinb(dinb) 
-    );
+    //     //port B -> read port
+    //     .doutb(dataOutSprite),
+    //     .clkb(clk), 
+    //     .oceb(1'b1), 
+    //     .ceb(1'b1), 
+    //     .resetb(!reset), 
+    //     .wreb(1'b0), 
+    //     .adb((~hblank)?spritePointer:objectPointer), 
+    //     // .adb(spritePointer),
+    //     .dinb(dinb) 
+    // );
 
     reg [23:0] counter=0;
     // reg [8:0] xCounter=9'b001111111;
-    
+    reg [31:0] text_address;
+
 
     always@(posedge clk or negedge reset)
     begin
@@ -175,6 +181,7 @@ module PPU(
             writeAttr<=0;
             writeText<=0;
             writeSprite<=0;
+            text_address<=0;
             fifo_ren<=0;
         end
         else
@@ -193,6 +200,7 @@ module PPU(
             writeAttr<=0;
             writeText<=0;
             writeSprite<=0;
+            text_address<=address;
             if(wen)begin
                 // from 0->2048 is the text memory
                 if(address<16'd3072)begin

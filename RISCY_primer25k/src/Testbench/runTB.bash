@@ -7,7 +7,7 @@
 [ -f ZSOC.vcd ] && rm ZSOC.vcd
 
 # Run iverilog
-iverilog -DTESTBENCH -o test.o -s test -I../include ./soctb.v ../Buses/*.v ../CPU/*.v ../GPIO/*.v ../Memories/*.v ../screenI2C/*.v ../*.v ../BRAMS/gowin_dpb_program/*.v
+iverilog -DTESTBENCH -o test.o -s test -I../include ./soctb.v  ./Simulation/*.v ../CPU/*.v ../GPIO/*.v ../Memories/*.v ../screenI2C/*.v  ../BRAMS/gowin_dpb_program/*.v ../*.v ../Buses/*.v 
 
 # Run vvp
 vvp test.o

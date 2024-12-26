@@ -52,8 +52,11 @@ top TOP
         $display("REG 3 is %d",test.TOP.cpu_1.cpu_regs.data[3]);
         $display("REG 4 is %d",test.TOP.cpu_1.cpu_regs.data[4]);
         $display("REG 5 is %d",test.TOP.cpu_1.cpu_regs.data[5]);
-
-        #2000 $finish;
+        #20000 
+        for (i = 0; i < 19; i = i + 1) begin
+            $display("%d: %s", i,test.TOP.text.charMemory[i]);
+        end
+        $finish;
     end
     integer i;
     initial begin
@@ -62,9 +65,9 @@ top TOP
         for (i = 0; i < 32; i = i + 1) begin
             $dumpvars(1, test.TOP.cpu_1.cpu_regs.data[i]);
         end
-        // for (i = 0; i < 64; i = i + 1) begin
-        //     $dumpvars(1, test.TOP.text.charMemory[i]);
-        // end
+        for (i = 0; i < 19; i = i + 1) begin
+            $dumpvars(1, test.TOP.text.charMemory[i]);
+        end
         // for (i = 0; i < 8; i = i + 1) begin
         //     $dumpvars(1, test.TOP.u_memory_management_unit.InstCache.data_mem[i]);
         // end

@@ -301,36 +301,36 @@ module top
 
 	assign		LCD_CLK		=	CLK_PIX;
     `else
-   textEngine text(
+   textTest text(
                    .clk(clk),
                    .reset(reset),
                    .pixelAddress(pixelAddress),
-                   .char_write_addr(data_addr[5:0]),
+                   .char_write_addr(data_addr[15:1]),
                    .ren(screen_ren),
                    .wen(screen_wen),
                    .char_write((byte_select[0] == 1'b1)?data_to_write[7:0]:(byte_select[1] == 1'b1)?data_to_write[15:8]:(byte_select[2] == 1'b1)?data_to_write[23:16]:data_to_write[31:24]),
                    .pixelData(pixelData),
                    .error(error)
    );
-   screen scr(
-       .clk(clk),
-       .pixelData(pixelData),
-       .pixelAddress(pixelAddress),
-       .io_sda(io_sda),  // I2C data line (bi-directional)
-       .io_scl(io_scl)  // I2C clock line
-   );
+//    screen scr(
+//        .clk(clk),
+//        .pixelData(pixelData),
+//        .pixelAddress(pixelAddress),
+//        .io_sda(io_sda),  // I2C data line (bi-directional)
+//        .io_scl(io_scl)  // I2C clock line
+//    );
     `endif
 
-    uartController uart_controller (
-        .clk(cpu_clk),
-        .reset(reset),
-        .ren(uart_ren),
-        .wen(1'b0),
-        .uart_rx(uart_rx),
-        .uart_tx(uart_tx),
-        .address(data_addr[1:0]),
-        .data_out(uart_data_out)
-    );
+    // uartController uart_controller (
+    //     .clk(cpu_clk),
+    //     .reset(reset),
+    //     .ren(uart_ren),
+    //     .wen(1'b0),
+    //     .uart_rx(uart_rx),
+    //     .uart_tx(uart_tx),
+    //     .address(data_addr[1:0]),
+    //     .data_out(uart_data_out)
+    // );
 
 
 
@@ -340,21 +340,19 @@ module top
 
 
     wire [31:0] counter1M;
-    wire [31:0] counter27M;
-    `ifndef TESTBENCH
-    cpuTimer #(.DIVISION(27)) counter1mhz
+    wire [31:0] counter50M;
+    cpuTimer #(.DIVISION(50)) counter1mhz
     (
         .clk(cpu_clk),
         .reset(reset),
         .counter(counter1M)
     );
-    cpuTimer #(.DIVISION(1)) counter27mhz
+    cpuTimer #(.DIVISION(1)) counter50mhz
     (
         .clk(cpu_clk),
         .reset(reset),
-        .counter(counter27M)
+        .counter(counter50M)
     );
-    `endif
     reg [2:0] state=0;
     localparam STATE_INIT = 0;
     localparam STATE_WAITING_BUTTON = 1;
@@ -369,41 +367,15 @@ module top
         case ( state)
             STATE_INIT: begin
                 reset <= 0;
-                // `ifndef SYNTHESIS
-                    // state <= STATE_DEBOUNCE;
-                   state <= STATE_START;
-                // `else
-//                if(btn1==0)
-//                begin
-//                    state <=STATE_DEBOUNCE;
-//                    reset<=1;
-//                    clk_btn<=0;
-//                end
-//                if(btn2==0)
-//                begin
-//                    state <=STATE_DEBOUNCE;
-//                    reset<=1;
-//                    clk_btn<=1;
-//                end
-                // `endif
+                state <= STATE_START;
             end
             STATE_WAITING_BUTTON: begin
                 state <= STATE_INIT;
-                // if (btn1 == 0) begin
-                //     reset <= 1;
-                //     state <= STATE_DEBOUNCE;
-                //     txCounter <= 0;
-                // end
             end
             STATE_DEBOUNCE: begin
                 cpuclk=0;
 
                 txCounter <= txCounter + 1;
-                if(txCounter ==22'hFF)
-                begin
-                // btn1reg<=1;
-                // btn2reg<=1;
-                end
                 if (txCounter == 22'hFFFF) begin
                     txCounter <=0;
                     state <= STATE_START;
@@ -412,20 +384,12 @@ module top
             end
             STATE_START: begin
                 cpuclk<=1;
-                // btn1reg<=1;
-                // btn2reg<=1;
                 reset <= 1;
                  if (resetn == 1) begin
-                //     // btn1reg<=0;
                      state <= STATE_DEBOUNCE;
                      txCounter <= 0;
                      reset <=0;
                  end
-                // if (btn2 == 0) begin
-                //     // btn2reg<=0;
-                //     state <= STATE_DEBOUNCE;
-                //     txCounter <= 0;
-//                end
             end
         endcase
         
