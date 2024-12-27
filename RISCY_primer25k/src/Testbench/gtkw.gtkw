@@ -1,60 +1,64 @@
 [*]
 [*] GTKWave Analyzer v3.4.0 (w)1999-2022 BSI
-[*] Thu Dec 26 11:39:58 2024
+[*] Fri Dec 27 16:59:09 2024
 [*]
 [dumpfile] "ZSOC.vcd"
-[dumpfile_mtime] "Thu Dec 26 11:39:05 2024"
-[dumpfile_size] 10782356
+[dumpfile_mtime] "Fri Dec 27 16:44:41 2024"
+[dumpfile_size] 11080057
 [savefile] "gtkw.gtkw"
-[timestart] 7720000
-[size] 1512 916
-[pos] 1761 34
-*-21.390831 11310000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[timestart] 1071100
+[size] 2160 1010
+[pos] 1912 62
+*-16.390831 1290000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] test.
 [treeopen] test.TOP.
 [treeopen] test.TOP.cpu_1.
 [sst_width] 253
-[signals_width] 364
+[signals_width] 237
 [sst_expanded] 1
-[sst_vpaned_height] 458
+[sst_vpaned_height] 516
 @28
 test.TOP.cpu_1.reset
 test.TOP.cpu_1.clock
 @22
 test.TOP.counter1M[31:0]
+@23
 test.TOP.counter50M[31:0]
 @c00200
 -Memory
 @1401200
 -Memory
-@c00200
+@800200
 -Instruction Fetch
 @200
 -Fetch
 @22
-test.TOP.cpu_1.PC_OLD[31:0]
 [color] 7
 test.TOP.PC[31:0]
-[color] 7
-test.TOP.instr[31:0]
-[color] 7
-test.TOP.cpu_1.delayed_instr[31:0]
 @28
 [color] 1
 test.TOP.cpu_1.write_pc
 test.TOP.cpu_1.Branch
 test.TOP.cpu_1.reg_type[1:0]
-@1401200
+test.TOP.cpu_1.PCSrc
+@1000200
 -Instruction Fetch
-@c00200
+@22
+[color] 7
+test.TOP.instr[31:0]
+@28
+test.TOP.cpu_1.keepDelayInstr
+@22
+test.TOP.cpu_1.PC_IF2[31:0]
+test.TOP.cpu_1.IF2_instr[31:0]
+@800200
 -Decode
 @200
 -Decode
 @22
 [color] 6
-test.TOP.cpu_1.IFID_instr[31:0]
-[color] 6
 test.TOP.cpu_1.IFID_PC[31:0]
+test.TOP.cpu_1.IFID_instr[31:0]
 [color] 6
 test.TOP.cpu_1.opcode[6:0]
 @28
@@ -70,22 +74,21 @@ test.TOP.cpu_1.instr_rs2[4:0]
 [color] 6
 test.TOP.cpu_1.instr_rd[4:0]
 @28
-[color] 6
+[color] 1
 test.TOP.cpu_1.bubble_ifid
-@22
-test.TOP.cpu_1.csr_addr[11:0]
-@28
-[color] 2
-test.TOP.cpu_1.IFID_instrColdStart
 [color] 1
 test.TOP.cpu_1.write_ifid
-@1401200
+test.TOP.cpu_1.Branch
+@22
+test.TOP.cpu_1.csr_addr[11:0]
+@1000200
 -Decode
 @c00200
 -Execute
 @22
 [color] 5
 test.TOP.cpu_1.IDEX_PC[31:0]
+test.TOP.cpu_1.IDEX_instr[31:0]
 @28
 [color] 5
 test.TOP.cpu_1.IDEX_ALUSrc
@@ -224,9 +227,9 @@ test.TOP.cpu_1.MEMWB_reg_type[1:0]
 -Temp Registers
 @200
 -Temp registers
-@22
+@24
 test.TOP.cpu_1.cpu_regs.\data[5][31:0]
-@c00022
+@c00024
 test.TOP.cpu_1.cpu_regs.\data[6][31:0]
 @28
 (0)test.TOP.cpu_1.cpu_regs.\data[6][31:0]
@@ -263,11 +266,11 @@ test.TOP.cpu_1.cpu_regs.\data[6][31:0]
 (31)test.TOP.cpu_1.cpu_regs.\data[6][31:0]
 @1401200
 -group_end
-@22
+@24
 test.TOP.cpu_1.cpu_regs.\data[7][31:0]
 test.TOP.cpu_1.cpu_regs.\data[28][31:0]
 test.TOP.cpu_1.cpu_regs.\data[29][31:0]
-@c00022
+@c00024
 test.TOP.cpu_1.cpu_regs.\data[30][31:0]
 @28
 (0)test.TOP.cpu_1.cpu_regs.\data[30][31:0]
@@ -304,10 +307,47 @@ test.TOP.cpu_1.cpu_regs.\data[30][31:0]
 (31)test.TOP.cpu_1.cpu_regs.\data[30][31:0]
 @1401200
 -group_end
-@22
+@24
 test.TOP.cpu_1.cpu_regs.\data[31][31:0]
 @1401200
 -Temp Registers
+@800200
+-registers
+@22
+test.TOP.cpu_1.cpu_regs.\data[0][31:0]
+test.TOP.cpu_1.cpu_regs.\data[1][31:0]
+test.TOP.cpu_1.cpu_regs.\data[2][31:0]
+test.TOP.cpu_1.cpu_regs.\data[3][31:0]
+test.TOP.cpu_1.cpu_regs.\data[4][31:0]
+test.TOP.cpu_1.cpu_regs.\data[5][31:0]
+test.TOP.cpu_1.cpu_regs.\data[6][31:0]
+test.TOP.cpu_1.cpu_regs.\data[7][31:0]
+test.TOP.cpu_1.cpu_regs.\data[8][31:0]
+test.TOP.cpu_1.cpu_regs.\data[9][31:0]
+test.TOP.cpu_1.cpu_regs.\data[10][31:0]
+test.TOP.cpu_1.cpu_regs.\data[11][31:0]
+test.TOP.cpu_1.cpu_regs.\data[12][31:0]
+test.TOP.cpu_1.cpu_regs.\data[13][31:0]
+test.TOP.cpu_1.cpu_regs.\data[14][31:0]
+test.TOP.cpu_1.cpu_regs.\data[15][31:0]
+test.TOP.cpu_1.cpu_regs.\data[16][31:0]
+test.TOP.cpu_1.cpu_regs.\data[17][31:0]
+test.TOP.cpu_1.cpu_regs.\data[18][31:0]
+test.TOP.cpu_1.cpu_regs.\data[19][31:0]
+test.TOP.cpu_1.cpu_regs.\data[20][31:0]
+test.TOP.cpu_1.cpu_regs.\data[21][31:0]
+test.TOP.cpu_1.cpu_regs.\data[22][31:0]
+test.TOP.cpu_1.cpu_regs.\data[23][31:0]
+test.TOP.cpu_1.cpu_regs.\data[24][31:0]
+test.TOP.cpu_1.cpu_regs.\data[25][31:0]
+test.TOP.cpu_1.cpu_regs.\data[26][31:0]
+test.TOP.cpu_1.cpu_regs.\data[27][31:0]
+test.TOP.cpu_1.cpu_regs.\data[28][31:0]
+test.TOP.cpu_1.cpu_regs.\data[29][31:0]
+test.TOP.cpu_1.cpu_regs.\data[30][31:0]
+test.TOP.cpu_1.cpu_regs.\data[31][31:0]
+@1000200
+-registers
 @c00200
 -CSR
 @22
@@ -356,11 +396,11 @@ test.TOP.flashController.flash_address[23:0]
 test.TOP.flashController.stateDebug[4:0]
 @1401200
 -FlashController
-@800201
+@800200
 -ScreenText
-@c00821
+@c00820
 test.TOP.text.\charMemory[0][0:511]
-@29
+@28
 (0)test.TOP.text.\charMemory[0][0:511]
 (1)test.TOP.text.\charMemory[0][0:511]
 (2)test.TOP.text.\charMemory[0][0:511]
@@ -873,9 +913,9 @@ test.TOP.text.\charMemory[0][0:511]
 (509)test.TOP.text.\charMemory[0][0:511]
 (510)test.TOP.text.\charMemory[0][0:511]
 (511)test.TOP.text.\charMemory[0][0:511]
-@1401201
+@1401200
 -group_end
-@821
+@820
 test.TOP.text.\charMemory[1][0:511]
 test.TOP.text.\charMemory[2][0:511]
 test.TOP.text.\charMemory[3][0:511]
@@ -894,7 +934,7 @@ test.TOP.text.\charMemory[15][0:511]
 test.TOP.text.\charMemory[16][0:511]
 test.TOP.text.\charMemory[17][0:511]
 test.TOP.text.\charMemory[18][0:511]
-@1000201
+@1000200
 -ScreenText
 [pattern_trace] 1
 [pattern_trace] 0

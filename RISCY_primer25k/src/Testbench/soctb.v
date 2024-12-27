@@ -47,12 +47,45 @@ top TOP
         #10 reset = 1;
         #10 btn1 =0;
         #100 
-        $display("REG 1 is %d",test.TOP.cpu_1.cpu_regs.data[1]);
-        $display("REG 2 is %d",test.TOP.cpu_1.cpu_regs.data[2]);
-        $display("REG 3 is %d",test.TOP.cpu_1.cpu_regs.data[3]);
-        $display("REG 4 is %d",test.TOP.cpu_1.cpu_regs.data[4]);
-        $display("REG 5 is %d",test.TOP.cpu_1.cpu_regs.data[5]);
+
         #20000 
+        for (i = 0; i < 32; i = i + 1) begin
+            case (i)
+            0: $display("x0: %d", test.TOP.cpu_1.cpu_regs.data[i]);
+            1: $display("ra: %d", test.TOP.cpu_1.cpu_regs.data[i]);
+            2: $display("sp: %d", test.TOP.cpu_1.cpu_regs.data[i]);
+            3: $display("gp: %d", test.TOP.cpu_1.cpu_regs.data[i]);
+            4: $display("tp: %d", test.TOP.cpu_1.cpu_regs.data[i]);
+            5: $display("t0: %d", test.TOP.cpu_1.cpu_regs.data[i]);
+            6: $display("t1: %d", test.TOP.cpu_1.cpu_regs.data[i]);
+            7: $display("t2: %d", test.TOP.cpu_1.cpu_regs.data[i]);
+            8: $display("s0/fp: %d", test.TOP.cpu_1.cpu_regs.data[i]);
+            9: $display("s1: %d", test.TOP.cpu_1.cpu_regs.data[i]);
+            10: $display("a0: %d", test.TOP.cpu_1.cpu_regs.data[i]);
+            11: $display("a1: %d", test.TOP.cpu_1.cpu_regs.data[i]);
+            12: $display("a2: %d", test.TOP.cpu_1.cpu_regs.data[i]);
+            13: $display("a3: %d", test.TOP.cpu_1.cpu_regs.data[i]);
+            14: $display("a4: %d", test.TOP.cpu_1.cpu_regs.data[i]);
+            15: $display("a5: %d", test.TOP.cpu_1.cpu_regs.data[i]);
+            16: $display("a6: %d", test.TOP.cpu_1.cpu_regs.data[i]);
+            17: $display("a7: %d", test.TOP.cpu_1.cpu_regs.data[i]);
+            18: $display("s2: %d", test.TOP.cpu_1.cpu_regs.data[i]);
+            19: $display("s3: %d", test.TOP.cpu_1.cpu_regs.data[i]);
+            20: $display("s4: %d", test.TOP.cpu_1.cpu_regs.data[i]);
+            21: $display("s5: %d", test.TOP.cpu_1.cpu_regs.data[i]);
+            22: $display("s6: %d", test.TOP.cpu_1.cpu_regs.data[i]);
+            23: $display("s7: %d", test.TOP.cpu_1.cpu_regs.data[i]);
+            24: $display("s8: %d", test.TOP.cpu_1.cpu_regs.data[i]);
+            25: $display("s9: %d", test.TOP.cpu_1.cpu_regs.data[i]);
+            26: $display("s10: %d", test.TOP.cpu_1.cpu_regs.data[i]);
+            27: $display("s11: %d", test.TOP.cpu_1.cpu_regs.data[i]);
+            28: $display("t3: %d", test.TOP.cpu_1.cpu_regs.data[i]);
+            29: $display("t4: %d", test.TOP.cpu_1.cpu_regs.data[i]);
+            30: $display("t5: %d", test.TOP.cpu_1.cpu_regs.data[i]);
+            31: $display("t6: %d", test.TOP.cpu_1.cpu_regs.data[i]);
+            default: $display("x%d: %d", i, test.TOP.cpu_1.cpu_regs.data[i]);
+            endcase
+        end
         for (i = 0; i < 19; i = i + 1) begin
             $display("%d: %s", i,test.TOP.text.charMemory[i]);
         end

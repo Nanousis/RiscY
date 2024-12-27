@@ -36,14 +36,6 @@
   ]
  },
  {
-  "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/gowin_dpb/gowin_dpb.v",
-  "InstLine" : 10,
-  "InstName" : "Gowin_DPB",
-  "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/gowin_dpb/gowin_dpb.v",
-  "ModuleLine" : 10,
-  "ModuleName" : "Gowin_DPB"
- },
- {
   "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/gowin_pll_720p/gowin_pll_720p.v",
   "InstLine" : 10,
   "InstName" : "Gowin_PLL_720p",
@@ -471,7 +463,7 @@
     "SubInsts" : [
      {
       "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/cpu.v",
-      "InstLine" : 197,
+      "InstLine" : 228,
       "InstName" : "signExtendUnit",
       "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/signExtend.v",
       "ModuleLine" : 10,
@@ -479,7 +471,7 @@
      },
      {
       "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/cpu.v",
-      "InstLine" : 208,
+      "InstLine" : 239,
       "InstName" : "cpu_regs",
       "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/RegFile.v",
       "ModuleLine" : 13,
@@ -487,7 +479,7 @@
      },
      {
       "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/cpu.v",
-      "InstLine" : 224,
+      "InstLine" : 255,
       "InstName" : "SignExtendSelector",
       "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/SignExtendSelector.v",
       "ModuleLine" : 10,
@@ -495,7 +487,7 @@
      },
      {
       "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/cpu.v",
-      "InstLine" : 315,
+      "InstLine" : 349,
       "InstName" : "csrFile",
       "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/CSRFile.v",
       "ModuleLine" : 11,
@@ -503,7 +495,7 @@
      },
      {
       "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/cpu.v",
-      "InstLine" : 325,
+      "InstLine" : 359,
       "InstName" : "control_main",
       "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/control_main.v",
       "ModuleLine" : 11,
@@ -511,7 +503,7 @@
      },
      {
       "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/cpu.v",
-      "InstLine" : 342,
+      "InstLine" : 376,
       "InstName" : "control_stall_id",
       "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/control_stall_id.v",
       "ModuleLine" : 11,
@@ -519,7 +511,7 @@
      },
      {
       "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/cpu.v",
-      "InstLine" : 381,
+      "InstLine" : 415,
       "InstName" : "cpu_alu",
       "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/ALUCPU.v",
       "ModuleLine" : 9,
@@ -527,7 +519,7 @@
      },
      {
       "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/cpu.v",
-      "InstLine" : 446,
+      "InstLine" : 480,
       "InstName" : "control_alu",
       "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/control_alu.v",
       "ModuleLine" : 10,
@@ -535,7 +527,7 @@
      },
      {
       "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/cpu.v",
-      "InstLine" : 454,
+      "InstLine" : 488,
       "InstName" : "control_bypass_ex",
       "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/control_bypass_ex.v",
       "ModuleLine" : 11,
@@ -543,7 +535,7 @@
      },
      {
       "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/cpu.v",
-      "InstLine" : 467,
+      "InstLine" : 501,
       "InstName" : "mem_write_selector",
       "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/mem_write_selector.v",
       "ModuleLine" : 10,
@@ -551,7 +543,7 @@
      },
      {
       "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/cpu.v",
-      "InstLine" : 504,
+      "InstLine" : 538,
       "InstName" : "control_branch",
       "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/control_branch.v",
       "ModuleLine" : 10,
@@ -559,7 +551,7 @@
      },
      {
       "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/cpu.v",
-      "InstLine" : 515,
+      "InstLine" : 549,
       "InstName" : "mem_read_selector",
       "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/mem_read_selector.v",
       "ModuleLine" : 10,
@@ -799,27 +791,27 @@
      },
      {
       "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/GPIO/PPU.v",
-      "InstLine" : 99,
+      "InstLine" : 96,
       "InstName" : "text_Buffer",
-      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/Memories/DPBRAM.v",
-      "ModuleLine" : 1,
-      "ModuleName" : "DPBRAM"
+      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/gowin_dpb/gowin_dpb.v",
+      "ModuleLine" : 10,
+      "ModuleName" : "Gowin_DPB"
      },
      {
       "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/GPIO/PPU.v",
-      "InstLine" : 116,
+      "InstLine" : 118,
       "InstName" : "attributes_Buffer",
-      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/Memories/DPBRAM.v",
-      "ModuleLine" : 1,
-      "ModuleName" : "DPBRAM"
+      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/hdmi/gowin_dpb/gowin_dpb.v",
+      "ModuleLine" : 10,
+      "ModuleName" : "Gowin_DPB"
      },
      {
       "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/GPIO/PPU.v",
-      "InstLine" : 133,
-      "InstName" : "sprite_BRAM",
-      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/Memories/DPBRAM.v",
-      "ModuleLine" : 1,
-      "ModuleName" : "DPBRAM"
+      "InstLine" : 142,
+      "InstName" : "sprite_buffer",
+      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+      "ModuleLine" : 10,
+      "ModuleName" : "Gowin_DPB_program"
      }
     ]
    },
@@ -898,5 +890,13 @@
     "ModuleName" : "cpuTimer"
    }
   ]
+ },
+ {
+  "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/Memories/DPBRAM.v",
+  "InstLine" : 1,
+  "InstName" : "DPBRAM",
+  "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/Memories/DPBRAM.v",
+  "ModuleLine" : 1,
+  "ModuleName" : "DPBRAM"
  }
 ]

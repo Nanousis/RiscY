@@ -39,9 +39,12 @@ module cpu(	input clock,
 // 	.dout(DMemOut)
 // );
 reg		[31:0]	IFID_instr;
+reg 	[31:0]  PC_IF2;
 reg		[31:0]	PC, PC_OLD, IFID_PC, IDEX_PC;
 wire	[31:0]	PCplus4, JumpAddress, PC_new;
 wire	[31:0]	instr;
+reg		[31:0]	IF2_instr;
+reg	[31:0]	IDEX_instr;
 reg     [31:0]  delayed_instr;
 wire			inA_is_PC, branch_taken;
 wire	[31:0]	BranchInA;
@@ -103,32 +106,78 @@ assign wen = EXMEM_MemWrite;
 assign data_out = MemWriteData;
 assign DMemOut = data_in;
 assign byte_select = byte_select_vector;
-/********************** Instruction Fetch Unit (IF)  **********************/
+/********************** Instruction Fetch Unit (IF1)  **********************/
 always @(posedge clock or negedge reset)
 begin 
 	if (reset == 1'b0)
 	begin
 		PC <= `INITIAL_PC; 
-		PC_OLD <= PC;    
-		keepDelayInstr <= 0;
 	end
 	else if (write_pc == 1'b1)
 	begin
-		keepDelayInstr <= 0;
 		PC <= PC_new;
-		PC_OLD <= PC;
-		delayed_instr <= 32'b0;
 	end
 	else
 	begin
-		if(keepDelayInstr == 1'b0)
-		begin
-			delayed_instr <=instr;
-		end
-		keepDelayInstr <= 1'b1;
-		PC <= PC;
+		// PC <= PC_IF2;
 	end
 end
+
+reg write_pc_delayed;
+reg bubble_ifid_delayed;
+/***************************** Instruction Fetch Unit (IF2)  *******************/
+// This stage is used to control the instruction output of the IF stages
+
+// fix 1 for IF2 stages
+// Keep delay instruction is used when we have a stall
+// When we have a stall the PC continues for one cycle
+// but the instruction is not passed to the next stage, hence we keep it
+// on delayed_instr until the stall is resolved
+
+// fix 2 for IF2 stages
+// since we now have two stages in the IF,
+// we need to bubble the IFID register for two cycles when jumping/branching
+always @(posedge clock or negedge reset)
+begin
+	if(reset == 1'b0)begin
+		PC_IF2 <= 32'b0;
+		write_pc_delayed <= 1'b0;
+		bubble_ifid_delayed <= 1'b0;
+	end
+	else begin
+		write_pc_delayed <= write_pc;
+		if(write_ifid == 1'b1)begin
+			bubble_ifid_delayed <= bubble_ifid;
+			delayed_instr <= 0;
+			PC_IF2 <= PC;
+			keepDelayInstr <= 0;
+		end
+		else begin
+			if(keepDelayInstr ==1'b0)
+			begin
+			keepDelayInstr <= 1;
+			delayed_instr <= instr;
+			end
+		end
+	end
+end
+
+always@(*)
+begin
+	if(delayed_instr == 0) begin
+		IF2_instr = instr;
+	end
+	else begin
+		if(bubble_ifid_delayed == 1'b1) begin
+			IF2_instr = 32'b0;
+		end
+		else begin
+			IF2_instr = delayed_instr;
+		end
+	end
+
+end
+
 reg [31:0] PCPrevious;
 // PC adder
 assign PCplus4 = PC + 32'd4;
@@ -151,35 +200,17 @@ begin
 	begin
 		IFID_PC			<= 32'b0;
 		IFID_instr		<= 32'b0;
-		IFID_instrColdStart	<= 1'b0;	
 	end
 	else begin
 		// used to hold bubble in the pipeline. You loose an extra cycle here
 		// This is so that the instruction memory can notice the jump
-		if ((bubble_ifid == 1'b1)) begin
-			IFID_instrColdStart <= 1'b0;
+		if ((bubble_ifid_delayed||bubble_ifid == 1'b1)) begin
 			IFID_PC			<= 32'b0;
 			IFID_instr		<= 32'b0;
 		end 
 		else if (write_ifid == 1'b1) begin
-			if(IFID_instrColdStart == 1'b0)
-			begin
-				IFID_PC			<= 32'b0;
-				IFID_instr		<= 32'b0;
-				IFID_instrColdStart <= 1'b1;
-			end
-			else
-			begin
-				IFID_PC			<= PC_OLD;
-				if(delayed_instr != 32'b0)
-				begin
-					IFID_instr		<= delayed_instr;
-				end
-				else
-				begin
-					IFID_instr		<= instr;
-				end
-			end
+			IFID_PC			<= PC_IF2;
+			IFID_instr		<= IF2_instr;
 		end
 	end
 end
@@ -258,6 +289,7 @@ begin
 		IDEX_rdA		<= 32'b0;
 		IDEX_rdB		<= 32'b0;
 		IDEX_reg_type	<= 3'b0;
+		IDEX_instr		<= 32'b0;
 		IDEX_csr_addr	<= 12'b0;
 	end
 	else
@@ -284,6 +316,7 @@ begin
 			IDEX_rdA		<= 32'b0;
 			IDEX_rdB		<= 32'b0;
 			IDEX_reg_type	<= 3'b0;
+			IDEX_instr		<= 32'b0;
 			IDEX_csr_addr	<= 12'b0;
 		end
 		else if (write_idex == 1'b1) begin
@@ -308,6 +341,7 @@ begin
 			IDEX_rdA		<= rdA;
 			IDEX_rdB		<= rdB;
 			IDEX_reg_type	<= reg_type;
+			IDEX_instr		<= IFID_instr;
 			IDEX_csr_addr	<= csr_addr;
 		end
 	end
