@@ -36,7 +36,7 @@ end
 
 localparam STATE_IDLE = 2'b00;
 localparam STATE_READING = 2'b01;
-localparam STATE_WRITING = 2'b10;
+localparam STATE_INSTRUCTION = 2'b10;
 localparam STATE_FINISHED = 2'b11;
 reg [1:0] state = 0;
 reg [4:0] cnt = 0;
@@ -46,7 +46,8 @@ begin
 
     if(PC < data_size)
     begin
-        instr <= data_mem[PC];
+        state <= STATE_INSTRUCTION;
+        // instr <= data_mem[PC];
     end
     ready <= 1;
     case(state)
@@ -98,9 +99,20 @@ begin
             state <= STATE_READING;
         end
     end
-    STATE_WRITING:
+    STATE_INSTRUCTION:
     begin
-
+        cnt <= cnt + 1;
+        if(cnt > 5'd5)
+        begin
+            ready <= 1;
+            state <= STATE_IDLE;
+            instr <= data_mem[PC];
+        end
+        else
+        begin
+            ready <= 0;
+            state <= STATE_INSTRUCTION;
+        end
     end
     STATE_FINISHED:
     begin

@@ -1,15 +1,15 @@
 [*]
 [*] GTKWave Analyzer v3.4.0 (w)1999-2022 BSI
-[*] Sat Dec 28 19:39:17 2024
+[*] Sun Dec 29 16:57:37 2024
 [*]
 [dumpfile] "ZSOC.vcd"
-[dumpfile_mtime] "Sat Dec 28 19:25:58 2024"
-[dumpfile_size] 6603573
+[dumpfile_mtime] "Sun Dec 29 16:55:15 2024"
+[dumpfile_size] 4989163
 [savefile] "gtkw.gtkw"
-[timestart] 0
+[timestart] 353800
 [size] 1512 916
-[pos] 1799 93
-*-16.390831 230000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[pos] 1867 136
+*-16.390831 410000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] test.
 [treeopen] test.TOP.
 [treeopen] test.TOP.cpu_1.
@@ -27,7 +27,7 @@ test.TOP.counter50M[31:0]
 -Memory
 @1401200
 -Memory
-@c00200
+@800200
 -Instruction Fetch
 @200
 -Fetch
@@ -40,7 +40,7 @@ test.TOP.cpu_1.write_pc
 test.TOP.cpu_1.Branch
 test.TOP.cpu_1.reg_type[1:0]
 test.TOP.cpu_1.PCSrc
-@1401200
+@1000200
 -Instruction Fetch
 @c00200
 -Instruction Fetch2
@@ -261,7 +261,7 @@ test.TOP.cpu_1.EXMEM_reg_type[1:0]
 test.TOP.cpu_1.write_exmem
 @1401200
 -Memory
-@800200
+@c00200
 -WriteBack
 @22
 [color] 2
@@ -286,9 +286,9 @@ test.TOP.cpu_1.MEMWB_csr_data[31:0]
 test.TOP.cpu_1.wRegData[31:0]
 @28
 test.TOP.cpu_1.MEMWB_reg_type[1:0]
-@1000200
+@1401200
 -WriteBack
-@c00200
+@800200
 -Temp Registers
 @200
 -Temp registers
@@ -374,9 +374,9 @@ test.TOP.cpu_1.cpu_regs.\data[30][31:0]
 -group_end
 @24
 test.TOP.cpu_1.cpu_regs.\data[31][31:0]
-@1401200
+@1000200
 -Temp Registers
-@800200
+@c00200
 -Control and Status Signals
 @22
 test.TOP.cpu_1.csr_addr[11:0]
@@ -391,15 +391,12 @@ test.TOP.cpu_1.reg_type[1:0]
 test.TOP.cpu_1.IDEX_reg_type[1:0]
 test.TOP.cpu_1.EXMEM_reg_type[1:0]
 test.TOP.cpu_1.MEMWB_reg_type[1:0]
-@29
 test.TOP.cpu_1.csr_write_allowed
-@28
-test.TOP.cpu_1.IDEX_csr_write_allowed
 test.TOP.cpu_1.EXMEM_csr_write_allowed
 test.TOP.cpu_1.MEMWB_csr_write_allowed
 @22
 test.TOP.cpu_1.wRegData[31:0]
-@1000200
+@1401200
 -Control and Status Signals
 @c00200
 -registers
@@ -438,7 +435,7 @@ test.TOP.cpu_1.cpu_regs.\data[30][31:0]
 test.TOP.cpu_1.cpu_regs.\data[31][31:0]
 @1401200
 -registers
-@800200
+@c00200
 -CSR
 @22
 test.TOP.cpu_1.csrFile.misa[31:0]
@@ -453,7 +450,7 @@ test.TOP.cpu_1.csrFile.ren
 test.TOP.cpu_1.csrFile.wen
 @22
 test.TOP.cpu_1.csrFile.csrWAddr[11:0]
-@1000200
+@1401200
 -CSR
 @22
 test.TOP.data_addr[31:0]
@@ -490,7 +487,7 @@ test.TOP.flashController.flash_address[23:0]
 test.TOP.flashController.stateDebug[4:0]
 @1401200
 -FlashController
-@800200
+@c00200
 -ScreenText
 @c00820
 test.TOP.text.\charMemory[0][0:511]
@@ -1028,7 +1025,7 @@ test.TOP.text.\charMemory[15][0:511]
 test.TOP.text.\charMemory[16][0:511]
 test.TOP.text.\charMemory[17][0:511]
 test.TOP.text.\charMemory[18][0:511]
-@1000200
+@1401200
 -ScreenText
 @22
 test.TOP.cpu_1.wRegData[31:0]
