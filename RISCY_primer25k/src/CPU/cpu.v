@@ -102,7 +102,8 @@ reg 	[11:0]	IDEX_csr_addr;
 reg 	[11:0]	EXMEM_csr_addr;
 reg 	[11:0]	MEMWB_csr_addr;
 
-wire 			csr_write_allowed;
+reg 			csr_write_allowed;
+reg 			IDEX_csr_write_allowed;
 reg 			EXMEM_csr_write_allowed;
 reg 			MEMWB_csr_write_allowed;
 
@@ -245,8 +246,26 @@ assign csr_addr		= IFID_instr[31:20];
 assign instr_rs2	= IFID_instr[24:20];
 assign instr_rd		= IFID_instr[11:7];
 
-assign csr_write_allowed = ((funct3[1:0]!=2'b01) && 
-							instr_rs1!=32'b0 && reg_type==2'b01)?1'b1:1'b0;
+
+
+always @(*) begin
+	if(reg_type == 2'b01) begin
+		if(funct3[1:0] == 2'b01) begin
+			csr_write_allowed = 1'b1;
+		end
+		else begin
+			if(instr_rs1 == 32'b0) begin
+				csr_write_allowed = 1'b0;
+			end
+			else begin
+				csr_write_allowed = 1'b1;
+			end
+		end
+	end
+	else begin
+		csr_write_allowed = 1'b0;
+	end
+end
 //Sign Extension Unit
 signExtend signExtendUnit (
 	.instr(IFID_instr[31:7]),
@@ -314,6 +333,7 @@ begin
 		IDEX_reg_type	<= 3'b0;
 		IDEX_instr		<= 32'b0;
 		IDEX_csr_addr	<= 12'b0;
+		IDEX_csr_write_allowed <= 1'b0;
 	end
 	else
 	begin
@@ -341,6 +361,7 @@ begin
 			IDEX_reg_type	<= 3'b0;
 			IDEX_instr		<= 32'b0;
 			IDEX_csr_addr	<= 12'b0;
+			IDEX_csr_write_allowed <= 1'b0;
 		end
 		else if (write_idex == 1'b1) begin
 			IDEX_inA_is_PC	<= inA_is_PC;
@@ -366,6 +387,7 @@ begin
 			IDEX_reg_type	<= reg_type;
 			IDEX_instr		<= IFID_instr;
 			IDEX_csr_addr	<= csr_addr;
+			IDEX_csr_write_allowed <= csr_write_allowed;
 		end
 	end
 end
@@ -380,6 +402,9 @@ CSRFile csrFile(
 	.rd(csr_data)
 );
 // Main Control Unit
+
+// this should probably take into account loading a register
+// and then writing that register into a csr
 control_main control_main (
 	.RegDst(RegDst),
 	.reg_type(reg_type),
@@ -509,7 +534,7 @@ begin
 			EXMEM_csr_data		<= csr_data;
 			EXMEM_reg_type		<= IDEX_reg_type;
 			EXMEM_csr_addr		<= IDEX_csr_addr;
-			EXMEM_csr_write_allowed <= csr_write_allowed;
+			EXMEM_csr_write_allowed <= IDEX_csr_write_allowed;
 		end
 	end
 end
@@ -536,7 +561,11 @@ control_bypass_ex control_bypass_ex(
 	.idex_rdB(IDEX_rdB),
 	.wRegData(wRegData),
 	.EXMEM_ALUOut(EXMEM_ALUOut),
+	.idex_csr_addr(IDEX_csr_addr),
+	.exmem_csr_addr(EXMEM_csr_addr),
+	.memwb_csr_addr(MEMWB_csr_addr),
 	.csr_data(csr_data),
+	.WB_csr_data(WB_csr_data),
 	.csr_immidiate(csr_immidiate),
 	.exmem_csr_write_allowed(EXMEM_csr_write_allowed),
 	.memwb_csr_write_allowed(MEMWB_csr_write_allowed),

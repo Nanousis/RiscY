@@ -1,15 +1,15 @@
 [*]
 [*] GTKWave Analyzer v3.4.0 (w)1999-2022 BSI
-[*] Sat Dec 28 19:39:17 2024
+[*] Sun Dec 29 21:46:17 2024
 [*]
 [dumpfile] "ZSOC.vcd"
-[dumpfile_mtime] "Sat Dec 28 19:25:58 2024"
-[dumpfile_size] 6603573
+[dumpfile_mtime] "Sun Dec 29 21:44:05 2024"
+[dumpfile_size] 6606418
 [savefile] "gtkw.gtkw"
 [timestart] 0
 [size] 1512 916
-[pos] 1799 93
-*-16.390831 230000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[pos] 1703 115
+*-16.390831 210000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] test.
 [treeopen] test.TOP.
 [treeopen] test.TOP.cpu_1.
@@ -86,7 +86,7 @@ test.TOP.cpu_1.Branch
 test.TOP.cpu_1.csr_addr[11:0]
 @1401200
 -Decode
-@c00200
+@800200
 -Execute
 @22
 [color] 5
@@ -148,7 +148,7 @@ test.TOP.cpu_1.IDEX_reg_type[1:0]
 test.TOP.cpu_1.bubble_idex
 [color] 1
 test.TOP.cpu_1.write_idex
-@1401200
+@1000200
 -Execute
 @c00200
 -Memory
@@ -391,12 +391,18 @@ test.TOP.cpu_1.reg_type[1:0]
 test.TOP.cpu_1.IDEX_reg_type[1:0]
 test.TOP.cpu_1.EXMEM_reg_type[1:0]
 test.TOP.cpu_1.MEMWB_reg_type[1:0]
-@29
 test.TOP.cpu_1.csr_write_allowed
-@28
-test.TOP.cpu_1.IDEX_csr_write_allowed
 test.TOP.cpu_1.EXMEM_csr_write_allowed
 test.TOP.cpu_1.MEMWB_csr_write_allowed
+test.TOP.cpu_1.control_bypass_ex.bypassA[1:0]
+test.TOP.cpu_1.control_bypass_ex.bypassB[1:0]
+@22
+test.TOP.cpu_1.control_bypass_ex.bypassOutA[31:0]
+test.TOP.cpu_1.control_bypass_ex.bypassOutB[31:0]
+test.TOP.cpu_1.control_bypass_ex.idex_csr_addr[31:0]
+test.TOP.cpu_1.control_bypass_ex.exmem_csr_addr[31:0]
+@23
+test.TOP.cpu_1.control_bypass_ex.memwb_csr_addr[31:0]
 @22
 test.TOP.cpu_1.wRegData[31:0]
 @1000200
@@ -455,12 +461,6 @@ test.TOP.cpu_1.csrFile.wen
 test.TOP.cpu_1.csrFile.csrWAddr[11:0]
 @1000200
 -CSR
-@22
-test.TOP.data_addr[31:0]
-test.TOP.data_read[31:0]
-@28
-test.TOP.bu.mem_ren
-test.TOP.bu.mem_wen
 @c00200
 -DataMemory
 @1401200

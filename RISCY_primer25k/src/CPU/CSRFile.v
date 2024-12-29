@@ -63,7 +63,7 @@ begin
     end
     else
     begin
-    if(wen == 1'b1)
+        if(wen == 1'b1)
         begin
             case(csrWAddr)
                 12'h300: mstatus <= wd;
@@ -79,20 +79,26 @@ begin
                 12'h344: mip <= wd;
             endcase 
         end
-        case(csrAddr)
-            12'h300: rd <= mstatus;
-            12'h301: rd <= misa;
-            12'h304: rd <= mie;
-            12'h305: rd <= mtvec;
-            // 12'h306: rd <= mcounteren;
-            12'h301: rd <= mstatush;
-            12'h340: rd <= mscratch;
-            12'h341: rd <= mepc;
-            12'h342: rd <= mcause;
-            12'h343: rd <= mtval;
-            12'h344: rd <= mip;
-            default: rd <= 32'b0;
-        endcase 
+        if(csrAddr==csrWAddr)
+        begin
+            rd <= wd;
+        end
+        else begin
+            case(csrAddr)
+                12'h300: rd <= mstatus;
+                12'h301: rd <= misa;
+                12'h304: rd <= mie;
+                12'h305: rd <= mtvec;
+                // 12'h306: rd <= mcounteren;
+                12'h301: rd <= mstatush;
+                12'h340: rd <= mscratch;
+                12'h341: rd <= mepc;
+                12'h342: rd <= mcause;
+                12'h343: rd <= mtval;
+                12'h344: rd <= mip;
+                default: rd <= 32'b0;
+            endcase 
+        end
     end
 end
 

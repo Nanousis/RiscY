@@ -27,6 +27,10 @@ module control_bypass_ex(
     input [31:0] wRegData,            // Writeback data from MEM/WB stage
     input [31:0] EXMEM_ALUOut,        // ALU output from EX/MEM stage
     input [31:0] csr_data,            // Data from CSR
+    input [31:0] WB_csr_data,            // Data to be written to csr
+    input [31:0] idex_csr_addr,            // Address for CSR
+    input [31:0] exmem_csr_addr,            // Address for CSR
+    input [31:0] memwb_csr_addr,            // Address for CSR
     input csr_immidiate,              // CSR Value originates from Immidiate
 	input exmem_csr_write_allowed,
 	input memwb_csr_write_allowed,
@@ -42,35 +46,25 @@ reg [1:0] bypassB; // Bypass selector for Operand B
 
 // Determine bypassing logic for Operand A
 always @(*) begin
-	case(idex_reg_type)
-	2'b00:begin
-		if (exmem_regwrite == 1'b1 && exmem_rd != 5'b0 && exmem_rd == idex_rs1) begin
-			bypassA = 2'b10; // Forward data from EX/MEM stage
-		end
-		else if (memwb_regwrite == 1'b1 && memwb_rd != 5'b0 && memwb_rd == idex_rs1) begin
-			bypassA = 2'b01; // Forward data from MEM/WB stage
-		end
-		else begin
-			bypassA = 2'b00; // No forwarding, use ID/EX stage value
-		end
+	if (exmem_regwrite == 1'b1 && exmem_rd != 5'b0 && exmem_rd == idex_rs1) begin
+		bypassA = 2'b10; // Forward data from EX/MEM stage
 	end
-	2'b01:begin
+	else if (memwb_regwrite == 1'b1 && memwb_rd != 5'b0 && memwb_rd == idex_rs1) begin
+		bypassA = 2'b01; // Forward data from MEM/WB stage
+	end
+	else begin
 		bypassA = 2'b00; // No forwarding, use ID/EX stage value
 	end
-	default:begin
-		bypassA = 2'b00; // No forwarding, use ID/EX stage value
-	end
-	endcase
 end
 
 // Determine bypassing logic for Operand B
 always @(*) begin
 	case(idex_reg_type)
 	2'b00:begin
-		if (exmem_regwrite == 1'b1 && exmem_rd != 5'b0 && exmem_rd == idex_rs2) begin
+		if (exmem_regwrite == 1'b1 && exmem_rd == idex_rs2) begin
 			bypassB = 2'b10; // Forward data from EX/MEM stage
 		end
-		else if (memwb_regwrite == 1'b1 && memwb_rd != 5'b0 && memwb_rd == idex_rs2) begin
+		else if (memwb_regwrite == 1'b1 && memwb_rd == idex_rs2) begin
 			bypassB = 2'b01; // Forward data from MEM/WB stage
 		end
 		else begin
@@ -78,7 +72,15 @@ always @(*) begin
 		end
 	end
 	2'b01:begin
-		bypassB = 2'b00; // No forwarding, use ID/EX stage value
+		if (exmem_regwrite == 1'b1 && exmem_rd != 5'b0 && exmem_csr_addr == idex_csr_addr) begin
+			bypassB = 2'b10; // Forward data from EX/MEM stage
+		end
+		else if (memwb_regwrite == 1'b1 && memwb_rd != 5'b0 && memwb_csr_addr == idex_csr_addr) begin
+			bypassB = 2'b01; // Forward data from MEM/WB stage
+		end
+		else begin
+			bypassB = 2'b00; // No forwarding, use ID/EX stage value
+		end
 	end
 	default:begin
 		bypassB = 2'b00; // No forwarding, use ID/EX stage value
@@ -88,19 +90,24 @@ end
 
 // Select the correct source for Operand A based on bypass logic
 always @(*) begin
-    case (bypassA)
-        2'b00: bypassOutA = (csr_immidiate) ? idex_rs1 : idex_rdA; // Use original ID/EX value or immediate CSR value
-        2'b01: bypassOutA = wRegData;                             // Forward data from MEM/WB stage
-        default: bypassOutA = EXMEM_ALUOut;                       // Forward data from EX/MEM stage
-    endcase
+	if(csr_immidiate == 1'b1) begin
+		bypassOutA = idex_rs1;
+	end
+	else begin
+		case (bypassA)
+			2'b00: bypassOutA = idex_rdA;			// Use original ID/EX value
+			2'b01: bypassOutA = (idex_reg_type == 2'b01) ?WB_csr_data:wRegData;// Forward data from MEM/WB stage
+			default: bypassOutA = EXMEM_ALUOut;		// Forward data from EX/MEM stage
+		endcase
+	end
 end
 
 // Select the correct source for Operand B based on bypass logic
 always @(*) begin
     case (bypassB)
-        2'b00: bypassOutB = (idex_reg_type == 2'b01) ? csr_data : idex_rdB; // Use original ID/EX value or CSR data
-        2'b01: bypassOutB = wRegData;                                      // Forward data from MEM/WB stage
-        default: bypassOutB = EXMEM_ALUOut;                                // Forward data from EX/MEM stage
+        2'b00: bypassOutB = (idex_reg_type == 2'b01) ? csr_data : idex_rdB; 	// Use original ID/EX value or CSR data
+        2'b01: bypassOutB = (idex_reg_type == 2'b01) ? WB_csr_data : wRegData; 	// Forward data from MEM/WB stage
+        default: bypassOutB = EXMEM_ALUOut;                                		// Forward data from EX/MEM stage
     endcase
 end
 
