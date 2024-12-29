@@ -539,6 +539,8 @@ begin
 	end
 end
 
+// ALU control unit
+// Determines the ALU operation based on the instruction
 control_alu control_alu(
 	.ALUOp(ALUOp), 
 	.ALUcntrl(IDEX_ALUcntrl), 
@@ -548,6 +550,7 @@ control_alu control_alu(
 );
 
 // Bypass control
+// Controls what the ALU inputs are
 control_bypass_ex control_bypass_ex(
 	.bypassOutA(bypassOutA),
 	.bypassOutB(bypassOutB),
@@ -637,8 +640,10 @@ mem_read_selector mem_read_selector(
 );
 always @(*) begin
 	if (MEMWB_reg_type == 0) begin
+		// if we are not writing to memory get the data from the ALU
 		if (MEMWB_MemToReg == 1'b0) begin
 			wRegData = MEMWB_ALUOut;
+		// if we are writing to memory get the data from the memory
 		end else begin
 			wRegData = MemOut;
 		end
@@ -649,11 +654,17 @@ end
 always @(*)
 begin 
 	if (write_memwb == 1'b1) begin
-		WB_csr_data <= MEMWB_ALUOut;
+		// if we are not writing to memory get the data from the ALU
+		if (MEMWB_MemToReg == 1'b0) begin
+			WB_csr_data = MEMWB_ALUOut;
+		// if we are writing to memory get the data from the memory
+		end else begin
+			WB_csr_data = MemOut;
+		end
 	end
 	else
 	begin
-		WB_csr_data <= 0;
+		WB_csr_data = 0;
 	end
 end
 
