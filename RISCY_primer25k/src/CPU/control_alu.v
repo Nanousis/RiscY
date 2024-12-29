@@ -15,6 +15,7 @@ module control_alu(	output reg [3:0] ALUOp,
 
 always @(ALUcntrl or funct3 or funct7)
 begin
+	csr_immidiate = 0;
 	case (ALUcntrl)
 		`ALU_R: begin
 			case (funct3)

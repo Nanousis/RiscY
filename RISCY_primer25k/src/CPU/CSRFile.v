@@ -11,6 +11,7 @@
 module CSRFile (input clock, 
                 input reset,
                 input [11:0] csrAddr,
+                input [11:0] csrWAddr,
                 input ren,
                 input wen,
                 input [31:0] wd,
@@ -62,9 +63,9 @@ begin
     end
     else
     begin
-        if(wen == 1'b1)
+    if(wen == 1'b1)
         begin
-            case(csrAddr)
+            case(csrWAddr)
                 12'h300: mstatus <= wd;
                 12'h301: misa <= wd;
                 12'h304: mie <= wd;
@@ -78,31 +79,20 @@ begin
                 12'h344: mip <= wd;
             endcase 
         end
-    end
-end
-
-always @(*)begin
-
-    if(ren == 1'b1 && wen == 1'b0)
-    begin
         case(csrAddr)
-            12'h300: rd = mstatus;
-            12'h301: rd = misa;
-            12'h304: rd = mie;
-            12'h305: rd = mtvec;
-            // 12'h306: rd = mcounteren;
-            12'h301: rd = mstatush;
-            12'h340: rd = mscratch;
-            12'h341: rd = mepc;
-            12'h342: rd = mcause;
-            12'h343: rd = mtval;
-            12'h344: rd = mip;
-            default: rd = 32'b0;
+            12'h300: rd <= mstatus;
+            12'h301: rd <= misa;
+            12'h304: rd <= mie;
+            12'h305: rd <= mtvec;
+            // 12'h306: rd <= mcounteren;
+            12'h301: rd <= mstatush;
+            12'h340: rd <= mscratch;
+            12'h341: rd <= mepc;
+            12'h342: rd <= mcause;
+            12'h343: rd <= mtval;
+            12'h344: rd <= mip;
+            default: rd <= 32'b0;
         endcase 
-    end
-    else
-    begin
-        rd=0;
     end
 end
 

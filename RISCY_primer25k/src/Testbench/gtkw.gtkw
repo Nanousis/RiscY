@@ -1,15 +1,15 @@
 [*]
 [*] GTKWave Analyzer v3.4.0 (w)1999-2022 BSI
-[*] Fri Dec 27 16:59:09 2024
+[*] Sat Dec 28 19:39:17 2024
 [*]
 [dumpfile] "ZSOC.vcd"
-[dumpfile_mtime] "Fri Dec 27 16:44:41 2024"
-[dumpfile_size] 11080057
+[dumpfile_mtime] "Sat Dec 28 19:25:58 2024"
+[dumpfile_size] 6603573
 [savefile] "gtkw.gtkw"
-[timestart] 1071100
-[size] 2160 1010
-[pos] 1912 62
-*-16.390831 1290000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[timestart] 0
+[size] 1512 916
+[pos] 1799 93
+*-16.390831 230000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] test.
 [treeopen] test.TOP.
 [treeopen] test.TOP.cpu_1.
@@ -22,13 +22,12 @@ test.TOP.cpu_1.reset
 test.TOP.cpu_1.clock
 @22
 test.TOP.counter1M[31:0]
-@23
 test.TOP.counter50M[31:0]
 @c00200
 -Memory
 @1401200
 -Memory
-@800200
+@c00200
 -Instruction Fetch
 @200
 -Fetch
@@ -41,8 +40,10 @@ test.TOP.cpu_1.write_pc
 test.TOP.cpu_1.Branch
 test.TOP.cpu_1.reg_type[1:0]
 test.TOP.cpu_1.PCSrc
-@1000200
+@1401200
 -Instruction Fetch
+@c00200
+-Instruction Fetch2
 @22
 [color] 7
 test.TOP.instr[31:0]
@@ -51,7 +52,9 @@ test.TOP.cpu_1.keepDelayInstr
 @22
 test.TOP.cpu_1.PC_IF2[31:0]
 test.TOP.cpu_1.IF2_instr[31:0]
-@800200
+@1401200
+-Instruction Fetch2
+@c00200
 -Decode
 @200
 -Decode
@@ -81,7 +84,7 @@ test.TOP.cpu_1.write_ifid
 test.TOP.cpu_1.Branch
 @22
 test.TOP.cpu_1.csr_addr[11:0]
-@1000200
+@1401200
 -Decode
 @c00200
 -Execute
@@ -131,12 +134,7 @@ test.TOP.cpu_1.IDEX_rdA[31:0]
 test.TOP.cpu_1.IDEX_rdB[31:0]
 [color] 5
 test.TOP.cpu_1.IDEX_signExtend[31:0]
-@28
 [color] 3
-test.TOP.cpu_1.bypassA[1:0]
-[color] 3
-test.TOP.cpu_1.bypassB[1:0]
-@22
 test.TOP.cpu_1.ALUInA[31:0]
 test.TOP.cpu_1.ALUInB[31:0]
 test.TOP.cpu_1.bypassOutA[31:0]
@@ -154,9 +152,76 @@ test.TOP.cpu_1.write_idex
 -Execute
 @c00200
 -Memory
-@22
+@c00022
 [color] 3
 test.TOP.cpu_1.EXMEM_ALUOut[31:0]
+@28
+[color] 3
+(0)test.TOP.cpu_1.EXMEM_ALUOut[31:0]
+[color] 3
+(1)test.TOP.cpu_1.EXMEM_ALUOut[31:0]
+[color] 3
+(2)test.TOP.cpu_1.EXMEM_ALUOut[31:0]
+[color] 3
+(3)test.TOP.cpu_1.EXMEM_ALUOut[31:0]
+[color] 3
+(4)test.TOP.cpu_1.EXMEM_ALUOut[31:0]
+[color] 3
+(5)test.TOP.cpu_1.EXMEM_ALUOut[31:0]
+[color] 3
+(6)test.TOP.cpu_1.EXMEM_ALUOut[31:0]
+[color] 3
+(7)test.TOP.cpu_1.EXMEM_ALUOut[31:0]
+[color] 3
+(8)test.TOP.cpu_1.EXMEM_ALUOut[31:0]
+[color] 3
+(9)test.TOP.cpu_1.EXMEM_ALUOut[31:0]
+[color] 3
+(10)test.TOP.cpu_1.EXMEM_ALUOut[31:0]
+[color] 3
+(11)test.TOP.cpu_1.EXMEM_ALUOut[31:0]
+[color] 3
+(12)test.TOP.cpu_1.EXMEM_ALUOut[31:0]
+[color] 3
+(13)test.TOP.cpu_1.EXMEM_ALUOut[31:0]
+[color] 3
+(14)test.TOP.cpu_1.EXMEM_ALUOut[31:0]
+[color] 3
+(15)test.TOP.cpu_1.EXMEM_ALUOut[31:0]
+[color] 3
+(16)test.TOP.cpu_1.EXMEM_ALUOut[31:0]
+[color] 3
+(17)test.TOP.cpu_1.EXMEM_ALUOut[31:0]
+[color] 3
+(18)test.TOP.cpu_1.EXMEM_ALUOut[31:0]
+[color] 3
+(19)test.TOP.cpu_1.EXMEM_ALUOut[31:0]
+[color] 3
+(20)test.TOP.cpu_1.EXMEM_ALUOut[31:0]
+[color] 3
+(21)test.TOP.cpu_1.EXMEM_ALUOut[31:0]
+[color] 3
+(22)test.TOP.cpu_1.EXMEM_ALUOut[31:0]
+[color] 3
+(23)test.TOP.cpu_1.EXMEM_ALUOut[31:0]
+[color] 3
+(24)test.TOP.cpu_1.EXMEM_ALUOut[31:0]
+[color] 3
+(25)test.TOP.cpu_1.EXMEM_ALUOut[31:0]
+[color] 3
+(26)test.TOP.cpu_1.EXMEM_ALUOut[31:0]
+[color] 3
+(27)test.TOP.cpu_1.EXMEM_ALUOut[31:0]
+[color] 3
+(28)test.TOP.cpu_1.EXMEM_ALUOut[31:0]
+[color] 3
+(29)test.TOP.cpu_1.EXMEM_ALUOut[31:0]
+[color] 3
+(30)test.TOP.cpu_1.EXMEM_ALUOut[31:0]
+[color] 3
+(31)test.TOP.cpu_1.EXMEM_ALUOut[31:0]
+@1401200
+-group_end
 @28
 [color] 3
 test.TOP.cpu_1.EXMEM_Branch
@@ -196,7 +261,7 @@ test.TOP.cpu_1.EXMEM_reg_type[1:0]
 test.TOP.cpu_1.write_exmem
 @1401200
 -Memory
-@c00200
+@800200
 -WriteBack
 @22
 [color] 2
@@ -221,7 +286,7 @@ test.TOP.cpu_1.MEMWB_csr_data[31:0]
 test.TOP.cpu_1.wRegData[31:0]
 @28
 test.TOP.cpu_1.MEMWB_reg_type[1:0]
-@1401200
+@1000200
 -WriteBack
 @c00200
 -Temp Registers
@@ -312,6 +377,31 @@ test.TOP.cpu_1.cpu_regs.\data[31][31:0]
 @1401200
 -Temp Registers
 @800200
+-Control and Status Signals
+@22
+test.TOP.cpu_1.csr_addr[11:0]
+test.TOP.cpu_1.IDEX_csr_addr[11:0]
+test.TOP.cpu_1.EXMEM_csr_addr[11:0]
+test.TOP.cpu_1.MEMWB_csr_addr[11:0]
+test.TOP.cpu_1.csr_data[31:0]
+test.TOP.cpu_1.EXMEM_csr_data[31:0]
+test.TOP.cpu_1.MEMWB_csr_data[31:0]
+@28
+test.TOP.cpu_1.reg_type[1:0]
+test.TOP.cpu_1.IDEX_reg_type[1:0]
+test.TOP.cpu_1.EXMEM_reg_type[1:0]
+test.TOP.cpu_1.MEMWB_reg_type[1:0]
+@29
+test.TOP.cpu_1.csr_write_allowed
+@28
+test.TOP.cpu_1.IDEX_csr_write_allowed
+test.TOP.cpu_1.EXMEM_csr_write_allowed
+test.TOP.cpu_1.MEMWB_csr_write_allowed
+@22
+test.TOP.cpu_1.wRegData[31:0]
+@1000200
+-Control and Status Signals
+@c00200
 -registers
 @22
 test.TOP.cpu_1.cpu_regs.\data[0][31:0]
@@ -346,20 +436,24 @@ test.TOP.cpu_1.cpu_regs.\data[28][31:0]
 test.TOP.cpu_1.cpu_regs.\data[29][31:0]
 test.TOP.cpu_1.cpu_regs.\data[30][31:0]
 test.TOP.cpu_1.cpu_regs.\data[31][31:0]
-@1000200
+@1401200
 -registers
-@c00200
+@800200
 -CSR
 @22
 test.TOP.cpu_1.csrFile.misa[31:0]
+test.TOP.cpu_1.csrFile.mie[31:0]
 test.TOP.cpu_1.csrFile.mcause[31:0]
+test.TOP.cpu_1.csrFile.mstatus[31:0]
 test.TOP.cpu_1.csrFile.rd[31:0]
 test.TOP.cpu_1.csrFile.wd[31:0]
 test.TOP.cpu_1.csrFile.csrAddr[11:0]
 @28
 test.TOP.cpu_1.csrFile.ren
 test.TOP.cpu_1.csrFile.wen
-@1401200
+@22
+test.TOP.cpu_1.csrFile.csrWAddr[11:0]
+@1000200
 -CSR
 @22
 test.TOP.data_addr[31:0]
@@ -936,5 +1030,7 @@ test.TOP.text.\charMemory[17][0:511]
 test.TOP.text.\charMemory[18][0:511]
 @1000200
 -ScreenText
+@22
+test.TOP.cpu_1.wRegData[31:0]
 [pattern_trace] 1
 [pattern_trace] 0

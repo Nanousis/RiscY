@@ -6,8 +6,9 @@ _start:
     li t0, 0x01          /* Load immediate 0x01 into t0*/
     li t1, 0xFF          /* Load immediate 0xFF into t1*/
 
+	csrrc a0, misa, x0
     /* CSRRW: Read and Write CSR (Machine Status Register - mstatus)*/
-    csrrw t2, mstatus, t0    /* Swap the value of t0 with the current mstatus*/
+    csrrw t2, mstatus, t1    /* Swap the value of t0 with the current mstatus*/
                              /* t2 now contains the original mstatus value*/
 
     /* CSRRS: Read and Set CSR (Machine Interrupt Enable - mie)*/
