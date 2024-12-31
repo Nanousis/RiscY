@@ -17,6 +17,7 @@ module  control_stall_id(
 	output reg write_exmem,
 	output reg write_memwb,
 	output reg write_pc,
+	output reg trap_waiting,
 	input [4:0] ifid_rs,
 	input [4:0] ifid_rt,
 	input [4:0] idex_rd,
@@ -25,10 +26,15 @@ module  control_stall_id(
 	input idex_memread,
 	input memReady,
 	input Jump,
+	input IDEX_Branch,
+	input EXMEM_Branch,
+	input syscall,
+	input int_trap,
+	input trap_in_ID,
 	input PCSrc);
 
 reg memStalled=0;
-
+reg suppressTrap=0;
 always @(*)
 begin
 	bubble_ifid		= 1'b0;
@@ -40,8 +46,11 @@ begin
 	write_exmem		= 1'b1;
 	write_memwb		= 1'b1;
 	memStalled		= 1'b0;
+	suppressTrap	= 1'b0;
+	trap_waiting   	= syscall;
 	if(memReady == 1'b0) begin // Memory not ready
 		memStalled		= 1'b1;
+		// stupid line, too scared to remove it
 		if(memStalled == 1'b0) begin
 			write_exmem		= 1'b0;
 			write_idex		= 1'b0;
@@ -54,28 +63,37 @@ begin
 			write_idex		= 1'b0;
 			write_ifid		= 1'b0;
 			write_pc		= 1'b0;
+			trap_waiting	= 1'b0;
 		end
+	end
+	// if we have a branch, we need to make sure that the branch is 
+	// executed before taking a future trap. Hence we stall the pipeline
+	else if((IDEX_Branch|EXMEM_Branch) && syscall)begin
+		suppressTrap=1;
+		bubble_idex	= 1'b1;
+		write_ifid	= 1'b0;
+		trap_waiting= 1'b0;
 	end
 	else if(memRead==1'b1 && idex_memWrite == 1'b1)begin
 		bubble_idex	= 1'b1;
 		write_ifid	= 1'b0;
 		write_pc	= 1'b0;
+		trap_waiting= 1'b0;
 	end
 	else if ((idex_memread == 1'b1) && ((idex_rd==ifid_rs) || (idex_rd==ifid_rt))) begin // Load stall
 		bubble_idex	= 1'b1;
 		write_ifid	= 1'b0;
 		write_pc	= 1'b0;
+		trap_waiting= 1'b0;
 	end
-	else if (Jump == 1'b1) begin // j instruction in ID stage	
+	else if (Jump == 1'b1||trap_in_ID == 1'b1) begin // j instruction in ID stage	
 		bubble_ifid	= 1'b1;
-		write_pc	= 1'b1;
 	end
-
-	if (PCSrc == 1'b1) begin // Taken Branch in MEM stage
+	if (PCSrc == 1'b1 || int_trap == 1'b1) begin // Taken Branch in MEM stage
 		bubble_ifid		= 1'b1;
 		bubble_idex		= 1'b1;
 		bubble_exmem	= 1'b1;
-		write_pc		= 1'b1;
+		write_pc	= 1'b1;
 	end
 end
 endmodule

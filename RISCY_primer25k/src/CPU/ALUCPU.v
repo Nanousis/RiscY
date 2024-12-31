@@ -29,6 +29,7 @@ assign {overflow, out_val} = (op == `ADD) ? (inA + inB) :
 	(op == `XOR) 	? 	{1'b0, (inA ^ inB)} :
 	(op == `OR)  	? 	{1'b0, (inA | inB)} :
 	(op == `AND) 	? 	{1'b0, (inA & inB)} :
+	(op == `CLEAR) 	? 	{1'b0, ((!inA) & inB)} :
 	(op == `SLL) 	? 	{1'b0, (inA << inB[4:0])} :
 	(op == `SRL) 	? 	{1'b0, (inA >> inB[4:0])} :
 	(op == `SRA) 	? 	{1'b0, {inA >>> inB[4:0]}} :

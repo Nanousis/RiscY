@@ -80,6 +80,9 @@ module top
                 .data_out(data_to_write),
                 .data_in(data_read),
                 .byte_select(byte_select),
+                .software_interrupt(msw_irq),
+                .timer_interrupt(mtimer_irq),
+                .external_interrupt(mext_irq),
                 .memReady(memReady)
     );
     
@@ -120,9 +123,12 @@ module top
             .counter1M(counter1M),
             .program_mem_out(program_mem_out), // ADD
             .usb_out(usb_data_out),
+            .clint_data_out(clint_data_out),
 
             .program_instr(program_instr),
             
+            .clint_ren(clint_ren),
+            .clint_wen(clint_wen),
             .mem_ren(mem_ren),
             .mem_wen(mem_wen),
             .program_mem_ren(program_mem_ren),  // ADD
@@ -138,7 +144,24 @@ module top
             .data_out(data_read),
             .instr_out(instr)
     );
-    
+    wire clint_ren;
+    wire clint_wen;
+    wire [31:0] clint_data_out;
+    wire msw_irq;
+    wire mtimer_irq;
+    wire mext_irq=0;
+
+    clint clint_inst(
+        .clk(cpu_clk),
+        .reset(reset),
+        .addr(data_addr),
+        .wdata(data_to_write),
+        .write_enable(clint_wen),
+        .rdata(clint_data_out),
+        .msw_irq(msw_irq),
+        .mtimer_irq(mtimer_irq)
+    );
+
     memory mem( .clk(cpu_clk),
             .reset(reset),
             .PC(PC[`TEXT_BITS-1:2]),
@@ -179,6 +202,8 @@ module top
         .address(data_addr),
         .data_out(flash_data_out)
     );
+
+
 
     wire [9:0] pixelAddress;
     wire [7:0] pixelData;

@@ -34,6 +34,8 @@
 `define SUBU 4'b1010
 `define LUI 4'b1011
 `define AUIPC 4'b1100
+`define CLEAR 4'b1110
+
 
 
 /********* Opcode Formats *********/

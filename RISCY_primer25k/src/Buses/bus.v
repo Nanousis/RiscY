@@ -16,10 +16,13 @@ module bus( input clk,
             input [31:0] counter1M,
             input [31:0] program_mem_out, // ADD
             input [31:0] usb_out,
+            input [31:0] clint_data_out,
 
             input [31:0] boot_instr,
             input [31:0] program_instr,
 
+            output reg clint_ren,
+            output reg clint_wen,
             output reg mem_ren,
             output reg mem_wen,
             output reg program_mem_ren,  // ADD
@@ -97,6 +100,11 @@ always@(*) begin
     else if(data_addr >= `USB_CONTROLLER_ADRESS && data_addr < (`USB_CONTROLLER_END)) begin
         usb_ren = ren;
         data_out = usb_out;
+    end
+    else if(data_addr >= `CLINT_START && data_addr < (`CLINT_END)) begin
+        clint_ren = ren;
+        clint_wen = wen;
+        data_out = clint_data_out;
     end
     else begin
         mem_ren = ren;

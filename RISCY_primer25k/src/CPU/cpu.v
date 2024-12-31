@@ -23,6 +23,9 @@ module cpu(	input clock,
 			output 	[31:0] data_out,
 			input 	[31:0] data_in,
 			output 	[3:0]  byte_select,
+			input software_interrupt,
+			input timer_interrupt,
+			input external_interrupt,
 			input memReady
 			);
 
@@ -40,8 +43,9 @@ module cpu(	input clock,
 // );
 reg		[31:0]	IFID_instr;
 reg 	[31:0]  PC_IF2;
-reg		[31:0]	PC, PC_OLD, IFID_PC, IDEX_PC;
-wire	[31:0]	PCplus4, JumpAddress, PC_new;
+reg		[31:0]	PC, PC_OLD, IFID_PC, IDEX_PC, EXMEM_PC, MEMWB_PC;
+wire	[31:0]	PCplus4, JumpAddress;
+reg 	[31:0] PC_new;
 wire	[31:0]	instr;
 reg		[31:0]	IF2_instr;
 reg	[31:0]	IDEX_instr;
@@ -112,12 +116,21 @@ reg      		IDEX_csr_immidiate;
 reg      		EXMEM_csr_immidiate;
 reg      		MEMWB_csr_immidiate;
 
+
 wire	[6:0]	funct7;
 wire	[4:0]	instr_rs1, instr_rs2, instr_rd, RegWriteAddr;
 wire	[3:0]	ALUOp;
 wire	[1:0]	bypassA, bypassB;
 wire	[31:0]	imm_i, imm_s, imm_b, imm_u, imm_j, imm_z;
 reg keepDelayInstr=0;
+
+// trap handler signals
+wire int_taken;
+wire [31:0] trap_vector;
+wire syscall, trap_waiting;
+wire trap_in_ID;
+// reg trap_in_EX=0;
+// reg trap_in_MEM=0;
 
 
 assign PC_out = PC;
@@ -207,10 +220,24 @@ reg [31:0] PCPrevious;
 // PC adder
 assign PCplus4 = PC + 32'd4;
 
-// PCSrc multiplexer (branch or not)
-assign PC_new = (PCSrc == 1'b0) ? 
-				((Jump == 1'b0) ? PCplus4 : JumpAddress) :
-				EXMEM_BranchALUOut;
+// Branch signal for new PC
+always @(*) begin
+	if(int_taken||trap_in_ID)
+	begin
+		PC_new = trap_vector;
+	end
+	else if (PCSrc == 1'b0) begin
+		if (Jump == 1'b0) begin
+			PC_new = PCplus4;
+		end
+		else begin
+			PC_new = JumpAddress;
+		end
+	end
+	else begin
+		PC_new = EXMEM_BranchALUOut;
+	end
+end
 
 assign JumpAddress = IFID_PC + signExtend;
 
@@ -245,12 +272,18 @@ assign instr_rs1	= IFID_instr[19:15];
 assign csr_addr		= IFID_instr[31:20];
 assign instr_rs2	= IFID_instr[24:20];
 assign instr_rd		= IFID_instr[11:7];
-
+// can also probably add illegal instruction checks here as well
+// just OR it with syscall and give it to the control stall unit
+assign syscall		= (IDEX_Jump==1'b0 & 
+						IDEX_JumpJALR==1'b0&opcode == `I_ENV_FORMAT & funct3==0) ? 1'b1 : 1'b0;
 
 
 always @(*) begin
 	if(reg_type == 2'b01) begin
-		if(funct3[1:0] == 2'b01) begin
+		if(funct3[1:0] == 2'b00) begin
+			csr_write_allowed = 1'b0;
+		end
+		else if(funct3[1:0] == 2'b01) begin
 			csr_write_allowed = 1'b1;
 		end
 		else begin
@@ -399,12 +432,21 @@ CSRFile csrFile(
 	.csrAddr(csr_addr),
 	.csrWAddr(MEMWB_csr_addr),
 	.wd(WB_csr_data),
-	.rd(csr_data)
+	.rd(csr_data),
+	.write_pc(write_pc),
+
+	// clic signals
+	.PC(PC),
+	.IDEX_PC(IDEX_PC),
+	.software_interrupt(software_interrupt),
+	.timer_interrupt(timer_interrupt),
+	.external_interrupt(external_interrupt),
+	.syscall(trap_waiting),
+	.int_taken(int_taken),
+	.trap_in_ID(trap_in_ID),
+	.trap_vector(trap_vector)
 );
 // Main Control Unit
-
-// this should probably take into account loading a register
-// and then writing that register into a csr
 control_main control_main (
 	.RegDst(RegDst),
 	.reg_type(reg_type),
@@ -431,6 +473,7 @@ control_stall_id control_stall_id (
 	.write_exmem	(write_exmem),
 	.write_memwb	(write_memwb),
 	.write_pc		(write_pc),
+	.trap_waiting	(trap_waiting),
 	.ifid_rs		(instr_rs1),
 	.ifid_rt		(instr_rs2),
 	.idex_rd		(IDEX_instr_rd),
@@ -438,6 +481,9 @@ control_stall_id control_stall_id (
 	.idex_memWrite	(IDEX_MemWrite),
 	.idex_memread	(IDEX_MemRead),
 	.Jump			(Jump),
+	.IDEX_Branch	(IDEX_Branch),
+	.EXMEM_Branch	(EXMEM_Branch),
+	.syscall		(syscall),
 	.memReady		(memReady),
 	.PCSrc			(PCSrc));
 
@@ -497,6 +543,7 @@ begin
 		EXMEM_reg_type		<= 2'b00;
 		EXMEM_csr_addr		<= 12'b0;
 		EXMEM_csr_write_allowed <= 1'b0;
+		EXMEM_PC			<= 32'b0;
 	end 
 	else
 	begin
@@ -517,6 +564,7 @@ begin
 			EXMEM_reg_type		<= 2'b00;
 			EXMEM_csr_addr		<= 12'b0;
 			EXMEM_csr_write_allowed <= 1'b0;
+			EXMEM_PC			<= 32'b0;
 		end 
 		else if (write_exmem == 1'b1) begin
 			EXMEM_ALUOut		<= ALUOut;
@@ -535,6 +583,7 @@ begin
 			EXMEM_reg_type		<= IDEX_reg_type;
 			EXMEM_csr_addr		<= IDEX_csr_addr;
 			EXMEM_csr_write_allowed <= IDEX_csr_write_allowed;
+			EXMEM_PC			<= IDEX_PC;
 		end
 	end
 end
@@ -605,6 +654,7 @@ begin
 		MEMWB_reg_type		<= 2'b00;
 		MEMWB_csr_addr		<= 12'b0;
 		MEMWB_csr_write_allowed <= 1'b0;
+		MEMWB_PC			<= 32'b0;
 	end 
 	else if (write_memwb == 1'b1) begin
 		MEMWB_DMemOut		<= DMemOut;
@@ -617,6 +667,7 @@ begin
 		MEMWB_reg_type		<= EXMEM_reg_type;
 		MEMWB_csr_addr		<= EXMEM_csr_addr;
 		MEMWB_csr_write_allowed <= EXMEM_csr_write_allowed;
+		MEMWB_PC			<= EXMEM_PC;
 	end
 end
 
