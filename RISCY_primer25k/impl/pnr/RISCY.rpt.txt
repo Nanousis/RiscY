@@ -12,27 +12,27 @@
   <Part Number>: GW5A-LV25MG121NC1/I0
   <Device>: GW5A-25
   <Device Version>: A
-  <Created Time>:Fri Dec 27 19:01:57 2024
+  <Created Time>:Tue Dec 31 12:15:42 2024
 
 
 2. PnR Details
 
   Running placement:
-    Placement Phase 0: CPU time = 0h 0m 0.582s, Elapsed time = 0h 0m 0.585s
-    Placement Phase 1: CPU time = 0h 0m 0.154s, Elapsed time = 0h 0m 0.154s
-    Placement Phase 2: CPU time = 0h 0m 2s, Elapsed time = 0h 0m 2s
+    Placement Phase 0: CPU time = 0h 0m 0.681s, Elapsed time = 0h 0m 0.673s
+    Placement Phase 1: CPU time = 0h 0m 0.188s, Elapsed time = 0h 0m 0.184s
+    Placement Phase 2: CPU time = 0h 0m 3s, Elapsed time = 0h 0m 3s
     Placement Phase 3: CPU time = 0h 0m 3s, Elapsed time = 0h 0m 3s
-    Total Placement: CPU time = 0h 0m 6s, Elapsed time = 0h 0m 6s
+    Total Placement: CPU time = 0h 0m 7s, Elapsed time = 0h 0m 7s
  Running routing:
     Routing Phase 0: CPU time = 0h 0m 0.002s, Elapsed time = 0h 0m 0.002s
-    Routing Phase 1: CPU time = 0h 0m 21s, Elapsed time = 0h 0m 21s
-    Routing Phase 2: CPU time = 0h 0m 0.07s, Elapsed time = 0h 0m 0.069s
+    Routing Phase 1: CPU time = 0h 0m 24s, Elapsed time = 0h 0m 24s
+    Routing Phase 2: CPU time = 0h 0m 0.08s, Elapsed time = 0h 0m 0.077s
     Routing Phase 3: CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0s
-    Total Routing: CPU time = 0h 0m 21s, Elapsed time = 0h 0m 21s
+    Total Routing: CPU time = 0h 0m 24s, Elapsed time = 0h 0m 24s
  Generate output files:
-    CPU time = 0h 0m 0.814s, Elapsed time = 0h 0m 0.841s
+    CPU time = 0h 0m 0.832s, Elapsed time = 0h 0m 0.835s
 
- Total Time and Memory Usage: CPU time = 0h 0m 27s, Elapsed time = 0h 0m 27s, Peak memory usage = 1009MB
+ Total Time and Memory Usage: CPU time = 0h 0m 32s, Elapsed time = 0h 0m 32s, Peak memory usage = 986MB
 
 
 3. Resource Usage Summary
@@ -40,15 +40,15 @@
   --------------------------------------------------------------------------------
   Resources                   | Usage                               | Utilization
   --------------------------------------------------------------------------------
-  Logic                       | 8693/23040                          |  38%
-    --LUT,ALU,ROM16           | 8693(7548 LUT, 1145 ALU, 0 ROM16)   | -
+  Logic                       | 9729/23040                          |  43%
+    --LUT,ALU,ROM16           | 9729(8418 LUT, 1311 ALU, 0 ROM16)   | -
     --SSRAM(RAM16)            | 0                                   | -
-  Register                    | 3583/23280                          |  16%
+  Register                    | 4120/23280                          |  18%
     --Logic Register as Latch | 0/23040                             |  0%
-    --Logic Register as FF    | 3578/23040                          |  16%
+    --Logic Register as FF    | 4115/23040                          |  18%
     --I/O Register as Latch   | 0/240                               |  0%
     --I/O Register as FF      | 5/240                               |  3%
-  CLS                         | 6259/11520                          |  55%
+  CLS                         | 7207/11520                          |  63%
   I/O Port                    | 25/86                               |  30%
   I/O Buf                     | 19                                  | -
     --Input Buf               | 7                                   | -
@@ -88,7 +88,7 @@
   Clock Resource| Usage         | Utilization 
   ------------------------------------------
   PRIMARY       | 3/8           | 38%
-  LW            | 5/8           | 63%
+  LW            | 4/8           | 50%
   GCLK_PIN      | 8/30          | 27%
   CLKDIV        | 1/16          | 7%
   PLLA          | 2/6           | 34%
@@ -101,11 +101,10 @@
   Signal         | Global Clock   | Location
   -------------------------------------------
   clk_d          | PRIMARY        |  TR TL BR BL
-  clk_usb        | PRIMARY        |  TR TL BR BL
+  clk_usb        | PRIMARY        |  TR TL BR
   clk_p          | PRIMARY        |  TR TL BL
   reset          | LW             |  -
   memReady       | LW             |  -
-  cpu_1/IFID_PC_31_8| LW             |  -
   cpu_1/EXMEM_ALUOut_31_11| LW             |  -
   svo_hdmi_inst_1/n136_5| LW             |  -
   clk_p5         | HCLK           |  -

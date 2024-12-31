@@ -66,6 +66,8 @@ always@(*) begin
     data_out = 0;
     uart_ren = 0;
     usb_ren = 0;
+    clint_ren = 0;
+    clint_wen = 0;
 
     // memory mapped screen, the range is times 2 due to the use of halfword
     if(data_addr>=`SCREEN_ADDRESS && data_addr <(`SCREEN_END)) begin

@@ -14,6 +14,10 @@
    "Type" : "verilog"
   },
   {
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/CSRFile.v",
+   "Type" : "verilog"
+  },
+  {
    "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/RegFile.v",
    "Type" : "verilog"
   },
@@ -83,6 +87,10 @@
   },
   {
    "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/GPIO/uartController.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/Memories/DPBRAM.v",
    "Type" : "verilog"
   },
   {
@@ -206,11 +214,7 @@
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/CSRFile.v",
-   "Type" : "verilog"
-  },
-  {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/Memories/DPBRAM.v",
+   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/InteruptControllers/CLINT.v",
    "Type" : "verilog"
   }
  ],

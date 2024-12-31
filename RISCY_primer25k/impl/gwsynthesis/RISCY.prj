@@ -7,6 +7,7 @@
         <File path="/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v" type="verilog"/>
         <File path="/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/Buses/bus.v" type="verilog"/>
         <File path="/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/ALUCPU.v" type="verilog"/>
+        <File path="/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/CSRFile.v" type="verilog"/>
         <File path="/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/RegFile.v" type="verilog"/>
         <File path="/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/SignExtendSelector.v" type="verilog"/>
         <File path="/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/constants.vh" type="verilog"/>
@@ -25,6 +26,7 @@
         <File path="/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/GPIO/seven_segment.v" type="verilog"/>
         <File path="/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/GPIO/uart.v" type="verilog"/>
         <File path="/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/GPIO/uartController.v" type="verilog"/>
+        <File path="/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/Memories/DPBRAM.v" type="verilog"/>
         <File path="/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/Memories/flash.v" type="verilog"/>
         <File path="/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/Memories/flashController.v" type="verilog"/>
         <File path="/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/Memories/memory.v" type="verilog"/>
@@ -55,8 +57,7 @@
         <File path="/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/usb/usb_controller.v" type="verilog"/>
         <File path="/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/usb/usb_hid_host.v" type="verilog"/>
         <File path="/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/usb/usb_hid_host_rom.v" type="verilog"/>
-        <File path="/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/CSRFile.v" type="verilog"/>
-        <File path="/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/Memories/DPBRAM.v" type="verilog"/>
+        <File path="/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/InteruptControllers/CLINT.v" type="verilog"/>
     </FileList>
     <OptionList>
         <Option type="disable_insert_pad" value="0"/>
