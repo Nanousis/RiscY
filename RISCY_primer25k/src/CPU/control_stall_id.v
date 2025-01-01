@@ -12,6 +12,7 @@ module  control_stall_id(
 	output reg bubble_ifid,
 	output reg bubble_idex,
 	output reg bubble_exmem,
+	output reg bubble_memwb,
 	output reg write_ifid,
 	output reg write_idex,
 	output reg write_exmem,
@@ -31,6 +32,7 @@ module  control_stall_id(
 	input syscall,
 	input int_trap,
 	input trap_in_ID,
+	input flushPipeline,
 	input PCSrc);
 
 reg memStalled=0;
@@ -44,6 +46,7 @@ begin
 	bubble_ifid		= 1'b0;
 	bubble_idex		= 1'b0;
 	bubble_exmem	= 1'b0;
+	bubble_memwb	= 1'b0;
 	write_pc		= 1'b1;
 	write_ifid		= 1'b1;
 	write_idex		= 1'b1;
@@ -103,6 +106,7 @@ begin
 		bubble_ifid		= 1'b1;
 		bubble_idex		= 1'b1;
 		bubble_exmem	= 1'b1;
+		bubble_memwb	= 1'b1;
 		write_pc	= 1'b1;
 	end
 	else
@@ -112,6 +116,11 @@ begin
 		bubble_idex		= 1'b1;
 		bubble_exmem	= 1'b1;
 		write_pc	= 1'b1;
+	end
+	if(flushPipeline == 1'b1) begin
+		state = 4'd8;
+		bubble_ifid		= 1'b1;
+		// write_pc	= 1'b0;
 	end
 end
 endmodule

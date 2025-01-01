@@ -1,7 +1,7 @@
 /* Define the memory regions */
 MEMORY
 {
-    RAM (wx) : ORIGIN = 0x00000000, LENGTH = 4K
+    RAM (wx) : ORIGIN = 0x00400000, LENGTH = 16K
 }
 
 /* Define stack size */

@@ -1,15 +1,15 @@
 [*]
 [*] GTKWave Analyzer v3.4.0 (w)1999-2022 BSI
-[*] Wed Jan  1 11:54:02 2025
+[*] Wed Jan  1 21:30:19 2025
 [*]
 [dumpfile] "ZSOC.vcd"
-[dumpfile_mtime] "Wed Jan  1 11:50:26 2025"
-[dumpfile_size] 38560963
+[dumpfile_mtime] "Wed Jan  1 21:23:48 2025"
+[dumpfile_size] 2033561625
 [savefile] "gtkw.gtkw"
-[timestart] 3953300
+[timestart] 2697948100
 [size] 1512 916
-[pos] 1977 117
-*-16.390831 4270000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[pos] 1684 114
+*-16.390831 2698110000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] test.
 [treeopen] test.TOP.
 [treeopen] test.TOP.cpu_1.
@@ -380,7 +380,7 @@ test.TOP.cpu_1.cpu_regs.\data[30][31:0]
 (31)test.TOP.cpu_1.cpu_regs.\data[30][31:0]
 @1401200
 -group_end
-@24
+@420
 test.TOP.cpu_1.cpu_regs.\data[31][31:0]
 @1000200
 -Temp Registers
@@ -416,7 +416,7 @@ test.TOP.cpu_1.wRegData[31:0]
 @24
 test.TOP.clint_inst.mtime[63:0]
 test.TOP.clint_inst.mtimecmp[63:0]
-@c00200
+@800200
 -registers
 @22
 test.TOP.cpu_1.cpu_regs.\data[0][31:0]
@@ -451,17 +451,20 @@ test.TOP.cpu_1.cpu_regs.\data[28][31:0]
 test.TOP.cpu_1.cpu_regs.\data[29][31:0]
 test.TOP.cpu_1.cpu_regs.\data[30][31:0]
 test.TOP.cpu_1.cpu_regs.\data[31][31:0]
-@1401200
+@1000200
 -registers
 @800200
 -CSR
+@28
+test.TOP.cpu_1.write_pc
 @24
 test.TOP.clint_inst.mtime[63:0]
 test.TOP.clint_inst.mtimecmp[63:0]
 @28
 test.TOP.cpu_1.csrFile.external_interrupt
 test.TOP.cpu_1.csrFile.software_interrupt
-test.TOP.cpu_1.csrFile.timer_interrupt
+[color] 5
+test.TOP.cpu_1.timer_interrupt
 @22
 test.TOP.cpu_1.csrFile.trap_vector[31:0]
 @28
@@ -469,6 +472,8 @@ test.TOP.cpu_1.csrFile.trap_vector[31:0]
 test.TOP.cpu_1.int_taken
 [color] 2
 test.TOP.cpu_1.trap_in_ID
+[color] 7
+test.TOP.cpu_1.flushPipeline
 @200
 -PC
 @22
@@ -478,6 +483,9 @@ test.TOP.cpu_1.IFID_PC[31:0]
 test.TOP.cpu_1.IDEX_PC[31:0]
 test.TOP.cpu_1.EXMEM_PC[31:0]
 test.TOP.cpu_1.MEMWB_PC[31:0]
+@28
+[color] 5
+test.TOP.cpu_1.pc_jumped
 @200
 -instructions
 @22
@@ -486,16 +494,55 @@ test.TOP.cpu_1.IF2_instr[31:0]
 test.TOP.cpu_1.IFID_instr[31:0]
 test.TOP.cpu_1.IDEX_instr[31:0]
 test.TOP.cpu_1.EXMEM_instr[31:0]
-@23
+@c00022
 test.TOP.cpu_1.MEMWB_instr[31:0]
+@28
+(0)test.TOP.cpu_1.MEMWB_instr[31:0]
+(1)test.TOP.cpu_1.MEMWB_instr[31:0]
+(2)test.TOP.cpu_1.MEMWB_instr[31:0]
+(3)test.TOP.cpu_1.MEMWB_instr[31:0]
+(4)test.TOP.cpu_1.MEMWB_instr[31:0]
+(5)test.TOP.cpu_1.MEMWB_instr[31:0]
+(6)test.TOP.cpu_1.MEMWB_instr[31:0]
+(7)test.TOP.cpu_1.MEMWB_instr[31:0]
+(8)test.TOP.cpu_1.MEMWB_instr[31:0]
+(9)test.TOP.cpu_1.MEMWB_instr[31:0]
+(10)test.TOP.cpu_1.MEMWB_instr[31:0]
+(11)test.TOP.cpu_1.MEMWB_instr[31:0]
+(12)test.TOP.cpu_1.MEMWB_instr[31:0]
+(13)test.TOP.cpu_1.MEMWB_instr[31:0]
+(14)test.TOP.cpu_1.MEMWB_instr[31:0]
+(15)test.TOP.cpu_1.MEMWB_instr[31:0]
+(16)test.TOP.cpu_1.MEMWB_instr[31:0]
+(17)test.TOP.cpu_1.MEMWB_instr[31:0]
+(18)test.TOP.cpu_1.MEMWB_instr[31:0]
+(19)test.TOP.cpu_1.MEMWB_instr[31:0]
+(20)test.TOP.cpu_1.MEMWB_instr[31:0]
+(21)test.TOP.cpu_1.MEMWB_instr[31:0]
+(22)test.TOP.cpu_1.MEMWB_instr[31:0]
+(23)test.TOP.cpu_1.MEMWB_instr[31:0]
+(24)test.TOP.cpu_1.MEMWB_instr[31:0]
+(25)test.TOP.cpu_1.MEMWB_instr[31:0]
+(26)test.TOP.cpu_1.MEMWB_instr[31:0]
+(27)test.TOP.cpu_1.MEMWB_instr[31:0]
+(28)test.TOP.cpu_1.MEMWB_instr[31:0]
+(29)test.TOP.cpu_1.MEMWB_instr[31:0]
+(30)test.TOP.cpu_1.MEMWB_instr[31:0]
+(31)test.TOP.cpu_1.MEMWB_instr[31:0]
+@1401200
+-group_end
 @200
 -mepc
 @820
 test.TOP.cpu_1.pc_string[2039:0]
+@28
+test.TOP.cpu_1.mepc_state
 @22
 test.TOP.cpu_1.newmepc[31:0]
+@23
 [color] 7
 test.TOP.cpu_1.csrFile.mepc[31:0]
+@22
 test.TOP.cpu_1.csrFile.misa[31:0]
 test.TOP.cpu_1.csrFile.mtvec[31:0]
 test.TOP.cpu_1.csrFile.mie[31:0]
@@ -505,14 +552,19 @@ test.TOP.cpu_1.csrFile.rd[31:0]
 test.TOP.cpu_1.csrFile.wd[31:0]
 test.TOP.cpu_1.csrFile.csrAddr[11:0]
 @28
+test.TOP.cpu_1.csrFile.enableInterrupts[2:0]
 test.TOP.cpu_1.csrFile.ren
 test.TOP.cpu_1.bubble_ifid
 test.TOP.cpu_1.bubble_idex
 test.TOP.cpu_1.bubble_exmem
+[color] 7
+test.TOP.cpu_1.branch_taken
+[color] 7
 test.TOP.cpu_1.Jump
+[color] 7
+test.TOP.cpu_1.JumpJALR
 test.TOP.cpu_1.csrFile.trap_in_ID
 test.TOP.cpu_1.syscall
-test.TOP.cpu_1.branch_taken
 test.TOP.cpu_1.control_stall_id.EXMEM_Branch
 test.TOP.cpu_1.control_stall_id.suppressTrap
 test.TOP.cpu_1.trap_waiting
@@ -552,6 +604,8 @@ test.TOP.flashController.stateDebug[4:0]
 -FlashController
 @800200
 -ScreenText
+@24
+test.TOP.clint_inst.mtime[63:0]
 @c00820
 test.TOP.text.\charMemory[0][0:511]
 @28

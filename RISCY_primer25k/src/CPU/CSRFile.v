@@ -27,8 +27,11 @@ module CSRFile (input clock,
                 input syscall,
                 output reg int_taken,
                 output reg trap_in_ID,
+                output reg flushPipeline,
                 output reg [31:0] trap_vector
-                );
+
+);
+parameter FLUSH_COUNT = 4'd13;
 /****** SIGNALS ******/
 integer i;
 
@@ -60,7 +63,7 @@ assign mip = {16'b0,4'b0,external_interrupt,3'b0,timer_interrupt,3'b0,software_i
 
 reg [2:0] enableInterrupts;
 // this is 100% going to be lost in a stall.
-
+reg [3:0] pipeline_flush_count;
 
 
 
@@ -81,6 +84,8 @@ begin
         int_taken <= 1'b0;
         trap_vector <= 32'b0;
         enableInterrupts <= 3'b111;
+        flushPipeline <= 1'b0;
+        pipeline_flush_count <= FLUSH_COUNT;
     end
     else
     begin
@@ -124,18 +129,30 @@ begin
             end
         end
         begin // interrupt handling section
-            if(write_pc == 1'b1)
+            if(enableInterrupts <= 3'b110)
             begin
-                if(enableInterrupts <= 3'b110)
+                enableInterrupts <= enableInterrupts + 1;
+                if(enableInterrupts == 3'b110)
                 begin
-                    enableInterrupts <= enableInterrupts + 1;
-                    if(enableInterrupts == 3'b110)
-                    begin
-                        mstatus[3] <= mstatus[7];
-                    end
+                    mstatus[3] <= mstatus[7];
                 end
+            end
+            if(flushPipeline == 1'b1)
+            begin
+                if(write_pc == 1'b1)
+                    pipeline_flush_count <= pipeline_flush_count + 1;
+                if(pipeline_flush_count == FLUSH_COUNT)
+                begin
+                    flushPipeline <= 1'b0;
+                    mepc <= IDEX_PC;
+                    int_taken <= 1;
+                end
+            end
+            else if(write_pc == 1'b1)
+            begin
                 int_taken <= 1'b0;
                 trap_in_ID <= 1'b0;
+                // flushPipeline <= 1'b0;
                 if(syscall == 1'b1) begin
                     // ecall instruction
                     if(csrAddr==0)begin
@@ -170,30 +187,36 @@ begin
                 else if(mstatus[3] == 1'b1) begin
                     // external interrupt
                     if(external_interrupt & mie[11]==1'b1 & mip[11] == 1'b1) begin
-                        mepc <= IDEX_PC;
-                        int_taken <= 1;
+                        // mepc <= IDEX_PC;
+                        // int_taken <= 1;
                         trap_vector <= {mtvec[31:2],2'b0};
                         mcause <= {1'b1,31'd11};
                         mstatus[7] <= mstatus[3];
                         mstatus[3] <= 1'b0;
+                        flushPipeline <= 1'b1;
+                        pipeline_flush_count <= 0;
                     end
                     //timer interrupt
                     else if(timer_interrupt & mie[7]==1'b1 & mip[7] == 1'b1) begin
-                        mepc <= IDEX_PC;
-                        int_taken <= 1;
+                        // mepc <= IDEX_PC;
+                        // int_taken <= 1;
                         trap_vector <= {mtvec[31:2],2'b0};
                         mcause <= {1'b1,31'd7};
                         mstatus[7] <= mstatus[3];
                         mstatus[3] <= 1'b0;
+                        flushPipeline <= 1'b1;
+                        pipeline_flush_count <= 0;
                     end
                     //software interrupt
                     else if(software_interrupt & mie[3]==1'b1 & mip[3] == 1'b1) begin
-                        mepc <= IDEX_PC;
-                        int_taken <= 1;
+                        // mepc <= IDEX_PC;
+                        // int_taken <= 1;
                         trap_vector <= {mtvec[31:2],2'b0};
                         mcause <= {1'b1,31'd3};
                         mstatus[7] <= mstatus[3];
                         mstatus[3] <= 1'b0;
+                        flushPipeline <= 1'b1;
+                        pipeline_flush_count <= 0;
                     end
                 end
             end

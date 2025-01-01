@@ -13,8 +13,8 @@ typedef struct Programheader{
 #define FLASH_REN 0x8B000001
 #define FLASH_WEN 0x8B000002
 #define FLASH_ADRESS 0x8B000004
-#define FLASH_DATA_IN 0x8B0000008
-#define FLASH_DATA_OUT 0x8B000000C
+#define FLASH_DATA_IN 0x8B000008
+#define FLASH_DATA_OUT 0x8B00000C
 #define USB 0x10000000
 
 #define FILE_OFFSET 4 
@@ -69,7 +69,7 @@ int main() {
     char usbKey=0;
     char oldKey=0;
     char boardBtns=0;
-    char oldBoardBtns=0;
+    char newKey=0;
     while(1){
         char magicNumRead[9]={0};
         magicNumRead[9]='\0';
@@ -165,26 +165,27 @@ int main() {
                 boardBtns = 0;
             }
 
-            if(usbKey!=oldKey||boardBtns!=oldBoardBtns){
-                if(boardBtns == 0x51||usbKey == 0x51){//down arrow
+            newKey = usbKey|boardBtns;
+
+            if(newKey!=oldKey){
+                if(newKey == 0x51){//down arrow
                     selectNum++;
                     if(selectNum>=programNum){
                         selectNum=0;
                     }
                 }
-                else if(boardBtns == 0x52||usbKey == 0x52){//up arrow
+                else if(newKey == 0x52){//up arrow
                     selectNum--;
                     if(selectNum<0){
                         selectNum=programNum-1;
                     }
                 }
-                else if(boardBtns == 0x28||usbKey == 0x28){//enter key
+                else if(newKey == 0x28){//enter key
                     break;
                 }
             }
-            oldBoardBtns = boardBtns;
-            oldKey = usbKey;
-            for(volatile int k=0; k<WaitTime>>2; k++);
+            oldKey = newKey;
+            // for(int k=0; k<WaitTime>4; k++);
         }
         int programSize=(headers[selectNum].endAddress-headers[selectNum].startAddress)>>2;
         printf("Reading from flash %x\n",programSize);
@@ -199,6 +200,8 @@ int main() {
         void (*jump_to_program)() = (void (*)())(PROGRAM_MEMORY);
         // Call the function pointer to jump to the loaded program
         jump_to_program();
+        printfSCR(0,15,"Error: Jump failed");
+        while(1);
         clearScreen();
     }
 }

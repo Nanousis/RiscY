@@ -4,7 +4,9 @@
 #define USB 0x10000000
 #define MTIME_ADDR     0x0200BFF8  // Address of mtime (platform-specific)
 #define MTIMECMP_ADDR  0x02004000  // Address of mtimecmp (platform-specific)
-#define ONESECOND 500 //100ms
+#define ONESECOND 5000000 //100ms
+#include <stdint.h>
+#include <stdio.h>
 
 void set_timer_interrupt(uint64_t interval) {
     volatile uint64_t *mtime = (uint64_t *)MTIME_ADDR;
@@ -14,8 +16,6 @@ void set_timer_interrupt(uint64_t interval) {
     *mtimecmp = current_time + interval; // Set next timer interrupt
 }
 
-#include <stdint.h>
-#include <stdio.h>
 
 int intCount=0;
 
@@ -27,10 +27,13 @@ void c_trap_handler(uintptr_t mcause, uintptr_t mepc, uintptr_t mtval) {
     if ((mcause & 0x80000000) != 0) {
         // Interrupt
         printfSCR(SCREEN_WIDTH*2,15,"Interrupt: %x\n",intCount);
+        // if(mepc<0x00400000){
+        //     while(1);
+        // }
         intCount++;
         if(mcause == 0x80000007){
             // Timer interrupt
-            // printfSCR(SCREEN_WIDTH*3,15,"Timer interrupt! time:%x cmp:%x\n",*((uint32_t *)MTIME_ADDR),*((uint32_t *)MTIMECMP_ADDR));
+            printfSCR(SCREEN_WIDTH*3,15,"Timer interrupt! time:%x cmp:%x\n",*((uint32_t *)MTIME_ADDR),*((uint32_t *)MTIMECMP_ADDR));
             set_timer_interrupt(ONESECOND); // Set next timer interrupt
         }
     } else {
@@ -132,7 +135,9 @@ int main() {
         clock = *((uint64_t *)MTIME_ADDR);
         clockcmp = *((uint64_t *)MTIMECMP_ADDR);
         // putch(SCREEN_WIDTH*17,test,15);
-        printfSCR(SCREEN_WIDTH*17,15,"Hello-World!-%x,-%x",cnt,cnt2);
+         printfSCR(SCREEN_WIDTH*17,15,"For some reason this causes problems\n");
+        printHex(SCREEN_WIDTH*17,cnt,15);
+        // printfSCR(SCREEN_WIDTH*17,15,"Hello-World!-%x,-%x",cnt,cnt2);
         // test++;
         // if(test > 'z'){
         //     test = 'a';
@@ -143,6 +148,9 @@ int main() {
         // printfSCR(SCREEN_WIDTH*17,15,"Hello World! %x, %x",test, count);
     }
     printfSCR(SCREEN_WIDTH*18,BG_RED,"ERROR 1");
-    printfSCR(SCREEN_WIDTH*18+20,BG_RED,"ERROR 2");
+    printfSCR(SCREEN_WIDTH*17+20,BG_RED,"ERROR 2");
+    printfSCR(SCREEN_WIDTH*16+20,BG_RED,"ERROR 3");
+    printfSCR(SCREEN_WIDTH*15+20,BG_RED,"ERROR 4");
+    printfSCR(SCREEN_WIDTH*14+20,BG_RED,"ERROR 5");
     while(1);
 }

@@ -200,6 +200,8 @@ int main() {
         void (*jump_to_program)() = (void (*)())(PROGRAM_MEMORY);
         // Call the function pointer to jump to the loaded program
         jump_to_program();
+        printfSCR(0,15,"Error: Jump failed");
+        while(1);
         clearScreen();
     }
 }

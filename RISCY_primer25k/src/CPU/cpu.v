@@ -92,7 +92,7 @@ wire			Zero, RegDst, MemRead, MemWrite, MemToReg, ALUSrc, PCSrc, RegWrite, Jump,
 wire 	[1:0] 	reg_type; // used to determin if we are using the x0-x31 registers, csr registers or f1-f32 registers. 0->x register 1->csr register 2->f register 
 wire			Branch;
 reg				IDEX_Branch, EXMEM_Branch;
-wire			bubble_ifid, bubble_idex, bubble_exmem;   // create a NOP in respective stages
+wire			bubble_ifid, bubble_idex, bubble_exmem, bubble_memwb;   // create a NOP in respective stages
 wire			write_ifid, write_idex, write_exmem, write_memwb, write_pc;  // enable/disable pipeline registers
 wire	[6:0]	opcode;
 wire	[2:0]	funct3, ALUcntrl; 
@@ -228,7 +228,7 @@ end
 
 reg [31:0] PCPrevious;
 // PC adder
-assign PCplus4 = PC + 32'd4;
+// assign PCplus4 = PC + 32'd4;
 
 // Branch signal for new PC
 always @(*) begin
@@ -238,7 +238,7 @@ always @(*) begin
 	end
 	else if (PCSrc == 1'b0) begin
 		if (Jump == 1'b0) begin
-			PC_new = PCplus4;
+			PC_new = PC + ((flushPipeline == 1'b1) ? 32'd0 : 32'd4);
 		end
 		else begin
 			PC_new = JumpAddress;
@@ -436,29 +436,107 @@ begin
 end
 reg [31:0] newmepc;
 reg [255*8-1:0] pc_string;
-always@(*)begin
-	if(branch_taken==1'b1)begin
-		pc_string="Branch taken";
-		newmepc = EXMEM_BranchALUOut;
-	end
-	else if(IDEX_PC!=32'hffffffff&(~Branch)&(~EXMEM_Branch)&(~Jump)&(EXMEM_PC!=32'hffffffff))begin
-		pc_string="IDEX Taken";
-		newmepc = IDEX_PC;
-	end
-	else if(IFID_PC!=32'hffffffff)begin
-		pc_string="IFID Taken";
-		newmepc = IFID_PC;
-	end
-	else if(PC_IF2 !=32'hffffffff)begin
-		pc_string="IF2 Taken";
-		newmepc = PC_IF2;
-	end
-	else begin
-		pc_string="PC Taken";
-		newmepc = PC;
-	end
+reg pc_jumped;
 
+
+localparam MEPC_IDLE = 32'h0;
+localparam MEPC_WAITINGJUMP = 32'h1;
+
+reg mepc_state;
+always@(posedge clock or negedge reset)begin
+	if(reset==1'b0)begin
+		pc_string<="Reset";
+		newmepc <= 32'h0;
+		pc_jumped <= 1'b0;
+		mepc_state <= MEPC_IDLE;
+	end
+	else
+	begin
+
+		case(mepc_state)
+			MEPC_IDLE:begin
+				if(flushPipeline)
+				begin
+					if(branch_taken||Jump||EXMEM_JumpJALR)
+					begin
+						pc_string="BID Taken";
+						newmepc <= PC_new;
+					end
+					else if(write_pc==1'b0&&IFID_PC!=32'hffffffff)
+					begin
+						pc_string="stalled due to loadWord";
+						newmepc <= IFID_PC;
+					end
+					else if(PC_IF2!=32'hffffffff)
+					begin
+						pc_string="IF2 Taken";
+						newmepc <= PC_IF2;
+					end
+					else
+					begin
+						pc_string="PC Taken";
+						newmepc <= PC;
+					end
+					mepc_state <= MEPC_WAITINGJUMP;
+				end
+			end
+			MEPC_WAITINGJUMP:begin
+				if(branch_taken||Jump||EXMEM_JumpJALR)
+				begin
+					pc_string="Branch Taken";
+					newmepc <= PC_new;
+				end
+				if(flushPipeline==1'b0)
+				begin
+					mepc_state <= MEPC_IDLE;
+				end
+			end
+		endcase
+		// if(branch_taken||Jump||JumpJALR)
+		// begin
+		// 	pc_jumped <= 1'b1;
+		// 	newmepc <= PC_new;
+		// end
+		// if(flushPipeline)
+		// begin
+		// 	if(!pc_jumped&&PC_IF2!=32'hffffffff)
+		// 	begin
+		// 		pc_string="IF2 Taken";
+		// 		newmepc <= PC_IF2;
+		// 	end
+		// end
+		// else
+		// begin
+		// 	pc_jumped <= 1'b0;
+		// end
+	end
+	// if(branch_taken==1'b1)begin
+	// 	pc_string="Branch taken";
+	// 	newmepc = EXMEM_BranchALUOut;
+	// end
+	// if(EXMEM_PC!=32'hffffffff&(~EXMEM_MemToReg))begin
+	// 	pc_string="EXMEM Taken";
+	// 	newmepc = EXMEM_PC;
+	// end
+	// else if(IDEX_PC!=32'hffffffff)begin
+	// 	pc_string="IDEX Taken";
+	// 	newmepc = IDEX_PC;
+	// end
+	// else if(IFID_PC!=32'hffffffff)begin
+	// 	pc_string="IFID Taken";
+	// 	newmepc = IFID_PC;
+	// end
+	// else if(PC_IF2 !=32'hffffffff)begin
+	// 	pc_string="IF2 Taken";
+	// 	newmepc = PC_IF2;
+	// end
+	// else begin
+	// 	pc_string="PC Taken";
+	// 	newmepc = PC;
+	// end
+	// newmepc = PC;
 end
+wire flushPipeline;
 
 CSRFile csrFile(
 	.clock(clock),
@@ -481,6 +559,7 @@ CSRFile csrFile(
 	.syscall(trap_waiting),
 	.int_taken(int_taken),
 	.trap_in_ID(trap_in_ID),
+	.flushPipeline(flushPipeline),
 	.trap_vector(trap_vector)
 );
 // Main Control Unit
@@ -523,6 +602,7 @@ control_stall_id control_stall_id (
 	.syscall		(syscall),
 	.trap_in_ID		(trap_in_ID),
 	.int_trap		(int_taken),
+	.flushPipeline	(flushPipeline),
 	.memReady		(memReady),
 	.PCSrc			(PCSrc));
 
@@ -577,7 +657,7 @@ begin
 		EXMEM_MemWrite		<= 1'b0;
 		EXMEM_MemToReg		<= 1'b0;
 		EXMEM_RegWrite		<= 1'b0;
-		EXMEM_funct3		<= 3'b111;
+		EXMEM_funct3		<= 3'b0;
 		EXMEM_csr_data		<= 32'b0;
 		EXMEM_reg_type		<= 2'b00;
 		EXMEM_csr_addr		<= 12'b0;
@@ -599,7 +679,7 @@ begin
 			EXMEM_MemWrite		<= 1'b0;
 			EXMEM_MemToReg		<= 1'b0;
 			EXMEM_RegWrite		<= 1'b0;
-			EXMEM_funct3		<= 3'b111;
+			EXMEM_funct3		<= 3'b0;
 			EXMEM_csr_data		<= 32'b0;
 			EXMEM_reg_type		<= 2'b00;
 			EXMEM_csr_addr		<= 12'b0;
@@ -691,7 +771,7 @@ begin
 		MEMWB_RegWriteAddr	<= 5'b0;
 		MEMWB_MemToReg		<= 1'b0;
 		MEMWB_RegWrite		<= 1'b0;
-		MEMWB_funct3		<= 3'b111;
+		MEMWB_funct3		<= 3'b0;
 		MEMWB_csr_data		<= 32'b0;
 		MEMWB_reg_type		<= 2'b00;
 		MEMWB_csr_addr		<= 12'b0;
@@ -699,19 +779,36 @@ begin
 		MEMWB_PC			<= 32'b0;
 		MEMWB_instr			<= 32'b0;
 	end 
-	else if (write_memwb == 1'b1) begin
-		MEMWB_DMemOut		<= DMemOut;
-		MEMWB_ALUOut		<= EXMEM_ALUOut;
-		MEMWB_RegWriteAddr	<= EXMEM_RegWriteAddr;
-		MEMWB_MemToReg		<= EXMEM_MemToReg;
-		MEMWB_RegWrite		<= EXMEM_RegWrite;
-		MEMWB_funct3		<= EXMEM_funct3;
-		MEMWB_csr_data		<= EXMEM_csr_data;
-		MEMWB_reg_type		<= EXMEM_reg_type;
-		MEMWB_csr_addr		<= EXMEM_csr_addr;
-		MEMWB_csr_write_allowed <= EXMEM_csr_write_allowed;
-		MEMWB_PC			<= EXMEM_PC;
-		MEMWB_instr			<= EXMEM_instr;
+	else 
+	begin
+		if(bubble_memwb == 1'b1) begin
+			MEMWB_DMemOut		<= 32'b0;
+			MEMWB_ALUOut		<= 32'b0;
+			MEMWB_RegWriteAddr	<= 5'b0;
+			MEMWB_MemToReg		<= 1'b0;
+			MEMWB_RegWrite		<= 1'b0;
+			MEMWB_funct3		<= 3'b0;
+			MEMWB_csr_data		<= 32'b0;
+			MEMWB_reg_type		<= 2'b00;
+			MEMWB_csr_addr		<= 12'b0;
+			MEMWB_csr_write_allowed <= 1'b0;
+			MEMWB_PC			<= 32'hffffffff;
+			MEMWB_instr			<= 32'b0;
+		end 
+		else if (write_memwb == 1'b1) begin
+			MEMWB_DMemOut		<= DMemOut;
+			MEMWB_ALUOut		<= EXMEM_ALUOut;
+			MEMWB_RegWriteAddr	<= EXMEM_RegWriteAddr;
+			MEMWB_MemToReg		<= EXMEM_MemToReg;
+			MEMWB_RegWrite		<= EXMEM_RegWrite;
+			MEMWB_funct3		<= EXMEM_funct3;
+			MEMWB_csr_data		<= EXMEM_csr_data;
+			MEMWB_reg_type		<= EXMEM_reg_type;
+			MEMWB_csr_addr		<= EXMEM_csr_addr;
+			MEMWB_csr_write_allowed <= EXMEM_csr_write_allowed;
+			MEMWB_PC			<= EXMEM_PC;
+			MEMWB_instr			<= EXMEM_instr;
+		end
 	end
 end
 

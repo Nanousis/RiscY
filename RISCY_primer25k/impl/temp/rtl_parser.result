@@ -495,7 +495,7 @@
      },
      {
       "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/cpu.v",
-      "InstLine" : 463,
+      "InstLine" : 541,
       "InstName" : "csrFile",
       "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/CSRFile.v",
       "ModuleLine" : 11,
@@ -503,7 +503,7 @@
      },
      {
       "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/cpu.v",
-      "InstLine" : 487,
+      "InstLine" : 566,
       "InstName" : "control_main",
       "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/control_main.v",
       "ModuleLine" : 11,
@@ -511,7 +511,7 @@
      },
      {
       "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/cpu.v",
-      "InstLine" : 504,
+      "InstLine" : 583,
       "InstName" : "control_stall_id",
       "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/control_stall_id.v",
       "ModuleLine" : 11,
@@ -519,7 +519,7 @@
      },
      {
       "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/cpu.v",
-      "InstLine" : 556,
+      "InstLine" : 636,
       "InstName" : "cpu_alu",
       "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/ALUCPU.v",
       "ModuleLine" : 9,
@@ -527,7 +527,7 @@
      },
      {
       "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/cpu.v",
-      "InstLine" : 635,
+      "InstLine" : 715,
       "InstName" : "control_alu",
       "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/control_alu.v",
       "ModuleLine" : 10,
@@ -535,7 +535,7 @@
      },
      {
       "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/cpu.v",
-      "InstLine" : 645,
+      "InstLine" : 725,
       "InstName" : "control_bypass_ex",
       "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/control_bypass_ex.v",
       "ModuleLine" : 16,
@@ -543,7 +543,7 @@
      },
      {
       "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/cpu.v",
-      "InstLine" : 674,
+      "InstLine" : 754,
       "InstName" : "mem_write_selector",
       "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/mem_write_selector.v",
       "ModuleLine" : 10,
@@ -551,7 +551,7 @@
      },
      {
       "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/cpu.v",
-      "InstLine" : 719,
+      "InstLine" : 816,
       "InstName" : "control_branch",
       "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/control_branch.v",
       "ModuleLine" : 10,
@@ -559,7 +559,7 @@
      },
      {
       "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/cpu.v",
-      "InstLine" : 730,
+      "InstLine" : 827,
       "InstName" : "mem_read_selector",
       "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/mem_read_selector.v",
       "ModuleLine" : 10,

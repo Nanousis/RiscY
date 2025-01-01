@@ -55,23 +55,39 @@ _start:
 
 trap_vector:
     # Save context on the stack
-    addi sp, sp, -128        # Allocate space on the stack
-    sw ra, 124(sp)           # Save return address
-    sw t0, 120(sp)           # Save temporary registers
-    sw t1, 116(sp)
-    sw t2, 112(sp)
-    sw t3, 108(sp)
-    sw t4, 104(sp)
-    sw t5, 100(sp)
-    sw t6, 96(sp)
-    sw a0, 92(sp)            # Save function arguments (optional)
-    sw a1, 88(sp)
-    sw a2, 84(sp)
-    sw a3, 80(sp)
-    sw a4, 76(sp)
-    sw a5, 72(sp)
-    sw a6, 68(sp)
-    sw a7, 64(sp)
+    addi sp, sp, -144        # Allocate space for all registers (36 registers * 4 bytes = 144 bytes)
+    
+    # Save caller-saved registers
+    sw ra, 140(sp)           # Save return address
+    sw t0, 136(sp)
+    sw t1, 132(sp)
+    sw t2, 128(sp)
+    sw t3, 124(sp)
+    sw t4, 120(sp)
+    sw t5, 116(sp)
+    sw t6, 112(sp)
+    sw a0, 108(sp)
+    sw a1, 104(sp)
+    sw a2, 100(sp)
+    sw a3, 96(sp)
+    sw a4, 92(sp)
+    sw a5, 88(sp)
+    sw a6, 84(sp)
+    sw a7, 80(sp)
+
+    # Save callee-saved registers
+    sw s0, 76(sp)
+    sw s1, 72(sp)
+    sw s2, 68(sp)
+    sw s3, 64(sp)
+    sw s4, 60(sp)
+    sw s5, 56(sp)
+    sw s6, 52(sp)
+    sw s7, 48(sp)
+    sw s8, 44(sp)
+    sw s9, 40(sp)
+    sw s10, 36(sp)
+    sw s11, 32(sp)
 
     # Load trap information into function arguments
     csrr a0, mcause          # Load mcause into a0 (first argument)
@@ -82,24 +98,43 @@ trap_vector:
     call c_trap_handler
 
     # Restore context from the stack
-    lw ra, 124(sp)           # Restore return address
-    lw t0, 120(sp)           # Restore temporary registers
-    lw t1, 116(sp)
-    lw t2, 112(sp)
-    lw t3, 108(sp)
-    lw t4, 104(sp)
-    lw t5, 100(sp)
-    lw t6, 96(sp)
-    lw a0, 92(sp)            # Restore function arguments (optional)
-    lw a1, 88(sp)
-    lw a2, 84(sp)
-    lw a3, 80(sp)
-    lw a4, 76(sp)
-    lw a5, 72(sp)
-    lw a6, 68(sp)
-    lw a7, 64(sp)
+    lw s11, 32(sp)           # Restore callee-saved registers
+    lw s10, 36(sp)
+    lw s9, 40(sp)
+    lw s8, 44(sp)
+    lw s7, 48(sp)
+    lw s6, 52(sp)
+    lw s5, 56(sp)
+    lw s4, 60(sp)
+    lw s3, 64(sp)
+    lw s2, 68(sp)
+    lw s1, 72(sp)
+    lw s0, 76(sp)
 
-    addi sp, sp, 128         # Restore stack pointer
+    lw a7, 80(sp)            # Restore caller-saved registers
+    lw a6, 84(sp)
+    lw a5, 88(sp)
+    lw a4, 92(sp)
+    lw a3, 96(sp)
+    lw a2, 100(sp)
+    lw a1, 104(sp)
+    lw a0, 108(sp)
+    lw t6, 112(sp)
+    lw t5, 116(sp)
+    lw t4, 120(sp)
+    lw t3, 124(sp)
+    lw t2, 128(sp)
+    lw t1, 132(sp)
+    lw t0, 136(sp)
+    lw ra, 140(sp)
+
+    addi sp, sp, 144         # Restore stack pointer
 
     # Return from trap
     mret                     # Machine mode return
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
