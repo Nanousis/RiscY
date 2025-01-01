@@ -6,7 +6,7 @@
  ***************************************/
 MTIME       = 0x0200BFF8         
 MTIMECMP    = 0x02004000        
-INTERVAL    = 16          
+INTERVAL    = 13          
 /***************************************
  * _start - our reset entry point
  ***************************************/
@@ -14,7 +14,7 @@ _boot:
     # 1. Set up the trap handler (mtvec)
     #    We'll use DIRECT mode for simplicity. If you want vectored,
     #    you'd OR '1' into t0 (e.g., 'ori t0, t0, 1').
-    la   t0, trap_vector      # Address of our trap handler
+    la   t0, _trap_vector      # Address of our trap handler
     csrw mtvec, t0
 
     # 2. Enable global interrupts in mstatus.MIE
@@ -37,13 +37,22 @@ _boot:
     la   t0, MTIMECMP         # write to mtimecmp (lower then upper)
     sw   t1, 0(t0)
     sw   t2, 4(t0)
-
-    # 5. Infinite loop - wait for the interrupt to occur
+    # 5. Main loop with branches
 main_loop:
-    nop
-    nop
-    j main_loop
+    li t3, 100                 # Counter for branch testing
 
+_branch_test:
+    addi t6, t6, 1             # Increment a test register
+    nop
+    addi t3, t3, -1            # Decrement the counter
+	bnez t3, _branch_test          # Branch if counter is zero
+end_loop:
+	addi t5, t5, -1             # Increment a test register
+    addi t4, t4, 1            # Decrement the counter
+    j end_loop                 # Infinite loop
+	ret
+    ret
+    ret
 /***************************************
  * trap_vector - our basic trap handler
  ***************************************/
@@ -52,10 +61,9 @@ main_loop:
 /***************************************
  * handle_timer - Machine Timer ISR
  ***************************************/
-handle_timer:
+_handle_timer:
     # Example: blink an LED-like variable or increment a counter
     # We'll just increment a global counter at 'timer_count'.
-
 	lw s0, 512(x0)
     addi a0, s0,0
     li a1, 'T'
@@ -80,7 +88,7 @@ handle_other_interrupt:
 handle_exception:
     # Handle synchronous exceptions here
     j default_return
-trap_vector:
+_trap_vector:
     # Check if it's an interrupt or exception
     csrr  t0, mcause
     srli  t1, t0, 31    # t1 = interrupt bit (1=interrupt, 0=exception)
@@ -92,7 +100,7 @@ trap_vector:
     addi t1,t1,-1
     and  t0, t0, t1       # t0 = t0 & 0x7FFFFFFF
     li   t1, 7               # machine timer interrupt ID is usually 7
-    beq  t0, t1, handle_timer
+    beq  t0, t1, _handle_timer
 
     # Not a timer interrupt -> handle other interrupt IDs here if desired
     j handle_other_interrupt

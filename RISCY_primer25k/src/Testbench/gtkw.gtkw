@@ -1,20 +1,20 @@
 [*]
 [*] GTKWave Analyzer v3.4.0 (w)1999-2022 BSI
-[*] Mon Dec 30 23:01:10 2024
+[*] Wed Jan  1 11:54:02 2025
 [*]
 [dumpfile] "ZSOC.vcd"
-[dumpfile_mtime] "Mon Dec 30 23:00:04 2024"
-[dumpfile_size] 7695910
+[dumpfile_mtime] "Wed Jan  1 11:50:26 2025"
+[dumpfile_size] 38560963
 [savefile] "gtkw.gtkw"
-[timestart] 1074000
+[timestart] 3953300
 [size] 1512 916
-[pos] 1775 111
-*-16.390831 1330000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[pos] 1977 117
+*-16.390831 4270000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] test.
 [treeopen] test.TOP.
 [treeopen] test.TOP.cpu_1.
 [sst_width] 253
-[signals_width] 237
+[signals_width] 262
 [sst_expanded] 1
 [sst_vpaned_height] 516
 @28
@@ -91,7 +91,7 @@ test.TOP.cpu_1.Branch
 test.TOP.cpu_1.csr_addr[11:0]
 @1000200
 -Decode
-@800200
+@c00200
 -Execute
 @22
 [color] 5
@@ -153,7 +153,7 @@ test.TOP.cpu_1.IDEX_reg_type[1:0]
 test.TOP.cpu_1.bubble_idex
 [color] 1
 test.TOP.cpu_1.write_idex
-@1000200
+@1401200
 -Execute
 @c00200
 -Memory
@@ -293,7 +293,7 @@ test.TOP.cpu_1.wRegData[31:0]
 test.TOP.cpu_1.MEMWB_reg_type[1:0]
 @1401200
 -WriteBack
-@c00200
+@800200
 -Temp Registers
 @200
 -Temp registers
@@ -343,7 +343,7 @@ test.TOP.cpu_1.cpu_regs.\data[7][31:0]
 @24
 test.TOP.cpu_1.cpu_regs.\data[28][31:0]
 test.TOP.cpu_1.cpu_regs.\data[29][31:0]
-@c00024
+@c00420
 test.TOP.cpu_1.cpu_regs.\data[30][31:0]
 @28
 (0)test.TOP.cpu_1.cpu_regs.\data[30][31:0]
@@ -382,7 +382,7 @@ test.TOP.cpu_1.cpu_regs.\data[30][31:0]
 -group_end
 @24
 test.TOP.cpu_1.cpu_regs.\data[31][31:0]
-@1401200
+@1000200
 -Temp Registers
 @c00200
 -Control and Status Signals
@@ -464,6 +464,37 @@ test.TOP.cpu_1.csrFile.software_interrupt
 test.TOP.cpu_1.csrFile.timer_interrupt
 @22
 test.TOP.cpu_1.csrFile.trap_vector[31:0]
+@28
+[color] 1
+test.TOP.cpu_1.int_taken
+[color] 2
+test.TOP.cpu_1.trap_in_ID
+@200
+-PC
+@22
+test.TOP.cpu_1.PC[31:0]
+test.TOP.cpu_1.PC_IF2[31:0]
+test.TOP.cpu_1.IFID_PC[31:0]
+test.TOP.cpu_1.IDEX_PC[31:0]
+test.TOP.cpu_1.EXMEM_PC[31:0]
+test.TOP.cpu_1.MEMWB_PC[31:0]
+@200
+-instructions
+@22
+test.TOP.cpu_1.instr[31:0]
+test.TOP.cpu_1.IF2_instr[31:0]
+test.TOP.cpu_1.IFID_instr[31:0]
+test.TOP.cpu_1.IDEX_instr[31:0]
+test.TOP.cpu_1.EXMEM_instr[31:0]
+@23
+test.TOP.cpu_1.MEMWB_instr[31:0]
+@200
+-mepc
+@820
+test.TOP.cpu_1.pc_string[2039:0]
+@22
+test.TOP.cpu_1.newmepc[31:0]
+[color] 7
 test.TOP.cpu_1.csrFile.mepc[31:0]
 test.TOP.cpu_1.csrFile.misa[31:0]
 test.TOP.cpu_1.csrFile.mtvec[31:0]
@@ -475,10 +506,13 @@ test.TOP.cpu_1.csrFile.wd[31:0]
 test.TOP.cpu_1.csrFile.csrAddr[11:0]
 @28
 test.TOP.cpu_1.csrFile.ren
+test.TOP.cpu_1.bubble_ifid
+test.TOP.cpu_1.bubble_idex
+test.TOP.cpu_1.bubble_exmem
+test.TOP.cpu_1.Jump
 test.TOP.cpu_1.csrFile.trap_in_ID
-@29
 test.TOP.cpu_1.syscall
-@28
+test.TOP.cpu_1.branch_taken
 test.TOP.cpu_1.control_stall_id.EXMEM_Branch
 test.TOP.cpu_1.control_stall_id.suppressTrap
 test.TOP.cpu_1.trap_waiting

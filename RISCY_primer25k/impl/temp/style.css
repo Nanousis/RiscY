@@ -1,0 +1,7 @@
+body {background-color: rgb(30, 30, 30)}
+td:not(.error) { color : white}
+td.label { color : black}
+td.label > b {color : black}a { color : white}
+b { color : white}
+h3 { color : white}
+h4 { color: white}

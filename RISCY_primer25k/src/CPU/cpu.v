@@ -49,6 +49,8 @@ reg 	[31:0] PC_new;
 wire	[31:0]	instr;
 reg		[31:0]	IF2_instr;
 reg	[31:0]	IDEX_instr;
+reg	[31:0]	EXMEM_instr;
+reg	[31:0]	MEMWB_instr;
 reg     [31:0]  delayed_instr;
 wire			inA_is_PC, branch_taken;
 wire	[31:0]	BranchInA;
@@ -136,7 +138,7 @@ wire trap_in_ID;
 assign PC_out = PC;
 assign instr = instr_in;
 assign data_addr = (ren==1'b1)?ALUOut:EXMEM_ALUOut;
-assign ren = IDEX_MemRead;
+assign ren = IDEX_MemRead&(~branch_taken);
 assign wen = EXMEM_MemWrite;
 assign data_out = MemWriteData;
 assign DMemOut = data_in;
@@ -182,12 +184,20 @@ begin
 	else begin
 		write_pc_delayed <= write_pc;
 		if(write_ifid == 1'b1)begin
+			if(bubble_ifid == 1'b1)begin
+				PC_IF2 <= 32'hffffffff;
+			end
+			else begin
+				PC_IF2 <= PC;
+			end
 			bubble_ifid_delayed <= bubble_ifid;
 			delayed_instr <= 0;
-			PC_IF2 <= PC;
 			keepDelayInstr <= 0;
 		end
 		else begin
+			if(bubble_ifid == 1'b1||bubble_ifid_delayed == 1'b1)begin
+				PC_IF2 <= 32'hffffffff;
+			end
 			if(keepDelayInstr ==1'b0)
 			begin
 			keepDelayInstr <= 1;
@@ -253,8 +263,8 @@ begin
 		// used to hold bubble in the pipeline. You loose an extra cycle here
 		// This is so that the instruction memory can notice the jump
 		if ((bubble_ifid_delayed||bubble_ifid == 1'b1)) begin
-			IFID_PC			<= 32'b0;
 			IFID_instr		<= 32'b0;
+			IFID_PC			<= 32'hffffffff;
 		end 
 		else if (write_ifid == 1'b1) begin
 			IFID_PC			<= PC_IF2;
@@ -388,13 +398,13 @@ begin
 			IDEX_RegWrite	<= 1'b0;
 			IDEX_funct3		<= 3'b0;
 			IDEX_funct7		<= 7'b0;
-			IDEX_PC			<= 32'b0;
 			IDEX_rdA		<= 32'b0;
 			IDEX_rdB		<= 32'b0;
 			IDEX_reg_type	<= 3'b0;
 			IDEX_instr		<= 32'b0;
 			IDEX_csr_addr	<= 12'b0;
 			IDEX_csr_write_allowed <= 1'b0;
+			IDEX_PC			<= 32'hffffffff;
 		end
 		else if (write_idex == 1'b1) begin
 			IDEX_inA_is_PC	<= inA_is_PC;
@@ -424,6 +434,32 @@ begin
 		end
 	end
 end
+reg [31:0] newmepc;
+reg [255*8-1:0] pc_string;
+always@(*)begin
+	if(branch_taken==1'b1)begin
+		pc_string="Branch taken";
+		newmepc = EXMEM_BranchALUOut;
+	end
+	else if(IDEX_PC!=32'hffffffff&(~Branch)&(~EXMEM_Branch)&(~Jump)&(EXMEM_PC!=32'hffffffff))begin
+		pc_string="IDEX Taken";
+		newmepc = IDEX_PC;
+	end
+	else if(IFID_PC!=32'hffffffff)begin
+		pc_string="IFID Taken";
+		newmepc = IFID_PC;
+	end
+	else if(PC_IF2 !=32'hffffffff)begin
+		pc_string="IF2 Taken";
+		newmepc = PC_IF2;
+	end
+	else begin
+		pc_string="PC Taken";
+		newmepc = PC;
+	end
+
+end
+
 CSRFile csrFile(
 	.clock(clock),
 	.reset(reset),
@@ -437,7 +473,8 @@ CSRFile csrFile(
 
 	// clic signals
 	.PC(PC),
-	.IDEX_PC(IDEX_PC),
+	// maybe check if we are on a branch, if so then we need save the branch
+	.IDEX_PC(newmepc),
 	.software_interrupt(software_interrupt),
 	.timer_interrupt(timer_interrupt),
 	.external_interrupt(external_interrupt),
@@ -484,6 +521,8 @@ control_stall_id control_stall_id (
 	.IDEX_Branch	(IDEX_Branch),
 	.EXMEM_Branch	(EXMEM_Branch),
 	.syscall		(syscall),
+	.trap_in_ID		(trap_in_ID),
+	.int_trap		(int_taken),
 	.memReady		(memReady),
 	.PCSrc			(PCSrc));
 
@@ -543,7 +582,8 @@ begin
 		EXMEM_reg_type		<= 2'b00;
 		EXMEM_csr_addr		<= 12'b0;
 		EXMEM_csr_write_allowed <= 1'b0;
-		EXMEM_PC			<= 32'b0;
+		EXMEM_PC			<= 32'hffffffff;
+		EXMEM_instr			<= 32'b0;
 	end 
 	else
 	begin
@@ -564,7 +604,8 @@ begin
 			EXMEM_reg_type		<= 2'b00;
 			EXMEM_csr_addr		<= 12'b0;
 			EXMEM_csr_write_allowed <= 1'b0;
-			EXMEM_PC			<= 32'b0;
+			EXMEM_PC			<= 32'hffffffff;
+			EXMEM_instr			<= 32'b0;
 		end 
 		else if (write_exmem == 1'b1) begin
 			EXMEM_ALUOut		<= ALUOut;
@@ -584,6 +625,7 @@ begin
 			EXMEM_csr_addr		<= IDEX_csr_addr;
 			EXMEM_csr_write_allowed <= IDEX_csr_write_allowed;
 			EXMEM_PC			<= IDEX_PC;
+			EXMEM_instr			<= IDEX_instr;
 		end
 	end
 end
@@ -655,6 +697,7 @@ begin
 		MEMWB_csr_addr		<= 12'b0;
 		MEMWB_csr_write_allowed <= 1'b0;
 		MEMWB_PC			<= 32'b0;
+		MEMWB_instr			<= 32'b0;
 	end 
 	else if (write_memwb == 1'b1) begin
 		MEMWB_DMemOut		<= DMemOut;
@@ -668,6 +711,7 @@ begin
 		MEMWB_csr_addr		<= EXMEM_csr_addr;
 		MEMWB_csr_write_allowed <= EXMEM_csr_write_allowed;
 		MEMWB_PC			<= EXMEM_PC;
+		MEMWB_instr			<= EXMEM_instr;
 	end
 end
 

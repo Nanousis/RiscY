@@ -471,7 +471,7 @@
     "SubInsts" : [
      {
       "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/cpu.v",
-      "InstLine" : 303,
+      "InstLine" : 313,
       "InstName" : "signExtendUnit",
       "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/signExtend.v",
       "ModuleLine" : 10,
@@ -479,7 +479,7 @@
      },
      {
       "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/cpu.v",
-      "InstLine" : 314,
+      "InstLine" : 324,
       "InstName" : "cpu_regs",
       "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/RegFile.v",
       "ModuleLine" : 13,
@@ -487,7 +487,7 @@
      },
      {
       "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/cpu.v",
-      "InstLine" : 330,
+      "InstLine" : 340,
       "InstName" : "SignExtendSelector",
       "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/SignExtendSelector.v",
       "ModuleLine" : 10,
@@ -495,7 +495,7 @@
      },
      {
       "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/cpu.v",
-      "InstLine" : 427,
+      "InstLine" : 463,
       "InstName" : "csrFile",
       "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/CSRFile.v",
       "ModuleLine" : 11,
@@ -503,7 +503,7 @@
      },
      {
       "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/cpu.v",
-      "InstLine" : 450,
+      "InstLine" : 487,
       "InstName" : "control_main",
       "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/control_main.v",
       "ModuleLine" : 11,
@@ -511,7 +511,7 @@
      },
      {
       "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/cpu.v",
-      "InstLine" : 467,
+      "InstLine" : 504,
       "InstName" : "control_stall_id",
       "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/control_stall_id.v",
       "ModuleLine" : 11,
@@ -519,7 +519,7 @@
      },
      {
       "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/cpu.v",
-      "InstLine" : 517,
+      "InstLine" : 556,
       "InstName" : "cpu_alu",
       "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/ALUCPU.v",
       "ModuleLine" : 9,
@@ -527,7 +527,7 @@
      },
      {
       "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/cpu.v",
-      "InstLine" : 593,
+      "InstLine" : 635,
       "InstName" : "control_alu",
       "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/control_alu.v",
       "ModuleLine" : 10,
@@ -535,7 +535,7 @@
      },
      {
       "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/cpu.v",
-      "InstLine" : 603,
+      "InstLine" : 645,
       "InstName" : "control_bypass_ex",
       "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/control_bypass_ex.v",
       "ModuleLine" : 16,
@@ -543,7 +543,7 @@
      },
      {
       "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/cpu.v",
-      "InstLine" : 632,
+      "InstLine" : 674,
       "InstName" : "mem_write_selector",
       "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/mem_write_selector.v",
       "ModuleLine" : 10,
@@ -551,7 +551,7 @@
      },
      {
       "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/cpu.v",
-      "InstLine" : 675,
+      "InstLine" : 719,
       "InstName" : "control_branch",
       "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/control_branch.v",
       "ModuleLine" : 10,
@@ -559,7 +559,7 @@
      },
      {
       "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/cpu.v",
-      "InstLine" : 686,
+      "InstLine" : 730,
       "InstName" : "mem_read_selector",
       "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/CPU/mem_read_selector.v",
       "ModuleLine" : 10,

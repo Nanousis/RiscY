@@ -48,7 +48,7 @@ top TOP
         #10 btn1 =0;
         #100 
 
-        #20000 
+        #1000000 
         for (i = 0; i < 32; i = i + 1) begin
             case (i)
             0: $display ("%d: x0   : %d - 0x%h", i,test.TOP.cpu_1.cpu_regs.data[i],test.TOP.cpu_1.cpu_regs.data[i]);

@@ -58,6 +58,7 @@ wire [31:0] mip;     // Machine interrupt pending register address 0x344
 // reg [63:0] mcycle; //maybe?
 assign mip = {16'b0,4'b0,external_interrupt,3'b0,timer_interrupt,3'b0,software_interrupt,3'b0}; 
 
+reg [2:0] enableInterrupts;
 // this is 100% going to be lost in a stall.
 
 
@@ -79,6 +80,7 @@ begin
         mtval <= 32'b0;
         int_taken <= 1'b0;
         trap_vector <= 32'b0;
+        enableInterrupts <= 3'b111;
     end
     else
     begin
@@ -124,66 +126,75 @@ begin
         begin // interrupt handling section
             if(write_pc == 1'b1)
             begin
+                if(enableInterrupts <= 3'b110)
+                begin
+                    enableInterrupts <= enableInterrupts + 1;
+                    if(enableInterrupts == 3'b110)
+                    begin
+                        mstatus[3] <= mstatus[7];
+                    end
+                end
                 int_taken <= 1'b0;
                 trap_in_ID <= 1'b0;
-            end
-            if(syscall == 1'b1) begin
-                // ecall instruction
-                if(csrAddr==0)begin
-                    // trap handler chooses whether to return to next instruction or not
-                    mepc <= IDEX_PC;
-                    trap_in_ID <= 1'b1;
-                    trap_vector <= {mtvec[31:2],2'b0};
-                    // it would be 8 if we have user mode but we dont
-                    mcause <= {1'b1,31'd11};
-                    mstatus[7] <= mstatus[3];
-                    mstatus[3] <= 1'b0;
+                if(syscall == 1'b1) begin
+                    // ecall instruction
+                    if(csrAddr==0)begin
+                        // trap handler chooses whether to return to next instruction or not
+                        mepc <= IDEX_PC;
+                        trap_in_ID <= 1'b1;
+                        trap_vector <= {mtvec[31:2],2'b0};
+                        // it would be 8 if we have user mode but we dont
+                        mcause <= {1'b1,31'd11};
+                        mstatus[7] <= mstatus[3];
+                        mstatus[3] <= 1'b0;
+                    end
+                    else if(csrAddr==1)begin
+                        // ebreak instruction
+                        mepc <= IDEX_PC;
+                        trap_in_ID <= 1'b1;
+                        trap_vector <= {mtvec[31:2],2'b0};
+                        mcause <= {1'b1,31'd3};
+                        mstatus[7] <= mstatus[3];
+                        mstatus[3] <= 1'b0;
+                    end
+                    // mret instruction
+                    else if(csrAddr=='h302)begin
+                        trap_in_ID <= 1'b1;
+                        trap_vector <= mepc;
+                        enableInterrupts <= 0;
+                        // mstatus[3] <= mstatus[7];
+                        // mstatus[7] <= 1'b0;
+                    end
                 end
-                else if(csrAddr==1)begin
-                    // ebreak instruction
-                    mepc <= IDEX_PC;
-                    trap_in_ID <= 1'b1;
-                    trap_vector <= {mtvec[31:2],2'b0};
-                    mcause <= {1'b1,31'd3};
-                    mstatus[7] <= mstatus[3];
-                    mstatus[3] <= 1'b0;
-                end
-                // mret instruction
-                else if(csrAddr=='h302)begin
-                    trap_in_ID <= 1'b1;
-                    trap_vector <= mepc;
-                    mstatus[3] <= mstatus[7];
-                    mstatus[7] <= 1'b0;
-                end
-            end
-            // mstatus[3]=MIE, mstatus[7]=MPIE, mstatus[11]=MPEI
-            else if(mstatus[3] == 1'b1) begin
-                // external interrupt
-                if(external_interrupt & mie[11]==1'b1 & mip[11] == 1'b1) begin
-                    mepc <= IDEX_PC;
-                    int_taken <= 1;
-                    trap_vector <= {mtvec[31:2],2'b0};
-                    mcause <= {1'b1,31'd11};
-                    mstatus[7] <= mstatus[3];
-                    mstatus[3] <= 1'b0;
-                end
-                //timer interrupt
-                else if(timer_interrupt & mie[7]==1'b1 & mip[7] == 1'b1) begin
-                    mepc <= IDEX_PC;
-                    int_taken <= 1;
-                    trap_vector <= {mtvec[31:2],2'b0};
-                    mcause <= {1'b1,31'd7};
-                    mstatus[7] <= mstatus[3];
-                    mstatus[3] <= 1'b0;
-                end
-                //software interrupt
-                else if(software_interrupt & mie[3]==1'b1 & mip[3] == 1'b1) begin
-                    mepc <= IDEX_PC;
-                    int_taken <= 1;
-                    trap_vector <= {mtvec[31:2],2'b0};
-                    mcause <= {1'b1,31'd3};
-                    mstatus[7] <= mstatus[3];
-                    mstatus[3] <= 1'b0;
+                // mstatus[3]=MIE, mstatus[7]=MPIE, mstatus[11]=MPEI
+                else if(mstatus[3] == 1'b1) begin
+                    // external interrupt
+                    if(external_interrupt & mie[11]==1'b1 & mip[11] == 1'b1) begin
+                        mepc <= IDEX_PC;
+                        int_taken <= 1;
+                        trap_vector <= {mtvec[31:2],2'b0};
+                        mcause <= {1'b1,31'd11};
+                        mstatus[7] <= mstatus[3];
+                        mstatus[3] <= 1'b0;
+                    end
+                    //timer interrupt
+                    else if(timer_interrupt & mie[7]==1'b1 & mip[7] == 1'b1) begin
+                        mepc <= IDEX_PC;
+                        int_taken <= 1;
+                        trap_vector <= {mtvec[31:2],2'b0};
+                        mcause <= {1'b1,31'd7};
+                        mstatus[7] <= mstatus[3];
+                        mstatus[3] <= 1'b0;
+                    end
+                    //software interrupt
+                    else if(software_interrupt & mie[3]==1'b1 & mip[3] == 1'b1) begin
+                        mepc <= IDEX_PC;
+                        int_taken <= 1;
+                        trap_vector <= {mtvec[31:2],2'b0};
+                        mcause <= {1'b1,31'd3};
+                        mstatus[7] <= mstatus[3];
+                        mstatus[3] <= 1'b0;
+                    end
                 end
             end
         end
