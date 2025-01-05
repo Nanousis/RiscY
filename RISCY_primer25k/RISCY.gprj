@@ -3,11 +3,12 @@
 <Project>
     <Template>FPGA</Template>
     <Version>5</Version>
-    <Device name="GW5A-25A" pn="GW5A-LV25MG121NES">gw5a25a-000</Device>
+    <Device name="GW5A-25A" pn="GW5A-LV25MG121NC1/I0">gw5a25a-002</Device>
     <FileList>
         <File path="src/BRAMS/gowin_dpb_program/gowin_dpb_program.v" type="file.verilog" enable="1"/>
         <File path="src/Buses/bus.v" type="file.verilog" enable="1"/>
         <File path="src/CPU/ALUCPU.v" type="file.verilog" enable="1"/>
+        <File path="src/CPU/CSRFile.v" type="file.verilog" enable="1"/>
         <File path="src/CPU/RegFile.v" type="file.verilog" enable="1"/>
         <File path="src/CPU/SignExtendSelector.v" type="file.verilog" enable="1"/>
         <File path="src/CPU/constants.vh" type="file.verilog" enable="1"/>
@@ -26,6 +27,8 @@
         <File path="src/GPIO/seven_segment.v" type="file.verilog" enable="1"/>
         <File path="src/GPIO/uart.v" type="file.verilog" enable="1"/>
         <File path="src/GPIO/uartController.v" type="file.verilog" enable="1"/>
+        <File path="src/InteruptControllers/CLINT.v" type="file.verilog" enable="1"/>
+        <File path="src/Memories/DPBRAM.v" type="file.verilog" enable="1"/>
         <File path="src/Memories/flash.v" type="file.verilog" enable="1"/>
         <File path="src/Memories/flashController.v" type="file.verilog" enable="1"/>
         <File path="src/Memories/memory.v" type="file.verilog" enable="1"/>

@@ -52,7 +52,7 @@ begin
     case(state)
     STATE_IDLE:
     begin
-    if(data_addr < 1024)
+    if(data_addr < data_size)
     begin
         cnt <= 0;
         saved_data_addr <= data_addr;

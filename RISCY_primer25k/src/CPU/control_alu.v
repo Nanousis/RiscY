@@ -15,6 +15,7 @@ module control_alu(	output reg [3:0] ALUOp,
 
 always @(ALUcntrl or funct3 or funct7)
 begin
+	csr_immidiate = 0;
 	case (ALUcntrl)
 		`ALU_R: begin
 			case (funct3)
@@ -76,7 +77,7 @@ begin
 				`FUNCT3_CSRRC:
 				begin
 					csr_immidiate = 0;
-					ALUOp = `AND;
+					ALUOp = `CLEAR;
 				end
 				`FUNCT3_CSRRWI:
 				begin
@@ -91,7 +92,7 @@ begin
 				`FUNCT3_CSRRCI:
 				begin
 					csr_immidiate = 1;
-					ALUOp = `AND;
+					ALUOp = `CLEAR;
 				end
 				default:
 				begin

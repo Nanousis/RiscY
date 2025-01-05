@@ -1,9 +1,9 @@
--d C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY_primer25k\impl\gwsynthesis\RISCY.vg
+-d /Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/impl/gwsynthesis/RISCY.vg
 -p GW5A-25A-MBGA121N-1
--pn GW5A-LV25MG121NES
--cst C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY_primer25k\src\tangnano9k.cst
--cfg C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY_primer25k\impl\pnr\device.cfg
--sdc C:\Users\Panagiotis\Documents\GitHub\RiscY\RISCY_primer25k\src\Tang_nano_9K_LCD.sdc
+-pn GW5A-LV25MG121NC1/I0
+-cst /Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/tangnano9k.cst
+-cfg /Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/impl/pnr/device.cfg
+-sdc /Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY_primer25k/src/Tang_nano_9K_LCD.sdc
 -bit
 -tr
 -ph

@@ -34,6 +34,8 @@
 `define SUBU 4'b1010
 `define LUI 4'b1011
 `define AUIPC 4'b1100
+`define CLEAR 4'b1110
+
 
 
 /********* Opcode Formats *********/
@@ -42,7 +44,7 @@
 `define I_COMP_FORMAT 7'b0010011
 `define I_LOAD_FORMAT 7'b0000011
 `define I_JALR_FORMAT 7'b1100111
-`define I_ENV_FORMAT 7'b1110011 //used for ecall and ebreak, zicsr etc
+`define I_ENV_FORMAT 7'b1110011 //SYSTEM INSTRUCTIONS
 `define S_FORMAT 7'b0100011
 `define B_FORMAT 7'b1100011
 `define J_FORMAT 7'b1101111

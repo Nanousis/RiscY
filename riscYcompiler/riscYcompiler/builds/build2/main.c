@@ -1,45 +1,68 @@
 #include <stdarg.h> 
+#include <stdint.h>
 #include "riscYstdio.h"
 #define USB 0x10000000
-#define WaitTime 0x1000
+#define MTIME_ADDR     0x0200BFF8  // Address of mtime (platform-specific)
+#define MTIMECMP_ADDR  0x02004000  // Address of mtimecmp (platform-specific)
+#define ONESECOND 5000000 //100ms
+#include <stdint.h>
+#include <stdio.h>
 
-#define paddle_width 8
-#define paddle_height 16
-#define ball_width 8
-#define ball_height 8
+void set_timer_interrupt(uint64_t interval) {
+    volatile uint64_t *mtime = (uint64_t *)MTIME_ADDR;
+    volatile uint64_t *mtimecmp = (uint64_t *)MTIMECMP_ADDR;
 
-void WriteSprite(int spriteNum, char *sprite) {
-    unsigned short *screenSprites = (unsigned short *)0x88001000;
-    for (int i = 0; i < 32; i++) {
-        screenSprites[i + spriteNum * 32] = sprite[i];
-    }
+    uint64_t current_time = *mtime;
+    *mtimecmp = current_time + interval; // Set next timer interrupt
 }
 
-void SetAttributes(char spriteID, short x, short y, char enable, char spriteNum) {
-    volatile unsigned int *screenSprites = (volatile unsigned int *)0x88002000;
-    x &= 0x1FF;
-    y &= 0x1FF;
 
-    int firsthalf = ((spriteNum << 9) | y) & 0xffff;
-    int secondhalf = ((enable) ? 0x8000 : 0) | (x & 0x1ff);
-    int temp = (secondhalf << 16) | firsthalf;
-    screenSprites[spriteID] = temp;
+int intCount=0;
+
+void c_trap_handler(uintptr_t mcause, uintptr_t mepc, uintptr_t mtval) {
+    // printfSCR(SCREEN_WIDTH*10,15,"Trap Handler entered!\n");
+    // printfSCR(0,15,"Trap occurred!\n");
+    printfSCR(SCREEN_WIDTH*1,15,"mcause: %x, mepc: %x, mtval: %x\n", mcause, mepc, mtval);
+
+    if ((mcause & 0x80000000) != 0) {
+        // Interrupt
+        printfSCR(SCREEN_WIDTH*2,15,"Interrupt: %x\n",intCount);
+        // if(mepc<0x00400000){
+        //     while(1);
+        // }
+        intCount++;
+        if(mcause == 0x80000007){
+            // Timer interrupt
+            printfSCR(SCREEN_WIDTH*3,15,"Timer interrupt! time:%x cmp:%x\n",*((uint32_t *)MTIME_ADDR),*((uint32_t *)MTIMECMP_ADDR));
+            set_timer_interrupt(ONESECOND); // Set next timer interrupt
+        }
+    } else {
+        // Exception
+        switch (mcause) {
+            case 2:  // Illegal instruction
+                printf("Illegal instruction!\n");
+                break;
+            case 8:  // Environment call from U-mode
+                printf("System call from U-mode!\n");
+                break;
+            case 11:  // Environment call from S-mode
+                printf("System call from M-mode!\n");
+                break;
+            default:
+                printf("Unhandled exception!\n");
+                break;
+        }
+        mepc += 4; // Skip the faulting instruction
+    }
+
+    // Example: Skip the faulting instruction
+    // printfSCR(SCREEN_WIDTH*10,15,"Trap Handler exited!\n");
 }
 
 unsigned int getUSBint() {
     volatile unsigned int *usb = (volatile unsigned int *)USB;
     return usb[0];
 }
-
-typedef struct object {
-    char id;
-    int x;    // Fixed-point Q8.8 format
-    int y;    // Fixed-point Q8.8 format
-    int vx;   // Fixed-point Q8.8 format
-    int vy;   // Fixed-point Q8.8 format
-    char sprite;
-    char enable;
-} object;
 
 char USBParser(char usbout) {
     // (USBParser implementation remains the same)
@@ -99,392 +122,35 @@ char USBParser(char usbout) {
 }
 
 int main() {
-    char ball[] = {
-        0xF0, 0x0F,
-        0xFC, 0x3F,
-        0xFF, 0xFF,
-        0xFF, 0xFF,
-        0xFF, 0xFF,
-        0xFF, 0xFF,
-        0xFC, 0x3F,
-        0xF0, 0x0F,
-        0x00, 0x00,
-        0x00, 0x00,
-        0x00, 0x00,
-        0x00, 0x00,
-        0x00, 0x00,
-        0x00, 0x00,
-        0x00, 0x00,
-        0x00, 0x00
-    };
 
-        char allBlack[] = {
-        0x00,
-        0x00,
-        0x00,
-        0x00,
-        0x00,
-        0x00,
-        0x00,
-        0x00,
-        0x00,
-        0x00,
-        0x00,
-        0x00,
-        0x00,
-        0x00,
-        0x00,
-        0x00,
-        0x00,
-        0x00,
-        0x00,
-        0x00,
-        0x00,
-        0x00,
-        0x00,
-        0x00,
-        0x00,
-        0x00,
-        0x00,
-        0x00,
-        0x00,
-        0x00,
-        0x00,
-        0x00
-    };
-
-
-    char allWhite[] = {
-        0xff,
-        0xff,
-        0xff,
-        0xff,
-        0xff,
-        0xff,
-        0xff,
-        0xff,
-        0xff,
-        0xff,
-        0xff,
-        0xff,
-        0xff,
-        0xff,
-        0xff,
-        0xff,
-        0xff,
-        0xff,
-        0xff,
-        0xff,
-        0xff,
-        0xff,
-        0xff,
-        0xff,
-        0xff,
-        0xff,
-        0xff,
-        0xff,
-        0xff,
-        0xff,
-        0xff,
-        0xff
-    };
-
-    char brick[] = {
-        0xAA, 0xA2,
-        0x55, 0x51,
-        0x55, 0x51,
-        0x00, 0x00,
-        0x2A, 0xAA,
-        0x15, 0x55,
-        0x15, 0x55,
-        0x00, 0x00,
-        0xAA, 0x8A,
-        0x55, 0x45,
-        0x55, 0x45,
-        0x00, 0x00,
-        0xA2, 0xAA,
-        0x51, 0x55,
-        0x51, 0x55,
-        0x00, 0x00
-    };
-
-    char lineSeperator[] ={
-        0x00, 0x00,
-        0x00, 0x00,
-        0x00, 0x00,
-        0x00, 0x00,
-        0x3C, 0x00,
-        0x3C, 0x00,
-        0x3C, 0x00,
-        0x3C, 0x00,
-        0x3C, 0x00,
-        0x3C, 0x00,
-        0x3C, 0x00,
-        0x3C, 0x00,
-        0x00, 0x00,
-        0x00, 0x00,
-        0x00, 0x00,
-        0x00, 0x00
-    };
-
-    for(int i=0; i<16; i++){
-        WriteSprite(i, allBlack);
-    }
-
-    WriteSprite(0, ball);
-    WriteSprite(2, allWhite);
-    WriteSprite(3, allBlack);
-    WriteSprite(4, lineSeperator);
-    WriteSprite(5, brick);
-
-    for(int i=0; i<SCREEN_WIDTH; i++){
-        for(int j=0; j<SCREEN_HEIGHT; j++){
-            putch(j*64+i,128+3,0);
-        }
-    }
-    //top wall
-    for (int i = 0; i < 64; i++) {
-        putch(i, 128 + 5, 0);
-    }
-    //bottom wall
-    for (int i = 0; i < 64; i++) {
-        putch((18 * 64) + i, 128 + 5, 15);
-    }
-    // line seperator
-    for(int i=1; i<18; i++){
-            putch(i*64+32,128+4,0);
-    }
-    int usbout = 0;
-    char keys[4] = {0, 0, 0, 0};
-
-    object ballObj;
-    ballObj.id = 0;
-    ballObj.x = 30 << 8;     // Convert to fixed-point format
-    ballObj.y = 30 << 8;     // Convert to fixed-point format
-    ballObj.vx = 256;        // Initial velocity (1 pixel per move)
-    ballObj.vy = 0;          // Start moving horizontally
-    ballObj.sprite = 0;
-    ballObj.enable = 1;
-
-    // Left paddle parts
-    object paddleL1;
-    paddleL1.id = 5;
-    paddleL1.x = 0 << 8;
-    paddleL1.y = 150 << 8;
-    paddleL1.sprite = 2;
-    paddleL1.enable = 1;
-
-    object paddleL2;
-    paddleL2.id = 6;
-    paddleL2.x = 0 << 8;
-    paddleL2.y = (150 + paddle_height) << 8;  // Positioned below paddleL1
-    paddleL2.sprite = 2;
-    paddleL2.enable = 1;
-
-    // Right paddle parts
-    object paddleR1;
-    paddleR1.id = 3;
-    paddleR1.x = (512 - 8) << 8;
-    paddleR1.y = 150 << 8;
-    paddleR1.sprite = 2;
-    paddleR1.enable = 1;
-
-    object paddleR2;
-    paddleR2.id = 4;
-    paddleR2.x = (512 - 8) << 8;
-    paddleR2.y = (150 + paddle_height) << 8;  // Positioned below paddleR1
-    paddleR2.sprite = 2;
-    paddleR2.enable = 1;
-
-    SetAttributes(ballObj.id, ballObj.x >> 8, ballObj.y >> 8, ballObj.enable, ballObj.sprite);
-    SetAttributes(paddleL1.id, paddleL1.x >> 8, paddleL1.y >> 8, paddleL1.enable, paddleL1.sprite);
-    SetAttributes(paddleL2.id, paddleL2.x >> 8, paddleL2.y >> 8, paddleL2.enable, paddleL2.sprite);
-    SetAttributes(paddleR1.id, paddleR1.x >> 8, paddleR1.y >> 8, paddleR1.enable, paddleR1.sprite);
-    SetAttributes(paddleR2.id, paddleR2.x >> 8, paddleR2.y >> 8, paddleR2.enable, paddleR2.sprite);
-
-    short scoreLeft=0;
-    short scoreRight=0;
-
-    printfSCR(SCREEN_WIDTH*2 + 20, 15, "The RISC-V Pong game");
-    printfSCR(SCREEN_WIDTH*5 + 20, 15, "Press Space to Start");
-
+    set_timer_interrupt(ONESECOND); // Set timer interrupt to 1 ms 50,000,000 cycles
+    uint64_t clock=0;
+    uint64_t clockcmp=0;
+    int cnt=0;
+    int cnt2=0;
+    char test='a';
     while(1){
-        usbout = getUSBint();
-        keys[0] = USBParser((usbout >> 24) & 0xFF);
-
-        if(keys[0] == ' '){
-            break;
-        }
+        cnt ++;
+        cnt2 +=2;
+        clock = *((uint64_t *)MTIME_ADDR);
+        clockcmp = *((uint64_t *)MTIMECMP_ADDR);
+        // putch(SCREEN_WIDTH*17,test,15);
+         printfSCR(SCREEN_WIDTH*17,15,"For some reason this causes problems\n");
+        printHex(SCREEN_WIDTH*17,cnt,15);
+        // printfSCR(SCREEN_WIDTH*17,15,"Hello-World!-%x,-%x",cnt,cnt2);
+        // test++;
+        // if(test > 'z'){
+        //     test = 'a';
+        // }
+        // if(clock >= clockcmp+0xf0000000){
+        //     break;
+        // }
+        // printfSCR(SCREEN_WIDTH*17,15,"Hello World! %x, %x",test, count);
     }
-
-    for(volatile int i=0; i<WaitTime*100; i++);
-    for(int i=0; i<SCREEN_WIDTH; i++){
-        for(int j=0; j<SCREEN_HEIGHT; j++){
-            putch(j*64+i,128+3,0);
-        }
-    }
-    //top wall
-    for (int i = 0; i < 64; i++) {
-        putch(i, 128 + 5, 0);
-    }
-    //bottom wall
-    for (int i = 0; i < 64; i++) {
-        putch((18 * 64) + i, 128 + 5, 15);
-    }
-    // line seperator
-    for(int i=1; i<18; i++){
-            putch(i*64+32,128+4,0);
-    }
-
-    while (1) {
-
-        printfSCR(SCREEN_WIDTH*2 + 20, 15, "%d   ", scoreLeft);
-        printfSCR(SCREEN_WIDTH*2 + 44, 15, "%d   ", scoreRight);
-
-
-        for (volatile int i = 0; i < WaitTime * 5; i++);
-        if (ballObj.vy > 512) ballObj.vy = 512;
-        if (ballObj.vy < -512) ballObj.vy = -512;
-        usbout = getUSBint();
-        keys[3] = USBParser(usbout & 0xFF);
-        keys[2] = USBParser((usbout >> 8) & 0xFF);
-        keys[1] = USBParser((usbout >> 16) & 0xFF);
-        keys[0] = USBParser((usbout >> 24) & 0xFF);
-        for (int key_num = 0; key_num < 4; key_num++) {
-            if (keys[key_num] != 0) {
-                if (keys[key_num] == 'a') {
-                    paddleL1.y -= 256;  // Move up by 1 pixel
-                    paddleL2.y -= 256;
-                    if (paddleL1.y < (16 << 8)) {
-                        paddleL1.y = 16 << 8;
-                        paddleL2.y = paddleL1.y + (paddle_height << 8);
-                    }
-                } else if (keys[key_num] == 'z') {
-                    paddleL1.y += 256;  // Move down by 1 pixel
-                    paddleL2.y += 256;
-                    if ((paddleL2.y >> 8) + paddle_height > 300 - 14) {
-                        paddleL2.y = ((300 - 14 - paddle_height) << 8);
-                        paddleL1.y = paddleL2.y - (paddle_height << 8);
-                    }
-                } else if (keys[key_num] == 'U') {
-                    paddleR1.y -= 256;  // Move up by 1 pixel
-                    paddleR2.y -= 256;
-                    if (paddleR1.y < (16 << 8)) {
-                        paddleR1.y = 16 << 8;
-                        paddleR2.y = paddleR1.y + (paddle_height << 8);
-                    }
-                } else if (keys[key_num] == 'D') {
-                    paddleR1.y += 256;  // Move down by 1 pixel
-                    paddleR2.y += 256;
-                    if ((paddleR2.y >> 8) + paddle_height > 300 - 14) {
-                        paddleR2.y = ((300 - 14 - paddle_height) << 8);
-                        paddleR1.y = paddleR2.y - (paddle_height << 8);
-                    }
-                }
-            }
-        }
-
-        // Update ball position
-        ballObj.x += ballObj.vx;
-        ballObj.y += ballObj.vy;
-
-        // Collision with top wall
-        if ((ballObj.y >> 8) <= 16) {
-            ballObj.y = 17 << 8;
-            ballObj.vy = -ballObj.vy;
-            if (ballObj.vy == 0) {
-                ballObj.vy = 256; // Assign a small downward velocity
-            }
-        }
-
-        // Collision with bottom wall
-        if ((ballObj.y >> 8) >= (300 - 16 -ball_height)) {
-            ballObj.y = (300 - 16 -ball_height) << 8;
-            ballObj.vy = -ballObj.vy;
-            if (ballObj.vy == 0) {
-                ballObj.vy = -256; // Assign a small upward velocity
-            }
-        }
-
-        // Collision with left paddle (check both parts)
-        if ((ballObj.x >> 8) <= (paddleL1.x >> 8) + paddle_width) {
-            // Check collision with paddleL1
-            if ((ballObj.y >> 8) + ball_height >= (paddleL1.y >> 8) &&
-                (ballObj.y >> 8) <= (paddleL1.y >> 8) + paddle_height) {
-
-                ballObj.x = ((paddleL1.x >> 8) + paddle_width) << 8;  // Adjust position
-                ballObj.vx = -ballObj.vx;
-
-                // Adjust vy based on where the ball hit the paddle
-                int paddle_center = (paddleL1.y >> 8) + (paddle_height >> 1);
-                int hit_pos = (ballObj.y >> 8) - paddle_center;
-                ballObj.vy += hit_pos << 4;
-            }
-            // Check collision with paddleL2
-            else if ((ballObj.y >> 8) + ball_height >= (paddleL2.y >> 8) &&
-                     (ballObj.y >> 8) <= (paddleL2.y >> 8) + paddle_height) {
-
-                ballObj.x = ((paddleL2.x >> 8) + paddle_width) << 8;  // Adjust position
-                ballObj.vx = -ballObj.vx;
-
-                int paddle_center = (paddleL2.y >> 8) + (paddle_height >> 1);
-                int hit_pos = (ballObj.y >> 8) - paddle_center;
-                ballObj.vy += hit_pos << 4;
-            }
-        }
-
-        // Collision with right paddle (check both parts)
-        if ((ballObj.x >> 8) + ball_width >= (paddleR1.x >> 8)) {
-            // Check collision with paddleR1
-            if ((ballObj.y >> 8) + ball_height >= (paddleR1.y >> 8) &&
-                (ballObj.y >> 8) <= (paddleR1.y >> 8) + paddle_height) {
-
-                ballObj.x = ((paddleR1.x >> 8) - ball_width) << 8;  // Adjust position
-                ballObj.vx = -ballObj.vx;
-
-                int paddle_center = (paddleR1.y >> 8) + (paddle_height >> 1);
-                int hit_pos = (ballObj.y >> 8) - paddle_center;
-                ballObj.vy += hit_pos << 4;
-            }
-            // Check collision with paddleR2
-            else if ((ballObj.y >> 8) + ball_height >= (paddleR2.y >> 8) &&
-                     (ballObj.y >> 8) <= (paddleR2.y >> 8) + paddle_height) {
-
-                ballObj.x = ((paddleR2.x >> 8) - ball_width) << 8;  // Adjust position
-                ballObj.vx = -ballObj.vx;
-
-                int paddle_center = (paddleR2.y >> 8) + (paddle_height >> 1);
-                int hit_pos = (ballObj.y >> 8) - paddle_center;
-                ballObj.vy += hit_pos << 4;
-            }
-        }
-
-        // Limit ball's vertical speed
-        if (ballObj.vy > 512) ballObj.vy = 512;
-        if (ballObj.vy < -512) ballObj.vy = -512;
-
-       if ((ballObj.x >> 8) <= 0) {
-            scoreRight++;
-            ballObj.x = (500) << 8;
-            ballObj.y = 150 << 8;
-            ballObj.vx = ballObj.vx;
-            ballObj.vy = 256; // Assign a small initial vertical velocity
-        }
-        if ((ballObj.x >> 8) >= (512 - 8)) {
-            scoreLeft++;
-            ballObj.x = 0 << 8;
-            ballObj.y = 150 << 8;
-            ballObj.vx = ballObj.vx;
-            ballObj.vy = -256; // Assign a small initial vertical velocity
-        }
-
-        // Update attributes for rendering
-        SetAttributes(ballObj.id, ballObj.x >> 8, (ballObj.y-4) >> 8, ballObj.enable, ballObj.sprite);
-        SetAttributes(paddleL1.id, paddleL1.x >> 8, paddleL1.y >> 8, paddleL1.enable, paddleL1.sprite);
-        SetAttributes(paddleL2.id, paddleL2.x >> 8, paddleL2.y >> 8, paddleL2.enable, paddleL2.sprite);
-        SetAttributes(paddleR1.id, paddleR1.x >> 8, paddleR1.y >> 8, paddleR1.enable, paddleR1.sprite);
-        SetAttributes(paddleR2.id, paddleR2.x >> 8, paddleR2.y >> 8, paddleR2.enable, paddleR2.sprite);
-    }
-
-    return 0;
+    printfSCR(SCREEN_WIDTH*18,BG_RED,"ERROR 1");
+    printfSCR(SCREEN_WIDTH*17+20,BG_RED,"ERROR 2");
+    printfSCR(SCREEN_WIDTH*16+20,BG_RED,"ERROR 3");
+    printfSCR(SCREEN_WIDTH*15+20,BG_RED,"ERROR 4");
+    printfSCR(SCREEN_WIDTH*14+20,BG_RED,"ERROR 5");
+    while(1);
 }
