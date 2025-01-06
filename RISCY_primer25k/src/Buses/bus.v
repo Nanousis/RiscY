@@ -17,6 +17,7 @@ module bus( input clk,
             input [31:0] program_mem_out, // ADD
             input [31:0] usb_out,
             input [31:0] clint_data_out,
+            input [31:0] encryptor_out,
 
             input [31:0] boot_instr,
             input [31:0] program_instr,
@@ -34,6 +35,8 @@ module bus( input clk,
             output reg uart_ren,
             output reg btn_ren,
             output reg usb_ren,
+            output reg encryptor_ren,
+            output reg encryptor_wen,
 
             output reg [31:0] data_out,
             output reg [31:0] instr_out
@@ -68,6 +71,8 @@ always@(*) begin
     usb_ren = 0;
     clint_ren = 0;
     clint_wen = 0;
+    encryptor_ren = 0;
+    encryptor_wen = 0;
 
     // memory mapped screen, the range is times 2 due to the use of halfword
     if(data_addr>=`SCREEN_ADDRESS && data_addr <(`SCREEN_END)) begin
@@ -107,6 +112,11 @@ always@(*) begin
         clint_ren = ren;
         clint_wen = wen;
         data_out = clint_data_out;
+    end
+    else if(data_addr >= `ENCRYPTOR_ADDRESS && data_addr < (`ENCRYPTOR_END)) begin
+        encryptor_ren = ren;
+        encryptor_wen = wen;
+        data_out = encryptor_out;
     end
     else begin
         mem_ren = ren;

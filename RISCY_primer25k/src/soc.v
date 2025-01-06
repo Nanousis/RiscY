@@ -124,8 +124,8 @@ module top
             .program_mem_out(program_mem_out), // ADD
             .usb_out(usb_data_out),
             .clint_data_out(clint_data_out),
-
             .program_instr(program_instr),
+            .encryptor_out(encryptor_out),
             
             .clint_ren(clint_ren),
             .clint_wen(clint_wen),
@@ -140,6 +140,8 @@ module top
             .uart_ren(uart_ren),
             .btn_ren(btn_ren),
             .usb_ren(usb_ren),
+            .encryptor_ren(encryptor_ren),
+            .encryptor_wen(encryptor_wen),
 
             .data_out(data_read),
             .instr_out(instr)
@@ -248,6 +250,18 @@ module top
     );
 
 `endif
+    wire [31:0] encryptor_out;
+    wire encryptor_ren;
+    wire encryptor_wen;
+    Encryption_Controller enc_inst(
+        .clk(cpu_clk),
+        .reset(reset),
+        .ren(encryptor_ren),
+        .wen(encryptor_wen),
+        .address(data_addr[9:2]),
+        .data_in(data_to_write),
+        .data_out(encryptor_out)
+    );
     //**********************************************************************************************//
     //                                         HDMI SCREEN                                           //
     //**********************************************************************************************//
@@ -291,6 +305,8 @@ module top
         .data_out(),
         .color_out(color_out)
     );
+
+
 
     Reset_Sync u_Reset_Sync (
     .resetn(sys_resetn),

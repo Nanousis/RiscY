@@ -1,20 +1,7 @@
-// RISC-V SiMPLE SV -- common configuration for testbench
-// BSD 3-Clause License
-// (c) 2017-2021, Arthur Matos, Marcus Vinicius Lamar, Universidade de Brasília,
-//                Marek Materzok, University of Wrocław
 
 `ifndef RV_CONFIG
 `define RV_CONFIG
 
-// Select ISA extensions
-// `define M_MODULE    // multiplication and division
-
-//////////////////////////////////////////
-//              Memory config           //
-//////////////////////////////////////////
-
-// Program counter initial value
-// `define INITIAL_PC      32'h00400000
 `define INITIAL_PC  32'h00000000
 `define BOOTLOADER_END  32'h00001000
 
@@ -39,12 +26,11 @@
 `define FLASH_CONTROLLER_END 32'h8B00_FFFF
 `define USB_CONTROLLER_ADRESS 32'h8C00_0000
 `define USB_CONTROLLER_END 32'h8C00_0016
+`define ENCRYPTOR_ADDRESS 32'h8D00_0000
+`define ENCRYPTOR_END 32'h8D00_0100
 
 `define UART_ADDRESS 32'h1000_0000
 `define UART_END 32'h1000_0007
-
-//`define SCREEN_RANGE   32'd64
-
 // Data memory
 `define DATA_BEGIN      32'h8000_0000
 `define DATA_BITS       20
@@ -53,27 +39,5 @@
 
 `define TEXT_HEX  "text.hex"
 `define DATA_HEX  "data.hex"
-// `define TEXT_HEX  text_mem_file()
-// `define DATA_HEX  data_mem_file()
-
-//function string text_mem_file ();
-//    string s;
-//    if ($value$plusargs("text_file=%s", s) != 0)
-//        return s;
-//    else begin
-//        $display("Text memory file not supplied.");
-//        $finish;
-//    end
-//endfunction
-
-//function string data_mem_file ();
-//    string s;
-//    if ($value$plusargs("data_file=%s", s) != 0)
-//        return s;
-//    else begin
-//        $display("Data memory file not supplied.");
-//        $finish;
-//    end
-//endfunction
 
 `endif

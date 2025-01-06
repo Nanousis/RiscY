@@ -162,6 +162,10 @@ end
 
 reg write_pc_delayed;
 reg bubble_ifid_delayed;
+
+
+
+
 /***************************** Instruction Fetch Unit (IF2)  *******************/
 // This stage is used to control the instruction output of the IF stages
 
@@ -183,6 +187,7 @@ begin
 	end
 	else begin
 		write_pc_delayed <= write_pc;
+		bubble_ifid_delayed <= bubble_ifid;
 		if(write_ifid == 1'b1)begin
 			if(bubble_ifid == 1'b1)begin
 				PC_IF2 <= 32'hffffffff;
@@ -190,7 +195,6 @@ begin
 			else begin
 				PC_IF2 <= PC;
 			end
-			bubble_ifid_delayed <= bubble_ifid;
 			delayed_instr <= 0;
 			keepDelayInstr <= 0;
 		end
@@ -207,7 +211,19 @@ begin
 	end
 end
 
+/*
+WARNING THIS DOES NOT WORK. THIS IS A CATASTROPHIC FAILURE
+	li t0, 64
+    loop:
+    addi t0,t0,-1
+    bnez t0, loop
+	lw s0, 16(a0)
+    sw s0, 12(a0)
+    li t0, 64
+    
+	THIS PRODUCES AN INFINITE LOOP. THIS IS WRONG! THIS SHOULD BE FIXED. IF2 IS NOT RESET CORRECTLY.
 
+*/
 // if a cache is to be put here, this needs to be modified.
 // also make sure that the cache only handles specific addresses
 always@(*)
@@ -216,7 +232,7 @@ begin
 		IF2_instr = instr;
 	end
 	else begin
-		if(bubble_ifid_delayed == 1'b1) begin
+		if(bubble_ifid_delayed == 1'b1||bubble_ifid_delayed==1'b1) begin
 			IF2_instr = 32'b0;
 		end
 		else begin
