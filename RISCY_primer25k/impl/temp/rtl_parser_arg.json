@@ -198,26 +198,6 @@
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_primer25k/src/soc.v",
-   "Type" : "verilog"
-  },
-  {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_primer25k/src/usb/pll/gowin_pll_usb.v",
-   "Type" : "verilog"
-  },
-  {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_primer25k/src/usb/usb_controller.v",
-   "Type" : "verilog"
-  },
-  {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_primer25k/src/usb/usb_hid_host.v",
-   "Type" : "verilog"
-  },
-  {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_primer25k/src/usb/usb_hid_host_rom.v",
-   "Type" : "verilog"
-  },
-  {
    "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_primer25k/src/simon/key_expansion.v",
    "Type" : "verilog"
   },
@@ -239,6 +219,26 @@
   },
   {
    "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_primer25k/src/simon/simon_decrypt.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_primer25k/src/soc.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_primer25k/src/usb/pll/gowin_pll_usb.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_primer25k/src/usb/usb_controller.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_primer25k/src/usb/usb_hid_host.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_primer25k/src/usb/usb_hid_host_rom.v",
    "Type" : "verilog"
   }
  ],

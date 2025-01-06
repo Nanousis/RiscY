@@ -53,17 +53,17 @@
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY_primer25k\src\screenI2C\i2capi.v" type="verilog"/>
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY_primer25k\src\screenI2C\screen.v" type="verilog"/>
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY_primer25k\src\screenI2C\textEngine.v" type="verilog"/>
-        <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY_primer25k\src\soc.v" type="verilog"/>
-        <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY_primer25k\src\usb\pll\gowin_pll_usb.v" type="verilog"/>
-        <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY_primer25k\src\usb\usb_controller.v" type="verilog"/>
-        <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY_primer25k\src\usb\usb_hid_host.v" type="verilog"/>
-        <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY_primer25k\src\usb\usb_hid_host_rom.v" type="verilog"/>
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY_primer25k\src\simon\key_expansion.v" type="verilog"/>
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY_primer25k\src\simon\round.v" type="verilog"/>
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY_primer25k\src\simon\round_inv.v" type="verilog"/>
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY_primer25k\src\simon\simon.v" type="verilog"/>
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY_primer25k\src\simon\simon_controller.v" type="verilog"/>
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY_primer25k\src\simon\simon_decrypt.v" type="verilog"/>
+        <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY_primer25k\src\soc.v" type="verilog"/>
+        <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY_primer25k\src\usb\pll\gowin_pll_usb.v" type="verilog"/>
+        <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY_primer25k\src\usb\usb_controller.v" type="verilog"/>
+        <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY_primer25k\src\usb\usb_hid_host.v" type="verilog"/>
+        <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY_primer25k\src\usb\usb_hid_host_rom.v" type="verilog"/>
     </FileList>
     <OptionList>
         <Option type="disable_insert_pad" value="0"/>

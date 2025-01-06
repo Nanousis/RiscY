@@ -1,20 +1,20 @@
 [*]
-[*] GTKWave Analyzer v3.4.0 (w)1999-2022 BSI
-[*] Wed Jan  1 21:30:19 2025
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Mon Jan 06 18:15:38 2025
 [*]
-[dumpfile] "ZSOC.vcd"
-[dumpfile_mtime] "Wed Jan  1 21:23:48 2025"
-[dumpfile_size] 2033561625
-[savefile] "gtkw.gtkw"
-[timestart] 2697948100
-[size] 1512 916
-[pos] 1684 114
-*-16.390831 2698110000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[dumpfile] "C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY_primer25k\src\Testbench\ZSOC.vcd"
+[dumpfile_mtime] "Mon Jan 06 18:09:29 2025"
+[dumpfile_size] 176186742
+[savefile] "C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY_primer25k\src\Testbench\gtkw.gtkw"
+[timestart] 212685900
+[size] 2141 916
+[pos] -2755 -153
+*-16.390831 212930000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] test.
 [treeopen] test.TOP.
 [treeopen] test.TOP.cpu_1.
 [sst_width] 253
-[signals_width] 262
+[signals_width] 348
 [sst_expanded] 1
 [sst_vpaned_height] 516
 @28
@@ -293,7 +293,7 @@ test.TOP.cpu_1.wRegData[31:0]
 test.TOP.cpu_1.MEMWB_reg_type[1:0]
 @1401200
 -WriteBack
-@800200
+@c00200
 -Temp Registers
 @200
 -Temp registers
@@ -382,7 +382,7 @@ test.TOP.cpu_1.cpu_regs.\data[30][31:0]
 -group_end
 @420
 test.TOP.cpu_1.cpu_regs.\data[31][31:0]
-@1000200
+@1401200
 -Temp Registers
 @c00200
 -Control and Status Signals
@@ -416,7 +416,7 @@ test.TOP.cpu_1.wRegData[31:0]
 @24
 test.TOP.clint_inst.mtime[63:0]
 test.TOP.clint_inst.mtimecmp[63:0]
-@800200
+@c00200
 -registers
 @22
 test.TOP.cpu_1.cpu_regs.\data[0][31:0]
@@ -451,9 +451,9 @@ test.TOP.cpu_1.cpu_regs.\data[28][31:0]
 test.TOP.cpu_1.cpu_regs.\data[29][31:0]
 test.TOP.cpu_1.cpu_regs.\data[30][31:0]
 test.TOP.cpu_1.cpu_regs.\data[31][31:0]
-@1000200
+@1401200
 -registers
-@800200
+@c00200
 -CSR
 @28
 test.TOP.cpu_1.write_pc
@@ -539,10 +539,8 @@ test.TOP.cpu_1.pc_string[2039:0]
 test.TOP.cpu_1.mepc_state
 @22
 test.TOP.cpu_1.newmepc[31:0]
-@23
 [color] 7
 test.TOP.cpu_1.csrFile.mepc[31:0]
-@22
 test.TOP.cpu_1.csrFile.misa[31:0]
 test.TOP.cpu_1.csrFile.mtvec[31:0]
 test.TOP.cpu_1.csrFile.mie[31:0]
@@ -571,7 +569,7 @@ test.TOP.cpu_1.trap_waiting
 test.TOP.cpu_1.csrFile.wen
 @22
 test.TOP.cpu_1.csrFile.csrWAddr[11:0]
-@1000200
+@1401200
 -CSR
 @c00200
 -DataMemory
@@ -602,6 +600,24 @@ test.TOP.flashController.flash_address[23:0]
 test.TOP.flashController.stateDebug[4:0]
 @1401200
 -FlashController
+@800200
+-Encryptor
+@28
+test.TOP.enc_inst.decrypt_en
+test.TOP.enc_inst.decrptypt_done_reg
+@22
+test.TOP.enc_inst.data_to_decrypt[31:0]
+test.TOP.enc_inst.key_in[63:0]
+test.TOP.enc_inst.decrypt_out[31:0]
+@28
+test.TOP.enc_inst.encrypt_en
+test.TOP.enc_inst.encrypt_done_reg
+@23
+test.TOP.enc_inst.data_to_encrypt[31:0]
+@22
+test.TOP.enc_inst.encrypt_out[31:0]
+@1000200
+-Encryptor
 @800200
 -ScreenText
 @24
