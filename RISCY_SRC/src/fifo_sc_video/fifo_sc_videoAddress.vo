@@ -1,0 +1,182 @@
+//Copyright (C)2014-2024 Gowin Semiconductor Corporation.
+//All rights reserved.
+//File Title: Post-PnR Verilog Simulation Model file
+//Tool Version: V1.9.10.02
+//Created Time: Fri Nov 22 12:57:56 2024
+
+`timescale 100 ps/100 ps
+module fifo_sc_videoAddress(
+	Data,
+	Clk,
+	WrEn,
+	RdEn,
+	Reset,
+	Q,
+	Empty,
+	Full
+);
+input [15:0] Data;
+input Clk;
+input WrEn;
+input RdEn;
+input Reset;
+output [15:0] Q;
+output Empty;
+output Full;
+wire Clk;
+wire [15:0] Data;
+wire Empty;
+wire Full;
+wire GND;
+wire [15:0] Q;
+wire RdEn;
+wire Reset;
+wire VCC;
+wire WrEn;
+wire \fifo_sc_inst/n7_5 ;
+wire \fifo_sc_inst/n11_3 ;
+wire \fifo_sc_inst/rempty_val_6 ;
+wire \fifo_sc_inst/wfull_val_6 ;
+wire \fifo_sc_inst/rbin_next_0_7 ;
+wire \fifo_sc_inst/wbin_next_0_7 ;
+wire [1:1] \fifo_sc_inst/rbin_next ;
+wire [1:1] \fifo_sc_inst/wbin_next ;
+wire [1:0] \fifo_sc_inst/rbin ;
+wire [1:0] \fifo_sc_inst/wbin ;
+wire [31:16] \fifo_sc_inst/DO ;
+VCC VCC_cZ (
+  .V(VCC)
+);
+GND GND_cZ (
+  .G(GND)
+);
+GSR GSR (
+	.GSRI(VCC)
+);
+LUT2 \fifo_sc_inst/n7_s1  (
+	.I0(Full),
+	.I1(WrEn),
+	.F(\fifo_sc_inst/n7_5 )
+);
+defparam \fifo_sc_inst/n7_s1 .INIT=4'h4;
+LUT2 \fifo_sc_inst/n11_s0  (
+	.I0(Empty),
+	.I1(RdEn),
+	.F(\fifo_sc_inst/n11_3 )
+);
+defparam \fifo_sc_inst/n11_s0 .INIT=4'h4;
+LUT4 \fifo_sc_inst/rempty_val_s2  (
+	.I0(\fifo_sc_inst/rbin_next [1]),
+	.I1(\fifo_sc_inst/wbin [1]),
+	.I2(\fifo_sc_inst/wbin [0]),
+	.I3(\fifo_sc_inst/rbin_next_0_7 ),
+	.F(\fifo_sc_inst/rempty_val_6 )
+);
+defparam \fifo_sc_inst/rempty_val_s2 .INIT=16'h9009;
+LUT4 \fifo_sc_inst/wfull_val_s2  (
+	.I0(\fifo_sc_inst/rbin_next [1]),
+	.I1(\fifo_sc_inst/rbin_next_0_7 ),
+	.I2(\fifo_sc_inst/wbin_next_0_7 ),
+	.I3(\fifo_sc_inst/wbin_next [1]),
+	.F(\fifo_sc_inst/wfull_val_6 )
+);
+defparam \fifo_sc_inst/wfull_val_s2 .INIT=16'h4182;
+LUT3 \fifo_sc_inst/rbin_next_0_s3  (
+	.I0(Empty),
+	.I1(RdEn),
+	.I2(\fifo_sc_inst/rbin [0]),
+	.F(\fifo_sc_inst/rbin_next_0_7 )
+);
+defparam \fifo_sc_inst/rbin_next_0_s3 .INIT=8'hB4;
+LUT4 \fifo_sc_inst/rbin_next_1_s2  (
+	.I0(Empty),
+	.I1(RdEn),
+	.I2(\fifo_sc_inst/rbin [0]),
+	.I3(\fifo_sc_inst/rbin [1]),
+	.F(\fifo_sc_inst/rbin_next [1])
+);
+defparam \fifo_sc_inst/rbin_next_1_s2 .INIT=16'hBF40;
+LUT3 \fifo_sc_inst/wbin_next_0_s3  (
+	.I0(Full),
+	.I1(WrEn),
+	.I2(\fifo_sc_inst/wbin [0]),
+	.F(\fifo_sc_inst/wbin_next_0_7 )
+);
+defparam \fifo_sc_inst/wbin_next_0_s3 .INIT=8'hB4;
+LUT4 \fifo_sc_inst/wbin_next_1_s2  (
+	.I0(Full),
+	.I1(WrEn),
+	.I2(\fifo_sc_inst/wbin [0]),
+	.I3(\fifo_sc_inst/wbin [1]),
+	.F(\fifo_sc_inst/wbin_next [1])
+);
+defparam \fifo_sc_inst/wbin_next_1_s2 .INIT=16'hBF40;
+DFFCE \fifo_sc_inst/rbin_1_s0  (
+	.D(\fifo_sc_inst/rbin_next [1]),
+	.CLK(Clk),
+	.CE(VCC),
+	.CLEAR(Reset),
+	.Q(\fifo_sc_inst/rbin [1])
+);
+defparam \fifo_sc_inst/rbin_1_s0 .INIT=1'b0;
+DFFCE \fifo_sc_inst/rbin_0_s0  (
+	.D(\fifo_sc_inst/rbin_next_0_7 ),
+	.CLK(Clk),
+	.CE(VCC),
+	.CLEAR(Reset),
+	.Q(\fifo_sc_inst/rbin [0])
+);
+defparam \fifo_sc_inst/rbin_0_s0 .INIT=1'b0;
+DFFCE \fifo_sc_inst/wbin_1_s0  (
+	.D(\fifo_sc_inst/wbin_next [1]),
+	.CLK(Clk),
+	.CE(VCC),
+	.CLEAR(Reset),
+	.Q(\fifo_sc_inst/wbin [1])
+);
+defparam \fifo_sc_inst/wbin_1_s0 .INIT=1'b0;
+DFFCE \fifo_sc_inst/wbin_0_s0  (
+	.D(\fifo_sc_inst/wbin_next_0_7 ),
+	.CLK(Clk),
+	.CE(VCC),
+	.CLEAR(Reset),
+	.Q(\fifo_sc_inst/wbin [0])
+);
+defparam \fifo_sc_inst/wbin_0_s0 .INIT=1'b0;
+DFFCE \fifo_sc_inst/Full_s0  (
+	.D(\fifo_sc_inst/wfull_val_6 ),
+	.CLK(Clk),
+	.CE(VCC),
+	.CLEAR(Reset),
+	.Q(Full)
+);
+defparam \fifo_sc_inst/Full_s0 .INIT=1'b0;
+DFFPE \fifo_sc_inst/Empty_s0  (
+	.D(\fifo_sc_inst/rempty_val_6 ),
+	.CLK(Clk),
+	.CE(VCC),
+	.PRESET(Reset),
+	.Q(Empty)
+);
+defparam \fifo_sc_inst/Empty_s0 .INIT=1'b1;
+SDPB \fifo_sc_inst/mem_mem_0_0_s  (
+	.CLKA(Clk),
+	.CEA(\fifo_sc_inst/n7_5 ),
+	.CLKB(Clk),
+	.CEB(\fifo_sc_inst/n11_3 ),
+	.OCE(GND),
+	.RESET(Reset),
+	.BLKSELA({GND, GND, GND}),
+	.BLKSELB({GND, GND, GND}),
+	.DI({GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, Data[15:0]}),
+	.ADA({GND, GND, GND, GND, GND, GND, GND, GND, GND, \fifo_sc_inst/wbin [0], GND, GND, VCC, VCC}),
+	.ADB({GND, GND, GND, GND, GND, GND, GND, GND, GND, \fifo_sc_inst/rbin [0], GND, GND, GND, GND}),
+	.DO({\fifo_sc_inst/DO [31:16], Q[15:0]})
+);
+defparam \fifo_sc_inst/mem_mem_0_0_s .READ_MODE=1'b0;
+defparam \fifo_sc_inst/mem_mem_0_0_s .BIT_WIDTH_0=16;
+defparam \fifo_sc_inst/mem_mem_0_0_s .BIT_WIDTH_1=16;
+defparam \fifo_sc_inst/mem_mem_0_0_s .RESET_MODE="ASYNC";
+defparam \fifo_sc_inst/mem_mem_0_0_s .BLK_SEL_0=3'b000;
+defparam \fifo_sc_inst/mem_mem_0_0_s .BLK_SEL_1=3'b000;
+endmodule

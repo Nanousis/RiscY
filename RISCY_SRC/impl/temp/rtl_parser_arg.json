@@ -1,0 +1,229 @@
+{
+ "Device" : "GW5A-25A",
+ "Files" : [
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/Buses/bus.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/CPU/ALUCPU.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/CPU/CSRFile.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/CPU/RegFile.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/CPU/SignExtendSelector.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/CPU/constants.vh",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/CPU/control_alu.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/CPU/control_branch.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/CPU/control_bypass_ex.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/CPU/control_main.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/CPU/control_stall_id.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/CPU/cpu.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/CPU/mem_read_selector.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/CPU/mem_write_selector.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/CPU/signExtend.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/GPIO/PPU.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/GPIO/buttonModule.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/GPIO/cpuTimer.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/GPIO/seven_segment.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/GPIO/uart.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/GPIO/uartController.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/InteruptControllers/CLINT.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/Memories/DPBRAM.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/Memories/flash.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/Memories/flashController.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/Memories/memory.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/Memories/programMemory.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/config.vh",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/fifo_sc_video/fifo_sc_video.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/fifo_sc_video/fifo_sc_videoAddress.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/hdmi/gowin_clkdiv/gowin_clkdiv.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/hdmi/gowin_dpb/gowin_dpb.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/hdmi/gowin_pll_600p/gowin_pll_600p.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/hdmi/gowin_pll_720p/gowin_pll_720p.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/hdmi/svo_defines.vh",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/hdmi/svo_enc.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/hdmi/svo_hdmi.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/hdmi/svo_openldi.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/hdmi/svo_pong.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/hdmi/svo_tcard.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/hdmi/svo_term.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/hdmi/svo_tmds.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/hdmi/svo_utils.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/hdmi/svo_vdma.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/screenI2C/i2c.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/screenI2C/i2capi.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/screenI2C/screen.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/screenI2C/textEngine.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/soc.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/usb/pll/gowin_pll_usb.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/usb/usb_controller.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/usb/usb_hid_host.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/usb/usb_hid_host_rom.v",
+   "Type" : "verilog"
+  }
+ ],
+ "IncludePath" : [
+
+ ],
+ "LoopLimit" : 2000,
+ "ResultFile" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/impl/temp/rtl_parser.result",
+ "Top" : "",
+ "VerilogStd" : "verilog_2001",
+ "VhdlStd" : "vhdl_93"
+}
