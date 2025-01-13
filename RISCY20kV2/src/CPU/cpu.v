@@ -492,49 +492,9 @@ always@(posedge clock or negedge reset)begin
 				end
 			end
 		endcase
-		// if(branch_taken||Jump||JumpJALR)
-		// begin
-		// 	pc_jumped <= 1'b1;
-		// 	newmepc <= PC_new;
-		// end
-		// if(flushPipeline)
-		// begin
-		// 	if(!pc_jumped&&PC_IF2!=32'hffffffff)
-		// 	begin
-		// 		pc_string="IF2 Taken";
-		// 		newmepc <= PC_IF2;
-		// 	end
-		// end
-		// else
-		// begin
-		// 	pc_jumped <= 1'b0;
-		// end
+
 	end
-	// if(branch_taken==1'b1)begin
-	// 	pc_string="Branch taken";
-	// 	newmepc = EXMEM_BranchALUOut;
-	// end
-	// if(EXMEM_PC!=32'hffffffff&(~EXMEM_MemToReg))begin
-	// 	pc_string="EXMEM Taken";
-	// 	newmepc = EXMEM_PC;
-	// end
-	// else if(IDEX_PC!=32'hffffffff)begin
-	// 	pc_string="IDEX Taken";
-	// 	newmepc = IDEX_PC;
-	// end
-	// else if(IFID_PC!=32'hffffffff)begin
-	// 	pc_string="IFID Taken";
-	// 	newmepc = IFID_PC;
-	// end
-	// else if(PC_IF2 !=32'hffffffff)begin
-	// 	pc_string="IF2 Taken";
-	// 	newmepc = PC_IF2;
-	// end
-	// else begin
-	// 	pc_string="PC Taken";
-	// 	newmepc = PC;
-	// end
-	// newmepc = PC;
+
 end
 wire flushPipeline;
 
@@ -550,9 +510,9 @@ CSRFile csrFile(
 	.write_pc(write_pc),
 
 	// clic signals
-	.PC(PC),
+	.PC_ID(IFID_PC),
 	// maybe check if we are on a branch, if so then we need save the branch
-	.IDEX_PC(newmepc),
+	.new_mepc(newmepc),
 	.software_interrupt(software_interrupt),
 	.timer_interrupt(timer_interrupt),
 	.external_interrupt(external_interrupt),
@@ -584,7 +544,6 @@ control_stall_id control_stall_id (
 	.bubble_ifid	(bubble_ifid),
 	.bubble_idex	(bubble_idex),
 	.bubble_exmem	(bubble_exmem),
-    .bubble_memwb   (bubble_memwb),
 	.write_ifid		(write_ifid),
 	.write_idex		(write_idex),
 	.write_exmem	(write_exmem),

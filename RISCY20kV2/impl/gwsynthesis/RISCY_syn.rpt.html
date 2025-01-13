@@ -57,6 +57,7 @@ table.detail_table td.label { min-width: 100px; width: 8%;}
 <td class="label">Design File</td>
 <td>C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\BRAMS\gowin_dpb_program\gowin_dpb_program.v<br>
 C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\Buses\bus.v<br>
+C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\CLINT.v<br>
 C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\CPU\ALUCPU.v<br>
 C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\CPU\RegFile.v<br>
 C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\CPU\SignExtendSelector.v<br>
@@ -96,8 +97,7 @@ C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\screenVGA\gowin_osc
 C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\screenVGA\gowin_rpll\gowin_rpll.v<br>
 C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\screenVGA\gowin_sp\gowin_sp.v<br>
 C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\soc.v<br>
-C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\CSRFile.v<br>
-C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\CLINT.v<br>
+C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\CPU\CSRFile.v<br>
 </td>
 </tr>
 <tr>
@@ -122,7 +122,7 @@ C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\CLINT.v<br>
 </tr>
 <tr>
 <td class="label">Created Time</td>
-<td>Sun Jan 12 12:54:54 2025
+<td>Mon Jan 13 23:33:20 2025
 </td>
 </tr>
 <tr>
@@ -138,11 +138,11 @@ C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\CLINT.v<br>
 </tr>
 <tr>
 <td class="label">Synthesis Process</td>
-<td>Running parser:<br/>&nbsp;&nbsp;&nbsp;&nbsp;CPU time = 0h 0m 0.703s, Elapsed time = 0h 0m 0.825s, Peak memory usage = 665.223MB<br/>Running netlist conversion:<br/>&nbsp;&nbsp;&nbsp;&nbsp;CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0s, Peak memory usage = 0MB<br/>Running device independent optimization:<br/>&nbsp;&nbsp;&nbsp;&nbsp;Optimizing Phase 0: CPU time = 0h 0m 0.187s, Elapsed time = 0h 0m 0.288s, Peak memory usage = 665.223MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Optimizing Phase 1: CPU time = 0h 0m 0.14s, Elapsed time = 0h 0m 0.125s, Peak memory usage = 665.223MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Optimizing Phase 2: CPU time = 0h 0m 0.328s, Elapsed time = 0h 0m 0.342s, Peak memory usage = 665.223MB<br/>Running inference:<br/>&nbsp;&nbsp;&nbsp;&nbsp;Inferring Phase 0: CPU time = 0h 0m 0.265s, Elapsed time = 0h 0m 0.267s, Peak memory usage = 665.223MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Inferring Phase 1: CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0.005s, Peak memory usage = 665.223MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Inferring Phase 2: CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0.011s, Peak memory usage = 665.223MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Inferring Phase 3: CPU time = 0h 0m 0.031s, Elapsed time = 0h 0m 0.008s, Peak memory usage = 665.223MB<br/>Running technical mapping:<br/>&nbsp;&nbsp;&nbsp;&nbsp;Tech-Mapping Phase 0: CPU time = 0h 0m 0.359s, Elapsed time = 0h 0m 0.355s, Peak memory usage = 665.223MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Tech-Mapping Phase 1: CPU time = 0h 0m 0.125s, Elapsed time = 0h 0m 0.12s, Peak memory usage = 665.223MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Tech-Mapping Phase 2: CPU time = 0h 0m 0.093s, Elapsed time = 0h 0m 0.089s, Peak memory usage = 665.223MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Tech-Mapping Phase 3: CPU time = 0h 0m 18s, Elapsed time = 0h 0m 20s, Peak memory usage = 665.223MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Tech-Mapping Phase 4: CPU time = 0h 0m 0.406s, Elapsed time = 0h 0m 0.433s, Peak memory usage = 665.223MB<br/>Generate output files:<br/>&nbsp;&nbsp;&nbsp;&nbsp;CPU time = 0h 0m 0.328s, Elapsed time = 0h 0m 0.432s, Peak memory usage = 665.223MB<br/></td>
+<td>Running parser:<br/>&nbsp;&nbsp;&nbsp;&nbsp;CPU time = 0h 0m 0.75s, Elapsed time = 0h 0m 0.884s, Peak memory usage = 538.137MB<br/>Running netlist conversion:<br/>&nbsp;&nbsp;&nbsp;&nbsp;CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0s, Peak memory usage = 0MB<br/>Running device independent optimization:<br/>&nbsp;&nbsp;&nbsp;&nbsp;Optimizing Phase 0: CPU time = 0h 0m 0.234s, Elapsed time = 0h 0m 0.243s, Peak memory usage = 538.137MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Optimizing Phase 1: CPU time = 0h 0m 0.093s, Elapsed time = 0h 0m 0.093s, Peak memory usage = 538.137MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Optimizing Phase 2: CPU time = 0h 0m 0.265s, Elapsed time = 0h 0m 0.248s, Peak memory usage = 538.137MB<br/>Running inference:<br/>&nbsp;&nbsp;&nbsp;&nbsp;Inferring Phase 0: CPU time = 0h 0m 0.218s, Elapsed time = 0h 0m 0.229s, Peak memory usage = 538.137MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Inferring Phase 1: CPU time = 0h 0m 0.015s, Elapsed time = 0h 0m 0.006s, Peak memory usage = 538.137MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Inferring Phase 2: CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0.013s, Peak memory usage = 538.137MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Inferring Phase 3: CPU time = 0h 0m 0.015s, Elapsed time = 0h 0m 0.01s, Peak memory usage = 538.137MB<br/>Running technical mapping:<br/>&nbsp;&nbsp;&nbsp;&nbsp;Tech-Mapping Phase 0: CPU time = 0h 0m 0.281s, Elapsed time = 0h 0m 0.29s, Peak memory usage = 538.137MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Tech-Mapping Phase 1: CPU time = 0h 0m 0.078s, Elapsed time = 0h 0m 0.084s, Peak memory usage = 538.137MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Tech-Mapping Phase 2: CPU time = 0h 0m 0.078s, Elapsed time = 0h 0m 0.074s, Peak memory usage = 538.137MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Tech-Mapping Phase 3: CPU time = 0h 0m 18s, Elapsed time = 0h 0m 20s, Peak memory usage = 538.137MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Tech-Mapping Phase 4: CPU time = 0h 0m 0.296s, Elapsed time = 0h 0m 0.421s, Peak memory usage = 538.137MB<br/>Generate output files:<br/>&nbsp;&nbsp;&nbsp;&nbsp;CPU time = 0h 0m 0.421s, Elapsed time = 0h 0m 0.441s, Peak memory usage = 538.137MB<br/></td>
 </tr>
 <tr>
 <td class="label">Total Time and Memory Usage</td>
-<td>CPU time = 0h 0m 20s, Elapsed time = 0h 0m 23s, Peak memory usage = 665.223MB</td>
+<td>CPU time = 0h 0m 20s, Elapsed time = 0h 0m 23s, Peak memory usage = 538.137MB</td>
 </tr>
 </table>
 <h1><a name="resource">Resource</a></h1>
@@ -178,11 +178,11 @@ C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\CLINT.v<br>
 </tr>
 <tr>
 <td class="label">&nbsp&nbsp&nbsp&nbspDFF</td>
-<td>63</td>
+<td>64</td>
 </tr>
 <tr>
 <td class="label">&nbsp&nbsp&nbsp&nbspDFFE</td>
-<td>346</td>
+<td>345</td>
 </tr>
 <tr>
 <td class="label">&nbsp&nbsp&nbsp&nbspDFFSE</td>
@@ -206,27 +206,27 @@ C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\CLINT.v<br>
 </tr>
 <tr>
 <td class="label">&nbsp&nbsp&nbsp&nbspDFFC</td>
-<td>239</td>
+<td>262</td>
 </tr>
 <tr>
 <td class="label">&nbsp&nbsp&nbsp&nbspDFFCE</td>
-<td>1884</td>
+<td>1861</td>
 </tr>
 <tr>
 <td class="label"><b>LUT </b></td>
-<td>6407</td>
+<td>6419</td>
 </tr>
 <tr>
 <td class="label">&nbsp&nbsp&nbsp&nbspLUT2</td>
-<td>523</td>
+<td>616</td>
 </tr>
 <tr>
 <td class="label">&nbsp&nbsp&nbsp&nbspLUT3</td>
-<td>2189</td>
+<td>2222</td>
 </tr>
 <tr>
 <td class="label">&nbsp&nbsp&nbsp&nbspLUT4</td>
-<td>3695</td>
+<td>3581</td>
 </tr>
 <tr>
 <td class="label"><b>ALU </b></td>
@@ -238,11 +238,11 @@ C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\CLINT.v<br>
 </tr>
 <tr>
 <td class="label"><b>INV </b></td>
-<td>9</td>
+<td>8</td>
 </tr>
 <tr>
 <td class="label">&nbsp&nbsp&nbsp&nbspINV</td>
-<td>9</td>
+<td>8</td>
 </tr>
 <tr>
 <td class="label"><b>BSRAM </b></td>
@@ -274,8 +274,8 @@ C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\CLINT.v<br>
 </tr>
 <tr>
 <td class="label">Logic</td>
-<td>6839(6416 LUT, 423 ALU) / 20736</td>
-<td>33%</td>
+<td>6850(6427 LUT, 423 ALU) / 20736</td>
+<td>34%</td>
 </tr>
 <tr>
 <td class="label">Register</td>
@@ -388,16 +388,16 @@ C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\CLINT.v<br>
 <td>1</td>
 <td>clk</td>
 <td>27.000(MHz)</td>
-<td>45.554(MHz)</td>
-<td>24</td>
+<td>46.743(MHz)</td>
+<td>26</td>
 <td>TOP</td>
 </tr>
 <tr>
 <td>2</td>
 <td>slower_clock/rpll_inst/CLKOUT.default_gen_clk</td>
 <td>33.000(MHz)</td>
-<td>152.742(MHz)</td>
-<td>7</td>
+<td>169.895(MHz)</td>
+<td>6</td>
 <td>TOP</td>
 </tr>
 </table>
@@ -473,7 +473,7 @@ C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\CLINT.v<br>
 <td>0.232</td>
 <td>tC2Q</td>
 <td>RF</td>
-<td>22</td>
+<td>24</td>
 <td>D1/LineCtr_1_s1/Q</td>
 </tr>
 <tr>
@@ -797,7 +797,7 @@ C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\CLINT.v<br>
 <td>0.232</td>
 <td>tC2Q</td>
 <td>RF</td>
-<td>22</td>
+<td>24</td>
 <td>D1/LineCtr_1_s1/Q</td>
 </tr>
 <tr>
@@ -1089,7 +1089,7 @@ C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\CLINT.v<br>
 <td>0.232</td>
 <td>tC2Q</td>
 <td>RF</td>
-<td>22</td>
+<td>24</td>
 <td>D1/LineCtr_1_s1/Q</td>
 </tr>
 <tr>
@@ -1331,11 +1331,11 @@ C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\CLINT.v<br>
 <table class="summary_table">
 <tr>
 <td class="label">Slack</td>
-<td>-1.847</td>
+<td>-1.783</td>
 </tr>
 <tr>
 <td class="label">Data Arrival Time</td>
-<td>187.322</td>
+<td>187.258</td>
 </tr>
 <tr>
 <td class="label">Data Required Time</td>
@@ -1422,18 +1422,18 @@ C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\CLINT.v<br>
 <td>tNET</td>
 <td>FF</td>
 <td>1</td>
-<td>ppu_inst/n17379_s3/I0</td>
+<td>ppu_inst/n17379_s3/I2</td>
 </tr>
 <tr>
-<td>184.930</td>
-<td>0.517</td>
+<td>184.866</td>
+<td>0.453</td>
 <td>tINS</td>
 <td>FF</td>
-<td>7</td>
+<td>6</td>
 <td>ppu_inst/n17379_s3/F</td>
 </tr>
 <tr>
-<td>185.404</td>
+<td>185.340</td>
 <td>0.474</td>
 <td>tNET</td>
 <td>FF</td>
@@ -1441,15 +1441,15 @@ C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\CLINT.v<br>
 <td>ppu_inst/n17379_s6/I2</td>
 </tr>
 <tr>
-<td>185.857</td>
+<td>185.793</td>
 <td>0.453</td>
 <td>tINS</td>
 <td>FF</td>
-<td>1</td>
+<td>2</td>
 <td>ppu_inst/n17379_s6/F</td>
 </tr>
 <tr>
-<td>186.331</td>
+<td>186.267</td>
 <td>0.474</td>
 <td>tNET</td>
 <td>FF</td>
@@ -1457,7 +1457,7 @@ C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\CLINT.v<br>
 <td>ppu_inst/n17674_s0/I0</td>
 </tr>
 <tr>
-<td>186.848</td>
+<td>186.784</td>
 <td>0.517</td>
 <td>tINS</td>
 <td>FF</td>
@@ -1465,7 +1465,7 @@ C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\CLINT.v<br>
 <td>ppu_inst/n17674_s0/F</td>
 </tr>
 <tr>
-<td>187.322</td>
+<td>187.258</td>
 <td>0.474</td>
 <td>tNET</td>
 <td>FF</td>
@@ -1549,7 +1549,7 @@ C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\CLINT.v<br>
 <tr>
 <td class="label">Arrival Clock Path Delay:</td><td> cell: 0.000, 0.000%; route: 0.360, 100.000%</td></tr>
 <tr>
-<td class="label">Arrival Data Path Delay:</td><td> cell: 2.042, 43.971%; route: 2.370, 51.033%; tC2Q: 0.232, 4.996%</td></tr>
+<td class="label">Arrival Data Path Delay:</td><td> cell: 1.978, 43.188%; route: 2.370, 51.746%; tC2Q: 0.232, 5.066%</td></tr>
 <tr>
 <td class="label">Required Clock Path Delay:</td><td> cell: 0.000, 0.000%; route: 0.360, 100.000%</td></tr>
 </table>
@@ -1559,11 +1559,11 @@ C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\CLINT.v<br>
 <table class="summary_table">
 <tr>
 <td class="label">Slack</td>
-<td>-1.565</td>
+<td>-1.701</td>
 </tr>
 <tr>
 <td class="label">Data Arrival Time</td>
-<td>187.041</td>
+<td>187.176</td>
 </tr>
 <tr>
 <td class="label">Data Required Time</td>
@@ -1571,11 +1571,11 @@ C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\CLINT.v<br>
 </tr>
 <tr>
 <td class="label">From</td>
-<td>D1/LineCtr_1_s1</td>
+<td>D1/PixelCtr_6_s0</td>
 </tr>
 <tr>
 <td class="label">To</td>
-<td>ppu_inst/objectPointer_5_s0</td>
+<td>ppu_inst/objectPointer_1_s0</td>
 </tr>
 <tr>
 <td class="label">Launch Clk</td>
@@ -1618,135 +1618,87 @@ C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\CLINT.v<br>
 <td>tNET</td>
 <td>RR</td>
 <td>1</td>
-<td>D1/LineCtr_1_s1/CLK</td>
+<td>D1/PixelCtr_6_s0/CLK</td>
 </tr>
 <tr>
 <td>182.910</td>
 <td>0.232</td>
 <td>tC2Q</td>
 <td>RF</td>
-<td>22</td>
-<td>D1/LineCtr_1_s1/Q</td>
+<td>6</td>
+<td>D1/PixelCtr_6_s0/Q</td>
 </tr>
 <tr>
 <td>183.384</td>
 <td>0.474</td>
 <td>tNET</td>
 <td>FF</td>
-<td>2</td>
-<td>ppu_inst/n17403_s/I0</td>
+<td>1</td>
+<td>ppu_inst/n17379_s2/I1</td>
 </tr>
 <tr>
-<td>183.933</td>
+<td>183.939</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>2</td>
+<td>ppu_inst/n17379_s2/F</td>
+</tr>
+<tr>
+<td>184.413</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>ppu_inst/n17379_s3/I2</td>
+</tr>
+<tr>
+<td>184.866</td>
+<td>0.453</td>
+<td>tINS</td>
+<td>FF</td>
+<td>6</td>
+<td>ppu_inst/n17379_s3/F</td>
+</tr>
+<tr>
+<td>185.340</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>ppu_inst/n17379_s6/I2</td>
+</tr>
+<tr>
+<td>185.793</td>
+<td>0.453</td>
+<td>tINS</td>
+<td>FF</td>
+<td>2</td>
+<td>ppu_inst/n17379_s6/F</td>
+</tr>
+<tr>
+<td>186.267</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>ppu_inst/objectPointer_8_s3/I0</td>
+</tr>
+<tr>
+<td>186.816</td>
 <td>0.549</td>
 <td>tINS</td>
 <td>FR</td>
-<td>1</td>
-<td>ppu_inst/n17403_s/COUT</td>
+<td>8</td>
+<td>ppu_inst/objectPointer_8_s3/F</td>
 </tr>
 <tr>
-<td>183.933</td>
-<td>0.000</td>
+<td>187.176</td>
+<td>0.360</td>
 <td>tNET</td>
 <td>RR</td>
-<td>2</td>
-<td>ppu_inst/n17402_s/CIN</td>
-</tr>
-<tr>
-<td>183.968</td>
-<td>0.035</td>
-<td>tINS</td>
-<td>RF</td>
 <td>1</td>
-<td>ppu_inst/n17402_s/COUT</td>
-</tr>
-<tr>
-<td>183.968</td>
-<td>0.000</td>
-<td>tNET</td>
-<td>FF</td>
-<td>2</td>
-<td>ppu_inst/n17401_s/CIN</td>
-</tr>
-<tr>
-<td>184.003</td>
-<td>0.035</td>
-<td>tINS</td>
-<td>FF</td>
-<td>1</td>
-<td>ppu_inst/n17401_s/COUT</td>
-</tr>
-<tr>
-<td>184.003</td>
-<td>0.000</td>
-<td>tNET</td>
-<td>FF</td>
-<td>2</td>
-<td>ppu_inst/n17400_s/CIN</td>
-</tr>
-<tr>
-<td>184.039</td>
-<td>0.035</td>
-<td>tINS</td>
-<td>FF</td>
-<td>1</td>
-<td>ppu_inst/n17400_s/COUT</td>
-</tr>
-<tr>
-<td>184.039</td>
-<td>0.000</td>
-<td>tNET</td>
-<td>FF</td>
-<td>2</td>
-<td>ppu_inst/n17399_s/CIN</td>
-</tr>
-<tr>
-<td>184.509</td>
-<td>0.470</td>
-<td>tINS</td>
-<td>FF</td>
-<td>1</td>
-<td>ppu_inst/n17399_s/SUM</td>
-</tr>
-<tr>
-<td>184.983</td>
-<td>0.474</td>
-<td>tNET</td>
-<td>FF</td>
-<td>2</td>
-<td>ppu_inst/n17449_s/I1</td>
-</tr>
-<tr>
-<td>185.538</td>
-<td>0.555</td>
-<td>tINS</td>
-<td>FF</td>
-<td>1</td>
-<td>ppu_inst/n17449_s/SUM</td>
-</tr>
-<tr>
-<td>186.012</td>
-<td>0.474</td>
-<td>tNET</td>
-<td>FF</td>
-<td>1</td>
-<td>ppu_inst/n17627_s4/I1</td>
-</tr>
-<tr>
-<td>186.567</td>
-<td>0.555</td>
-<td>tINS</td>
-<td>FF</td>
-<td>1</td>
-<td>ppu_inst/n17627_s4/F</td>
-</tr>
-<tr>
-<td>187.041</td>
-<td>0.474</td>
-<td>tNET</td>
-<td>FF</td>
-<td>1</td>
-<td>ppu_inst/objectPointer_5_s0/D</td>
+<td>ppu_inst/objectPointer_1_s0/CE</td>
 </tr>
 </table>
 <b>Data Required Path:</b>
@@ -1789,7 +1741,7 @@ C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\CLINT.v<br>
 <td>tNET</td>
 <td>RR</td>
 <td>1</td>
-<td>ppu_inst/objectPointer_5_s0/CLK</td>
+<td>ppu_inst/objectPointer_1_s0/CLK</td>
 </tr>
 <tr>
 <td>185.510</td>
@@ -1797,7 +1749,7 @@ C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\CLINT.v<br>
 <td>tUnc</td>
 <td> </td>
 <td> </td>
-<td>ppu_inst/objectPointer_5_s0</td>
+<td>ppu_inst/objectPointer_1_s0</td>
 </tr>
 <tr>
 <td>185.475</td>
@@ -1805,7 +1757,7 @@ C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\CLINT.v<br>
 <td>tSu</td>
 <td> </td>
 <td>1</td>
-<td>ppu_inst/objectPointer_5_s0</td>
+<td>ppu_inst/objectPointer_1_s0</td>
 </tr>
 </table>
 <b>Path Statistics:</b>
@@ -1825,7 +1777,7 @@ C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\CLINT.v<br>
 <tr>
 <td class="label">Arrival Clock Path Delay:</td><td> cell: 0.000, 0.000%; route: 0.360, 100.000%</td></tr>
 <tr>
-<td class="label">Arrival Data Path Delay:</td><td> cell: 2.235, 51.222%; route: 1.896, 43.460%; tC2Q: 0.232, 5.318%</td></tr>
+<td class="label">Arrival Data Path Delay:</td><td> cell: 2.010, 44.687%; route: 2.256, 50.155%; tC2Q: 0.232, 5.158%</td></tr>
 <tr>
 <td class="label">Required Clock Path Delay:</td><td> cell: 0.000, 0.000%; route: 0.360, 100.000%</td></tr>
 </table>

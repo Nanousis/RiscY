@@ -19,8 +19,8 @@ module CSRFile (input clock,
                 input write_pc,
 
                 // CLIC signals
-                input [31:0] PC,
-                input [31:0] IDEX_PC,
+                input [31:0] PC_ID,
+                input [31:0] new_mepc,
                 input timer_interrupt,
                 input software_interrupt,
                 input external_interrupt,
@@ -65,7 +65,7 @@ reg [2:0] enableInterrupts;
 // this is 100% going to be lost in a stall.
 reg [3:0] pipeline_flush_count;
 
-
+reg [40*8-1:0] debug;
 
 always @(posedge clock or negedge reset)
 begin
@@ -86,6 +86,7 @@ begin
         enableInterrupts <= 3'b111;
         flushPipeline <= 1'b0;
         pipeline_flush_count <= FLUSH_COUNT;
+        debug <= " ";
     end
     else
     begin
@@ -144,7 +145,7 @@ begin
                 if(pipeline_flush_count == FLUSH_COUNT)
                 begin
                     flushPipeline <= 1'b0;
-                    mepc <= IDEX_PC;
+                    mepc <= new_mepc;
                     int_taken <= 1;
                 end
             end
@@ -157,25 +158,28 @@ begin
                     // ecall instruction
                     if(csrAddr==0)begin
                         // trap handler chooses whether to return to next instruction or not
-                        mepc <= IDEX_PC;
+                        mepc <= PC_ID;
                         trap_in_ID <= 1'b1;
                         trap_vector <= {mtvec[31:2],2'b0};
+                        debug <= "ecall";
                         // it would be 8 if we have user mode but we dont
-                        mcause <= {1'b1,31'd11};
+                        mcause <= {1'b0,31'd11};
                         mstatus[7] <= mstatus[3];
                         mstatus[3] <= 1'b0;
                     end
                     else if(csrAddr==1)begin
+                        debug <= "ebreak";
                         // ebreak instruction
-                        mepc <= IDEX_PC;
+                        mepc <= PC_ID;
                         trap_in_ID <= 1'b1;
                         trap_vector <= {mtvec[31:2],2'b0};
-                        mcause <= {1'b1,31'd3};
+                        mcause <= {1'b0,31'd3};
                         mstatus[7] <= mstatus[3];
                         mstatus[3] <= 1'b0;
                     end
                     // mret instruction
                     else if(csrAddr=='h302)begin
+                        debug <= "mret";
                         trap_in_ID <= 1'b1;
                         trap_vector <= mepc;
                         enableInterrupts <= 0;
@@ -187,7 +191,7 @@ begin
                 else if(mstatus[3] == 1'b1) begin
                     // external interrupt
                     if(external_interrupt & mie[11]==1'b1 & mip[11] == 1'b1) begin
-                        // mepc <= IDEX_PC;
+                        // mepc <= new_mepc;
                         // int_taken <= 1;
                         trap_vector <= {mtvec[31:2],2'b0};
                         mcause <= {1'b1,31'd11};
@@ -198,7 +202,7 @@ begin
                     end
                     //timer interrupt
                     else if(timer_interrupt & mie[7]==1'b1 & mip[7] == 1'b1) begin
-                        // mepc <= IDEX_PC;
+                        // mepc <= new_mepc;
                         // int_taken <= 1;
                         trap_vector <= {mtvec[31:2],2'b0};
                         mcause <= {1'b1,31'd7};
@@ -209,7 +213,7 @@ begin
                     end
                     //software interrupt
                     else if(software_interrupt & mie[3]==1'b1 & mip[3] == 1'b1) begin
-                        // mepc <= IDEX_PC;
+                        // mepc <= new_mepc;
                         // int_taken <= 1;
                         trap_vector <= {mtvec[31:2],2'b0};
                         mcause <= {1'b1,31'd3};

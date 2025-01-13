@@ -110,7 +110,7 @@ begin
 		write_pc	= 1'b1;
 	end
 	else
-	if (PCSrc == 1'b1) begin // Taken Branch in MEM stage
+	if (PCSrc == 1'b11) begin // Taken Branch in MEM stage
 		state = 4'd7;
 		bubble_ifid		= 1'b1;
 		bubble_idex		= 1'b1;

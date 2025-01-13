@@ -6,15 +6,15 @@
 `include "../includes/config.vh"
 `endif
 
-module ALUCPU #(parameter N = 32) (output [N-1:0] out,
+module ALUCPU #(parameter N = 32) (output[N-1:0] out,
 								output zero,
-								output overflow,
+								output reg overflow,
 								input signed [N-1:0] inA, inB,
 								input [3:0] op);
 
 /****** SIGNALS ******/
 /****** SIGNALS ******/
-wire 	[N-1:0] 	out_val;
+reg 	[N-1:0] 	out_val;
 /* verilator lint_off UNUSED */
 wire 	[N:0]		unsigned_sub;
 /* verilator lint_on UNUSED */
@@ -22,22 +22,30 @@ wire 	[N:0]		unsigned_sub;
 /****** LOGIC ******/
 assign unsigned_sub = {({1'b0, inA} - {1'b0, inB})};
 
+reg [8*8-1:0] debug_string;
+
 // Stich a zero behind operations that don't need overflow
 // just to make the compiler happy :)
-assign {overflow, out_val} = (op == `ADD) ? (inA + inB) : 
-	(op == `SUB) 	? 	(inA - inB) : // sub, bne, beq, blt, bge
-	(op == `XOR) 	? 	{1'b0, (inA ^ inB)} :
-	(op == `OR)  	? 	{1'b0, (inA | inB)} :
-	(op == `AND) 	? 	{1'b0, (inA & inB)} :
-	(op == `CLEAR) 	? 	{1'b0, ((!inA) & inB)} :
-	(op == `SLL) 	? 	{1'b0, (inA << inB[4:0])} :
-	(op == `SRL) 	? 	{1'b0, (inA >> inB[4:0])} :
-	(op == `SRA) 	? 	{1'b0, {inA >>> inB[4:0]}} :
-	(op == `SLT) 	? 	{1'b0, ( (inA < inB) ? 32'b1 : 32'b0 )} :
-	(op == `SLTU)	? 	{1'b0, ( ($unsigned(inA) < $unsigned(inB)) ? 32'b1 : 32'b0)} :
-	(op == `SUBU)  	? 	{1'b0, unsigned_sub[32:1]} : // bltu, bgeu
-	(op == `LUI)   	? 	{1'b0, inB[31:12], 12'b0}:
-	(op == `AUIPC) 	? 	(inA + {inB[31:12], 12'b0}) : 33'b0;
+always @(*) begin
+	case (op)
+		`ADD:    begin {overflow, out_val} = inA + inB; debug_string = "ADD"; end
+		`SUB:    begin {overflow, out_val} = inA - inB; debug_string = "SUB"; end // sub, bne, beq, blt, bge
+		`XOR:    begin {overflow, out_val} = {1'b0, inA ^ inB}; debug_string = "XOR"; end
+		`OR:     begin {overflow, out_val} = {1'b0, inA | inB}; debug_string = "OR"; end
+		`AND:    begin {overflow, out_val} = {1'b0, inA & inB}; debug_string = "AND"; end
+		`CLEAR:  begin {overflow, out_val} = {1'b0, (!inA & inB)}; debug_string = "CLEAR"; end
+		`SLL:    begin {overflow, out_val} = {1'b0, inA << inB[4:0]}; debug_string = "SLL"; end
+		`SRL:    begin {overflow, out_val} = {1'b0, inA >> inB[4:0]}; debug_string = "SRL"; end
+		`SRA:    begin {overflow, out_val} = {1'b0, inA >>> inB[4:0]}; debug_string = "SRA"; end
+		`SLT:    begin {overflow, out_val} = {1'b0, (inA < inB) ? 32'b1 : 32'b0}; debug_string = "SLT"; end
+		`SLTU:   begin {overflow, out_val} = {1'b0, ($unsigned(inA) < $unsigned(inB)) ? 32'b1 : 32'b0}; debug_string = "SLTU"; end
+		`SUBU:   begin {overflow, out_val} = {1'b0, unsigned_sub[32:1]}; debug_string = "SUBU"; end // bltu, bgeu
+		`LUI:    begin {overflow, out_val} = {1'b0, inB[31:12], 12'b0}; debug_string = "LUI"; end
+		`AUIPC:  begin {overflow, out_val} = inA + {inB[31:12], 12'b0}; debug_string = "AUIPC"; end
+		`PASS:    begin {overflow, out_val} = inA; debug_string = "PASS"; end
+		default: begin {overflow, out_val} = 33'b0; debug_string = "DEFAULT"; end
+	endcase
+end
 
 assign zero = (out == 0);
 assign out 	= {{(N-32){out_val[31]}}, out_val[31:0]};

@@ -13,9 +13,12 @@ module control_alu(	output reg [3:0] ALUOp,
 					input [2:0] funct3,
 					input [6:0] funct7);
 
+reg [8*8-1:0] debug_string;
+
 always @(ALUcntrl or funct3 or funct7)
 begin
 	csr_immidiate = 0;
+	debug_string = "DEFAULT";
 	case (ALUcntrl)
 		`ALU_R: begin
 			case (funct3)
@@ -66,38 +69,45 @@ begin
 			case (funct3)
 				`FUNCT3_CSRRW:
 				begin
+					debug_string = "CSRRW";
 					csr_immidiate = 0;
-					ALUOp = `ADD;
+					ALUOp = `PASS;
 				end
 				`FUNCT3_CSRRS:
 				begin
+					debug_string = "CSRRS";
 					csr_immidiate = 0;
 					ALUOp = `OR;
 				end
 				`FUNCT3_CSRRC:
 				begin
+					debug_string = "CSRRC";
 					csr_immidiate = 0;
 					ALUOp = `CLEAR;
 				end
 				`FUNCT3_CSRRWI:
 				begin
+					debug_string = "CSRRWI";
 					csr_immidiate = 1;
-					ALUOp = `ADD;
+					ALUOp = `PASS;
 				end
 				`FUNCT3_CSRRSI:
 				begin
+					debug_string = "CSRRSI";
 					csr_immidiate = 1;
 					ALUOp = `OR;
 				end
 				`FUNCT3_CSRRCI:
 				begin
+					debug_string = "CSRRCI";
 					csr_immidiate = 1;
 					ALUOp = `CLEAR;
 				end
 				default:
 				begin
+					debug_string = "DEFAULT";
 					csr_immidiate = 0;
-					ALUOp = `ADD;
+					ALUOp = `PASS;
 				end
 			endcase
 		end

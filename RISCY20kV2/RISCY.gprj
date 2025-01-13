@@ -9,6 +9,7 @@
         <File path="src/Buses/bus.v" type="file.verilog" enable="1"/>
         <File path="src/CLINT.v" type="file.verilog" enable="1"/>
         <File path="src/CPU/ALUCPU.v" type="file.verilog" enable="1"/>
+        <File path="src/CPU/CSRFile.v" type="file.verilog" enable="1"/>
         <File path="src/CPU/RegFile.v" type="file.verilog" enable="1"/>
         <File path="src/CPU/SignExtendSelector.v" type="file.verilog" enable="1"/>
         <File path="src/CPU/constants.vh" type="file.verilog" enable="1"/>
@@ -21,7 +22,6 @@
         <File path="src/CPU/mem_read_selector.v" type="file.verilog" enable="1"/>
         <File path="src/CPU/mem_write_selector.v" type="file.verilog" enable="1"/>
         <File path="src/CPU/signExtend.v" type="file.verilog" enable="1"/>
-        <File path="src/CSRFile.v" type="file.verilog" enable="1"/>
         <File path="src/GPIO/PPU.v" type="file.verilog" enable="1"/>
         <File path="src/GPIO/buttonModule.v" type="file.verilog" enable="1"/>
         <File path="src/GPIO/cpuTimer.v" type="file.verilog" enable="1"/>
