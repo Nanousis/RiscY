@@ -35,7 +35,11 @@
         <File path="src/Memories/programMemory.v" type="file.verilog" enable="1"/>
         <File path="src/Memories/ramMemory.v" type="file.verilog" enable="1"/>
         <File path="src/config.vh" type="file.verilog" enable="1"/>
+        <File path="src/fifo_hs/fifo_hs.v" type="file.verilog" enable="1"/>
+        <File path="src/fifo_sc_video.v" type="file.verilog" enable="1"/>
+        <File path="src/fifo_sc_videoAddress.v" type="file.verilog" enable="1"/>
         <File path="src/gowin_rpll/gowin_rpll_ram.v" type="file.verilog" enable="1"/>
+        <File path="src/gowin_rpll_800vga/gowin_rpll_800vga.v" type="file.verilog" enable="1"/>
         <File path="src/gowin_rpll_ppu/gowin_rpll_ppu.v" type="file.verilog" enable="1"/>
         <File path="src/psram_memory_interface_hs_2ch/psram_memory_interface_hs_2ch.v" type="file.verilog" enable="1"/>
         <File path="src/screenI2C/i2c.v" type="file.verilog" enable="1"/>

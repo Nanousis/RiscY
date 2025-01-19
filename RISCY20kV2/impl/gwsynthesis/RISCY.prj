@@ -8,6 +8,7 @@
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\Buses\bus.v" type="verilog"/>
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\CLINT.v" type="verilog"/>
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\CPU\ALUCPU.v" type="verilog"/>
+        <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\CPU\CSRFile.v" type="verilog"/>
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\CPU\RegFile.v" type="verilog"/>
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\CPU\SignExtendSelector.v" type="verilog"/>
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\CPU\constants.vh" type="verilog"/>
@@ -46,7 +47,10 @@
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\screenVGA\gowin_rpll\gowin_rpll.v" type="verilog"/>
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\screenVGA\gowin_sp\gowin_sp.v" type="verilog"/>
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\soc.v" type="verilog"/>
-        <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\CPU\CSRFile.v" type="verilog"/>
+        <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\fifo_sc_video.v" type="verilog"/>
+        <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\fifo_sc_videoAddress.v" type="verilog"/>
+        <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\fifo_hs\fifo_hs.v" type="verilog"/>
+        <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\gowin_rpll_800vga\gowin_rpll_800vga.v" type="verilog"/>
     </FileList>
     <OptionList>
         <Option type="disable_insert_pad" value="0"/>

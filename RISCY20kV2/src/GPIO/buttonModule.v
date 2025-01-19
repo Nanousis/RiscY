@@ -1,50 +1,82 @@
 module buttonModule(
     input clk,
-    input btnDown,
-    input btnUp,
-    input btnLeft,
-    input btnRight,
+    input btnDownL,
+    input btnUpL,
+    input btnLeftL,
+    input btnRightL,
+    input btnDownR,
+    input btnUpR,
+    input btnLeftR,
+    input btnRightR,
     input ren,
     input [31:0] address,
     output reg data_out
 );
 
     // Debounced button signals
-    wire stableDown, stableUp, stableLeft, stableRight;
+    wire stableDownL, stableUpL, stableLeftL, stableRightL;
+    wire stableDownR, stableUpR, stableLeftR, stableRightR;
 
     // Instantiate debounce modules for each button
-    DebounceFSM debounceDown (
+    DebounceFSM debounceDownL (
         .clk(clk),
-        .btn_in(btnDown),
-        .btn_stable(stableDown)
+        .btn_in(btnDownL),
+        .btn_stable(stableDownL)
     );
 
-    DebounceFSM debounceUp (
+    DebounceFSM debounceUpL (
         .clk(clk),
-        .btn_in(btnUp),
-        .btn_stable(stableUp)
+        .btn_in(btnUpL),
+        .btn_stable(stableUpL)
     );
 
-    DebounceFSM debounceLeft (
+    DebounceFSM debounceLeftL (
         .clk(clk),
-        .btn_in(btnLeft),
-        .btn_stable(stableLeft)
+        .btn_in(btnLeftL),
+        .btn_stable(stableLeftL)
     );
 
-    DebounceFSM debounceRight (
+    DebounceFSM debounceRightL (
         .clk(clk),
-        .btn_in(btnRight),
-        .btn_stable(stableRight)
+        .btn_in(btnRightL),
+        .btn_stable(stableRightL)
+    );
+    DebounceFSM debounceDownR (
+        .clk(clk),
+        .btn_in(btnDownR),
+        .btn_stable(stableDownR)
+    );
+
+    DebounceFSM debounceUpR (
+        .clk(clk),
+        .btn_in(btnUpR),
+        .btn_stable(stableUpR)
+    );
+
+    DebounceFSM debounceLeftR (
+        .clk(clk),
+        .btn_in(btnLeftR),
+        .btn_stable(stableLeftR)
+    );
+
+    DebounceFSM debounceRightR (
+        .clk(clk),
+        .btn_in(btnRightR),
+        .btn_stable(stableRightR)
     );
 
     // Read debounced signals based on the address
     always @(posedge clk) begin
         if (ren == 1'b1) begin
             case (address[3:0])
-                3'h0: data_out = stableDown;
-                3'h1: data_out = stableUp;
-                3'h2: data_out = stableLeft;
-                3'h3: data_out = stableRight;
+                3'h0: data_out = stableDownR;
+                3'h1: data_out = stableUpR;
+                3'h2: data_out = stableLeftR;
+                3'h3: data_out = stableRightR;
+                3'h4: data_out = stableDownL;
+                3'h5: data_out = stableUpL;
+                3'h6: data_out = stableLeftL;
+                3'h7: data_out = stableRightL;
                 default: data_out = 1'b1;
             endcase
         end

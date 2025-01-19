@@ -24,15 +24,15 @@ module VGAMod(
     //**************************** PARAMETERS ****************************//
 
     //Paremeters calculated for resolution 1024x600 18Hz 
-    localparam      H_BackPorch  = 16'd182; 	//Horizontal offset
-	localparam      H_Pulse 	 = 16'd1; 
+    localparam      H_BackPorch  = 16'd96; 	//Horizontal offset
+	localparam      H_Pulse 	 = 16'd72; 
 	localparam      H_Display    = 16'd800; 
-	localparam      H_FrontPorch = 16'd45;
+	localparam      H_FrontPorch = 16'd24;
 
-	localparam      V_BackPorch  = 16'd0; //Vertical offset
-	localparam      V_Pulse 	 = 16'd5; 
+	localparam      V_BackPorch  = 16'd6; //Vertical offset
+	localparam      V_Pulse 	 = 16'd7; 
 	localparam      V_Display    = 16'd480;
-	localparam      V_FrontPorch = 16'd45; //62
+	localparam      V_FrontPorch = 16'd3; //62
 
     localparam horizontalTime = H_Pulse + H_BackPorch + H_Display + H_FrontPorch;
     localparam verticalTime = V_Pulse + V_BackPorch + V_Display + V_FrontPorch;

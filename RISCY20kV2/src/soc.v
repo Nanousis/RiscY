@@ -19,7 +19,7 @@ module top
 	output	[4:0]	LCD_R,
 	output	[5:0]	LCD_G,
 	output	[4:0]	LCD_B,
-
+    
     input flashMiso,
     output flashClk,
     output flashMosi,
@@ -30,10 +30,10 @@ module top
 
 //    input btn1,
 //    input btn2,
-//    input btnDownL,
-//    input btnUpL,
-//    input btnLeftL,
-//    input btnRightL,
+    input btnDownL,
+    input btnUpL,
+    input btnLeftL,
+    input btnRightL,
 
     input btnDownR,
     input btnUpR,
@@ -188,10 +188,15 @@ module top
     wire btn_out;
     buttonModule bm(
         .clk(cpu_clk),
-        .btnDown(btnDownR),
-        .btnUp(btnUpR),
-        .btnLeft(btnLeftR),
-        .btnRight(btnRightR),
+        .btnDownL(btnDownL),
+        .btnUpL(btnUpL),
+        .btnLeftL(btnLeftL),
+        .btnRightL(btnRightL),
+        .btnDownR(btnDownR),
+        .btnUpR(btnUpR),
+        .btnLeftR(btnLeftR),
+        .btnRightR(btnRightR),
+
         .ren(btn_ren),
         .address(data_addr[7:0]),
         .data_out(btn_out)
@@ -240,7 +245,7 @@ module top
     //**********************************************************************************************//
 
     `ifndef TESTBENCH
-    Gowin_rPLL slower_clock(
+    Gowin_rPLL_800vga slower_clock(
         .clkout(CLK_PIX), //13.5Mhz
         .clkin(clk)       //27Mhz
     );
@@ -254,7 +259,7 @@ module top
     wire is_blank;
 
     PPU ppu_inst (
-        .clk(clk),
+        .clk(CLK_PIX),
         .clk_cpu(clk),
         .reset(reset),
         // .ren(screen_ren),
@@ -376,7 +381,7 @@ module top
                 cpuclk=0;
 
                 txCounter <= txCounter + 1;
-                if (txCounter == 22'hFFFF) begin
+                if (txCounter == 22'hFF) begin
                     txCounter <=0;
                     state <= STATE_START;
                 end else

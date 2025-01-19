@@ -17,7 +17,7 @@ module PPU(
 );
 
     parameter MAX_WIDTH=15'd500;
-    parameter MAX_OBJ=0;
+    parameter MAX_OBJ=22;
 
 
     reg textEn=1;
