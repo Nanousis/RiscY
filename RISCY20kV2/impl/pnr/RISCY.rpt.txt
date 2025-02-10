@@ -12,27 +12,27 @@
   <Part Number>: GW2AR-LV18QN88C8/I7
   <Device>: GW2AR-18
   <Device Version>: C
-  <Created Time>:Sun Jan 19 13:28:18 2025
+  <Created Time>:Thu Jan 30 14:18:28 2025
 
 
 2. PnR Details
 
   Running placement:
     Placement Phase 0: CPU time = 0h 0m 1s, Elapsed time = 0h 0m 1s
-    Placement Phase 1: CPU time = 0h 0m 0.354s, Elapsed time = 0h 0m 0.355s
+    Placement Phase 1: CPU time = 0h 0m 0.344s, Elapsed time = 0h 0m 0.344s
     Placement Phase 2: CPU time = 0h 0m 4s, Elapsed time = 0h 0m 4s
     Placement Phase 3: CPU time = 0h 0m 5s, Elapsed time = 0h 0m 5s
-    Total Placement: CPU time = 0h 0m 11s, Elapsed time = 0h 0m 11s
+    Total Placement: CPU time = 0h 0m 10s, Elapsed time = 0h 0m 10s
  Running routing:
     Routing Phase 0: CPU time = 0h 0m 0.006s, Elapsed time = 0h 0m 0.006s
-    Routing Phase 1: CPU time = 0h 0m 0.291s, Elapsed time = 0h 0m 0.29s
+    Routing Phase 1: CPU time = 0h 0m 0.284s, Elapsed time = 0h 0m 0.284s
     Routing Phase 2: CPU time = 0h 0m 8s, Elapsed time = 0h 0m 8s
     Routing Phase 3: CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0s
     Total Routing: CPU time = 0h 0m 8s, Elapsed time = 0h 0m 8s
  Generate output files:
     CPU time = 0h 0m 1s, Elapsed time = 0h 0m 1s
 
- Total Time and Memory Usage: CPU time = 0h 0m 20s, Elapsed time = 0h 0m 20s, Peak memory usage = 644MB
+ Total Time and Memory Usage: CPU time = 0h 0m 20s, Elapsed time = 0h 0m 20s, Peak memory usage = 632MB
 
 
 3. Resource Usage Summary
@@ -40,23 +40,23 @@
   ----------------------------------------------------------
   Resources                   | Usage
   ----------------------------------------------------------
-  Logic                       | 9137/20736  45%
-    --LUT,ALU,ROM16           | 9137(7850 LUT, 1287 ALU, 0 ROM16)
+  Logic                       | 9079/20736  44%
+    --LUT,ALU,ROM16           | 9079(7867 LUT, 1212 ALU, 0 ROM16)
     --SSRAM(RAM16)            | 0
-  Register                    | 3651/15750  24%
+  Register                    | 3596/15750  23%
     --Logic Register as Latch | 0/15552  0%
-    --Logic Register as FF    | 3634/15552  24%
+    --Logic Register as FF    | 3579/15552  24%
     --I/O Register as Latch   | 0/198  0%
     --I/O Register as FF      | 17/198  9%
-  CLS                         | 6581/10368  64%
+  CLS                         | 6587/10368  64%
   I/O Port                    | 41
   I/O Buf                     | 40
     --Input Buf               | 10
     --Output Buf              | 30
     --Inout Buf               | 0
   IOLOGIC                     | 0%
-  BSRAM                       | 44%
-    --SDPB                    | 12
+  BSRAM                       | 57%
+    --SDPB                    | 18
     --DPB                     | 8
   DSP                         | 0%
   PLL                         | 1/2  50%
@@ -93,7 +93,7 @@
   Global Clock  | Usage       
   -------------------------------
   PRIMARY       | 2/8(25%)
-  LW            | 5/8(63%)
+  LW            | 3/8(38%)
   GCLK_PIN      | 2/5(40%)
   PLL           | 1/2(50%)
   CLKDIV        | 0/8(0%)
@@ -109,10 +109,8 @@
   clk_d          | PRIMARY        |  TR TL BR BL
   LCD_CLK_d      | PRIMARY        |  TR BR
   reset          | LW             |  -
-  memReady       | LW             |  -
-  cpu_1/IFID_PC_31_11| LW             |  -
-  cpu_1/EXMEM_ALUOut_31_131| LW             |  -
-  cpu_1/write_pc_Z| LW             |  -
+  cpu_1/IFID_PC_31_44| LW             |  -
+  cpu_1/EXMEM_ALUOut_31_118| LW             |  -
   ===========================================
 
 

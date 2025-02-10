@@ -34,7 +34,11 @@
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\Memories\programMemory.v" type="verilog"/>
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\Memories\ramMemory.v" type="verilog"/>
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\config.vh" type="verilog"/>
+        <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\fifo_hs\fifo_hs.v" type="verilog"/>
+        <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\fifo_sc_video.v" type="verilog"/>
+        <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\fifo_sc_videoAddress.v" type="verilog"/>
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\gowin_rpll\gowin_rpll_ram.v" type="verilog"/>
+        <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\gowin_rpll_800vga\gowin_rpll_800vga.v" type="verilog"/>
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\gowin_rpll_ppu\gowin_rpll_ppu.v" type="verilog"/>
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\psram_memory_interface_hs_2ch\psram_memory_interface_hs_2ch.v" type="verilog"/>
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\screenI2C\i2c.v" type="verilog"/>
@@ -47,10 +51,6 @@
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\screenVGA\gowin_rpll\gowin_rpll.v" type="verilog"/>
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\screenVGA\gowin_sp\gowin_sp.v" type="verilog"/>
         <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\soc.v" type="verilog"/>
-        <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\fifo_sc_video.v" type="verilog"/>
-        <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\fifo_sc_videoAddress.v" type="verilog"/>
-        <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\fifo_hs\fifo_hs.v" type="verilog"/>
-        <File path="C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\gowin_rpll_800vga\gowin_rpll_800vga.v" type="verilog"/>
     </FileList>
     <OptionList>
         <Option type="disable_insert_pad" value="0"/>

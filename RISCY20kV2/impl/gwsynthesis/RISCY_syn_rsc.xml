@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Module name="top" Register="32" Alu="22" Lut="13" T_Register="3651(32)" T_Alu="1051(22)" T_Lut="7859(13)" T_Bsram="20(0)">
-    <SubModule name="cpu_1" Register="637" Alu="64" Lut="2048" T_Register="1925(637)" T_Alu="224(64)" T_Lut="3752(2048)">
-        <SubModule name="cpu_regs" Register="992" Alu="10" Lut="1061" T_Register="992(992)" T_Alu="10(10)" T_Lut="1061(1061)"/>
-        <SubModule name="SignExtendSelector" Lut="47" T_Lut="47(47)"/>
+<Module name="top" Register="32" Alu="22" Lut="14" T_Register="3596(32)" T_Alu="993(22)" T_Lut="7876(14)" T_Bsram="26(0)">
+    <SubModule name="cpu_1" Register="637" Alu="63" Lut="2056" T_Register="1925(637)" T_Alu="220(63)" T_Lut="3740(2056)">
+        <SubModule name="cpu_regs" Register="992" Alu="8" Lut="1062" T_Register="992(992)" T_Alu="8(8)" T_Lut="1062(1062)"/>
+        <SubModule name="SignExtendSelector" Lut="48" T_Lut="48(48)"/>
         <SubModule name="csrFile" Register="296" Alu="12" Lut="363" T_Register="296(296)" T_Alu="12(12)" T_Lut="363(363)"/>
-        <SubModule name="control_stall_id" Alu="10" Lut="8" T_Alu="10(10)" T_Lut="8(8)"/>
+        <SubModule name="control_stall_id" Alu="10" Lut="7" T_Alu="10(10)" T_Lut="7(7)"/>
         <SubModule name="cpu_alu" Alu="84" Lut="119" T_Alu="84(84)" T_Lut="119(119)"/>
-        <SubModule name="control_alu" Lut="12" T_Lut="12(12)"/>
-        <SubModule name="control_bypass_ex" Alu="44" T_Alu="44(44)"/>
-        <SubModule name="mem_write_selector" Lut="94" T_Lut="94(94)"/>
+        <SubModule name="control_alu" Lut="15" T_Lut="15(15)"/>
+        <SubModule name="control_bypass_ex" Alu="43" T_Alu="43(43)"/>
+        <SubModule name="mem_write_selector" Lut="70" T_Lut="70(70)"/>
     </SubModule>
-    <SubModule name="bu" Lut="336" T_Lut="336(336)"/>
-    <SubModule name="clint_inst" Register="161" Alu="126" Lut="121" T_Register="161(161)" T_Alu="126(126)" T_Lut="121(121)"/>
-    <SubModule name="mem" Register="79" Lut="165" Bsram="8" T_Register="79(79)" T_Lut="165(165)" T_Bsram="8(8)"/>
-    <SubModule name="bm" Register="1" Lut="6" T_Register="241(1)" T_Lut="414(6)">
-        <SubModule name="debounceDownL" Register="30" Lut="51" T_Register="30(30)" T_Lut="51(51)"/>
-        <SubModule name="debounceUpL" Register="30" Lut="52" T_Register="30(30)" T_Lut="52(52)"/>
-        <SubModule name="debounceLeftL" Register="30" Lut="52" T_Register="30(30)" T_Lut="52(52)"/>
+    <SubModule name="bu" Lut="347" T_Lut="347(347)"/>
+    <SubModule name="clint_inst" Register="161" Alu="126" Lut="122" T_Register="161(161)" T_Alu="126(126)" T_Lut="122(122)"/>
+    <SubModule name="mem" Register="79" Lut="183" Bsram="8" T_Register="79(79)" T_Lut="183(183)" T_Bsram="8(8)"/>
+    <SubModule name="bm" Register="1" Lut="9" T_Register="241(1)" T_Lut="414(9)">
+        <SubModule name="debounceDownL" Register="30" Lut="50" T_Register="30(30)" T_Lut="50(50)"/>
+        <SubModule name="debounceUpL" Register="30" Lut="51" T_Register="30(30)" T_Lut="51(51)"/>
+        <SubModule name="debounceLeftL" Register="30" Lut="51" T_Register="30(30)" T_Lut="51(51)"/>
         <SubModule name="debounceRightL" Register="30" Lut="50" T_Register="30(30)" T_Lut="50(50)"/>
         <SubModule name="debounceDownR" Register="30" Lut="51" T_Register="30(30)" T_Lut="51(51)"/>
         <SubModule name="debounceUpR" Register="30" Lut="51" T_Register="30(30)" T_Lut="51(51)"/>
-        <SubModule name="debounceLeftR" Register="30" Lut="50" T_Register="30(30)" T_Lut="50(50)"/>
-        <SubModule name="debounceRightR" Register="30" Lut="51" T_Register="30(30)" T_Lut="51(51)"/>
+        <SubModule name="debounceLeftR" Register="30" Lut="51" T_Register="30(30)" T_Lut="51(51)"/>
+        <SubModule name="debounceRightR" Register="30" Lut="50" T_Register="30(30)" T_Lut="50(50)"/>
     </SubModule>
-    <SubModule name="flashController" Register="91" Lut="325" T_Register="218(91)" T_Lut="529(325)">
-        <SubModule name="navigator" Register="127" Lut="204" T_Register="127(127)" T_Lut="204(204)"/>
+    <SubModule name="flashController" Register="91" Lut="342" T_Register="218(91)" T_Lut="551(342)">
+        <SubModule name="navigator" Register="127" Lut="209" T_Register="127(127)" T_Lut="209(209)"/>
     </SubModule>
-    <SubModule name="programMemory_inst" Lut="18" T_Lut="18(18)" T_Bsram="8(0)">
+    <SubModule name="programMemory_inst" Lut="30" T_Lut="30(30)" T_Bsram="8(0)">
         <SubModule name="BRAM_0" Bsram="1" T_Bsram="1(1)"/>
         <SubModule name="BRAM_1" Bsram="1" T_Bsram="1(1)"/>
         <SubModule name="BRAM_2" Bsram="1" T_Bsram="1(1)"/>
@@ -37,10 +37,10 @@
         <SubModule name="BRAM2_3" Bsram="1" T_Bsram="1(1)"/>
     </SubModule>
     <SubModule name="slower_clock"/>
-    <SubModule name="ppu_inst" Register="925" Alu="648" Lut="365" T_Register="925(925)" T_Alu="648(648)" T_Lut="365(365)" T_Bsram="4(0)">
+    <SubModule name="ppu_inst" Register="870" Alu="594" Lut="352" T_Register="870(870)" T_Alu="594(594)" T_Lut="352(352)" T_Bsram="10(0)">
         <SubModule name="text_Buffer" Bsram="2" T_Bsram="2(2)"/>
-        <SubModule name="sprite_BRAM" Bsram="2" T_Bsram="2(2)"/>
+        <SubModule name="sprite_BRAM" Bsram="8" T_Bsram="8(8)"/>
     </SubModule>
-    <SubModule name="D1" Register="28" Lut="2127" T_Register="28(28)" T_Lut="2127(2127)"/>
+    <SubModule name="D1" Register="28" Lut="2104" T_Register="28(28)" T_Lut="2104(2104)"/>
     <SubModule name="counter1mhz" Register="42" Alu="31" Lut="19" T_Register="42(42)" T_Alu="31(31)" T_Lut="19(19)"/>
 </Module>

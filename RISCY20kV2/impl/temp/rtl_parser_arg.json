@@ -122,7 +122,23 @@
    "Type" : "verilog"
   },
   {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY20kV2/src/fifo_hs/fifo_hs.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY20kV2/src/fifo_sc_video.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY20kV2/src/fifo_sc_videoAddress.v",
+   "Type" : "verilog"
+  },
+  {
    "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY20kV2/src/gowin_rpll/gowin_rpll_ram.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY20kV2/src/gowin_rpll_800vga/gowin_rpll_800vga.v",
    "Type" : "verilog"
   },
   {
@@ -171,22 +187,6 @@
   },
   {
    "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY20kV2/src/soc.v",
-   "Type" : "verilog"
-  },
-  {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY20kV2/src/fifo_sc_video.v",
-   "Type" : "verilog"
-  },
-  {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY20kV2/src/fifo_sc_videoAddress.v",
-   "Type" : "verilog"
-  },
-  {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY20kV2/src/fifo_hs/fifo_hs.v",
-   "Type" : "verilog"
-  },
-  {
-   "Path" : "C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY20kV2/src/gowin_rpll_800vga/gowin_rpll_800vga.v",
    "Type" : "verilog"
   }
  ],

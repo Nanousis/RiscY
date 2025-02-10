@@ -17,7 +17,7 @@ module PPU(
 );
 
     parameter MAX_WIDTH=15'd500;
-    parameter MAX_OBJ=22;
+    parameter MAX_OBJ=20;
 
 
     reg textEn=1;
@@ -56,7 +56,7 @@ module PPU(
     reg [6:0] spriteID;
 
     reg [15:0] lineBuffer[0:MAX_OBJ-1];
-    reg [8:0] objectPointer=0;
+    reg [9:0] objectPointer=0;
     reg hblank=0;
 
     wire [15:0] data_in_half=(byte_select[1:0] == 2'b11) ? data_in[15:0] : data_in[31:16];
@@ -144,7 +144,7 @@ module PPU(
 
     DPBRAM #(
     .DATA_WIDTH(8),  // 1 byte per address
-    .ADDR_WIDTH(12)  // 4096 addresses
+    .ADDR_WIDTH(14)  // 4096 addresses
     )sprite_BRAM(
         .clkA(clk_cpu), 
         .clkB(clk_cpu),
@@ -214,7 +214,7 @@ module PPU(
                     writeAttr<=data_in_half[15:8];
                 end
                 // from 4096->8192 is the sprite memory
-                else if(address<16'd8192)
+                else if(address<16'd8192-1)
                 begin
                     spritesEn<=1;
                     writeSprite<=data_in_half[7:0];
@@ -276,57 +276,20 @@ module PPU(
             end
             if(hblank)
             begin
-                if(buffer_counter[1]==0)
-                begin
-                    objectPointer<=objectPointer+9'b1;
-                    lineBuffer[cur_sprite_buf][7:0]<=dataOutSprite;
-                end
-                else if(buffer_counter[1:0]==2'b10)
-                begin
-                    // obj_line_buffer[15:8]<=dataOutSprite;
-                    // lineBuffer[cur_sprite_buf]<=dataOutSprite;
-                    lineBuffer[cur_sprite_buf][15:8]<=dataOutSprite;
-                    cur_sprite_buf<=cur_sprite_buf+4'b1;
-                    objectPointer <= objectAttributes[cur_sprite_buf+1][15:9]*32 + ((ycursor[13:1]-objectAttributes[cur_sprite_buf+1][8:0])<<1);
-                end
+
+                case(buffer_counter[0])
+                    1'd0:begin
+                        lineBuffer[cur_sprite_buf][7:0]<=dataOutSprite;
+                        objectPointer<=objectPointer+9'b1;
+                    end
+                    1'd1:begin
+                        lineBuffer[cur_sprite_buf][15:8]<=dataOutSprite;
+                        cur_sprite_buf<=cur_sprite_buf+4'b1;
+                        // get the next object's pointer
+                        objectPointer <= objectAttributes[cur_sprite_buf+1][15:9]*32 + ((ycursor[13:1]-objectAttributes[cur_sprite_buf+1][8:0])<<1);
+                    end
+                endcase
                 buffer_counter<=buffer_counter+7'b1;
-                // // this happens when xcursor is 1027, the fuck?
-                // if(buffer_counter==5'd1)
-                // begin 
-                //     obj_line_buffer[7:0]<=dataOutSprite;
-                //     // lineBuffer[0][7:0]<=dataOutSprite;
-                // end
-                // // this happens at xcursor is 1026, what happened to 1025?
-                // if(buffer_counter==5'd2)
-                // begin
-                //     objectPointer<=objectPointer+1;
-                // end
-                // if(buffer_counter==5'd3)
-                // begin
-                //     obj_line_buffer[15:8]<=dataOutSprite;
-                //     // lineBuffer[0][15:8]<=dataOutSprite;
-                //     // objectPointer<=objectPointer+1;
-                // end
-                // if(buffer_counter==5'd4)
-                // begin
-                // lineBuffer[0]<=obj_line_buffer;
-                // objectPointer <= objectAttributes[1][15:9]*32 + ((ycursor[13:1]-objectAttributes[1][8:0])<<1)+1;
-                // end
-                // if(buffer_counter==5'd5)
-                // begin 
-                //     obj_line_buffer[7:0]<=dataOutSprite;
-                //     // lineBuffer[0][7:0]<=dataOutSprite;
-                // end
-                // // this happens at xcursor is 1026, what happened to 1025?
-                // if(buffer_counter==5'd6)
-                // begin
-                //     objectPointer<=objectPointer+1;
-                // end
-                // if(buffer_counter==5'd7)
-                // begin
-                //     obj_line_buffer[15:8]<=dataOutSprite;
-                //     // lineBuffer[1][15:8]<=dataOutSprite;
-                // end
                 if(cur_sprite_buf==MAX_OBJ)
                 begin
                     hblank<=0;
