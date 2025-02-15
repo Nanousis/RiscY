@@ -4,7 +4,7 @@ OBJCOPY  = riscv64-unknown-elf-objcopy
 OBJDUMP  = riscv64-unknown-elf-objdump
 
 # Compiler flags
-CFLAGS   = -march=rv32i_zicsr -mabi=ilp32 -Os -Wall -nostdlib -nostartfiles -ffreestanding
+CFLAGS   = -march=rv32i -mabi=ilp32 -Os -Wall -nostdlib -nostartfiles -ffreestanding
 
 # Linker flags
 LDFLAGS  = -T linker.ld -Wl,-Map=$(BUILD_DIR)/program.map

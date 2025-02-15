@@ -56,9 +56,9 @@ int main() {
                           {BG_BLUE, BG_BLUE, 0, 0}},3,0};
 
     blocks[2] = (Block) {{{0, 0, 0, 0},
-                          {BG_wHITE, 0, 0, 0},  // L
-                          {BG_wHITE, 0, 0, 0},
-                          {BG_wHITE, BG_wHITE, 0, 0}},3,0};
+                          {BG_WHITE, 0, 0, 0},  // L
+                          {BG_WHITE, 0, 0, 0},
+                          {BG_WHITE, BG_WHITE, 0, 0}},3,0};
 
     blocks[3] = (Block) {{{0, 0, 0, 0},
                           {0, 0, 0, 0},         // Square

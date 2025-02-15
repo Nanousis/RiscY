@@ -96,7 +96,6 @@ trap_vector:
 
     # Call the C trap handler
     call c_trap_handler
-
     # Restore context from the stack
     lw s11, 32(sp)           # Restore callee-saved registers
     lw s10, 36(sp)

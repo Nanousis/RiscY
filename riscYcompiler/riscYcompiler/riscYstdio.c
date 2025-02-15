@@ -57,6 +57,10 @@ char getButtonDown(){
     char *buttons = (char *)BUTTONS;
     return buttons[0];
 }
+char getButton(char button){
+    char *buttons = (char *)BUTTONS;
+    return buttons[button];
+}
 char getButtonUp(){
     char *buttons = (char *)BUTTONS;
     return buttons[1];

@@ -12,14 +12,16 @@ int main() {
 
     while(1){
         clearScreen();
-        btnDownClicked=getButtonDown();
-        btnUpClicked=getButtonUp();
-        btnLeftClicked=getButtonLeft();
-        btnRightClicked=getButtonRight();
-        printf("Up: %d\n",btnUpClicked);
-        printf("Down: %d\n",btnDownClicked);
-        printf("Left: %d\n",btnLeftClicked);
-        printf("Right: %d\n",btnRightClicked);
+        printf("UpR: %d\n",getButton(BUTTON_RIGHT_UP));
+        printf("DownR: %d\n",getButton(BUTTON_RIGHT_DOWN));
+        printf("LeftR: %d\n",getButton(BUTTON_RIGHT_LEFT));
+        printf("RightR: %d\n",getButton(BUTTON_RIGHT_RIGHT));
+        printf("UpL: %d\n",getButton(BUTTON_LEFT_UP));
+        printf("DownL: %d\n",getButton(BUTTON_LEFT_DOWN));
+        printf("LeftL: %d\n",getButton(BUTTON_LEFT_LEFT));
+        printf("RightL: %d\n",getButton(BUTTON_LEFT_RIGHT));
+        
+
 
         for(volatile int i=0;i<WaitTime*10;i++);
     }
