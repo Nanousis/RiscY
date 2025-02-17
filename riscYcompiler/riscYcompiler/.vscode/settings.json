@@ -2,6 +2,7 @@
     "files.associations": {
         "stdarg.h": "c",
         "riscystdio.h": "c",
-        "stdint.h": "c"
+        "stdint.h": "c",
+        "stdlib.h": "c"
     }
 }

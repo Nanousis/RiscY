@@ -1,0 +1,43 @@
+<?xml version="1" encoding="UTF-8"?>
+<!DOCTYPE gowin-fpga-project>
+<Project>
+    <Template>FPGA</Template>
+    <Version>5</Version>
+    <Device name="GW2AR-18" pn="GW2AR-LV18QN88C8/I7">gw2ar18-000</Device>
+    <FileList>
+        <File path="C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/Nano_20k/PPU.v" type="file.verilog" enable="1"/>
+        <File path="C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/Nano_20k/flashController.v" type="file.verilog" enable="1"/>
+        <File path="C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/Nano_20k/screenVGA/VGAMod.v" type="file.verilog" enable="1"/>
+        <File path="C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/Nano_20k/screenVGA/gowin_rpll/gowin_rpll.v" type="file.verilog" enable="1"/>
+        <File path="C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/Nano_20k/soc.v" type="file.verilog" enable="1"/>
+        <File path="C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v" type="file.verilog" enable="1"/>
+        <File path="C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/Buses/bus.v" type="file.verilog" enable="1"/>
+        <File path="C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/CPU/ALUCPU.v" type="file.verilog" enable="1"/>
+        <File path="C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/CPU/CSRFile.v" type="file.verilog" enable="1"/>
+        <File path="C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/CPU/RegFile.v" type="file.verilog" enable="1"/>
+        <File path="C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/CPU/SignExtendSelector.v" type="file.verilog" enable="1"/>
+        <File path="C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/CPU/constants.vh" type="file.verilog" enable="1"/>
+        <File path="C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/CPU/control_alu.v" type="file.verilog" enable="1"/>
+        <File path="C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/CPU/control_branch.v" type="file.verilog" enable="1"/>
+        <File path="C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/CPU/control_bypass_ex.v" type="file.verilog" enable="1"/>
+        <File path="C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/CPU/control_main.v" type="file.verilog" enable="1"/>
+        <File path="C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/CPU/control_stall_id.v" type="file.verilog" enable="1"/>
+        <File path="C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/CPU/cpu.v" type="file.verilog" enable="1"/>
+        <File path="C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/CPU/mem_read_selector.v" type="file.verilog" enable="1"/>
+        <File path="C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/CPU/mem_write_selector.v" type="file.verilog" enable="1"/>
+        <File path="C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/CPU/signExtend.v" type="file.verilog" enable="1"/>
+        <File path="C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/GPIO/buttonModule.v" type="file.verilog" enable="1"/>
+        <File path="C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/GPIO/cpuTimer.v" type="file.verilog" enable="1"/>
+        <File path="C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/GPIO/uart.v" type="file.verilog" enable="1"/>
+        <File path="C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/GPIO/uartController.v" type="file.verilog" enable="1"/>
+        <File path="C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/InteruptControllers/CLINT.v" type="file.verilog" enable="1"/>
+        <File path="C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/Memories/DPBRAM.v" type="file.verilog" enable="1"/>
+        <File path="C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/Memories/flash.v" type="file.verilog" enable="1"/>
+        <File path="C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/Memories/memory.v" type="file.verilog" enable="1"/>
+        <File path="C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/Memories/programMemory.v" type="file.verilog" enable="1"/>
+        <File path="C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/src/config.vh" type="file.verilog" enable="1"/>
+        <File path="C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/Nano_20k/tangnano20k.cst" type="file.cst" enable="1"/>
+        <File path="C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/Nano_20k/Tang_nano_20K_LCD.sdc" type="file.sdc" enable="1"/>
+        <File path="C:/Users/Panagiotis/Documents/GitHub/RiscYNew/RISCY_SRC/Nano_20k/text.hex" type="file.other" enable="1"/>
+    </FileList>
+</Project>

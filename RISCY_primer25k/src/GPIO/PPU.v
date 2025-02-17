@@ -15,7 +15,7 @@ module PPU(
 );
 
     parameter MAX_WIDTH=15'd1024;
-    parameter MAX_OBJ=20;
+    parameter MAX_OBJ=0;
 
 
 
@@ -321,39 +321,39 @@ module PPU(
         b = 0;
         if(ycursor>=608||xcursor>=MAX_WIDTH)
         begin
-            if(xcursor>MAX_WIDTH+40)
-            begin
-                case(lineBuffer[2][xcursor+:2])
-                    2'b0:begin
-                        r = 0;
-                        g = 0;
-                        b = 0;
-                    end
-                    2'b1:begin
-                        r = 64;
-                        g = 64;
-                        b = 64;
-                    end
-                    2'b10:begin
-                        r = 150;
-                        g = 150;
-                        b = 150;
-                    end
-                    2'b11:begin
-                        r = 255;
-                        g = 255;
-                        b = 255;
-                    end
-                endcase
-            end
-            else
-            begin
-                r=50;
-                g=0;
-                b=50;
-            end
+//            if(xcursor>MAX_WIDTH+40)
+//            begin
+//                case(lineBuffer[2][xcursor+:2])
+//                    2'b0:begin
+//                        r = 0;
+//                        g = 0;
+//                        b = 0;
+//                    end
+//                    2'b1:begin
+//                        r = 64;
+//                        g = 64;
+//                        b = 64;
+//                    end
+//                    2'b10:begin
+//                        r = 150;
+//                        g = 150;
+//                        b = 150;
+//                    end
+//                    2'b11:begin
+//                        r = 255;
+//                        g = 255;
+//                        b = 255;
+//                    end
+//                endcase
+//            end
+//            else
+//            begin
+//                r=50;
+//                g=0;
+//                b=50;
+//            end
 
-                        // if(dataOutSprite[xcursor[3:1]]==1'b1)begin
+//                         if(dataOutSprite[xcursor[3:1]]==1'b1)begin
 
         end
         else if(dataOutTxt>=128)

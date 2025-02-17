@@ -1,110 +1,140 @@
 
-There are no discarded input sections
-
 Memory Configuration
 
 Name             Origin             Length             Attributes
-RAM              0x00400000         0x00004000         xw
-*default*        0x00000000         0xffffffff
+RAM              0x0000000000400000 0x0000000000004000 xw
+*default*        0x0000000000000000 0xffffffffffffffff
 
 Linker script and memory map
 
 LOAD builds/build0/startup.o
 LOAD builds/build0/main.o
 LOAD builds/build0/riscYstdio.o
-                0x00000800                        _stack_size = 0x800
-                0x00400000                        . = ORIGIN (RAM)
+                0x0000000000000800                _stack_size = 0x800
+                0x0000000000400000                . = ORIGIN (RAM)
 
-.text           0x00400000      0xb44
+.text           0x0000000000400000      0xf7c
  *(.text)
- .text          0x00400000      0x190 builds/build0/startup.o
-                0x00400000                _start
-                0x00400078                trap_vector
- .text          0x00400190      0x248 builds/build0/main.o
-                0x00400190                set_timer_interrupt
-                0x004001bc                c_trap_handler
-                0x004002d8                getUSBint
-                0x004002e4                USBParser
- .text          0x004003d8      0x684 builds/build0/riscYstdio.o
-                0x004003d8                memcpy
-                0x004003fc                memset
-                0x00400418                getButtonDown
-                0x00400424                getButtonUp
-                0x00400430                getButtonLeft
-                0x0040043c                getButtonRight
-                0x00400448                putch
-                0x00400478                printString
-                0x00400538                printHex
-                0x004005d8                printDec
-                0x004006d0                printf
-                0x0040086c                printfSCR
-                0x00400a04                clearScreen
-                0x00400a50                resetScreenVector
+ .text          0x0000000000400000      0x18c builds/build0/startup.o
+                0x0000000000400000                _start
+                0x0000000000400078                trap_vector
+ .text          0x000000000040018c      0x750 builds/build0/main.o
+                0x000000000040018c                readFlash
+                0x00000000004001d4                GetFlashAddresFile
+                0x00000000004002cc                WriteSprite
+                0x00000000004002fc                LoadMapFromFile
+                0x0000000000400424                set_timer_interrupt
+                0x0000000000400460                disable_timer_interrupt
+                0x0000000000400474                SetAttributes
+                0x00000000004004b4                renderFrame
+                0x00000000004007c0                c_trap_handler
+ .text          0x00000000004008dc      0x68c builds/build0/riscYstdio.o
+                0x00000000004008dc                memcpy
+                0x0000000000400900                memset
+                0x000000000040091c                getButtonDown
+                0x0000000000400928                getButton
+                0x0000000000400938                getButtonUp
+                0x0000000000400944                getButtonLeft
+                0x0000000000400950                getButtonRight
+                0x000000000040095c                putch
+                0x000000000040098c                printString
+                0x0000000000400a48                printHex
+                0x0000000000400ae8                printDec
+                0x0000000000400bdc                printf
+                0x0000000000400d78                printfSCR
+                0x0000000000400f10                clearScreen
+                0x0000000000400f5c                resetScreenVector
  *(.rodata)
- .rodata        0x00400a5c       0xd4 builds/build0/main.o
- .rodata        0x00400b30       0x14 builds/build0/riscYstdio.o
-                0x00400b44                        _etext = .
+ .rodata        0x0000000000400f68       0x14 builds/build0/riscYstdio.o
+                0x0000000000400f7c                _etext = .
 
-.text.startup   0x00400b44       0x48
- .text.startup  0x00400b44       0x48 builds/build0/main.o
-                0x00400b44                main
+.text.startup   0x0000000000400f7c      0x1ec
+ .text.startup  0x0000000000400f7c      0x1ec builds/build0/main.o
+                0x0000000000400f7c                main
 
-.rodata.str1.4  0x00400b8c       0xee
+.rodata.str1.4  0x0000000000401168       0xea
  .rodata.str1.4
-                0x00400b8c       0xee builds/build0/main.o
-                                 0xd4 (size before relaxing)
+                0x0000000000401168       0xc1 builds/build0/main.o
+ *fill*         0x0000000000401229        0x3 
  .rodata.str1.4
-                0x00400c7a       0x1a builds/build0/riscYstdio.o
+                0x000000000040122c       0x26 builds/build0/riscYstdio.o
 
-.rela.dyn       0x00400c7c        0x0
- .rela.text     0x00400c7c        0x0 builds/build0/startup.o
-                0x00400c7c                        . = ALIGN (0x4)
+.rela.dyn       0x0000000000401254        0x0
+ .rela.text     0x0000000000401254        0x0 builds/build0/startup.o
+                0x0000000000401254                . = ALIGN (0x4)
 
-.data           0x00400c7a        0x0 load address 0x00400b44
-                0x00400c7a                        _sdata = .
+.data           0x0000000000401254      0x280
+                0x0000000000401254                _sdata = .
  *(.data)
- .data          0x00400c7a        0x0 builds/build0/startup.o
- .data          0x00400c7a        0x0 builds/build0/main.o
- .data          0x00400c7a        0x0 builds/build0/riscYstdio.o
-                0x00400c7a                        _edata = .
-                0x00400c7c                        . = ALIGN (0x4)
+ .data          0x0000000000401254        0x0 builds/build0/startup.o
+ .data          0x0000000000401254      0x280 builds/build0/main.o
+                0x0000000000401254                characterdown2_00
+                0x0000000000401274                characterdown1_00
+                0x0000000000401294                characterdown3_00
+                0x00000000004012b4                characterdown2_01
+                0x00000000004012d4                characterdown1_01
+                0x00000000004012f4                characterdown3_01
+                0x0000000000401314                characterleft1_00
+                0x0000000000401334                characterleft2_00
+                0x0000000000401354                characterleft1_01
+                0x0000000000401374                characterleft2_01
+                0x0000000000401394                characterright1_00
+                0x00000000004013b4                characterright2_00
+                0x00000000004013d4                characterright1_01
+                0x00000000004013f4                characterright2_01
+                0x0000000000401414                characterup2_00
+                0x0000000000401434                characterup1_00
+                0x0000000000401454                characterup3_00
+                0x0000000000401474                characterup2_01
+                0x0000000000401494                characterup1_01
+                0x00000000004014b4                characterup3_01
+ .data          0x00000000004014d4        0x0 builds/build0/riscYstdio.o
+                0x00000000004014d4                _edata = .
 
-.bss            0x00400c7a        0x0
-                0x00400c7a                        _sbss = .
+.sdata          0x00000000004014d4       0x10
+ .sdata         0x00000000004014d4       0x10 builds/build0/main.o
+                0x00000000004014d4                character01
+                0x00000000004014dc                character00
+                0x00000000004014e4                . = ALIGN (0x4)
+
+.bss            0x00000000004014e4       0xc0
+                0x00000000004014e4                _sbss = .
  *(.bss COMMON)
- .bss           0x00400c7a        0x0 builds/build0/startup.o
- .bss           0x00400c7a        0x0 builds/build0/main.o
- .bss           0x00400c7a        0x0 builds/build0/riscYstdio.o
-                0x00400c7a                        _ebss = .
-                0x00400c7c                        . = ALIGN (0x4)
-                0x00404000                        _stack_end = (ORIGIN (RAM) + LENGTH (RAM))
-                0x00404000                        _stack_top = _stack_end
-                0x00403800                        _stack_bottom = (_stack_top - _stack_size)
+ .bss           0x00000000004014e4        0x0 builds/build0/startup.o
+ .bss           0x00000000004014e4       0xc0 builds/build0/main.o
+                0x00000000004014e4                sprite_temp
+                0x0000000000401504                charUp00
+                0x0000000000401518                charUp01
+                0x000000000040152c                charDown00
+                0x0000000000401540                charDown01
+                0x0000000000401554                charLeft00
+                0x0000000000401568                charLeft01
+                0x000000000040157c                charRight00
+                0x0000000000401590                charRight01
+ .bss           0x00000000004015a4        0x0 builds/build0/riscYstdio.o
+                0x00000000004015a4                _ebss = .
+                0x0000000000404000                _stack_end = (ORIGIN (RAM) + LENGTH (RAM))
+                0x0000000000404000                _stack_top = _stack_end
+                0x0000000000403800                _stack_bottom = (_stack_top - _stack_size)
 OUTPUT(builds/build0/program.elf elf32-littleriscv)
 
-.sbss           0x00400c7c        0x6
- .sbss          0x00400c7c        0x4 builds/build0/main.o
-                0x00400c7c                intCount
- .sbss          0x00400c80        0x2 builds/build0/riscYstdio.o
-                0x00400c80                screenPos
+.sbss           0x00000000004015a4        0x4
+ .sbss          0x00000000004015a4        0x2 builds/build0/main.o
+                0x00000000004015a4                currentFrame
+                0x00000000004015a5                direction
+ .sbss          0x00000000004015a6        0x2 builds/build0/riscYstdio.o
+                0x00000000004015a6                screenPos
 
 .riscv.attributes
-                0x00000000       0x29
+                0x0000000000000000       0x20
  .riscv.attributes
-                0x00000000       0x27 builds/build0/startup.o
+                0x0000000000000000       0x1e builds/build0/startup.o
  .riscv.attributes
-                0x00000027       0x25 builds/build0/main.o
+                0x000000000000001e       0x20 builds/build0/main.o
  .riscv.attributes
-                0x0000004c       0x25 builds/build0/riscYstdio.o
+                0x000000000000003e       0x1c builds/build0/riscYstdio.o
 
-.comment        0x00000000       0x19
- .comment       0x00000000       0x19 builds/build0/main.o
-                                 0x1a (size before relaxing)
- .comment       0x00000019       0x1a builds/build0/riscYstdio.o
-
-.note.GNU-stack
-                0x00000000        0x0
- .note.GNU-stack
-                0x00000000        0x0 builds/build0/main.o
- .note.GNU-stack
-                0x00000000        0x0 builds/build0/riscYstdio.o
+.comment        0x0000000000000000        0xf
+ .comment       0x0000000000000000        0xf builds/build0/main.o
+                                         0x10 (size before relaxing)
+ .comment       0x000000000000000f       0x10 builds/build0/riscYstdio.o

@@ -1,22 +1,22 @@
 [*]
-[*] GTKWave Analyzer v3.4.0 (w)1999-2022 BSI
-[*] Wed Jan  1 21:30:19 2025
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Mon Jan 13 21:29:40 2025
 [*]
-[dumpfile] "ZSOC.vcd"
-[dumpfile_mtime] "Wed Jan  1 21:23:48 2025"
-[dumpfile_size] 2033561625
-[savefile] "gtkw.gtkw"
-[timestart] 2697948100
-[size] 1512 916
-[pos] 1684 114
-*-16.390831 2698110000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[dumpfile] "C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY_primer25k\src\Testbench\ZSOC.vcd"
+[dumpfile_mtime] "Mon Jan 13 21:28:33 2025"
+[dumpfile_size] 24186554
+[savefile] "C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY_primer25k\src\Testbench\gtkw.gtkw"
+[timestart] 0
+[size] 2177 1280
+[pos] -1 -1
+*-15.390831 140700 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] test.
 [treeopen] test.TOP.
 [treeopen] test.TOP.cpu_1.
 [sst_width] 253
-[signals_width] 262
+[signals_width] 367
 [sst_expanded] 1
-[sst_vpaned_height] 516
+[sst_vpaned_height] 767
 @28
 test.TOP.cpu_1.reset
 test.TOP.cpu_1.clock
@@ -416,7 +416,7 @@ test.TOP.cpu_1.wRegData[31:0]
 @24
 test.TOP.clint_inst.mtime[63:0]
 test.TOP.clint_inst.mtimecmp[63:0]
-@800200
+@c00200
 -registers
 @22
 test.TOP.cpu_1.cpu_regs.\data[0][31:0]
@@ -451,7 +451,7 @@ test.TOP.cpu_1.cpu_regs.\data[28][31:0]
 test.TOP.cpu_1.cpu_regs.\data[29][31:0]
 test.TOP.cpu_1.cpu_regs.\data[30][31:0]
 test.TOP.cpu_1.cpu_regs.\data[31][31:0]
-@1000200
+@1401200
 -registers
 @800200
 -CSR
@@ -531,6 +531,8 @@ test.TOP.cpu_1.MEMWB_instr[31:0]
 (31)test.TOP.cpu_1.MEMWB_instr[31:0]
 @1401200
 -group_end
+@820
+test.TOP.cpu_1.csrFile.debug[319:0]
 @200
 -mepc
 @820
@@ -539,16 +541,92 @@ test.TOP.cpu_1.pc_string[2039:0]
 test.TOP.cpu_1.mepc_state
 @22
 test.TOP.cpu_1.newmepc[31:0]
-@23
 [color] 7
 test.TOP.cpu_1.csrFile.mepc[31:0]
-@22
 test.TOP.cpu_1.csrFile.misa[31:0]
 test.TOP.cpu_1.csrFile.mtvec[31:0]
 test.TOP.cpu_1.csrFile.mie[31:0]
 test.TOP.cpu_1.csrFile.mcause[31:0]
 test.TOP.cpu_1.csrFile.mstatus[31:0]
 test.TOP.cpu_1.csrFile.rd[31:0]
+@820
+test.TOP.cpu_1.cpu_alu.debug_string[63:0]
+@c00820
+test.TOP.cpu_1.control_alu.debug_string[63:0]
+@28
+(0)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(1)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(2)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(3)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(4)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(5)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(6)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(7)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(8)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(9)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(10)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(11)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(12)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(13)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(14)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(15)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(16)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(17)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(18)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(19)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(20)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(21)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(22)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(23)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(24)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(25)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(26)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(27)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(28)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(29)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(30)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(31)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(32)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(33)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(34)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(35)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(36)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(37)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(38)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(39)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(40)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(41)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(42)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(43)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(44)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(45)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(46)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(47)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(48)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(49)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(50)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(51)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(52)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(53)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(54)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(55)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(56)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(57)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(58)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(59)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(60)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(61)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(62)test.TOP.cpu_1.control_alu.debug_string[63:0]
+(63)test.TOP.cpu_1.control_alu.debug_string[63:0]
+@1401a00
+-group_end
+@23
+test.TOP.cpu_1.cpu_alu.out[31:0]
+@28
+test.TOP.cpu_1.control_alu.funct3[2:0]
+test.TOP.cpu_1.control_alu.ALUcntrl[2:0]
+@22
+test.TOP.cpu_1.cpu_alu.out[31:0]
 test.TOP.cpu_1.csrFile.wd[31:0]
 test.TOP.cpu_1.csrFile.csrAddr[11:0]
 @28

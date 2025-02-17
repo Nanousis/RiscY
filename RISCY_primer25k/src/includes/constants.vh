@@ -35,6 +35,7 @@
 `define LUI 4'b1011
 `define AUIPC 4'b1100
 `define CLEAR 4'b1110
+`define PASS 4'b1111
 
 
 

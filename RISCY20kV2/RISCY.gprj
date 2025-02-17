@@ -1,0 +1,60 @@
+<?xml version="1" encoding="UTF-8"?>
+<!DOCTYPE gowin-fpga-project>
+<Project>
+    <Template>FPGA</Template>
+    <Version>5</Version>
+    <Device name="GW2AR-18C" pn="GW2AR-LV18QN88C8/I7">gw2ar18c-000</Device>
+    <FileList>
+        <File path="src/BRAMS/gowin_dpb_program/gowin_dpb_program.v" type="file.verilog" enable="1"/>
+        <File path="src/Buses/bus.v" type="file.verilog" enable="1"/>
+        <File path="src/CLINT.v" type="file.verilog" enable="1"/>
+        <File path="src/CPU/ALUCPU.v" type="file.verilog" enable="1"/>
+        <File path="src/CPU/CSRFile.v" type="file.verilog" enable="1"/>
+        <File path="src/CPU/RegFile.v" type="file.verilog" enable="1"/>
+        <File path="src/CPU/SignExtendSelector.v" type="file.verilog" enable="1"/>
+        <File path="src/CPU/constants.vh" type="file.verilog" enable="1"/>
+        <File path="src/CPU/control_alu.v" type="file.verilog" enable="1"/>
+        <File path="src/CPU/control_branch.v" type="file.verilog" enable="1"/>
+        <File path="src/CPU/control_bypass_ex.v" type="file.verilog" enable="1"/>
+        <File path="src/CPU/control_main.v" type="file.verilog" enable="1"/>
+        <File path="src/CPU/control_stall_id.v" type="file.verilog" enable="1"/>
+        <File path="src/CPU/cpu.v" type="file.verilog" enable="1"/>
+        <File path="src/CPU/mem_read_selector.v" type="file.verilog" enable="1"/>
+        <File path="src/CPU/mem_write_selector.v" type="file.verilog" enable="1"/>
+        <File path="src/CPU/signExtend.v" type="file.verilog" enable="1"/>
+        <File path="src/GPIO/PPU.v" type="file.verilog" enable="1"/>
+        <File path="src/GPIO/buttonModule.v" type="file.verilog" enable="1"/>
+        <File path="src/GPIO/cpuTimer.v" type="file.verilog" enable="1"/>
+        <File path="src/GPIO/seven_segment.v" type="file.verilog" enable="1"/>
+        <File path="src/GPIO/uart.v" type="file.verilog" enable="1"/>
+        <File path="src/GPIO/uartController.v" type="file.verilog" enable="1"/>
+        <File path="src/Memories/DPBRAM.v" type="file.verilog" enable="1"/>
+        <File path="src/Memories/flash.v" type="file.verilog" enable="1"/>
+        <File path="src/Memories/flashController.v" type="file.verilog" enable="1"/>
+        <File path="src/Memories/memory.v" type="file.verilog" enable="1"/>
+        <File path="src/Memories/programMemory.v" type="file.verilog" enable="1"/>
+        <File path="src/Memories/ramMemory.v" type="file.verilog" enable="1"/>
+        <File path="src/config.vh" type="file.verilog" enable="1"/>
+        <File path="src/fifo_hs/fifo_hs.v" type="file.verilog" enable="1"/>
+        <File path="src/fifo_sc_video.v" type="file.verilog" enable="1"/>
+        <File path="src/fifo_sc_videoAddress.v" type="file.verilog" enable="1"/>
+        <File path="src/gowin_rpll/gowin_rpll_ram.v" type="file.verilog" enable="1"/>
+        <File path="src/gowin_rpll_800vga/gowin_rpll_800vga.v" type="file.verilog" enable="1"/>
+        <File path="src/gowin_rpll_ppu/gowin_rpll_ppu.v" type="file.verilog" enable="1"/>
+        <File path="src/psram_memory_interface_hs_2ch/psram_memory_interface_hs_2ch.v" type="file.verilog" enable="1"/>
+        <File path="src/screenI2C/i2c.v" type="file.verilog" enable="1"/>
+        <File path="src/screenI2C/i2capi.v" type="file.verilog" enable="1"/>
+        <File path="src/screenI2C/screen.v" type="file.verilog" enable="1"/>
+        <File path="src/screenI2C/textEngine.v" type="file.verilog" enable="1"/>
+        <File path="src/screenVGA/VGAMod.v" type="file.verilog" enable="1"/>
+        <File path="src/screenVGA/gowin_dpb/gowin_dpb.v" type="file.verilog" enable="1"/>
+        <File path="src/screenVGA/gowin_osc/gowin_osc.v" type="file.verilog" enable="1"/>
+        <File path="src/screenVGA/gowin_rpll/gowin_rpll.v" type="file.verilog" enable="1"/>
+        <File path="src/screenVGA/gowin_sp/gowin_sp.v" type="file.verilog" enable="1"/>
+        <File path="src/soc.v" type="file.verilog" enable="1"/>
+        <File path="src/tangnano9k.cst" type="file.cst" enable="1"/>
+        <File path="src/Tang_nano_9K_LCD.sdc" type="file.sdc" enable="1"/>
+        <File path="src/Memories/text.hex" type="file.other" enable="1"/>
+        <File path="src/screenI2C/font.hex" type="file.other" enable="1"/>
+    </FileList>
+</Project>

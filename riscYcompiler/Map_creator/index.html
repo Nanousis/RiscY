@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Map Editor with 2-bit Export + Binary File</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 20px;
+    }
+    #canvas {
+      border: 1px solid #000;
+      display: block;
+      margin-top: 10px;
+    }
+    .tile-palette {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin: 10px 0;
+    }
+    .tile-palette img {
+      border: 2px solid #ccc;
+      cursor: pointer;
+    }
+    .tile-palette img.selected {
+      border-color: red;
+    }
+    #exportOutput {
+      width: 100%;
+      height: 150px;
+      margin-top: 10px;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+
+<h1>2D RPG Map Creator + Binary Export</h1>
+
+<p>
+1. Click <strong>Choose Files</strong> to load one or more sprite sheets (they’ll be split into 8×16 tiles).<br>
+2. Click on a tile in the palette to select it.<br>
+3. Click + drag on the canvas to paint the 50×14 map.<br>
+4. <strong>Export Hex (Map)</strong> → text dump of the map’s tile IDs in hex.<br>
+5. <strong>Export 2-bit Sprites</strong> → text dump of every tile in 2-bit grayscale (32 bytes each).<br>
+6. <strong>Export All (Binary)</strong> → single binary file: [1 byte #sprites] + [all 2-bit sprites] + [map].
+</p>
+
+<input type="file" id="tilesetInput" multiple accept="image/*">
+
+<div class="tile-palette" id="tilePalette"></div>
+
+<!-- The map is 50 cols × 14 rows, each tile is 8×16, scaled by 4 => 800×448 canvas -->
+<canvas id="canvas" width="400" height="224" style="max-width: 100%; height: auto;   image-rendering: pixelated;"></canvas> 
+<!-- We'll override the real size in JS. -->
+
+<div style="margin-top: 10px;">
+  <button id="exportButton">Export Hex (Map)</button>
+  <button id="export2BitButton">Export 2-bit Sprites</button>
+  <button id="exportAllBinaryButton">Export All (Binary)</button>
+</div>
+<textarea id="exportOutput" placeholder="Output will appear here..."></textarea>
+
+<script src="mapCreator.js"></script>
+</body>
+</html>

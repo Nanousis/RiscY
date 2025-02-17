@@ -8,7 +8,7 @@ rem Delete ZSOC.vcd if it exists
 if exist ZSOC.vcd del ZSOC.vcd
 
 rem Run iverilog
-iverilog -Winfloop -DTESTBENCH -o test.o -s test -I../include ./soctb.v  ./Simulation/*.v ../CPU/*.v ../GPIO/*.v ../Memories/*.v ../screenI2C/*.v  ../BRAMS/gowin_dpb_program/*.v ../*.v ../Buses/*.v 
+iverilog -Winfloop -DTESTBENCH -o test.o -s test -I../include ./soctb.v  ./Simulation/*.v ../CPU/*.v ../GPIO/*.v ../Memories/*.v ../screenI2C/*.v  ../BRAMS/gowin_dpb_program/*.v ../*.v ../InteruptControllers/*.v ../Buses/*.v 
 
 rem Run vvp
 vvp test.o

@@ -1,0 +1,15 @@
+-d C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY_SRC\Nano_20k\Gowin\RISCY\impl\gwsynthesis\RISCY.vg
+-p GW2AR-18-QFN88-8
+-pn GW2AR-LV18QN88C8/I7
+-cst C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY_SRC\Nano_20k\tangnano20k.cst
+-cfg C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY_SRC\Nano_20k\Gowin\RISCY\impl\pnr\device.cfg
+-sdc C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY_SRC\Nano_20k\Tang_nano_20K_LCD.sdc
+-bit
+-tr
+-ph
+-timing
+-cst_error
+-convert_sdp32_36_to_sdp16_18
+-correct_hold 1
+-route_maxfan 23
+-global_freq 100.000

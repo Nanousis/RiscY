@@ -1,0 +1,32 @@
+Reading netlist file: "C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY_SRC\Nano_20k\Gowin\RISCY\impl\gwsynthesis\RISCY.vg"
+Parsing netlist file "C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY_SRC\Nano_20k\Gowin\RISCY\impl\gwsynthesis\RISCY.vg" completed
+WARN  (PA1003) : Invalid parameterized value 'GW2AR-18C'(DEVICE) specified for instance 'slower_clock/rpll_inst'
+Processing netlist completed
+Reading constraint file: "C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY_SRC\Nano_20k\tangnano20k.cst"
+Physical Constraint parsed completed
+Running placement......
+[10%] Placement Phase 0 completed
+[20%] Placement Phase 1 completed
+[30%] Placement Phase 2 completed
+WARN  (TA1123) : the clock "LCD_CLK"'s frequency does not match slower_clock/rpll_inst/CLKOUT's 
+[50%] Placement Phase 3 completed
+Running routing......
+[60%] Routing Phase 0 completed
+[70%] Routing Phase 1 completed
+[80%] Routing Phase 2 completed
+WARN  (PR1014) : Generic routing resource will be used to clock signal 'clk_d' by the specified constraint. And then it may lead to the excessive delay or skew
+[90%] Routing Phase 3 completed
+Running timing analysis......
+[95%] Timing analysis completed
+Placement and routing completed
+Bitstream generation in progress......
+Bitstream generation completed
+Running power analysis......
+[100%] Power analysis completed
+Generate file "C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY_SRC\Nano_20k\Gowin\RISCY\impl\pnr\RISCY.power.html" completed
+Generate file "C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY_SRC\Nano_20k\Gowin\RISCY\impl\pnr\RISCY.pin.html" completed
+Generate file "C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY_SRC\Nano_20k\Gowin\RISCY\impl\pnr\RISCY.rpt.html" completed
+Generate file "C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY_SRC\Nano_20k\Gowin\RISCY\impl\pnr\RISCY.rpt.txt" completed
+Generate file "C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY_SRC\Nano_20k\Gowin\RISCY\impl\pnr\RISCY.tr.html" completed
+Sun Jan 12 12:11:01 2025
+
