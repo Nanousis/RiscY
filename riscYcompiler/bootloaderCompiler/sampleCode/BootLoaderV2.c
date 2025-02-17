@@ -13,8 +13,8 @@ typedef struct Programheader{
 #define FLASH_REN 0x8B000001
 #define FLASH_WEN 0x8B000002
 #define FLASH_ADRESS 0x8B000004
-#define FLASH_DATA_IN 0x8B0000008
-#define FLASH_DATA_OUT 0x8B000000C
+#define FLASH_DATA_IN 0x8B000008
+#define FLASH_DATA_OUT 0x8B00000C
 #define USB 0x10000000
 
 #define FILE_OFFSET 4 
@@ -186,6 +186,7 @@ int main() {
             }
             oldKey = newKey;
             // for(int k=0; k<WaitTime>4; k++);
+            // printfSCR(64*14,15,"U: %x D: %x L: %x R: %x",getButtonUp(),getButtonDown(),getButtonLeft(),getButtonRight());
         }
         int programSize=(headers[selectNum].endAddress-headers[selectNum].startAddress)>>2;
         printf("Reading from flash %x\n",programSize);

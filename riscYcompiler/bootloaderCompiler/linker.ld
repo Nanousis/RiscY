@@ -44,7 +44,7 @@ SECTIONS
 
     /* Stack placement at the top of RAM */
     _stack_end = ORIGIN(RAM) + LENGTH(RAM);     /* Top of RAM */
-    _stack_top = _stack_end - _stack_size;      /* Start of stack */
+    _stack_top = _stack_end;      /* Start of stack */
     _stack_bottom = _stack_top - _stack_size;   /* Bottom of stack */
 }
 
