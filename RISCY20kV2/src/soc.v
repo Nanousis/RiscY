@@ -231,8 +231,8 @@ module top
     programMemory programMemory_inst( 
         .clk(cpu_clk),
         .reset(reset),
-        .PC(PC[31:2]),
-        .address(data_addr[31:2]),
+        .PC(PC[20:2]),
+        .address(data_addr[20:2]),
         .ren(program_mem_ren),
         .wen(program_mem_wen),
         .data_in(data_to_write),

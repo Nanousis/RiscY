@@ -414,72 +414,176 @@
     "InstLine" : 231,
     "InstName" : "programMemory_inst",
     "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/programMemory.v",
-    "ModuleLine" : 1,
+    "ModuleLine" : 2,
     "ModuleName" : "programMemory",
     "SubInsts" : [
      {
       "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/programMemory.v",
-      "InstLine" : 51,
-      "InstName" : "BRAM_0",
-      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
-      "ModuleLine" : 10,
-      "ModuleName" : "Gowin_DPB_program"
+      "InstLine" : 65,
+      "InstName" : "bram0",
+      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+      "ModuleLine" : 1,
+      "ModuleName" : "word_bram",
+      "SubInsts" : [
+       {
+        "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+        "InstLine" : 50,
+        "InstName" : "BRAM_0",
+        "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+        "ModuleLine" : 10,
+        "ModuleName" : "Gowin_DPB_program"
+       },
+       {
+        "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+        "InstLine" : 71,
+        "InstName" : "BRAM_1",
+        "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+        "ModuleLine" : 10,
+        "ModuleName" : "Gowin_DPB_program"
+       },
+       {
+        "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+        "InstLine" : 92,
+        "InstName" : "BRAM_2",
+        "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+        "ModuleLine" : 10,
+        "ModuleName" : "Gowin_DPB_program"
+       },
+       {
+        "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+        "InstLine" : 113,
+        "InstName" : "BRAM_3",
+        "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+        "ModuleLine" : 10,
+        "ModuleName" : "Gowin_DPB_program"
+       }
+      ]
      },
      {
       "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/programMemory.v",
-      "InstLine" : 72,
-      "InstName" : "BRAM_1",
-      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
-      "ModuleLine" : 10,
-      "ModuleName" : "Gowin_DPB_program"
+      "InstLine" : 78,
+      "InstName" : "bram1",
+      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+      "ModuleLine" : 1,
+      "ModuleName" : "word_bram",
+      "SubInsts" : [
+       {
+        "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+        "InstLine" : 50,
+        "InstName" : "BRAM_0",
+        "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+        "ModuleLine" : 10,
+        "ModuleName" : "Gowin_DPB_program"
+       },
+       {
+        "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+        "InstLine" : 71,
+        "InstName" : "BRAM_1",
+        "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+        "ModuleLine" : 10,
+        "ModuleName" : "Gowin_DPB_program"
+       },
+       {
+        "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+        "InstLine" : 92,
+        "InstName" : "BRAM_2",
+        "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+        "ModuleLine" : 10,
+        "ModuleName" : "Gowin_DPB_program"
+       },
+       {
+        "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+        "InstLine" : 113,
+        "InstName" : "BRAM_3",
+        "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+        "ModuleLine" : 10,
+        "ModuleName" : "Gowin_DPB_program"
+       }
+      ]
      },
      {
       "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/programMemory.v",
-      "InstLine" : 93,
-      "InstName" : "BRAM_2",
-      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
-      "ModuleLine" : 10,
-      "ModuleName" : "Gowin_DPB_program"
+      "InstLine" : 90,
+      "InstName" : "bram2",
+      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+      "ModuleLine" : 1,
+      "ModuleName" : "word_bram",
+      "SubInsts" : [
+       {
+        "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+        "InstLine" : 50,
+        "InstName" : "BRAM_0",
+        "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+        "ModuleLine" : 10,
+        "ModuleName" : "Gowin_DPB_program"
+       },
+       {
+        "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+        "InstLine" : 71,
+        "InstName" : "BRAM_1",
+        "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+        "ModuleLine" : 10,
+        "ModuleName" : "Gowin_DPB_program"
+       },
+       {
+        "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+        "InstLine" : 92,
+        "InstName" : "BRAM_2",
+        "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+        "ModuleLine" : 10,
+        "ModuleName" : "Gowin_DPB_program"
+       },
+       {
+        "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+        "InstLine" : 113,
+        "InstName" : "BRAM_3",
+        "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+        "ModuleLine" : 10,
+        "ModuleName" : "Gowin_DPB_program"
+       }
+      ]
      },
      {
       "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/programMemory.v",
-      "InstLine" : 114,
-      "InstName" : "BRAM_3",
-      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
-      "ModuleLine" : 10,
-      "ModuleName" : "Gowin_DPB_program"
-     },
-     {
-      "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/programMemory.v",
-      "InstLine" : 135,
-      "InstName" : "BRAM2_0",
-      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
-      "ModuleLine" : 10,
-      "ModuleName" : "Gowin_DPB_program"
-     },
-     {
-      "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/programMemory.v",
-      "InstLine" : 156,
-      "InstName" : "BRAM2_1",
-      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
-      "ModuleLine" : 10,
-      "ModuleName" : "Gowin_DPB_program"
-     },
-     {
-      "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/programMemory.v",
-      "InstLine" : 177,
-      "InstName" : "BRAM2_2",
-      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
-      "ModuleLine" : 10,
-      "ModuleName" : "Gowin_DPB_program"
-     },
-     {
-      "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/programMemory.v",
-      "InstLine" : 198,
-      "InstName" : "BRAM2_3",
-      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
-      "ModuleLine" : 10,
-      "ModuleName" : "Gowin_DPB_program"
+      "InstLine" : 102,
+      "InstName" : "bram3",
+      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+      "ModuleLine" : 1,
+      "ModuleName" : "word_bram",
+      "SubInsts" : [
+       {
+        "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+        "InstLine" : 50,
+        "InstName" : "BRAM_0",
+        "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+        "ModuleLine" : 10,
+        "ModuleName" : "Gowin_DPB_program"
+       },
+       {
+        "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+        "InstLine" : 71,
+        "InstName" : "BRAM_1",
+        "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+        "ModuleLine" : 10,
+        "ModuleName" : "Gowin_DPB_program"
+       },
+       {
+        "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+        "InstLine" : 92,
+        "InstName" : "BRAM_2",
+        "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+        "ModuleLine" : 10,
+        "ModuleName" : "Gowin_DPB_program"
+       },
+       {
+        "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+        "InstLine" : 113,
+        "InstName" : "BRAM_3",
+        "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+        "ModuleLine" : 10,
+        "ModuleName" : "Gowin_DPB_program"
+       }
+      ]
      }
     ]
    },
@@ -558,47 +662,5 @@
   "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/soc.v",
   "ModuleLine" : 407,
   "ModuleName" : "Reset_Sync"
- },
- {
-  "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
-  "InstLine" : 1,
-  "InstName" : "word_bram",
-  "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
-  "ModuleLine" : 1,
-  "ModuleName" : "word_bram",
-  "SubInsts" : [
-   {
-    "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
-    "InstLine" : 40,
-    "InstName" : "BRAM_0",
-    "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
-    "ModuleLine" : 10,
-    "ModuleName" : "Gowin_DPB_program"
-   },
-   {
-    "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
-    "InstLine" : 61,
-    "InstName" : "BRAM_1",
-    "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
-    "ModuleLine" : 10,
-    "ModuleName" : "Gowin_DPB_program"
-   },
-   {
-    "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
-    "InstLine" : 82,
-    "InstName" : "BRAM_2",
-    "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
-    "ModuleLine" : 10,
-    "ModuleName" : "Gowin_DPB_program"
-   },
-   {
-    "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
-    "InstLine" : 103,
-    "InstName" : "BRAM_3",
-    "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
-    "ModuleLine" : 10,
-    "ModuleName" : "Gowin_DPB_program"
-   }
-  ]
  }
 ]
