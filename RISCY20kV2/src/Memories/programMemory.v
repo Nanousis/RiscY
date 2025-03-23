@@ -1,4 +1,8 @@
-`define WORDBRAMSIZE 2048
+`define WORLDBRAMSIZE 2048
+`define NUM_BRAMS 4
+
+//this means that the total is 4*WORLDBRAMSIZE*NUM_BRAMS
+
 module programMemory( 
     input clk,
     input reset,
@@ -13,111 +17,56 @@ module programMemory(
     output [31:0] data_out
 );  
 
-
-    wire [31:0] instr_tmp[0:3];
-    wire [31:0] data_out_tmp[0:3];
+    wire [31:0] instr_tmp[0:`NUM_BRAMS-1];
+    wire [31:0] data_out_tmp[0:`NUM_BRAMS-1];
     
-    reg [1:0] PC_select;
-    reg [1:0] data_select;
-    reg [1:0] PC_select_reg;
-    reg [1:0] data_select_reg;
+    reg [$clog2(`NUM_BRAMS)-1:0] PC_select;
+    reg [$clog2(`NUM_BRAMS)-1:0] data_select;
+    reg [$clog2(`NUM_BRAMS)-1:0] PC_select_reg;
+    reg [$clog2(`NUM_BRAMS)-1:0] data_select_reg;
 
-    always@(posedge clk)begin
+    always @(posedge clk) begin
         PC_select_reg <= PC_select;
         data_select_reg <= data_select;
     end
 
-
-    always@(*)begin
-      
-        if(address<`WORDBRAMSIZE)begin
-            // first 8KB
-            data_select=0;
+    integer i;
+    always @(*) begin
+        data_select = `NUM_BRAMS - 1;
+        PC_select   = `NUM_BRAMS - 1;
+        for (i = 0; i < `NUM_BRAMS; i = i + 1) begin
+            if (address < (i + 1) * `WORLDBRAMSIZE) begin
+                data_select = i[$clog2(`NUM_BRAMS)-1:0];
+                break;
+            end
         end
-        else if(address<2*`WORDBRAMSIZE)begin
-            // 8kB -> 16KB
-            data_select=1;
+        for (i = 0; i < `NUM_BRAMS; i = i + 1) begin
+            if (PC < (i + 1) * `WORLDBRAMSIZE) begin
+                PC_select = i[$clog2(`NUM_BRAMS)-1:0];
+                break;
+            end
         end
-        else if(address<3*`WORDBRAMSIZE)begin
-            // 16kB -> 24KB
-            data_select=2;
-        end
-        else begin
-            // 24kB -> 32KB
-            data_select=3;
-        end
-
-        if(PC<`WORDBRAMSIZE)begin
-            // first 8KB
-            PC_select=0;
-        end
-        else if(PC<2*`WORDBRAMSIZE)begin
-            // 8kB -> 16KB
-            PC_select=1;
-        end
-        else if(PC<3*`WORDBRAMSIZE)begin
-            // 16kB -> 24KB
-            PC_select=2;
-        end
-        else begin
-            // 24kB -> 32KB
-            PC_select=3;
-        end
-
     end
-    
-    //thinking of this, this will be wrong, need to cache the data_select and pc_select
+
     assign instr = instr_tmp[PC_select_reg];
     assign data_out = data_out_tmp[data_select_reg];
-    word_bram bram0(
-        .clk(clk),
-        .reset(reset),
-        .ren(ren),
-        .wen((data_select==0)?wen:0),
-        .byte_select_vector(byte_select_vector),
-        .PC(PC),
-        .data_in(data_in),
-        .address(address),
-        .instr(instr_tmp[0]),
-        .data_out(data_out_tmp[0])
-    );
 
-    word_bram bram1(
-        .clk(clk),
-        .reset(reset),
-        .ren(ren),
-        .wen((data_select==1)?wen:0),
-        .byte_select_vector(byte_select_vector),
-        .PC(PC-1*`WORDBRAMSIZE),
-        .data_in(data_in),
-        .address(address-1*`WORDBRAMSIZE),
-        .instr(instr_tmp[1]),
-        .data_out(data_out_tmp[1])
-    );
-    word_bram bram2(
-        .clk(clk),
-        .reset(reset),
-        .ren(ren),
-        .wen((data_select==2)?wen:0),
-        .byte_select_vector(byte_select_vector),
-        .PC(PC-2*`WORDBRAMSIZE),
-        .data_in(data_in),
-        .address(address-2*`WORDBRAMSIZE),
-        .instr(instr_tmp[2]),
-        .data_out(data_out_tmp[2])
-    );
-    word_bram bram3(
-        .clk(clk),
-        .reset(reset),
-        .ren(ren),
-        .wen((data_select==3)?wen:0),
-        .byte_select_vector(byte_select_vector),
-        .PC(PC-3*`WORDBRAMSIZE),
-        .data_in(data_in),
-        .address(address-3*`WORDBRAMSIZE),
-        .instr(instr_tmp[3]),
-        .data_out(data_out_tmp[3])
-    );
-
+    genvar bram_idx;
+    generate
+        for (bram_idx = 0; bram_idx < `NUM_BRAMS; bram_idx = bram_idx + 1) begin : bram_array
+            word_bram bram_inst (
+                .clk(clk),
+                .reset(reset),
+                .ren(ren),
+                .wen((data_select == bram_idx) ? wen : 0),
+                .byte_select_vector(byte_select_vector),
+                .PC(PC - bram_idx * `WORLDBRAMSIZE),
+                .data_in(data_in),
+                .address(address - bram_idx * `WORLDBRAMSIZE),
+                .instr(instr_tmp[bram_idx]),
+                .data_out(data_out_tmp[bram_idx])
+            );
+        end
+    endgenerate
 
 endmodule
