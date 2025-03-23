@@ -19,6 +19,13 @@ module programMemory(
     
     reg [1:0] PC_select;
     reg [1:0] data_select;
+    reg [1:0] PC_select_reg;
+    reg [1:0] data_select_reg;
+
+    always@(posedge clk)begin
+        PC_select_reg <= PC_select;
+        data_select_reg <= data_select;
+    end
 
 
     always@(*)begin
@@ -60,8 +67,8 @@ module programMemory(
     end
     
     //thinking of this, this will be wrong, need to cache the data_select and pc_select
-    assign instr = instr_tmp[PC_select];
-    assign data_out = data_out_tmp[data_select];
+    assign instr = instr_tmp[PC_select_reg];
+    assign data_out = data_out_tmp[data_select_reg];
     word_bram bram0(
         .clk(clk),
         .reset(reset),

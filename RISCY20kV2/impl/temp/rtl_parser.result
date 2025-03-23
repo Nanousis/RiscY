@@ -419,7 +419,7 @@
     "SubInsts" : [
      {
       "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/programMemory.v",
-      "InstLine" : 65,
+      "InstLine" : 72,
       "InstName" : "bram0",
       "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
       "ModuleLine" : 1,
@@ -461,7 +461,7 @@
      },
      {
       "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/programMemory.v",
-      "InstLine" : 78,
+      "InstLine" : 85,
       "InstName" : "bram1",
       "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
       "ModuleLine" : 1,
@@ -503,7 +503,7 @@
      },
      {
       "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/programMemory.v",
-      "InstLine" : 90,
+      "InstLine" : 97,
       "InstName" : "bram2",
       "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
       "ModuleLine" : 1,
@@ -545,7 +545,7 @@
      },
      {
       "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/programMemory.v",
-      "InstLine" : 102,
+      "InstLine" : 109,
       "InstName" : "bram3",
       "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
       "ModuleLine" : 1,
