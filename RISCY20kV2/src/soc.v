@@ -9,7 +9,7 @@
 module top
 (   
     input clk,
-    output reg [5:0] led,
+//    output reg [5:0] led,
 //    inout io_sda,
 //    output io_scl,
     output			LCD_CLK,
@@ -47,6 +47,7 @@ module top
 //    output [CS_WIDTH-1:0] O_psram_reset_n,
 //    output [CS_WIDTH-1:0] O_psram_cs_n 
 );
+    reg [5:0] led;
     //WP (write protection) is active low (_n), meaning that when it's driven low, it prevents writing; when high, it allows write operations.
     assign flashWp = 1'b1;
     //HOLD asserted (low), the device ignores the SPI clock, allowing communication to be paused without terminating the session.

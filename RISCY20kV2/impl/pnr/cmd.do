@@ -1,9 +1,9 @@
--d C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\impl\gwsynthesis\RISCY.vg
+-d /Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/impl/gwsynthesis/RISCY.vg
 -p GW2AR-18C-QFN88-8
 -pn GW2AR-LV18QN88C8/I7
--cst C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\tangnano9k.cst
--cfg C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\impl\pnr\device.cfg
--sdc C:\Users\Panagiotis\Documents\GitHub\RiscYNew\RISCY20kV2\src\Tang_nano_9K_LCD.sdc
+-cst /Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/tangnano9k.cst
+-cfg /Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/impl/pnr/device.cfg
+-sdc /Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Tang_nano_9K_LCD.sdc
 -bit
 -tr
 -ph

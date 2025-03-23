@@ -34,6 +34,7 @@
         <File path="src/Memories/memory.v" type="file.verilog" enable="1"/>
         <File path="src/Memories/programMemory.v" type="file.verilog" enable="1"/>
         <File path="src/Memories/ramMemory.v" type="file.verilog" enable="1"/>
+        <File path="src/Memories/word_bram.v" type="file.verilog" enable="1"/>
         <File path="src/config.vh" type="file.verilog" enable="1"/>
         <File path="src/fifo_hs/fifo_hs.v" type="file.verilog" enable="1"/>
         <File path="src/fifo_sc_video.v" type="file.verilog" enable="1"/>
