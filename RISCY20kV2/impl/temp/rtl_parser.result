@@ -1,85 +1,75 @@
 [
  {
-  "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/GPIO/seven_segment.v",
+  "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/GPIO/seven_segment.v",
   "InstLine" : 57,
   "InstName" : "SSD",
-  "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/GPIO/seven_segment.v",
+  "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/GPIO/seven_segment.v",
   "ModuleLine" : 57,
   "ModuleName" : "SSD",
   "SubInsts" : [
    {
-    "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/GPIO/seven_segment.v",
+    "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/GPIO/seven_segment.v",
     "InstLine" : 76,
     "InstName" : "LEDdecoder_inst",
-    "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/GPIO/seven_segment.v",
+    "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/GPIO/seven_segment.v",
     "ModuleLine" : 3,
     "ModuleName" : "LEDdecoder"
    }
   ]
  },
  {
-  "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/GPIO/uartController.v",
+  "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/GPIO/uart.v",
   "InstLine" : 1,
-  "InstName" : "uartController",
-  "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/GPIO/uartController.v",
+  "InstName" : "uart",
+  "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/GPIO/uart.v",
   "ModuleLine" : 1,
-  "ModuleName" : "uartController",
-  "SubInsts" : [
-   {
-    "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/GPIO/uartController.v",
-    "InstLine" : 66,
-    "InstName" : "uart_inst",
-    "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/GPIO/uart.v",
-    "ModuleLine" : 1,
-    "ModuleName" : "uart"
-   }
-  ]
+  "ModuleName" : "uart"
  },
  {
-  "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/ramMemory.v",
+  "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/ramMemory.v",
   "InstLine" : 1,
   "InstName" : "ramData",
-  "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/ramMemory.v",
+  "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/ramMemory.v",
   "ModuleLine" : 1,
   "ModuleName" : "ramData",
   "SubInsts" : [
    {
-    "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/ramMemory.v",
+    "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/ramMemory.v",
     "InstLine" : 32,
     "InstName" : "generate_memory_clk",
-    "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/gowin_rpll/gowin_rpll_ram.v",
+    "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/gowin_rpll/gowin_rpll_ram.v",
     "ModuleLine" : 10,
     "ModuleName" : "Gowin_rPLL_ram"
    },
    {
-    "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/ramMemory.v",
+    "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/ramMemory.v",
     "InstLine" : 57,
     "InstName" : "psrams_Interface",
-    "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/psram_memory_interface_hs_2ch/psram_memory_interface_hs_2ch.v",
+    "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/psram_memory_interface_hs_2ch/psram_memory_interface_hs_2ch.v",
     "ModuleLine" : 5772,
     "ModuleName" : "PSRAM_Memory_Interface_HS_2CH_Top",
     "SubInsts" : [
      {
-      "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/psram_memory_interface_hs_2ch/psram_memory_interface_hs_2ch.v",
+      "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/psram_memory_interface_hs_2ch/psram_memory_interface_hs_2ch.v",
       "InstLine" : 5883,
       "InstName" : "u_psram_sync",
-      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/psram_memory_interface_hs_2ch/psram_memory_interface_hs_2ch.v",
+      "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/psram_memory_interface_hs_2ch/psram_memory_interface_hs_2ch.v",
       "ModuleLine" : 10,
       "ModuleName" : "~psram_sync.PSRAM_Memory_Interface_HS_2CH_Top"
      },
      {
-      "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/psram_memory_interface_hs_2ch/psram_memory_interface_hs_2ch.v",
+      "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/psram_memory_interface_hs_2ch/psram_memory_interface_hs_2ch.v",
       "InstLine" : 5895,
       "InstName" : "u_psram_top0",
-      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/psram_memory_interface_hs_2ch/psram_memory_interface_hs_2ch.v",
+      "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/psram_memory_interface_hs_2ch/psram_memory_interface_hs_2ch.v",
       "ModuleLine" : 292,
       "ModuleName" : "~psram_memory_interface.PSRAM_Memory_Interface_HS_2CH_Top"
      },
      {
-      "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/psram_memory_interface_hs_2ch/psram_memory_interface_hs_2ch.v",
+      "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/psram_memory_interface_hs_2ch/psram_memory_interface_hs_2ch.v",
       "InstLine" : 5917,
       "InstName" : "u_psram_top1",
-      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/psram_memory_interface_hs_2ch/psram_memory_interface_hs_2ch.v",
+      "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/psram_memory_interface_hs_2ch/psram_memory_interface_hs_2ch.v",
       "ModuleLine" : 3041,
       "ModuleName" : "~psram_memory_interface.PSRAM_Memory_Interface_HS_2CH_Top_0"
      }
@@ -88,498 +78,372 @@
   ]
  },
  {
-  "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/fifo_hs/fifo_hs.v",
+  "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/fifo_hs/fifo_hs.v",
   "InstLine" : 611,
   "InstName" : "FIFO_HS_Top",
-  "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/fifo_hs/fifo_hs.v",
+  "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/fifo_hs/fifo_hs.v",
   "ModuleLine" : 611,
   "ModuleName" : "FIFO_HS_Top",
   "SubInsts" : [
    {
-    "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/fifo_hs/fifo_hs.v",
+    "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/fifo_hs/fifo_hs.v",
     "InstLine" : 636,
     "InstName" : "fifo_inst",
-    "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/fifo_hs/fifo_hs.v",
+    "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/fifo_hs/fifo_hs.v",
     "ModuleLine" : 10,
     "ModuleName" : "~fifo.FIFO_HS_Top"
    }
   ]
  },
  {
-  "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/gowin_rpll_ppu/gowin_rpll_ppu.v",
+  "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/gowin_rpll_ppu/gowin_rpll_ppu.v",
   "InstLine" : 10,
   "InstName" : "Gowin_rPLL_ppu",
-  "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/gowin_rpll_ppu/gowin_rpll_ppu.v",
+  "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/gowin_rpll_ppu/gowin_rpll_ppu.v",
   "ModuleLine" : 10,
   "ModuleName" : "Gowin_rPLL_ppu"
  },
  {
-  "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/screenI2C/screen.v",
+  "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/screenI2C/screen.v",
   "InstLine" : 2,
   "InstName" : "screen",
-  "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/screenI2C/screen.v",
+  "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/screenI2C/screen.v",
   "ModuleLine" : 2,
   "ModuleName" : "screen",
   "SubInsts" : [
    {
-    "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/screenI2C/screen.v",
+    "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/screenI2C/screen.v",
     "InstLine" : 43,
     "InstName" : "i2c_inst",
-    "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/screenI2C/i2c.v",
+    "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/screenI2C/i2c.v",
     "ModuleLine" : 2,
     "ModuleName" : "i2c"
    },
    {
-    "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/screenI2C/screen.v",
+    "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/screenI2C/screen.v",
     "InstLine" : 64,
     "InstName" : "i2c_api_inst",
-    "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/screenI2C/i2capi.v",
+    "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/screenI2C/i2capi.v",
     "ModuleLine" : 1,
     "ModuleName" : "i2c_api"
    }
   ]
  },
  {
-  "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/screenI2C/textEngine.v",
+  "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/screenI2C/textEngine.v",
   "InstLine" : 1,
   "InstName" : "textEngine",
-  "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/screenI2C/textEngine.v",
+  "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/screenI2C/textEngine.v",
   "ModuleLine" : 1,
   "ModuleName" : "textEngine"
  },
  {
-  "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/screenVGA/gowin_dpb/gowin_dpb.v",
+  "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/screenVGA/gowin_dpb/gowin_dpb.v",
   "InstLine" : 10,
   "InstName" : "Gowin_DPB",
-  "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/screenVGA/gowin_dpb/gowin_dpb.v",
+  "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/screenVGA/gowin_dpb/gowin_dpb.v",
   "ModuleLine" : 10,
   "ModuleName" : "Gowin_DPB"
  },
  {
-  "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/screenVGA/gowin_osc/gowin_osc.v",
+  "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/screenVGA/gowin_osc/gowin_osc.v",
   "InstLine" : 8,
   "InstName" : "Gowin_OSC",
-  "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/screenVGA/gowin_osc/gowin_osc.v",
+  "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/screenVGA/gowin_osc/gowin_osc.v",
   "ModuleLine" : 8,
   "ModuleName" : "Gowin_OSC"
  },
  {
-  "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/screenVGA/gowin_rpll/gowin_rpll.v",
+  "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/screenVGA/gowin_rpll/gowin_rpll.v",
   "InstLine" : 9,
   "InstName" : "Gowin_rPLL",
-  "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/screenVGA/gowin_rpll/gowin_rpll.v",
+  "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/screenVGA/gowin_rpll/gowin_rpll.v",
   "ModuleLine" : 9,
   "ModuleName" : "Gowin_rPLL"
  },
  {
-  "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/screenVGA/gowin_sp/gowin_sp.v",
+  "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/screenVGA/gowin_sp/gowin_sp.v",
   "InstLine" : 10,
   "InstName" : "Gowin_SP",
-  "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/screenVGA/gowin_sp/gowin_sp.v",
+  "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/screenVGA/gowin_sp/gowin_sp.v",
   "ModuleLine" : 10,
   "ModuleName" : "Gowin_SP"
  },
  {
-  "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/soc.v",
+  "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/soc.v",
   "InstLine" : 9,
   "InstName" : "top",
-  "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/soc.v",
+  "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/soc.v",
   "ModuleLine" : 9,
   "ModuleName" : "top",
   "SubInsts" : [
    {
-    "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/soc.v",
-    "InstLine" : 83,
+    "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/soc.v",
+    "InstLine" : 85,
     "InstName" : "cpu_1",
-    "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/CPU/cpu.v",
+    "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/CPU/cpu.v",
     "ModuleLine" : 15,
     "ModuleName" : "cpu",
     "SubInsts" : [
      {
-      "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/CPU/cpu.v",
-      "InstLine" : 313,
+      "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/CPU/cpu.v",
+      "InstLine" : 323,
       "InstName" : "signExtendUnit",
-      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/CPU/signExtend.v",
+      "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/CPU/signExtend.v",
       "ModuleLine" : 10,
       "ModuleName" : "signExtend"
      },
      {
-      "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/CPU/cpu.v",
-      "InstLine" : 324,
+      "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/CPU/cpu.v",
+      "InstLine" : 334,
       "InstName" : "cpu_regs",
-      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/CPU/RegFile.v",
+      "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/CPU/RegFile.v",
       "ModuleLine" : 13,
       "ModuleName" : "RegFile"
      },
      {
-      "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/CPU/cpu.v",
-      "InstLine" : 340,
+      "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/CPU/cpu.v",
+      "InstLine" : 350,
       "InstName" : "SignExtendSelector",
-      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/CPU/SignExtendSelector.v",
+      "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/CPU/SignExtendSelector.v",
       "ModuleLine" : 10,
       "ModuleName" : "SignExtendSelector"
      },
      {
-      "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/CPU/cpu.v",
-      "InstLine" : 501,
+      "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/CPU/cpu.v",
+      "InstLine" : 516,
       "InstName" : "csrFile",
-      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/CPU/CSRFile.v",
+      "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/CPU/CSRFile.v",
       "ModuleLine" : 11,
       "ModuleName" : "CSRFile"
      },
      {
-      "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/CPU/cpu.v",
-      "InstLine" : 526,
+      "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/CPU/cpu.v",
+      "InstLine" : 541,
       "InstName" : "control_main",
-      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/CPU/control_main.v",
+      "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/CPU/control_main.v",
       "ModuleLine" : 11,
       "ModuleName" : "control_main"
      },
      {
-      "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/CPU/cpu.v",
-      "InstLine" : 543,
+      "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/CPU/cpu.v",
+      "InstLine" : 558,
       "InstName" : "control_stall_id",
-      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/CPU/control_stall_id.v",
+      "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/CPU/control_stall_id.v",
       "ModuleLine" : 11,
       "ModuleName" : "control_stall_id"
      },
      {
-      "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/CPU/cpu.v",
-      "InstLine" : 596,
+      "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/CPU/cpu.v",
+      "InstLine" : 611,
       "InstName" : "cpu_alu",
-      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/CPU/ALUCPU.v",
+      "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/CPU/ALUCPU.v",
       "ModuleLine" : 9,
       "ModuleName" : "ALUCPU"
      },
      {
-      "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/CPU/cpu.v",
-      "InstLine" : 675,
+      "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/CPU/cpu.v",
+      "InstLine" : 690,
       "InstName" : "control_alu",
-      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/CPU/control_alu.v",
+      "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/CPU/control_alu.v",
       "ModuleLine" : 10,
       "ModuleName" : "control_alu"
      },
      {
-      "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/CPU/cpu.v",
-      "InstLine" : 685,
+      "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/CPU/cpu.v",
+      "InstLine" : 700,
       "InstName" : "control_bypass_ex",
-      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/CPU/control_bypass_ex.v",
+      "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/CPU/control_bypass_ex.v",
       "ModuleLine" : 16,
       "ModuleName" : "control_bypass_ex"
      },
      {
-      "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/CPU/cpu.v",
-      "InstLine" : 714,
+      "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/CPU/cpu.v",
+      "InstLine" : 729,
       "InstName" : "mem_write_selector",
-      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/CPU/mem_write_selector.v",
+      "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/CPU/mem_write_selector.v",
       "ModuleLine" : 10,
       "ModuleName" : "mem_write_selector"
      },
      {
-      "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/CPU/cpu.v",
-      "InstLine" : 776,
+      "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/CPU/cpu.v",
+      "InstLine" : 791,
       "InstName" : "control_branch",
-      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/CPU/control_branch.v",
+      "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/CPU/control_branch.v",
       "ModuleLine" : 10,
       "ModuleName" : "control_branch"
      },
      {
-      "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/CPU/cpu.v",
-      "InstLine" : 787,
+      "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/CPU/cpu.v",
+      "InstLine" : 802,
       "InstName" : "mem_read_selector",
-      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/CPU/mem_read_selector.v",
+      "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/CPU/mem_read_selector.v",
       "ModuleLine" : 10,
       "ModuleName" : "mem_read_selector"
      }
     ]
    },
    {
-    "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/soc.v",
-    "InstLine" : 123,
+    "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/soc.v",
+    "InstLine" : 132,
     "InstName" : "bu",
-    "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Buses/bus.v",
+    "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Buses/bus.v",
     "ModuleLine" : 6,
     "ModuleName" : "bus"
    },
    {
-    "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/soc.v",
-    "InstLine" : 165,
+    "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/soc.v",
+    "InstLine" : 179,
     "InstName" : "clint_inst",
-    "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/CLINT.v",
+    "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/CLINT.v",
     "ModuleLine" : 1,
     "ModuleName" : "clint"
    },
    {
-    "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/soc.v",
-    "InstLine" : 176,
+    "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/soc.v",
+    "InstLine" : 190,
     "InstName" : "mem",
-    "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/memory.v",
+    "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/memory.v",
     "ModuleLine" : 10,
     "ModuleName" : "memory"
    },
    {
-    "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/soc.v",
-    "InstLine" : 190,
+    "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/soc.v",
+    "InstLine" : 204,
     "InstName" : "bm",
-    "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/GPIO/buttonModule.v",
+    "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/GPIO/buttonModule.v",
     "ModuleLine" : 1,
     "ModuleName" : "buttonModule",
     "SubInsts" : [
      {
-      "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/GPIO/buttonModule.v",
+      "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/GPIO/buttonModule.v",
       "InstLine" : 21,
       "InstName" : "debounceDownL",
-      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/GPIO/buttonModule.v",
+      "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/GPIO/buttonModule.v",
       "ModuleLine" : 87,
       "ModuleName" : "DebounceFSM"
      },
      {
-      "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/GPIO/buttonModule.v",
+      "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/GPIO/buttonModule.v",
       "InstLine" : 27,
       "InstName" : "debounceUpL",
-      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/GPIO/buttonModule.v",
+      "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/GPIO/buttonModule.v",
       "ModuleLine" : 87,
       "ModuleName" : "DebounceFSM"
      },
      {
-      "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/GPIO/buttonModule.v",
+      "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/GPIO/buttonModule.v",
       "InstLine" : 33,
       "InstName" : "debounceLeftL",
-      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/GPIO/buttonModule.v",
+      "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/GPIO/buttonModule.v",
       "ModuleLine" : 87,
       "ModuleName" : "DebounceFSM"
      },
      {
-      "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/GPIO/buttonModule.v",
+      "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/GPIO/buttonModule.v",
       "InstLine" : 39,
       "InstName" : "debounceRightL",
-      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/GPIO/buttonModule.v",
+      "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/GPIO/buttonModule.v",
       "ModuleLine" : 87,
       "ModuleName" : "DebounceFSM"
      },
      {
-      "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/GPIO/buttonModule.v",
+      "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/GPIO/buttonModule.v",
       "InstLine" : 44,
       "InstName" : "debounceDownR",
-      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/GPIO/buttonModule.v",
+      "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/GPIO/buttonModule.v",
       "ModuleLine" : 87,
       "ModuleName" : "DebounceFSM"
      },
      {
-      "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/GPIO/buttonModule.v",
+      "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/GPIO/buttonModule.v",
       "InstLine" : 50,
       "InstName" : "debounceUpR",
-      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/GPIO/buttonModule.v",
+      "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/GPIO/buttonModule.v",
       "ModuleLine" : 87,
       "ModuleName" : "DebounceFSM"
      },
      {
-      "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/GPIO/buttonModule.v",
+      "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/GPIO/buttonModule.v",
       "InstLine" : 56,
       "InstName" : "debounceLeftR",
-      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/GPIO/buttonModule.v",
+      "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/GPIO/buttonModule.v",
       "ModuleLine" : 87,
       "ModuleName" : "DebounceFSM"
      },
      {
-      "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/GPIO/buttonModule.v",
+      "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/GPIO/buttonModule.v",
       "InstLine" : 62,
       "InstName" : "debounceRightR",
-      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/GPIO/buttonModule.v",
+      "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/GPIO/buttonModule.v",
       "ModuleLine" : 87,
       "ModuleName" : "DebounceFSM"
      }
     ]
    },
    {
-    "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/soc.v",
-    "InstLine" : 208,
+    "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/soc.v",
+    "InstLine" : 222,
     "InstName" : "flashController",
-    "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/flashController.v",
+    "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/flashController.v",
     "ModuleLine" : 1,
     "ModuleName" : "flashController",
     "SubInsts" : [
      {
-      "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/flashController.v",
+      "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/flashController.v",
       "InstLine" : 123,
       "InstName" : "navigator",
-      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/flash.v",
+      "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/flash.v",
       "ModuleLine" : 2,
       "ModuleName" : "flashNavigator"
      }
     ]
    },
    {
-    "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/soc.v",
-    "InstLine" : 231,
-    "InstName" : "programMemory_inst",
-    "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/programMemory.v",
-    "ModuleLine" : 6,
+    "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/soc.v",
+    "InstLine" : 248,
+    "InstName" : "SecondStageRAM",
+    "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/programMemory.v",
+    "ModuleLine" : 8,
     "ModuleName" : "programMemory",
     "SubInsts" : [
      {
-      "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/programMemory.v",
-      "InstLine" : 57,
+      "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/programMemory.v",
+      "InstLine" : 64,
       "InstName" : "bram_array[0].bram_inst",
-      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+      "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/word_bram.v",
       "ModuleLine" : 1,
       "ModuleName" : "word_bram",
       "SubInsts" : [
        {
-        "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+        "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/word_bram.v",
         "InstLine" : 50,
         "InstName" : "BRAM_0",
-        "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+        "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
         "ModuleLine" : 10,
         "ModuleName" : "Gowin_DPB_program"
        },
        {
-        "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+        "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/word_bram.v",
         "InstLine" : 71,
         "InstName" : "BRAM_1",
-        "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+        "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
         "ModuleLine" : 10,
         "ModuleName" : "Gowin_DPB_program"
        },
        {
-        "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+        "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/word_bram.v",
         "InstLine" : 92,
         "InstName" : "BRAM_2",
-        "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+        "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
         "ModuleLine" : 10,
         "ModuleName" : "Gowin_DPB_program"
        },
        {
-        "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+        "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/word_bram.v",
         "InstLine" : 113,
         "InstName" : "BRAM_3",
-        "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
-        "ModuleLine" : 10,
-        "ModuleName" : "Gowin_DPB_program"
-       }
-      ]
-     },
-     {
-      "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/programMemory.v",
-      "InstLine" : 57,
-      "InstName" : "bram_array[1].bram_inst",
-      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
-      "ModuleLine" : 1,
-      "ModuleName" : "word_bram",
-      "SubInsts" : [
-       {
-        "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
-        "InstLine" : 50,
-        "InstName" : "BRAM_0",
-        "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
-        "ModuleLine" : 10,
-        "ModuleName" : "Gowin_DPB_program"
-       },
-       {
-        "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
-        "InstLine" : 71,
-        "InstName" : "BRAM_1",
-        "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
-        "ModuleLine" : 10,
-        "ModuleName" : "Gowin_DPB_program"
-       },
-       {
-        "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
-        "InstLine" : 92,
-        "InstName" : "BRAM_2",
-        "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
-        "ModuleLine" : 10,
-        "ModuleName" : "Gowin_DPB_program"
-       },
-       {
-        "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
-        "InstLine" : 113,
-        "InstName" : "BRAM_3",
-        "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
-        "ModuleLine" : 10,
-        "ModuleName" : "Gowin_DPB_program"
-       }
-      ]
-     },
-     {
-      "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/programMemory.v",
-      "InstLine" : 57,
-      "InstName" : "bram_array[2].bram_inst",
-      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
-      "ModuleLine" : 1,
-      "ModuleName" : "word_bram",
-      "SubInsts" : [
-       {
-        "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
-        "InstLine" : 50,
-        "InstName" : "BRAM_0",
-        "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
-        "ModuleLine" : 10,
-        "ModuleName" : "Gowin_DPB_program"
-       },
-       {
-        "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
-        "InstLine" : 71,
-        "InstName" : "BRAM_1",
-        "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
-        "ModuleLine" : 10,
-        "ModuleName" : "Gowin_DPB_program"
-       },
-       {
-        "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
-        "InstLine" : 92,
-        "InstName" : "BRAM_2",
-        "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
-        "ModuleLine" : 10,
-        "ModuleName" : "Gowin_DPB_program"
-       },
-       {
-        "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
-        "InstLine" : 113,
-        "InstName" : "BRAM_3",
-        "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
-        "ModuleLine" : 10,
-        "ModuleName" : "Gowin_DPB_program"
-       }
-      ]
-     },
-     {
-      "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/programMemory.v",
-      "InstLine" : 57,
-      "InstName" : "bram_array[3].bram_inst",
-      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
-      "ModuleLine" : 1,
-      "ModuleName" : "word_bram",
-      "SubInsts" : [
-       {
-        "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
-        "InstLine" : 50,
-        "InstName" : "BRAM_0",
-        "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
-        "ModuleLine" : 10,
-        "ModuleName" : "Gowin_DPB_program"
-       },
-       {
-        "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
-        "InstLine" : 71,
-        "InstName" : "BRAM_1",
-        "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
-        "ModuleLine" : 10,
-        "ModuleName" : "Gowin_DPB_program"
-       },
-       {
-        "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
-        "InstLine" : 92,
-        "InstName" : "BRAM_2",
-        "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
-        "ModuleLine" : 10,
-        "ModuleName" : "Gowin_DPB_program"
-       },
-       {
-        "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
-        "InstLine" : 113,
-        "InstName" : "BRAM_3",
-        "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+        "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
         "ModuleLine" : 10,
         "ModuleName" : "Gowin_DPB_program"
        }
@@ -588,79 +452,359 @@
     ]
    },
    {
-    "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/soc.v",
-    "InstLine" : 249,
+    "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/soc.v",
+    "InstLine" : 263,
+    "InstName" : "RAM",
+    "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/programMemory.v",
+    "ModuleLine" : 8,
+    "ModuleName" : "programMemory",
+    "SubInsts" : [
+     {
+      "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/programMemory.v",
+      "InstLine" : 64,
+      "InstName" : "bram_array[0].bram_inst",
+      "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+      "ModuleLine" : 1,
+      "ModuleName" : "word_bram",
+      "SubInsts" : [
+       {
+        "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+        "InstLine" : 50,
+        "InstName" : "BRAM_0",
+        "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+        "ModuleLine" : 10,
+        "ModuleName" : "Gowin_DPB_program"
+       },
+       {
+        "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+        "InstLine" : 71,
+        "InstName" : "BRAM_1",
+        "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+        "ModuleLine" : 10,
+        "ModuleName" : "Gowin_DPB_program"
+       },
+       {
+        "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+        "InstLine" : 92,
+        "InstName" : "BRAM_2",
+        "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+        "ModuleLine" : 10,
+        "ModuleName" : "Gowin_DPB_program"
+       },
+       {
+        "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+        "InstLine" : 113,
+        "InstName" : "BRAM_3",
+        "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+        "ModuleLine" : 10,
+        "ModuleName" : "Gowin_DPB_program"
+       }
+      ]
+     },
+     {
+      "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/programMemory.v",
+      "InstLine" : 64,
+      "InstName" : "bram_array[1].bram_inst",
+      "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+      "ModuleLine" : 1,
+      "ModuleName" : "word_bram",
+      "SubInsts" : [
+       {
+        "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+        "InstLine" : 50,
+        "InstName" : "BRAM_0",
+        "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+        "ModuleLine" : 10,
+        "ModuleName" : "Gowin_DPB_program"
+       },
+       {
+        "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+        "InstLine" : 71,
+        "InstName" : "BRAM_1",
+        "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+        "ModuleLine" : 10,
+        "ModuleName" : "Gowin_DPB_program"
+       },
+       {
+        "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+        "InstLine" : 92,
+        "InstName" : "BRAM_2",
+        "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+        "ModuleLine" : 10,
+        "ModuleName" : "Gowin_DPB_program"
+       },
+       {
+        "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+        "InstLine" : 113,
+        "InstName" : "BRAM_3",
+        "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+        "ModuleLine" : 10,
+        "ModuleName" : "Gowin_DPB_program"
+       }
+      ]
+     },
+     {
+      "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/programMemory.v",
+      "InstLine" : 64,
+      "InstName" : "bram_array[2].bram_inst",
+      "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+      "ModuleLine" : 1,
+      "ModuleName" : "word_bram",
+      "SubInsts" : [
+       {
+        "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+        "InstLine" : 50,
+        "InstName" : "BRAM_0",
+        "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+        "ModuleLine" : 10,
+        "ModuleName" : "Gowin_DPB_program"
+       },
+       {
+        "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+        "InstLine" : 71,
+        "InstName" : "BRAM_1",
+        "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+        "ModuleLine" : 10,
+        "ModuleName" : "Gowin_DPB_program"
+       },
+       {
+        "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+        "InstLine" : 92,
+        "InstName" : "BRAM_2",
+        "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+        "ModuleLine" : 10,
+        "ModuleName" : "Gowin_DPB_program"
+       },
+       {
+        "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+        "InstLine" : 113,
+        "InstName" : "BRAM_3",
+        "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+        "ModuleLine" : 10,
+        "ModuleName" : "Gowin_DPB_program"
+       }
+      ]
+     },
+     {
+      "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/programMemory.v",
+      "InstLine" : 64,
+      "InstName" : "bram_array[3].bram_inst",
+      "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+      "ModuleLine" : 1,
+      "ModuleName" : "word_bram",
+      "SubInsts" : [
+       {
+        "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+        "InstLine" : 50,
+        "InstName" : "BRAM_0",
+        "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+        "ModuleLine" : 10,
+        "ModuleName" : "Gowin_DPB_program"
+       },
+       {
+        "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+        "InstLine" : 71,
+        "InstName" : "BRAM_1",
+        "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+        "ModuleLine" : 10,
+        "ModuleName" : "Gowin_DPB_program"
+       },
+       {
+        "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+        "InstLine" : 92,
+        "InstName" : "BRAM_2",
+        "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+        "ModuleLine" : 10,
+        "ModuleName" : "Gowin_DPB_program"
+       },
+       {
+        "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+        "InstLine" : 113,
+        "InstName" : "BRAM_3",
+        "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+        "ModuleLine" : 10,
+        "ModuleName" : "Gowin_DPB_program"
+       }
+      ]
+     },
+     {
+      "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/programMemory.v",
+      "InstLine" : 64,
+      "InstName" : "bram_array[4].bram_inst",
+      "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+      "ModuleLine" : 1,
+      "ModuleName" : "word_bram",
+      "SubInsts" : [
+       {
+        "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+        "InstLine" : 50,
+        "InstName" : "BRAM_0",
+        "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+        "ModuleLine" : 10,
+        "ModuleName" : "Gowin_DPB_program"
+       },
+       {
+        "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+        "InstLine" : 71,
+        "InstName" : "BRAM_1",
+        "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+        "ModuleLine" : 10,
+        "ModuleName" : "Gowin_DPB_program"
+       },
+       {
+        "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+        "InstLine" : 92,
+        "InstName" : "BRAM_2",
+        "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+        "ModuleLine" : 10,
+        "ModuleName" : "Gowin_DPB_program"
+       },
+       {
+        "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+        "InstLine" : 113,
+        "InstName" : "BRAM_3",
+        "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+        "ModuleLine" : 10,
+        "ModuleName" : "Gowin_DPB_program"
+       }
+      ]
+     },
+     {
+      "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/programMemory.v",
+      "InstLine" : 64,
+      "InstName" : "bram_array[5].bram_inst",
+      "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+      "ModuleLine" : 1,
+      "ModuleName" : "word_bram",
+      "SubInsts" : [
+       {
+        "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+        "InstLine" : 50,
+        "InstName" : "BRAM_0",
+        "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+        "ModuleLine" : 10,
+        "ModuleName" : "Gowin_DPB_program"
+       },
+       {
+        "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+        "InstLine" : 71,
+        "InstName" : "BRAM_1",
+        "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+        "ModuleLine" : 10,
+        "ModuleName" : "Gowin_DPB_program"
+       },
+       {
+        "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+        "InstLine" : 92,
+        "InstName" : "BRAM_2",
+        "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+        "ModuleLine" : 10,
+        "ModuleName" : "Gowin_DPB_program"
+       },
+       {
+        "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+        "InstLine" : 113,
+        "InstName" : "BRAM_3",
+        "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+        "ModuleLine" : 10,
+        "ModuleName" : "Gowin_DPB_program"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/soc.v",
+    "InstLine" : 310,
     "InstName" : "slower_clock",
-    "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/gowin_rpll_800vga/gowin_rpll_800vga.v",
+    "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/gowin_rpll_800vga/gowin_rpll_800vga.v",
     "ModuleLine" : 10,
     "ModuleName" : "Gowin_rPLL_800vga"
    },
    {
-    "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/soc.v",
-    "InstLine" : 262,
+    "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/soc.v",
+    "InstLine" : 324,
     "InstName" : "ppu_inst",
-    "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/GPIO/PPU.v",
+    "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/GPIO/PPU.v",
     "ModuleLine" : 1,
     "ModuleName" : "PPU",
     "SubInsts" : [
      {
-      "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/GPIO/PPU.v",
-      "InstLine" : 69,
+      "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/GPIO/PPU.v",
+      "InstLine" : 70,
       "InstName" : "text_Buffer",
-      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/DPBRAM.v",
+      "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/DPBRAM.v",
       "ModuleLine" : 1,
       "ModuleName" : "DPBRAM"
      },
      {
-      "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/GPIO/PPU.v",
-      "InstLine" : 86,
+      "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/GPIO/PPU.v",
+      "InstLine" : 87,
       "InstName" : "attributes_Buffer",
-      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/DPBRAM.v",
+      "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/DPBRAM.v",
       "ModuleLine" : 1,
       "ModuleName" : "DPBRAM"
      },
      {
-      "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/GPIO/PPU.v",
-      "InstLine" : 148,
+      "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/GPIO/PPU.v",
+      "InstLine" : 104,
       "InstName" : "sprite_BRAM",
-      "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/DPBRAM.v",
+      "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/DPBRAM.v",
       "ModuleLine" : 1,
       "ModuleName" : "DPBRAM"
      }
     ]
    },
    {
-    "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/soc.v",
-    "InstLine" : 281,
-    "InstName" : "D1",
-    "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/screenVGA/VGAMod.v",
+    "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/soc.v",
+    "InstLine" : 343,
+    "InstName" : "VGA",
+    "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/screenVGA/VGAMod.v",
     "ModuleLine" : 1,
     "ModuleName" : "VGAMod"
    },
    {
-    "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/soc.v",
-    "InstLine" : 349,
+    "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/soc.v",
+    "InstLine" : 393,
+    "InstName" : "uart_controller",
+    "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/GPIO/uartController.v",
+    "ModuleLine" : 31,
+    "ModuleName" : "uartController",
+    "SubInsts" : [
+     {
+      "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/GPIO/uartController.v",
+      "InstLine" : 137,
+      "InstName" : "uart_inst",
+      "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/GPIO/sync_rs232_uart_v1.2.v",
+      "ModuleLine" : 16,
+      "ModuleName" : "sync_rs232_uart"
+     }
+    ]
+   },
+   {
+    "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/soc.v",
+    "InstLine" : 421,
     "InstName" : "counter1mhz",
-    "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/GPIO/cpuTimer.v",
+    "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/GPIO/cpuTimer.v",
     "ModuleLine" : 1,
     "ModuleName" : "cpuTimer"
    },
    {
-    "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/soc.v",
-    "InstLine" : 355,
+    "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/soc.v",
+    "InstLine" : 427,
     "InstName" : "counter50mhz",
-    "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/GPIO/cpuTimer.v",
+    "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/GPIO/cpuTimer.v",
     "ModuleLine" : 1,
     "ModuleName" : "cpuTimer"
    }
   ]
  },
  {
-  "InstFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/soc.v",
-  "InstLine" : 407,
+  "InstFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/soc.v",
+  "InstLine" : 479,
   "InstName" : "Reset_Sync",
-  "ModuleFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/soc.v",
-  "ModuleLine" : 407,
+  "ModuleFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/soc.v",
+  "ModuleLine" : 479,
   "ModuleName" : "Reset_Sync"
  }
 ]

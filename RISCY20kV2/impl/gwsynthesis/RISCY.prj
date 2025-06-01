@@ -25,6 +25,7 @@
         <File path="/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/GPIO/buttonModule.v" type="verilog"/>
         <File path="/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/GPIO/cpuTimer.v" type="verilog"/>
         <File path="/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/GPIO/seven_segment.v" type="verilog"/>
+        <File path="/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/GPIO/sync_rs232_uart_v1.2.v" type="verilog"/>
         <File path="/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/GPIO/uart.v" type="verilog"/>
         <File path="/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/GPIO/uartController.v" type="verilog"/>
         <File path="/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/DPBRAM.v" type="verilog"/>
@@ -33,6 +34,7 @@
         <File path="/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/memory.v" type="verilog"/>
         <File path="/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/programMemory.v" type="verilog"/>
         <File path="/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/ramMemory.v" type="verilog"/>
+        <File path="/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v" type="verilog"/>
         <File path="/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/config.vh" type="verilog"/>
         <File path="/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/fifo_hs/fifo_hs.v" type="verilog"/>
         <File path="/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/fifo_sc_video.v" type="verilog"/>
@@ -51,7 +53,6 @@
         <File path="/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/screenVGA/gowin_rpll/gowin_rpll.v" type="verilog"/>
         <File path="/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/screenVGA/gowin_sp/gowin_sp.v" type="verilog"/>
         <File path="/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/soc.v" type="verilog"/>
-        <File path="/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v" type="verilog"/>
     </FileList>
     <OptionList>
         <Option type="disable_insert_pad" value="0"/>

@@ -19,9 +19,12 @@ module memory(input clk,
             output reg ready
 );
 
-localparam data_size=1024;
-
-reg [31:0] data_mem[data_size-1:0];
+`ifndef TESTBENCH
+    localparam data_size=1024;
+`else
+    localparam data_size=8194;
+`endif
+    reg [31:0] data_mem[data_size-1:0];
 integer i;
 initial begin
      for(i=0; i<data_size; i=i+1) begin
@@ -30,7 +33,7 @@ initial begin
     `ifndef TESTBENCH
     $readmemh(`TEXT_HEX, data_mem);
     `else
-    $readmemh("../includes/testbenchtext.hex", data_mem);
+    $readmemh("../includes/bootloader.hex", data_mem);
     `endif
 end
 
@@ -41,12 +44,18 @@ localparam STATE_FINISHED = 2'b11;
 reg [1:0] state = 0;
 reg [4:0] cnt = 0;
 reg [`DATA_BITS-1:0] saved_data_addr = 0;
+
+reg debug_reg;
 always@(posedge clk)
 begin 
 
     if(PC < data_size)
     begin
         instr <= data_mem[PC];
+        debug_reg <= 0;
+    end
+    else begin
+        debug_reg <=1;
     end
     ready <= 1;
     case(state)

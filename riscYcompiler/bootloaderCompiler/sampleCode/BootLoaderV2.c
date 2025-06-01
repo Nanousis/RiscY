@@ -8,7 +8,7 @@ typedef struct Programheader{
     unsigned int endAddress;
 } Programheader;
 
-#define PROGRAM_MEMORY 0x00400000
+#define PROGRAM_MEMORY 0x80000000
 #define FLASH_READY 0x8B000000
 #define FLASH_REN 0x8B000001
 #define FLASH_WEN 0x8B000002
@@ -18,6 +18,8 @@ typedef struct Programheader{
 #define USB 0x10000000
 
 #define FILE_OFFSET 4 
+
+#define USB_ENABLED 0
 
 unsigned int readFlash(unsigned int adress){
     char *flashReady = (char *)FLASH_READY;
@@ -145,28 +147,30 @@ int main() {
                 putch(textPos+SCREEN_WIDTH+2,   i*8 + 128+6, 0);
                 putch(textPos+SCREEN_WIDTH+3,   i*8 + 128+7, 0);
             }
-            usbKey = (getUSBint()>>24)&0xFF;
+            #if USB==1
+                usbKey = (getUSBint()>>24)&0xFF;
 
-            printfSCR(SCREEN_WIDTH*18,15,"%x",usbKey);
-
-            if(getButtonDown()){
-                boardBtns = 0x51;
-            }
-            else if(getButtonUp()){
-                boardBtns = 0x52;
-            }
-            else if(getButtonRight()){
-                boardBtns = 0x28;
-            }
-            else if(getButtonLeft()){
-                boardBtns = 0x28;
-            }
-            else{
-                boardBtns = 0;
-            }
-
-            newKey = usbKey|boardBtns;
-
+                printfSCR(SCREEN_WIDTH*18,15,"%x",usbKey);
+                newKey = usbKey|boardBtns;
+                #else
+                    if(getButtonDown()){
+                        boardBtns = 0x51;
+                    }
+                    else if(getButtonUp()){
+                        boardBtns = 0x52;
+                    }
+                    else if(getButtonRight()){
+                        boardBtns = 0x28;
+                    }
+                    else if(getButtonLeft()){
+                        boardBtns = 0x28;
+                    }
+                    else{
+                        boardBtns = 0;
+                    }
+                    newKey = boardBtns;
+                    #endif
+            printfSCR(64*14,15,"New key %x",newKey);
             if(newKey!=oldKey){
                 if(newKey == 0x51){//down arrow
                     selectNum++;
@@ -186,7 +190,6 @@ int main() {
             }
             oldKey = newKey;
             // for(int k=0; k<WaitTime>4; k++);
-            // printfSCR(64*14,15,"U: %x D: %x L: %x R: %x",getButtonUp(),getButtonDown(),getButtonLeft(),getButtonRight());
         }
         int programSize=(headers[selectNum].endAddress-headers[selectNum].startAddress)>>2;
         printf("Reading from flash %x\n",programSize);

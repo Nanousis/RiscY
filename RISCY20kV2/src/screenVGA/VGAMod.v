@@ -15,7 +15,7 @@ module VGAMod(
     output      reg  [13:0]  PixelCtr,      // Total Horizontal Time = 1280 -> 11 bits
     output      reg  [13:0]  LineCtr,        // Total Vertical Time = 619 -> 10 bits
     output                  is_blank,       // VGA is blank
-
+    input           [2:0]   debug_error,
 	output          [4:0]   RGB_B,
 	output          [5:0]   RGB_G,
 	output          [4:0]   RGB_R
@@ -73,7 +73,7 @@ module VGAMod(
                 LineCtr <= 0;
             end
             else begin
-                PixelCtr = PixelCtr + 1;
+                PixelCtr <= PixelCtr + 1;
             end
         end
     end
@@ -279,8 +279,9 @@ module VGAMod(
     assign V_activate = ( LineCtr <= V_Display) ? 1'b1: 1'b0;
     assign  RGB_Activate = (H_activate && V_activate);
 
-    assign RGB_R = (RGB_Activate) ? R_tmp : 5'b00000; 
-    assign RGB_G = (RGB_Activate) ? G_tmp : 6'b000000; 
-    assign RGB_B = (RGB_Activate) ? B_tmp : 5'b00000;
+
+    assign RGB_R = (debug_error==1)?5'b11111:((RGB_Activate) ? R_tmp : 5'b00000); 
+    assign RGB_G = (debug_error==2)?6'b111111:((RGB_Activate) ? G_tmp : 6'b000000); 
+    assign RGB_B = (debug_error==3)?5'b11111:((RGB_Activate) ? B_tmp : 5'b00000);
 
 endmodule

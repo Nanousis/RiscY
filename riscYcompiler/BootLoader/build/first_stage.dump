@@ -1,0 +1,86 @@
+
+build/first_stage.elf:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+00000000 <_start>:
+   0:	21000113          	li	sp,528
+   4:	10010113          	addi	sp,sp,256
+   8:	00250537          	lui	a0,0x250
+   c:	00050513          	mv	a0,a0
+  10:	0b0000ef          	jal	c0 <_readFlash>
+  14:	ff410113          	addi	sp,sp,-12
+  18:	00012423          	sw	zero,8(sp)
+  1c:	00a12023          	sw	a0,0(sp)
+  20:	080000ef          	jal	a0 <_putc>
+  24:	00250537          	lui	a0,0x250
+  28:	00050513          	mv	a0,a0
+  2c:	00450513          	addi	a0,a0,4 # 250004 <SECOND_STAGE+0x4>
+  30:	090000ef          	jal	c0 <_readFlash>
+  34:	00b12223          	sw	a1,4(sp)
+  38:	00010593          	mv	a1,sp
+  3c:	01c000ef          	jal	58 <print_string>
+  40:	04100513          	li	a0,65
+  44:	04600593          	li	a1,70
+  48:	058000ef          	jal	a0 <_putc>
+  4c:	20000513          	li	a0,512
+  50:	008000ef          	jal	58 <print_string>
+
+00000054 <loop>:
+  54:	0000006f          	j	54 <loop>
+
+00000058 <print_string>:
+  58:	ff410113          	addi	sp,sp,-12
+  5c:	00812023          	sw	s0,0(sp)
+  60:	00912223          	sw	s1,4(sp)
+  64:	00112423          	sw	ra,8(sp)
+  68:	00050413          	mv	s0,a0
+  6c:	00000493          	li	s1,0
+
+00000070 <iterate_chars>:
+  70:	00040583          	lb	a1,0(s0)
+  74:	00048513          	mv	a0,s1
+  78:	00058a63          	beqz	a1,8c <end_print>
+  7c:	024000ef          	jal	a0 <_putc>
+  80:	00140413          	addi	s0,s0,1
+  84:	00148493          	addi	s1,s1,1
+  88:	fe9ff06f          	j	70 <iterate_chars>
+
+0000008c <end_print>:
+  8c:	00012403          	lw	s0,0(sp)
+  90:	00412483          	lw	s1,4(sp)
+  94:	00812083          	lw	ra,8(sp)
+  98:	00c10113          	addi	sp,sp,12
+  9c:	00008067          	ret
+
+000000a0 <_putc>:
+  a0:	880003b7          	lui	t2,0x88000
+  a4:	00151513          	slli	a0,a0,0x1
+  a8:	00a383b3          	add	t2,t2,a0
+  ac:	00f00293          	li	t0,15
+  b0:	00829293          	slli	t0,t0,0x8
+  b4:	00b2e2b3          	or	t0,t0,a1
+  b8:	00539023          	sh	t0,0(t2) # 88000000 <SECOND_STAGE+0x87db0000>
+  bc:	00008067          	ret
+
+000000c0 <_readFlash>:
+  c0:	8b000e37          	lui	t3,0x8b000
+  c4:	004e0e13          	addi	t3,t3,4 # 8b000004 <FLASH+0x4>
+  c8:	00ae2023          	sw	a0,0(t3)
+  cc:	8b000e37          	lui	t3,0x8b000
+  d0:	001e0e13          	addi	t3,t3,1 # 8b000001 <FLASH+0x1>
+  d4:	00100293          	li	t0,1
+  d8:	005e2023          	sw	t0,0(t3)
+  dc:	00000013          	nop
+  e0:	8b000e37          	lui	t3,0x8b000
+  e4:	000e0e13          	mv	t3,t3
+  e8:	06400293          	li	t0,100
+
+000000ec <wait_for_data>:
+  ec:	fff28293          	addi	t0,t0,-1
+  f0:	fe028ee3          	beqz	t0,ec <wait_for_data>
+  f4:	8b000e37          	lui	t3,0x8b000
+  f8:	00ce0e13          	addi	t3,t3,12 # 8b00000c <FLASH+0xc>
+  fc:	000e2583          	lw	a1,0(t3)
+ 100:	00008067          	ret

@@ -26,6 +26,7 @@ module cpu(	input clock,
 			input software_interrupt,
 			input timer_interrupt,
 			input external_interrupt,
+			output reg [1:0]debug_error,
 			input memReady
 			);
 
@@ -143,6 +144,9 @@ assign wen = EXMEM_MemWrite;
 assign data_out = MemWriteData;
 assign DMemOut = data_in;
 assign byte_select = byte_select_vector;
+
+
+reg [20*8-1:0] debug_str="";
 /********************** Instruction Fetch Unit (IF1)  **********************/
 always @(posedge clock or negedge reset)
 begin 
@@ -180,8 +184,12 @@ begin
 		PC_IF2 <= 32'b0;
 		write_pc_delayed <= 1'b0;
 		bubble_ifid_delayed <= 1'b0;
+		debug_error <= 2'b0;
 	end
 	else begin
+		if(PC[0]||PC[1])begin
+			debug_error<=2'b1;
+		end
 		write_pc_delayed <= write_pc;
 		if(write_ifid == 1'b1)begin
 			if(bubble_ifid == 1'b1)begin
@@ -200,8 +208,8 @@ begin
 			end
 			if(keepDelayInstr ==1'b0)
 			begin
-			keepDelayInstr <= 1;
-			delayed_instr <= instr;
+				keepDelayInstr <= 1;
+				delayed_instr <= (PCSrc)?32'hffffffff: instr;
 			end
 		end
 	end
@@ -216,11 +224,13 @@ begin
 		IF2_instr = instr;
 	end
 	else begin
-		if(bubble_ifid_delayed == 1'b1) begin
+		if(bubble_ifid_delayed == 1'b1||bubble_ifid==1'b1) begin
 			IF2_instr = 32'b0;
+			debug_str = "BUBLE!!";
 		end
 		else begin
 			IF2_instr = delayed_instr;
+			debug_str = "Normal";
 		end
 	end
 
@@ -459,22 +469,22 @@ always@(posedge clock or negedge reset)begin
 				begin
 					if(branch_taken||Jump||EXMEM_JumpJALR)
 					begin
-						pc_string="BID Taken";
+						pc_string<="BID Taken";
 						newmepc <= PC_new;
 					end
 					else if(write_pc==1'b0&&IFID_PC!=32'hffffffff)
 					begin
-						pc_string="stalled due to loadWord";
+						pc_string<="stalled due to loadWord";
 						newmepc <= IFID_PC;
 					end
 					else if(PC_IF2!=32'hffffffff)
 					begin
-						pc_string="IF2 Taken";
+						pc_string<="IF2 Taken";
 						newmepc <= PC_IF2;
 					end
 					else
 					begin
-						pc_string="PC Taken";
+						pc_string<="PC Taken";
 						newmepc <= PC;
 					end
 					mepc_state <= MEPC_WAITINGJUMP;
@@ -483,7 +493,7 @@ always@(posedge clock or negedge reset)begin
 			MEPC_WAITINGJUMP:begin
 				if(branch_taken||Jump||EXMEM_JumpJALR)
 				begin
-					pc_string="Branch Taken";
+					pc_string<="Branch Taken";
 					newmepc <= PC_new;
 				end
 				if(flushPipeline==1'b0)
@@ -498,6 +508,11 @@ always@(posedge clock or negedge reset)begin
 end
 wire flushPipeline;
 
+
+// TODO: There is an issue if you have csrw mepc
+// and then mret. MEPC is not written yet and 
+// cannot be forwared. This means that a stall
+// is needed which has not been implemented :P
 CSRFile csrFile(
 	.clock(clock),
 	.reset(reset),

@@ -1,28 +1,28 @@
 [*]
 [*] GTKWave Analyzer v3.4.0 (w)1999-2022 BSI
-[*] Wed Jan  1 21:30:19 2025
+[*] Mon Apr  7 20:30:59 2025
 [*]
 [dumpfile] "ZSOC.vcd"
-[dumpfile_mtime] "Wed Jan  1 21:23:48 2025"
-[dumpfile_size] 2033561625
+[dumpfile_mtime] "Mon Apr  7 20:15:04 2025"
+[dumpfile_size] 525884836
 [savefile] "gtkw.gtkw"
-[timestart] 2697948100
-[size] 1512 916
-[pos] 1684 114
-*-16.390831 2698110000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[timestart] 671413800
+[size] 2560 1027
+[pos] 1512 53
+*-16.390831 671870000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] test.
 [treeopen] test.TOP.
 [treeopen] test.TOP.cpu_1.
-[sst_width] 253
+[treeopen] test.TOP.uart_controller.
+[sst_width] 255
 [signals_width] 262
 [sst_expanded] 1
-[sst_vpaned_height] 516
+[sst_vpaned_height] 593
 @28
 test.TOP.cpu_1.reset
 test.TOP.cpu_1.clock
-@22
-test.TOP.counter1M[31:0]
-test.TOP.counter50M[31:0]
+[color] 1
+test.TOP.debug_error[2:0]
 @c00200
 -Memory
 @1401200
@@ -486,6 +486,8 @@ test.TOP.cpu_1.MEMWB_PC[31:0]
 @28
 [color] 5
 test.TOP.cpu_1.pc_jumped
+@23
+test.TOP.cpu_1.JumpAddress[31:0]
 @200
 -instructions
 @22
@@ -539,10 +541,8 @@ test.TOP.cpu_1.pc_string[2039:0]
 test.TOP.cpu_1.mepc_state
 @22
 test.TOP.cpu_1.newmepc[31:0]
-@23
 [color] 7
 test.TOP.cpu_1.csrFile.mepc[31:0]
-@22
 test.TOP.cpu_1.csrFile.misa[31:0]
 test.TOP.cpu_1.csrFile.mtvec[31:0]
 test.TOP.cpu_1.csrFile.mie[31:0]
@@ -559,6 +559,10 @@ test.TOP.cpu_1.bubble_idex
 test.TOP.cpu_1.bubble_exmem
 [color] 7
 test.TOP.cpu_1.branch_taken
+@22
+test.TOP.cpu_1.EXMEM_BranchALUOut[31:0]
+test.TOP.cpu_1.control_main.opcode[6:0]
+@28
 [color] 7
 test.TOP.cpu_1.Jump
 [color] 7
@@ -602,6 +606,29 @@ test.TOP.flashController.flash_address[23:0]
 test.TOP.flashController.stateDebug[4:0]
 @1401200
 -FlashController
+@28
+test.TOP.uart_controller.rx_rdy
+test.TOP.uart_controller.ena_tx
+test.TOP.uart_controller.tx_busy
+test.TOP.uart_controller.wen
+test.TOP.uart_controller.uart_rx
+test.TOP.uart_controller.uart_tx
+@c00820
+test.TOP.uart_controller.tx_data[7:0]
+@28
+(0)test.TOP.uart_controller.tx_data[7:0]
+(1)test.TOP.uart_controller.tx_data[7:0]
+(2)test.TOP.uart_controller.tx_data[7:0]
+@22
+test.TOP.uart_controller.lsr[7:0]
+@28
+(3)test.TOP.uart_controller.tx_data[7:0]
+(4)test.TOP.uart_controller.tx_data[7:0]
+(5)test.TOP.uart_controller.tx_data[7:0]
+(6)test.TOP.uart_controller.tx_data[7:0]
+(7)test.TOP.uart_controller.tx_data[7:0]
+@1401200
+-group_end
 @800200
 -ScreenText
 @24

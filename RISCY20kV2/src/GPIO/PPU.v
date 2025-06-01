@@ -16,7 +16,7 @@ module PPU(
 	output reg         [4:0]   RGB_R
 );
 
-    parameter MAX_WIDTH=15'd500;
+    parameter MAX_WIDTH=15'd400;
     parameter MAX_OBJ=20;
 
 
@@ -97,51 +97,6 @@ module PPU(
         .dout_b(dataOutAttr) //read attributes from the other port
     );
 
-	// Gowin_DPB text_Buffer(
-    //     //port A -> write port
-    //     .douta(douta), 
-    //     .clka(clk_cpu),     
-    //     .ocea(1'b1), 
-    //     .cea(1'b1), 
-    //     .reseta(!reset),     
-    //     .wrea(textEn),         
-    //     .ada(text_address[15:1]),        
-    //     .dina(writeText),
-        
-    //     //port B -> read port
-    //     .doutb(dataOutTxt), 
-    //     .clkb(clk_cpu),     
-    //     .oceb(1'b1),       
-    //     .ceb(1'b1), 
-    //     .resetb(!reset),      
-    //     .wreb(1'b0),        
-    //     .adb(currentCharacter), 
-    //     .dinb(dinb)         
-    // );
-
-    // Gowin_DPB attributes_Buffer(
-    //     //port A -> write port
-    //     .douta(douta), 
-    //     .clka(clk_cpu), 
-    //     .ocea(1'b1), 
-    //     .cea(1'b1), 
-    //     .reseta(!reset), 
-    //     .wrea(textEn), 
-    //     .ada(text_address[15:1]), 
-    //     .dina(writeAttr), 
-        
-    //     //port B -> read port
-    //     .doutb(dataOutAttr),
-    //     .clkb(clk_cpu), 
-    //     .oceb(1'b1), 
-    //     .ceb(1'b1), 
-    //     .resetb(!reset), 
-    //     .wreb(1'b0), 
-    //     .adb(currentCharacter), 
-    //     .dinb(dinb) 
-    // );
-
-
     DPBRAM #(
     .DATA_WIDTH(8),  // 1 byte per address
     .ADDR_WIDTH(14)  // 4096 addresses
@@ -158,34 +113,12 @@ module PPU(
         .din_b(),   //not needed
         .dout_b(dataOutSprite) //read sprites from the other port
     );
-    // Gowin_DPB_program sprite_buffer(
-    //     //port A -> write port
-    //     .douta(douta), 
-    //     .clka(clk_cpu), 
-    //     .ocea(1'b1), 
-    //     .cea(1'b1), 
-    //     .reseta(!reset), 
-    //     .wrea(spritesEn), 
-    //     .ada(text_address[15:1]-16'd2048), 
-    //     .dina(writeSprite), 
-        
-    //     //port B -> read port
-    //     .doutb(dataOutSprite),
-    //     .clkb(clk), 
-    //     .oceb(1'b1), 
-    //     .ceb(1'b1), 
-    //     .resetb(!reset), 
-    //     .wreb(1'b0), 
-    //     .adb((~hblank)?spritePointer:objectPointer), 
-    //     // .adb(spritePointer),
-    //     .dinb(dinb) 
-    // );
-
 
     reg [23:0] counter=0;
     // reg [8:0] xCounter=9'b001111111;
     
     reg [31:0] text_address;
+
 
     always@(posedge clk_cpu or negedge reset)
     begin
@@ -234,6 +167,10 @@ module PPU(
     reg [8:0] buffer_counter=0;
     reg [15:0] obj_line_buffer;
     reg hasStarted=0;
+
+    // reg [7:0] r_buff [7:0];
+    // reg [7:0] g_buff [7:0];
+    // reg [7:0] b_buff [7:0];
     always@(posedge clk or negedge reset)
     begin
         if(~reset)

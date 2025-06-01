@@ -4,7 +4,7 @@ OBJCOPY  = riscv64-unknown-elf-objcopy
 OBJDUMP  = riscv64-unknown-elf-objdump
 
 # Compiler flags
-CFLAGS   = -march=rv32i -mabi=ilp32 -Os -Wall -nostdlib -nostartfiles -ffreestanding
+CFLAGS   = -march=rv32i_zicsr -mabi=ilp32 -Os -Wall -nostdlib -nostartfiles -ffreestanding
 
 # Linker flags
 LDFLAGS  = -T linker.ld -Wl,-Map=$(BUILD_DIR)/program.map
@@ -21,7 +21,7 @@ NEXT_VERSION := $(shell echo $$(($(VERSION)+1)))
 BUILD_DIR = $(BUILD_BASE_DIR)/build$(VERSION)
 
 # Desired memory size in bytes
-MEMORY_SIZE = 16384
+MEMORY_SIZE = 32768
 
 # Default target
 all: $(VERSION_FILE) $(BUILD_DIR)/program.hex $(BUILD_DIR)/program.bin disassemble copy_main_c update_version

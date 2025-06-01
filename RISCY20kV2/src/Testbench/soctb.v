@@ -19,7 +19,7 @@ top TOP
     .flashMosi(),
     .flashCs(),
 
-    .uart_rx(),
+    .uart_rx(0),
     .uart_tx(),
 
     .btnDownR(1),
@@ -37,7 +37,7 @@ top TOP
         #10 btn1 =0;
         #100 
 
-        #2500000 
+        #1000000
         for (i = 0; i < 32; i = i + 1) begin
             case (i)
             0: $display ("%d: x0   : %d - 0x%h", i,test.TOP.cpu_1.cpu_regs.data[i],test.TOP.cpu_1.cpu_regs.data[i]);
@@ -77,6 +77,9 @@ top TOP
         end
         for (i = 0; i < 19; i = i + 1) begin
             $display("%d: %s", i,test.TOP.text.charMemory[i]);
+        end
+        for(i = 2840;i<2840+100; i = i +1)begin
+           $display("Memory stuff %d: %x", i,test.TOP.mem.data_mem[i]);
         end
         $finish;
     end

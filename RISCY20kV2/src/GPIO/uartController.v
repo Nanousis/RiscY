@@ -1,3 +1,33 @@
+/*
+May end up changing the uart controller to this one 
+https://github.com/freecores/uart16550/blob/master/rtl/verilog/uart_top.v
+to allow for a typical 16550 uart.
+*/
+
+
+/* register definitions */
+`define REG_RBR		'h00 /* Receiver buffer reg. */
+`define REG_THR		'h00 /* Transmitter holding reg. */
+`define REG_IER		'h01 /* Interrupt enable reg. */
+`define REG_IIR		'h02 /* Interrupt ID reg. */
+`define REG_FCR		'h02 /* FIFO control reg. */
+`define REG_LCR		'h03 /* Line control reg. */
+`define REG_MCR		'h04 /* Modem control reg. */
+`define REG_LSR		'h05 /* Line status reg. */
+`define REG_MSR		'h06 /* Modem status reg. */
+`define REG_SCR		'h07 /* Scratch reg. */
+`define REG_BRDL	'h00 /* Divisor latch (LSB) */
+`define REG_BRDH	'h01 /* Divisor latch (MSB) */
+
+/* Line status */
+`define LSR_DR			'h01 /* Data ready */
+`define LSR_OE			'h02 /* Overrun error */
+`define LSR_PE			'h04 /* Parity error */
+`define LSR_FE			'h08 /* Framing error */
+`define LSR_BI			'h10 /* Break interrupt */
+`define LSR_THRE		'h20 /* Transmitter holding register empty */
+`define LSR_TEMT		'h40 /* Transmitter empty */
+`define LSR_EIRF		'h80 /* Error in RCVR FIFO */
 module uartController(
     input clk,
     input reset,
@@ -5,71 +35,114 @@ module uartController(
     input wen,
     input uart_rx,
     output uart_tx,
-    input [1:0]     address,
-    output reg [31:0] data_out=32'hdeadbeaf
+    input [2:0] address,
+    input [31:0] word_in,
+    output[31:0] data_out
 );
 
-reg new_data_in=0;
-wire uart_ready;
-wire [31:0] uart_data_out;
+reg [7:0] data_in;
 
-localparam READY = 1;
-localparam DATAOUT = 0;
-reg [4:0] stateDebug=0;
-
-
-always @(posedge clk or negedge reset) begin
-    if(reset==0) begin
-        data_out <= 0;
-        new_data_in <= 0;
-        //debug to see where the adress is sent
-        stateDebug <= 0;
-    end
-    else begin
-        if(wen||ren)
-        begin
-            case(address)
-            // this is not correct when you get from ren=1 to reading ready
-            // this returns 0 instead of 1
-            READY: begin
-                stateDebug <= 1;
-                if(ren)
-                    data_out <= (new_data_in) ? 32'hffffffff : 0;
-            end
-            DATAOUT: begin
-                stateDebug <= 5;
-                if(ren)begin
-                        data_out <= {24'b0,uart_data_out};
-                        new_data_in <= 0;
-                end
-                if(wen)
-                begin
-                    data_out <= 32'hdeadbeaf;
-                end
-            end
-            default: begin
-                stateDebug <= 11;
-                // data_out <= 0;
-                data_out <= {24'b0,uart_data_out};  
-            end
-            endcase
-        end
-        else
-        if(uart_ready==1)
-        begin
-            new_data_in <= 1;
-        end
-    end
-
+always @(*)begin
+    case(address[1:0])
+        0:data_in = word_in[7:0];
+        1:data_in = word_in[15:8];
+        2:data_in = word_in[23:16];
+        3:data_in = word_in[31:24];
+    endcase
 end
 
-uart uart_inst(
-    .clk(clk),
-    .uart_rx(uart_rx),
-    .uart_tx(uart_tx),
-    .data_out(uart_data_out),
-    .byteReady(uart_ready),
-    .btn1(1'b1)
-);
+assign data_out = {byte_out,byte_out,byte_out,byte_out};
 
+
+reg [7:0] byte_out=0;
+
+
+wire rx_rdy, tx_busy;
+wire [7:0] rx_data;
+reg [7:0] tx_data=0;
+reg ena_tx=0;
+
+reg [7:0] ier=0;
+reg [7:0] lcr=0;
+reg [7:0] lsr=0;
+
+reg [7:0] dll=0;
+reg [7:0] dlm=0;
+
+// Define LCR[7] as DLAB bit
+wire dlab = lcr[7];
+
+// Line Status Register bits (simplified)
+always @(*) begin
+    lsr = 8'b0;
+    lsr[0] = rx_rdy;         // Data Ready
+    lsr[5] = ~tx_busy;       // THR Empty
+    lsr[6] = ~tx_busy;       // TEMT
+end
+
+always @(posedge clk or negedge reset) begin
+    if (reset==0) begin
+        byte_out <= 8'b0;
+        tx_data <= 8'b0;
+        ena_tx <= 1'b0;
+        ier <= 8'b0;
+        lcr <= 8'b0;
+        dll <= 8'd1;   // default baud divisor (can be changed later)
+        dlm <= 8'd0;
+    end else begin
+        ena_tx <= 1'b0; // Default to inactive each cycle
+
+        // Write operations
+        if (wen) begin
+            if (dlab) begin
+                case (address)
+                    3'h0: dll <= data_in; // DLL
+                    3'h1: dlm <= data_in; // DLM
+                endcase
+            end else begin
+                case (address)
+                    3'h0: begin
+                        tx_data <= data_in;
+                        ena_tx <= 1'b1; // Trigger transmission
+                    end
+                    3'h1: ier <= data_in;
+                    3'h3: lcr <= data_in;
+                endcase
+            end
+        end
+
+        // Read operations
+        if (ren) begin
+            if (dlab) begin
+                case (address)
+                    3'h0: byte_out <= dll;
+                    3'h1: byte_out <= dlm;
+                    default: byte_out <= 8'h00;
+                endcase
+            end else begin
+                case (address)
+                    3'h0: byte_out <= rx_data;
+                    3'h1: byte_out <= ier;
+                    3'h5: byte_out <= lsr;
+                    default: byte_out <= 8'h00;
+                endcase
+            end
+        end
+    end
+end
+
+sync_rs232_uart #(
+    .SYSCLK_MHZ(27),
+    .BAUD_RATE(115200) // Change dynamically if desired
+) uart_inst (
+    .clk(clk),
+    .rxd(uart_rx),
+    .rx_rdy(rx_rdy),
+    .rx_data(rx_data),
+    .ena_tx(ena_tx),
+    .tx_data(tx_data),
+    .txd(uart_tx),
+    .tx_busy(tx_busy),
+    .rx_sample_pulse()
+);
 endmodule

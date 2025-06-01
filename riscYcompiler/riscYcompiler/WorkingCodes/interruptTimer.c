@@ -129,6 +129,7 @@ int main() {
     int cnt2=0;
     char test='a';
     while(1){
+        
         cnt ++;
         cnt2 +=2;
         clock = *((volatile uint32_t *)MTIME_ADDR);

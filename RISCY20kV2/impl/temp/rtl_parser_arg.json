@@ -2,195 +2,199 @@
  "Device" : "GW2AR-18C",
  "Files" : [
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/BRAMS/gowin_dpb_program/gowin_dpb_program.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Buses/bus.v",
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Buses/bus.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/CLINT.v",
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/CLINT.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/CPU/ALUCPU.v",
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/CPU/ALUCPU.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/CPU/CSRFile.v",
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/CPU/CSRFile.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/CPU/RegFile.v",
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/CPU/RegFile.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/CPU/SignExtendSelector.v",
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/CPU/SignExtendSelector.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/CPU/constants.vh",
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/CPU/constants.vh",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/CPU/control_alu.v",
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/CPU/control_alu.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/CPU/control_branch.v",
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/CPU/control_branch.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/CPU/control_bypass_ex.v",
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/CPU/control_bypass_ex.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/CPU/control_main.v",
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/CPU/control_main.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/CPU/control_stall_id.v",
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/CPU/control_stall_id.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/CPU/cpu.v",
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/CPU/cpu.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/CPU/mem_read_selector.v",
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/CPU/mem_read_selector.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/CPU/mem_write_selector.v",
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/CPU/mem_write_selector.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/CPU/signExtend.v",
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/CPU/signExtend.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/GPIO/PPU.v",
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/GPIO/PPU.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/GPIO/buttonModule.v",
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/GPIO/buttonModule.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/GPIO/cpuTimer.v",
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/GPIO/cpuTimer.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/GPIO/seven_segment.v",
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/GPIO/seven_segment.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/GPIO/uart.v",
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/GPIO/sync_rs232_uart_v1.2.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/GPIO/uartController.v",
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/GPIO/uart.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/DPBRAM.v",
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/GPIO/uartController.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/flash.v",
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/DPBRAM.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/flashController.v",
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/flash.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/memory.v",
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/flashController.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/programMemory.v",
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/memory.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/ramMemory.v",
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/programMemory.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/config.vh",
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/ramMemory.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/fifo_hs/fifo_hs.v",
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/Memories/word_bram.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/fifo_sc_video.v",
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/config.vh",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/fifo_sc_videoAddress.v",
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/fifo_hs/fifo_hs.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/gowin_rpll/gowin_rpll_ram.v",
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/fifo_sc_video.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/gowin_rpll_800vga/gowin_rpll_800vga.v",
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/fifo_sc_videoAddress.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/gowin_rpll_ppu/gowin_rpll_ppu.v",
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/gowin_rpll/gowin_rpll_ram.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/psram_memory_interface_hs_2ch/psram_memory_interface_hs_2ch.v",
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/gowin_rpll_800vga/gowin_rpll_800vga.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/screenI2C/i2c.v",
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/gowin_rpll_ppu/gowin_rpll_ppu.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/screenI2C/i2capi.v",
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/psram_memory_interface_hs_2ch/psram_memory_interface_hs_2ch.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/screenI2C/screen.v",
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/screenI2C/i2c.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/screenI2C/textEngine.v",
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/screenI2C/i2capi.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/screenVGA/VGAMod.v",
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/screenI2C/screen.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/screenVGA/gowin_dpb/gowin_dpb.v",
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/screenI2C/textEngine.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/screenVGA/gowin_osc/gowin_osc.v",
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/screenVGA/VGAMod.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/screenVGA/gowin_rpll/gowin_rpll.v",
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/screenVGA/gowin_dpb/gowin_dpb.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/screenVGA/gowin_sp/gowin_sp.v",
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/screenVGA/gowin_osc/gowin_osc.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/soc.v",
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/screenVGA/gowin_rpll/gowin_rpll.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/Memories/word_bram.v",
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/screenVGA/gowin_sp/gowin_sp.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/src/soc.v",
    "Type" : "verilog"
   }
  ],
@@ -198,7 +202,7 @@
 
  ],
  "LoopLimit" : 2000,
- "ResultFile" : "/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/impl/temp/rtl_parser.result",
+ "ResultFile" : "/Volumes/NanousisSDCard/RiscY/RISCY20kV2/impl/temp/rtl_parser.result",
  "Top" : "top",
  "VerilogStd" : "sysv",
  "VhdlStd" : "vhdl_93"

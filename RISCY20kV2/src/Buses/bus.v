@@ -15,11 +15,13 @@ module bus( input clk,
             input [31:0] counter27M,
             input [31:0] counter1M,
             input [31:0] program_mem_out, // ADD
+            input [31:0] second_stage_mem_out, // ADD
             input [31:0] usb_out,
             input [31:0] clint_data_out,
 
             input [31:0] boot_instr,
             input [31:0] program_instr,
+            input [31:0] second_stage_instr,
 
             output reg clint_ren,
             output reg clint_wen,
@@ -27,11 +29,14 @@ module bus( input clk,
             output reg mem_wen,
             output reg program_mem_ren,  // ADD
             output reg program_mem_wen,  // ADD
+            output reg second_stage_mem_ren,  // ADD
+            output reg second_stage_mem_wen,  // ADD
             output reg screen_ren,
             output reg screen_wen,
             output reg flash_ren,
             output reg flash_wen,
             output reg uart_ren,
+            output reg uart_wen,
             output reg btn_ren,
             output reg usb_ren,
 
@@ -46,6 +51,9 @@ always@(*) begin
     if(PC <= `BOOTLOADER_END)begin
         instr_out = boot_instr;
     end
+    else if( PC >= `SECOND_STAGE_START && PC < `SECOND_STAGE_END)begin
+        instr_out = second_stage_instr;
+    end
     else if( PC >= `PROGRAM_MEMORY_START && PC < `PROGRAM_MEMORY_END)begin
         instr_out = program_instr;
     end
@@ -54,6 +62,8 @@ always@(*) begin
 
     //************************ DATA ************************//
 
+    second_stage_mem_ren = 0;
+    second_stage_mem_wen = 0;
     program_mem_ren = 0;
     program_mem_wen = 0;
     mem_ren = 0;
@@ -65,6 +75,7 @@ always@(*) begin
     btn_ren = 0;
     data_out = 0;
     uart_ren = 0;
+    uart_wen = 0;
     usb_ren = 0;
     clint_ren = 0;
     clint_wen = 0;
@@ -90,14 +101,20 @@ always@(*) begin
         flash_wen = wen;
         data_out =  flash_out;
     end
+    else if(data_addr >= `SECOND_STAGE_START && data_addr < (`SECOND_STAGE_END))begin
+        second_stage_mem_ren = ren;
+        second_stage_mem_wen = wen;
+        data_out = second_stage_mem_out;
+    end
     else if(data_addr >= `PROGRAM_MEMORY_START && data_addr < (`PROGRAM_MEMORY_END))begin
         program_mem_ren = ren;
         program_mem_wen = wen;
         data_out = program_mem_out;
     end
     else if(data_addr >= `UART_ADDRESS && data_addr < (`UART_END)) begin
-        usb_ren = ren;
-        data_out = usb_out;
+        uart_ren = ren;
+        uart_wen = wen;
+        data_out = uart_out;
     end
     else if(data_addr >= `USB_CONTROLLER_ADRESS && data_addr < (`USB_CONTROLLER_END)) begin
         usb_ren = ren;

@@ -66,6 +66,22 @@ reg [2:0] enableInterrupts;
 reg [3:0] pipeline_flush_count;
 
 reg [40*8-1:0] debug;
+reg [40*8-1:0] debug2;
+
+// THIS IS VERY BAD, BUT ITS THE FASTEST SOLUTION I CAME UP WITH
+// IN CASE WE WRITE MEPC AND ALSO HAVE MRET AFTER
+reg [31:0] trap_vector_reg; 
+always @(*)begin
+    if(wen == 1'b1 & csrWAddr=='h341)begin
+        trap_vector = wd;
+        debug2 ="FORWARD MEPC";
+    end
+    else begin
+        debug2 ="a";
+        trap_vector = trap_vector_reg;
+    end
+end
+
 
 always @(posedge clock or negedge reset)
 begin
@@ -82,7 +98,7 @@ begin
         mcause <= 32'b0;
         mtval <= 32'b0;
         int_taken <= 1'b0;
-        trap_vector <= 32'b0;
+        trap_vector_reg <= 32'b0;
         enableInterrupts <= 3'b111;
         flushPipeline <= 1'b0;
         pipeline_flush_count <= FLUSH_COUNT;
@@ -160,7 +176,7 @@ begin
                         // trap handler chooses whether to return to next instruction or not
                         mepc <= PC_ID;
                         trap_in_ID <= 1'b1;
-                        trap_vector <= {mtvec[31:2],2'b0};
+                        trap_vector_reg <= {mtvec[31:2],2'b0};
                         debug <= "ecall";
                         // it would be 8 if we have user mode but we dont
                         mcause <= {1'b0,31'd11};
@@ -172,7 +188,7 @@ begin
                         // ebreak instruction
                         mepc <= PC_ID;
                         trap_in_ID <= 1'b1;
-                        trap_vector <= {mtvec[31:2],2'b0};
+                        trap_vector_reg <= {mtvec[31:2],2'b0};
                         mcause <= {1'b0,31'd3};
                         mstatus[7] <= mstatus[3];
                         mstatus[3] <= 1'b0;
@@ -181,7 +197,7 @@ begin
                     else if(csrAddr=='h302)begin
                         debug <= "mret";
                         trap_in_ID <= 1'b1;
-                        trap_vector <= mepc;
+                        trap_vector_reg <= mepc;
                         enableInterrupts <= 0;
                         // mstatus[3] <= mstatus[7];
                         // mstatus[7] <= 1'b0;
@@ -193,7 +209,7 @@ begin
                     if(external_interrupt & mie[11]==1'b1 & mip[11] == 1'b1) begin
                         // mepc <= new_mepc;
                         // int_taken <= 1;
-                        trap_vector <= {mtvec[31:2],2'b0};
+                        trap_vector_reg <= {mtvec[31:2],2'b0};
                         mcause <= {1'b1,31'd11};
                         mstatus[7] <= mstatus[3];
                         mstatus[3] <= 1'b0;
@@ -204,7 +220,7 @@ begin
                     else if(timer_interrupt & mie[7]==1'b1 & mip[7] == 1'b1) begin
                         // mepc <= new_mepc;
                         // int_taken <= 1;
-                        trap_vector <= {mtvec[31:2],2'b0};
+                        trap_vector_reg <= {mtvec[31:2],2'b0};
                         mcause <= {1'b1,31'd7};
                         mstatus[7] <= mstatus[3];
                         mstatus[3] <= 1'b0;
@@ -215,7 +231,7 @@ begin
                     else if(software_interrupt & mie[3]==1'b1 & mip[3] == 1'b1) begin
                         // mepc <= new_mepc;
                         // int_taken <= 1;
-                        trap_vector <= {mtvec[31:2],2'b0};
+                        trap_vector_reg <= {mtvec[31:2],2'b0};
                         mcause <= {1'b1,31'd3};
                         mstatus[7] <= mstatus[3];
                         mstatus[3] <= 1'b0;

@@ -76,6 +76,8 @@ module top
     wire [31:0] data_read;
     wire [3:0] byte_select; 
 
+    // used to debug cpu faults
+    wire [2:0] debug_error;
     //**********************************************************************************************//
     //                                              CPU                                             //
     //**********************************************************************************************//
@@ -90,6 +92,7 @@ module top
                 .wen(wen),
                 .data_out(data_to_write),
                 .data_in(data_read),
+                .debug_error(debug_error),
                 .byte_select(byte_select),
                 .software_interrupt(msw_irq),
                 .timer_interrupt(mtimer_irq),
@@ -111,11 +114,17 @@ module top
     wire debug;
 
     // program_memory
+    wire [31:0] second_stage_instr;
+    wire [31:0] second_stage_mem_out;
+    wire second_stage_mem_ren;
+    wire second_stage_mem_wen;
+
     wire [31:0] program_instr;
     wire [31:0] program_mem_out;
     wire program_mem_ren;
     wire program_mem_wen;
     wire uart_ren;
+    wire uart_wen;
     wire [31:0] uart_data_out;
     wire usb_ren;
     wire [31:0] usb_data_out;
@@ -133,10 +142,12 @@ module top
             .counter27M(counter27M),
             .counter1M(counter1M),
             .program_mem_out(program_mem_out), // ADD
+            .second_stage_mem_out(second_stage_mem_out), // ADD
 //            .usb_out(usb_data_out),
             .clint_data_out(clint_data_out),
 
             .program_instr(program_instr),
+            .second_stage_instr(second_stage_instr),
             
             .clint_ren(clint_ren),
             .clint_wen(clint_wen),
@@ -144,11 +155,14 @@ module top
             .mem_wen(mem_wen),
             .program_mem_ren(program_mem_ren),  // ADD
             .program_mem_wen(program_mem_wen),  // ADD
+            .second_stage_mem_ren(second_stage_mem_ren),  // ADD
+            .second_stage_mem_wen(second_stage_mem_wen),  // ADD
             .screen_ren(screen_ren),
             .screen_wen(screen_wen) ,
             .flash_ren(flash_ren),
             .flash_wen(flash_wen),
             .uart_ren(uart_ren),
+            .uart_wen(uart_wen),
             .btn_ren(btn_ren),
 //            .usb_ren(usb_ren),
 
@@ -175,9 +189,9 @@ module top
 
     memory mem( .clk(cpu_clk),
             .reset(reset),
-            .PC(PC[`TEXT_BITS-1:2]),
+            .PC(PC[24:2]),
             .instr(boot_instr),  // BOOTLOADER
-            .data_addr(data_addr[`DATA_BITS-1:2]),
+            .data_addr(data_addr[24:2]),
             .ren(mem_ren),
             .wen(mem_wen),
             .data_in(data_to_write),
@@ -228,11 +242,29 @@ module top
     //**********************************************************************************************//
     //                                       PROGRAM MEMORY                                         //
     //**********************************************************************************************//
-    programMemory programMemory_inst( 
+    `ifndef TESTBENCH
+    programMemory #(
+        .NUM_BRAMS(1)
+    ) SecondStageRAM( 
         .clk(cpu_clk),
         .reset(reset),
-        .PC(PC[20:2]),
-        .address(data_addr[20:2]),
+        .PC(PC[30:2]),
+        .address(data_addr[30:2]),
+        .ren(second_stage_mem_ren),
+        .wen(second_stage_mem_wen),
+        .data_in(data_to_write),
+        .byte_select_vector(byte_select),
+        .instr(second_stage_instr),
+        .data_out(second_stage_mem_out)
+    );
+
+    programMemory #(
+        .NUM_BRAMS(6)
+    )RAM( 
+        .clk(cpu_clk),
+        .reset(reset),
+        .PC(PC[30:2]),
+        .address(data_addr[30:2]),
         .ren(program_mem_ren),
         .wen(program_mem_wen),
         .data_in(data_to_write),
@@ -240,7 +272,36 @@ module top
         .instr(program_instr),
         .data_out(program_mem_out)
     );
-
+    `else
+    memorySim #(
+        .file_location("../includes/secondStage.hex")
+    ) SecondStageRAM( .clk(cpu_clk),
+            .reset(reset),
+            .PC(PC[24:2]),
+            .instr(second_stage_instr),  // BOOTLOADER
+            .data_addr(data_addr[24:2]),
+            .ren(second_stage_mem_ren),
+            .wen(second_stage_mem_wen),
+            .data_in(data_to_write),
+            .data_out(second_stage_mem_out),
+            .byte_select_vector(byte_select),
+            .ready(memReady)
+    );
+    memorySim #(
+        .file_location("../includes/RAM.hex")
+    ) RAM( .clk(cpu_clk),
+            .reset(reset),
+            .PC(PC[24:2]),
+            .instr(program_instr),  // BOOTLOADER
+            .data_addr(data_addr[24:2]),
+            .ren(program_mem_ren),
+            .wen(program_mem_wen),
+            .data_in(data_to_write),
+            .data_out(program_mem_out),
+            .byte_select_vector(byte_select),
+            .ready(memReady)
+    );
+    `endif
     //**********************************************************************************************//
     //                                         HDMI SCREEN                                           //
     //**********************************************************************************************//
@@ -250,8 +311,9 @@ module top
         .clkout(CLK_PIX), //13.5Mhz
         .clkin(clk)       //27Mhz
     );
-
-
+    `else
+    assign CLK_PIX = clk;
+    `endif
     wire [4:0]R_tmp;
     wire [5:0]G_tmp;
     wire [4:0]B_tmp;
@@ -278,7 +340,7 @@ module top
 
     );
 
-	VGAMod	D1 (
+	VGAMod	VGA (
 		.rst      (reset),
         .clkFpga  (clk),
 		.clkPixel (CLK_PIX),
@@ -287,7 +349,7 @@ module top
 		.RGB_Activate (LCD_DEN),
 		.H_Sync       (LCD_HYNC),
     	.V_Sync       (LCD_SYNC),
-
+        .debug_error(debug_error),
         .R_tmp(R_tmp),
         .G_tmp(G_tmp),
         .B_tmp(B_tmp),
@@ -305,7 +367,8 @@ module top
 //    **********************************************************************************************//
 
 	assign		LCD_CLK		=	CLK_PIX;
-    `else
+//     `else
+    `ifdef TESTBENCH
    textTest text(
                    .clk(clk),
                    .reset(reset),
@@ -317,6 +380,7 @@ module top
                    .pixelData(pixelData),
                    .error(error)
    );
+   `endif
 //    screen scr(
 //        .clk(clk),
 //        .pixelData(pixelData),
@@ -324,18 +388,26 @@ module top
 //        .io_sda(io_sda),  // I2C data line (bi-directional)
 //        .io_scl(io_scl)  // I2C clock line
 //    );
-    `endif
+//     `endif
 
-    // uartController uart_controller (
+    uartController uart_controller (
+        .clk(cpu_clk),
+        .reset(reset),
+        .ren(uart_ren),
+        .wen(uart_wen),
+        .uart_rx(uart_rx),
+        .uart_tx(uart_tx),
+        .address(data_addr[2:0]),
+        .word_in(data_to_write),
+        .data_out(uart_data_out)
+    );
+    // uart uart_controller (
     //     .clk(cpu_clk),
-    //     .reset(reset),
-    //     .ren(uart_ren),
-    //     .wen(1'b0),
+    //     .btn1(btnDownL),
     //     .uart_rx(uart_rx),
-    //     .uart_tx(uart_tx),
-    //     .address(data_addr[1:0]),
-    //     .data_out(uart_data_out)
+    //     .uart_tx(uart_tx)
     // );
+
 
 
 
@@ -379,7 +451,7 @@ module top
                 state <= STATE_INIT;
             end
             STATE_DEBOUNCE: begin
-                cpuclk=0;
+                cpuclk<=0;
 
                 txCounter <= txCounter + 1;
                 if (txCounter == 22'hFF) begin

@@ -459,22 +459,22 @@ always@(posedge clock or negedge reset)begin
 				begin
 					if(branch_taken||Jump||EXMEM_JumpJALR)
 					begin
-						pc_string="BID Taken";
+						pc_string<="BID Taken";
 						newmepc <= PC_new;
 					end
 					else if(write_pc==1'b0&&IFID_PC!=32'hffffffff)
 					begin
-						pc_string="stalled due to loadWord";
+						pc_string<="stalled due to loadWord";
 						newmepc <= IFID_PC;
 					end
 					else if(PC_IF2!=32'hffffffff)
 					begin
-						pc_string="IF2 Taken";
+						pc_string<="IF2 Taken";
 						newmepc <= PC_IF2;
 					end
 					else
 					begin
-						pc_string="PC Taken";
+						pc_string<="PC Taken";
 						newmepc <= PC;
 					end
 					mepc_state <= MEPC_WAITINGJUMP;
@@ -483,7 +483,7 @@ always@(posedge clock or negedge reset)begin
 			MEPC_WAITINGJUMP:begin
 				if(branch_taken||Jump||EXMEM_JumpJALR)
 				begin
-					pc_string="Branch Taken";
+					pc_string<="Branch Taken";
 					newmepc <= PC_new;
 				end
 				if(flushPipeline==1'b0)
