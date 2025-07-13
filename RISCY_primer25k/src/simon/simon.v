@@ -43,7 +43,7 @@ module simon #(parameter n=16, m=4)
     wire [n-1:0]key_i;
     reg [n-1:0] key_schedule [NUM_ROUNDS-1:0];
     wire [2*n-1:0] next_ciphertext;
-    round #(.n(n),.m(m)) r (.x_s(x_s),.y(y),.k(k));
+    sha_round #(.n(n),.m(m)) r (.x_s(x_s),.y(y),.k(k));
     key_expansion #(.n(n),.m(m)) key_ex(.key(key_in), .i(next_counter), .key_i(key_i));
     reg [7:0] init_counter =0;
     always @(posedge(clk))

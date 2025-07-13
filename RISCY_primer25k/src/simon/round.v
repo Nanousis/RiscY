@@ -1,5 +1,5 @@
 
-module round #(parameter n=16, m=4)
+module sha_round #(parameter n=16, m=4)
     (x_s, k, y);
     input [(2*n)-1:0] x_s;
     input [(n-1):0] k;

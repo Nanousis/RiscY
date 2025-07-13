@@ -54,6 +54,12 @@
         <File path="src/screenI2C/i2capi.v" type="file.verilog" enable="1"/>
         <File path="src/screenI2C/screen.v" type="file.verilog" enable="1"/>
         <File path="src/screenI2C/textEngine.v" type="file.verilog" enable="1"/>
+        <File path="src/sha/f_permutation.v" type="file.verilog" enable="1"/>
+        <File path="src/sha/keccak.v" type="file.verilog" enable="1"/>
+        <File path="src/sha/padder.v" type="file.verilog" enable="1"/>
+        <File path="src/sha/padder1.v" type="file.verilog" enable="1"/>
+        <File path="src/sha/rconst.v" type="file.verilog" enable="1"/>
+        <File path="src/sha/round.v" type="file.verilog" enable="1"/>
         <File path="src/simon/key_expansion.v" type="file.verilog" enable="1"/>
         <File path="src/simon/round.v" type="file.verilog" enable="1"/>
         <File path="src/simon/round_inv.v" type="file.verilog" enable="1"/>

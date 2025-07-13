@@ -253,15 +253,15 @@ module top
     wire [31:0] encryptor_out;
     wire encryptor_ren;
     wire encryptor_wen;
-    Encryption_Controller enc_inst(
-        .clk(cpu_clk),
-        .reset(reset),
-        .ren(encryptor_ren),
-        .wen(encryptor_wen),
-        .address(data_addr[9:2]),
-        .data_in(data_to_write),
-        .data_out(encryptor_out)
-    );
+    // Encryption_Controller enc_inst(
+    //     .clk(cpu_clk),
+    //     .reset(reset),
+    //     .ren(encryptor_ren),
+    //     .wen(encryptor_wen),
+    //     .address(data_addr[9:2]),
+    //     .data_in(data_to_write),
+    //     .data_out(encryptor_out)
+    // );
     //**********************************************************************************************//
     //                                         HDMI SCREEN                                           //
     //**********************************************************************************************//
@@ -290,51 +290,51 @@ module top
     wire [13:0] xcursor, ycursor;
     wire is_blank;
 
-    PPU ppu_inst (
-        .clk(clk_p),
-        .clk_cpu(cpu_clk),
-        .reset(reset),
-        .ren(screen_ren),
-        .wen(screen_wen),
-        .address(data_addr[15:0]),
-        .data_in(data_to_write),
-        .byte_select(byte_select),
-        .xcursor(xcursor),
-        .ycursor(ycursor),
-        .is_blank(is_blank),
-        .data_out(),
-        .color_out(color_out)
-    );
+    // PPU ppu_inst (
+    //     .clk(clk_p),
+    //     .clk_cpu(cpu_clk),
+    //     .reset(reset),
+    //     .ren(screen_ren),
+    //     .wen(screen_wen),
+    //     .address(data_addr[15:0]),
+    //     .data_in(data_to_write),
+    //     .byte_select(byte_select),
+    //     .xcursor(xcursor),
+    //     .ycursor(ycursor),
+    //     .is_blank(is_blank),
+    //     .data_out(),
+    //     .color_out(color_out)
+    // );
 
 
 
-    Reset_Sync u_Reset_Sync (
-    .resetn(sys_resetn),
-    .ext_reset(~resetn & pll_lock),
-    .clk(clk_p)
-    );
+    // Reset_Sync u_Reset_Sync (
+    // .resetn(sys_resetn),
+    // .ext_reset(~resetn & pll_lock),
+    // .clk(clk_p)
+    // );
 
-    svo_hdmi #(.SVO_MODE("1024x600")) svo_hdmi_inst_1 (
-        .clk(clk_cpu),
-        .resetn(sys_resetn),
+    // svo_hdmi #(.SVO_MODE("1024x600")) svo_hdmi_inst_1 (
+    //     .clk(clk_cpu),
+    //     .resetn(sys_resetn),
 
-        // video clocks
-        .clk_pixel(clk_p),
-        .clk_5x_pixel(clk_p5),
-        .locked(pll_lock),
+    //     // video clocks
+    //     .clk_pixel(clk_p),
+    //     .clk_5x_pixel(clk_p5),
+    //     .locked(pll_lock),
 
-        // ppu signals
-        .ppu_color(color_out),
-        .xcursor(xcursor),
-        .ycursor(ycursor),
-        .is_blank(is_blank),
+    //     // ppu signals
+    //     .ppu_color(color_out),
+    //     .xcursor(xcursor),
+    //     .ycursor(ycursor),
+    //     .is_blank(is_blank),
 
-        // output signals
-        .tmds_clk_n(tmds_clk_n_1),
-        .tmds_clk_p(tmds_clk_p_1),
-        .tmds_d_n(tmds_d_n_1),
-        .tmds_d_p(tmds_d_p_1)
-    );
+    //     // output signals
+    //     .tmds_clk_n(tmds_clk_n_1),
+    //     .tmds_clk_p(tmds_clk_p_1),
+    //     .tmds_d_n(tmds_d_n_1),
+    //     .tmds_d_p(tmds_d_p_1)
+    // );
 
 //    **********************************************************************************************//
 //                                         I2C Screen                                               //
