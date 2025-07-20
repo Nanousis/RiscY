@@ -1,4 +1,26 @@
-._*  # Ignore all macOS metadata files starting with ._
-*:Zone.Identifier
-*:Zone - Copy.Identifier
-.vcd
+# macOS metadata
+._*
+*DS_Store
+*.Identifier
+
+# Windows metadata
+*.Zone.Identifier
+* - Copy.Identifier
+
+# Simulation / output files
+*.vcd
+*.o
+*.bin
+*.elf
+*.err
+*.log
+
+# Build output directories
+RISCY20KV2/impl/
+RISCY9K/impl/
+RISCY_primer25k/impl/
+riscYcompiler/riscYcompiler/builds/
+riscYcompiler/bootloaderCompiler/builds/
+riscYcompiler/secondStageCompiler/builds/
+RISCY20kV2/src/Testbench/obj_dir/
+riscYcompiler/riscYcompiler/sampleCode/LCD_DisplayAndRemove.cZone.Identifier

@@ -10,7 +10,7 @@ verilator -Wall -Wno-fatal \
   -DTESTBENCH \
   -I../include \
   --cc \
-  ./Simulation/*.v ../CPU/*.v ../GPIO/*.v ../Memories/*.v ../screenI2C/*.v \
+  ./Simulation/*.v ../CPU/*.v ../GPIO/*.v ../Memories/*.v ../Memories/*.sv ../screenI2C/*.v \
   ../BRAMS/gowin_dpb_program/*.v ../soc.v ../CLINT.v ../Buses/*.v \
   ../screenVGA/*.v\
   --exe sim_main.cpp\

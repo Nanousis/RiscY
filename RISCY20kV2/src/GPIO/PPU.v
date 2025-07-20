@@ -13,7 +13,9 @@ module PPU(
     output reg [31:0] data_out=32'hdeadbeaf,
 	output reg         [4:0]   RGB_B,
 	output reg         [5:0]   RGB_G,
-	output reg         [4:0]   RGB_R
+	output reg         [4:0]   RGB_R,
+
+    output reg screen_change
 );
 
     parameter MAX_WIDTH=15'd400;
@@ -130,6 +132,7 @@ module PPU(
             writeText<=0;
             writeSprite<=0;
             text_address<=0;
+            screen_change<=0;
         end
         else
         begin
@@ -141,6 +144,9 @@ module PPU(
             text_address<=address;
             if(wen)begin
                 // from 0->2048 is the text memory
+                if(address==16'h2800)begin
+                    screen_change<=(data_in[0]==1'b1)?1:0;
+                end
                 if(address<16'd3072)begin
                     textEn<=1;
                     writeText<=data_in_half[7:0];

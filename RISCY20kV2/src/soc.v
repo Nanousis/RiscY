@@ -8,7 +8,23 @@
 `timescale 1ns/1ns
 module top
 (   
+    // inferred ports connecting to SDRAM
+    output O_sdram_clk,
+    output O_sdram_cke,
+    output O_sdram_cs_n,
+    output O_sdram_cas_n,
+    output O_sdram_ras_n,
+    output O_sdram_wen_n,
+    inout [31:0] IO_sdram_dq,
+    output [10:0] O_sdram_addr,
+    output [1:0] O_sdram_ba,
+    output [3:0] O_sdram_dqm,
+
     input clk,
+    `ifdef TESTBENCH
+    input vga_clk,
+    input sdram_clk,
+    `endif
 //    output reg [5:0] led,
 //    inout io_sda,
 //    output io_scl,
@@ -97,12 +113,14 @@ module top
                 .software_interrupt(msw_irq),
                 .timer_interrupt(mtimer_irq),
                 .external_interrupt(mext_irq),
-                .memReady(memReady)
+                .memReady(bus_ready)
     );
     
     //**********************************************************************************************//
     //                                              BUS                                             //
     //**********************************************************************************************//
+
+    wire bus_ready;
 
     wire mem_ren;
     wire mem_wen;
@@ -145,6 +163,7 @@ module top
             .second_stage_mem_out(second_stage_mem_out), // ADD
 //            .usb_out(usb_data_out),
             .clint_data_out(clint_data_out),
+            .sdram_data_out(sdram_interface_data_out),
 
             .program_instr(program_instr),
             .second_stage_instr(second_stage_instr),
@@ -164,10 +183,24 @@ module top
             .uart_ren(uart_ren),
             .uart_wen(uart_wen),
             .btn_ren(btn_ren),
+            .sdram_ren(sdram_ren),
+            .sdram_wen(sdram_wen),
 //            .usb_ren(usb_ren),
 
             .data_out(data_read),
-            .instr_out(instr)
+            .instr_out(instr),
+            // data to write
+            .data_to_write(data_to_write),
+            .data_to_write_reg(sdram_data_in),
+            // byte select vector
+            .byte_select_vector(byte_select),
+            .data_mask_reg(),
+            .address_reg(),
+
+            // ready signals
+            .memReady(memReady),
+            .sdram_ready(sdram_interface_ready),
+            .bus_ready(bus_ready)
     );
     wire clint_ren;
     wire clint_wen;
@@ -199,6 +232,92 @@ module top
             .byte_select_vector(byte_select),
             .ready(memReady)
     );
+    
+    `ifndef TESTBENCH
+    // wires to 'sdram_controller'
+    wire sdram_clk;
+    wire rpll_lock;
+
+    Gowin_rPLL_sdram rPLL_sdram (
+        .clkin(cpu_clk),  // 27 MHz
+        .clkout(sdram_clk),  // 60 MHz
+        .lock(rpll_lock)
+    );
+    `endif
+    wire sdram_ren;
+    wire sdram_wen;
+    wire sdram_ren_internal;
+    wire sdram_wen_internal;
+    wire [31:0] sdram_data_in;
+    wire [31:0] sdram_data_out;
+    wire [31:0] sdram_interface_to_write;
+    wire [31:0] sdram_interface_data_out;
+    wire [31:2] sdram_addr;
+    wire [3:0] sdram_byte_select_vector;
+    reg [7:0] sdram_len=0;
+    wire sdram_ready;
+    wire sdram_interface_ready;
+    wire interface_ack;
+
+    sdram_interface sdram_interface_init(
+        .sdram_clk(sdram_clk),
+        .cpu_clk(cpu_clk),
+        .reset_n(reset),
+        .data_in(data_to_write),
+        .address(data_addr[25:2]),
+        .byte_select_vector(byte_select),
+        .ram_ack(interface_ack),
+        .cpu_ren(sdram_ren),
+        .cpu_wen(sdram_wen),
+        .sdram_ready(sdram_ready),
+
+        .sdram_ren(sdram_ren_internal),
+        .sdram_wen(sdram_wen_internal),
+        .sdram_addr(sdram_addr),
+        .sdram_data_out(sdram_interface_to_write),
+        .sdram_byte_select_vector(sdram_byte_select_vector),
+
+        .sdram_data_in(sdram_data_out[31:0]),
+        .data_out(sdram_interface_data_out),
+        .ready(sdram_interface_ready)
+    );
+
+
+    ram_controller ram_controller_inst
+    (
+        .O_sdram_clk,
+        .O_sdram_cke,
+        .O_sdram_cs_n,
+        .O_sdram_cas_n,
+        .O_sdram_ras_n,
+        .O_sdram_wen_n,
+        .IO_sdram_dq,
+        .O_sdram_addr,
+        .O_sdram_ba,
+        .O_sdram_dqm,
+
+        .vga_ren(frame_ren),
+        .vga_addr(vga_addr),
+        .vga_ack(vga_ack),
+        .interface_ack(interface_ack),
+
+        .cpu_clk(cpu_clk),
+        .sdram_clk(sdram_clk),
+        .reset_n(reset),
+        .ren(sdram_ren_internal),
+        .wen(sdram_wen_internal),
+        .address(sdram_addr), // 31 bits address
+        .data_in(sdram_interface_to_write),
+        .mask(sdram_byte_select_vector),
+        .len(0),
+        // .len(sdram_len),
+        .data_out(sdram_data_out),
+        .ready(sdram_ready)
+    );
+
+
+
+
     wire btn_ren;
     wire btn_out;
     buttonModule bm(
@@ -259,7 +378,7 @@ module top
     );
 
     programMemory #(
-        .NUM_BRAMS(6)
+        .NUM_BRAMS(4)
     )RAM( 
         .clk(cpu_clk),
         .reset(reset),
@@ -285,7 +404,7 @@ module top
             .data_in(data_to_write),
             .data_out(second_stage_mem_out),
             .byte_select_vector(byte_select),
-            .ready(memReady)
+            .ready(memReady2)
     );
     memorySim #(
         .file_location("../includes/RAM.hex")
@@ -299,7 +418,7 @@ module top
             .data_in(data_to_write),
             .data_out(program_mem_out),
             .byte_select_vector(byte_select),
-            .ready(memReady)
+            .ready(memReady2)
     );
     `endif
     //**********************************************************************************************//
@@ -312,14 +431,22 @@ module top
         .clkin(clk)       //27Mhz
     );
     `else
-    assign CLK_PIX = clk;
+    assign CLK_PIX = vga_clk; // 13.5 MHz
     `endif
-    wire [4:0]R_tmp;
-    wire [5:0]G_tmp;
-    wire [4:0]B_tmp;
+    wire [4:0]R_tmp = (screen_change)?R_tmp_FRAME:R_tmp_PPU;
+    wire [5:0]G_tmp = (screen_change)?G_tmp_FRAME:G_tmp_PPU;
+    wire [4:0]B_tmp = (screen_change)?B_tmp_FRAME:B_tmp_PPU;
+    wire [4:0]R_tmp_FRAME;
+    wire [5:0]G_tmp_FRAME;
+    wire [4:0]B_tmp_FRAME;
+    wire [4:0]R_tmp_PPU;
+    wire [5:0]G_tmp_PPU;
+    wire [4:0]B_tmp_PPU;
 
     wire [13:0] xcursor, ycursor;
     wire is_blank;
+
+    wire screen_change;
 
     PPU ppu_inst (
         .clk(CLK_PIX),
@@ -334,10 +461,30 @@ module top
         .ycursor(ycursor),
         .is_blank(is_blank),
         .data_out(),
-        .RGB_R(R_tmp),
-        .RGB_G(G_tmp),
-        .RGB_B(B_tmp)
+        .RGB_R(R_tmp_PPU),
+        .RGB_G(G_tmp_PPU),
+        .RGB_B(B_tmp_PPU),
+        .screen_change(screen_change)
+    );
 
+    wire frame_ren;
+    wire vga_ack;
+    wire [31:0] vga_addr;
+    framebuffer fb_inst (
+        .sdram_clk(sdram_clk), // 60 MHz
+        .vga_clk(CLK_PIX), // 13.5 MHz
+        .reset_n(reset),
+        .xcursor(xcursor),
+        .ycursor(ycursor),
+        .vga_data_in(sdram_data_out),
+        .ram_ack(vga_ack),
+        .vga_ren(frame_ren),
+        .vga_addr(vga_addr),
+        .screen_change(screen_change),
+
+        .R_tmp(R_tmp_FRAME),
+        .G_tmp(G_tmp_FRAME),
+        .B_tmp(B_tmp_FRAME)
     );
 
 	VGAMod	VGA (

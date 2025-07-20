@@ -11,7 +11,7 @@ typedef struct Programheader{
 } Programheader;
 
 #define RAM_ADDRESS 0x80000000
-#define RAM_SIZE 0xC000
+#define RAM_SIZE 0x8000
 #define FLASH_READY 0x8B000000
 #define FLASH_REN 0x8B000001
 #define FLASH_WEN 0x8B000002

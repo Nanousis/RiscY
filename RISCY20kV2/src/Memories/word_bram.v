@@ -11,8 +11,6 @@ module word_bram(
     output [31:0] data_out
 );
 
-
-
     wire [7:0] data_in0, data_in1, data_in2, data_in3;
     wire [7:0] instr0, instr1, instr2, instr3;
     wire [7:0] data_out0, data_out1, data_out2, data_out3;

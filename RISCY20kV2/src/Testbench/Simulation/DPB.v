@@ -1,4 +1,4 @@
-module DPB (
+module DPB2 (
     output reg [7:0] DOA,
     output reg [7:0] DOB,
     input CLKA, OCEA, CEA, RESETA, WREA,

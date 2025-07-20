@@ -4,6 +4,33 @@
 // included for the printf function
 #include <stdarg.h>
 #include <stddef.h>
+#include <stdint.h>
+#include "riscYstdio.h"
+/* register definitions */
+#define REG_RBR		0x00 /* Receiver buffer reg. */
+#define REG_THR		0x00 /* Transmitter holding reg. */
+#define REG_IER		0x01 /* Interrupt enable reg. */
+#define REG_IIR		0x02 /* Interrupt ID reg. */
+#define REG_FCR		0x02 /* FIFO control reg. */
+#define REG_LCR		0x03 /* Line control reg. */
+#define REG_MCR		0x04 /* Modem control reg. */
+#define REG_LSR		0x05 /* Line status reg. */
+#define REG_MSR		0x06 /* Modem status reg. */
+#define REG_SCR		0x07 /* Scratch reg. */
+#define REG_BRDL	0x00 /* Divisor latch (LSB) */
+#define REG_BRDH	0x01 /* Divisor latch (MSB) */
+
+/* Line status */
+#define LSR_DR			0x01 /* Data ready */
+#define LSR_OE			0x02 /* Overrun error */
+#define LSR_PE			0x04 /* Parity error */
+#define LSR_FE			0x08 /* Framing error */
+#define LSR_BI			0x10 /* Break interrupt */
+#define LSR_THRE		0x20 /* Transmitter holding register empty */
+#define LSR_TEMT		0x40 /* Transmitter empty */
+#define LSR_EIRF		0x80 /* Error in RCVR FIFO */
+
+#define UART_ADDRESS 0x10000000
 // Screen memory location
 #define SCREEN_LOACTION 0x88000000
 #define SCREEN_SIZE 1216
@@ -25,8 +52,28 @@
 // General purpose wait time for frame rendering
 #define WaitTime 10000
 
+static uint8_t readb( uintptr_t addr )
+{
+	return *( (volatile uint8_t *) addr );
+}
 
+static void writeb( uint8_t b, uintptr_t addr )
+{
+	*( (uint8_t *) addr ) = b;
+}
 
+void vOutNS16550(unsigned char c )
+{
+
+    // uintptr_t *ptr = (uintptr_t *) UART_ADDRESS;
+    // ptr[0] = c;
+    // putch(129,'T', 15);
+    // uintptr_t ptr = (uintptr_t *)UART_ADDRESS;
+	while ( (readb(UART_ADDRESS + REG_LSR ) & LSR_THRE) == 0 ) {
+		/* busy wait */
+	}
+	writeb( c, UART_ADDRESS + REG_THR );
+}
 
 
 // *****************************************************************************
@@ -53,13 +100,13 @@ void *memset(void *s, int c, size_t n) {
 }
 // *****************************************************************************
 // returns 1 if the button is pressed, 0 otherwise
+char getButton(char btn){
+    char *buttons = (char *)BUTTONS;
+    return buttons[btn];
+}
 char getButtonDown(){
     char *buttons = (char *)BUTTONS;
     return buttons[0];
-}
-char getButton(char button){
-    char *buttons = (char *)BUTTONS;
-    return buttons[button];
 }
 char getButtonUp(){
     char *buttons = (char *)BUTTONS;
@@ -78,7 +125,10 @@ char getButtonRight(){
 // Puts a character at the specified location with the specified color.
 // The colors are as the Text Mode format in https://en.wikipedia.org/wiki/VGA_text_mode
 unsigned char putch(int location, char c, char color) {
-    if(location>SCREEN_SIZE||location<0){
+    if(location<0){
+        vOutNS16550(c);
+    }
+    if(location>SCREEN_SIZE){
         return 0;
     }
     #if SMALLSCREEN == 0
@@ -183,7 +233,6 @@ unsigned char printDec(int location, unsigned int num, char color) {
 
 // General purpose variable to track where to print on the screen
 short screenPos;
-
 int printf(const char* str, ...) 
 { 
     char color=15;
@@ -245,6 +294,7 @@ int printf(const char* str, ...)
 // It returns the size of the string printed
 int printfSCR(int location, char color,const char* str, ...) 
 { 
+    
     // initializing list pointer 
     va_list ptr; 
     va_start(ptr, str);  
@@ -288,6 +338,57 @@ int printfSCR(int location, char color,const char* str, ...)
         }
         else{
             putch(location+strPos,str[i],color);
+            strPos++;
+        }
+    } 
+  
+    // ending traversal 
+    va_end(ptr); 
+    return strPos; 
+} 
+
+// same as all the other printfs but sends the data to uart
+int uart_printf(const char* str, ...) 
+{ 
+    // initializing list pointer 
+    va_list ptr; 
+    va_start(ptr, str);  
+    // index of where to store the characters of str in 
+    // token 
+    int strPos=0;
+    // parsing the formatted string 
+    int i=0;
+    for (i = 0; str[i] != '\0'; i++) { 
+        if(str[i]=='%'){
+            if(str[i+1]=='x'){
+                i++;
+                int value=va_arg(ptr, int);
+                strPos+=printHex(-100,value,0);
+            }
+            else if(str[i+1]=='d'){
+                i++;
+                unsigned int value=va_arg(ptr, unsigned int);
+                strPos+=printDec(-100,value,0);
+            }
+            else if(str[i+1]=='c'){
+                i++;
+                char value=va_arg(ptr, int);
+                putch(-100,value,0);
+                strPos++;
+            }
+            else if (str[i+1]=='s')
+            {
+                i++;
+                char *value=va_arg(ptr, char*);
+                strPos+=printString(-100,value,0);
+            }
+            else{
+                putch(-100,str[i],0);
+                strPos++;
+            }
+        }
+        else{
+            putch(-100,str[i],0);
             strPos++;
         }
     } 

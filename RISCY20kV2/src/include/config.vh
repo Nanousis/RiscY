@@ -48,6 +48,9 @@
 //`define SCREEN_RANGE   32'd64
 
 // Data memory
+`define SDRAM_BEGIN     32'h7000_0000
+`define SDRAM_END       32'h7FFF_FFFF
+
 `define DATA_BEGIN      32'h8000_0000
 `define DATA_BITS       20
 `define DATA_WIDTH      2**`DATA_BITS

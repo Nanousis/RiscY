@@ -1,7 +1,9 @@
 `ifndef SYNTHESIS
-`timescale 10ns/10ns
+`timescale 1ns/1ns
 module test();
   reg clk = 0;
+  reg sdram_clk=0;
+  reg vga_clk=0;
   wire [5:0] led;
   reg btn1= 1;
   reg btn2= 1;
@@ -11,9 +13,51 @@ module test();
   wire io_scl;
     // wire D1,D2,D3,D4,Dp,A,B,C,D,E,F,G;
 
+
+// 'sdram' wires between 'sdram' and 'sdram_controller'
+wire O_sdram_clk;
+wire O_sdram_cke;
+wire O_sdram_cs_n;  // chip select
+wire O_sdram_cas_n;  // columns address select
+wire O_sdram_ras_n;  // row address select
+wire O_sdram_wen_n;  // write enable
+wire [31:0] IO_sdram_dq;  // 32 bit bidirectional data bus
+wire [10:0] O_sdram_addr;  // 11 bit multiplexed address bus
+wire [1:0] O_sdram_ba;  // two banks
+wire [3:0] O_sdram_dqm;  // data mask (byte enable)
+
+// sdr2mx32 sdram (  // note: very slow until it reaches initialized state at ~328 us
+mt48lc2m32b2 sdram (
+
+    .Clk(O_sdram_clk),
+    .Cke(O_sdram_cke),
+    .Cs_n(O_sdram_cs_n),
+    .Cas_n(O_sdram_cas_n),
+    .Ras_n(O_sdram_ras_n),
+    .We_n(O_sdram_wen_n),
+    .Dq(IO_sdram_dq),
+    .Addr(O_sdram_addr),
+    .Ba(O_sdram_ba),
+    .Dqm(O_sdram_dqm)
+);
+
 top TOP
-(   .clk(clk),
-    
+(   
+    .O_sdram_clk,
+    .O_sdram_cke,
+    .O_sdram_cs_n,
+    .O_sdram_cas_n,
+    .O_sdram_ras_n,
+    .O_sdram_wen_n,
+    .IO_sdram_dq,
+    .O_sdram_addr,
+    .O_sdram_ba,
+    .O_sdram_dqm,
+
+    .clk(clk),
+    .vga_clk(vga_clk),
+    .sdram_clk(sdram_clk),
+
     .flashMiso(),
     .flashClk(),
     .flashMosi(),
@@ -25,19 +69,28 @@ top TOP
     .btnDownR(1),
     .btnUpR(1),
     .btnLeftR(1),
-    .btnRightR(1)
+    .btnRightR(1),
+
+    .btnDownL(1),
+    .btnUpL(1),
+    .btnLeftL(1),
+    .btnRightL(1)
 );
 
- always
-    #1  clk = ~clk;
+always #8 sdram_clk = ~sdram_clk; // 60 MHz
+always #37 vga_clk = ~vga_clk; // 13.5 MHz
 
+
+ always
+    #18  clk = ~clk; // 27 MHz
     initial begin
         $display("Starting TESTBENCH");
         #10 reset = 1;
         #10 btn1 =0;
         #100 
 
-        #1000000
+        repeat(2_000_000) @(posedge clk);
+
         for (i = 0; i < 32; i = i + 1) begin
             case (i)
             0: $display ("%d: x0   : %d - 0x%h", i,test.TOP.cpu_1.cpu_regs.data[i],test.TOP.cpu_1.cpu_regs.data[i]);

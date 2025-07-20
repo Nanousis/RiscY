@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Module name="TOP" Register="23" Alu="21" Lut="3" T_Register="3409(23)" T_Alu="49(21)" T_Lut="3549(3)">
-    <SubModule name="chip_pll"/>
-    <SubModule name="D1" Register="3358" Alu="3" Lut="3536" T_Register="3358(3358)" T_Alu="3(3)" T_Lut="3536(3536)"/>
-    <SubModule name="btn_debouncer_inst" Register="28" Alu="25" Lut="10" T_Register="28(28)" T_Alu="25(25)" T_Lut="10(10)"/>
-</Module>
