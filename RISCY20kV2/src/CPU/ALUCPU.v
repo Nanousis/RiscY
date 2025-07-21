@@ -10,7 +10,7 @@ module ALUCPU #(parameter N = 32) (output[N-1:0] out,
 								output zero,
 								output reg overflow,
 								input signed [N-1:0] inA, inB,
-								input [3:0] op);
+								input [4:0] op);
 
 /****** SIGNALS ******/
 /****** SIGNALS ******/
@@ -43,6 +43,8 @@ always @(*) begin
 		`LUI:    begin {overflow, out_val} = {1'b0, inB[31:12], 12'b0}; debug_string = "LUI"; end
 		`AUIPC:  begin {overflow, out_val} = inA + {inB[31:12], 12'b0}; debug_string = "AUIPC"; end
 		`PASS:    begin {overflow, out_val} = inA; debug_string = "PASS"; end
+		`MUL:    begin {overflow, out_val} = inA * inB; debug_string = "MUL"; end
+		// `DIVU:    begin {overflow, out_val} = inA / inB; debug_string = "DIVU"; end
 		default: begin {overflow, out_val} = 33'b0; debug_string = "DEFAULT"; end
 	endcase
 end

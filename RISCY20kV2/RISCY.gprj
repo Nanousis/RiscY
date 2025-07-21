@@ -25,6 +25,7 @@
         <File path="src/GPIO/PPU.v" type="file.verilog" enable="1"/>
         <File path="src/GPIO/buttonModule.v" type="file.verilog" enable="1"/>
         <File path="src/GPIO/cpuTimer.v" type="file.verilog" enable="1"/>
+        <File path="src/GPIO/frame_buffer.sv" type="file.verilog" enable="1"/>
         <File path="src/GPIO/seven_segment.v" type="file.verilog" enable="1"/>
         <File path="src/GPIO/sync_rs232_uart_v1.2.v" type="file.verilog" enable="1"/>
         <File path="src/GPIO/uart.v" type="file.verilog" enable="1"/>
@@ -34,15 +35,22 @@
         <File path="src/Memories/flashController.v" type="file.verilog" enable="1"/>
         <File path="src/Memories/memory.v" type="file.verilog" enable="1"/>
         <File path="src/Memories/programMemory.v" type="file.verilog" enable="1"/>
+        <File path="src/Memories/ram.sv" type="file.verilog" enable="1"/>
         <File path="src/Memories/ramMemory.v" type="file.verilog" enable="1"/>
+        <File path="src/Memories/sdram_interface.sv" type="file.verilog" enable="1"/>
         <File path="src/Memories/word_bram.v" type="file.verilog" enable="1"/>
         <File path="src/config.vh" type="file.verilog" enable="1"/>
         <File path="src/fifo_hs/fifo_hs.v" type="file.verilog" enable="1"/>
         <File path="src/fifo_sc_video.v" type="file.verilog" enable="1"/>
         <File path="src/fifo_sc_videoAddress.v" type="file.verilog" enable="1"/>
         <File path="src/gowin_rpll/gowin_rpll_ram.v" type="file.verilog" enable="1"/>
+        <File path="src/gowin_rpll_100mhz/gowin_rpll_100_mhz.v" type="file.verilog" enable="1"/>
+        <File path="src/gowin_rpll_100mhz/gowin_rpll_100mhz.v" type="file.verilog" enable="1"/>
         <File path="src/gowin_rpll_800vga/gowin_rpll_800vga.v" type="file.verilog" enable="1"/>
+        <File path="src/gowin_rpll_fast_sdram/gowin_rpll_fast_sdram.v" type="file.verilog" enable="1"/>
         <File path="src/gowin_rpll_ppu/gowin_rpll_ppu.v" type="file.verilog" enable="1"/>
+        <File path="src/ip/gowin_rpll/gowin_rpll.v" type="file.verilog" enable="1"/>
+        <File path="src/ip/sdram_controller_hs/sdram_controller_hs.v" type="file.verilog" enable="1"/>
         <File path="src/psram_memory_interface_hs_2ch/psram_memory_interface_hs_2ch.v" type="file.verilog" enable="1"/>
         <File path="src/screenI2C/i2c.v" type="file.verilog" enable="1"/>
         <File path="src/screenI2C/i2capi.v" type="file.verilog" enable="1"/>

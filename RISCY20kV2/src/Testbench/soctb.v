@@ -89,7 +89,7 @@ always #37 vga_clk = ~vga_clk; // 13.5 MHz
         #10 btn1 =0;
         #100 
 
-        repeat(2_000_000) @(posedge clk);
+        repeat(10_000) @(posedge clk);
 
         for (i = 0; i < 32; i = i + 1) begin
             case (i)

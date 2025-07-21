@@ -238,9 +238,9 @@ module top
     wire sdram_clk;
     wire rpll_lock;
 
-    Gowin_rPLL_sdram rPLL_sdram (
+    Gowin_rPLL_fast_sdram rPLL_sdram (
         .clkin(cpu_clk),  // 27 MHz
-        .clkout(sdram_clk),  // 60 MHz
+        .clkout(sdram_clk),  // 108 MHz
         .lock(rpll_lock)
     );
     `endif
@@ -297,7 +297,7 @@ module top
         .O_sdram_dqm,
 
         .vga_ren(frame_ren),
-        .vga_addr(vga_addr),
+        .vga_addr(vga_addr+frame_buffer_addr),
         .vga_ack(vga_ack),
         .interface_ack(interface_ack),
 
@@ -426,6 +426,7 @@ module top
     //**********************************************************************************************//
 
     `ifndef TESTBENCH
+    // tbh this should be a clock divider
     Gowin_rPLL_800vga slower_clock(
         .clkout(CLK_PIX), //13.5Mhz
         .clkin(clk)       //27Mhz
@@ -447,6 +448,7 @@ module top
     wire is_blank;
 
     wire screen_change;
+    wire [22:0] frame_buffer_addr;
 
     PPU ppu_inst (
         .clk(CLK_PIX),
@@ -464,7 +466,8 @@ module top
         .RGB_R(R_tmp_PPU),
         .RGB_G(G_tmp_PPU),
         .RGB_B(B_tmp_PPU),
-        .screen_change(screen_change)
+        .screen_change(screen_change),
+        .frame_buffer_addr(frame_buffer_addr)
     );
 
     wire frame_ren;

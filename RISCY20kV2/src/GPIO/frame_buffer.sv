@@ -30,6 +30,7 @@ state_t state, next_state;
 reg [13:0] ycursor_sync1, ycursor_sync2;
 reg ram_ack_reg;
 
+// Synchronize ycursor and frame_buffer_addr to sdram_clk domain
 always @(posedge sdram_clk or negedge reset_n) begin
     if (!reset_n) begin
         ycursor_sync1 <= 14'b0;

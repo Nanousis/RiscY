@@ -78,25 +78,30 @@ void vOutNS16550(unsigned char c )
 
 // *****************************************************************************
 // Copies 'n' bytes from 'src' to 'dest'. Used by the compiler sometimes.
-void *memcpy(void *dest, const void *src, int n) {
-    // Cast src and dest to char pointers to iterate over each byte
-    char *d = (char *)dest;
-    const char *s = (const char *)src;
+// void *memcpy(void *dest, const void *src, int n) {
+//     // Cast src and dest to char pointers to iterate over each byte
+//     char *d = (char *)dest;
+//     const char *s = (const char *)src;
 
-    // Copy 'n' bytes from 'src' to 'dest'
-    for (int i = 0; i < n; i++) {
-        d[i] = s[i];
-    }
+//     // Copy 'n' bytes from 'src' to 'dest'
+//     for (int i = 0; i < n; i++) {
+//         d[i] = s[i];
+//     }
 
-    // Return the destination pointer
-    return dest;
-}
-void *memset(void *s, int c, size_t n) {
-    unsigned char *p = (unsigned char *)s;
-    while (n--) {
-        *p++ = (unsigned char)c;
-    }
-    return s;
+//     // Return the destination pointer
+//     return dest;
+// }
+// void *memset(void *s, int c, size_t n) {
+//     unsigned char *p = (unsigned char *)s;
+//     while (n--) {
+//         *p++ = (unsigned char)c;
+//     }
+//     return s;
+// }
+long get_time() {
+    // Read the current time from the mtime register
+    volatile unsigned long *mtime = (volatile unsigned long *)MTIME_ADDR;
+    return *mtime;
 }
 // *****************************************************************************
 // returns 1 if the button is pressed, 0 otherwise

@@ -15,6 +15,7 @@ module PPU(
 	output reg         [5:0]   RGB_G,
 	output reg         [4:0]   RGB_R,
 
+    output reg [22:0] frame_buffer_addr,
     output reg screen_change
 );
 
@@ -133,6 +134,7 @@ module PPU(
             writeSprite<=0;
             text_address<=0;
             screen_change<=0;
+            frame_buffer_addr<=0;
         end
         else
         begin
@@ -146,6 +148,9 @@ module PPU(
                 // from 0->2048 is the text memory
                 if(address==16'h2800)begin
                     screen_change<=(data_in[0]==1'b1)?1:0;
+                end
+                if(address==16'h2804)begin
+                    frame_buffer_addr<=data_in[22:0];
                 end
                 if(address<16'd3072)begin
                     textEn<=1;

@@ -122,7 +122,7 @@ reg      		MEMWB_csr_immidiate;
 
 wire	[6:0]	funct7;
 wire	[4:0]	instr_rs1, instr_rs2, instr_rd, RegWriteAddr;
-wire	[3:0]	ALUOp;
+wire	[4:0]	ALUOp;
 wire	[1:0]	bypassA, bypassB;
 wire	[31:0]	imm_i, imm_s, imm_b, imm_u, imm_j, imm_z;
 reg keepDelayInstr=0;

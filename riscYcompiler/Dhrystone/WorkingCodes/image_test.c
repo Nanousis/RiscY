@@ -124,27 +124,35 @@ unsigned int getFileStartAddressByName(const char *filename) {
     return 0xFFFFFFFF;
 }
 
-void ReadImage(){
-    unsigned int lena_address = getFileStartAddressByName("Lenna.txt");
-    if(lena_address == 0xFFFFFFFF) {
+void ReadImage(char *filename) {
+    unsigned int file_address = getFileStartAddressByName(filename);
+    if(file_address == 0xFFFFFFFF) {
         uart_printf("Error: File not found.\r\n");
         return;
     }
-    uart_printf("File found at address: 0x%x\r\n", lena_address);
+    uart_printf("File found at address: 0x%x\r\n", file_address);
 
     volatile uint32_t *ram32 = (volatile uint32_t *) RAM_LOCATION;
     uint16_t pixel1;
     uint16_t pixel2;
-    for(int row = 0; row < MAX_HEIGHT; row++) {
-        for(int col = 0; col < 512/2; col++) {
-            unsigned int word = readFlash(lena_address + 1024*row + col*4); // align to word
-            if(row==0)
-                uart_printf("Row %d, Col %d: Word = 0x%x\r\n", row, col, word);
+    uint32_t width = readFlash(file_address); // Read width
+    uint32_t height = readFlash(file_address + 4); // Read height
+
+    if(width > MAX_WIDTH)
+        width = MAX_WIDTH; // Limit width to MAX_WIDTH
+    if(height > MAX_HEIGHT)
+        height = MAX_HEIGHT; // Limit height to MAX_HEIGHT
+    uart_printf("Image dimensions: %d x %d\r\n", width, height);
+    file_address += 8; // Move past width and height
+
+    for(int row = 0; row < height; row++) {
+        for(int col = 0; col < width/2; col++) {
+            unsigned int word = readFlash(file_address + (width*2)*row + col*4); // align to word
             pixel2 = word & 0xFFFF; // Get second 16 bits
             pixel1 = (word >> 16) & 0xFFFF; // Get first 16 bits
             ram32[row * MAX_WIDTH/2 + col] = (pixel1<<16) | pixel2; // Store in RAM
         }
-        uart_printf("Row %d loaded\r\n", row);
+        // uart_printf("Row %d loaded\r\n", row);
     }
 }
 int main() {
@@ -154,6 +162,8 @@ int main() {
     int counter = 0;
     volatile uint16_t *ram = (volatile uint16_t *) RAM_LOCATION;
     volatile unsigned int *screenChange= (volatile unsigned int *) 0x88002800;
+    volatile unsigned int *frame_buffer_addr= (volatile unsigned int *) 0x88002804;
+
     uint8_t red=255;
     uint8_t green=255;
     uint8_t blue=255;
@@ -162,7 +172,7 @@ int main() {
     color= rgb_to_rgb565(red, green, blue);
     keep_track = 0;
     black = 0;
-    for(i = 0; i <MAX_HEIGHT; i++){
+    for(i = 0; i <=MAX_HEIGHT; i++){
         checker_pattern((uint16_t *)ram, color, black, i); // Fill the screen with the initial color
         if(++keep_track >=CHECKERS_WIDTH ) {
             keep_track = 0;
@@ -173,11 +183,14 @@ int main() {
     uint8_t color_state=0;
     while(1){
         if(getButtonLeft()){
+            uart_printf("Loading image riscy.img\r\n");
+            ReadImage("riscY.img");
             // screenChange[0] = 0x00000001; // Trigger screen change
             // uart_printf("Screen change triggered ON\r\n");
         }
         if(getButtonRight()){
-            ReadImage();
+            uart_printf("Loading image Lenna.img\r\n");
+            ReadImage("Lenna.img");
             // screenChange[0] = 0x00000000; // Trigger screen change
             // uart_printf("Screen change triggered OFF\r\n");
         }
@@ -186,56 +199,59 @@ int main() {
             if(color_state==0){
                 keep_track = 0;
                 black = 0;
-                for(i = 0; i <MAX_HEIGHT; i++){
-                    checker_pattern((uint16_t *)ram, rgb_to_rgb565(0, 0, i),black,i);
+           for(i = MAX_WIDTH; i>=0; i--){
+                    checker_pattern((uint16_t *)ram+(MAX_WIDTH*MAX_HEIGHT*2), rgb_to_rgb565(0, 0, i),black,i);
                     if(++keep_track >=CHECKERS_WIDTH ) {
                         keep_track = 0;
                         black = !black; // Toggle color
                     }
                 }
+                frame_buffer_addr[0] = (uint32_t)ram+(MAX_WIDTH*MAX_HEIGHT); // Update frame buffer address
                 color_state = 1; // Change state to next color
             }
             else if(color_state==1){
                 keep_track = 0;
                 black = 0;
-                for(i = 0; i <MAX_HEIGHT; i++){
+                for(i = MAX_WIDTH; i>=0; i--){
                     checker_pattern((uint16_t *)ram, rgb_to_rgb565(0, i, 0),black,i);
                     if(++keep_track >=CHECKERS_WIDTH ) {
                         keep_track = 0;
                         black = !black; // Toggle color
                     }
                 }
+                frame_buffer_addr[0] = (uint32_t)ram;
                 color_state = 2; // Change state to next color
             }
             else if(color_state==2){
                 keep_track = 0;
                 black = 0;
-                for(i = 0; i <MAX_HEIGHT; i++){
-                    checker_pattern((uint16_t *)ram, rgb_to_rgb565(i, 0, 0),black,i);
+                for(i = MAX_WIDTH; i>=0; i--){
+                    checker_pattern((uint16_t *)ram+(MAX_WIDTH*MAX_HEIGHT*2), rgb_to_rgb565(i, 0, 0),black,i);
                     if(++keep_track >=CHECKERS_WIDTH ) {
                         keep_track = 0;
                         black = !black; // Toggle color
                     }
                 }
+                frame_buffer_addr[0] = (uint32_t)ram+(MAX_WIDTH*MAX_HEIGHT);
                 color_state = 3; // Change state to next color
             }
             else{
                 keep_track = 0;
                 black = 0;
-                for(i = 0; i <MAX_HEIGHT; i++){
+                for(i = MAX_WIDTH; i>=0; i--){
                     checker_pattern((uint16_t *)ram, rgb_to_rgb565(i, i, i),black,i);
                     if(++keep_track >=CHECKERS_WIDTH ) {
                         keep_track = 0;
                         black = !black; // Toggle color
                     }
                 }
+                frame_buffer_addr[0] = (uint32_t)ram;
                 color_state = 0; // Reset state
             }
             uart_printf("PREVIOUS COLOR: %x\r\n",ram[0]);
             uart_printf("Color changed to: R:%d G:%d B:%d\r\n", red, green, blue);
             uart_printf("New Color 0x%x\r\n",color);
             uart_printf("RAM[3] set to: 0x%x\r\n", ram[3]);
-            for(int j = 0; j<WaitTime*100; j++); // Wait for a while
         }
     }
 }
