@@ -19,6 +19,7 @@ module  control_stall_id(
 	output reg write_memwb,
 	output reg write_pc,
 	output reg trap_waiting,
+	input instr_stall,
 	input [4:0] ifid_rs,
 	input [4:0] ifid_rt,
 	input [4:0] idex_rd,
@@ -73,6 +74,10 @@ begin
 			write_pc		= 1'b0;
 			trap_waiting	= 1'b0;
 		end
+	end
+	else if(instr_stall == 1'b1)begin
+		write_ifid		= 1'b0;
+		write_pc		= 1'b0;
 	end
 	// if we have a branch, we need to make sure that the branch is 
 	// executed before taking a future trap. Hence we stall the pipeline

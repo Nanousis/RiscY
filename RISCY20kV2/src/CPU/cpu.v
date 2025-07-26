@@ -16,7 +16,9 @@ module cpu(	input clock,
 			input reset,
 			output overflow,
 			output 	[31:0] PC_out,
+			output [31:0] PC_IF2_out,
 			input  	[31:0] instr_in,
+			input instr_stall,
 			output 	[31:0] data_addr,
 			output ren,
 			output wen,
@@ -137,6 +139,7 @@ wire trap_in_ID;
 
 
 assign PC_out = PC;
+assign PC_IF2_out = PC_IF2;
 assign instr = instr_in;
 assign data_addr = (ren==1'b1)?ALUOut:EXMEM_ALUOut;
 assign ren = IDEX_MemRead&(~branch_taken);
@@ -206,7 +209,7 @@ begin
 			if(bubble_ifid == 1'b1||bubble_ifid_delayed == 1'b1)begin
 				PC_IF2 <= 32'hffffffff;
 			end
-			if(keepDelayInstr ==1'b0)
+			if(keepDelayInstr ==1'b0 & instr_stall == 0)
 			begin
 				keepDelayInstr <= 1;
 				delayed_instr <= (PCSrc)?32'hffffffff: instr;
@@ -273,7 +276,7 @@ begin
 		// used to hold bubble in the pipeline. You loose an extra cycle here
 		// This is so that the instruction memory can notice the jump
 		if ((bubble_ifid_delayed||bubble_ifid == 1'b1)) begin
-			IFID_instr		<= 32'b0;
+			IFID_instr		<= 32'h13;
 			IFID_PC			<= 32'hffffffff;
 		end 
 		else if (write_ifid == 1'b1) begin
@@ -565,6 +568,7 @@ control_stall_id control_stall_id (
 	.write_memwb	(write_memwb),
 	.write_pc		(write_pc),
 	.trap_waiting	(trap_waiting),
+	.instr_stall	(instr_stall),
 	.ifid_rs		(instr_rs1),
 	.ifid_rt		(instr_rs2),
 	.idex_rd		(IDEX_instr_rd),

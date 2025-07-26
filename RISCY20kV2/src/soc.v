@@ -84,6 +84,7 @@ module top
     wire overflow;
     reg reset;
     wire [31:0] PC;
+    wire [31:0] PC_IF2;
     wire [31:0] instr;
     wire [31:0] data_addr;
     wire ren;
@@ -102,6 +103,8 @@ module top
                 .reset(reset),
                 .overflow(overflow),
                 .PC_out(PC),
+                .PC_IF2_out(PC_IF2),
+                .instr_stall(icache_stall),
                 .instr_in(instr),
                 .data_addr(data_addr),
                 .ren(ren),
@@ -113,13 +116,34 @@ module top
                 .software_interrupt(msw_irq),
                 .timer_interrupt(mtimer_irq),
                 .external_interrupt(mext_irq),
+                // this should not be like that.
                 .memReady(bus_ready)
     );
     
+    wire icache_stall;
+    wire icache_ren;
+    wire [31:0] icache_addr;
+    wire [31:0] icache_instr;
+
+    wire icache_ack;
+    i_cache u_i_cache (
+        .cpu_clk(cpu_clk),
+        .sdram_clk(sdram_clk),
+        .reset_n(reset),
+        .pc_if1(PC),
+        .pc_if2(PC_IF2),
+        .sdram_in(sdram_data_out),
+        .sdram_ack(icache_ack),
+
+        .stall(icache_stall), 
+        .icache_ren(icache_ren),
+        .icache_addr(icache_addr),
+        .instr_out(icache_instr)
+    );
+
     //**********************************************************************************************//
     //                                              BUS                                             //
     //**********************************************************************************************//
-
     wire bus_ready;
 
     wire mem_ren;
@@ -165,7 +189,7 @@ module top
             .clint_data_out(clint_data_out),
             .sdram_data_out(sdram_interface_data_out),
 
-            .program_instr(program_instr),
+            .sdram_instr(icache_instr),
             .second_stage_instr(second_stage_instr),
             
             .clint_ren(clint_ren),
@@ -258,13 +282,14 @@ module top
     wire sdram_ready;
     wire sdram_interface_ready;
     wire interface_ack;
-
+    wire [31:0] sdram_instr;
     sdram_interface sdram_interface_init(
         .sdram_clk(sdram_clk),
         .cpu_clk(cpu_clk),
         .reset_n(reset),
         .data_in(data_to_write),
         .address(data_addr[25:2]),
+        .pc(PC),
         .byte_select_vector(byte_select),
         .ram_ack(interface_ack),
         .cpu_ren(sdram_ren),
@@ -279,6 +304,7 @@ module top
 
         .sdram_data_in(sdram_data_out[31:0]),
         .data_out(sdram_interface_data_out),
+        .instr_out(sdram_instr),
         .ready(sdram_interface_ready)
     );
 
@@ -296,10 +322,15 @@ module top
         .O_sdram_ba,
         .O_sdram_dqm,
 
+        .interface_ack(interface_ack),
+
+        .icache_ren(icache_ren),
+        .icache_addr(icache_addr),
+        .icache_ack(icache_ack),
+
         .vga_ren(frame_ren),
         .vga_addr(vga_addr+frame_buffer_addr),
         .vga_ack(vga_ack),
-        .interface_ack(interface_ack),
 
         .cpu_clk(cpu_clk),
         .sdram_clk(sdram_clk),
@@ -377,20 +408,20 @@ module top
         .data_out(second_stage_mem_out)
     );
 
-    programMemory #(
-        .NUM_BRAMS(4)
-    )RAM( 
-        .clk(cpu_clk),
-        .reset(reset),
-        .PC(PC[30:2]),
-        .address(data_addr[30:2]),
-        .ren(program_mem_ren),
-        .wen(program_mem_wen),
-        .data_in(data_to_write),
-        .byte_select_vector(byte_select),
-        .instr(program_instr),
-        .data_out(program_mem_out)
-    );
+    // programMemory #(
+    //     .NUM_BRAMS(2)
+    // )RAM( 
+    //     .clk(cpu_clk),
+    //     .reset(reset),
+    //     .PC(PC[30:2]),
+    //     .address(data_addr[30:2]),
+    //     .ren(program_mem_ren),
+    //     .wen(program_mem_wen),
+    //     .data_in(data_to_write),
+    //     .byte_select_vector(byte_select),
+    //     .instr(program_instr),
+    //     .data_out(program_mem_out)
+    // );
     `else
     memorySim #(
         .file_location("../includes/secondStage.hex")
@@ -433,6 +464,17 @@ module top
     );
     `else
     assign CLK_PIX = vga_clk; // 13.5 MHz
+    textTest text(
+        .clk(clk),
+        .reset(reset),
+        .pixelAddress(pixelAddress),
+        .char_write_addr(data_addr[15:1]),
+        .ren(screen_ren),
+        .wen(screen_wen),
+        .char_write((byte_select[0] == 1'b1)?data_to_write[7:0]:(byte_select[1] == 1'b1)?data_to_write[15:8]:(byte_select[2] == 1'b1)?data_to_write[23:16]:data_to_write[31:24]),
+        .pixelData(pixelData),
+        .error(error)
+   );
     `endif
     wire [4:0]R_tmp = (screen_change)?R_tmp_FRAME:R_tmp_PPU;
     wire [5:0]G_tmp = (screen_change)?G_tmp_FRAME:G_tmp_PPU;
@@ -518,19 +560,9 @@ module top
 
 	assign		LCD_CLK		=	CLK_PIX;
 //     `else
-    `ifdef TESTBENCH
-   textTest text(
-                   .clk(clk),
-                   .reset(reset),
-                   .pixelAddress(pixelAddress),
-                   .char_write_addr(data_addr[15:1]),
-                   .ren(screen_ren),
-                   .wen(screen_wen),
-                   .char_write((byte_select[0] == 1'b1)?data_to_write[7:0]:(byte_select[1] == 1'b1)?data_to_write[15:8]:(byte_select[2] == 1'b1)?data_to_write[23:16]:data_to_write[31:24]),
-                   .pixelData(pixelData),
-                   .error(error)
-   );
-   `endif
+    // `ifdef TESTBENCH
+
+//    `endif
 //    screen scr(
 //        .clk(clk),
 //        .pixelData(pixelData),

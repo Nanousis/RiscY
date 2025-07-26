@@ -13,7 +13,14 @@ module ram_controller
     output [1:0] O_sdram_ba,
     output [3:0] O_sdram_dqm,
 
+    //  interface for data
     output logic interface_ack,
+    // interface for instruction cache
+    input icache_ren,
+    input [31:0] icache_addr,
+    output logic icache_ack,
+
+    // interface for vga
     input vga_ren,
     input [31:0] vga_addr,
     output logic vga_ack,
@@ -88,8 +95,14 @@ module ram_controller
         AUTO_REFRESH = 3'b110,
         AWAIT_ACK = 3'b111
     } state_t;
-
     state_t state, next_state;
+
+    // typedef enum logic [1:0] {
+    //     INTERF   = 2'b00,
+    //     FRAMEBUFFER   = 2'b01,
+    //     ICACHE   = 2'b10,
+    // } memory_origin;
+    // memory_origin mem_origin;
 
     logic [2:0] read_cnt;
     reg [100*8:0] test_str;
@@ -103,6 +116,7 @@ module ram_controller
 
     // vga logic
     logic vga_work=0;
+    logic icache_work=0;
 
 
     always_ff @(posedge sdram_clk or negedge reset_n) begin
@@ -118,7 +132,6 @@ module ram_controller
             auto_refresh_counter <= 0;
             I_sdrc_dqm <= 4'b0000; // no data mask
             ptr <= 0;
-            interface_ack <= 0;
             I_sdrc_precharge_ctrl <= 0;
             I_sdram_power_down <= 0;
             I_sdram_selfrefresh <= 1; // enable self-refresh mode
@@ -128,7 +141,10 @@ module ram_controller
             I_sdram_selfrefresh <= 0;
             I_sdrc_dqm <= 4'b000; // write all bytes
             vga_work <= 0; // reset vga work flag
+            interface_ack <= 0;
+            icache_work <= 0; // reset icache work flag
             vga_ack <= 0;
+            icache_ack <= 0; // reset icache ack signal
 
         end else begin
             auto_refresh_counter <= auto_refresh_counter + 1;
@@ -151,7 +167,7 @@ module ram_controller
                         if(next_state == READ) begin
                             I_sdrc_cmd_en <= 1; // re-enable command for read/write
                             I_sdrc_cmd <= 3'b101; // read command
-                            if(vga_work) begin
+                            if(vga_work || icache_work) begin
                                 I_sdrc_data_len <= 15; // set data length
                                 I_sdrc_dqm <= 0; // set data mask
                             end 
@@ -189,6 +205,7 @@ module ram_controller
                     read_cnt <= 0; // reset read counter
                     I_sdrc_cmd <=0; // no command
                     vga_work <= 0; // reset vga work flag
+                    icache_work <= 0; // reset icache work flag
                     if(auto_refresh_counter >= AUTO_REFRESH_INTERVAL)begin
                         ready <= 0; // reset ready signal
                         auto_refresh_counter <= 0; // reset auto-refresh counter
@@ -222,6 +239,16 @@ module ram_controller
                             state <= AWAIT_ACK; // wait for command acknowledgment
                             next_state <= READ; // next state is read
                         end
+                        else if(icache_ren) begin
+                            ready <= 0; // reset ready signal for instruction cache read operation
+                            icache_ack <= 0; // reset icache ack signal
+                            I_sdrc_cmd_en <= 1; // enable command
+                            I_sdrc_cmd <= 3'b011; // auto-precharge command
+                            I_sdrc_addr <= icache_addr[20:0]; // set address
+                            icache_work <= 1; // set icache work flag
+                            state <= AWAIT_ACK; // wait for command acknowledgment
+                            next_state <= READ; // next state is read
+                        end
                     end
                 end
 
@@ -229,18 +256,31 @@ module ram_controller
                     test_str <= "read";
                     I_sdrc_cmd_en <= 0; // disable command
                     if (read_cnt == 3'b100) begin // check if we should read
-                        vga_ack <= 1; // reset vga ack signal
+                        if(vga_work)begin
+                            vga_ack <= 1; // reset vga ack signal
+                        end
+                        if(icache_ren) begin
+                            icache_ack <= 1; // acknowledge icache read operation
+                        end
                         data_out <= O_sdrc_data; // read data from SDRAM
                         ptr <= ptr + 1; // increment pointer
                         if (ptr == I_sdrc_data_len) begin 
                             ready <= 1; // set ready signal
                             state <= IDLE; // transition to idle state
+                            icache_ack <= 0; // reset icache ack signal
+                            icache_work <= 0; // reset icache work flag
                             if(vga_work) begin
+                                test_str <= "VGA read done";
                                 vga_ack <= 0; // acknowledge vga read operation
                                 vga_work <= 0; // reset vga work flag
                             end
+                            else if(icache_work) begin
+                                test_str <= "ICACHE read done";
+                                icache_ack <= 0; // acknowledge icache read operation
+                                icache_work <= 0; // reset icache work flag
+                            end
                             else begin
-                                vga_ack <= 0; // reset vga ack signal
+                                test_str <= "INTERFACE read done";
                                 interface_ack <= 1; // acknowledge interface read operation
                             end
                         end
@@ -267,6 +307,10 @@ module ram_controller
                         if(vga_work) begin
                             vga_ack <= 1; // acknowledge vga read operation
                             vga_work <= 0; // reset vga work flag
+                        end
+                        if(icache_work) begin
+                            icache_ack <= 1; // acknowledge icache read operation
+                            icache_work <= 0; // reset icache work flag
                         end
                         else begin
                             vga_ack <= 0; // reset vga ack signal

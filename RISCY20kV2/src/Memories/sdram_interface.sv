@@ -4,6 +4,7 @@ module sdram_interface(
     input reset_n,
     input [31:0] data_in,
     input [31:0] address,
+    input [31:0] pc,
     input [3:0] byte_select_vector,
     input ram_ack,
     input cpu_ren,
@@ -18,18 +19,16 @@ module sdram_interface(
 
     input [31:0] sdram_data_in, //data read from SDRAM
     output reg [31:0] data_out, //data to read from CPU
+    output reg [31:0] instr_out, //instruction output to CPU
     output reg ready
 );
 
-
-
-
-    typedef enum logic [1:0] {
-        IDLE   = 2'b00,
-        READ   = 2'b01,
-        WRITE   = 2'b10,
-        AWAIT_ACK = 2'b11
-    } state_t;
+typedef enum logic [1:0] {
+    IDLE   = 2'b00,
+    READ   = 2'b01,
+    WRITE   = 2'b10,
+    AWAIT_ACK = 2'b11
+} state_t;
 
 state_t state, next_state;
 state_t sdram_state, sdram_next_state;

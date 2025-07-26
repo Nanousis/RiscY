@@ -33,6 +33,7 @@
         <File path="src/Memories/DPBRAM.v" type="file.verilog" enable="1"/>
         <File path="src/Memories/flash.v" type="file.verilog" enable="1"/>
         <File path="src/Memories/flashController.v" type="file.verilog" enable="1"/>
+        <File path="src/Memories/instruction_cache.sv" type="file.verilog" enable="1"/>
         <File path="src/Memories/memory.v" type="file.verilog" enable="1"/>
         <File path="src/Memories/programMemory.v" type="file.verilog" enable="1"/>
         <File path="src/Memories/ram.sv" type="file.verilog" enable="1"/>

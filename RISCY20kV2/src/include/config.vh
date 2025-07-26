@@ -1,7 +1,9 @@
-// RISC-V SiMPLE SV -- common configuration for testbench
-// BSD 3-Clause License
-// (c) 2017-2021, Arthur Matos, Marcus Vinicius Lamar, Universidade de Brasília,
-//                Marek Materzok, University of Wrocław
+
+// Instruction memory
+`define TEXT_BEGIN      `INITIAL_PC
+`define TEXT_BITS       24
+`define TEXT_WIDTH      2**`TEXT_BITS
+`define TEXT_END        `TEXT_BEGIN + `TEXT_WIDTH - 1
 
 `ifndef RV_CONFIG
 `define RV_CONFIG
@@ -18,13 +20,9 @@
 `define INITIAL_PC  32'h00000000
 `define BOOTLOADER_END  32'h00001000
 
-// Instruction memory
-`define TEXT_BEGIN      `INITIAL_PC
-`define TEXT_BITS       20
-`define TEXT_WIDTH      2**`TEXT_BITS
-`define TEXT_END        `TEXT_BEGIN + `TEXT_WIDTH - 1
 
-
+`define SECOND_STAGE_START 32'h00800000
+`define SECOND_STAGE_END 32'h008fffff
 `define CLINT_START 32'h0200_0000
 `define CLINT_END 32'h02f0_0000
 
@@ -32,8 +30,10 @@
 `define UART_END 32'h1000_000f
 
 
-`define PROGRAM_MEMORY_START 32'h80000000
-`define PROGRAM_MEMORY_END 32'h808fffff
+`define PROGRAM_MEMORY_START 32'h70000000
+`define PROGRAM_MEMORY_END 32'h70FFFFFF
+`define SDRAM_BEGIN     32'h8000_0000
+`define SDRAM_END       32'h80FF_FFFF
 `define SCREEN_ADDRESS 32'h8800_0000
 `define SCREEN_END 32'h8810_0000
 `define BUTTON_ADDRESS 32'h8900_0000
@@ -48,8 +48,6 @@
 //`define SCREEN_RANGE   32'd64
 
 // Data memory
-`define SDRAM_BEGIN     32'h7000_0000
-`define SDRAM_END       32'h7FFF_FFFF
 
 `define DATA_BEGIN      32'h8000_0000
 `define DATA_BITS       20
@@ -58,27 +56,5 @@
 
 `define TEXT_HEX  "text.hex"
 `define DATA_HEX  "data.hex"
-// `define TEXT_HEX  text_mem_file()
-// `define DATA_HEX  data_mem_file()
-
-//function string text_mem_file ();
-//    string s;
-//    if ($value$plusargs("text_file=%s", s) != 0)
-//        return s;
-//    else begin
-//        $display("Text memory file not supplied.");
-//        $finish;
-//    end
-//endfunction
-
-//function string data_mem_file ();
-//    string s;
-//    if ($value$plusargs("data_file=%s", s) != 0)
-//        return s;
-//    else begin
-//        $display("Data memory file not supplied.");
-//        $finish;
-//    end
-//endfunction
 
 `endif

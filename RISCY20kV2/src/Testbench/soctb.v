@@ -77,7 +77,7 @@ top TOP
     .btnRightL(1)
 );
 
-always #8 sdram_clk = ~sdram_clk; // 60 MHz
+always #5 sdram_clk = ~sdram_clk; // 108 MHz
 always #37 vga_clk = ~vga_clk; // 13.5 MHz
 
 
@@ -89,7 +89,7 @@ always #37 vga_clk = ~vga_clk; // 13.5 MHz
         #10 btn1 =0;
         #100 
 
-        repeat(10_000) @(posedge clk);
+        repeat(100_000) @(posedge clk);
 
         for (i = 0; i < 32; i = i + 1) begin
             case (i)

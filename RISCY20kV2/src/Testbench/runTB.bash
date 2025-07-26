@@ -20,10 +20,13 @@ iverilog -g2012 -Winfloop -DTESTBENCH -o test.o -s test -I../include ./soctb.v \
    ../BRAMS/gowin_dpb_program/*.v \
    ../soc.v \
    ../CLINT.v  \
-   ../Buses/*.v 
+   ../Buses/*.v >out.log 2>&1
 
 # Run vvp
-time vvp test.o > log.txt 2>&1
+# time vvp test.o > log.txt 2>&1
+time vvp test.o
+
+python vcd_verification.py 
 
 # Run gtkwave
 # gtkwave gtkw.gtkw

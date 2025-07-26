@@ -20,10 +20,7 @@ integer j;
         begin
             for(i=0;i<20;i=i+1)
             begin
-                for(j=0;j<64;j=j+1)
-                begin
-                    charMemory[i][j*8+:8] <= " ";
-                end
+                charMemory[i] <= "xxx";
             end
         end
         else

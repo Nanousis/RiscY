@@ -21,7 +21,7 @@ module bus( input clk,
             input [31:0] sdram_data_out,
 
             input [31:0] boot_instr,
-            input [31:0] program_instr,
+            input [31:0] sdram_instr,
             input [31:0] second_stage_instr,
 
             output reg clint_ren,
@@ -83,7 +83,9 @@ end
 // manage stalls i guess.... Really should move to a better bus system
 always@(*) begin
 
-    if((data_addr >= `SDRAM_BEGIN && data_addr < (`SDRAM_END))|| (address_reg >= `SDRAM_BEGIN && address_reg < (`SDRAM_END))) begin
+    if((data_addr >= `SDRAM_BEGIN && data_addr < (`SDRAM_END))
+    || (address_reg >= `SDRAM_BEGIN && address_reg < (`SDRAM_END))
+    || (PC >= `SDRAM_BEGIN && PC < (`SDRAM_END))) begin
        bus_ready = sdram_ready; 
     end
     else
@@ -104,8 +106,8 @@ always@(*) begin
     else if( PC >= `SECOND_STAGE_START && PC < `SECOND_STAGE_END)begin
         instr_out = second_stage_instr;
     end
-    else if( PC >= `PROGRAM_MEMORY_START && PC < `PROGRAM_MEMORY_END)begin
-        instr_out = program_instr;
+    else if( PC >= `SDRAM_BEGIN && PC < `SDRAM_END)begin
+        instr_out = sdram_instr;
     end
     else
         instr_out = 32'b0;

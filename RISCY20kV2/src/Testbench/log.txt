@@ -57,22 +57,211 @@ VCD warning: array word test.TOP.text.charMemory[15] will conflict with an escap
 VCD warning: array word test.TOP.text.charMemory[16] will conflict with an escaped identifier.
 VCD warning: array word test.TOP.text.charMemory[17] will conflict with an escaped identifier.
 VCD warning: array word test.TOP.text.charMemory[18] will conflict with an escaped identifier.
+test.sdram : at time  327745.0 ns AREF : Auto Refresh
+test.sdram : at time  327845.0 ns AREF : Auto Refresh
+test.sdram : at time  327945.0 ns LMR  : Load Mode Register
+test.sdram :                             CAS Latency      = 2
+test.sdram :                             Burst Length     = 1
+test.sdram :                             Burst Type       = Sequential
+test.sdram :                             Write Burst Mode = Programmed Burst Length
+test.sdram : at time  328005.0 ns AREF : Auto Refresh
+test.sdram : at time  328105.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  328145.0 ns WRITE: Bank = 0 Row =    0, Col =   0, Data = 3e800313
+test.sdram : at time  328495.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  328535.0 ns WRITE: Bank = 0 Row =    0, Col =   1, Data = 7d030393
+test.sdram : at time  328885.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  328925.0 ns WRITE: Bank = 0 Row =    0, Col =   2, Data = c1838e13
+test.sdram : at time  329285.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  329325.0 ns WRITE: Bank = 0 Row =    0, Col =   3, Data = 830e0e93
+test.sdram : at time  329675.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  329715.0 ns WRITE: Bank = 0 Row =    0, Col =   4, Data = 3e8e8f13
+test.sdram : at time  330035.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  330075.0 ns WRITE: Bank = 0 Row =    0, Col =   5, Data = 00000000
+test.sdram : at time  330395.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  330435.0 ns WRITE: Bank = 0 Row =    0, Col =   6, Data = 00000000
+test.sdram : at time  330755.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  330795.0 ns WRITE: Bank = 0 Row =    0, Col =   7, Data = 00000000
+test.sdram : at time  331115.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  331155.0 ns WRITE: Bank = 0 Row =    0, Col =   8, Data = 00000000
+test.sdram : at time  331475.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  331515.0 ns WRITE: Bank = 0 Row =    0, Col =   9, Data = 00000000
+test.sdram : at time  331835.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  331875.0 ns WRITE: Bank = 0 Row =    0, Col =  10, Data = 00000000
+test.sdram : at time  332195.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  332235.0 ns WRITE: Bank = 0 Row =    0, Col =  11, Data = 00000000
+test.sdram : at time  332555.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  332595.0 ns WRITE: Bank = 0 Row =    0, Col =  12, Data = 00000000
+test.sdram : at time  332915.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  332955.0 ns WRITE: Bank = 0 Row =    0, Col =  13, Data = 00000000
+test.sdram : at time  333275.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  333315.0 ns WRITE: Bank = 0 Row =    0, Col =  14, Data = 00000000
+test.sdram : at time  333635.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  333675.0 ns WRITE: Bank = 0 Row =    0, Col =  15, Data = 00000000
+test.sdram : at time  333765.0 ns AREF : Auto Refresh
+test.sdram : at time  333995.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  334035.0 ns WRITE: Bank = 0 Row =    0, Col =  16, Data = 00000000
+test.sdram : at time  334355.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  334395.0 ns WRITE: Bank = 0 Row =    0, Col =  17, Data = 00000000
+test.sdram : at time  334715.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  334755.0 ns WRITE: Bank = 0 Row =    0, Col =  18, Data = 00000000
+test.sdram : at time  335075.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  335115.0 ns WRITE: Bank = 0 Row =    0, Col =  19, Data = 00000000
+test.sdram : at time  335435.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  335475.0 ns WRITE: Bank = 0 Row =    0, Col =  20, Data = 00000000
+test.sdram : at time  335795.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  335835.0 ns WRITE: Bank = 0 Row =    0, Col =  21, Data = 00000000
+test.sdram : at time  336155.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  336195.0 ns WRITE: Bank = 0 Row =    0, Col =  22, Data = 00000000
+test.sdram : at time  336515.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  336555.0 ns WRITE: Bank = 0 Row =    0, Col =  23, Data = 00000000
+test.sdram : at time  336875.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  336915.0 ns WRITE: Bank = 0 Row =    0, Col =  24, Data = 00000000
+test.sdram : at time  337235.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  337275.0 ns WRITE: Bank = 0 Row =    0, Col =  25, Data = 00000000
+test.sdram : at time  337595.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  337635.0 ns WRITE: Bank = 0 Row =    0, Col =  26, Data = 00000000
+test.sdram : at time  337955.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  337995.0 ns WRITE: Bank = 0 Row =    0, Col =  27, Data = 00000000
+test.sdram : at time  338315.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  338355.0 ns WRITE: Bank = 0 Row =    0, Col =  28, Data = 00000000
+test.sdram : at time  338675.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  338715.0 ns WRITE: Bank = 0 Row =    0, Col =  29, Data = 00000000
+test.sdram : at time  339035.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  339075.0 ns WRITE: Bank = 0 Row =    0, Col =  30, Data = 00000000
+test.sdram : at time  339395.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  339435.0 ns WRITE: Bank = 0 Row =    0, Col =  31, Data = 00000000
+test.sdram : at time  339755.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  339795.0 ns WRITE: Bank = 0 Row =    0, Col =  32, Data = 00000000
+test.sdram : at time  339865.0 ns AREF : Auto Refresh
+test.sdram : at time  340115.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  340155.0 ns WRITE: Bank = 0 Row =    0, Col =  33, Data = 00000000
+test.sdram : at time  340475.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  340515.0 ns WRITE: Bank = 0 Row =    0, Col =  34, Data = 00000000
+test.sdram : at time  340835.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  340875.0 ns WRITE: Bank = 0 Row =    0, Col =  35, Data = 00000000
+test.sdram : at time  341195.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  341235.0 ns WRITE: Bank = 0 Row =    0, Col =  36, Data = 00000000
+test.sdram : at time  341555.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  341595.0 ns WRITE: Bank = 0 Row =    0, Col =  37, Data = 00000000
+test.sdram : at time  341915.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  341955.0 ns WRITE: Bank = 0 Row =    0, Col =  38, Data = 00000000
+test.sdram : at time  342275.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  342315.0 ns WRITE: Bank = 0 Row =    0, Col =  39, Data = 00000000
+test.sdram : at time  342635.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  342675.0 ns WRITE: Bank = 0 Row =    0, Col =  40, Data = 00000000
+test.sdram : at time  342995.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  343035.0 ns WRITE: Bank = 0 Row =    0, Col =  41, Data = 00000000
+test.sdram : at time  343355.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  343395.0 ns WRITE: Bank = 0 Row =    0, Col =  42, Data = 00000000
+test.sdram : at time  343715.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  343755.0 ns WRITE: Bank = 0 Row =    0, Col =  43, Data = 00000000
+test.sdram : at time  344075.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  344115.0 ns WRITE: Bank = 0 Row =    0, Col =  44, Data = 00000000
+test.sdram : at time  344435.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  344475.0 ns WRITE: Bank = 0 Row =    0, Col =  45, Data = 00000000
+test.sdram : at time  344795.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  344835.0 ns WRITE: Bank = 0 Row =    0, Col =  46, Data = 00000000
+test.sdram : at time  345155.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  345195.0 ns WRITE: Bank = 0 Row =    0, Col =  47, Data = 00000000
+test.sdram : at time  345515.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  345555.0 ns WRITE: Bank = 0 Row =    0, Col =  48, Data = 00000000
+test.sdram : at time  345885.0 ns AREF : Auto Refresh
+test.sdram : at time  345985.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  346025.0 ns WRITE: Bank = 0 Row =    0, Col =  49, Data = 00000000
+test.sdram : at time  346385.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  346425.0 ns WRITE: Bank = 0 Row =    0, Col =  50, Data = 00000000
+test.sdram : at time  346775.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  346815.0 ns WRITE: Bank = 0 Row =    0, Col =  51, Data = 00000000
+test.sdram : at time  347135.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  347175.0 ns WRITE: Bank = 0 Row =    0, Col =  52, Data = 00000000
+test.sdram : at time  347495.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  347535.0 ns WRITE: Bank = 0 Row =    0, Col =  53, Data = 00000000
+test.sdram : at time  347855.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  347895.0 ns WRITE: Bank = 0 Row =    0, Col =  54, Data = 00000000
+test.sdram : at time  348215.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  348255.0 ns WRITE: Bank = 0 Row =    0, Col =  55, Data = 00000000
+test.sdram : at time  348575.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  348615.0 ns WRITE: Bank = 0 Row =    0, Col =  56, Data = 00000000
+test.sdram : at time  348935.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  348975.0 ns WRITE: Bank = 0 Row =    0, Col =  57, Data = 00000000
+test.sdram : at time  349295.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  349335.0 ns WRITE: Bank = 0 Row =    0, Col =  58, Data = 00000000
+test.sdram : at time  349655.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  349695.0 ns WRITE: Bank = 0 Row =    0, Col =  59, Data = 00000000
+test.sdram : at time  350015.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  350055.0 ns WRITE: Bank = 0 Row =    0, Col =  60, Data = 00000000
+test.sdram : at time  350375.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  350415.0 ns WRITE: Bank = 0 Row =    0, Col =  61, Data = 00000000
+test.sdram : at time  350735.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  350775.0 ns WRITE: Bank = 0 Row =    0, Col =  62, Data = 00000000
+test.sdram : at time  351095.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  351135.0 ns WRITE: Bank = 0 Row =    0, Col =  63, Data = 00000000
+test.sdram : at time  351455.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  351495.0 ns WRITE: Bank = 0 Row =    0, Col =  64, Data = 00000000
+test.sdram : at time  351815.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  351855.0 ns WRITE: Bank = 0 Row =    0, Col =  65, Data = 00000000
+test.sdram : at time  351925.0 ns AREF : Auto Refresh
+test.sdram : at time  352175.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  352215.0 ns WRITE: Bank = 0 Row =    0, Col =  66, Data = 00000000
+test.sdram : at time  352535.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  352575.0 ns WRITE: Bank = 0 Row =    0, Col =  67, Data = 00000000
+test.sdram : at time  352895.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  352935.0 ns WRITE: Bank = 0 Row =    0, Col =  68, Data = 00000000
+test.sdram : at time  353255.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  353295.0 ns WRITE: Bank = 0 Row =    0, Col =  69, Data = 00000000
+test.sdram : at time  353615.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  353655.0 ns WRITE: Bank = 0 Row =    0, Col =  70, Data = 00000000
+test.sdram : at time  353975.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  354015.0 ns WRITE: Bank = 0 Row =    0, Col =  71, Data = 00000000
+test.sdram : at time  354335.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  354375.0 ns WRITE: Bank = 0 Row =    0, Col =  72, Data = 00000000
+test.sdram : at time  354695.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  354735.0 ns WRITE: Bank = 0 Row =    0, Col =  73, Data = 00000000
+test.sdram : at time  355055.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  355095.0 ns WRITE: Bank = 0 Row =    0, Col =  74, Data = 00000000
+test.sdram : at time  355415.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  355455.0 ns WRITE: Bank = 0 Row =    0, Col =  75, Data = 00000000
+test.sdram : at time  355775.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  355815.0 ns WRITE: Bank = 0 Row =    0, Col =  76, Data = 00000000
+test.sdram : at time  356135.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  356175.0 ns WRITE: Bank = 0 Row =    0, Col =  77, Data = 00000000
+test.sdram : at time  356495.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  356535.0 ns WRITE: Bank = 0 Row =    0, Col =  78, Data = 00000000
+test.sdram : at time  356855.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  356895.0 ns WRITE: Bank = 0 Row =    0, Col =  79, Data = 00000000
+test.sdram : at time  357215.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  357255.0 ns WRITE: Bank = 0 Row =    0, Col =  80, Data = 00000000
+test.sdram : at time  357575.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  357615.0 ns WRITE: Bank = 0 Row =    0, Col =  81, Data = 00000000
+test.sdram : at time  357945.0 ns AREF : Auto Refresh
+test.sdram : at time  358045.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  358085.0 ns WRITE: Bank = 0 Row =    0, Col =  82, Data = 00000000
+test.sdram : at time  358445.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  358485.0 ns WRITE: Bank = 0 Row =    0, Col =  83, Data = 00000000
+test.sdram : at time  358835.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  358875.0 ns WRITE: Bank = 0 Row =    0, Col =  84, Data = 00000000
+test.sdram : at time  359195.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  359235.0 ns WRITE: Bank = 0 Row =    0, Col =  85, Data = 00000000
+test.sdram : at time  359555.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  359595.0 ns WRITE: Bank = 0 Row =    0, Col =  86, Data = 00000000
+test.sdram : at time  359915.0 ns ACT  : Bank = 0 Row =    0
+test.sdram : at time  359955.0 ns WRITE: Bank = 0 Row =    0, Col =  87, Data = 00000000
           0: x0   :          0 - 0x00000000
-          1: ra   :       1864 - 0x00000748
+          1: ra   :         12 - 0x0000000c
           2: sp   :       4080 - 0x00000ff0
           3: gp   :          0 - 0x00000000
           4: tp   :          0 - 0x00000000
-          5: t0   :         10 - 0x0000000a
-          6: t1   :          2 - 0x00000002
-          7: t2   :          5 - 0x00000005
+          5: t0   :          0 - 0x00000000
+          6: t1   :          0 - 0x00000000
+          7: t2   :          0 - 0x00000000
           8: s0/fp:          0 - 0x00000000
           9: s1   :          0 - 0x00000000
          10: a0   :          0 - 0x00000000
-         11: a1   :          0 - 0x00000000
+         11: a1   :  268435456 - 0x10000000
          12: a2   :          0 - 0x00000000
-         13: a3   :          0 - 0x00000000
-         14: a4   :          0 - 0x00000000
-         15: a5   : 2147483648 - 0x80000000
+         13: a3   : 2147483996 - 0x8000015c
+         14: a4   : 1879080960 - 0x70008000
+         15: a5   : 1879048544 - 0x70000160
          16: a6   :          0 - 0x00000000
          17: a7   :          0 - 0x00000000
          18: s2   :          0 - 0x00000000
