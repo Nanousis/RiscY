@@ -117,7 +117,7 @@ module top
                 .timer_interrupt(mtimer_irq),
                 .external_interrupt(mext_irq),
                 // this should not be like that.
-                .memReady(bus_ready)
+                .memReady(bus_ready & ~icache_stall)
     );
     
     wire icache_stall;

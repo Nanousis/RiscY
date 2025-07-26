@@ -5,7 +5,7 @@ OBJDUMP  = riscv64-unknown-elf-objdump
 
 # Compiler flags
 CFLAGS   = -march=rv32i_zicsr -mabi=ilp32 -O3 -Wall -lgcc -nostartfiles -ffreestanding \
- 			-DRUN_DHRYSTONE -DDHRY_ITERS=2000000 -DNOENUM
+ 			-DRUN_DHRYSTONE -DDHRY_ITERS=200000 -DNOENUM
 
 # Linker flags
 LDFLAGS  = -T linker.ld -Wl,-Map=$(BUILD_DIR)/program.map 

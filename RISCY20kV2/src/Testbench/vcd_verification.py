@@ -80,5 +80,3 @@ if(errors > 0):
     print(f"\033[91mNumber of errors: {errors}\033[0m")
 else:
     print("\033[92mNo errors found!\033[0m")
-output_file.close()
-error_file.close()

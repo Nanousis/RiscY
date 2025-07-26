@@ -45,7 +45,7 @@ always_comb begin
 
     if(enable)
     begin
-        if(state == IDLE)begin
+        // if(state == IDLE)begin
             if(tag_valid[10:0] == tag_reg && tag_valid[15])
             begin
                 instr_out = bram_instr_out;
@@ -55,10 +55,10 @@ always_comb begin
                 miss = 1'b1; // Cache miss
                 temp_stall = 1'b1; // temp_stall if tag does not match or is invalid
             end
-        end
-        else begin
-            temp_stall = 1'b1;
-        end
+        // end
+        // else begin
+            // temp_stall = 1'b1;
+        // end
     end
 end
 reg [10:0] ptr;
@@ -122,6 +122,7 @@ always_ff @(posedge sdram_clk or negedge reset_n) begin
             end
         end
         READ_MEM: begin
+            icache_addr <= pc_reg[22:2] & ~('b1111); // Align to 16words per cache line
             tag_valid_to_write <= {2'b11, tag_reg};
             if(sdram_ack) begin
                 icache_ren <= 1'b0;
@@ -148,7 +149,7 @@ wire bram_wen = sdram_ack | sdram_ack_reg;
 // tag_valid is 16 bits. tagvalid[15] is the valid bit
 // tag_valid[10:0] is the tag 
 
-wire [10:0] offset =(stall)? pc_stalled[12:2]:pc[12:2];
+wire [10:0] offset =(stall)? pc_stalled[11:2]:pc[11:2];
 wire [13:0] tag = (stall)? pc_stalled[22:12]:pc[22:12];
 reg [10:0] offset_reg;
 reg [13:0] tag_reg;
