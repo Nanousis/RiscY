@@ -3,20 +3,12 @@ from capstone import *
 from tqdm import tqdm
 
 def get_signal_at_time(tv_list, target_time):
-    # tv_list is a list of (time, value) tuples sorted by time
-    left, right = 0, len(tv_list) - 1
-    result = None
-    while left <= right:
-        mid = (left + right) // 2
-        t, val = tv_list[mid]
-        if t == target_time:
-            return val
-        elif t < target_time:
-            result = val
-            left = mid + 1
-        else:
-            right = mid - 1
-    return result
+    last_value = None
+    for t, val in tv_list:
+        if t > target_time:
+            break
+        last_value = val
+    return last_value
 
 def read_instructions(filename):
     instructions = []
@@ -47,7 +39,6 @@ error_file = open("output/output.error", "w")
 
 enabled = False
 errors = 0;
-previous_pc = 0
 for i in tqdm(range(len(pc.tv))):
     pc_bin = pc.tv[i][1]
     instr = get_signal_at_time(instruction.tv, pc.tv[i][0])
@@ -69,11 +60,6 @@ for i in tqdm(range(len(pc.tv))):
             errors += 1
             error_file.write(f"ERROR PC[{i}]: {pc.tv[i][0]} -> {pc_hex} -> {instr_hex} (out of range)\n")
             continue
-        if(previous_pc == pc_value):
-            errors += 1
-            error_file.write(f"ERROR PC[{i}]: {pc.tv[i][0]} -> {pc_hex} -> {instr_hex} (duplicate PC)\n")
-            continue
-        previous_pc = pc_value
         asm_str = ""
         instr_bytes = instr_value.to_bytes(4, byteorder='little')
         for ins in md.disasm(instr_bytes, pc_value):
@@ -94,3 +80,5 @@ if(errors > 0):
     print(f"\033[91mNumber of errors: {errors}\033[0m")
 else:
     print("\033[92mNo errors found!\033[0m")
+output_file.close()
+error_file.close()

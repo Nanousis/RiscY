@@ -3,13 +3,19 @@
 `else
 `include "../includes/config.vh"
 `endif
-
+`define TAG_PC(signal) (signal[23:13])
+`define OFFSET(signal) (signal[12:2])
+`define TAGV_TAG(signal) (signal[10:0])
+`define TAGV_VALID(signal) (signal[15:15])
+`define INVALID_PC 32'hffffffff
+`define NOP 32'h00000013 // NOP instruction
 module i_cache(
     input cpu_clk,
     input sdram_clk,
     input reset_n,
     input [31:0] pc_if1,
     input [31:0] pc_if2,
+    input write_pc,
     input [31:0] sdram_in,
     input sdram_ack,
 
@@ -35,6 +41,7 @@ reg [31:0] pc_reg;
 reg sdram_ack_reg;
 reg enable;
 reg miss;
+reg miss_sync;
 reg temp_stall;
 reg stall_reg;
 assign stall = (stall_reg | temp_stall)& enable; // Stall if either condition is true
@@ -53,7 +60,9 @@ always_comb begin
             else
             begin
                 miss = 1'b1; // Cache miss
-                temp_stall = 1'b1; // temp_stall if tag does not match or is invalid
+            end
+            if(state != IDLE)begin
+                temp_stall = 1'b1;
             end
         // end
         // else begin
@@ -87,8 +96,8 @@ begin
         end
         else begin
             pc_reg <= pc; // Hold the previous value if stalled
-            tag_reg <= pc_stalled[22:12]; // Hold the previous value if stalled
-            offset_reg <= pc_stalled[11:2]; // Hold the previous value if stalled
+            tag_reg <=  `TAG_PC(pc); // Hold the previous value if stalled
+            offset_reg <= `OFFSET(pc); // Hold the previous value if stalled
         end
     end
 end
@@ -105,9 +114,10 @@ always_ff @(posedge sdram_clk or negedge reset_n) begin
     end
     else begin
         sdram_ack_reg <= sdram_ack; // Synchronize sdram_ack to sdram_clk domain
+        miss_sync <= miss; // Synchronize miss to sdram_clk domain
         case(state)
         IDLE: begin
-            if(enable && miss) begin
+            if(enable && miss_sync) begin
                 state <= READ_MEM;
                 icache_ren <= 1'b1;
                 icache_addr <= pc_reg[22:2] & ~('b1111); // Align to 16words per cache line
@@ -149,8 +159,8 @@ wire bram_wen = sdram_ack | sdram_ack_reg;
 // tag_valid is 16 bits. tagvalid[15] is the valid bit
 // tag_valid[10:0] is the tag 
 
-wire [10:0] offset =(stall)? pc_stalled[11:2]:pc[11:2];
-wire [13:0] tag = (stall)? pc_stalled[22:12]:pc[22:12];
+wire [10:0] offset =(stall | ~write_pc)? `OFFSET(pc_stalled):`OFFSET(pc);
+wire [13:0] tag = (stall | ~write_pc)? `TAG_PC(pc_stalled):`TAG_PC(pc);
 reg [10:0] offset_reg;
 reg [13:0] tag_reg;
 wire [15:0] tag_valid;

@@ -105,6 +105,7 @@ module top
                 .PC_out(PC),
                 .PC_IF2_out(PC_IF2),
                 .instr_stall(icache_stall),
+                .icache_write_pc(icache_write_pc),
                 .instr_in(instr),
                 .data_addr(data_addr),
                 .ren(ren),
@@ -122,9 +123,9 @@ module top
     
     wire icache_stall;
     wire icache_ren;
+    wire icache_write_pc;
     wire [31:0] icache_addr;
     wire [31:0] icache_instr;
-
     wire icache_ack;
     i_cache u_i_cache (
         .cpu_clk(cpu_clk),
@@ -132,6 +133,7 @@ module top
         .reset_n(reset),
         .pc_if1(PC),
         .pc_if2(PC_IF2),
+        .write_pc(icache_write_pc),
         .sdram_in(sdram_data_out),
         .sdram_ack(icache_ack),
 

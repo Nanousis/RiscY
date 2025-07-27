@@ -19,6 +19,7 @@ module cpu(	input clock,
 			output [31:0] PC_IF2_out,
 			input  	[31:0] instr_in,
 			input instr_stall,
+			output icache_write_pc,
 			output 	[31:0] data_addr,
 			output ren,
 			output wen,
@@ -147,7 +148,7 @@ assign wen = EXMEM_MemWrite;
 assign data_out = MemWriteData;
 assign DMemOut = data_in;
 assign byte_select = byte_select_vector;
-
+assign icache_write_pc = write_pc;
 
 reg [20*8-1:0] debug_str="";
 /********************** Instruction Fetch Unit (IF1)  **********************/
