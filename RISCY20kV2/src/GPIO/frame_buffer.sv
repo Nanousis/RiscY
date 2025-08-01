@@ -43,7 +43,6 @@ always @(posedge sdram_clk or negedge reset_n) begin
     end
 end
 reg [10:0] ptr;
-reg [511:0] vga_data;
 reg [13:0] old_y_cursor;
 reg [10:0] current_line_address;
 
@@ -55,7 +54,6 @@ begin
         vga_addr <= 32'b0;
         vga_ren <= 1'b0;
         state <= IDLE;
-        vga_data <= 32'b0;
         next_state <= IDLE;
         old_y_cursor <= 14'b0;
         ptr <= 0;

@@ -26,7 +26,7 @@ iverilog -g2012 -Winfloop -DTESTBENCH -o test.o -s test -I../include ./soctb.v \
 # time vvp test.o > log.txt 2>&1
 time vvp test.o
 
-python vcd_verification.py 
+python vcd_verification.py ZSOC.vcd
 
 # Run gtkwave
 # gtkwave gtkw.gtkw

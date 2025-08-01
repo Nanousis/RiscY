@@ -149,8 +149,8 @@ assign data_out = MemWriteData;
 assign DMemOut = data_in;
 assign byte_select = byte_select_vector;
 assign icache_write_pc = write_pc;
-
 reg [20*8-1:0] debug_str="";
+
 /********************** Instruction Fetch Unit (IF1)  **********************/
 always @(posedge clock or negedge reset)
 begin 
@@ -159,6 +159,7 @@ begin
 		PC <= `INITIAL_PC; 
 	end
 	else if (write_pc == 1'b1)
+	// else if (write_pc == 1'b1 || (new_pc_set == 1'b1 && instr_stall))
 	begin
 		PC <= PC_new;
 	end
@@ -195,7 +196,7 @@ begin
 			debug_error<=2'b1;
 		end
 		write_pc_delayed <= write_pc;
-		if(write_ifid == 1'b1)begin
+		if(write_pc == 1'b1)begin
 			if(bubble_ifid == 1'b1)begin
 				PC_IF2 <= 32'hffffffff;
 			end
@@ -207,6 +208,7 @@ begin
 			keepDelayInstr <= 0;
 		end
 		else begin
+			// if(bubble_ifid == 1'b1||bubble_ifid_delayed == 1'b1 ||  (new_pc_set == 1'b1 && instr_stall))begin
 			if(bubble_ifid == 1'b1||bubble_ifid_delayed == 1'b1)begin
 				PC_IF2 <= 32'hffffffff;
 			end
@@ -243,27 +245,31 @@ end
 reg [31:0] PCPrevious;
 // PC adder
 // assign PCplus4 = PC + 32'd4;
-
+reg new_pc_set;
 // Branch signal for new PC
 always @(*) begin
 	if(int_taken||trap_in_ID)
 	begin
+		new_pc_set = 1'b1;
 		PC_new = trap_vector;
 	end
 	else if (PCSrc == 1'b0) begin
 		if (Jump == 1'b0) begin
+			new_pc_set = 1'b0;
 			PC_new = PC + ((flushPipeline == 1'b1) ? 32'd0 : 32'd4);
 		end
 		else begin
+			new_pc_set = 1'b1;
 			PC_new = JumpAddress;
 		end
 	end
 	else begin
+		new_pc_set = 1'b1;
 		PC_new = EXMEM_BranchALUOut;
 	end
 end
 
-assign JumpAddress = IFID_PC + signExtend;
+assign JumpAddress = ((IFID_PC!=32'hffffffff)?IFID_PC:(PC_IF2!=32'hffffffff)?PC_IF2:PC) + signExtend;
 
 // IFID pipeline register
 always @(posedge clock or negedge reset)
@@ -276,7 +282,7 @@ begin
 	else begin
 		// used to hold bubble in the pipeline. You loose an extra cycle here
 		// This is so that the instruction memory can notice the jump
-		if ((bubble_ifid_delayed||bubble_ifid == 1'b1)) begin
+		if ((bubble_ifid_delayed||bubble_ifid == 1'b1) || (instr_stall & write_ifid)) begin
 			IFID_instr		<= 32'h13;
 			IFID_PC			<= 32'hffffffff;
 		end 

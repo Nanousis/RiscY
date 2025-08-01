@@ -95,11 +95,11 @@ module DebounceFSM (
     
     localparam DEBOUNCE_TIME = 22'd1_000_000; // Adjust based on clock frequency and debounce delay
 
-    reg [21:0] counter;
+    reg [21:0] counter=0;
     reg [1:0] state = IDLE;
-    reg btn_last;
-    reg newChange;
-    reg dff1, dff2, dff3;
+    reg btn_last=0;
+    reg newChange=0;
+    reg dff1=0, dff2=0, dff3=0;
 
     always @(posedge clk) begin
         dff1 <= btn_in;

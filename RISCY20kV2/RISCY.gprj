@@ -50,6 +50,7 @@
         <File path="src/gowin_rpll_800vga/gowin_rpll_800vga.v" type="file.verilog" enable="1"/>
         <File path="src/gowin_rpll_fast_sdram/gowin_rpll_fast_sdram.v" type="file.verilog" enable="1"/>
         <File path="src/gowin_rpll_ppu/gowin_rpll_ppu.v" type="file.verilog" enable="1"/>
+        <File path="src/gowin_rpll_sdram_slow/gowin_rpll_sdram_slow.v" type="file.verilog" enable="1"/>
         <File path="src/ip/gowin_rpll/gowin_rpll.v" type="file.verilog" enable="1"/>
         <File path="src/ip/sdram_controller_hs/sdram_controller_hs.v" type="file.verilog" enable="1"/>
         <File path="src/psram_memory_interface_hs_2ch/psram_memory_interface_hs_2ch.v" type="file.verilog" enable="1"/>

@@ -75,10 +75,6 @@ begin
 			trap_waiting	= 1'b0;
 		end
 	end
-	else if(instr_stall == 1'b1)begin
-		write_ifid		= 1'b0;
-		write_pc		= 1'b0;
-	end
 	// if we have a branch, we need to make sure that the branch is 
 	// executed before taking a future trap. Hence we stall the pipeline
 	else if((IDEX_Branch|EXMEM_Branch) && (syscall))begin
@@ -102,10 +98,20 @@ begin
 		write_pc	= 1'b0;
 		trap_waiting= 1'b0;
 	end
-	else if (Jump == 1'b1||trap_in_ID == 1'b1) begin // j instruction in ID stage	
+	else if ((Jump == 1'b1 & instr_stall == 1'b0)||trap_in_ID == 1'b1) begin // j instruction in ID stage	
 		state = 4'd5;
 		bubble_ifid	= 1'b1;
 	end
+
+	if(instr_stall == 1'b1)begin
+		write_pc		= 1'b0;
+		if(Jump == 1'b1) begin
+			write_ifid	= 1'b0;
+			// write_idex	= 1'b0;
+		end
+	end
+
+
 	if(int_trap == 1'b1) begin // Trap in ID stage
 		state = 4'd6;
 		bubble_ifid		= 1'b1;

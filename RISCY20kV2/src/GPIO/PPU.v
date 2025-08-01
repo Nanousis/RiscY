@@ -150,7 +150,7 @@ module PPU(
                     screen_change<=(data_in[0]==1'b1)?1:0;
                 end
                 if(address==16'h2804)begin
-                    frame_buffer_addr<=data_in[22:0];
+                    frame_buffer_addr<=data_in[24:2];
                 end
                 if(address<16'd3072)begin
                     textEn<=1;

@@ -4,7 +4,7 @@ OBJCOPY  = riscv64-unknown-elf-objcopy
 OBJDUMP  = riscv64-unknown-elf-objdump
 
 # Compiler flags
-CFLAGS   = -march=rv32i_zicsr -mabi=ilp32 -O3 -Wall -lgcc -nostartfiles -ffreestanding \
+CFLAGS   = -march=rv32i_zicsr -mabi=ilp32 -Os -Wall -lgcc -nostartfiles -ffreestanding \
  			-DRUN_DHRYSTONE -DDHRY_ITERS=200000 -DNOENUM
 
 # Linker flags

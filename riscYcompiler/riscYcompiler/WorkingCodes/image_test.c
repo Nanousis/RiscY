@@ -3,7 +3,7 @@
 #include <stdarg.h> 
 #include "riscYstdio.h"
 #include <stdint.h>
-#define RAM_LOCATION 0x70000000
+#define RAM_LOCATION 0x80010000
 #define FLASH_READY 0x8B000000
 #define FLASH_REN 0x8B000001
 #define FLASH_WEN 0x8B000002
@@ -169,16 +169,19 @@ int main() {
     uint8_t blue=255;
     char keep_track = 0;
     char black = 0;
+    frame_buffer_addr[0] = (uint32_t)ram;
     color= rgb_to_rgb565(red, green, blue);
     keep_track = 0;
     black = 0;
-    for(i = 0; i <=MAX_HEIGHT; i++){
-        checker_pattern((uint16_t *)ram, color, black, i); // Fill the screen with the initial color
-        if(++keep_track >=CHECKERS_WIDTH ) {
-            keep_track = 0;
-            black = !black; // Toggle color
-        }
-    }
+    uart_printf("Starting checkerboard pattern with color.\r\n");
+
+    // for(i = 0; i <=MAX_HEIGHT; i++){
+    //     checker_pattern((uint16_t *)ram, color, black, i); // Fill the screen with the initial color
+    //     if(++keep_track >=CHECKERS_WIDTH ) {
+    //         keep_track = 0;
+    //         black = !black; // Toggle color
+    //     }
+    // }
     screenChange[0] = 0x00000001; // Trigger screen change
     uint8_t color_state=0;
     while(1){
@@ -245,7 +248,6 @@ int main() {
                         black = !black; // Toggle color
                     }
                 }
-                frame_buffer_addr[0] = (uint32_t)ram;
                 color_state = 0; // Reset state
             }
             uart_printf("PREVIOUS COLOR: %x\r\n",ram[0]);

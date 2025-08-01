@@ -118,7 +118,7 @@ module top
                 .timer_interrupt(mtimer_irq),
                 .external_interrupt(mext_irq),
                 // this should not be like that.
-                .memReady(bus_ready & ~icache_stall)
+                .memReady(bus_ready)
     );
     
     wire icache_stall;
@@ -127,6 +127,7 @@ module top
     wire [31:0] icache_addr;
     wire [31:0] icache_instr;
     wire icache_ack;
+
     i_cache u_i_cache (
         .cpu_clk(cpu_clk),
         .sdram_clk(sdram_clk),
@@ -264,7 +265,7 @@ module top
     wire sdram_clk;
     wire rpll_lock;
 
-    Gowin_rPLL_fast_sdram rPLL_sdram (
+    Gowin_rPLL_sdram_slow rPLL_sdram (
         .clkin(cpu_clk),  // 27 MHz
         .clkout(sdram_clk),  // 108 MHz
         .lock(rpll_lock)

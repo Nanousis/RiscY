@@ -3,10 +3,13 @@
 #include <stdarg.h> 
 #include "riscYstdio.h"
 #include <stdint.h>
-#define RAM_LOCATION 0x70000000
 
 #define MAX_WIDTH 800
 #define MAX_HEIGHT 480
+// keep in mind when changing these values that they are halfwords.
+// This means that you need to multiply the width and height by 2 to get the correct size in bytes.
+#define RAM_LOCATION (0x80000000 + MAX_WIDTH * MAX_HEIGHT)
+#define RAM_LOCATION2 (0x80000000 + MAX_WIDTH * MAX_HEIGHT*4)
 
 #define CHECKERS_WIDTH 20
 
@@ -55,8 +58,10 @@ int main() {
     int i = 0;
     uint16_t color = 0;
     int counter = 0;
-    volatile uint16_t *ram = (volatile uint16_t *) RAM_LOCATION;
-    volatile unsigned int *screenChange= (volatile unsigned int *) 0x88002800;
+     uint16_t *ram = ( uint16_t *) RAM_LOCATION;
+     unsigned int *screenChange= ( unsigned int *) 0x88002800;
+     unsigned int *frame_buffer_addr= ( unsigned int *) 0x88002804;
+    frame_buffer_addr[0] = (uint32_t)ram;
     uint8_t red=255;
     uint8_t green=255;
     uint8_t blue=255;
@@ -89,6 +94,7 @@ int main() {
         if(getButtonDown()){
             red = blue = green = 0; // Reset colors
             if(color_state==0){
+                ram = ( uint16_t *) RAM_LOCATION; // Change RAM location for next pattern
                 keep_track = 0;
                 black = 0;
                 for(i = 0; i <MAX_HEIGHT; i++){
@@ -101,6 +107,7 @@ int main() {
                 color_state = 1; // Change state to next color
             }
             else if(color_state==1){
+                ram = ( uint16_t *) RAM_LOCATION2; // Change RAM location for next pattern
                 keep_track = 0;
                 black = 0;
                 for(i = 0; i <MAX_HEIGHT; i++){
@@ -113,6 +120,7 @@ int main() {
                 color_state = 2; // Change state to next color
             }
             else if(color_state==2){
+                ram = ( uint16_t *) RAM_LOCATION; // Change RAM location for next pattern
                 keep_track = 0;
                 black = 0;
                 for(i = 0; i <MAX_HEIGHT; i++){
@@ -125,6 +133,7 @@ int main() {
                 color_state = 3; // Change state to next color
             }
             else{
+                ram = ( uint16_t *) RAM_LOCATION2; // Change RAM location for next pattern
                 keep_track = 0;
                 black = 0;
                 for(i = 0; i <MAX_HEIGHT; i++){
@@ -136,11 +145,13 @@ int main() {
                 }
                 color_state = 0; // Reset state
             }
-            uart_printf("PREVIOUS COLOR: %x\r\n",ram[0]);
-            uart_printf("Color changed to: R:%d G:%d B:%d\r\n", red, green, blue);
-            uart_printf("New Color 0x%x\r\n",color);
-            uart_printf("RAM[3] set to: 0x%x\r\n", ram[3]);
-            for(int j = 0; j<WaitTime*100; j++); // Wait for a while
+            frame_buffer_addr[0] = (uint32_t)ram; // Update frame buffer address
+
+            // uart_printf("PREVIOUS COLOR: %x\r\n",ram[0]);
+            // uart_printf("Color changed to: R:%d G:%d B:%d\r\n", red, green, blue);
+            // uart_printf("New Color 0x%x\r\n",color);
+            // uart_printf("RAM[3] set to: 0x%x\r\n", ram[3]);
+            // for(int j = 0; j<WaitTime*100; j++); // Wait for a while
         }
     }
 }

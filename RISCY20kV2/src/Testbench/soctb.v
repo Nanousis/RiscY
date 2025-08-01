@@ -77,12 +77,10 @@ top TOP
     .btnRightL(1)
 );
 
-always #5 sdram_clk = ~sdram_clk; // 108 MHz
+always #6 sdram_clk = ~sdram_clk; // 108 MHz
 always #37 vga_clk = ~vga_clk; // 13.5 MHz
-
-
- always
-    #18  clk = ~clk; // 27 MHz
+always #18  clk = ~clk; // 27 MHz
+    
     initial begin
         $display("Starting TESTBENCH");
         #10 reset = 1;

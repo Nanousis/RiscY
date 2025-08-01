@@ -40,6 +40,10 @@ reg sdram_ren_reg, sdram_wen_reg; // SDRAM read and write enable signals
 assign sdram_ren = sdram_ren_reg& ~ram_ack;
 assign sdram_wen = sdram_wen_reg & ~ram_ack;
 
+// reg [31:0] address_sync;
+// reg [31:0] data_sync;
+
+
 always_ff@(posedge sdram_clk or negedge reset_n)
 begin
     if(reset_n == 1'b0) begin

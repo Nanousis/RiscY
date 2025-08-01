@@ -259,7 +259,7 @@ module ram_controller
                         if(vga_work)begin
                             vga_ack <= 1; // reset vga ack signal
                         end
-                        if(icache_ren) begin
+                        if(icache_work) begin
                             icache_ack <= 1; // acknowledge icache read operation
                         end
                         data_out <= O_sdrc_data; // read data from SDRAM

@@ -44,6 +44,7 @@ reg miss;
 reg miss_sync;
 reg temp_stall;
 reg stall_reg;
+
 assign stall = (stall_reg | temp_stall)& enable; // Stall if either condition is true
 always_comb begin
     temp_stall = 1'b0; // Default no stall
@@ -59,6 +60,7 @@ always_comb begin
             end
             else
             begin
+                temp_stall = 1'b1;
                 miss = 1'b1; // Cache miss
             end
             if(state != IDLE)begin
@@ -72,6 +74,10 @@ always_comb begin
 end
 reg [10:0] ptr;
 reg [128*8:0] test_str;
+reg [31:0] pc_to_write;
+
+wire valid_write = (pc_to_write==pc_stalled);
+
 
 always_ff@(posedge cpu_clk or negedge reset_n)
 begin
@@ -111,6 +117,7 @@ always_ff @(posedge sdram_clk or negedge reset_n) begin
         tag_valid_to_write <= 17'b0;
         ptr <= 0;
         test_str <= "RESET";
+        pc_to_write <= 32'b0;
     end
     else begin
         sdram_ack_reg <= sdram_ack; // Synchronize sdram_ack to sdram_clk domain
@@ -121,6 +128,7 @@ always_ff @(posedge sdram_clk or negedge reset_n) begin
                 state <= READ_MEM;
                 icache_ren <= 1'b1;
                 icache_addr <= pc_reg[22:2] & ~('b1111); // Align to 16words per cache line
+                pc_to_write <= pc_reg;
                 ptr <= offset_reg & ~('b1111); // Align to 16words per cache line
                 test_str <= "READ_MEM";
             end
@@ -142,6 +150,8 @@ always_ff @(posedge sdram_clk or negedge reset_n) begin
         end
         UPDATE_CACHE: begin
             ptr <= ptr + 1;
+            // this is a problem if we want the 15th word to be read.
+            // needs one more cycle
             if(!sdram_ack) begin
                 state <= IDLE;
             end
@@ -151,7 +161,7 @@ always_ff @(posedge sdram_clk or negedge reset_n) begin
 end
 
 wire [31:0] bram_instr_out;
-wire bram_wen = sdram_ack | sdram_ack_reg;
+wire bram_wen = (sdram_ack | sdram_ack_reg) & valid_write;
 
 // sdram is [20:0] words long. so 22:2 is the pc given to the sdram
 // sdram is 8MB (2^23) or 2M words(2^21)
@@ -281,5 +291,38 @@ Gowin_DPB_program TAG_VALID_BRAM_1(
     .adb(ptr), //input [10:0] adb
     .dinb(tag_valid_to_write[15:8]) //input [7:0] dinb
 );
+
+
+`ifdef TESTBENCH
+// debug stuff
+integer file;
+
+initial begin
+    // Open the file in write mode ("w") – creates or overwrites the file
+    file = $fopen("cache.out", "w");
+
+    if (file == 0) begin
+      $display("Error: Could not open file.");
+      $finish;
+    end
+end
+integer new_cache_line = 0;
+always_ff @(posedge sdram_clk)begin
+    if(bram_wen)
+    begin
+        if(new_cache_line == 0)
+        begin
+            $fwrite(file, "\nNew cache line at PC = %h\n", pc_reg);
+            new_cache_line = 1;
+        end
+        $fwrite(file, "Writing to cache %h: data = %h. PC = %h\n", {ptr}, sdram_in, pc_reg);
+    end
+    else
+    begin
+        new_cache_line = 0;
+    end
+end
+`endif
+
 
 endmodule
