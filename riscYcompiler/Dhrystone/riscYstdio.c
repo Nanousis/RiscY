@@ -132,6 +132,7 @@ char getButtonRight(){
 unsigned char putch(int location, char c, char color) {
     if(location<0){
         vOutNS16550(c);
+        return 0;
     }
     if(location>SCREEN_SIZE){
         return 0;

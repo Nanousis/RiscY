@@ -13,10 +13,12 @@ module flashNavigator
     output reg flashMosi = 0,
     output reg flashCs = 1,
 
-    output reg ready=1,
+    output wire flash_ready,
     output reg [31:0] data_out=32'h0
 );
 
+  assign flash_ready = ready | dataReady;
+  reg ready = 1'b1;
   reg [7:0] command = 8'h03;
   reg [7:0] currentByteOut = 0;
   reg [7:0] currentByteNum = 0;
@@ -117,7 +119,10 @@ module flashNavigator
             data_out[(8*currentByteNum)+:8] <= currentByteOut;
             //stored_characters[3-currentByteNum] <= currentByteOut;
             if (currentByteNum == 3)
+            begin
               state <= STATE_DONE;
+              dataReady <= 1;
+            end
           end
         end
         else begin
@@ -156,7 +161,7 @@ module flashNavigator
           returnState <= STATE_DONE;
       end
       STATE_DONE: begin
-        dataReady <= 1;
+        dataReady <= 0;
         flashCs <= 1;
         dataInBuffer <= dataIn;
         if(enabling_done && write_enable) begin

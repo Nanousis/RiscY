@@ -2,6 +2,8 @@ Archive member included to satisfy reference by file (symbol)
 
 /opt/homebrew/Cellar/riscv-gnu-toolchain/main/lib/gcc/riscv64-unknown-elf/14.2.0/rv32i/ilp32/libgcc.a(div.o)
                               builds/build0/dhry_1.o (__divsi3)
+/opt/homebrew/Cellar/riscv-gnu-toolchain/main/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/lib/rv32i/ilp32/libc.a(libc_a-memcpy.o)
+                              builds/build0/dhry_1.o (memcpy)
 /opt/homebrew/Cellar/riscv-gnu-toolchain/main/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/lib/rv32i/ilp32/libc.a(libc_a-strcpy.o)
                               builds/build0/dhry_1.o (strcpy)
 
@@ -29,115 +31,122 @@ LOAD /opt/homebrew/Cellar/riscv-gnu-toolchain/main/lib/gcc/riscv64-unknown-elf/1
                 0x00000800                        _stack_size = 0x800
                 0x80000000                        . = ORIGIN (RAM)
 
-.text           0x80000000     0x20b4
+.text           0x80000000      0xbf4
  *(.text)
  .text          0x80000000       0x1c builds/build0/startup.o
                 0x80000000                _start
- .text          0x8000001c      0x244 builds/build0/dhry_1.o
-                0x8000001c                Proc_1
-                0x80000194                Proc_2
-                0x800001c4                Proc_3
-                0x800001f0                Proc_4
-                0x80000220                Proc_5
-                0x80000238                strcmp
- .text          0x80000260      0x144 builds/build0/dhry_2.o
-                0x80000260                Proc_6
-                0x800002b4                Proc_7
-                0x800002c4                Proc_8
-                0x80000338                Func_1
-                0x80000354                Func_2
-                0x80000398                Func_3
- .text          0x800003a4     0x1c5c builds/build0/riscYstdio.o
-                0x800003a4                vOutNS16550
-                0x800003c4                get_time
-                0x800003d0                getButton
-                0x800003e0                getButtonDown
-                0x800003ec                getButtonUp
-                0x800003f8                getButtonLeft
-                0x80000404                getButtonRight
-                0x80000410                putch
-                0x80000464                printString
-                0x80000518                printHex
-                0x800006a4                printDec
-                0x80000cd0                printf
-                0x80001170                printfSCR
-                0x80001634                uart_printf
-                0x80001fc8                clearScreen
-                0x80001ff4                resetScreenVector
- .text          0x80002000       0xb4 /opt/homebrew/Cellar/riscv-gnu-toolchain/main/lib/gcc/riscv64-unknown-elf/14.2.0/rv32i/ilp32/libgcc.a(div.o)
-                0x80002000                __divsi3
-                0x80002008                __hidden___udivsi3
-                0x80002008                __udivsi3
-                0x80002050                __umodsi3
-                0x80002084                __modsi3
- .text          0x800020b4        0x0 /opt/homebrew/Cellar/riscv-gnu-toolchain/main/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/lib/rv32i/ilp32/libc.a(libc_a-strcpy.o)
+ .text          0x8000001c      0x188 builds/build0/dhry_1.o
+                0x8000001c                Proc_2
+                0x80000048                Proc_3
+                0x80000074                Proc_1
+                0x80000134                Proc_4
+                0x80000164                Proc_5
+                0x8000017c                strcmp
+ .text          0x800001a4      0x13c builds/build0/dhry_2.o
+                0x800001a4                Proc_6
+                0x800001f4                Proc_7
+                0x80000204                Proc_8
+                0x80000278                Func_1
+                0x80000294                Func_2
+                0x800002d4                Func_3
+ .text          0x800002e0      0x860 builds/build0/riscYstdio.o
+                0x800002e0                vOutNS16550
+                0x80000300                get_time
+                0x8000030c                getButton
+                0x8000031c                getButtonDown
+                0x80000328                getButtonUp
+                0x80000334                getButtonLeft
+                0x80000340                getButtonRight
+                0x8000034c                putch
+                0x800003a4                printString
+                0x80000464                printHex
+                0x80000504                printDec
+                0x80000650                printf
+                0x800007ec                printfSCR
+                0x80000984                uart_printf
+                0x80000ae8                clearScreen
+                0x80000b34                resetScreenVector
+ .text          0x80000b40       0xb4 /opt/homebrew/Cellar/riscv-gnu-toolchain/main/lib/gcc/riscv64-unknown-elf/14.2.0/rv32i/ilp32/libgcc.a(div.o)
+                0x80000b40                __divsi3
+                0x80000b48                __hidden___udivsi3
+                0x80000b48                __udivsi3
+                0x80000b90                __umodsi3
+                0x80000bc4                __modsi3
+ .text          0x80000bf4        0x0 /opt/homebrew/Cellar/riscv-gnu-toolchain/main/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/lib/rv32i/ilp32/libc.a(libc_a-memcpy.o)
+ .text          0x80000bf4        0x0 /opt/homebrew/Cellar/riscv-gnu-toolchain/main/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/lib/rv32i/ilp32/libc.a(libc_a-strcpy.o)
  *(.rodata)
-                0x800020b4                        _etext = .
+                0x80000bf4                        _etext = .
 
-.text.startup   0x800020b4      0x6cc
- .text.startup  0x800020b4      0x6cc builds/build0/dhry_1.o
-                0x800020b4                main
+.text.startup   0x80000bf4      0x660
+ .text.startup  0x80000bf4      0x660 builds/build0/dhry_1.o
+                0x80000bf4                main
 
-.text.strcpy    0x80002780       0xa4
- .text.strcpy   0x80002780       0xa4 /opt/homebrew/Cellar/riscv-gnu-toolchain/main/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/lib/rv32i/ilp32/libc.a(libc_a-strcpy.o)
-                0x80002780                strcpy
+.text.memcpy    0x80001254      0x128
+ .text.memcpy   0x80001254      0x128 /opt/homebrew/Cellar/riscv-gnu-toolchain/main/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/lib/rv32i/ilp32/libc.a(libc_a-memcpy.o)
+                0x80001254                memcpy
 
-.rodata.str1.4  0x80002824      0x755
+.text.strcpy    0x8000137c       0xa4
+ .text.strcpy   0x8000137c       0xa4 /opt/homebrew/Cellar/riscv-gnu-toolchain/main/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/lib/rv32i/ilp32/libc.a(libc_a-strcpy.o)
+                0x8000137c                strcpy
+
+.rodata.str1.4  0x80001420      0x755
  .rodata.str1.4
-                0x80002824      0x755 builds/build0/dhry_1.o
+                0x80001420      0x755 builds/build0/dhry_1.o
                                 0x741 (size before relaxing)
  .rodata.str1.4
-                0x80002f79       0x11 builds/build0/riscYstdio.o
+                0x80001b75       0x11 builds/build0/riscYstdio.o
 
-.rela.dyn       0x80002f7c        0x0
- .rela.text     0x80002f7c        0x0 builds/build0/startup.o
-                0x80002f7c                        . = ALIGN (0x4)
+.rela.dyn       0x80001b78        0x0
+ .rela.text     0x80001b78        0x0 builds/build0/startup.o
+                0x80001b78                        . = ALIGN (0x4)
 
-.data           0x80002f79        0x0
-                0x80002f79                        _sdata = .
+.data           0x80001b75        0x0
+                0x80001b75                        _sdata = .
  *(.data)
- .data          0x80002f79        0x0 builds/build0/startup.o
- .data          0x80002f79        0x0 builds/build0/dhry_1.o
- .data          0x80002f79        0x0 builds/build0/dhry_2.o
- .data          0x80002f79        0x0 builds/build0/riscYstdio.o
- .data          0x80002f79        0x0 /opt/homebrew/Cellar/riscv-gnu-toolchain/main/lib/gcc/riscv64-unknown-elf/14.2.0/rv32i/ilp32/libgcc.a(div.o)
- .data          0x80002f79        0x0 /opt/homebrew/Cellar/riscv-gnu-toolchain/main/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/lib/rv32i/ilp32/libc.a(libc_a-strcpy.o)
-                0x80002f79                        _edata = .
-                0x80002f7c                        . = ALIGN (0x4)
+ .data          0x80001b75        0x0 builds/build0/startup.o
+ .data          0x80001b75        0x0 builds/build0/dhry_1.o
+ .data          0x80001b75        0x0 builds/build0/dhry_2.o
+ .data          0x80001b75        0x0 builds/build0/riscYstdio.o
+ .data          0x80001b75        0x0 /opt/homebrew/Cellar/riscv-gnu-toolchain/main/lib/gcc/riscv64-unknown-elf/14.2.0/rv32i/ilp32/libgcc.a(div.o)
+ .data          0x80001b75        0x0 /opt/homebrew/Cellar/riscv-gnu-toolchain/main/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/lib/rv32i/ilp32/libc.a(libc_a-memcpy.o)
+ .data          0x80001b75        0x0 /opt/homebrew/Cellar/riscv-gnu-toolchain/main/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/lib/rv32i/ilp32/libc.a(libc_a-strcpy.o)
+                0x80001b75                        _edata = .
+                0x80001b78                        . = ALIGN (0x4)
 
-.bss            0x80002f7c     0x2838
-                0x80002f7c                        _sbss = .
+.bss            0x80001b78     0x2838
+                0x80001b78                        _sbss = .
  *(.bss COMMON)
- .bss           0x80002f7c        0x0 builds/build0/startup.o
- .bss           0x80002f7c     0x2838 builds/build0/dhry_1.o
-                0x80002fdc                Arr_1_Glob
-                0x800030a4                Arr_2_Glob
- .bss           0x800057b4        0x0 builds/build0/dhry_2.o
- .bss           0x800057b4        0x0 builds/build0/riscYstdio.o
- .bss           0x800057b4        0x0 /opt/homebrew/Cellar/riscv-gnu-toolchain/main/lib/gcc/riscv64-unknown-elf/14.2.0/rv32i/ilp32/libgcc.a(div.o)
- .bss           0x800057b4        0x0 /opt/homebrew/Cellar/riscv-gnu-toolchain/main/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/lib/rv32i/ilp32/libc.a(libc_a-strcpy.o)
-                0x800057b4                        _ebss = .
+ .bss           0x80001b78        0x0 builds/build0/startup.o
+ .bss           0x80001b78     0x2838 builds/build0/dhry_1.o
+                0x80001bd8                Arr_1_Glob
+                0x80001ca0                Arr_2_Glob
+ .bss           0x800043b0        0x0 builds/build0/dhry_2.o
+ .bss           0x800043b0        0x0 builds/build0/riscYstdio.o
+ .bss           0x800043b0        0x0 /opt/homebrew/Cellar/riscv-gnu-toolchain/main/lib/gcc/riscv64-unknown-elf/14.2.0/rv32i/ilp32/libgcc.a(div.o)
+ .bss           0x800043b0        0x0 /opt/homebrew/Cellar/riscv-gnu-toolchain/main/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/lib/rv32i/ilp32/libc.a(libc_a-memcpy.o)
+ .bss           0x800043b0        0x0 /opt/homebrew/Cellar/riscv-gnu-toolchain/main/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/lib/rv32i/ilp32/libc.a(libc_a-strcpy.o)
+                0x800043b0                        _ebss = .
                 0x80008000                        _stack_end = (ORIGIN (RAM) + LENGTH (RAM))
                 0x80008000                        _stack_top = _stack_end
                 0x80007800                        _stack_bottom = (_stack_top - _stack_size)
 OUTPUT(builds/build0/program.elf elf32-littleriscv)
 
-.sbss           0x800057b4       0x2e
- .sbss          0x800057b4       0x2c builds/build0/dhry_1.o
-                0x800057b4                Dhrystones_Per_Second
-                0x800057b8                Microseconds
-                0x800057bc                User_Time
-                0x800057c0                End_Time
-                0x800057c4                Begin_Time
-                0x800057c8                Reg
-                0x800057cc                Ch_2_Glob
-                0x800057cd                Ch_1_Glob
-                0x800057d0                Bool_Glob
-                0x800057d4                Int_Glob
-                0x800057d8                Next_Ptr_Glob
-                0x800057dc                Ptr_Glob
- .sbss          0x800057e0        0x2 builds/build0/riscYstdio.o
-                0x800057e0                screenPos
+.sbss           0x800043b0       0x2e
+ .sbss          0x800043b0       0x2c builds/build0/dhry_1.o
+                0x800043b0                Dhrystones_Per_Second
+                0x800043b4                Microseconds
+                0x800043b8                User_Time
+                0x800043bc                End_Time
+                0x800043c0                Begin_Time
+                0x800043c4                Reg
+                0x800043c8                Ch_2_Glob
+                0x800043c9                Ch_1_Glob
+                0x800043cc                Bool_Glob
+                0x800043d0                Int_Glob
+                0x800043d4                Next_Ptr_Glob
+                0x800043d8                Ptr_Glob
+ .sbss          0x800043dc        0x2 builds/build0/riscYstdio.o
+                0x800043dc                screenPos
 
 .riscv.attributes
                 0x00000000       0x25
@@ -152,13 +161,16 @@ OUTPUT(builds/build0/program.elf elf32-littleriscv)
  .riscv.attributes
                 0x00000092       0x1a /opt/homebrew/Cellar/riscv-gnu-toolchain/main/lib/gcc/riscv64-unknown-elf/14.2.0/rv32i/ilp32/libgcc.a(div.o)
  .riscv.attributes
-                0x000000ac       0x1c /opt/homebrew/Cellar/riscv-gnu-toolchain/main/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/lib/rv32i/ilp32/libc.a(libc_a-strcpy.o)
+                0x000000ac       0x1c /opt/homebrew/Cellar/riscv-gnu-toolchain/main/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/lib/rv32i/ilp32/libc.a(libc_a-memcpy.o)
+ .riscv.attributes
+                0x000000c8       0x1c /opt/homebrew/Cellar/riscv-gnu-toolchain/main/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/lib/rv32i/ilp32/libc.a(libc_a-strcpy.o)
 
 .comment        0x00000000       0x2b
  .comment       0x00000000       0x2b builds/build0/dhry_1.o
                                  0x1a (size before relaxing)
  .comment       0x0000002b       0x1a builds/build0/dhry_2.o
  .comment       0x0000002b       0x1a builds/build0/riscYstdio.o
+ .comment       0x0000002b       0x13 /opt/homebrew/Cellar/riscv-gnu-toolchain/main/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/lib/rv32i/ilp32/libc.a(libc_a-memcpy.o)
  .comment       0x0000002b       0x13 /opt/homebrew/Cellar/riscv-gnu-toolchain/main/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/lib/rv32i/ilp32/libc.a(libc_a-strcpy.o)
 
 .note.GNU-stack
@@ -169,6 +181,8 @@ OUTPUT(builds/build0/program.elf elf32-littleriscv)
                 0x00000000        0x0 builds/build0/dhry_2.o
  .note.GNU-stack
                 0x00000000        0x0 builds/build0/riscYstdio.o
+ .note.GNU-stack
+                0x00000000        0x0 /opt/homebrew/Cellar/riscv-gnu-toolchain/main/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/lib/rv32i/ilp32/libc.a(libc_a-memcpy.o)
  .note.GNU-stack
                 0x00000000        0x0 /opt/homebrew/Cellar/riscv-gnu-toolchain/main/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/lib/rv32i/ilp32/libc.a(libc_a-strcpy.o)
 

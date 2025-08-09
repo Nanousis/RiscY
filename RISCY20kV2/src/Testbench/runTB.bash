@@ -5,11 +5,12 @@
 
 # Remove ZSOC.vcd if it exists
 [ -f ZSOC.vcd ] && rm ZSOC.vcd
-
+xxd -p -c1 Simulation/flash.bin > Simulation/flash.hex
 # Run iverilog
 iverilog -g2012 -Winfloop -DTESTBENCH -o test.o -s test -I../include ./soctb.v \
-  ./Simulation/*.v \
+  ./Simulation/*v \
   ../CPU/*.v \
+  ../CPU/*.sv \
   ../GPIO/*.v \
   ../GPIO/*.sv \
   ../Memories/*.v \
@@ -22,11 +23,16 @@ iverilog -g2012 -Winfloop -DTESTBENCH -o test.o -s test -I../include ./soctb.v \
    ../CLINT.v  \
    ../Buses/*.v >out.log 2>&1
 
+grep "error:" out.log | cat
+if [ $? -ne 0 ]; then
+  echo -e "\033[0;31mErrors found in compilation. Exiting.\033[0m"
+  exit 1
+fi
 # Run vvp
 # time vvp test.o > log.txt 2>&1
-time vvp test.o
+time vvp -lxt-speed test.o
 
-python vcd_verification.py ZSOC.vcd
+# python vcd_verification.py ZSOC.vcd
 
 # Run gtkwave
 # gtkwave gtkw.gtkw

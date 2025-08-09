@@ -36,9 +36,16 @@ unsigned char printDec(int location, int num, char color);
 int printf(const char* str, ...);
 int printfSCR(int location, char color,const char* str, ...);
 int uart_printf(const char* str, ...);
+uint8_t uart_read_byte();
 long get_time();
 
 void clearScreen();
 void resetScreenVector();
 
+unsigned int readFlash(unsigned int adress);
+unsigned int getFileStartAddressByName(const char *filename, uint32_t *file_start, uint32_t *file_end);
+int16_t riscy_fopen(const char* filename);
+int32_t riscy_fread(int16_t fileHandle, void* buffer, uint32_t size);
+char riscy_fgetc(int16_t fileHandle);
+uint8_t riscy_fclose(int16_t fileHandle);
 #endif

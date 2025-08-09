@@ -1,0 +1,12 @@
+[General]
+file=spi_flash_interface_lite
+ipc_version=4
+module=SPI_Flash_Interface_Lite_Top
+target_device=gw2ar18c-000
+type=spi_flash_interface_lite
+version=1.0
+
+[Config]
+DISABLE_IO_INSERTION=true
+LANG=0
+Synthesis_tool=GowinSynthesis

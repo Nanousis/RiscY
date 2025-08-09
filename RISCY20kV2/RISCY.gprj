@@ -18,7 +18,7 @@
         <File path="src/CPU/control_bypass_ex.v" type="file.verilog" enable="1"/>
         <File path="src/CPU/control_main.v" type="file.verilog" enable="1"/>
         <File path="src/CPU/control_stall_id.v" type="file.verilog" enable="1"/>
-        <File path="src/CPU/cpu.v" type="file.verilog" enable="1"/>
+        <File path="src/CPU/cpu.sv" type="file.verilog" enable="1"/>
         <File path="src/CPU/mem_read_selector.v" type="file.verilog" enable="1"/>
         <File path="src/CPU/mem_write_selector.v" type="file.verilog" enable="1"/>
         <File path="src/CPU/signExtend.v" type="file.verilog" enable="1"/>
@@ -64,6 +64,7 @@
         <File path="src/screenVGA/gowin_rpll/gowin_rpll.v" type="file.verilog" enable="1"/>
         <File path="src/screenVGA/gowin_sp/gowin_sp.v" type="file.verilog" enable="1"/>
         <File path="src/soc.v" type="file.verilog" enable="1"/>
+        <File path="src/spi_flash_interface_lite/spi_flash_interface_lite.v" type="file.verilog" enable="1"/>
         <File path="src/tangnano9k.cst" type="file.cst" enable="1"/>
         <File path="src/Tang_nano_9K_LCD.sdc" type="file.sdc" enable="1"/>
         <File path="src/Memories/text.hex" type="file.other" enable="1"/>

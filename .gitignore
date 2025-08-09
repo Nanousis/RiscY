@@ -13,8 +13,13 @@
 *.bin
 *.elf
 *.err
+*.error
 *.log
-
+*.json
+*.run
+*.out
+*.zip
+*.html
 # Build output directories
 RISCY20KV2/impl/
 RISCY9K/impl/

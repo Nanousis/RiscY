@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE gowin-synthesis-project>
+<Project>
+    <Version>beta</Version>
+    <Device id="GW2AR-18C" package="QFN88" speed="8" partNumber="GW2AR-LV18QN88C8/I7"/>
+    <FileList>
+        <File path="/Applications/GowinIDE.app/Contents/Resources/Gowin_EDA/IDE/ipcore/SPIFlashInterfaceLite/data/spi_flash_interface_lite_top.v" type="verilog"/>
+        <File path="/Applications/GowinIDE.app/Contents/Resources/Gowin_EDA/IDE/ipcore/SPIFlashInterfaceLite/data/spiflash.v" type="verilog"/>
+    </FileList>
+    <OptionList>
+        <Option type="disable_insert_pad" value="1"/>
+        <Option type="include_path" value="/Applications/GowinIDE.app/Contents/Resources/Gowin_EDA/IDE/ipcore/SPIFlashInterfaceLite/data"/>
+        <Option type="include_path" value="/Users/panagiotisnanousis/Documents/GitHub/RiscY/RISCY20kV2/src/spi_flash_interface_lite/temp/SPIFlashInterfaceLite"/>
+        <Option type="output_file" value="spi_flash_interface_lite.vg"/>
+        <Option type="output_template" value="spi_flash_interface_lite_tmp.v"/>
+        <Option type="ram_balance" value="1"/>
+        <Option type="ram_rw_check" value="1"/>
+        <Option type="top_module" value="SPI_Flash_Interface_Lite_Top"/>
+        <Option type="vcc" value="1.0"/>
+        <Option type="vccx" value="3.3"/>
+        <Option type="verilog_language" value="sysv-2017"/>
+    </OptionList>
+</Project>

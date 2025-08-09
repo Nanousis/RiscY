@@ -79,9 +79,12 @@ reg 	[1:0] 	EXMEM_reg_type;
 reg				EXMEM_Zero, EXMEM_JumpJALR;
 wire		[3:0]	byte_select_vector;
 reg		[31:0]	EXMEM_MemWriteData;
+reg		[31:0]	MEMWB_MemWriteData;
 wire	[31:0]	MemWriteData;
 reg				EXMEM_MemRead, EXMEM_MemWrite, EXMEM_RegWrite, EXMEM_MemToReg;
+reg 			MEMWB_MemWrite;
 reg		[31:0]	MEMWB_DMemOut;
+reg		[31:0]	MEMWB_MemAddr;
 reg		[4:0]	MEMWB_RegWriteAddr;
 reg		[31:0]	MEMWB_ALUOut;
 reg				MEMWB_MemToReg, MEMWB_RegWrite;
@@ -202,6 +205,9 @@ begin
 			end
 			else begin
 				PC_IF2 <= PC;
+				`ifdef TESTBENCH
+					decode_time <= time_step;
+				`endif
 			end
 			bubble_ifid_delayed <= bubble_ifid;
 			delayed_instr <= 0;
@@ -287,6 +293,10 @@ begin
 			IFID_PC			<= 32'hffffffff;
 		end 
 		else if (write_ifid == 1'b1) begin
+			`ifdef TESTBENCH
+				issue_time <= time_step;
+				IFID_decode_time <= decode_time;
+			`endif
 			IFID_PC			<= PC_IF2;
 			IFID_instr		<= IF2_instr;
 		end
@@ -451,6 +461,11 @@ begin
 			IDEX_instr		<= IFID_instr;
 			IDEX_csr_addr	<= csr_addr;
 			IDEX_csr_write_allowed <= csr_write_allowed;
+			`ifdef TESTBENCH
+				dispatch_time <= time_step;
+				IDEX_issue_time <= issue_time;
+				IDEX_decode_time <= IFID_decode_time;
+			`endif
 		end
 	end
 end
@@ -692,6 +707,12 @@ begin
 			EXMEM_csr_write_allowed <= IDEX_csr_write_allowed;
 			EXMEM_PC			<= IDEX_PC;
 			EXMEM_instr			<= IDEX_instr;
+			`ifdef TESTBENCH
+				resolve_time <= time_step;
+				EXMEM_dispatch_time <= dispatch_time;
+				EXMEM_issue_time <= IDEX_issue_time;
+				EXMEM_decode_time <= IDEX_decode_time;
+			`endif
 		end
 	end
 end
@@ -756,6 +777,7 @@ begin
 		MEMWB_ALUOut		<= 32'b0;
 		MEMWB_RegWriteAddr	<= 5'b0;
 		MEMWB_MemToReg		<= 1'b0;
+		MEMWB_MemWrite		<= 1'b0;
 		MEMWB_RegWrite		<= 1'b0;
 		MEMWB_funct3		<= 3'b0;
 		MEMWB_csr_data		<= 32'b0;
@@ -764,6 +786,8 @@ begin
 		MEMWB_csr_write_allowed <= 1'b0;
 		MEMWB_PC			<= 32'b0;
 		MEMWB_instr			<= 32'b0;
+		MEMWB_MemAddr		<= 32'b0;
+		MEMWB_MemWriteData	<= 32'b0;
 	end 
 	else 
 	begin
@@ -771,6 +795,7 @@ begin
 			MEMWB_DMemOut		<= 32'b0;
 			MEMWB_ALUOut		<= 32'b0;
 			MEMWB_RegWriteAddr	<= 5'b0;
+			MEMWB_MemWrite		<= 1'b0;
 			MEMWB_MemToReg		<= 1'b0;
 			MEMWB_RegWrite		<= 1'b0;
 			MEMWB_funct3		<= 3'b0;
@@ -780,11 +805,14 @@ begin
 			MEMWB_csr_write_allowed <= 1'b0;
 			MEMWB_PC			<= 32'hffffffff;
 			MEMWB_instr			<= 32'b0;
+			MEMWB_MemAddr		<= 32'b0;
+			MEMWB_MemWriteData	<= 32'b0;
 		end 
 		else if (write_memwb == 1'b1) begin
 			MEMWB_DMemOut		<= DMemOut;
 			MEMWB_ALUOut		<= EXMEM_ALUOut;
 			MEMWB_RegWriteAddr	<= EXMEM_RegWriteAddr;
+			MEMWB_MemWrite		<= EXMEM_MemWrite;
 			MEMWB_MemToReg		<= EXMEM_MemToReg;
 			MEMWB_RegWrite		<= EXMEM_RegWrite;
 			MEMWB_funct3		<= EXMEM_funct3;
@@ -794,9 +822,80 @@ begin
 			MEMWB_csr_write_allowed <= EXMEM_csr_write_allowed;
 			MEMWB_PC			<= EXMEM_PC;
 			MEMWB_instr			<= EXMEM_instr;
+			MEMWB_MemAddr		<= data_addr;
+			MEMWB_MemWriteData	<= EXMEM_MemWriteData;
+			`ifdef TESTBENCH
+				MEMWB_resolve_time <= resolve_time;
+				MEMWB_dispatch_time <= EXMEM_dispatch_time;
+				MEMWB_issue_time <= EXMEM_issue_time;
+				MEMWB_decode_time <= EXMEM_decode_time;
+				MEMWB_commit_time <= time_step;
+			`endif
 		end
 	end
 end
+
+`ifdef TESTBENCH
+integer log;
+integer step;
+longint time_step=0;
+integer decode_time=0;
+integer IFID_decode_time=0;
+integer IDEX_decode_time=0;
+integer EXMEM_decode_time=0;
+integer MEMWB_decode_time=0;
+
+integer issue_time=0;
+integer IDEX_issue_time=0;
+integer EXMEM_issue_time=0;
+integer MEMWB_issue_time=0;
+
+integer dispatch_time=0;
+integer EXMEM_dispatch_time=0;
+integer MEMWB_dispatch_time=0;
+integer resolve_time=0;
+integer MEMWB_resolve_time=0;
+
+integer MEMWB_commit_time=0;
+
+
+initial begin
+	log = $fopen("log.json", "w");
+	$fwrite(log, "[\n");
+end
+integer written=0;
+always@(posedge clock)begin
+	if(PC >= 32'h80000000)
+	begin
+		time_step += 1;
+		if(MEMWB_PC!=32'hffffffff && write_memwb && MEMWB_PC>=32'h80000000)begin
+			if(written)begin
+				$fwrite(log, ",\n");
+			end
+			$fwrite(log, "{\"pc\": %d, \"instr\": %d, ", MEMWB_PC, MEMWB_instr);
+			if(MEMWB_MemWrite)begin
+				$fwrite(log, "\"event_t\": \"%s\", \"mem_addr\": %d, \"mem_val\": %d, ", "MEMORY_WRITE", MEMWB_MemAddr, MEMWB_MemWriteData);
+			end
+			else if(MEMWB_MemToReg)begin
+				$fwrite(log, "\"event_t\": \"%s\", \"mem_addr\": %d, \"mem_val\": %d, ", "MEMORY_READ", MEMWB_MemAddr, MEMWB_DMemOut);
+			end
+			else if(MEMWB_RegWrite)begin
+				$fwrite(log, "\"event_t\": \"%s\", \"reg_changed\": %d, \"reg_val\": %d, ", "REGISTER_WRITE", MEMWB_RegWriteAddr, wRegData);
+			end
+			else begin
+				$fwrite(log, "\"event_t\": \"%s\", \"new_pc\": %d, ", "FLOW_CHANGE", MEMWB_PC);
+			end
+			$fwrite(log, "\"status\": {\"decode\": %d, \"rename\": %d, \"issue\": %d, \"dispatch\": %d, \"resolve\": %d, \"commit\": %d}}", MEMWB_decode_time, 
+				MEMWB_decode_time, MEMWB_issue_time, MEMWB_dispatch_time, MEMWB_resolve_time, MEMWB_commit_time);
+			written <= 1;
+		end
+	end
+end
+final begin
+	$fwrite(log, "\n]\n");
+	$fclose(log);
+end
+`endif
 
 // Branch control unit
 control_branch control_branch (

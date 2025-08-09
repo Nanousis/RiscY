@@ -64,7 +64,7 @@ reg ena_tx=0;
 
 reg [7:0] ier=0;
 reg [7:0] lcr=0;
-reg [7:0] lsr=0;
+wire [7:0] lsr;
 
 reg [7:0] dll=0;
 reg [7:0] dlm=0;
@@ -72,38 +72,45 @@ reg [7:0] dlm=0;
 // Define LCR[7] as DLAB bit
 wire dlab = lcr[7];
 
+
 // Line Status Register bits (simplified)
-always @(*) begin
-    lsr = 8'b0;
-    lsr[0] = rx_rdy;         // Data Ready
-    lsr[5] = ~tx_busy;       // THR Empty
-    lsr[6] = ~tx_busy;       // TEMT
-end
+assign lsr = {1'b0, ~tx_busy, ~tx_busy, 1'b0, 1'b0, 1'b0, 1'b0, rx_ready_latched};
+
+reg rx_ready_latched = 0;
+reg [7:0] rx_data_latched = 0;
+
 
 always @(posedge clk or negedge reset) begin
-    if (reset==0) begin
+    if (!reset) begin
         byte_out <= 8'b0;
         tx_data <= 8'b0;
         ena_tx <= 1'b0;
         ier <= 8'b0;
         lcr <= 8'b0;
-        dll <= 8'd1;   // default baud divisor (can be changed later)
+        dll <= 8'd1;
         dlm <= 8'd0;
+        rx_ready_latched <= 0;
     end else begin
-        ena_tx <= 1'b0; // Default to inactive each cycle
+        ena_tx <= 1'b0;
 
-        // Write operations
+        // Latch rx_data when rx_rdy pulse happens
+        if (rx_rdy) begin
+            rx_data_latched <= rx_data;
+            rx_ready_latched <= 1;
+        end
+
+        // Write
         if (wen) begin
             if (dlab) begin
                 case (address)
-                    3'h0: dll <= data_in; // DLL
-                    3'h1: dlm <= data_in; // DLM
+                    3'h0: dll <= data_in;
+                    3'h1: dlm <= data_in;
                 endcase
             end else begin
                 case (address)
                     3'h0: begin
                         tx_data <= data_in;
-                        ena_tx <= 1'b1; // Trigger transmission
+                        ena_tx <= 1;
                     end
                     3'h1: ier <= data_in;
                     3'h3: lcr <= data_in;
@@ -111,7 +118,7 @@ always @(posedge clk or negedge reset) begin
             end
         end
 
-        // Read operations
+        // Read
         if (ren) begin
             if (dlab) begin
                 case (address)
@@ -121,7 +128,10 @@ always @(posedge clk or negedge reset) begin
                 endcase
             end else begin
                 case (address)
-                    3'h0: byte_out <= rx_data;
+                    3'h0: begin
+                        byte_out <= rx_data_latched;
+                        rx_ready_latched <= 0;  // Clear "data ready" after reading
+                    end
                     3'h1: byte_out <= ier;
                     3'h5: byte_out <= lsr;
                     default: byte_out <= 8'h00;

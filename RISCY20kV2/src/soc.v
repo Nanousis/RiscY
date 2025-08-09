@@ -35,7 +35,6 @@ module top
 	output	[4:0]	LCD_R,
 	output	[5:0]	LCD_G,
 	output	[4:0]	LCD_B,
-    
     input flashMiso,
     output flashClk,
     output flashMosi,
@@ -63,6 +62,7 @@ module top
 //    output [CS_WIDTH-1:0] O_psram_reset_n,
 //    output [CS_WIDTH-1:0] O_psram_cs_n 
 );
+
     reg [5:0] led;
     //WP (write protection) is active low (_n), meaning that when it's driven low, it prevents writing; when high, it allows write operations.
     assign flashWp = 1'b1;
@@ -374,18 +374,17 @@ module top
     wire [31:0] flash_data_out;
     flashController flashController(
         .clk(cpu_clk),
-        .reset(reset),
+        .reset_n(reset),
         .ren(flash_ren),
         .wen(flash_wen),
+        .address(data_addr),
+        .data_in(data_to_write),
+        .data_out(flash_data_out),
         .flashMiso(flashMiso),
         .flashClk(flashClk),
         .flashMosi(flashMosi),
-        .flashCs(flashCs),
-        .data_in(data_to_write),
-        .address(data_addr),
-        .data_out(flash_data_out)
+        .flashCs(flashCs)
     );
-
 
 
     wire [9:0] pixelAddress;

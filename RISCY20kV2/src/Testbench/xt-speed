@@ -1,0 +1,144 @@
+WARNING: ../Memories/memory.v:36: $readmemh: Standard inconsistency, following 1364-2005.
+WARNING: ../Memories/memory.v:36: $readmemh(../includes/bootloader.hex): Not enough words in the file for the requested range [0:8193].
+WARNING: ./Simulation/MemorySim.v:31: $readmemh: Standard inconsistency, following 1364-2005.
+WARNING: ./Simulation/MemorySim.v:31: $readmemh(../includes/secondStage.hex): Not enough words in the file for the requested range [0:262143].
+WARNING: ./Simulation/MemorySim.v:31: $readmemh: Standard inconsistency, following 1364-2005.
+WARNING: ./Simulation/MemorySim.v:31: $readmemh(../includes/RAM.hex): Not enough words in the file for the requested range [0:262143].
+WARNING: ./Simulation/flash_simulation.v:107: $readmemh(Simulation/flash.hex): Not enough words in the file for the requested range [0:16777215].
+Starting TESTBENCH
+VCD info: dumpfile ZSOC.vcd opened for output.
+VCD warning: array word test.TOP.cpu_1.cpu_regs.data[0] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.cpu_1.cpu_regs.data[1] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.cpu_1.cpu_regs.data[2] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.cpu_1.cpu_regs.data[3] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.cpu_1.cpu_regs.data[4] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.cpu_1.cpu_regs.data[5] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.cpu_1.cpu_regs.data[6] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.cpu_1.cpu_regs.data[7] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.cpu_1.cpu_regs.data[8] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.cpu_1.cpu_regs.data[9] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.cpu_1.cpu_regs.data[10] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.cpu_1.cpu_regs.data[11] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.cpu_1.cpu_regs.data[12] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.cpu_1.cpu_regs.data[13] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.cpu_1.cpu_regs.data[14] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.cpu_1.cpu_regs.data[15] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.cpu_1.cpu_regs.data[16] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.cpu_1.cpu_regs.data[17] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.cpu_1.cpu_regs.data[18] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.cpu_1.cpu_regs.data[19] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.cpu_1.cpu_regs.data[20] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.cpu_1.cpu_regs.data[21] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.cpu_1.cpu_regs.data[22] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.cpu_1.cpu_regs.data[23] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.cpu_1.cpu_regs.data[24] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.cpu_1.cpu_regs.data[25] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.cpu_1.cpu_regs.data[26] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.cpu_1.cpu_regs.data[27] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.cpu_1.cpu_regs.data[28] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.cpu_1.cpu_regs.data[29] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.cpu_1.cpu_regs.data[30] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.cpu_1.cpu_regs.data[31] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.text.charMemory[0] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.text.charMemory[1] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.text.charMemory[2] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.text.charMemory[3] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.text.charMemory[4] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.text.charMemory[5] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.text.charMemory[6] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.text.charMemory[7] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.text.charMemory[8] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.text.charMemory[9] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.text.charMemory[10] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.text.charMemory[11] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.text.charMemory[12] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.text.charMemory[13] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.text.charMemory[14] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.text.charMemory[15] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.text.charMemory[16] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.text.charMemory[17] will conflict with an escaped identifier.
+VCD warning: array word test.TOP.text.charMemory[18] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[0] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[1] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[2] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[3] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[4] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[5] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[6] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[7] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[8] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[9] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[10] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[11] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[12] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[13] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[14] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[15] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[16] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[17] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[18] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[19] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[20] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[21] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[22] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[23] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[24] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[25] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[26] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[27] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[28] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[29] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[30] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[31] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[32] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[33] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[34] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[35] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[36] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[37] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[38] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[39] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[40] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[41] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[42] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[43] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[44] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[45] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[46] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[47] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[48] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[49] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[50] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[51] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[52] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[53] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[54] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[55] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[56] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[57] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[58] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[59] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[60] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[61] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[62] will conflict with an escaped identifier.
+VCD warning: array word test.flash_sim.memory[63] will conflict with an escaped identifier.
+Flash operation completed successfully.
+Flash operation completed successfully.
+Magic[0] = R
+Magic[1] = I
+Magic[2] = S
+Magic[3] = C
+Flash operation completed successfully.
+Magic[4] = Y
+Magic[5] = .
+Magic[6] = F
+Magic[7] = S
+Flash operation completed successfully.
+Program count: 1
+Checking program 1...
+Flash operation completed successfully.
+  Char 0: 'm' (flash) vs 'i' (input)
+  Temp address: 0x** VVP Stop(0) **
+** Flushing output streams.
+** Current simulation time is 18951822000 ticks.
+** Continue **

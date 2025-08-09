@@ -40,7 +40,10 @@ mt48lc2m32b2 sdram (
     .Ba(O_sdram_ba),
     .Dqm(O_sdram_dqm)
 );
-
+wire flashMiso;
+wire flashClk;
+wire flashMosi;
+wire flashCs;
 top TOP
 (   
     .O_sdram_clk,
@@ -58,10 +61,10 @@ top TOP
     .vga_clk(vga_clk),
     .sdram_clk(sdram_clk),
 
-    .flashMiso(),
-    .flashClk(),
-    .flashMosi(),
-    .flashCs(),
+    .flashMiso(flashMiso),
+    .flashClk(flashClk),
+    .flashMosi(flashMosi),
+    .flashCs(flashCs),
 
     .uart_rx(0),
     .uart_tx(),
@@ -77,17 +80,38 @@ top TOP
     .btnRightL(1)
 );
 
+spiflash flash_sim (
+    .csb(flashCs),
+    .clk(flashClk),
+    .io0(flashMosi), // MOSI
+    .io1(flashMiso), // MISO
+    .io2(io2),
+    .io3(io3)
+);
 always #6 sdram_clk = ~sdram_clk; // 108 MHz
 always #37 vga_clk = ~vga_clk; // 13.5 MHz
 always #18  clk = ~clk; // 27 MHz
-    
+reg new_item = 0;
+
     initial begin
+        $dumpoff;
         $display("Starting TESTBENCH");
         #10 reset = 1;
         #10 btn1 =0;
         #100 
-
-        repeat(100_000) @(posedge clk);
+        repeat(10_000_000)begin
+            if(test.TOP.uart_controller.ram_controller_inst.O_sdrc_init_done)begin
+                $dumpon;
+            end
+            @(posedge clk);
+            if (test.TOP.uart_controller.tx_busy == 1'b0) begin
+                new_item = 1;
+            end
+            if (test.TOP.uart_controller.tx_busy && new_item) begin
+                new_item = 0;
+                $write("%c", test.TOP.uart_controller.tx_data);
+            end
+        end
 
         for (i = 0; i < 32; i = i + 1) begin
             case (i)
@@ -137,12 +161,17 @@ always #18  clk = ~clk; // 27 MHz
     integer i;
     initial begin
         $dumpfile("ZSOC.vcd");
-        $dumpvars(0,test);
+        $dumpvars(0, test.TOP);     // core only
         for (i = 0; i < 32; i = i + 1) begin
             $dumpvars(1, test.TOP.cpu_1.cpu_regs.data[i]);
         end
         for (i = 0; i < 19; i = i + 1) begin
             $dumpvars(1, test.TOP.text.charMemory[i]);
+        end
+        
+
+        for (i = 0; i < 64; i = i + 1) begin
+            $dumpvars(1, test.flash_sim.memory[i]);
         end
         // for (i = 0; i < 8; i = i + 1) begin
         //     $dumpvars(1, test.TOP.u_memory_management_unit.InstCache.data_mem[i]);
