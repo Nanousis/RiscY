@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # Remove test.o if it exists
 [ -f test.o ] && rm test.o
 
@@ -7,7 +6,7 @@
 [ -f ZSOC.vcd ] && rm ZSOC.vcd
 xxd -p -c1 Simulation/flash.bin > Simulation/flash.hex
 # Run iverilog
-iverilog -g2012 -Winfloop -DTESTBENCH -o test.o -s test -I../include ./soctb.v \
+iverilog -g2012 -Winfloop -DTESTBENCH -DINSTR_LIMIT=$1 -o test.o -s test -I../include ./soctb.sv \
   ./Simulation/*v \
   ../CPU/*.v \
   ../CPU/*.sv \
@@ -24,10 +23,11 @@ iverilog -g2012 -Winfloop -DTESTBENCH -o test.o -s test -I../include ./soctb.v \
    ../Buses/*.v >out.log 2>&1
 
 grep "error:" out.log | cat
-if [ $? -ne 0 ]; then
+if grep -q "error:" out.log; then
   echo -e "\033[0;31mErrors found in compilation. Exiting.\033[0m"
   exit 1
 fi
+
 # Run vvp
 # time vvp test.o > log.txt 2>&1
 time vvp -lxt-speed test.o
@@ -36,4 +36,4 @@ time vvp -lxt-speed test.o
 
 # Run gtkwave
 # gtkwave gtkw.gtkw
-surfer ZSOC.vcd --state-file iverilog.ron
+./surfer ZSOC.vcd --state-file ./test.surf.ron

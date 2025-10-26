@@ -826,10 +826,12 @@ begin
 			MEMWB_MemWriteData	<= EXMEM_MemWriteData;
 			`ifdef TESTBENCH
 				MEMWB_resolve_time <= resolve_time;
+				MEMWB_new_pc <= PC_new;
 				MEMWB_dispatch_time <= EXMEM_dispatch_time;
 				MEMWB_issue_time <= EXMEM_issue_time;
 				MEMWB_decode_time <= EXMEM_decode_time;
 				MEMWB_commit_time <= time_step;
+				MEMWB_Read_addr <= MEMWB_MemAddr;
 			`endif
 		end
 	end
@@ -855,44 +857,46 @@ integer EXMEM_dispatch_time=0;
 integer MEMWB_dispatch_time=0;
 integer resolve_time=0;
 integer MEMWB_resolve_time=0;
+integer loging_pc=0;
+integer MEMWB_new_pc;
+integer MEMWB_Read_addr;
 
 integer MEMWB_commit_time=0;
 
 
+
 initial begin
-	log = $fopen("log.json", "w");
-	$fwrite(log, "[\n");
+	log = $fopen("log.bin", "wb");
 end
 integer written=0;
+longint instr_count=0;
+
 always@(posedge clock)begin
 	if(PC >= 32'h80000000)
 	begin
 		time_step += 1;
-		if(MEMWB_PC!=32'hffffffff && write_memwb && MEMWB_PC>=32'h80000000)begin
-			if(written)begin
-				$fwrite(log, ",\n");
-			end
-			$fwrite(log, "{\"pc\": %d, \"instr\": %d, ", MEMWB_PC, MEMWB_instr);
+		if(MEMWB_PC!=32'hffffffff && MEMWB_PC>=32'h80000000 && loging_pc!=MEMWB_PC)begin
+			loging_pc = MEMWB_PC;
+			$fwrite(log, "%u%u",MEMWB_PC, MEMWB_instr);
 			if(MEMWB_MemWrite)begin
-				$fwrite(log, "\"event_t\": \"%s\", \"mem_addr\": %d, \"mem_val\": %d, ", "MEMORY_WRITE", MEMWB_MemAddr, MEMWB_MemWriteData);
+				$fwrite(log, "%c%u%u",8'd2, MEMWB_MemAddr, MEMWB_MemWriteData);
 			end
 			else if(MEMWB_MemToReg)begin
-				$fwrite(log, "\"event_t\": \"%s\", \"mem_addr\": %d, \"mem_val\": %d, ", "MEMORY_READ", MEMWB_MemAddr, MEMWB_DMemOut);
+				$fwrite(log, "%c%u%u",8'd1, MEMWB_Read_addr, wRegData);
 			end
 			else if(MEMWB_RegWrite)begin
-				$fwrite(log, "\"event_t\": \"%s\", \"reg_changed\": %d, \"reg_val\": %d, ", "REGISTER_WRITE", MEMWB_RegWriteAddr, wRegData);
+				$fwrite(log, "%c%c%u",8'd0, MEMWB_RegWriteAddr, wRegData);
 			end
 			else begin
-				$fwrite(log, "\"event_t\": \"%s\", \"new_pc\": %d, ", "FLOW_CHANGE", MEMWB_PC);
+				//flow change
+				$fwrite(log, "%c%u",8'd3, MEMWB_new_pc);
+				// $fwrite(log, "\"event_t\": \"%s\", \"new_pc\": %d, ", "FLOW_CHANGE", MEMWB_PC);
 			end
-			$fwrite(log, "\"status\": {\"decode\": %d, \"rename\": %d, \"issue\": %d, \"dispatch\": %d, \"resolve\": %d, \"commit\": %d}}", MEMWB_decode_time, 
-				MEMWB_decode_time, MEMWB_issue_time, MEMWB_dispatch_time, MEMWB_resolve_time, MEMWB_commit_time);
-			written <= 1;
+			instr_count+=1;
 		end
 	end
 end
 final begin
-	$fwrite(log, "\n]\n");
 	$fclose(log);
 end
 `endif

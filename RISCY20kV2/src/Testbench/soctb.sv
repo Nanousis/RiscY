@@ -91,25 +91,49 @@ spiflash flash_sim (
 always #6 sdram_clk = ~sdram_clk; // 108 MHz
 always #37 vga_clk = ~vga_clk; // 13.5 MHz
 always #18  clk = ~clk; // 27 MHz
+`ifndef INSTR_LIMIT
+  `define INSTR_LIMIT 1000
+`endif
+
+longint instr_num = `INSTR_LIMIT;
+
+longint cur_instr_count= 0;
+longint previous_num = 0;
+reg initialized=0;
 reg new_item = 0;
+bool finished = 0;
+string testingsadsa= "Testbench/soctb.sv";
+task show_progress(int i, int total);
+    $display("\r %d/%d", i, total); // 2 = stderr handle in most simulators
+endtask
 
     initial begin
         $dumpoff;
-        $display("Starting TESTBENCH");
         #10 reset = 1;
         #10 btn1 =0;
         #100 
-        repeat(10_000_000)begin
-            if(test.TOP.uart_controller.ram_controller_inst.O_sdrc_init_done)begin
+        $display("Initializing RAM -- Instruction limit: %d", instr_num);
+        while(!finished)begin
+            if(test.TOP.cpu_1.PC>=32'h80000000 && test.TOP.cpu_1.PC<32'h8FFFFFFF && !initialized)begin
+                $display("RAM INITIALIZED -- Running %d instructions", instr_num);
                 $dumpon;
+                initialized = 1;
             end
             @(posedge clk);
-            if (test.TOP.uart_controller.tx_busy == 1'b0) begin
-                new_item = 1;
-            end
-            if (test.TOP.uart_controller.tx_busy && new_item) begin
+            // if (test.TOP.uart_controller.tx_busy == 1'b0) begin
+            //     new_item = 1;
+            // end
+            if (test.TOP.uart_controller.wen) begin
                 new_item = 0;
-                $write("%c", test.TOP.uart_controller.tx_data);
+                $write("%c", test.TOP.uart_controller.data_in);
+            end
+            cur_instr_count = test.TOP.cpu_1.instr_count;
+            // if (cur_instr_count%1000 == 0 && initialized && previous_num != cur_instr_count) begin
+            //     previous_num = cur_instr_count;
+            //     show_progress(cur_instr_count, instr_num);
+            // end
+            if(cur_instr_count >= instr_num-1 && initialized) begin
+                finished = 1;
             end
         end
 
@@ -153,9 +177,9 @@ reg new_item = 0;
         for (i = 0; i < 19; i = i + 1) begin
             $display("%d: %s", i,test.TOP.text.charMemory[i]);
         end
-        for(i = 2840;i<2840+100; i = i +1)begin
-           $display("Memory stuff %d: %x", i,test.TOP.mem.data_mem[i]);
-        end
+        // for(i = 2840;i<2840+100; i = i +1)begin
+        //    $display("Memory stuff %d: %x", i,test.TOP.mem.data_mem[i]);
+        // end
         $finish;
     end
     integer i;
@@ -168,8 +192,6 @@ reg new_item = 0;
         for (i = 0; i < 19; i = i + 1) begin
             $dumpvars(1, test.TOP.text.charMemory[i]);
         end
-        
-
         for (i = 0; i < 64; i = i + 1) begin
             $dumpvars(1, test.flash_sim.memory[i]);
         end
