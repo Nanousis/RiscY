@@ -1,6 +1,9 @@
 `ifndef TESTBENCH
-`include "constants.vh"
-`include "config.vh"
+
+// `include "constants.vh"
+// `include "config.vh"
+`include "../includes/constants.vh"
+`include "../includes/config.vh"
 `else
 `include "../includes/constants.vh"
 `include "../includes/config.vh"
@@ -74,6 +77,7 @@ reg				IDEX_MemToReg, IDEX_RegWrite;
 reg 	[2:0]	EXMEM_funct3, MEMWB_funct3;
 reg 	[4:0]	EXMEM_RegWriteAddr;
 reg 	[31:0]	EXMEM_ALUOut;
+reg 			EXMEM_overflow;
 reg 	[31:0]	EXMEM_BranchALUOut;
 reg 	[1:0] 	EXMEM_reg_type;
 reg				EXMEM_Zero, EXMEM_JumpJALR;
@@ -153,17 +157,21 @@ assign DMemOut = data_in;
 assign byte_select = byte_select_vector;
 assign icache_write_pc = write_pc;
 reg [20*8-1:0] debug_str="";
-
+reg started = 0;
 /********************** Instruction Fetch Unit (IF1)  **********************/
 always @(posedge clock or negedge reset)
 begin 
 	if (reset == 1'b0)
 	begin
-		PC <= `INITIAL_PC; 
+		PC <= `INITIAL_PC;
+		started <= 0; 
 	end
 	else if (write_pc == 1'b1)
 	// else if (write_pc == 1'b1 || (new_pc_set == 1'b1 && instr_stall))
 	begin
+		if(PC_new>=32'h80000000 && started==0)begin
+			started <=1;
+		end
 		PC <= PC_new;
 	end
 	else
@@ -172,6 +180,14 @@ begin
 	end
 end
 
+reg exited=0;
+always_comb begin
+	exited=0;
+	if(started && PC<32'h80000000)begin
+		exited=1;
+	end
+
+end
 reg write_pc_delayed;
 reg bubble_ifid_delayed;
 /***************************** Instruction Fetch Unit (IF2)  *******************/
@@ -648,6 +664,7 @@ always @(posedge clock or negedge reset)
 begin
 	if ((reset == 1'b0)) begin
 		EXMEM_ALUOut		<= 32'b0;
+		EXMEM_overflow		<= 1'b0;
 		EXMEM_JumpJALR 		<= 1'b0;
 		EXMEM_BranchALUOut	<= 32'b0;
 		EXMEM_RegWriteAddr	<= 5'b0;
@@ -669,6 +686,7 @@ begin
 	else
 	begin
 		if ((bubble_exmem == 1'b1)) begin
+			EXMEM_overflow		<= 1'b0;
 			EXMEM_ALUOut		<= 32'b0;
 			EXMEM_JumpJALR 		<= 1'b0;
 			EXMEM_BranchALUOut	<= 32'b0;
@@ -707,6 +725,7 @@ begin
 			EXMEM_csr_write_allowed <= IDEX_csr_write_allowed;
 			EXMEM_PC			<= IDEX_PC;
 			EXMEM_instr			<= IDEX_instr;
+			EXMEM_overflow		<= overflow;
 			`ifdef TESTBENCH
 				resolve_time <= time_step;
 				EXMEM_dispatch_time <= dispatch_time;
@@ -907,6 +926,7 @@ control_branch control_branch (
 	.funct3(EXMEM_funct3),
 	.Branch(EXMEM_Branch),
 	.zero(EXMEM_Zero),
+	// .sign(EXMEM_ALUOut[31]^EXMEM_overflow)
 	.sign(EXMEM_ALUOut[31])
 );
 

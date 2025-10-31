@@ -1,6 +1,9 @@
 `ifndef TESTBENCH
-`include "constants.vh"
-`include "config.vh"
+//`include "constants.vh"
+//`include "config.vh"
+
+`include "../includes/constants.vh"
+`include "../includes/config.vh"
 `else
 `include "../includes/constants.vh"
 `include "../includes/config.vh"
