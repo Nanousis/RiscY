@@ -1,6 +1,9 @@
 `ifndef TESTBENCH
-`include "constants.vh"
-`include "config.vh"
+
+// `include "constants.vh"
+// `include "config.vh"
+`include "../includes/constants.vh"
+`include "../includes/config.vh"
 `else
 `include "../includes/constants.vh"
 `include "../includes/config.vh"
@@ -74,6 +77,7 @@ reg				IDEX_MemToReg, IDEX_RegWrite;
 reg 	[2:0]	EXMEM_funct3, MEMWB_funct3;
 reg 	[4:0]	EXMEM_RegWriteAddr;
 reg 	[31:0]	EXMEM_ALUOut;
+reg 			EXMEM_overflow;
 reg 	[31:0]	EXMEM_BranchALUOut;
 reg 	[1:0] 	EXMEM_reg_type;
 reg				EXMEM_Zero, EXMEM_JumpJALR;
@@ -153,17 +157,21 @@ assign DMemOut = data_in;
 assign byte_select = byte_select_vector;
 assign icache_write_pc = write_pc;
 reg [20*8-1:0] debug_str="";
-
+reg started = 0;
 /********************** Instruction Fetch Unit (IF1)  **********************/
 always @(posedge clock or negedge reset)
 begin 
 	if (reset == 1'b0)
 	begin
-		PC <= `INITIAL_PC; 
+		PC <= `INITIAL_PC;
+		started <= 0; 
 	end
 	else if (write_pc == 1'b1)
 	// else if (write_pc == 1'b1 || (new_pc_set == 1'b1 && instr_stall))
 	begin
+		if(PC_new>=32'h80000000 && started==0)begin
+			started <=1;
+		end
 		PC <= PC_new;
 	end
 	else
@@ -172,6 +180,14 @@ begin
 	end
 end
 
+reg exited=0;
+always_comb begin
+	exited=0;
+	if(started && PC<32'h80000000)begin
+		exited=1;
+	end
+
+end
 reg write_pc_delayed;
 reg bubble_ifid_delayed;
 /***************************** Instruction Fetch Unit (IF2)  *******************/
@@ -648,6 +664,7 @@ always @(posedge clock or negedge reset)
 begin
 	if ((reset == 1'b0)) begin
 		EXMEM_ALUOut		<= 32'b0;
+		EXMEM_overflow		<= 1'b0;
 		EXMEM_JumpJALR 		<= 1'b0;
 		EXMEM_BranchALUOut	<= 32'b0;
 		EXMEM_RegWriteAddr	<= 5'b0;
@@ -669,6 +686,7 @@ begin
 	else
 	begin
 		if ((bubble_exmem == 1'b1)) begin
+			EXMEM_overflow		<= 1'b0;
 			EXMEM_ALUOut		<= 32'b0;
 			EXMEM_JumpJALR 		<= 1'b0;
 			EXMEM_BranchALUOut	<= 32'b0;
@@ -707,6 +725,7 @@ begin
 			EXMEM_csr_write_allowed <= IDEX_csr_write_allowed;
 			EXMEM_PC			<= IDEX_PC;
 			EXMEM_instr			<= IDEX_instr;
+			EXMEM_overflow		<= overflow;
 			`ifdef TESTBENCH
 				resolve_time <= time_step;
 				EXMEM_dispatch_time <= dispatch_time;
@@ -826,10 +845,12 @@ begin
 			MEMWB_MemWriteData	<= EXMEM_MemWriteData;
 			`ifdef TESTBENCH
 				MEMWB_resolve_time <= resolve_time;
+				MEMWB_new_pc <= PC_new;
 				MEMWB_dispatch_time <= EXMEM_dispatch_time;
 				MEMWB_issue_time <= EXMEM_issue_time;
 				MEMWB_decode_time <= EXMEM_decode_time;
 				MEMWB_commit_time <= time_step;
+				MEMWB_Read_addr <= MEMWB_MemAddr;
 			`endif
 		end
 	end
@@ -855,44 +876,46 @@ integer EXMEM_dispatch_time=0;
 integer MEMWB_dispatch_time=0;
 integer resolve_time=0;
 integer MEMWB_resolve_time=0;
+integer loging_pc=0;
+integer MEMWB_new_pc;
+integer MEMWB_Read_addr;
 
 integer MEMWB_commit_time=0;
 
 
+
 initial begin
-	log = $fopen("log.json", "w");
-	$fwrite(log, "[\n");
+	log = $fopen("log.bin", "wb");
 end
 integer written=0;
+longint instr_count=0;
+
 always@(posedge clock)begin
 	if(PC >= 32'h80000000)
 	begin
 		time_step += 1;
-		if(MEMWB_PC!=32'hffffffff && write_memwb && MEMWB_PC>=32'h80000000)begin
-			if(written)begin
-				$fwrite(log, ",\n");
-			end
-			$fwrite(log, "{\"pc\": %d, \"instr\": %d, ", MEMWB_PC, MEMWB_instr);
+		if(MEMWB_PC!=32'hffffffff && MEMWB_PC>=32'h80000000 && loging_pc!=MEMWB_PC)begin
+			loging_pc = MEMWB_PC;
+			$fwrite(log, "%u%u",MEMWB_PC, MEMWB_instr);
 			if(MEMWB_MemWrite)begin
-				$fwrite(log, "\"event_t\": \"%s\", \"mem_addr\": %d, \"mem_val\": %d, ", "MEMORY_WRITE", MEMWB_MemAddr, MEMWB_MemWriteData);
+				$fwrite(log, "%c%u%u",8'd2, MEMWB_MemAddr, MEMWB_MemWriteData);
 			end
 			else if(MEMWB_MemToReg)begin
-				$fwrite(log, "\"event_t\": \"%s\", \"mem_addr\": %d, \"mem_val\": %d, ", "MEMORY_READ", MEMWB_MemAddr, MEMWB_DMemOut);
+				$fwrite(log, "%c%u%u",8'd1, MEMWB_Read_addr, wRegData);
 			end
 			else if(MEMWB_RegWrite)begin
-				$fwrite(log, "\"event_t\": \"%s\", \"reg_changed\": %d, \"reg_val\": %d, ", "REGISTER_WRITE", MEMWB_RegWriteAddr, wRegData);
+				$fwrite(log, "%c%c%u",8'd0, MEMWB_RegWriteAddr, wRegData);
 			end
 			else begin
-				$fwrite(log, "\"event_t\": \"%s\", \"new_pc\": %d, ", "FLOW_CHANGE", MEMWB_PC);
+				//flow change
+				$fwrite(log, "%c%u",8'd3, MEMWB_new_pc);
+				// $fwrite(log, "\"event_t\": \"%s\", \"new_pc\": %d, ", "FLOW_CHANGE", MEMWB_PC);
 			end
-			$fwrite(log, "\"status\": {\"decode\": %d, \"rename\": %d, \"issue\": %d, \"dispatch\": %d, \"resolve\": %d, \"commit\": %d}}", MEMWB_decode_time, 
-				MEMWB_decode_time, MEMWB_issue_time, MEMWB_dispatch_time, MEMWB_resolve_time, MEMWB_commit_time);
-			written <= 1;
+			instr_count+=1;
 		end
 	end
 end
 final begin
-	$fwrite(log, "\n]\n");
 	$fclose(log);
 end
 `endif
@@ -903,7 +926,8 @@ control_branch control_branch (
 	.funct3(EXMEM_funct3),
 	.Branch(EXMEM_Branch),
 	.zero(EXMEM_Zero),
-	.sign(EXMEM_ALUOut[31])
+	.sign(EXMEM_ALUOut[31]^EXMEM_overflow)
+	// .sign(EXMEM_ALUOut[31])
 );
 
 assign PCSrc = (EXMEM_JumpJALR) ? 1'b1 : branch_taken;

@@ -1,6 +1,9 @@
 `ifndef TESTBENCH
-`include "constants.vh"
-`include "config.vh"
+//`include "constants.vh"
+//`include "config.vh"
+
+`include "../includes/constants.vh"
+`include "../includes/config.vh"
 `else
 `include "../includes/constants.vh"
 `include "../includes/config.vh"
@@ -23,13 +26,18 @@ wire 	[N:0]		unsigned_sub;
 assign unsigned_sub = {({1'b0, inA} - {1'b0, inB})};
 
 reg [8*8-1:0] debug_string;
-
+reg [32:0] result_ext;
 // Stich a zero behind operations that don't need overflow
 // just to make the compiler happy :)
 always @(*) begin
 	case (op)
 		`ADD:    begin {overflow, out_val} = inA + inB; debug_string = "ADD"; end
-		`SUB:    begin {overflow, out_val} = inA - inB; debug_string = "SUB"; end // sub, bne, beq, blt, bge
+		`SUB:    begin
+			// result_ext = {1'b0, inA} - {1'b0, inB};
+			out_val = inA-inB;
+			overflow = (inA[N-1] != inB[N-1]) && (out_val[N-1] != inA[N-1]);
+			debug_string = "SUB"; 
+		end // sub, bne, beq, blt, bge
 		`XOR:    begin {overflow, out_val} = {1'b0, inA ^ inB}; debug_string = "XOR"; end
 		`OR:     begin {overflow, out_val} = {1'b0, inA | inB}; debug_string = "OR"; end
 		`AND:    begin {overflow, out_val} = {1'b0, inA & inB}; debug_string = "AND"; end

@@ -1,5 +1,6 @@
 `ifndef TESTBENCH
-`include "config.vh"
+// `include "config.vh"
+`include "../includes/config.vh"
 `else
 `include "../includes/config.vh"
 `endif
@@ -140,7 +141,7 @@ always_ff @(posedge sdram_clk or negedge reset_n) begin
             end
         end
         READ_MEM: begin
-            icache_addr <= pc_reg[22:2] & ~('b1111); // Align to 16words per cache line
+            icache_addr <= pc_to_write[22:2] & ~('b1111); // Align to 16words per cache line
             tag_valid_to_write <= {2'b11, tag_reg};
             if(sdram_ack) begin
                 icache_ren <= 1'b0;
