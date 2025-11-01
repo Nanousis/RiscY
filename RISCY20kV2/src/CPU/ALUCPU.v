@@ -33,9 +33,9 @@ always @(*) begin
 	case (op)
 		`ADD:    begin {overflow, out_val} = inA + inB; debug_string = "ADD"; end
 		`SUB:    begin
-			result_ext = {1'b0, inA} - {1'b0, inB};
-			out_val = result_ext[31:0];
-			overflow = result_ext[32];
+			// result_ext = {1'b0, inA} - {1'b0, inB};
+			out_val = inA-inB;
+			overflow = (inA[N-1] != inB[N-1]) && (out_val[N-1] != inA[N-1]);
 			debug_string = "SUB"; 
 		end // sub, bne, beq, blt, bge
 		`XOR:    begin {overflow, out_val} = {1'b0, inA ^ inB}; debug_string = "XOR"; end

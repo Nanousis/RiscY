@@ -926,8 +926,8 @@ control_branch control_branch (
 	.funct3(EXMEM_funct3),
 	.Branch(EXMEM_Branch),
 	.zero(EXMEM_Zero),
-	// .sign(EXMEM_ALUOut[31]^EXMEM_overflow)
-	.sign(EXMEM_ALUOut[31])
+	.sign(EXMEM_ALUOut[31]^EXMEM_overflow)
+	// .sign(EXMEM_ALUOut[31])
 );
 
 assign PCSrc = (EXMEM_JumpJALR) ? 1'b1 : branch_taken;

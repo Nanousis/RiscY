@@ -1,10 +1,10 @@
-WARNING: ../Memories/memory.v:36: $readmemh: The behaviour for reg[...] mem[N:0]; $readmemh("...", mem); changed in the 1364-2005 standard. To avoid ambiguity, use mem[0:N] or explicit range parameters $readmemh("...", mem, start, stop);. Defaulting to 1364-2005 behavior.
-WARNING: ../Memories/memory.v:36: $readmemh(../includes/bootloader.hex): Not enough words in the file for the requested range [0:8193].
-WARNING: ./Simulation/MemorySim.v:31: $readmemh: The behaviour for reg[...] mem[N:0]; $readmemh("...", mem); changed in the 1364-2005 standard. To avoid ambiguity, use mem[0:N] or explicit range parameters $readmemh("...", mem, start, stop);. Defaulting to 1364-2005 behavior.
-WARNING: ./Simulation/MemorySim.v:31: $readmemh(../includes/secondStage.hex): Not enough words in the file for the requested range [0:262143].
-WARNING: ./Simulation/MemorySim.v:31: $readmemh: The behaviour for reg[...] mem[N:0]; $readmemh("...", mem); changed in the 1364-2005 standard. To avoid ambiguity, use mem[0:N] or explicit range parameters $readmemh("...", mem, start, stop);. Defaulting to 1364-2005 behavior.
-WARNING: ./Simulation/MemorySim.v:31: $readmemh(../includes/RAM.hex): Not enough words in the file for the requested range [0:262143].
-WARNING: ./Simulation/flash_simulation.v:107: $readmemh(Simulation/flash.hex): Not enough words in the file for the requested range [0:16777215].
+WARNING: ..\Memories\memory.v:39: $readmemh: The behaviour for reg[...] mem[N:0]; $readmemh("...", mem); changed in the 1364-2005 standard. To avoid ambiguity, use mem[0:N] or explicit range parameters $readmemh("...", mem, start, stop);. Defaulting to 1364-2005 behavior.
+WARNING: ..\Memories\memory.v:39: $readmemh(../includes/bootloader.hex): Not enough words in the file for the requested range [0:8193].
+WARNING: .\Simulation\MemorySim.v:34: $readmemh: The behaviour for reg[...] mem[N:0]; $readmemh("...", mem); changed in the 1364-2005 standard. To avoid ambiguity, use mem[0:N] or explicit range parameters $readmemh("...", mem, start, stop);. Defaulting to 1364-2005 behavior.
+WARNING: .\Simulation\MemorySim.v:34: $readmemh(../includes/secondStage.hex): Not enough words in the file for the requested range [0:262143].
+WARNING: .\Simulation\MemorySim.v:34: $readmemh: The behaviour for reg[...] mem[N:0]; $readmemh("...", mem); changed in the 1364-2005 standard. To avoid ambiguity, use mem[0:N] or explicit range parameters $readmemh("...", mem, start, stop);. Defaulting to 1364-2005 behavior.
+WARNING: .\Simulation\MemorySim.v:34: $readmemh(../includes/RAM.hex): Not enough words in the file for the requested range [0:262143].
+WARNING: .\Simulation\flash_simulation.v:107: $readmemh(Simulation/flash.hex): Not enough words in the file for the requested range [0:16777215].
 VCD info: dumpfile ZSOC.vcd opened for output.
 VCD warning: array word test.TOP.cpu_1.cpu_regs.data[0] will conflict with an escaped identifier.
 VCD warning: array word test.TOP.cpu_1.cpu_regs.data[1] will conflict with an escaped identifier.
@@ -121,43 +121,51 @@ VCD warning: array word test.flash_sim.memory[60] will conflict with an escaped 
 VCD warning: array word test.flash_sim.memory[61] will conflict with an escaped identifier.
 VCD warning: array word test.flash_sim.memory[62] will conflict with an escaped identifier.
 VCD warning: array word test.flash_sim.memory[63] will conflict with an escaped identifier.
-Initializing RAM -- Instruction limit:                 1000
-RAM INITIALIZED -- Running                 1000 instructions
-Flash operation completed successfully.
-Flash operation completed successfully.
-Ma          0: x0   :          0 - 0x00000000
-          1: ra   : 2147484968 - 0x80000528
-          2: sp   : 2147516204 - 0x80007f2c
+Initializing RAM -- Instruction limit:                10000
+RAM INITIALIZED -- Running                10000 instructions
+Starting Frame Buffer Test
+Screen change triggered ON
+Screen filled with blue
+Frame buffer1: 800bb800
+Frame 0
+Frame 1
+Frame 2
+Frame 3
+Frame 4
+Frame 5
+          0: x0   :          0 - 0x00000000
+          1: ra   : 2147496852 - 0x80003394
+          2: sp   : 2151677724 - 0x803fff1c
           3: gp   :          0 - 0x00000000
           4: tp   :          0 - 0x00000000
-          5: t0   :          0 - 0x00000000
-          6: t1   :          0 - 0x00000000
+          5: t0   : 2147497948 - 0x800037dc
+          6: t1   : 2151677888 - 0x803fffc0
           7: t2   :          0 - 0x00000000
-          8: s0/fp:          2 - 0x00000002
-          9: s1   :          2 - 0x00000002
-         10: a0   :        103 - 0x00000067
-         11: a1   :        103 - 0x00000067
-         12: a2   :          0 - 0x00000000
-         13: a3   : 2147549180 - 0x8000fffc
-         14: a4   :  268435461 - 0x10000005
-         15: a5   :          0 - 0x00000000
+          8: s0/fp: 2147514110 - 0x800076fe
+          9: s1   :         37 - 0x00000025
+         10: a0   :         10 - 0x0000000a
+         11: a1   :         10 - 0x0000000a
+         12: a2   : 2151677744 - 0x803fff30
+         13: a3   : 2151677765 - 0x803fff45
+         14: a4   :  268435456 - 0x10000000
+         15: a5   :         32 - 0x00000020
          16: a6   :          0 - 0x00000000
          17: a7   :          0 - 0x00000000
-         18: s2   : 2147487468 - 0x80000eec
-         19: s3   :         37 - 0x00000025
-         20: s4   : 4294967196 - 0xffffff9c
-         21: s5   :        120 - 0x00000078
-         22: s6   :        100 - 0x00000064
-         23: s7   :         99 - 0x00000063
-         24: s8   :        115 - 0x00000073
-         25: s9   :          0 - 0x00000000
-         26: s10  :          0 - 0x00000000
-         27: s11  :          0 - 0x00000000
+         18: s2   : 2147483800 - 0x80000098
+         19: s3   :          0 - 0x00000000
+         20: s4   :         35 - 0x00000023
+         21: s5   :         48 - 0x00000030
+         22: s6   :         45 - 0x0000002d
+         23: s7   : 2151677892 - 0x803fffc4
+         24: s8   : 2147514110 - 0x800076fe
+         25: s9   :          1 - 0x00000001
+         26: s10  :          5 - 0x00000005
+         27: s11  :          1 - 0x00000001
          28: t3   :          0 - 0x00000000
          29: t4   :          0 - 0x00000000
          30: t5   :          0 - 0x00000000
          31: t6   :          0 - 0x00000000
-          0:                                                      Startingxxx
+          0:                                                              xxx
           1:                                                              xxx
           2:                                                              xxx
           3:                                                              xxx
@@ -176,4 +184,4 @@ Ma          0: x0   :          0 - 0x00000000
          16:                                                              xxx
          17:                                                              xxx
          18:                                                              xxx
-./soctb.sv:183: $finish called at 7074090000 (1ps)
+.\soctb.sv:183: $finish called at 8277534000 (1ps)
