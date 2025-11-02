@@ -1,0 +1,3 @@
+[submodule "RISCV_Emulator"]
+	path = RISCV_Emulator
+	url = https://github.com/Nanousis/RISCV_Emulator

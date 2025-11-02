@@ -3,10 +3,10 @@
 ## A Custom RISC-V SoC for Gowin FPGA Boards
 
 <center>
-  <img src="images/riscy_tetris.jpg" alt="RISC-Y System Overview" title="RISC-Y System Overview" width="600">
+  <img src="images/riscY.webp" alt="RISC-Y System Overview" title="RISC-Y System Overview" width="600">
 </center>
 
-RISC-Y is a lightweight, fully open RISC-V system designed for rapid experimentation and education. Originally targeting the Tang Nano 9K and Tang Primer 25K boards, this project now features enhanced hardware-software integration, a custom bootloader, and multiple tools for application development and debugging.
+RISC-Y is a lightweight, fully open RISC-V system designed for rapid experimentation and education. Targetting the Sipeed Tang Nano 20K board, this project now features enhanced hardware-software integration, a custom bootloader, and multiple tools for application development and debugging.
 
 ---
 
@@ -15,16 +15,15 @@ RISC-Y is a lightweight, fully open RISC-V system designed for rapid experimenta
 - **RV32I Core with Extensions:**  
   Fully implements the RV32I instruction set with the Zicsr privileged extension and plans to add multiplication, division, and floating-point support.
 - **Integrated Peripherals:**  
-  Support for HDMI and 40-pin LVDS displays, a USB keyboard interface (via an embedded 8-bit microcontroller), SPI Flash storage, and a programmable bootloader.
+  Support 40-pin LVDS displays, SDRAM controller,SPI Flash storage, and a programmable bootloader.
 - **On-Board Software Tools:**  
-  Includes a GCC-based toolchain, a Python-based Program Merger, and an RV32I emulator for pre-deployment testing.
+  Includes a GCC-based toolchain, a Python-based Program Merger for ROM filesystem, and an RV32I emulator acting as a golden model for verification.
 - **Custom Bootloader & File System:**  
   A lightweight bootloader that reads an integrated flash binary file system, allowing users to select and load applications directly into the FPGA’s RAM.
 - **Testbench and Debugging:**  
   Built-in testbench support for verifying assembly and C-code execution, along with a simulation environment that mimics the VGA text mode output and real-time register monitoring.
 - **Extensible Design:**  
   Designed with future enhancements in mind – including DRAM controllers, performance monitors, virtual memory, and even multicore expansion.
-
 ---
 
 ## Prerequisites & Setup
@@ -38,13 +37,11 @@ RISC-Y is a lightweight, fully open RISC-V system designed for rapid experimenta
 
 ### Software Requirements
 
-- **Gowin IDE (v1.9.10 or later):**  
+- **Gowin IDE (v1.9.11 -- v1.9.12 is buggy and does not work):**  
   Download from [Gowin’s website](https://www.gowinsemi.com/en/support/download_eda/).  
   - **Windows:** Install the Floating Point license from Sipeed if using a non-educational version.  
   - **Linux:** Extract the downloaded package and run the install.sh script located in the `Gowin/Drivers` directory.  
   - **Mac:** Download the mac version (under the Linux tab) and follow the available tutorial (e.g., via Reddit posts).
-- **openFPGALoader:**  
-  Available on [GitHub](https://github.com/trabucayre/openFPGALoader).
 - **riscv64-unknown-elf-gcc Toolchain:**  
   - **Linux:**  
     ```bash
@@ -77,13 +74,13 @@ RISC-Y is a lightweight, fully open RISC-V system designed for rapid experimenta
      > **Note for Tang Primer 25K:** Due to a known bug, if using flash you may need to use the generated output.fs file.
 
 3. **Burning Program Files to Flash:**  
-   - Build your application (see below) so that a binary file (e.g. `build0/program.bin`) is generated.
+   - Build your application (see below) so that an .ELF file (e.g. `build0/program.elf`) is generated.
    - Navigate to the `riscYcompiler/MergerV2/` directory and run:
      ```bash
      python3 merger.py
      ```
    - Drag and drop your binary (and optionally a 16×16 thumbnail image) onto the GUI and press “Merge.” This creates a merged_programs.bin file.
-   - In the Gowin programmer, update the start address to 0x500000 (if using Tang Primer 25K) and point to the merged binary file. Then flash the bitstream.
+   - In the Gowin programmer, update the start address to 0x500000 (if using Tang Nano20k or Tang Primer 25K) and point to the merged binary file. Then flash the bitstream.
 
 ---
 
@@ -92,25 +89,35 @@ RISC-Y is a lightweight, fully open RISC-V system designed for rapid experimenta
 ### Building an Application
 
 - Navigate to `riscYcompiler/riscYcompiler/` and open your project in your favorite editor.
-- Edit the main application file (e.g. replace `main.c` with code from `WorkingCodes/helloWorldNew.c` for testing).
+- Edit the main application file (e.g. replace `main.cpp` with code from `WorkingCodes/helloWorldNew.c` for testing).
 - Run `make` to compile your application. The resulting binary will appear in a `builds/` folder.
 - Use the Program Merger as described above to incorporate your application into the bootloader file system.
 
 ### Bootloader Modifications
 
-- The bootloader (located in `riscYcompiler/bootloaderCompiler/`) is the first code executed on FPGA reset.  
+- The bootloader (located in `riscYcompiler/bootloaderCompiler/`) is the first code executed on FPGA reset. It's main purpose is to copy the second stage bootloader's binary to the BRAMS (16KB). The memory size of this code is 2KB and is rather small.  
 - To update the bootloader:
   - Edit `main.c` in the bootloader folder.
   - Rebuild the bootloader and copy the generated hex code (from builds/buildX/program.hex) into the “text.hex” field in GowinEDA.
   - Re-run Place & Route and re-flash the bitstream.
   
+### Second Stage Bootloader / Program selecting Modifications
+
+- The bootloader (located in `riscYcompiler/secondStageCompiler/`) is the second code part of the booting process. It's used to display a program selection to the user and check the correctness of the SDRAM (writes to all the places in RAM and reads it back).  
+- To update the bootloader:
+  - Edit `main.c` in the bootloader folder.
+  - Rebuild the bootloader and flash the program.bin that got produced at the 0x750000 memory region.
+  <center>
+  <img src="images/bootloader.jpg" alt="RISC-Y Program selection" title="RISC-Y Program selection" width="600">
+</center>
+
 ### Testbench & Debugging
 
 - For simulation, copy your compiled assembly hex file into `includes/testbenchtext.hex`.
 - Run the provided testbench script:
   - **Linux/macOS:** `./Testbench/runTB.bash`
   - **Windows:** `testbench.bat`
-- The testbench outputs debug information and generates a GTKWave file for signal inspection.
+- The testbench outputs debug information and generates a VCD file and can be opened either with GTKWAVE or preferably Surfer.
 
 ---
 
@@ -119,9 +126,7 @@ RISC-Y is a lightweight, fully open RISC-V system designed for rapid experimenta
 - **Program Merger:**  
   A Python GUI that streamlines merging multiple binaries (and optional thumbnails) into a single flash image.
 - **RV32I Emulator:**  
-  A JavaScript-based emulator for verifying code before deploying to FPGA.
-- **Map Creator:**  
-  A fun, browser-based tool for creating tile-based maps for sprite-driven games.
+  A Rust emulator for verifying code before deploying to FPGA.
 - **Documentation:**  
   For in-depth architectural details, interrupt handling, cache implementation, and peripheral design, please refer to the full project documentation.
 
@@ -129,17 +134,19 @@ RISC-Y is a lightweight, fully open RISC-V system designed for rapid experimenta
 
 ## Future Enhancements
 
-- **DRAM Controller & SDRAM Support:** Expand memory capabilities.
-- **Enhanced CPU Performance:** Add branch prediction, out-of-order execution, and performance monitors.
-- **Operating System Integration:** Port a lightweight RTOS (e.g., Zephyr) to support multitasking.
+
+- **✓ DRAM Controller & SDRAM Support:** Expand memory capabilities.
+- **Enhanced CPU Performance:** Add branch prediction, performance monitors, and (far fetched) out-of-order execution.
+- **✓ Operating System Integration:** Port a lightweight RTOS (e.g., Zephyr) to support multitasking.
 - **Peripheral Expansion:** Develop additional controllers (SD card, I2C, GPIO) and explore multicore configurations.
+- **Data cache:** Expand memory capabilities.
 
 ---
 
 ## Acknowledgments
 
 Developed at the **University of Thessaly**.  
-Special thanks to the contributors of Gowin IDE, the riscv toolchain, and the open-source community for providing invaluable resources and support.
+Special thanks to the contributors, the riscv toolchain, and the open-source community for providing invaluable resources and support. Further thanks to Nand2Mario for providing information on the numerous peripherals of the boards.
 
 ---
 
