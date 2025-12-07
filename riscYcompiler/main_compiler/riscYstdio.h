@@ -2,10 +2,19 @@
 #ifndef RISCYSTDIO_H
 #define RISCYSTDIO_H
 
+#define BUTTON_DOWN_RIGHT 0
+#define BUTTON_UP_RIGHT 1
+#define BUTTON_LEFT_RIGHT 2
+#define BUTTON_RIGHT_RIGHT 3
+#define BUTTON_DOWN_LEFT 4
+#define BUTTON_UP_LEFT 5
+#define BUTTON_LEFT_LEFT 6
+#define BUTTON_RIGHT_LEFT 7
+
 #define SCREEN_LOACTION 0x88000000
 #define SCREEN_SIZE 1216
 #define BUTTONS 0x89000000
-#define WaitTime 10000
+#define WaitTime 6000
 #define SCREEN_WIDTH 64
 #define SCREEN_HEIGHT 19
 #include <stddef.h>
@@ -18,7 +27,7 @@
 #define BG_BLUE 4<<4
 #define BG_MAGENTA 5<<4
 #define BG_CYAN 6<<4
-#define BG_wHITE 7<<4
+#define BG_WHITE 7<<4
 
 #define MTIME_ADDR     0x0200BFF8  // Address of mtime (platform-specific)
 
@@ -54,8 +63,12 @@ uint8_t riscy_fclose(int16_t fileHandle);
 int riscy_fseek(int16_t fileHandle, long offset, int whence);
 int riscy_ftell(int16_t fileHandle);
 int riscy_feof(int16_t fileHandle);
+void riscy_list_files(void);
+
 
 void* riscy_malloc(size_t size);
+void heap_test(void);
+
 void vOutNS16550(unsigned char c );
 
 // Tinyprintf expects: void (*putf)(void *p, char c)

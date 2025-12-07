@@ -1,5 +1,5 @@
 #define BUTTONS 0x89000000
-#define MAX_SNAKE_LENGTH 100
+#define MAX_SNAKE_LENGTH 1000
 #include "riscYstdio.h"
 
 
@@ -7,6 +7,9 @@ void printSnake(unsigned int snakeLength);
 void printApple(int appleID);
 int checkForCollision(unsigned short snakeLength);
 void printScore(int score);
+
+#define FRAME_WIDTH 50
+#define FRAME_HEIGHT 14
 
 volatile char current_x=4;
 volatile char current_y=4;
@@ -22,8 +25,8 @@ int main() {
     clearScreen();
 
     char tempChar=0;
-    printString(22+64*2, "Amazing Snake Game V2",0);
-    printString(22+64*9, "Press any key to play",0);
+    printString(12+64*2, "Amazing Snake Game V2",0);
+    printString(12+64*9, "Press any key to play",0);
     current_x=1;
     current_y=0;
     char state=0;
@@ -35,13 +38,13 @@ int main() {
         tempChar++;
         if(state==0){
             current_x++;
-            if(current_x==63){
+            if(current_x==FRAME_WIDTH-1){
                 state=1;
             }
         }
         if(state==1){
             current_y++;
-            if(current_y==18){
+            if(current_y==FRAME_HEIGHT){
                 state=2;
             }
         }
@@ -63,7 +66,7 @@ int main() {
             }
         }
         putch(current_x+current_y*64, ' ',currentColor<<4);
-        for(i=0;i<WaitTime*3;i++);
+        for(i=0;i<WaitTime*2;i++);
     }
     startGame:
     clearScreen();
@@ -83,16 +86,16 @@ int main() {
     int startClock; 
 
     startClock = getClock1M();
-    while(getClock1M()-startClock<1000000){
-            printString(25+64*2, "Starting in 3",0);
+    while(getClock1M()-startClock<500000){
+            printString(15+64*2, "Starting in 3",0);
     }
     startClock = getClock1M();
-    while(getClock1M()-startClock<1000000){
-            printString(25+64*2, "Starting in 2",0);
+    while(getClock1M()-startClock<500000){
+            printString(15+64*2, "Starting in 2",0);
     }
     startClock = getClock1M();
-    while(getClock1M()-startClock<1000000){
-            printString(25+64*2, "Starting in 1",0);
+    while(getClock1M()-startClock<500000){
+            printString(15+64*2, "Starting in 1",0);
     }
 
     clearScreen();
@@ -100,23 +103,23 @@ int main() {
     while(1){
         counter++;
         // This should be changed to use actual time instad of for loop
-        for(i=0;i<WaitTime*8;i++){
-            if(getButtonDown()){
+        for(i=0;i<WaitTime*5;i++){
+            if(getButton(BUTTON_DOWN_LEFT)){
                 if(direction!=1){
                     direction=3;
                 }
             }
-            else if(getButtonUp()){
+            else if(getButton(BUTTON_UP_LEFT)){
                 if(direction!=3){
                     direction=1;
                 }
             }
-            else if(getButtonLeft()){
+            else if(getButton(BUTTON_LEFT_LEFT)){
                 if(direction!=0){
                     direction=2;
                 }
             }
-            else if(getButtonRight()){
+            else if(getButton(BUTTON_RIGHT_LEFT)){
                 if(direction!=2){
                     direction=0;
                 }
@@ -124,7 +127,7 @@ int main() {
         }
 
         if(direction == 0){
-            if(current_x==62){
+            if(current_x==FRAME_WIDTH-2){
                 current_x=0;
             }
             else{
@@ -134,7 +137,7 @@ int main() {
         }
         else if(direction == 1){
             if(current_y==0){
-                current_y=18;
+                current_y=FRAME_HEIGHT;
             }
             else{
                 current_y-=1;
@@ -142,7 +145,7 @@ int main() {
         }
         else if(direction == 2){
             if(current_x==0){
-                current_x=62;
+                current_x=FRAME_WIDTH-2;
             }
             else{
                 current_x--;
@@ -150,7 +153,7 @@ int main() {
             }
         }
         else if(direction == 3){
-            if(current_y==18){
+            if(current_y==FRAME_HEIGHT){
                 current_y=0;
             }
             else{
@@ -160,15 +163,16 @@ int main() {
         location = current_x+current_y*64;
         if(location==appleLocation){
             do{
-                appleLocation=((counter^seed)&511)<<1;
+                appleLocation=((counter^seed)&(FRAME_HEIGHT*FRAME_WIDTH/2))<<1;
                 counter++;
-            }while(appleLocation<=25&&appleLocation<1216);
-                snakeLength++;
+            }while(appleLocation<=25||appleLocation>=(FRAME_HEIGHT*FRAME_WIDTH) || appleLocation%64>=FRAME_WIDTH-3);
+            snakeLength++;
+            // printfSCR(FRAME_HEIGHT*SCREEN_WIDTH,15,"x:%d y:%d",appleLocation%64,appleLocation/64);
         }
         if(checkForCollision(snakeLength)){
             goto youLoose;
         }
-        // if(current_x>63||current_x<0||current_y>18||current_y<0){
+        // if(current_x>FRAME_WIDTH-1||current_x<0||current_y>FRAME_HEIGHT-1||current_y<0){
         //     goto youLoose;
         // }
         printScore(snakeLength);
@@ -181,10 +185,10 @@ int main() {
     putch(positions[snakeLength-1]+1,'x',1);
     for(i=0;i<WaitTime*60;i++);
     clearScreen();
-    printString(25, "You lost!",0);
-    printString(25+64*5, "Play again?",0);
-    printString(20+64*10, "Press Left/Right to Play",0);
-    printString(22+64*11, "Press Up/Down to Exit",0);
+    printString(15, "You lost!",0);
+    printString(15+64*5, "Play again?",0);
+    printString(10+64*10, "Press Left/Right to Play",0);
+    printString(12+64*11, "Press Up/Down to Exit",0);
     for(i=0;i<WaitTime*50;i++);
     printScore(snakeLength);
     while(1){

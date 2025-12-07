@@ -2,6 +2,9 @@
 
 #include "riscYstdio.h"
 
+#define FRAME_WIDTH 50
+#define FRAME_HEIGHT 15
+
 
 unsigned int getClock1M(){
     volatile unsigned int *clock = (volatile unsigned int *)0x8A000000;
@@ -35,7 +38,7 @@ char CheckCollisions(BlockObj blockObj, char newX, char newY);
 unsigned int lfsr = 0xACE1u;  // Seed value
 unsigned int lfsr_rand();
 
-volatile char allBlocks[19][10];
+volatile char allBlocks[FRAME_HEIGHT][10];
 char currentRotation=0;
 
 int score=0;
@@ -97,7 +100,7 @@ int main() {
     int counter = 0;
     char rotate = 0;
     char collision =0;
-    for(int i=0;i<19;i++){
+    for(int i=0;i<FRAME_HEIGHT;i++){
         for(int j=0;j<10;j++){
             allBlocks[i][j]=0;
         }
@@ -173,17 +176,17 @@ int main() {
         blockObj.x=newX;
         blockObj.y=newY;
         // Prints all blocks. For some reason this does not work as a function
-        for (int i = 0; i < 19; i++) {
+        for (int i = 0; i < FRAME_HEIGHT; i++) {
             for (int j = 0; j < 10; j++) {
-            putch(SCREEN_WIDTH * i + (j << 1) + 22, ' ', allBlocks[i][j]);
-            putch(SCREEN_WIDTH * i + (j << 1) + 23, ' ', allBlocks[i][j]);
+            putch(SCREEN_WIDTH * i + (j << 1) + 12, ' ', allBlocks[i][j]);
+            putch(SCREEN_WIDTH * i + (j << 1) + 13, ' ', allBlocks[i][j]);
             }
         }    
         PrintBlock(blockObj);
-        printfSCR(SCREEN_WIDTH*18+43,15,"x %d, y: %d",blockObj.x,blockObj.y);
-        printfSCR(5 , 15, "Score: %d",score);
+        printfSCR(SCREEN_WIDTH*(FRAME_HEIGHT-1)+35,15,"x %d, y: %d",blockObj.x,blockObj.y);
+        printfSCR(1 , 15, "Score: %d",score);
         // Debug print all blocks
-        // for (int i = 0; i < 19; i++) {
+        // for (int i = 0; i < FRAME_HEIGHT; i++) {
         //     for(int j=0;j<10;j++){
         //         char temp = allBlocks[i][j];
         //         if(temp==0){
@@ -199,38 +202,38 @@ int main() {
         // button Handler
         currentButton = 0;
         for(volatile int i=0;i<WaitTime*10;i++){
-            if(getButtonDown()){
+            if(getButton(BUTTON_DOWN_RIGHT)||getButton(BUTTON_DOWN_LEFT)){
                 break;
             }
         }
         for(volatile int i=0;i<WaitTime*5;i++){
-            if(getButtonLeft()){
+            if(getButton(BUTTON_LEFT_LEFT)){
                 currentButton=1;
             }
-            else if(getButtonRight()){
+            else if(getButton(BUTTON_RIGHT_LEFT)){
                 currentButton=2;
             }
-            else if(getButtonUp()){
+            else if(getButton(BUTTON_RIGHT_RIGHT)){
                 currentButton=4;
             }
-            else if(getButtonDown()){
+            else if(getButton(BUTTON_DOWN_RIGHT)||getButton(BUTTON_DOWN_LEFT)){
                 i++;
             }
         }
     }
 
     gameOver:
-    printfSCR(SCREEN_WIDTH*9+27,15,"Game Over");
-    printfSCR(SCREEN_WIDTH*10+25,15,"Final Score: %d",score);
-    printfSCR(SCREEN_WIDTH*11+22,15,"Press Up/Down to exit");
-    printfSCR(SCREEN_WIDTH*12+22,15,"Press Left/Right to play again");
+    printfSCR(SCREEN_WIDTH*9+17,15,"Game Over");
+    printfSCR(SCREEN_WIDTH*10+15,15,"Final Score: %d",score);
+    printfSCR(SCREEN_WIDTH*11+12,15,"Press Up/Down to exit");
+    printfSCR(SCREEN_WIDTH*12+12,15,"Press Left/Right to play again");
     for(volatile int i=0;i<WaitTime*50;i++);
     while(1){
-        if(getButtonLeft()||getButtonRight()){
+        if(getButton(BUTTON_LEFT_RIGHT)||getButton(BUTTON_RIGHT_RIGHT)){
             goto startAgain;
         }
         else{
-            if(getButtonUp()||getButtonDown()){
+            if(getButton(BUTTON_UP_RIGHT)||getButton(BUTTON_UP_LEFT)||getButton(BUTTON_DOWN_RIGHT)||getButton(BUTTON_DOWN_LEFT)){
                 return 0;
             }
         }
@@ -352,7 +355,7 @@ char CheckCollisions(BlockObj blockObj, char newX, char newY){
                 int x = newX + j;
                 int y = newY + i - 3; // Adjust for the block's position
                 // Check boundaries
-                if (x < 0 || x >= 10 || y >= SCREEN_HEIGHT){
+                if (x < 0 || x >= 10 || y >= FRAME_HEIGHT){
                     returnVal = 2; // Collision detected
                 }
                 // Check collision with existing blocks
@@ -369,7 +372,7 @@ char CheckCollisions(BlockObj blockObj, char newX, char newY){
                 int x = blockObj.x + j;
                 int y = newY + i - 3; // Adjust for the block's position
                 // Check boundaries
-                if (x < 0 || x >= 10 || y >= SCREEN_HEIGHT){
+                if (x < 0 || x >= 10 || y >= FRAME_HEIGHT){
                     returnVal = 1; // Collision detected
                 }
                 // Check collision with existing blocks
@@ -384,7 +387,7 @@ char CheckCollisions(BlockObj blockObj, char newX, char newY){
 
 void CheckLines(){
     int increaseScore=1;
-    for(int i=0;i<19;i++){
+    for(int i=0;i<FRAME_HEIGHT;i++){
         char isFull = 1;
         for(int j=0;j<10;j++){
             if(allBlocks[i][j]==0){
@@ -408,11 +411,11 @@ void CheckLines(){
 }
 
 void PrintBoundaries(){
-    for(int i=0;i<19;i++){
-        putch(SCREEN_WIDTH*i +21,'#',BG_MAGENTA);
+    for(int i=0;i<FRAME_HEIGHT;i++){
+        putch(SCREEN_WIDTH*i +11,'#',BG_MAGENTA);
     }
-    for(int i=0;i<19;i++){
-        putch(SCREEN_WIDTH*i +42,'#',BG_MAGENTA);
+    for(int i=0;i<FRAME_HEIGHT;i++){
+        putch(SCREEN_WIDTH*i +32,'#',BG_MAGENTA);
     }
     for(int i=0;i<10;i++){
     }
@@ -428,14 +431,14 @@ void PrintBlock(BlockObj blockObj){
                 }
                 // allBlocks[blockObj.y+i-3][blockObj.x+j]=blockObj.block.shape[i][j];
                 
-                putch(SCREEN_WIDTH*(blockObj.y+i-3)+(blockObj.x<<1) +(j<<1)+22,' ',blockObj.block.shape[i][j]);
-                putch(SCREEN_WIDTH*(blockObj.y+i-3)+(blockObj.x<<1) +(j<<1)+23,' ',blockObj.block.shape[i][j]);
+                putch(SCREEN_WIDTH*(blockObj.y+i-3)+(blockObj.x<<1) +(j<<1)+12,' ',blockObj.block.shape[i][j]);
+                putch(SCREEN_WIDTH*(blockObj.y+i-3)+(blockObj.x<<1) +(j<<1)+13,' ',blockObj.block.shape[i][j]);
             }
         }
     }
 }
 void PreviewBlock(Block block){
-    char offset = 49+SCREEN_WIDTH*2;
+    char offset = 39+SCREEN_WIDTH*2;
     printfSCR(SCREEN_WIDTH*(-1)+offset-2,15,"Next Block:");
     for(int i=0;i<6;i++){
         if(i==0||i==5){

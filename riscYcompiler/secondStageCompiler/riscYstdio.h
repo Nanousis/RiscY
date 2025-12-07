@@ -19,6 +19,14 @@
 #define BG_CYAN 6<<4
 #define BG_wHITE 7<<4
 
+#define BUTTON_DOWN_RIGHT 0
+#define BUTTON_UP_RIGHT 1
+#define BUTTON_LEFT_RIGHT 2
+#define BUTTON_RIGHT_RIGHT 3
+#define BUTTON_DOWN_LEFT 4
+#define BUTTON_UP_LEFT 5
+#define BUTTON_LEFT_LEFT 6
+#define BUTTON_RIGHT_LEFT 7
 
 
 void *memcpy(void *dest, const void *src, int n);

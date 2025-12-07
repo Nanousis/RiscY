@@ -11,7 +11,7 @@ typedef struct Programheader{
 } Programheader;
 
 #define RAM_ADDRESS 0x80000000
-#define RAM_SIZE 0x8000
+#define RAM_SIZE 0x80000 // 8MB of RAM
 #define FLASH_READY 0x8B000000
 #define FLASH_REN 0x8B000001
 #define FLASH_WEN 0x8B000002
@@ -132,6 +132,7 @@ void WriteSprite(int spriteNum,char *sprite){
 }
 void elfLoader(int flash_start){
     clearScreen();
+    printf("Loading Program...\n");
     // clear RAM
     uint32_t *write_ram = (uint32_t *)RAM_ADDRESS;
     for(int i = 0; i<RAM_SIZE; i+=4){
@@ -216,6 +217,7 @@ void elfLoader(int flash_start){
             bss[j]=0;
         }
     }
+    clearScreen();
     // while(1);
 }
 
@@ -238,7 +240,7 @@ void TestRAM(){
 }
 // this function reads the program from the flash and loads it into the program memory
 int main() {
-    TestRAM();
+    // TestRAM();
     Programheader Selected_Header;
     Programheader temp_Header;
     unsigned int readData=0;
@@ -298,10 +300,10 @@ int main() {
         startinAddress = tempAddress;
         uint8_t previous_region=1;
         while(1){
-
+            uart_printf("Programs found: %d\r\n",programNum);
             if(selectNum/3!=previous_region){
                 clearScreen();
-                printf("Second Stage: %d\n",programNum);
+                printf("Second Stage: %d v1.0\n",programNum);
                 printf("\nSelect program: \n");
             }
             printfSCR(64*14,15,"LOADING");
@@ -368,16 +370,16 @@ int main() {
                     printfSCR(SCREEN_WIDTH*18,15,"%x",usbKey);
                     newKey = usbKey|boardBtns;
                 #else
-                    if(getButtonDown()){
+                    if(getButton(BUTTON_DOWN_RIGHT)||getButton(BUTTON_DOWN_LEFT)){
                         boardBtns = 0x51;
                     }
-                    else if(getButtonUp()){
+                    else if(getButton(BUTTON_UP_RIGHT)||getButton(BUTTON_UP_LEFT)){
                         boardBtns = 0x52;
                     }
-                    else if(getButtonRight()){
+                    else if(getButton(BUTTON_RIGHT_RIGHT)||getButton(BUTTON_RIGHT_LEFT)){
                         boardBtns = 0x28;
                     }
-                    else if(getButtonLeft()){
+                    else if(getButton(BUTTON_LEFT_RIGHT)||getButton(BUTTON_LEFT_LEFT)){
                         boardBtns = 0x28;
                     }
                     else{

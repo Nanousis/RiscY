@@ -18,12 +18,6 @@ int main() {
     printfSCR(64*4,5," /_/ |_/_/____/\\___/ /_/   ");
     printfSCR(64*7,15,"  Credits:\n");
     printfSCR(64*8,15,"  - RISC-V\n\n");
-    printfSCR(64*10,15,"This has been a work of the team:");
-    printfSCR(64*11,15,"  - Panagiotis Nanousis");
-    printfSCR(64*12,15,"  - Iordana Gaisidou ");
-    printfSCR(64*13,15,"  - Konstantinos Varakliotis");
-    printfSCR(64*14,15,"  - Dimitris Voitsidis");
-
 
     for(int i=0;i<32;i++){
         printfSCR(64*16+i,BG_MAGENTA,"#");

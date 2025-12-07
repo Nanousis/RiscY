@@ -1,49 +1,57 @@
 /* Define the memory regions */
 MEMORY
 {
-    RAM (wx) : ORIGIN = 0x80000000, LENGTH = 4M
+  RAM (wx) : ORIGIN = 0x80000000, LENGTH = 0x00400000  /* 4 MiB */
 }
 
 /* Define stack size */
-_stack_size = 0x8000; /* 0.5KB stack size */
+_stack_size = 0x00008000; /* 32 KiB */
 
 /* Place sections into memory */
 SECTIONS
 {
-    . = ORIGIN(RAM);
+  . = ORIGIN(RAM);
 
-    /* .text section (code) and .rodata (read-only data) */
-    .text : {
-        *(.text)           /* Include all .text sections */
-        *(.rodata)         /* Include all .rodata sections */
-        _etext = .;        /* Mark end of .text and .rodata section */
-    } > RAM
+  /* Code + rodata */
+  .text : {
+    *(.text .text.*)
+    *(.rodata .rodata.*)
+    _etext = .;
+  } > RAM
 
-    /* Align to 4 bytes to ensure proper alignment for the .data section */
-    . = ALIGN(4);
+  . = ALIGN(4);
 
-    /* .data section (initialized data) */
-    .data : {
-        _sdata = .;        /* Start of .data section */
-        *(.data)           /* Include all .data sections */
-        _edata = .;        /* End of .data section */
-    } > RAM AT> RAM
+  /* Initialized data */
+  .data : {
+    _sdata = .;
+    *(.data .data.*)
+    _edata = .;
+  } > RAM AT> RAM
 
-    /* Align to 4 bytes for .bss */
-    . = ALIGN(4);
+  . = ALIGN(4);
 
-    /* .bss section (uninitialized data) */
-    .bss : {
-        _sbss = .;         /* Start of .bss section */
-        *(.bss COMMON)     /* Include .bss and COMMON sections */
-        _ebss = .;         /* End of .bss section */
-    } > RAM
+  /* Uninitialized data */
+  .bss : {
+    _sbss = .;
+    *(.bss .bss.*)
+    *(COMMON)
+    _ebss = .;
+  } > RAM
 
-    /* Place the stack at the top of RAM */
-    _stack_end = ORIGIN(RAM) + LENGTH(RAM);     /* Top of RAM */
-    _stack_top = _stack_end;                   /* Start of stack */
-    _stack_bottom = _stack_top - _stack_size;  /* Bottom of stack */
+  /* -------- Fixed 3 MiB heap -------- */
+  . = ALIGN(16);
+  .heap (NOLOAD) : {
+    _heap_start = .;
+    . = . + 0x00300000;   /* 3 MiB */
+    _heap_end = .;
+  } > RAM
+
+  /* -------- Stack at top of RAM -------- */
+  _stack_end    = ORIGIN(RAM) + LENGTH(RAM);
+  _stack_top    = _stack_end;
+  _stack_bottom = _stack_top - _stack_size;
+
 }
 
-/* Define the entry point */
+/* Entry point */
 ENTRY(_start)

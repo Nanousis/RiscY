@@ -664,16 +664,43 @@ uint8_t riscy_fclose(int16_t fileHandle) {
     return 0; // Success
 }
 #define RAM_LOCATION 0x80000000
-#define HEAP_START (RAM_LOCATION + 0x400000)
+extern char _heap_start;  // from linker
+extern char _heap_end;    // from linker
 
-uint32_t current_heap = HEAP_START; // Start of the heap
+static uint8_t *current_heap = NULL;
+char heap_initialized = 0;
 
-void* riscy_malloc(size_t size) {
-    int previous_heap = current_heap;
-    current_heap += size/64 * 64 + 64; // Align to 64 bytes
-    return (void*)(current_heap - size);
+#define MALLOC_ALIGNMENT   512
+#define ALIGN_UP(value, align)   (((value) + ((align) - 1)) & ~((align) - 1))
+
+// ====================================================
+// Simple heap allocator
+// ====================================================
+
+void riscy_heap_init(void) {
+    uintptr_t start = (uintptr_t)&_heap_start;
+    current_heap = (uint8_t *)ALIGN_UP(start, MALLOC_ALIGNMENT);
 }
 
+void* riscy_malloc(size_t size) {
+    if (!current_heap)
+        riscy_heap_init(); // lazy init
+
+    // Round up size and pointer to MALLOC_ALIGNMENT
+    size = ALIGN_UP(size, MALLOC_ALIGNMENT);
+    uintptr_t ptr_aligned = ALIGN_UP((uintptr_t)current_heap, MALLOC_ALIGNMENT);
+
+    // Check for overflow
+    if ((ptr_aligned + size) > (uintptr_t)&_heap_end) {
+        uart_printf("Heap overflow! Requested %u bytes\r\n", (unsigned)size);
+        return NULL;
+    }
+
+    void *ptr = (void *)ptr_aligned;
+    current_heap = (uint8_t *)(ptr_aligned + size);
+
+    return ptr;
+}
 
 int riscy_fseek(int16_t fileHandle, long offset, int whence) {
     if (fileHandle == 0 || fileHandle > fileCount || !files[fileHandle-1].valid) {
@@ -740,4 +767,107 @@ int riscy_feof(int16_t fileHandle) {
     }
     
     return 0;  // Not EOF
+}
+
+
+// Lists all files found in the RISCY.FS header table
+void riscy_list_files(void) {
+    uint32_t addr = 0;
+    uint32_t w;
+
+    // Verify magic "RISCY.FS"
+    const char magic[8] = {'R','I','S','C','Y','.','F','S'};
+    for (int k = 0; k < 2; k++) { // two 32-bit reads = 8 bytes
+        w = readFlash(addr);
+        for (int j = 0; j < 4; j++) {
+            char c = (w >> (8 * j)) & 0xFF;
+            if (c != magic[k * 4 + j]) {
+                uart_printf("Error: bad magic at %u (got '%c', expected '%c')\r\n",
+                            (unsigned)(k * 4 + j), c, magic[k * 4 + j]);
+                return;
+            }
+        }
+        addr += 4;
+    }
+
+    // Read program count (1 byte)
+    unsigned int programCount = readFlash(addr) & 0xFF;
+    addr += 1;
+
+    uart_printf("Files: %d\r\n", programCount);
+
+    for (unsigned int i = 0; i < programCount; i++) {
+        // Read NUL-terminated name
+        char name[MAX_FILE_NAME_LENGTH + 1];
+        unsigned int pos = 0;
+        char c = 1;
+
+        while (c != 0 && pos < MAX_FILE_NAME_LENGTH) {
+            w = readFlash(addr);
+            c = (char)(w & 0xFF);
+            name[pos++] = c;
+            addr += 1;
+        }
+        // Read start/end, skip sprite image
+        uint32_t start = readFlash(addr); addr += 4;
+        uint32_t end   = readFlash(addr); addr += 4;
+        addr += 256; // skip 256-byte image
+        
+        uint32_t size = (end >= start) ? (end - start) : 0;
+        printf("%d) %s  [0x%x - 0x%x]\n",
+            i + 1, name, start, end);
+    }
+}
+
+
+
+void heap_test(void) {
+    printf("===== Heap Test Start =====\r\n");
+    printf("Heap range: 0x%x - 0x%x\r\n", (uint32_t)&_heap_start, (uint32_t)&_heap_end);
+    printf("Heap size : %d bytes\r\n", (uint32_t)(&_heap_end - &_heap_start));
+
+    riscy_heap_init();
+
+    const int alloc_count = 6;
+    size_t sizes[alloc_count] = {128, 1024, 8192, 50000, 256000, 512000};
+    void* ptrs[alloc_count];
+
+    for (int i = 0; i < alloc_count; i++) {
+        ptrs[i] = riscy_malloc(sizes[i]);
+        printf("[%d] Alloc %d bytes -> %s (addr=0x%x)\r\n",
+                    i, (int)sizes[i],
+                    ptrs[i] ? "OK" : "FAIL",
+                    (uint32_t)ptrs[i]);
+
+        // Write pattern to allocated region
+        if (ptrs[i]) {
+            uint8_t *p = (uint8_t *)ptrs[i];
+            for (size_t j = 0; j < sizes[i]; j++)
+                p[j] = (uint8_t)(i + j);
+        }
+    }
+
+    printf("\r\nVerifying contents...\r\n");
+    for (int i = 0; i < alloc_count; i++) {
+        if (!ptrs[i]) continue;
+        uint8_t *p = (uint8_t *)ptrs[i];
+        int errors = 0;
+        for (size_t j = 0; j < sizes[i]; j++) {
+            if (p[j] != (uint8_t)(i + j)) {
+                errors++;
+                if (errors < 3) {
+                    printf("  Mismatch @%d[%d]: got %d expected %d\r\n",
+                                i, (int)j, p[j], (uint8_t)(i + j));
+                }
+            }
+        }
+        printf("[%d] verify -> %s (%d errors)\r\n",
+                    i, (errors == 0 ? "OK" : "FAIL"), errors);
+    }
+
+    uint32_t used = (uint32_t)(current_heap - (uint8_t *)&_heap_start);
+    printf("\r\nTotal heap used: %d bytes\r\n", used);
+    // printf("Remaining heap:  %d bytes\r\n", 
+    //             (uint32_t)(&_heap_end - current_heap));
+    printf("===== Heap Test End =====\r\n");
 }

@@ -4,10 +4,32 @@
 #include "geometry.h"
 #include "fixed_point.h"
 
-#define RAM_LOCATION (0x80000000 + WIDTH * HEIGHT * 2)
+// #define RAM_LOCATION (0x80000000 + WIDTH * HEIGHT)
+// #define RAM_LOCATION2 (0x80000000 + WIDTH * HEIGHT*8)
 #define abs(x) ((x) < 0 ? -(x) : (x))
 #define cube_size 12
 #define F(x) (fixed_from_float((float)(x)))
+
+uint16_t *RAM_LOCATION;
+uint16_t *RAM_LOCATION2;
+
+
+uint16_t *frame_buffer = (uint16_t *) RAM_LOCATION;
+uint16_t *frame_buffer_to_use = (uint16_t *) RAM_LOCATION2;
+char cur_frame_buffer = 1;
+
+uint16_t *switch_frame_buffer() {
+    if (cur_frame_buffer == 0) {
+        cur_frame_buffer = 1;
+        frame_buffer = ( uint16_t *) RAM_LOCATION;
+        frame_buffer_to_use = ( uint16_t *) RAM_LOCATION2;
+    } else {
+        cur_frame_buffer = 0;
+        frame_buffer = ( uint16_t *) RAM_LOCATION2;
+        frame_buffer_to_use = ( uint16_t *) RAM_LOCATION;
+    }
+    return frame_buffer;
+}
 
 
 static inline void MultiplyMatrixVector_fixed(const Vec3fixed *i, Vec3fixed *o, const matrix4f *m)
@@ -64,16 +86,49 @@ static inline Vec2i to_screen_fixed(const Vec3fixed* p)
     return (Vec2i){ sx, sy };
 }
 
-// static inline Vec2i to_screen(const Vec3f& p)
-// {
-//     int sx = (int)((p.x + 1.0f) * 0.5f * (WIDTH  - 1));
-//     int sy = (int)((p.y + 1.0f) * 0.5f * (HEIGHT - 1));
-//     return Vec2i{sx, sy};
-// }
+
+Vec3fixed cross_product_fixed(triangle3f triangle)
+{
+        Vec3fixed normal, line1, line2;
+        line1.x = fixed_sub(triangle.p[1].x, triangle.p[0].x);
+        line1.y = fixed_sub(triangle.p[1].y, triangle.p[0].y);
+        line1.z = fixed_sub(triangle.p[1].z, triangle.p[0].z);
+
+        line2.x = fixed_sub(triangle.p[2].x, triangle.p[0].x);
+        line2.y = fixed_sub(triangle.p[2].y, triangle.p[0].y);
+        line2.z = fixed_sub(triangle.p[2].z, triangle.p[0].z);
+        
+        normal.x = fixed_sub(fixed_mul_trunc(line1.y, line2.z), fixed_mul_trunc(line1.z, line2.y));
+        normal.y = fixed_sub(fixed_mul_trunc(line1.z, line2.x), fixed_mul_trunc(line1.x, line2.z));
+        normal.z = fixed_sub(fixed_mul_trunc(line1.x, line2.y), fixed_mul_trunc(line1.y, line2.x));
+        return normal;
+}
+Vec3fixed normalize_fixed(Vec3fixed normal)
+{
+        fixed32 l = fixed_sqrt(fixed_add(fixed_add(fixed_mul_trunc(normal.x, normal.x),
+                                                    fixed_mul_trunc(normal.y, normal.y)),
+                                        fixed_mul_trunc(normal.z, normal.z)));
+        normal.x = fixed_div_trunc(normal.x, l);
+        normal.y = fixed_div_trunc(normal.y, l);
+        normal.z = fixed_div_trunc(normal.z, l);
+        return normal;
+}
+
+
+static inline fixed32 dot_product_fixed(Vec3fixed a, Vec3fixed b)
+{
+    return fixed_add(fixed_add(fixed_mul_trunc(a.x, b.x),
+                               fixed_mul_trunc(a.y, b.y)),
+                     fixed_mul_trunc(a.z, b.z));
+}
 
 
 int main() {
     init_printf(NULL, tfp_putc);      // set output sink
+
+    RAM_LOCATION = (uint16_t *) riscy_malloc( WIDTH * HEIGHT * 2 * sizeof(uint16_t) ); // Allocate memory for double frame buffer
+    RAM_LOCATION2 = (uint16_t *) riscy_malloc( WIDTH * HEIGHT * 2 * sizeof(uint16_t) ); // Allocate memory for double frame buffer
+
     uint16_t *pixels = ( uint16_t *) (RAM_LOCATION);
     unsigned int *screenChange= ( unsigned int *) 0x88002800;
     unsigned int *frame_buffer_addr= ( unsigned int *) 0x88002804;
@@ -115,11 +170,11 @@ int main() {
 
 
     tfp_printf("Starting Frame Buffer Test\r\n");
-    frame_buffer_addr[0] = (uint32_t)pixels; // Set frame buffer address
+    frame_buffer_addr[0] = (uint32_t)frame_buffer; // Set frame buffer address
     *screenChange = 0x00000001; // Trigger screen change
     tfp_printf("Screen change triggered ON\r\n");
 
-    tfp_printf("Screen filled with nothing\r\n");
+    tfp_printf("Screen filled with blue\r\n");
 
     matrix4f matProj = {0};
     fixed32 fNear = F(0.1f), fFar = F(1000.0f);
@@ -142,8 +197,10 @@ int main() {
     matrix4f matRotX = {0};
     float frame_time = 0.0f;
     int frame_num = 0;
+
+    Vec3fixed vCamera = {0, 0, 0};
     while(1){
-        clear_screen(pixels, (color){15,15,25});
+        clear_screen(frame_buffer_to_use, (color){15,15,35});
 
         frame_time += 0.03f;
         float fTheta = frame_time;
@@ -182,30 +239,43 @@ int main() {
                 triTranslated.p[k].z = fixed_add(triTranslated.p[k].z, F(3.0f));
             }
 
-            // project the translated vertices
-            MultiplyMatrixVector_fixed(&triTranslated.p[0], &triProj.p[0], &matProj);
-            MultiplyMatrixVector_fixed(&triTranslated.p[1], &triProj.p[1], &matProj);
-            MultiplyMatrixVector_fixed(&triTranslated.p[2], &triProj.p[2], &matProj);
+            Vec3fixed normal = cross_product_fixed(triTranslated);
+            normal = normalize_fixed(normal);
 
-            Vec2i s0 = to_screen_fixed(&triProj.p[0]);
-            Vec2i s1 = to_screen_fixed(&triProj.p[1]);
-            Vec2i s2 = to_screen_fixed(&triProj.p[2]);
+            // if(normal.z < 0) {
+            if (dot_product_fixed(normal, 
+                                 (Vec3fixed){
+                                     fixed_sub(triTranslated.p[0].x, vCamera.x),
+                                     fixed_sub(triTranslated.p[0].y, vCamera.y),
+                                     fixed_sub(triTranslated.p[0].z, vCamera.z)
+                                 }) < 0) {
+                Vec3fixed light_dir = {
+                    fixed_from_float(0.0f),
+                    fixed_from_float(0.0f),
+                    fixed_from_float(-1.0f)
+                };
+                // Not needed if light_dir is already normalized
+                // light_dir = normalize_fixed(light_dir);
+                fixed32 dp = dot_product_fixed(normal, light_dir);
+                char light_intensity = fixed_to_int_round(fixed_mul_trunc(dp, F(255.0f)));
+                // project the translated vertices
+                MultiplyMatrixVector_fixed(&triTranslated.p[0], &triProj.p[0], &matProj);
+                MultiplyMatrixVector_fixed(&triTranslated.p[1], &triProj.p[1], &matProj);
+                MultiplyMatrixVector_fixed(&triTranslated.p[2], &triProj.p[2], &matProj);
 
-            // tfp_printf("Triangle %d: Screen Coords: (%d,%d), (%d,%d), (%d,%d)\r\n",
-                // i, s0.x, s0.y, s1.x, s1.y, s2.x, s2.y);
-            triangle_wireframe(pixels, s0, s1, s2, (color){255,255,255});
+                Vec2i s0 = to_screen_fixed(&triProj.p[0]);
+                Vec2i s1 = to_screen_fixed(&triProj.p[1]);
+                Vec2i s2 = to_screen_fixed(&triProj.p[2]);
+
+                // tfp_printf("Triangle %d: Screen Coords: (%d,%d), (%d,%d), (%d,%d)\r\n",
+                    // i, s0.x, s0.y, s1.x, s1.y, s2.x, s2.y);
+                triangle(frame_buffer_to_use, s0, s1, s2, (color){light_intensity,light_intensity,light_intensity});
+                triangle_wireframe(frame_buffer_to_use, s0, s1, s2, (color){0,0,0});
+            }
         }
-        // for(volatile int k=0; k<1000000; k++); // Simple delay
+        frame_buffer_addr[0] = (uint32_t)switch_frame_buffer();
+        // tfp_printf("Current Frame Buffer: %x\r\n", frame_buffer_to_use);
+        // for(volatile int k=0; k<100000; k++); // Simple delay
         tfp_printf("Frame %d\r\n", frame_num++);
-    }
-
-
-
-
-    tfp_printf("Lines drawn\r\n");
-    char received_char;
-    while(1){
-        received_char = uart_read_byte();
-        tfp_printf("Received character: %c\r\n", received_char);
     }
 }
