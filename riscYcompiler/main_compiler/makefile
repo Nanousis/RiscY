@@ -1,10 +1,10 @@
 # Compiler and tools
-CC       = riscv64-unknown-elf-g++
-OBJCOPY  = riscv64-unknown-elf-objcopy
-OBJDUMP  = riscv64-unknown-elf-objdump
+CC       = riscv64-elf-g++
+OBJCOPY  = riscv64-elf-objcopy
+OBJDUMP  = riscv64-elf-objdump
 
 # Compiler flags
-CFLAGS   = -march=rv32i -mabi=ilp32 -O3 -g \
+CFLAGS   = -march=rv32i -mabi=ilp32 -Ofast -g \
 -nostartfiles \
 -fno-exceptions -fno-rtti -fno-threadsafe-statics \
 -fno-use-cxa-atexit \

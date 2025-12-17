@@ -8,6 +8,8 @@ from PyQt6.QtWidgets import (
 )
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QPixmap, QDragEnterEvent, QDropEvent
+import subprocess
+import os
 
 
 class EditableItemWidget(QWidget):
@@ -102,6 +104,10 @@ class DragDropMergeGUI(QWidget):
         self.merge_button.clicked.connect(self.merge_programs)
         self.button_layout.addWidget(self.merge_button)
 
+        self.program_button = QPushButton("Merge and Program FPGA")
+        self.program_button.clicked.connect(self.merge_and_program_fpga)
+        self.button_layout.addWidget(self.program_button)
+
         self.layout.addLayout(self.button_layout)
         self.setLayout(self.layout)
 
@@ -173,6 +179,39 @@ class DragDropMergeGUI(QWidget):
         except Exception as e:
             QMessageBox.critical(self, "Error", f"Failed to merge programs: {e}")
 
+    def merge_and_program_fpga(self):
+        self.merge_programs()
+        try:
+            merged_path = os.path.abspath("merged_programs.bin")
+            cmd = [
+                "openFPGALoader",
+                "--verify",
+                "--write-flash",
+                "--offset",
+                "0x500000",
+                "-b",
+                "tangnano20k",
+                merged_path
+            ]
+            # Run process and stream combined stdout/stderr to console in real time
+            proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, bufsize=1)
+            if proc.stdout:
+                for line in proc.stdout:
+                    print(line.rstrip(), flush=True)
+            proc.wait()
+
+            if proc.returncode == 0:
+                QMessageBox.information(self, "Program FPGA", "FPGA programmed successfully.")
+            else:
+                QMessageBox.critical(
+                    self,
+                    "Program FPGA Failed",
+                    f"openFPGALoader failed (exit {proc.returncode}). See console output for details."
+                )
+        except FileNotFoundError:
+            QMessageBox.critical(self, "Error", "openFPGALoader not found. Install it and ensure it's in PATH.")
+        except Exception as e:
+            QMessageBox.critical(self, "Error", f"Failed to run openFPGALoader: {e}")
 
 def image_to_2bit_hex_lsb(image, start_x, start_y):
     hex_values = []

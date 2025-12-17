@@ -39,10 +39,10 @@ SECTIONS
   } > RAM
 
   /* -------- Fixed 3 MiB heap -------- */
-  . = ALIGN(16);
+  . = ALIGN(1024);
   .heap (NOLOAD) : {
     _heap_start = .;
-    . = . + 0x00300000;   /* 3 MiB */
+    . = . + 0x00320000;   /* 3 MiB */
     _heap_end = .;
   } > RAM
 

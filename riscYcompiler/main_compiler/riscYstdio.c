@@ -6,6 +6,7 @@
 #include <stddef.h>
 #include <stdint.h>
 #include "riscYstdio.h"
+#include "tinyprintf.h"
 /* register definitions */
 #define REG_RBR		0x00 /* Receiver buffer reg. */
 #define REG_THR		0x00 /* Transmitter holding reg. */
@@ -22,6 +23,7 @@
 
 /* Line status */
 #define LSR_DR			0x01 /* Data ready */
+#define LSR_OE			0x02 /* Overrun erro/
 #define LSR_OE			0x02 /* Overrun error */
 #define LSR_PE			0x04 /* Parity error */
 #define LSR_FE			0x08 /* Framing error */
@@ -447,6 +449,7 @@ void resetScreenVector(){
 #define FLASH_ADRESS 0x8B000004
 #define FLASH_DATA_IN 0x8B000008
 #define FLASH_DATA_OUT 0x8B00000C
+__attribute__((optimize("O0")))
 unsigned int readFlash(unsigned int adress){
     volatile char *flashReady = (char *)FLASH_READY;
     volatile char *flashRen = (char *)FLASH_REN;
@@ -468,6 +471,7 @@ unsigned int readFlash(unsigned int adress){
     return data;
 }
 
+__attribute__((optimize("O0")))
 unsigned int getFileStartAddressByName(const char *filename, uint32_t *file_start, uint32_t *file_end) {
     volatile uint32_t tempAddress = 0;
     volatile uint32_t readData;
@@ -478,9 +482,9 @@ unsigned int getFileStartAddressByName(const char *filename, uint32_t *file_star
         readData = readFlash(tempAddress);
         for (int j = 0; j < 4; j++) {
             char c = (readData >> (8 * j)) & 0xFF;
-            uart_printf("Magic[%d] = %c\r\n", i * 4 + j, c);
+            // uart_printf("Magic[%d] = %c\r\n", i * 4 + j, c);
             if (c != expectedMagic[i * 4 + j]) {
-                uart_printf("Invalid magic number at position %d\r\n", i * 4 + j);
+                tfp_printf("Invalid magic number at position %d\r\n", i * 4 + j);
                 return 0xFFFFFFFF;
             }
         }
@@ -489,14 +493,14 @@ unsigned int getFileStartAddressByName(const char *filename, uint32_t *file_star
 
     // Read program count
     unsigned char programCount = readFlash(tempAddress)& 0xFF;
-    uart_printf("Program count: %d\r\n", programCount);
+    tfp_printf("Program count: %d\r\n", programCount);
     // signed char programCount = 2;
 
     tempAddress += 1;
     uint32_t headersAddress = 0;
     // For each program
     while(programCount--) {
-        uart_printf("Checking program %d...\r\n", programCount+1);
+        tfp_printf("Checking program %d...\r\n", programCount+1);
 
         // Compare filename
         int match = 1;
@@ -508,7 +512,7 @@ unsigned int getFileStartAddressByName(const char *filename, uint32_t *file_star
             readData = readFlash(tempAddress); 
             c_flash = readData & 0xFF;
             c_input = filename[pos];
-            uart_printf("  Char %d: '%c' (flash) vs '%c' (input)\r\n", pos, c_flash, c_input);
+            // tfp_printf("  Char %d: '%c' (flash) vs '%c' (input)\r\n", pos, c_flash, c_input);
 
             if (c_flash != c_input) {
                 match = 0;
@@ -522,10 +526,10 @@ unsigned int getFileStartAddressByName(const char *filename, uint32_t *file_star
             asm volatile ("nop");
             asm volatile ("nop");
             uint32_t start_address = readFlash(tempAddress);
-            uart_printf("  Match found! Start address: 0x%x\r\n", start_address);
+            // tfp_printf("  Match found! Start address: 0x%x\r\n", start_address);
             tempAddress += 4; // Move past start address
             uint32_t end_address = readFlash(tempAddress);
-            uart_printf("  End address: 0x%x\r\n", end_address);
+            // tfp_printf("  End address: 0x%x\r\n", end_address);
             *file_start = start_address;
             *file_end = end_address;
             // Returns the headers address
@@ -539,7 +543,7 @@ unsigned int getFileStartAddressByName(const char *filename, uint32_t *file_star
           // Skip 256 bytes of sprite
           tempAddress += 256;
         }
-    uart_printf("File not found: %s\r\n", filename);
+    // tfp_printf("File not found: %s\r\n", filename);
     return 0xFFFFFFFF;
 }
 /*
@@ -566,7 +570,7 @@ typedef struct {
 
 file_t files[MAX_FILES];
 unsigned int fileCount = 0;
-
+__attribute__((optimize("O0")))
 int16_t riscy_fopen(const char* filename) {
     uint32_t startAddress = 0;
     uint32_t endAddress = 0;
@@ -576,7 +580,7 @@ int16_t riscy_fopen(const char* filename) {
     
     if (headerAddress == 0xFFFFFFFF) {
         // File not found
-        uart_printf("Error: File not found - %s\r\n", filename);
+        tfp_printf("Error: File not found - %s\r\n", filename);
         return 0;
     }
 
@@ -584,23 +588,25 @@ int16_t riscy_fopen(const char* filename) {
     if (fileCount < MAX_FILES) {
         file_t* newFile = &files[fileCount];
         newFile->startAddress = startAddress;
-        newFile->endAddress = endAddress;
+        newFile->endAddress = endAddress+1;
         newFile->currentAddress = startAddress;
         newFile->valid = 1; // Mark the file as valid
-        printf("0x%x to 0x%x\r\n",newFile->startAddress, newFile->endAddress);
+        tfp_printf("    0x%x to 0x%x\r\n",newFile->startAddress, newFile->endAddress);
 
         short fileNameLength = 0;
         while(*filename && fileNameLength < MAX_FILE_NAME_LENGTH) {
             newFile->name[fileNameLength++] = filename[fileNameLength];
         }
-        return ++fileCount;
+        fileCount ++;
+        tfp_printf("    File opened: %s (Handle: %d) (size: %d bytes)\r\n", filename, fileCount, newFile->endAddress - newFile->startAddress);
+        return fileCount;
     }
 
     // If there is no space left for new files
-    uart_printf("Error: Maximum file count reached.\r\n");
+    tfp_printf("Error: Maximum file count reached.\r\n");
     return 0;
 }
-
+__attribute__((optimize("O0")))
 int32_t riscy_fread(int16_t fileHandle, void* buffer, uint32_t size) {
     if (fileHandle == 0 || fileHandle > fileCount || !files[fileHandle-1].valid) {
         uart_printf("Error: Invalid file handle %d\r\n", fileHandle);
@@ -633,7 +639,7 @@ int32_t riscy_fread(int16_t fileHandle, void* buffer, uint32_t size) {
 
     return size;
 }
-
+__attribute__((optimize("O0")))
 char riscy_fgetc(int16_t fileHandle) {
     if (fileHandle == 0 || fileHandle > fileCount || !files[fileHandle-1].valid) {
         uart_printf("Error: Invalid file handle %d\r\n", fileHandle);
@@ -652,7 +658,7 @@ char riscy_fgetc(int16_t fileHandle) {
     file->currentAddress += 1; // Move to the next byte
     return byte;
 }
-
+__attribute__((optimize("O0")))
 uint8_t riscy_fclose(int16_t fileHandle) {
     if (fileHandle == 0 || fileHandle > fileCount || !files[fileHandle-1].valid) {
         uart_printf("Error: Invalid file handle %d\r\n", fileHandle);
@@ -676,23 +682,30 @@ char heap_initialized = 0;
 // ====================================================
 // Simple heap allocator
 // ====================================================
-
+__attribute__((optimize("O0")))
 void riscy_heap_init(void) {
     uintptr_t start = (uintptr_t)&_heap_start;
-    current_heap = (uint8_t *)ALIGN_UP(start, MALLOC_ALIGNMENT);
+    // current_heap = (uint8_t *)ALIGN_UP(start, MALLOC_ALIGNMENT);
+    current_heap = (uint8_t *)start;
 }
-
+__attribute__((optimize("O0")))
 void* riscy_malloc(size_t size) {
+    asm volatile ("nop");
+    asm volatile ("nop");
+    asm volatile ("nop");
     if (!current_heap)
         riscy_heap_init(); // lazy init
 
+    // tfp_printf("    malloc: Requested size: %d bytes\r\n", (unsigned)size);
+    // tfp_printf("    malloc: HEAPSIZE: %dKB\r\n", (unsigned)((uintptr_t)&_heap_end - (uintptr_t)&_heap_start)/1024);
     // Round up size and pointer to MALLOC_ALIGNMENT
     size = ALIGN_UP(size, MALLOC_ALIGNMENT);
     uintptr_t ptr_aligned = ALIGN_UP((uintptr_t)current_heap, MALLOC_ALIGNMENT);
 
+    // tfp_printf("    malloc: Current heap used: %dKB\r\n", (unsigned)(ptr_aligned - (uintptr_t)&_heap_start)/1024);
     // Check for overflow
     if ((ptr_aligned + size) > (uintptr_t)&_heap_end) {
-        uart_printf("Heap overflow! Requested %u bytes\r\n", (unsigned)size);
+        // uart_printf("Heap overflow! Requested %d bytes, current heap used: %d\r\n", (unsigned)size, (unsigned)(ptr_aligned - (uintptr_t)&_heap_start));
         return NULL;
     }
 
@@ -701,7 +714,7 @@ void* riscy_malloc(size_t size) {
 
     return ptr;
 }
-
+__attribute__((optimize("O0")))
 int riscy_fseek(int16_t fileHandle, long offset, int whence) {
     if (fileHandle == 0 || fileHandle > fileCount || !files[fileHandle-1].valid) {
         uart_printf("Error: Invalid file handle %d\r\n", fileHandle);
@@ -739,7 +752,7 @@ int riscy_fseek(int16_t fileHandle, long offset, int whence) {
 
     return 0;  // Success
 }
-
+__attribute__((optimize("O0")))
 int riscy_ftell(int16_t fileHandle) {
     if (fileHandle == 0 || fileHandle > fileCount || !files[fileHandle-1].valid) {
         uart_printf("Error: Invalid file handle %d\r\n", fileHandle);
@@ -752,6 +765,7 @@ int riscy_ftell(int16_t fileHandle) {
     // Return the current position relative to the beginning of the file
     return file->currentAddress - file->startAddress;
 }
+__attribute__((optimize("O0")))
 int riscy_feof(int16_t fileHandle) {
     if (fileHandle == 0 || fileHandle > fileCount || !files[fileHandle-1].valid) {
         uart_printf("Error: Invalid file handle %d\r\n", fileHandle);
@@ -771,6 +785,7 @@ int riscy_feof(int16_t fileHandle) {
 
 
 // Lists all files found in the RISCY.FS header table
+__attribute__((optimize("O0")))
 void riscy_list_files(void) {
     uint32_t addr = 0;
     uint32_t w;
@@ -819,55 +834,57 @@ void riscy_list_files(void) {
     }
 }
 
-
-
-void heap_test(void) {
-    printf("===== Heap Test Start =====\r\n");
-    printf("Heap range: 0x%x - 0x%x\r\n", (uint32_t)&_heap_start, (uint32_t)&_heap_end);
-    printf("Heap size : %d bytes\r\n", (uint32_t)(&_heap_end - &_heap_start));
-
-    riscy_heap_init();
-
-    const int alloc_count = 6;
-    size_t sizes[alloc_count] = {128, 1024, 8192, 50000, 256000, 512000};
-    void* ptrs[alloc_count];
-
-    for (int i = 0; i < alloc_count; i++) {
-        ptrs[i] = riscy_malloc(sizes[i]);
-        printf("[%d] Alloc %d bytes -> %s (addr=0x%x)\r\n",
-                    i, (int)sizes[i],
-                    ptrs[i] ? "OK" : "FAIL",
-                    (uint32_t)ptrs[i]);
-
-        // Write pattern to allocated region
-        if (ptrs[i]) {
-            uint8_t *p = (uint8_t *)ptrs[i];
-            for (size_t j = 0; j < sizes[i]; j++)
-                p[j] = (uint8_t)(i + j);
-        }
-    }
-
-    printf("\r\nVerifying contents...\r\n");
-    for (int i = 0; i < alloc_count; i++) {
-        if (!ptrs[i]) continue;
-        uint8_t *p = (uint8_t *)ptrs[i];
-        int errors = 0;
-        for (size_t j = 0; j < sizes[i]; j++) {
-            if (p[j] != (uint8_t)(i + j)) {
-                errors++;
-                if (errors < 3) {
-                    printf("  Mismatch @%d[%d]: got %d expected %d\r\n",
-                                i, (int)j, p[j], (uint8_t)(i + j));
-                }
-            }
-        }
-        printf("[%d] verify -> %s (%d errors)\r\n",
-                    i, (errors == 0 ? "OK" : "FAIL"), errors);
-    }
-
-    uint32_t used = (uint32_t)(current_heap - (uint8_t *)&_heap_start);
-    printf("\r\nTotal heap used: %d bytes\r\n", used);
-    // printf("Remaining heap:  %d bytes\r\n", 
-    //             (uint32_t)(&_heap_end - current_heap));
-    printf("===== Heap Test End =====\r\n");
+int riscy_rewind(int16_t fileHandle) {
+    return riscy_fseek(fileHandle, 0, SEEK_SET);
 }
+
+// void heap_test(void) {
+//     printf("===== Heap Test Start =====\r\n");
+//     printf("Heap range: 0x%x - 0x%x\r\n", (uint32_t)&_heap_start, (uint32_t)&_heap_end);
+//     printf("Heap size : %d bytes\r\n", (uint32_t)(&_heap_end - &_heap_start));
+
+//     riscy_heap_init();
+
+//     const int alloc_count = 6;
+//     size_t sizes[alloc_count] = {128, 1024, 8192, 50000, 256000, 512000};
+//     void* ptrs[alloc_count];
+
+//     for (int i = 0; i < alloc_count; i++) {
+//         ptrs[i] = riscy_malloc(sizes[i]);
+//         printf("[%d] Alloc %d bytes -> %s (addr=0x%x)\r\n",
+//                     i, (int)sizes[i],
+//                     ptrs[i] ? "OK" : "FAIL",
+//                     (uint32_t)ptrs[i]);
+
+//         // Write pattern to allocated region
+//         if (ptrs[i]) {
+//             uint8_t *p = (uint8_t *)ptrs[i];
+//             for (size_t j = 0; j < sizes[i]; j++)
+//                 p[j] = (uint8_t)(i + j);
+//         }
+//     }
+
+//     printf("\r\nVerifying contents...\r\n");
+//     for (int i = 0; i < alloc_count; i++) {
+//         if (!ptrs[i]) continue;
+//         uint8_t *p = (uint8_t *)ptrs[i];
+//         int errors = 0;
+//         for (size_t j = 0; j < sizes[i]; j++) {
+//             if (p[j] != (uint8_t)(i + j)) {
+//                 errors++;
+//                 if (errors < 3) {
+//                     printf("  Mismatch @%d[%d]: got %d expected %d\r\n",
+//                                 i, (int)j, p[j], (uint8_t)(i + j));
+//                 }
+//             }
+//         }
+//         printf("[%d] verify -> %s (%d errors)\r\n",
+//                     i, (errors == 0 ? "OK" : "FAIL"), errors);
+//     }
+
+//     uint32_t used = (uint32_t)(current_heap - (uint8_t *)&_heap_start);
+//     printf("\r\nTotal heap used: %d bytes\r\n", used);
+//     // printf("Remaining heap:  %d bytes\r\n", 
+//     //             (uint32_t)(&_heap_end - current_heap));
+//     printf("===== Heap Test End =====\r\n");
+// }

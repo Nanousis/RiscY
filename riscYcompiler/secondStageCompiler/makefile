@@ -1,7 +1,7 @@
 # Compiler and tools
-CC       = riscv64-unknown-elf-gcc
-OBJCOPY  = riscv64-unknown-elf-objcopy
-OBJDUMP  = riscv64-unknown-elf-objdump
+CC       = riscv64-elf-gcc
+OBJCOPY  = riscv64-elf-objcopy
+OBJDUMP  = riscv64-elf-objdump
 
 # Compiler flags
 CFLAGS   = -march=rv32i -mabi=ilp32 -Os -Wall -nostdlib -nostartfiles -ffreestanding

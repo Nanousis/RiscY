@@ -64,7 +64,7 @@ int riscy_fseek(int16_t fileHandle, long offset, int whence);
 int riscy_ftell(int16_t fileHandle);
 int riscy_feof(int16_t fileHandle);
 void riscy_list_files(void);
-
+int riscy_rewind(int16_t fileHandle);
 
 void* riscy_malloc(size_t size);
 void heap_test(void);

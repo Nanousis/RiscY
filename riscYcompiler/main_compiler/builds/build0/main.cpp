@@ -4,15 +4,11 @@
 #include "geometry.h"
 #include "fixed_point.h"
 
-// #define RAM_LOCATION (0x80000000 + WIDTH * HEIGHT)
-// #define RAM_LOCATION2 (0x80000000 + WIDTH * HEIGHT*8)
+#define RAM_LOCATION (0x80000000 + WIDTH * HEIGHT)
+#define RAM_LOCATION2 (0x80000000 + WIDTH * HEIGHT*8)
 #define abs(x) ((x) < 0 ? -(x) : (x))
 #define cube_size 12
 #define F(x) (fixed_from_float((float)(x)))
-
-uint16_t *RAM_LOCATION;
-uint16_t *RAM_LOCATION2;
-
 
 uint16_t *frame_buffer = (uint16_t *) RAM_LOCATION;
 uint16_t *frame_buffer_to_use = (uint16_t *) RAM_LOCATION2;
@@ -125,13 +121,24 @@ static inline fixed32 dot_product_fixed(Vec3fixed a, Vec3fixed b)
 
 int main() {
     init_printf(NULL, tfp_putc);      // set output sink
-
-    RAM_LOCATION = (uint16_t *) riscy_malloc( WIDTH * HEIGHT * 2 * sizeof(uint16_t) ); // Allocate memory for double frame buffer
-    RAM_LOCATION2 = (uint16_t *) riscy_malloc( WIDTH * HEIGHT * 2 * sizeof(uint16_t) ); // Allocate memory for double frame buffer
-
     uint16_t *pixels = ( uint16_t *) (RAM_LOCATION);
     unsigned int *screenChange= ( unsigned int *) 0x88002800;
     unsigned int *frame_buffer_addr= ( unsigned int *) 0x88002804;
+    asm volatile ("nop");
+    asm volatile ("nop");
+    asm volatile ("nop");
+    frame_buffer_addr[0] = (uint32_t)frame_buffer; // Set frame buffer address
+    frame_buffer_addr[0] = (uint32_t)frame_buffer; // Set frame buffer address
+    frame_buffer_addr[0] = (uint32_t)frame_buffer; // Set frame buffer address
+    asm volatile ("nop");
+    asm volatile ("nop");
+    asm volatile ("nop");
+    *screenChange = 0x00000001; // Trigger screen change
+    *screenChange = 0x00000001; // Trigger screen change
+    *screenChange = 0x00000001; // Trigger screen change
+    asm volatile ("nop");
+    asm volatile ("nop");
+    asm volatile ("nop");
     // South
     // 8 corners of the cube
     const Vec3fixed v[8] = {
@@ -170,8 +177,7 @@ int main() {
 
 
     tfp_printf("Starting Frame Buffer Test\r\n");
-    frame_buffer_addr[0] = (uint32_t)frame_buffer; // Set frame buffer address
-    *screenChange = 0x00000001; // Trigger screen change
+
     tfp_printf("Screen change triggered ON\r\n");
 
     tfp_printf("Screen filled with blue\r\n");
@@ -200,7 +206,7 @@ int main() {
 
     Vec3fixed vCamera = {0, 0, 0};
     while(1){
-        clear_screen(frame_buffer_to_use, (color){15,15,35});
+        // clear_screen(frame_buffer_to_use, (color){15,15,35});
 
         frame_time += 0.03f;
         float fTheta = frame_time;

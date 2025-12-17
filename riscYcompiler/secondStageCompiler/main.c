@@ -240,7 +240,7 @@ void TestRAM(){
 }
 // this function reads the program from the flash and loads it into the program memory
 int main() {
-    // TestRAM();
+    TestRAM();
     Programheader Selected_Header;
     Programheader temp_Header;
     unsigned int readData=0;
