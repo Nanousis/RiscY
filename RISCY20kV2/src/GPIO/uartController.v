@@ -147,7 +147,7 @@ end
 
 sync_rs232_uart #(
     .SYSCLK_MHZ(27),
-    .BAUD_RATE(115200) // Change dynamically if desired
+    .BAUD_RATE(3000000) // Change dynamically if desired
 ) uart_inst (
     .clk(clk),
     .rxd(uart_rx),

@@ -15,7 +15,7 @@ module PPU(
 );
 
     parameter MAX_WIDTH=15'd1024;
-    parameter MAX_OBJ=0;
+    parameter MAX_OBJ=10;
 
 
 

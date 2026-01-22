@@ -1,6 +1,9 @@
 `ifndef TESTBENCH
-`include "constants.vh"
-`include "config.vh"
+
+// `include "constants.vh"
+// `include "config.vh"
+`include "../includes/constants.vh"
+`include "../includes/config.vh"
 `else
 `include "../includes/constants.vh"
 `include "../includes/config.vh"
@@ -19,6 +22,7 @@ module  control_stall_id(
 	output reg write_memwb,
 	output reg write_pc,
 	output reg trap_waiting,
+	input instr_stall,
 	input [4:0] ifid_rs,
 	input [4:0] ifid_rt,
 	input [4:0] idex_rd,
@@ -97,10 +101,20 @@ begin
 		write_pc	= 1'b0;
 		trap_waiting= 1'b0;
 	end
-	else if (Jump == 1'b1||trap_in_ID == 1'b1) begin // j instruction in ID stage	
+	else if ((Jump == 1'b1 & instr_stall == 1'b0)||trap_in_ID == 1'b1) begin // j instruction in ID stage	
 		state = 4'd5;
 		bubble_ifid	= 1'b1;
 	end
+
+	if(instr_stall == 1'b1)begin
+		write_pc		= 1'b0;
+		if(Jump == 1'b1) begin
+			write_ifid	= 1'b0;
+			// write_idex	= 1'b0;
+		end
+	end
+
+
 	if(int_trap == 1'b1) begin // Trap in ID stage
 		state = 4'd6;
 		bubble_ifid		= 1'b1;
@@ -110,7 +124,7 @@ begin
 		write_pc	= 1'b1;
 	end
 	else
-	if (PCSrc == 1'b11) begin // Taken Branch in MEM stage
+	if (PCSrc == 1'b1) begin // Taken Branch in MEM stage
 		state = 4'd7;
 		bubble_ifid		= 1'b1;
 		bubble_idex		= 1'b1;

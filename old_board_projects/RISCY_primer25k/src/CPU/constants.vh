@@ -21,21 +21,24 @@
 `define rf_addr_delay  0.5
 
 /********* ALU Operations *********/
-`define ADD 4'b0000
-`define SUB 4'b0001
-`define XOR 4'b0010
-`define OR 4'b0011
-`define AND 4'b0100
-`define SLL 4'b0101
-`define SRL 4'b0110
-`define SRA 4'b0111
-`define SLT 4'b1000
-`define SLTU 4'b1001
-`define SUBU 4'b1010
-`define LUI 4'b1011
-`define AUIPC 4'b1100
-`define CLEAR 4'b1110
-`define PASS 4'b1111
+`define ADD 5'b00000
+`define SUB 5'b00001
+`define XOR 5'b00010
+`define OR 5'b00011
+`define AND 5'b00100
+`define SLL 5'b00101
+`define SRL 5'b00110
+`define SRA 5'b00111
+`define SLT 5'b01000
+`define SLTU 5'b01001
+`define SUBU 5'b01010
+`define LUI 5'b01011
+`define AUIPC 5'b01100
+`define CLEAR 5'b01110
+`define PASS 5'b01111
+`define MUL 5'b10000
+`define DIV 5'b10001
+`define DIVU 5'b10010
 
 
 
@@ -57,6 +60,7 @@
 /*********** R-format ************/
 `define FUNCT3_ADD_SUB 3'b000
 `define FUNCT3_XOR 3'b100
+`define FUNCT3_DIVU 3'b101
 `define FUNCT3_OR 3'b110
 `define FUNCT3_AND 3'b111
 `define FUNCT3_SLL 3'b001
@@ -101,6 +105,8 @@
 
 /******* Funct7, R-format ********/
 `define FUNCT7_ADD 7'h00
+`define FUNCT7_SUB 7'b0100000
+`define FUNCT7_MUL 7'h0000001
 `define FUNCT7_SRL 7'h00
 
 /********* ALUcntrl Codes ********/

@@ -1,13 +1,15 @@
 `ifndef TESTBENCH
-`include "constants.vh"
-`include "config.vh"
+// `include "constants.vh"
+// `include "config.vh"
+`include "../includes/constants.vh"
+`include "../includes/config.vh"
 `else
 `include "../includes/constants.vh"
 `include "../includes/config.vh"
 `endif
 
 /************** control for ALU control in EX pipe stage  *************/
-module control_alu(	output reg [3:0] ALUOp,
+module control_alu(	output reg [4:0] ALUOp,
 					output reg csr_immidiate,
 					input [2:0] ALUcntrl,
 					input [2:0] funct3,
@@ -22,12 +24,31 @@ begin
 	case (ALUcntrl)
 		`ALU_R: begin
 			case (funct3)
-				`FUNCT3_ADD_SUB:	ALUOp = (funct7 == `FUNCT7_ADD) ? `ADD : `SUB;
+				`FUNCT3_ADD_SUB:
+				begin
+					case (funct7)
+						`FUNCT7_ADD:	ALUOp = `ADD;
+						`FUNCT7_SUB:	ALUOp = `SUB;
+						`FUNCT7_MUL:	ALUOp = `MUL; // Assuming MUL is defined in constants.vh
+						default:		ALUOp = `ADD; // Default to ADD if funct7 is not recognized
+					endcase
+				end
 				`FUNCT3_XOR:		ALUOp = `XOR;
 				`FUNCT3_OR:			ALUOp = `OR;
 				`FUNCT3_AND:		ALUOp = `AND;
 				`FUNCT3_SLL:		ALUOp = `SLL;
-				`FUNCT3_SRL:		ALUOp = (funct7 == `FUNCT7_SRL) ? `SRL : `SRA;
+				`FUNCT3_SRL:begin
+					if(funct7 == `FUNCT7_SRL)
+						ALUOp = `SRL;
+					// The same funct7 is used for mul and div
+					// else if(funct7 == `FUNCT7_MUL)
+					// begin
+					// 	ALUOp = `DIVU;
+					// end
+					else begin
+						ALUOp = (funct7 == `FUNCT7_SRL) ? `SRL : `SRA;
+					end
+				end
 				`FUNCT3_SLT:		ALUOp = `SLT;
 				`FUNCT3_SLTU:		ALUOp = `SLTU;
 				default:			ALUOp = `ADD;

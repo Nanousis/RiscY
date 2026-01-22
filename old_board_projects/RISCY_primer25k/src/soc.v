@@ -73,6 +73,7 @@ module top
                 .reset(reset),
                 .overflow(overflow),
                 .PC_out(PC),
+                .instr_stall(0),
                 .instr_in(instr),
                 .data_addr(data_addr),
                 .ren(ren),

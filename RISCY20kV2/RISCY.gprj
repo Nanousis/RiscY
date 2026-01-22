@@ -67,7 +67,7 @@
         <File path="src/spi_flash_interface_lite/spi_flash_interface_lite.v" type="file.verilog" enable="1"/>
         <File path="src/tangnano9k.cst" type="file.cst" enable="1"/>
         <File path="src/Tang_nano_9K_LCD.sdc" type="file.sdc" enable="1"/>
-        <File path="src/RISCY_Framebuffer.rao" type="file.gao" enable="1"/>
+        <File path="src/RISCY_Framebuffer.rao" type="file.gao" enable="0"/>
         <File path="src/Memories/text.hex" type="file.other" enable="1"/>
         <File path="src/screenI2C/font.hex" type="file.other" enable="1"/>
     </FileList>

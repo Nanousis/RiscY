@@ -121,32 +121,23 @@ VCD warning: array word test.flash_sim.memory[60] will conflict with an escaped 
 VCD warning: array word test.flash_sim.memory[61] will conflict with an escaped identifier.
 VCD warning: array word test.flash_sim.memory[62] will conflict with an escaped identifier.
 VCD warning: array word test.flash_sim.memory[63] will conflict with an escaped identifier.
-Initializing RAM -- Instruction limit:                10000
-RAM INITIALIZED -- Running                10000 instructions
+Initializing RAM -- Instruction limit:                 1000
+RAM INITIALIZED -- Running                 1000 instructions
 Starting Frame Buffer Test
-Screen change triggered ON
-Screen filled with blue
-Frame buffer1: 800bb800
-Frame 0
-Frame 1
-Frame 2
-Frame 3
-Frame 4
-Frame 5
-          0: x0   :          0 - 0x00000000
+Screen change triggered ON          0: x0   :          0 - 0x00000000
           1: ra   : 2147496852 - 0x80003394
           2: sp   : 2151677724 - 0x803fff1c
           3: gp   :          0 - 0x00000000
           4: tp   :          0 - 0x00000000
-          5: t0   : 2147497948 - 0x800037dc
+          5: t0   :          0 - 0x00000000
           6: t1   : 2151677888 - 0x803fffc0
           7: t2   :          0 - 0x00000000
-          8: s0/fp: 2147514110 - 0x800076fe
+          8: s0/fp: 2147514048 - 0x800076c0
           9: s1   :         37 - 0x00000025
-         10: a0   :         10 - 0x0000000a
+         10: a0   :         13 - 0x0000000d
          11: a1   :         10 - 0x0000000a
-         12: a2   : 2151677744 - 0x803fff30
-         13: a3   : 2151677765 - 0x803fff45
+         12: a2   : 2147514020 - 0x800076a4
+         13: a3   : 2151677888 - 0x803fffc0
          14: a4   :  268435456 - 0x10000000
          15: a5   :         32 - 0x00000020
          16: a6   :          0 - 0x00000000
@@ -156,11 +147,11 @@ Frame 5
          20: s4   :         35 - 0x00000023
          21: s5   :         48 - 0x00000030
          22: s6   :         45 - 0x0000002d
-         23: s7   : 2151677892 - 0x803fffc4
-         24: s8   : 2147514110 - 0x800076fe
-         25: s9   :          1 - 0x00000001
-         26: s10  :          5 - 0x00000005
-         27: s11  :          1 - 0x00000001
+         23: s7   : 2151677888 - 0x803fffc0
+         24: s8   : 2147514047 - 0x800076bf
+         25: s9   :          0 - 0x00000000
+         26: s10  :          0 - 0x00000000
+         27: s11  :          0 - 0x00000000
          28: t3   :          0 - 0x00000000
          29: t4   :          0 - 0x00000000
          30: t5   :          0 - 0x00000000
@@ -184,4 +175,4 @@ Frame 5
          16:                                                              xxx
          17:                                                              xxx
          18:                                                              xxx
-.\soctb.sv:183: $finish called at 8277534000 (1ps)
+.\soctb.sv:183: $finish called at 7092090000 (1ps)

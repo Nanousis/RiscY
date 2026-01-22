@@ -17,7 +17,7 @@
         <File path="src/CPU/control_bypass_ex.v" type="file.verilog" enable="1"/>
         <File path="src/CPU/control_main.v" type="file.verilog" enable="1"/>
         <File path="src/CPU/control_stall_id.v" type="file.verilog" enable="1"/>
-        <File path="src/CPU/cpu.v" type="file.verilog" enable="1"/>
+        <File path="src/CPU/cpu.sv" type="file.verilog" enable="1"/>
         <File path="src/CPU/mem_read_selector.v" type="file.verilog" enable="1"/>
         <File path="src/CPU/mem_write_selector.v" type="file.verilog" enable="1"/>
         <File path="src/CPU/signExtend.v" type="file.verilog" enable="1"/>
